@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+<title>Threads - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Semantics.html#Semantics" title="Semantics">
+<link rel="next" href="Fatal-Errors.html#Fatal-Errors" title="Fatal Errors">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Threads"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Fatal-Errors.html#Fatal-Errors">Fatal Errors</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Semantics.html#Semantics">Semantics</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">6 Threads</h2>
+
+<p>Libmarpa is thread-safe,
+given circumstances as described below. 
+The Libmarpa methods are not reentrant.
+
+   <p>Libmarpa is C89-compliant. 
+It uses no global data,
+and calls only the routines
+that are defined in the C89 standard
+and that can be made thread-safe. 
+In most modern implementations,
+the default C89 implementation is thread-safe
+to the extent possible. 
+But the C89 standard does not require thread-safety,
+and even most modern environments allow the user
+to turn thread safety off. 
+To be thread-safe, Libmarpa must be compiled
+and linked in an environment that provides
+thread-safety.
+
+   <p>While Libmarpa can be used safely across
+multiple threads,
+a Libmarpa grammar cannot be. 
+Further, a Libmarpa time object can
+only be used safely in the same thread
+as its base grammar. 
+This is because all
+time objects with the same base grammar share data
+from that base grammar.
+
+   <p>To work around this limitation,
+the same grammar definition can be
+used to a create a new
+Libmarpa grammar
+time object in each thread. 
+If there is sufficient interest, future versions of
+Libmarpa could allow thread-safe
+cloning of grammars and other
+time objects.
+
+   </body></html>
+

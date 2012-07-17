@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+<title>Configuration methods - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Static-method.html#Static-method" title="Static method">
+<link rel="next" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Configuration-methods"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Grammar-methods.html#Grammar-methods">Grammar methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Static-method.html#Static-method">Static method</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">10 Configuration methods</h2>
+
+<p>The configuration object is intended for future extensions. 
+These may
+allow the application to override Libmarpa's memory allocation
+and fatal error handling without resorting to global
+variables, and therefore in a thread-safe way. 
+Currently, the only function of the <code>Marpa_Config</code>
+class is to give <code>marpa_g_new()</code>
+a place to put its error code.
+
+   <p><code>Marpa_Config</code> is Libmarpa's only &ldquo;major&rdquo;
+class which is not a time class. 
+There is no constructor or destructor, although
+<code>Marpa_Config</code> objects <strong>do</strong> need to be initialized
+before use. 
+Aside from its own accessor,
+<code>Marpa_Config</code> objects are only used by <code>marpa_g_new</code>
+and no reference to their location is not kept
+in any of Libmarpa's time objects. 
+The intent is to that it be convenient
+to have them in memory that might be deallocated
+soon after <code>marpa_g_new</code> returns. 
+For example, they could be put on the stack.
+
+<div class="defun">
+&mdash; Function: int <b>marpa_c_init</b> (<var> Marpa_Config* config</var>)<var><a name="index-marpa_005fc_005finit-2"></a></var><br>
+<blockquote>
+        <p>Initialize the <var>config</var> information to &ldquo;safe&rdquo; default
+values. 
+Unspecified behavior will result
+if an initialized
+configuration is used to create a grammar.
+
+        <p>Return value: A non-negative value.  Always succeeds. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: Marpa_Error_Code <b>marpa_c_error</b> (<var> Marpa_Config* config, const char** p_error_string </var>)<var><a name="index-marpa_005fc_005ferror-3"></a></var><br>
+<blockquote>
+        <p>Error codes are usually kept in the base grammar,
+which leaves <code>marpa_g_new()</code> no place to put
+its error code on failure. 
+Objects of
+the <code>Marpa_Config</code> class provide such a place.
+
+        <p>Return value:
+The error code in <var>config</var>. 
+Always succeeds. 
+</p></blockquote></div>
+
+   </body></html>
+

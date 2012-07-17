@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+<title>General rules for the earleme variables - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Earlemes.html#Earlemes" title="Earlemes">
+<link rel="prev" href="The-generalized-model.html#The-generalized-model" title="The generalized model">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="General-rules-for-the-earleme-variables"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-generalized-model.html#The-generalized-model">The generalized model</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Earlemes.html#Earlemes">Earlemes</a>
+<hr>
+</div>
+
+<h4 class="subsection">4.1.9 General rules for the earleme variables</h4>
+
+<p>At this point, the most generalized input model has been
+introduced. 
+Here are some useful facts about the earleme variables that will always be the case,
+no matter which of the input models is in use.
+
+     <ul>
+<li>The current earleme is greater than
+or equal to the latest earleme. 
+<li>The furthest earleme is greater than
+or equal to the latest earleme. 
+<li>If the parser is not exhausted,
+the furthest earleme is always greater than
+or equal to the current earleme. 
+<li>In an exhausted parser,
+the furthest earleme is always less than
+or equal to the current earleme. 
+<li>If the furthest earleme is greater than the current earleme,
+the parser is not exhausted. 
+<li>For the furthest earleme to be less than the current earleme,
+the parser must be exhausted. 
+</ul>
+
+   </body></html>
+

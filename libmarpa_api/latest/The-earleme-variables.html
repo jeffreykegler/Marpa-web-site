@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+<title>The earleme variables - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Earlemes.html#Earlemes" title="Earlemes">
+<link rel="prev" href="The-traditional-model.html#The-traditional-model" title="The traditional model">
+<link rel="next" href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables" title="The significances of the earleme variables">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="The-earleme-variables"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables">The significances of the earleme variables</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-traditional-model.html#The-traditional-model">The traditional model</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Earlemes.html#Earlemes">Earlemes</a>
+<hr>
+</div>
+
+<h4 class="subsection">4.1.2 The earleme variables</h4>
+
+<p>The important earleme variables are the current earleme, the furthest earleme
+and the latest earleme. 
+The <dfn>current earleme</dfn> is the earleme that Libmarpa is currently working on. 
+More specifically, it is the one at which new tokens will <strong>start</strong>. 
+Since tokens are never zero length, a new token will always end after the
+current earleme. 
+The current earleme is initially earleme 0. 
+Every call to <code>marpa_r_earleme_complete()</code> advances the
+current earleme by 1.
+
+   <p>The <dfn>furthest earleme</dfn> is the highest numbered (and therefore &ldquo;furthest&rdquo;)
+earleme at which a token ends. 
+The furthest earleme is initially earleme 0. 
+With every call to <code>marpa_r_alternative()</code>, the end of the token
+it adds is calculated. 
+A token ends at the earleme location <var>current</var>+<var>length</var>,
+where <var>current</var> is the current earleme,
+and <var>length</var> is the length of the newly added token. 
+After a call to <code>marpa_r_alternative()</code>,
+the furthest earleme is its value before the call,
+or <var>current</var>+<var>length</var>,
+whichever is greater.
+
+   <p>The <dfn>latest earleme</dfn> is the earleme of the latest
+Earley set. 
+The <dfn>latest Earley set</dfn> is the last Earley set completed. 
+This is always the highest numbered Earley set. 
+If there is an Earley set at the current earleme,
+it is the latest Earley set and the latest earleme
+is equal to the current earleme. 
+There is never an Earley set after the current earleme.
+
+   <p>After every call to the <code>marpa_r_earleme_complete()</code> method
+that adds a token,
+the value of the latest earleme is
+same as the value of the current earleme. 
+After every call to the <code>marpa_r_earleme_complete()</code> method
+that does <strong>not</strong> add a token,
+the value of the lastest earleme is unchanged
+from its value before the call.
+
+   </body></html>
+

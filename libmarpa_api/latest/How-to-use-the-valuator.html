@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+<title>How to use the valuator - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
+<link rel="prev" href="Value-overview.html#Value-overview" title="Value overview">
+<link rel="next" href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation" title="Advantages of step-driven valuation">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="How-to-use-the-valuator"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation">Advantages of step-driven valuation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Value-overview.html#Value-overview">Value overview</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Value-methods.html#Value-methods">Value methods</a>
+<hr>
+</div>
+
+<h3 class="section">17.2 How to use the valuator</h3>
+
+<p>Libmarpa's valuator provides the application with
+&ldquo;steps&rdquo;, which are
+instructions for stack manipulation. 
+Libmarpa itself does not maintain a stack. 
+This leaves the upper layer in total control of the
+stack and the values which are placed on it.
+
+   <p>As example may make this clearer. 
+Suppose the evalution is at a place in the parse tree
+where an addition is being performed. 
+Libmarpa does not know that the operation
+is an addition. 
+It will tell the application that rule number <var>R</var>
+is to be applied to the arguments at stack locations
+<var>N</var> and <var>N</var>+1, and that the result is to placed in
+stack location <var>N</var>.
+
+   <p>In this system
+the application keeps track of the semantics for all
+rules, so it looks up rule <var>R</var> and determines that it
+is an addition. 
+The application can do this by using <var>R</var> as an index
+into an array of callbacks, or by any other method
+it chooses. 
+Let's assume a callback implements the semantics
+for rule <var>R</var>. 
+Libmarpa has told the application that two arguments
+are available for this operation, and that they are
+at locations <var>N</var> and <var>N</var>+1 in the stack. 
+They might be the numbers 42 and 711. 
+So the callback is called with its two arguments,
+and produces a return value, let's say, 753. 
+Libmarpa has told the application that the result
+belongs at location <var>N</var> in the stack,
+so the application writes 753 to location <var>N</var>.
+
+   <p>Since Libmarpa knows nothing about the semantics,
+the operation for rule R could be string concatenation
+instead of addition. 
+Or, if it is addition, it could allow for its arguments
+to be floating point or complex numbers. 
+Since the application maintains the stack, it is up
+to the application whether the stack contains integers,
+strings, complex numbers, or polymorphic objects which are
+capable of being any of these things and more.
+
+   </body></html>
+

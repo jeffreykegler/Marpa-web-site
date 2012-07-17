@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+<title>Grammar overview - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
+<link rel="prev" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
+<link rel="next" href="Grammar-constructor.html#Grammar-constructor" title="Grammar constructor">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Grammar-overview"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Grammar-constructor.html#Grammar-constructor">Grammar constructor</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Grammar-methods.html#Grammar-methods">Grammar methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">Grammar methods</a>
+<hr>
+</div>
+
+<h3 class="section">11.1 Overview</h3>
+
+<p>An archtypal application has a grammar. 
+To create a grammar, use the <code>marpa_g_new()</code> method. 
+When a grammar is no longer in use, its memory can be freed
+using the
+<code>marpa_g_unref()</code> method.
+
+   <p>To be precomputed,
+a grammar must have one or more symbols. 
+To create symbols, use the
+<code>marpa_g_symbol_new()</code> method.
+
+   <p>To be precomputed,
+a grammar must have one or more rules. 
+To create rules, use the
+<code>marpa_g_rule_new()</code> and
+<code>marpa_g_sequence_new()</code> methods.
+
+   <p>For non-trivial parsing,
+one or more of the symbols must be terminals. 
+To mark a symbol as a terminal,
+use the
+<code>marpa_g_symbol_is_terminal_set()</code> method.
+
+   <p>To be precomputed,
+a grammar must have exactly one start symbol. 
+To mark a symbol as the start symbol,
+use the
+<code>marpa_g_start_symbol_set()</code> method.
+
+   <p>Before parsing with a grammar, it must be precomputed. 
+To precompute a grammar,
+use the
+<code>marpa_g_precompute()</code> method.
+
+   </body></html>
+

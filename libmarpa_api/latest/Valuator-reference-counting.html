@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+<title>Valuator reference counting - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
+<link rel="prev" href="Valuator-constructor.html#Valuator-constructor" title="Valuator constructor">
+<link rel="next" href="Registering-semantics.html#Registering-semantics" title="Registering semantics">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Valuator-reference-counting"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Registering-semantics.html#Registering-semantics">Registering semantics</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Valuator-constructor.html#Valuator-constructor">Valuator constructor</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Value-methods.html#Value-methods">Value methods</a>
+<hr>
+</div>
+
+<h3 class="section">17.6 Reference counting</h3>
+
+<div class="defun">
+&mdash; Function: Marpa_Value <b>marpa_v_ref</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fref-81"></a></var><br>
+<blockquote><p>Increases the reference count by 1. 
+Not needed by most applications.
+
+        <p>Return value:
+On success, <var>v</var>. 
+On failure, <code>NULL</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>marpa_v_unref</b> (<var> Marpa_Value v</var>)<var><a name="index-marpa_005fv_005funref-82"></a></var><br>
+<blockquote><p>Decreases the reference count by 1,
+destroying <var>v</var> once the reference count reaches
+zero. 
+Beginning with <var>v</var>'s parent tree,
+Libmarpa then proceeds up the chain of parent objects. 
+Every time a child is destroyed, the
+reference count of its parent is decreased by 1. 
+Every time the reference count of an object
+is decreased by 1,
+if that reference count is now zero,
+that object is destroyed. 
+Libmarpa follows this chain of decrements
+and destructions as required,
+all the way back to the
+base grammar, if necessary.
+
+        </blockquote></div>
+
+   </body></html>
+

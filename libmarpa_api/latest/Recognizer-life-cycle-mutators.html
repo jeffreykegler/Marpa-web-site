@@ -1,0 +1,231 @@
+<html lang="en">
+<head>
+<title>Recognizer life cycle mutators - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
+<link rel="prev" href="Recognizer-reference-counting.html#Recognizer-reference-counting" title="Recognizer reference counting">
+<link rel="next" href="Location-accessors.html#Location-accessors" title="Location accessors">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Recognizer-life-cycle-mutators"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Location-accessors.html#Location-accessors">Location accessors</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-reference-counting.html#Recognizer-reference-counting">Recognizer reference counting</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
+<hr>
+</div>
+
+<h3 class="section">12.4 Life cycle mutators</h3>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-52"></a></var><br>
+<blockquote><p>Makes <var>r</var> ready to accept input.
+
+        <p>Return value:  On success, a non-negative value. 
+On failure, &minus;2. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_alternative</b> (<var>Marpa_Recognizer r, Marpa_Symbol_ID token_id, int value, int length</var>)<var><a name="index-marpa_005fr_005falternative-53"></a></var><br>
+<blockquote><p>Reads a token into <var>r</var>. 
+The token will start at the current earleme. 
+Libmarpa allows tokens to be ambiguous, to be of
+variable length and to overlap. 
+<var>token_id</var> is the symbol ID of the token,
+which must be a terminal. 
+<var>length</var> is the length of the token.
+
+        <p><var>value</var> is an
+integer that represents the value of the
+token. 
+In applications where the token's actual value is not an integer, it is
+expected that the application will use this value as
+a &ldquo;virtual&rdquo; value,
+perhaps finding the actual value by using <var>value</var>
+to index an array. 
+<var>value</var> is not used inside Libmarpa &mdash; it is simply
+stored to be returned by the valuator
+as a convenience for the application. 
+Some applications may prefer to track token values on
+their own, perhaps based on
+the earleme location and <var>token_id</var>,
+instead of using Libmarpa's token values.
+
+        <p>A <var>value</var> of 0 has special significance &mdash; it indicates
+that the token is unvalued &mdash; that its value is allowed
+to be unpredictable. 
+Note that if a token is unvalued,
+it must be the case,
+not just that Libmarpa need not care about its value,
+but also that <strong>the application</strong>
+does not care about the value of the token. 
+When a token is unvalued, Libmarpa
+optimizes away the valuator steps that
+give the application an opportunity to provide
+a value for that token. 
+Applications that do not use Libmarpa's token values,
+but that <strong>do</strong> care about the token's value,
+must tell Libmarpa not to optimize away the
+relevant valuator steps. 
+An application can do this by
+letting <var>value</var> be any non-zero integer.
+
+        <p>When <var>value</var>
+in a call to <code>marpa_r_alternative()</code>
+is 0,
+symbol <var>token_id</var> is considered to have
+been used as an unvalued symbol. 
+When <var>value</var>
+in a call to <code>marpa_r_alternative()</code>
+is not zero,
+symbol <var>token_id</var> is considered to have
+been used as an valued symbol. 
+On the first read by
+<code>marpa_r_alternative()</code>,
+if symbol <var>token_id</var> is used as a valued
+symbol,
+the valued status of
+symbol <var>token_id</var> will be set to 1
+and locked. 
+On the first read by
+<code>marpa_r_alternative()</code>,
+if symbol <var>token_id</var> is used as a unvalued
+symbol,
+the valued status of
+symbol <var>token_id</var> will be set to 0
+and locked.
+
+        <p>If the valued status of
+symbol <var>token_id</var> is locked at 0,
+it is a failure if that symbol is used as an valued symbol. 
+If the valued status of
+symbol <var>token_id</var> is locked at 1,
+it is a failure if that symbol is used as an unvalued symbol.
+
+        <p>When <code>marpa_r_alternative()</code>
+is successful,
+the value of the furthest earleme is set to
+the greater of its value before the call,
+and <var>current</var>+<var>length</var>,
+where <var>current</var> is the value of the current earleme. 
+The values of the current and latest earlemes
+are unchanged by
+calls to <code>marpa_r_alternative()</code>.
+
+        <p>Several error codes leave the recognizer in a fully
+recoverable state, allowing the application to
+retry the <code>marpa_r_alternative()</code> method. 
+Retry is efficient, and quite useable as a parsing
+technique. 
+The error code
+of primary interest from this point of view
+is <code>MARPA_ERR_UNEXPECTED_TOKEN_ID</code>,
+which indicates that the token was not accepted
+because of its token ID. 
+Retry after this condition is used in several
+applications,
+and is called &ldquo;the Ruby Slippers technique&rdquo;.
+
+        <p>The error codes
+<code>MARPA_ERR_DUPLICATE_TOKEN</code>,
+<code>MARPA_ERR_NO_TOKEN_EXPECTED_HERE</code>
+and <code>MARPA_ERR_INACCESSIBLE_TOKEN</code>
+also leave the recognizer in a fully recoverable
+state, and may also be useable for the
+Ruby Slippers or similar techniques. 
+At this writing,
+the author knows of no applications which
+attempt to recover from these errors.
+
+        <p>Return value:  On success, <code>MARPA_ERR_NONE</code>. 
+On failure, some other error code.
+
+        </blockquote></div>
+
+<div class="defun">
+&mdash; Function: Marpa_Earleme <b>marpa_r_earleme_complete</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearleme_005fcomplete-54"></a></var><br>
+<blockquote><p>This method does the final processing for the current earleme. 
+It then advances the current earleme by one. 
+Note that <code>marpa_r_earleme_complete()</code> may be called
+even when no tokens have been read at the current earleme &mdash;
+in the character-per-earleme input model, for example, tokens
+can span many characters and, if the input is unambiguous over that
+span, there will be no other tokens that start inside it.
+
+        <p>As mentioned,
+<code>marpa_r_earleme_complete()</code> always advances the current earleme,
+incrementing its value by 1. 
+This means that value of the current earleme after the call
+will be the one plus the value of the earleme processed by the call
+to <code>marpa_r_earleme_complete()</code>. 
+If any token was accepted at the earleme being processed,
+<code>marpa_r_earleme_complete()</code> creates a new Earley set
+which will be the latest Earley set
+and, after the call, the latest
+earleme will be equal to the new current earleme. 
+If no token was accepted at the
+earleme being processed,
+no Earley set is created,
+and the value of the latest earleme remains unchanged. 
+The value of the furthest earleme is never changed by
+a call to <code>marpa_r_earleme_complete()</code>.
+
+        <p>During this method, one or more events may occur. 
+On success, this function returns the number of events
+generated,
+but it is important to note that events may be
+created whether earleme completion fails or succeeds. 
+When this method fails,
+the application must call <code>marpa_g_event()</code>
+if it wants to determine if any events occurred. 
+Since the reason for failure to complete an earleme is often
+detailed in the events, applications that fail will often
+be at least as interested in the events as those
+that succeed.
+
+        <p><code>MARPA_EVENT_EXHAUSTED</code> indicates that the parse is
+exhausted &mdash; that no input will be accepted at later earlemes. 
+Note that an exhausted parse can be a successful one &mdash; it
+just cannot succeed at a later earleme than the current one.
+
+        <p>The <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event
+indicates that an application-settable threshold
+on the number of Earley items has been reached or exceeded. 
+What this means depends on the application,
+but when the default threshold is exceeded,
+it means that it is very likely
+that the time and space resources consumed by
+the parse will prove excessive.
+
+        <p>Return value:  On success, the number of events generated. 
+On failure, &minus;2. 
+</p></blockquote></div>
+
+   </body></html>
+

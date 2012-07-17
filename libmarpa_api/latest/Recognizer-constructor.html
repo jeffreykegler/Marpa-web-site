@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+<title>Recognizer constructor - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
+<link rel="prev" href="Recognizer-overview.html#Recognizer-overview" title="Recognizer overview">
+<link rel="next" href="Recognizer-reference-counting.html#Recognizer-reference-counting" title="Recognizer reference counting">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Recognizer-constructor"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Recognizer-reference-counting.html#Recognizer-reference-counting">Recognizer reference counting</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-overview.html#Recognizer-overview">Recognizer overview</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
+<hr>
+</div>
+
+<h3 class="section">12.2 Creating a new recognizer</h3>
+
+<div class="defun">
+&mdash; Function: Marpa_Recognizer <b>marpa_r_new</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fr_005fnew-49"></a></var><br>
+<blockquote><p>Creates a new recognizer. 
+The reference count of the recognizer will be 1. 
+The reference count of <var>g</var>,
+the base grammar,
+will be incremented by one.
+
+        <p>Return value:  On success, the newly created recognizer. 
+If <var>g</var> is not precomputed, or on other failure, <code>NULL</code>. 
+</p></blockquote></div>
+
+   </body></html>
+

@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+<title>Tree iteration - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Tree-methods.html#Tree-methods" title="Tree methods">
+<link rel="prev" href="Tree-reference-counting.html#Tree-reference-counting" title="Tree reference counting">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Tree-iteration"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Tree-reference-counting.html#Tree-reference-counting">Tree reference counting</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Tree-methods.html#Tree-methods">Tree methods</a>
+<hr>
+</div>
+
+<h3 class="section">16.4 Iterating through the trees</h3>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_t_next</b> (<var> Marpa_Tree t</var>)<var><a name="index-marpa_005ft_005fnext-78"></a></var><br>
+<blockquote><p>Positions <var>t</var> at the next parse tree
+in the iteration. 
+Tree iterators are initialized to the position
+before the first parse tree,
+so this method must be called before creating a valuator
+from a tree.
+
+        <p>If a tree iterator is positioned after the last parse,
+the tree is said to be &ldquo;exhausted&rdquo;. 
+A tree iterator for a bocage with no parse trees
+is considered to be &ldquo;exhausted&rdquo; when initialized. 
+If the tree iterator is exhausted, <code>marpa_t_next()</code>
+returns &minus;1 as a termination indicator,
+and sets the error code to
+<code>MARPA_ERR_TREE_EXHAUSTED</code>.
+
+        <p>Return value: On success, a non-negative value. 
+If the tree iterator is exhausted, &minus;1. 
+On failure, &minus;2. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_t_parse_count</b> (<var> Marpa_Tree t</var>)<var><a name="index-marpa_005ft_005fparse_005fcount-79"></a></var><br>
+<blockquote><p>The parse counter counts the number of parse trees
+traversed so far. 
+The count includes the current iteration of the
+tree, so that a value of 0 indicates that the tree iterator
+is at its initialized position,
+before the first parse tree.
+
+        <p>Return value: The number of parses traversed so far. 
+Always succeeds. 
+</p></blockquote></div>
+
+   </body></html>
+

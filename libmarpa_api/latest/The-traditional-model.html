@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+<title>The traditional model - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Earlemes.html#Earlemes" title="Earlemes">
+<link rel="prev" href="Earlemes.html#Earlemes" title="Earlemes">
+<link rel="next" href="The-earleme-variables.html#The-earleme-variables" title="The earleme variables">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="The-traditional-model"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="The-earleme-variables.html#The-earleme-variables">The earleme variables</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Earlemes.html#Earlemes">Earlemes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Earlemes.html#Earlemes">Earlemes</a>
+<hr>
+</div>
+
+<h4 class="subsection">4.1.1 The traditional model</h4>
+
+<p>In traditional Earley parsers, the concept of location is very simple. 
+Locations are numbered from 0 to <var>n</var>, where <var>n</var> is the length of
+the input. 
+Every location has an Earley set, and vice versa. 
+Location 0 is the start location. 
+Every location after the start location has exactly one input token
+associated with it.
+
+   <p>Some applications
+do not fit this traditional input model &mdash;
+natural language processing requires ambiguous tokens,
+for example. 
+Libmarpa allows a wide variety of alternative input models.
+
+   <p>This document assumes that the reader knows the concepts
+behind Libmarpa's
+alternative input models, either from the documentation
+of a higher level interface, such as
+<code>Marpa::XS</code> or
+<code>Marpa::R2</code>,
+or from Marpa's
+<a href="https://github.com/downloads/jeffreykegler/Marpa-theory/recce.pdf">theory document</a>.
+
+   <p>As a reminder,
+in Libmarpa a location is called a <dfn>earleme</dfn>. 
+The number of an Earley set is the <dfn>ID of the Earley set</dfn>,
+or its <dfn>ordinal</dfn>. 
+In the traditional model, the ordinal of an Earley set and
+its earleme are always exactly the same, but in Libmarpa
+they will be different.
+
+   </body></html>
+

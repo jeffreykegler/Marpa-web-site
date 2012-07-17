@@ -1,13 +1,12 @@
 <html lang="en">
 <head>
-<title>Valuator constructor - Libmarpa 2.13.0</title>
+<title>Copying Conditions - Libmarpa 2.13.0</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="Libmarpa 2.13.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
-<link rel="prev" href="Maintaining-the-stack.html#Maintaining-the-stack" title="Maintaining the stack">
-<link rel="next" href="Valuator-reference-counting.html#Valuator-reference-counting" title="Valuator reference counting">
+<link rel="prev" href="index.html#Top" title="Top">
+<link rel="next" href="About-this-document.html#About-this-document" title="About this document">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual is for Libmarpa 2.13.0.
@@ -33,36 +32,19 @@ Copyright (C) 2012 Jeffrey Kegler.
 </head>
 <body>
 <div class="node">
-<a name="Valuator-constructor"></a>
+<a name="Copying-Conditions"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Valuator-reference-counting.html#Valuator-reference-counting">Valuator reference counting</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Maintaining-the-stack.html#Maintaining-the-stack">Maintaining the stack</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Value-methods.html#Value-methods">Value methods</a>
+Next:&nbsp;<a rel="next" accesskey="n" href="About-this-document.html#About-this-document">About this document</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="index.html#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <hr>
 </div>
 
-<h3 class="section">17.5 Creating a new valuator</h3>
+<h2 class="unnumbered">Texinfo Copying Conditions</h2>
 
-<div class="defun">
-&mdash; Function: Marpa_Value <b>marpa_v_new</b> (<var> Marpa_Tree t </var>)<var><a name="index-marpa_005fv_005fnew-81"></a></var><br>
-<blockquote><p>Creates a new valuator. 
-The parent object of the new valuator
-will be the tree iterator <var>t</var>,
-and the reference count of the new valuator will be 1. 
-The reference count of <var>t</var> is increased by 1.
-
-        <p>The parent tree iterator is &ldquo;paused&rdquo;,
-so that the tree iterator
-cannot move on to a new parse tree
-until the valuator is destroyed. 
-Many valuators of the same parse tree
-can exist at once. 
-A tree iterator is &ldquo;unpaused&rdquo; when
-all of the valuators of that tree iterator are destroyed.
-
-        <p>Return value:  On success, the newly created valuator. 
-On failure, <code>NULL</code>. 
-</p></blockquote></div>
+<p><a name="index-Copying-conditions-1"></a>
+This manual is covered by
+the GNU Free Documentation License (see <a href="GNU-Free-Documentation-License.html#GNU-Free-Documentation-License">GNU Free Documentation License</a>).
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

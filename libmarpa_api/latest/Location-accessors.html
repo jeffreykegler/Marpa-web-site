@@ -44,7 +44,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-meth
 <h3 class="section">12.5 Location accessors</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Earleme <b>marpa_r_earleme</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID set_id</var>)<var><a name="index-marpa_005fr_005fearleme-55"></a></var><br>
+&mdash; Function: Marpa_Earleme <b>marpa_r_earleme</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID set_id</var>)<var><a name="index-marpa_005fr_005fearleme-56"></a></var><br>
 <blockquote>
         <p>In the default, token-stream model, Earley set ID and earleme
 are always equal, but this is not the case in other input
@@ -85,14 +85,14 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <code>unsigned int</code> <b>marpa_r_current_earleme</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fcurrent_005fearleme-56"></a></var><br>
+&mdash; Function: <code>unsigned int</code> <b>marpa_r_current_earleme</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fcurrent_005fearleme-57"></a></var><br>
 <blockquote><p>Return value: If input has started, the current earleme. 
 If input has not started, &minus;1. 
 Always succeeds. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Earley_Set_ID <b>marpa_r_latest_earley_set</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset-57"></a></var><br>
+&mdash; Function: Marpa_Earley_Set_ID <b>marpa_r_latest_earley_set</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset-58"></a></var><br>
 <blockquote><p>This method returns the Earley set ID (ordinal) of the latest Earley set. 
 Applications that want the
 value of the latest earleme can convert
@@ -104,7 +104,7 @@ Always succeeds.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <code>unsigned int</code> <b>marpa_r_furthest_earleme</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005ffurthest_005fearleme-58"></a></var><br>
+&mdash; Function: <code>unsigned int</code> <b>marpa_r_furthest_earleme</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005ffurthest_005fearleme-59"></a></var><br>
 <blockquote><p>Return value: On success, the furthest earleme. 
 Always succeeds. 
 </p></blockquote></div>

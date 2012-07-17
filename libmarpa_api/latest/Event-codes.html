@@ -43,28 +43,28 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <h2 class="chapter">18 Event codes</h2>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_NONE</b><var><a name="index-MARPA_005fEVENT_005fNONE-107"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_NONE</b><var><a name="index-MARPA_005fEVENT_005fNONE-108"></a></var><br>
 <blockquote><p>Applications should never see this event. 
 Event value: Undefined. 
 Suggested message: "No event". 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_EXHAUSTED</b><var><a name="index-MARPA_005fEVENT_005fEXHAUSTED-108"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_EXHAUSTED</b><var><a name="index-MARPA_005fEVENT_005fEXHAUSTED-109"></a></var><br>
 <blockquote><p>The parse is exhausted. 
 Event value: Undefined. 
 Suggested message: "Recognizer is exhausted". 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</b><var><a name="index-MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD-109"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</b><var><a name="index-MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD-110"></a></var><br>
 <blockquote><p>The user-settable Earley item threshold was exceeded. 
 Event value: Undefined. 
 Suggested message: "Too many Earley items". 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_LOOP_RULES</b><var><a name="index-MARPA_005fEVENT_005fLOOP_005fRULES-110"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_LOOP_RULES</b><var><a name="index-MARPA_005fEVENT_005fLOOP_005fRULES-111"></a></var><br>
 <blockquote><p>One or more rules are loop rules &mdash; rules
 that are part of a cycle. 
 Cycles are pathological cases of recursion,
@@ -79,7 +79,7 @@ Suggested message: "Grammar contains a infinite loop".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_COUNTED_NULLABLE</b><var><a name="index-MARPA_005fEVENT_005fCOUNTED_005fNULLABLE-111"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_COUNTED_NULLABLE</b><var><a name="index-MARPA_005fEVENT_005fCOUNTED_005fNULLABLE-112"></a></var><br>
 <blockquote><p>A nullable symbol is either the separator
 for, or the right hand side of, a sequence. 
 Event value: The ID of the symbol. 
@@ -87,7 +87,7 @@ Suggested message: "This symbol is a counted nullable".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_NULLING_TERMINAL</b><var><a name="index-MARPA_005fEVENT_005fNULLING_005fTERMINAL-112"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_NULLING_TERMINAL</b><var><a name="index-MARPA_005fEVENT_005fNULLING_005fTERMINAL-113"></a></var><br>
 <blockquote><p>A nulling symbol is also a terminal. 
 Event value: The ID of the symbol. 
 Suggested message: "This symbol is a nulling terminal". 

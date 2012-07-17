@@ -44,7 +44,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-meth
 <h3 class="section">12.4 Life cycle mutators</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-52"></a></var><br>
+&mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-53"></a></var><br>
 <blockquote><p>Makes <var>r</var> ready to accept input.
 
         <p>Return value:  On success, a non-negative value. 
@@ -52,7 +52,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_alternative</b> (<var>Marpa_Recognizer r, Marpa_Symbol_ID token_id, int value, int length</var>)<var><a name="index-marpa_005fr_005falternative-53"></a></var><br>
+&mdash; Function: int <b>marpa_r_alternative</b> (<var>Marpa_Recognizer r, Marpa_Symbol_ID token_id, int value, int length</var>)<var><a name="index-marpa_005fr_005falternative-54"></a></var><br>
 <blockquote><p>Reads a token into <var>r</var>. 
 The token will start at the current earleme. 
 Libmarpa allows tokens to be ambiguous, to be of
@@ -169,7 +169,7 @@ On failure, some other error code.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Earleme <b>marpa_r_earleme_complete</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearleme_005fcomplete-54"></a></var><br>
+&mdash; Function: Marpa_Earleme <b>marpa_r_earleme_complete</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearleme_005fcomplete-55"></a></var><br>
 <blockquote><p>This method does the final processing for the current earleme. 
 It then advances the current earleme by one. 
 Note that <code>marpa_r_earleme_complete()</code> may be called

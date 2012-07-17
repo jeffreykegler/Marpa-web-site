@@ -44,7 +44,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">G
 <h3 class="section">11.4 Symbols</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Symbol_ID <b>marpa_g_start_symbol</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fstart_005fsymbol-12"></a></var><br>
+&mdash; Function: Marpa_Symbol_ID <b>marpa_g_start_symbol</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fstart_005fsymbol-13"></a></var><br>
 <blockquote>
         <p>Returns current value of the start symbol of grammar <var>g</var>. 
 The value is that
@@ -58,7 +58,7 @@ otherwise the ID of the new start symbol.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Symbol_ID <b>marpa_g_start_symbol_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID id</var>)<var><a name="index-marpa_005fg_005fstart_005fsymbol_005fset-13"></a></var><br>
+&mdash; Function: Marpa_Symbol_ID <b>marpa_g_start_symbol_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID id</var>)<var><a name="index-marpa_005fg_005fstart_005fsymbol_005fset-14"></a></var><br>
 <blockquote>
         <p>Sets the start symbol of grammar <var>g</var> to symbol <var>id</var>.
 
@@ -68,14 +68,14 @@ On failure, &minus;2.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_count</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fsymbol_005fcount-14"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_count</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fsymbol_005fcount-15"></a></var><br>
 <blockquote><p>Return value:
 On success, the symbol count of the grammar. 
 On failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_accessible</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005faccessible-15"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_accessible</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005faccessible-16"></a></var><br>
 <blockquote><p>A symbol is <dfn>accessible</dfn> if it can be reached from the start symbol.
 
         <p>Return value: On success, 1 if symbol <var>symid</var> is accessible, 0 if not. 
@@ -83,7 +83,7 @@ If the grammar is not precomputed, or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_nullable</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnullable-16"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_nullable</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnullable-17"></a></var><br>
 <blockquote><p>A symbol is <dfn>nullable</dfn> if it sometimes produces the empty string. 
 A <strong>nulling</strong> symbol is always a <strong>nullable</strong> symbol,
 but not all <strong>nullable</strong> symbols are <strong>nulling</strong> symbols.
@@ -93,7 +93,7 @@ If the grammar is not precomputed, or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_nulling</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnulling-17"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_nulling</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnulling-18"></a></var><br>
 <blockquote><p>A symbol is <dfn>nulling</dfn> if it always produces the empty string.
 
         <p>Return value: On success, 1 if symbol <var>symid</var> is nulling, 0 if not. 
@@ -101,7 +101,7 @@ If the grammar is not precomputed, or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_productive</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fproductive-18"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_productive</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fproductive-19"></a></var><br>
 <blockquote><p>A symbol is <dfn>productive</dfn> if it can produce a string of terminals. 
 All nullable symbols are considered productive.
 
@@ -110,7 +110,7 @@ is not precomputed, or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_start</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fstart-19"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_start</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fstart-20"></a></var><br>
 <blockquote>
         <p>This return value of this call indicates whether <var>symid</var>
 is the start symbol.
@@ -122,8 +122,8 @@ is the start symbol.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_terminal</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal-20"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_terminal_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal_005fset-21"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_terminal</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal-21"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_terminal_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal_005fset-22"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the &ldquo;terminal status&rdquo; of a symbol. 
@@ -161,8 +161,8 @@ or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_valued</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued-22"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_valued_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued_005fset-23"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_valued</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued-23"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_valued_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued_005fset-24"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the &ldquo;valued status&rdquo; of a symbol. 
@@ -186,7 +186,7 @@ or on other failure, &minus;2.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Symbol_ID <b>marpa_g_symbol_new</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fsymbol_005fnew-24"></a></var><br>
+&mdash; Function: Marpa_Symbol_ID <b>marpa_g_symbol_new</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fsymbol_005fnew-25"></a></var><br>
 <blockquote>
         <p>Creates a new symbol.
 

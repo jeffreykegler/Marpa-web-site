@@ -1,0 +1,152 @@
+<html lang="en">
+<head>
+<title>Advantages of step-driven valuation - Libmarpa 2.15.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.15.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
+<link rel="prev" href="How-to-use-the-valuator.html#How-to-use-the-valuator" title="How to use the valuator">
+<link rel="next" href="Maintaining-the-stack.html#Maintaining-the-stack" title="Maintaining the stack">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.15.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Advantages-of-step-driven-valuation"></a>
+<a name="Advantages-of-step_002ddriven-valuation"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Maintaining-the-stack.html#Maintaining-the-stack">Maintaining the stack</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="How-to-use-the-valuator.html#How-to-use-the-valuator">How to use the valuator</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Value-methods.html#Value-methods">Value methods</a>
+<hr>
+</div>
+
+<h3 class="section">17.3 Advantages of step-driven valuation</h3>
+
+<p>Step-driven valuation
+hides Libmarpa's grammar rewrites from the application,
+and is quite efficient. 
+Libmarpa knows which rules are sequences. 
+Based on the individual symbol's valued statuses,
+Libmarpa also knows which rules
+and terminals have values that it need not bother tracking. 
+Libmarpa optimizes stack manipulations based on this knowledge. 
+Long sequences,
+as well as unvalued rules and symbols,
+are very common in practical grammars. 
+For these,
+the stack manipulations suggested by Libmarpa's
+step-driven valuator
+will be significantly faster than the
+traditional stack evaluation algorithm.
+
+   <p>Step-driven evalution has another advantage. 
+To illustrate this,
+consider what is a very common case:
+The semantics are implemented in a higher-level language,
+using callbacks. 
+If Libmarpa did not use step-driven valuation,
+it would need to provide for this case. 
+But for generality,
+Libmarpa would have to deal in C callbacks. 
+Therefore, a middle layer would have to create C language wrappers
+for the callbacks in the higher level language.
+
+   <p>The implementation that results is this:
+The higher level language would need to wrap each callback in C. 
+When calling Libmarpa, it would pass the wrappered callback. 
+Libmarpa would then need to call the C language &ldquo;wrappered&rdquo; callback. 
+Next, the wrapper would call the higher-level language callback. 
+The return value,
+which would be data native to the higher-level language,
+would need to be passed to the C language wrapper,
+which will need to make arrangements for it to be based
+back to the higher-level language when appropriate.
+
+   <p>A setup like this is not terribly efficient. 
+And exception handling across language boundaries would be
+very tricky. 
+But neither of these is the worst problem.
+
+   <p>Callbacks are hard to debug. 
+Wrappered callbacks are even worse. 
+Calls made across language boundaries
+are harder yet to debug. 
+In the system described above,
+by the time a return value is finally consumed,
+a language boundary will have been crossed four times.
+
+   <p>How do
+programmers deal with difficulties like this? 
+Usually, by
+doing the absolute minimum possible in the callbacks. 
+A horrific debugging enviroment can become a manageable
+one if there is next to no code to be debugged. 
+And this can be accomplished by
+doing as much as possible in pre- and post-processing.
+
+   <p>In essence, callbacks force applications to do most
+of the programming
+via side effects. 
+One need not be a functional programming purist to find
+this a very undesirable style of design to force on
+an application. 
+But the ability to debug can make the difference between
+code that does work and code that does not. 
+Unfairly or not,
+code is rarely considered well-designed when it does
+not work.
+
+   <p>So, while step-driven valuation seems
+a roundabout approach,
+it is simpler and more direct than
+the likely alternatives. 
+And there is something to be said for pushing
+semantics up to the higher levels &mdash;
+they can be expected to know more about it.
+
+   <p>These advantages of step-driven valuation
+are strictly in
+the context of a low-level interface. 
+The author is under no illusion
+that direct use of Libmarpa's valuator will be found
+satisfactory by most application programmers,
+even those using the C language. 
+The author certainly avoids using step-driven valuation directly. 
+Libmarpa's valuator is intended
+to be used via an upper layer,
+one which <strong>does</strong> know about semantics.
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

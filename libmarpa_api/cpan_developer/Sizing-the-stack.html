@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+<title>Sizing the stack - Libmarpa 2.15.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.15.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Maintaining-the-stack.html#Maintaining-the-stack" title="Maintaining the stack">
+<link rel="prev" href="Maintaining-the-stack.html#Maintaining-the-stack" title="Maintaining the stack">
+<link rel="next" href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack" title="Initializing locations in the stack">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.15.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Sizing-the-stack"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">Initializing locations in the stack</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Maintaining-the-stack.html#Maintaining-the-stack">Maintaining the stack</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Maintaining-the-stack.html#Maintaining-the-stack">Maintaining the stack</a>
+<hr>
+</div>
+
+<h4 class="subsection">17.4.1 Sizing the stack</h4>
+
+<p>If an implementation applies Libmarpa's step
+instructions literally, using a physical stack,
+it must make sure the stack is large enough. 
+Specifically, the application must do the following
+
+     <ul>
+<li>Ensure location 0 exists &mdash; in other
+words that the stack is at least length 1. 
+<li>For <code>MARPA_STEP_TOKEN</code> steps,
+ensure that location <code>marpa_v_result(v)</code>
+exists. 
+<li>For <code>MARPA_STEP_NULLING_SYMBOL</code> steps,
+ensure that location <code>marpa_v_result(v)</code>
+exists. 
+<li>For <code>MARPA_STEP_RULE</code> steps,
+ensure that stack locations from <code>marpa_v_arg_0(v)</code>
+to <code>marpa_v_arg_n(v)</code> exist. 
+</ul>
+
+   <p>Three aspects of these requirements deserve special mention. 
+First,
+note that the requirement for a
+<code>MARPA_STEP_RULE</code> is that the application
+size the stack to include the arguments to be
+read. 
+Because stack writes may be optimized away,
+an application,
+when reading,
+cannot assume
+that the stack was
+sized appropriately by a prior write. 
+The first access to a new stack location may be
+a read.
+
+   <p>Second,
+note that there is no explicit requirement that
+the application size the stack to include the
+location for the result of the
+<code>MARPA_STEP_RULE</code> step. 
+An application is allowed to assume that
+result will go into one of the locations
+that were read.
+
+   <p>Third, special note should be made of the requirement
+that location 0 exist. 
+By convention, the parse result resides
+in location 0 of the stack. 
+But, because the start symbol
+may have unvalued status,
+an application cannot assume that it
+will receive a Libmarpa step instruction that
+either reads from or writes to location 0.
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

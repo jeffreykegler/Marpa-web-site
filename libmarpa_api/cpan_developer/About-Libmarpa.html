@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+<title>About Libmarpa - Libmarpa 2.15.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.15.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="About-this-document.html#About-this-document" title="About this document">
+<link rel="next" href="Architecture.html#Architecture" title="Architecture">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.15.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="About-Libmarpa"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Architecture.html#Architecture">Architecture</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="About-this-document.html#About-this-document">About this document</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">2 About Libmarpa</h2>
+
+<p>Libmarpa implements the Marpa parsing algorithm. 
+Marpa is named
+after the legendary 11th century Tibetan translator,
+Marpa Lotsawa. 
+In creating Marpa,
+I depended heavily on previous work by Jay Earley,
+Joop Leo,
+John Aycock and Nigel Horspool.
+
+   <p>Libmarpa implements the entire Marpa algorithm. 
+This library does
+the necessary grammar preprocessing, recognizes the input,
+and produces parse trees. 
+It also supports the ordering, iteration
+and evaluation of the parse
+trees.
+
+   <p>Libmarpa is very low-level. 
+For example, it has no strings. 
+Rules, symbols, and token values are all represented
+by integers. 
+This, of course, will not suffice for many applications. 
+Users will very often want
+names for the symbols, non-integer values for
+tokens, or both. 
+Typically, applications will use arrays to
+translate Libmarpa's integer ID's to strings or other
+values as required.
+
+   <p>Libmarpa also does <strong>not</strong> implement most of the semantics. 
+Libmarpa does have an evaluator (called a &ldquo;valuator&rdquo;),
+but it does <strong>not</strong>
+manipulate the stack directly. 
+Instead, Libmarpa,
+based on its traversal of the parse tree,
+passes optimized step by step stack manipulation
+instructions to the upper layer. 
+These instructions indicate the token or rule involved,
+and the proper location for the true token value or
+the result of the rule evaluation. 
+For rule evaluations, the instructions include the stack location
+of the arguments.
+
+   <p>Marpa requires most semantics to be
+implemented in the application. 
+This allows the application total flexibility. 
+It also puts
+the application is in a much better position to prevent errors,
+to catch errors at runtime or,
+failing all else,
+to successfully debug the logic.
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

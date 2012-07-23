@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+<title>Ranks - Libmarpa 2.15.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.15.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
+<link rel="prev" href="Sequences.html#Sequences" title="Sequences">
+<link rel="next" href="Grammar-precomputation.html#Grammar-precomputation" title="Grammar precomputation">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.15.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Ranks"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Grammar-precomputation.html#Grammar-precomputation">Grammar precomputation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Sequences.html#Sequences">Sequences</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">Grammar methods</a>
+<hr>
+</div>
+
+<h3 class="section">11.7 Ranks</h3>
+
+<div class="defun">
+&mdash; Function: Marpa_Rank <b>marpa_g_rule_rank</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005frank-40"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_rule_rank_set</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005frule_005frank_005fset-41"></a></var><br>
+<blockquote>
+        <p>These methods, respectively, set
+and query the rank of a rule <var>rule_id</var>. 
+When <var>rule_id</var> is created, its rank
+initialized to the default rank of the grammar.
+
+        <p>Initially, the default rank of the grammar is 0. 
+Methods to reset the grammar's default rank
+are currently in the experimental stage.
+
+        <p>Return value: On success, the rank <strong>after</strong>
+the call. 
+If the grammar has been precomputed,
+or on other failure, &minus;2.
+
+     </blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_g_rule_null_high</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fnull_005fhigh-42"></a></var><br>
+&mdash; Function: int <b>marpa_g_rule_null_high_set</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id, int flag</var>)<var><a name="index-marpa_005fg_005frule_005fnull_005fhigh_005fset-43"></a></var><br>
+<blockquote>
+        <p>These methods, respectively, set
+and discover the &ldquo;null ranks high&rdquo; setting of the rule <var>rule_id</var>. 
+The &ldquo;null ranks high&rdquo; setting is either 0 or 1. 
+When <var>rule_id</var> is created, its &ldquo;null ranks high&rdquo;
+setting is initialized to 0.
+
+        <p>The &ldquo;null ranks high&rdquo; setting affects the ranking of rules
+with properly nullable symbols on their right hand side. 
+If a rule has properly nullable symbols on its RHS,
+each instance in which it appears in a parse will have a pattern
+of nulled and non-nulled symbols. 
+Such a pattern is called a &ldquo;null variant&rdquo;.
+
+        <p>If the &ldquo;null ranks high&rdquo; setting is 0 (the default),
+nulled symbols rank low. 
+If the &ldquo;null ranks high&rdquo; setting is 1,
+nulled symbols rank high. 
+Ranking of a null variants is done from left-to-right.
+
+        <p>Return value: On success, the setting
+of the &ldquo;null ranks high&rdquo; flag <strong>after</strong>
+the call. 
+If the grammar has been precomputed,
+or on other failure, &minus;2.
+
+        </blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

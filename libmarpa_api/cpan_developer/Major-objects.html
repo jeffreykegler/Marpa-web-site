@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+<title>Major objects - Libmarpa 2.15.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.15.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Architecture.html#Architecture" title="Architecture">
+<link rel="prev" href="Architecture.html#Architecture" title="Architecture">
+<link rel="next" href="Time-objects.html#Time-objects" title="Time objects">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.15.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Major-objects"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Time-objects.html#Time-objects">Time objects</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Architecture.html#Architecture">Architecture</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Architecture.html#Architecture">Architecture</a>
+<hr>
+</div>
+
+<h3 class="section">3.1 Major objects</h3>
+
+<p>The classes of
+Libmarpa's object system fall into two types:
+major and numbered. 
+These are the Libmarpa's major classes,
+in sequence.
+
+     <ul>
+<li>Configuration:
+A configuration object is
+a thread-safe way to hold configuration variables,
+as well as the return code from failed attempts
+to create grammar objects. 
+<li>Grammar:
+A grammar object contains rules and symbols,
+with their properties. 
+<li>Recognizer:
+A recognizer object reads input. 
+<li>Bocage:
+A bocage object is a collection of
+parse trees, as found by a recognizer. 
+Bocages are similar to parse forests. 
+<li>Ordering:
+An ordering object
+is an ordering of the trees
+in a bocage. 
+<li>Tree:
+A tree object is a bocage iterator. 
+<li>Value:
+A value object is a tree iterator. 
+Iteration of tree using a value object
+produces &ldquo;steps&rdquo;. 
+These &ldquo;steps&rdquo; are
+instructions to
+the application on how
+to evaluate the semantics,
+and how to manipulate the stack. 
+</ul>
+
+   <p>The major objects have one letter abbreviations,
+which are used frequently. 
+These are, in the standard sequence,
+
+     <ul>
+<li>Configuration:  C
+<li>Grammar:  G
+<li>Recognizer: R
+<li>Bocage: B
+<li>Ordering: O
+<li>Tree: T
+<li>Value: V
+</ul>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

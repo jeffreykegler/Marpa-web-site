@@ -1,0 +1,386 @@
+<html lang="en">
+<head>
+<title>Libmarpa 2.15.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.15.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.15.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">Libmarpa 2.15.0</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="index.html#Top">Libmarpa: The Marpa low-level library</a>
+<li><a name="toc_Copying-Conditions" href="Copying-Conditions.html#Copying-Conditions">Texinfo Copying Conditions</a>
+<li><a name="toc_About-this-document" href="About-this-document.html#About-this-document">1 About this document</a>
+<ul>
+<li><a href="How-to-read-this-document.html#How-to-read-this-document">1.1 How to read this document</a>
+<li><a href="Prerequisites.html#Prerequisites">1.2 Prerequisites</a>
+<li><a href="Parsing-theory.html#Parsing-theory">1.3 Parsing theory</a>
+</li></ul>
+<li><a name="toc_About-Libmarpa" href="About-Libmarpa.html#About-Libmarpa">2 About Libmarpa</a>
+<li><a name="toc_Architecture" href="Architecture.html#Architecture">3 Architecture</a>
+<ul>
+<li><a href="Major-objects.html#Major-objects">3.1 Major objects</a>
+<li><a href="Time-objects.html#Time-objects">3.2 Time objects</a>
+<li><a href="Reference-counting.html#Reference-counting">3.3 Reference counting</a>
+<li><a href="Numbered-objects.html#Numbered-objects">3.4 Numbered objects</a>
+</li></ul>
+<li><a name="toc_Input" href="Input.html#Input">4 Input</a>
+<ul>
+<li><a href="Earlemes.html#Earlemes">4.1 Earlemes</a>
+<ul>
+<li><a href="The-traditional-model.html#The-traditional-model">4.1.1 The traditional model</a>
+<li><a href="The-earleme-variables.html#The-earleme-variables">4.1.2 The earleme variables</a>
+<li><a href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables">4.1.3 The significances of the earleme variables</a>
+<li><a href="The-initial-earleme-settings.html#The-initial-earleme-settings">4.1.4 The initial earleme settings</a>
+<li><a href="The-standard-model-of-input.html#The-standard-model-of-input">4.1.5 The standard model of input</a>
+<li><a href="Ambiguous-input.html#Ambiguous-input">4.1.6 Ambiguous input</a>
+<li><a href="Variable-length-tokens.html#Variable-length-tokens">4.1.7 Variable length tokens</a>
+<li><a href="The-generalized-model.html#The-generalized-model">4.1.8 The generalized model</a>
+<li><a href="General-rules-for-the-earleme-variables.html#General-rules-for-the-earleme-variables">4.1.9 General rules for the earleme variables</a>
+</li></ul>
+<li><a href="Terminals.html#Terminals">4.2 Terminals</a>
+</li></ul>
+<li><a name="toc_Semantics" href="Semantics.html#Semantics">5 Semantics</a>
+<ul>
+<li><a href="How-Libmarpa-semantics-work.html#How-Libmarpa-semantics-work">5.1 How the Libmarpa semantics work</a>
+<li><a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">5.2 Valued and unvalued symbols</a>
+</li></ul>
+<li><a name="toc_Threads" href="Threads.html#Threads">6 Threads</a>
+<li><a name="toc_Fatal-Errors" href="Fatal-Errors.html#Fatal-Errors">7 Fatal Errors</a>
+<li><a name="toc_Introduction-to-the-external-interface" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface">8 Introduction to the external interface</a>
+<ul>
+<li><a href="About-the-overviews.html#About-the-overviews">8.1 About the overviews</a>
+<li><a href="Return-values.html#Return-values">8.2 Return values</a>
+<li><a href="Naming-conventions.html#Naming-conventions">8.3 Naming conventions</a>
+</li></ul>
+<li><a name="toc_Static-method" href="Static-method.html#Static-method">9 Static method</a>
+<li><a name="toc_Configuration-methods" href="Configuration-methods.html#Configuration-methods">10 Configuration methods</a>
+<li><a name="toc_Grammar-methods" href="Grammar-methods.html#Grammar-methods">11 Grammar methods</a>
+<ul>
+<li><a href="Grammar-overview.html#Grammar-overview">11.1 Overview</a>
+<li><a href="Grammar-constructor.html#Grammar-constructor">11.2 Creating a new grammar</a>
+<li><a href="Grammar-reference-counting.html#Grammar-reference-counting">11.3 Tracking the reference count of the grammar</a>
+<li><a href="Symbols.html#Symbols">11.4 Symbols</a>
+<li><a href="Rules.html#Rules">11.5 Rules</a>
+<li><a href="Sequences.html#Sequences">11.6 Sequences</a>
+<li><a href="Ranks.html#Ranks">11.7 Ranks</a>
+<li><a href="Grammar-precomputation.html#Grammar-precomputation">11.8 Precomputing the Grammar</a>
+<li><a href="Grammar-events.html#Grammar-events">11.9 Grammar events</a>
+</li></ul>
+<li><a name="toc_Recognizer-methods" href="Recognizer-methods.html#Recognizer-methods">12 Recognizer methods</a>
+<ul>
+<li><a href="Recognizer-overview.html#Recognizer-overview">12.1 Overview</a>
+<li><a href="Recognizer-constructor.html#Recognizer-constructor">12.2 Creating a new recognizer</a>
+<li><a href="Recognizer-reference-counting.html#Recognizer-reference-counting">12.3 Keeping the reference count of a recognizer</a>
+<li><a href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">12.4 Life cycle mutators</a>
+<li><a href="Location-accessors.html#Location-accessors">12.5 Location accessors</a>
+<li><a href="Other-parse-status-methods.html#Other-parse-status-methods">12.6 Other parse status methods</a>
+</li></ul>
+<li><a name="toc_Progress-reports" href="Progress-reports.html#Progress-reports">13 Progress reports</a>
+<li><a name="toc_Bocage-methods" href="Bocage-methods.html#Bocage-methods">14 Bocage methods</a>
+<ul>
+<li><a href="Bocage-overview.html#Bocage-overview">14.1 Overview</a>
+<li><a href="Bocage-constructor.html#Bocage-constructor">14.2 Creating a new bocage</a>
+<li><a href="Bocage-reference-counting.html#Bocage-reference-counting">14.3 Reference counting</a>
+</li></ul>
+<li><a name="toc_Ordering-methods" href="Ordering-methods.html#Ordering-methods">15 Ordering methods</a>
+<ul>
+<li><a href="Ordering-overview.html#Ordering-overview">15.1 Overview</a>
+<li><a href="Ordering-constructor.html#Ordering-constructor">15.2 Creating an ordering</a>
+<li><a href="Ordering-reference-counting.html#Ordering-reference-counting">15.3 Reference counting</a>
+<li><a href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">15.4 Non-default ordering</a>
+</li></ul>
+<li><a name="toc_Tree-methods" href="Tree-methods.html#Tree-methods">16 Tree methods</a>
+<ul>
+<li><a href="Tree-overview.html#Tree-overview">16.1 Overview</a>
+<li><a href="Tree-constructor.html#Tree-constructor">16.2 Creating a new tree iterator</a>
+<li><a href="Tree-reference-counting.html#Tree-reference-counting">16.3 Reference counting</a>
+<li><a href="Tree-iteration.html#Tree-iteration">16.4 Iterating through the trees</a>
+</li></ul>
+<li><a name="toc_Value-methods" href="Value-methods.html#Value-methods">17 Value methods</a>
+<ul>
+<li><a href="Value-overview.html#Value-overview">17.1 Overview</a>
+<li><a href="How-to-use-the-valuator.html#How-to-use-the-valuator">17.2 How to use the valuator</a>
+<li><a href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation">17.3 Advantages of step-driven valuation</a>
+<li><a href="Maintaining-the-stack.html#Maintaining-the-stack">17.4 Maintaining the stack</a>
+<ul>
+<li><a href="Sizing-the-stack.html#Sizing-the-stack">17.4.1 Sizing the stack</a>
+<li><a href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">17.4.2 Initializing locations in the stack</a>
+</li></ul>
+<li><a href="Valuator-constructor.html#Valuator-constructor">17.5 Creating a new valuator</a>
+<li><a href="Valuator-reference-counting.html#Valuator-reference-counting">17.6 Reference counting</a>
+<li><a href="Registering-semantics.html#Registering-semantics">17.7 Registering semantics</a>
+<li><a href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">17.8 Stepping through the valuator</a>
+<li><a href="Valuator-steps-by-type.html#Valuator-steps-by-type">17.9 Valuator steps by type</a>
+<li><a href="Basic-step-accessors.html#Basic-step-accessors">17.10 Basic step accessors</a>
+<li><a href="Other-step-accessors.html#Other-step-accessors">17.11 Other step accessors</a>
+</li></ul>
+<li><a name="toc_Event-codes" href="Event-codes.html#Event-codes">18 Event codes</a>
+<li><a name="toc_Error-macros-and-codes" href="Error-macros-and-codes.html#Error-macros-and-codes">19 Error macros and codes</a>
+<ul>
+<li><a href="Methods.html#Methods">19.1 Methods</a>
+<li><a href="Error-Macros.html#Error-Macros">19.2 Error Macros</a>
+<li><a href="External-error-codes.html#External-error-codes">19.3 External error codes</a>
+<li><a href="Internal-error-codes.html#Internal-error-codes">19.4 Internal error codes</a>
+</li></ul>
+<li><a name="toc_Design-notes" href="Design-notes.html#Design-notes">20 Design notes</a>
+<ul>
+<li><a href="Why-so-many-time-objects.html#Why-so-many-time-objects">20.1 Why so many time objects?</a>
+<li><a href="Design-of-numbered-objects.html#Design-of-numbered-objects">20.2 Numbered objects</a>
+<li><a href="LHS-Terminals.html#LHS-Terminals">20.3 LHS terminals</a>
+</li></ul>
+<li><a name="toc_Work-in-Progress" href="Work-in-Progress.html#Work-in-Progress">21 Work in Progress</a>
+<ul>
+<li><a href="Untested-methods.html#Untested-methods">21.1 Untested methods</a>
+</li></ul>
+<li><a name="toc_GNU-Free-Documentation-License" href="GNU-Free-Documentation-License.html#GNU-Free-Documentation-License">Appendix A GNU Free Documentation License</a>
+</li></ul>
+</div>
+
+
+
+<div class="node">
+<a name="Top"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Copying-Conditions.html#Copying-Conditions">Copying Conditions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="../index.html#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="../index.html#dir">(dir)</a>
+<hr>
+</div>
+
+<h2 class="unnumbered">Libmarpa: The Marpa low-level library</h2>
+
+<p>This manual is for Libmarpa, version 2.15.0.
+
+<ul class="menu">
+<li><a accesskey="1" href="Copying-Conditions.html#Copying-Conditions">Copying Conditions</a>
+<li><a accesskey="2" href="About-this-document.html#About-this-document">About this document</a>
+<li><a accesskey="3" href="About-Libmarpa.html#About-Libmarpa">About Libmarpa</a>
+<li><a accesskey="4" href="Architecture.html#Architecture">Architecture</a>
+<li><a accesskey="5" href="Input.html#Input">Input</a>
+<li><a accesskey="6" href="Semantics.html#Semantics">Semantics</a>
+<li><a accesskey="7" href="Threads.html#Threads">Threads</a>
+<li><a accesskey="8" href="Fatal-Errors.html#Fatal-Errors">Fatal Errors</a>
+<li><a accesskey="9" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface">Introduction to the external interface</a>
+<li><a href="Static-method.html#Static-method">Static method</a>
+<li><a href="Configuration-methods.html#Configuration-methods">Configuration methods</a>
+<li><a href="Grammar-methods.html#Grammar-methods">Grammar methods</a>
+<li><a href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
+<li><a href="Progress-reports.html#Progress-reports">Progress reports</a>
+<li><a href="Bocage-methods.html#Bocage-methods">Bocage methods</a>
+<li><a href="Ordering-methods.html#Ordering-methods">Ordering methods</a>
+<li><a href="Tree-methods.html#Tree-methods">Tree methods</a>
+<li><a href="Value-methods.html#Value-methods">Value methods</a>
+<li><a href="Event-codes.html#Event-codes">Event codes</a>
+<li><a href="Error-macros-and-codes.html#Error-macros-and-codes">Error macros and codes</a>
+<li><a href="Design-notes.html#Design-notes">Design notes</a>
+<li><a href="Work-in-Progress.html#Work-in-Progress">Work in Progress</a>
+<li><a href="GNU-Free-Documentation-License.html#GNU-Free-Documentation-License">GNU Free Documentation License</a>
+
+</li></ul>
+<p>--- The Detailed Node Listing ---
+
+<p>About this document
+
+</p>
+<ul class="menu">
+<li><a href="How-to-read-this-document.html#How-to-read-this-document">How to read this document</a>
+<li><a href="Prerequisites.html#Prerequisites">Prerequisites</a>
+<li><a href="Parsing-theory.html#Parsing-theory">Parsing theory</a>
+
+</li></ul>
+<p>Architecture
+
+</p>
+<ul class="menu">
+<li><a href="Major-objects.html#Major-objects">Major objects</a>
+<li><a href="Time-objects.html#Time-objects">Time objects</a>
+<li><a href="Reference-counting.html#Reference-counting">Reference counting</a>
+<li><a href="Numbered-objects.html#Numbered-objects">Numbered objects</a>
+
+</li></ul>
+<p>Input
+
+</p>
+<ul class="menu">
+<li><a href="Earlemes.html#Earlemes">Earlemes</a>
+<li><a href="Terminals.html#Terminals">Terminals</a>
+
+</li></ul>
+<p>Earlemes
+
+</p>
+<ul class="menu">
+<li><a href="The-traditional-model.html#The-traditional-model">The traditional model</a>
+<li><a href="The-earleme-variables.html#The-earleme-variables">The earleme variables</a>
+<li><a href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables">The significances of the earleme variables</a>
+<li><a href="The-initial-earleme-settings.html#The-initial-earleme-settings">The initial earleme settings</a>
+<li><a href="The-standard-model-of-input.html#The-standard-model-of-input">The standard model of input</a>
+<li><a href="Ambiguous-input.html#Ambiguous-input">Ambiguous input</a>
+<li><a href="Variable-length-tokens.html#Variable-length-tokens">Variable length tokens</a>
+<li><a href="The-generalized-model.html#The-generalized-model">The generalized model</a>
+<li><a href="General-rules-for-the-earleme-variables.html#General-rules-for-the-earleme-variables">General rules for the earleme variables</a>
+
+</li></ul>
+<p>Semantics
+
+</p>
+<ul class="menu">
+<li><a href="How-Libmarpa-semantics-work.html#How-Libmarpa-semantics-work">How Libmarpa semantics work</a>
+<li><a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>
+
+</li></ul>
+<p>Introduction to the external interface
+
+</p>
+<ul class="menu">
+<li><a href="About-the-overviews.html#About-the-overviews">About the overviews</a>
+<li><a href="Return-values.html#Return-values">Return values</a>
+<li><a href="Naming-conventions.html#Naming-conventions">Naming conventions</a>
+
+</li></ul>
+<p>Grammar methods
+
+</p>
+<ul class="menu">
+<li><a href="Grammar-overview.html#Grammar-overview">Grammar overview</a>
+<li><a href="Grammar-constructor.html#Grammar-constructor">Grammar constructor</a>
+<li><a href="Grammar-reference-counting.html#Grammar-reference-counting">Grammar reference counting</a>
+<li><a href="Symbols.html#Symbols">Symbols</a>
+<li><a href="Rules.html#Rules">Rules</a>
+<li><a href="Sequences.html#Sequences">Sequences</a>
+<li><a href="Ranks.html#Ranks">Ranks</a>
+<li><a href="Grammar-precomputation.html#Grammar-precomputation">Grammar precomputation</a>
+<li><a href="Grammar-events.html#Grammar-events">Grammar events</a>
+
+</li></ul>
+<p>Recognizer methods
+
+</p>
+<ul class="menu">
+<li><a href="Recognizer-overview.html#Recognizer-overview">Recognizer overview</a>
+<li><a href="Recognizer-constructor.html#Recognizer-constructor">Recognizer constructor</a>
+<li><a href="Recognizer-reference-counting.html#Recognizer-reference-counting">Recognizer reference counting</a>
+<li><a href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">Recognizer life cycle mutators</a>
+<li><a href="Location-accessors.html#Location-accessors">Location accessors</a>
+<li><a href="Other-parse-status-methods.html#Other-parse-status-methods">Other parse status methods</a>
+
+</li></ul>
+<p>Bocage methods
+
+</p>
+<ul class="menu">
+<li><a href="Bocage-overview.html#Bocage-overview">Bocage overview</a>
+<li><a href="Bocage-constructor.html#Bocage-constructor">Bocage constructor</a>
+<li><a href="Bocage-reference-counting.html#Bocage-reference-counting">Bocage reference counting</a>
+
+</li></ul>
+<p>Ordering methods
+
+</p>
+<ul class="menu">
+<li><a href="Ordering-overview.html#Ordering-overview">Ordering overview</a>
+<li><a href="Ordering-constructor.html#Ordering-constructor">Ordering constructor</a>
+<li><a href="Ordering-reference-counting.html#Ordering-reference-counting">Ordering reference counting</a>
+<li><a href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">Non-default ordering</a>
+
+</li></ul>
+<p>Tree methods
+
+</p>
+<ul class="menu">
+<li><a href="Tree-overview.html#Tree-overview">Tree overview</a>
+<li><a href="Tree-constructor.html#Tree-constructor">Tree constructor</a>
+<li><a href="Tree-reference-counting.html#Tree-reference-counting">Tree reference counting</a>
+<li><a href="Tree-iteration.html#Tree-iteration">Tree iteration</a>
+
+</li></ul>
+<p>Value methods
+
+</p>
+<ul class="menu">
+<li><a href="Value-overview.html#Value-overview">Value overview</a>
+<li><a href="How-to-use-the-valuator.html#How-to-use-the-valuator">How to use the valuator</a>
+<li><a href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation">Advantages of step-driven valuation</a>
+<li><a href="Maintaining-the-stack.html#Maintaining-the-stack">Maintaining the stack</a>
+<li><a href="Valuator-constructor.html#Valuator-constructor">Valuator constructor</a>
+<li><a href="Valuator-reference-counting.html#Valuator-reference-counting">Valuator reference counting</a>
+<li><a href="Registering-semantics.html#Registering-semantics">Registering semantics</a>
+<li><a href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">Stepping through the valuator</a>
+<li><a href="Valuator-steps-by-type.html#Valuator-steps-by-type">Valuator steps by type</a>
+<li><a href="Basic-step-accessors.html#Basic-step-accessors">Basic step accessors</a>
+<li><a href="Other-step-accessors.html#Other-step-accessors">Other step accessors</a>
+
+</li></ul>
+<p>Maintaining the stack
+
+</p>
+<ul class="menu">
+<li><a href="Sizing-the-stack.html#Sizing-the-stack">Sizing the stack</a>
+<li><a href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">Initializing locations in the stack</a>
+
+</li></ul>
+<p>Error macros and codes
+
+</p>
+<ul class="menu">
+<li><a href="Methods.html#Methods">Methods</a>
+<li><a href="Error-Macros.html#Error-Macros">Error Macros</a>
+<li><a href="External-error-codes.html#External-error-codes">External error codes</a>
+<li><a href="Internal-error-codes.html#Internal-error-codes">Internal error codes</a>
+
+</li></ul>
+<p>Design notes
+
+</p>
+<ul class="menu">
+<li><a href="Why-so-many-time-objects.html#Why-so-many-time-objects">Why so many time objects</a>
+<li><a href="Design-of-numbered-objects.html#Design-of-numbered-objects">Design of numbered objects</a>
+<li><a href="LHS-Terminals.html#LHS-Terminals">LHS Terminals</a>
+
+</li></ul>
+<p>Work in Progress
+
+</p>
+<ul class="menu">
+<li><a href="Untested-methods.html#Untested-methods">Untested methods</a>
+
+   </ul>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

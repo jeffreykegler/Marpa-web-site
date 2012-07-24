@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+<title>The standard model of input - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Earlemes.html#Earlemes" title="Earlemes">
+<link rel="prev" href="The-initial-earleme-settings.html#The-initial-earleme-settings" title="The initial earleme settings">
+<link rel="next" href="Ambiguous-input.html#Ambiguous-input" title="Ambiguous input">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="The-standard-model-of-input"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Ambiguous-input.html#Ambiguous-input">Ambiguous input</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-initial-earleme-settings.html#The-initial-earleme-settings">The initial earleme settings</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Earlemes.html#Earlemes">Earlemes</a>
+<hr>
+</div>
+
+<h4 class="subsection">4.1.5 The standard model of input</h4>
+
+<p>In the standard model of input,
+calls to <code>marpa_r_alternative()</code>
+and <code>marpa_r_earleme_complete()</code> are
+made in pairs. 
+There is, first, exactly one call
+to <code>marpa_r_alternative()</code>,
+and it is for a token with length 1. 
+Following it must be a call
+to <code>marpa_r_earleme_complete()</code>. 
+For an input of length <var>n</var>, there will be
+exactly <var>n</var> such paired calls.
+
+   <p>Suppose, in the standard model that,
+for a call
+to <code>marpa_r_alternative()</code>,
+the following is true:
+     <ul>
+<li>The current earleme before the call was <var>c</var>. 
+</ul>
+   Because this is the standard model,
+this means that we also know that
+     <ul>
+<li>The latest earleme before the call was <var>c</var>. 
+<li>The furthest earleme before the call was <var>c</var>. 
+</ul>
+   In that case,
+after the call to
+<code>marpa_r_alternative()</code>,
+the following will be true:
+     <ul>
+<li>The current earleme will still be <var>c</var>. 
+<li>The latest earleme will still be <var>c</var>. 
+<li>The furthest earleme will be <var>c</var>+1. 
+</ul>
+
+   <p>Suppose, in the standard model that,
+for a call
+to <code>marpa_r_earleme_complete()</code>,
+the following is true:
+     <ul>
+<li>The current earleme before the call is <var>c</var>. 
+</ul>
+   Because this is the standard model,
+this means that we also know that
+     <ul>
+<li>The latest earleme before the call was <var>c</var>. 
+<li>The furthest earleme before the call was <var>c+1</var>. 
+</ul>
+   In that case,
+after the call
+to <code>marpa_r_earleme_complete()</code>,
+the current, latest and furthest earlemes will
+be the same. 
+Specifically,
+the following will be true:
+     <ul>
+<li>The current earleme will be advanced to <var>c+1</var>. 
+<li>The latest earleme will be advanced to <var>c+1</var>. 
+<li>The furthest earleme will remain at <var>c+1</var>. 
+</ul>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

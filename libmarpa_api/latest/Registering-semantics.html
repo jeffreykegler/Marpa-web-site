@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+<title>Registering semantics - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
+<link rel="prev" href="Valuator-reference-counting.html#Valuator-reference-counting" title="Valuator reference counting">
+<link rel="next" href="Stepping-through-the-valuator.html#Stepping-through-the-valuator" title="Stepping through the valuator">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Registering-semantics"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">Stepping through the valuator</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Valuator-reference-counting.html#Valuator-reference-counting">Valuator reference counting</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Value-methods.html#Value-methods">Value methods</a>
+<hr>
+</div>
+
+<h3 class="section">17.7 Registering semantics</h3>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_v_symbol_is_valued</b> (<var> Marpa_Value v, Marpa_Symbol_ID symid </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued-84"></a></var><br>
+&mdash; Function: int <b>marpa_v_symbol_is_valued_set</b> (<var> Marpa_Value v, Marpa_Symbol_ID symid, int value </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued_005fset-85"></a></var><br>
+<blockquote><p>These methods, respectively,
+discover and set to <var>value</var>,
+the valued status for symbol <var>symid</var>. 
+A valued status of 1 indicates that the symbol is valued. 
+A valued status of 0 indicates that the symbol is unvalued. 
+If the valued status is locked,
+an attempt to change to a status different from the
+current one will fail
+(error code <code>MARPA_ERR_VALUED_IS_LOCKED</code>).
+
+        <p>Return value:  On success, the valued status <strong>after</strong>
+the call. 
+If <var>value</var> is not either 0 or 1,
+or on other failure, &minus;2. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_v_rule_is_valued</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued-86"></a></var><br>
+&mdash; Function: int <b>marpa_v_rule_is_valued_set</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id, int value </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued_005fset-87"></a></var><br>
+<blockquote><p>These methods respectively,
+discover and set to <var>value</var>,
+the valued status
+for the LHS symbol of rule <var>rule_id</var>. 
+A valued status of 1 indicates that the symbol is valued. 
+A valued status of 0 indicates that the symbol is unvalued. 
+If the valued status is locked,
+an attempt to change to a status different from the
+current one will fail
+(error code <code>MARPA_ERR_VALUED_IS_LOCKED</code>).
+
+        <p>Rules have no valued status of their own. 
+The valued status of a rule
+is always that of its LHS symbol. 
+These methods are conveniences &mdash; they
+save the application the trouble of looking
+up the rule's LHS.
+
+        <p>Return value:  On success, the valued status of the
+rule <var>rule_id</var>'s LHS symbol <strong>after</strong>
+the call. 
+If <var>value</var> is not either 0 or 1,
+or on other failure, &minus;2. 
+</p></blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

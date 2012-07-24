@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+<title>Maintaining the stack - Libmarpa 2.15.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.15.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
+<link rel="prev" href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation" title="Advantages of step-driven valuation">
+<link rel="next" href="Valuator-constructor.html#Valuator-constructor" title="Valuator constructor">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.15.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Maintaining-the-stack"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Valuator-constructor.html#Valuator-constructor">Valuator constructor</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation">Advantages of step-driven valuation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Value-methods.html#Value-methods">Value methods</a>
+<hr>
+</div>
+
+<h3 class="section">17.4 Maintaining the stack</h3>
+
+<p>This section discusses in detail the requirements
+for maintaining the stack. 
+In some cases,
+such as implementation using a Perl array,
+fulfilling these requirements is trivial. 
+Perl auto-extends its arrays,
+and initializes the element values,
+on every read or write. 
+For the C programmer,
+things are not quite so easy.
+
+   <p>In this section,
+we will assume a C90 or C99 standard-conformant
+C application. 
+This assumption is convenient on two grounds. 
+First, this will be the intended use
+for many readers. 
+Second, standard-conformant C is
+a &ldquo;worst case&rdquo;. 
+Any issue faced by a programmer of another environment
+is likely to also be one that must be solved
+by the C programmer.
+
+   <p>Libmarpa often
+optimizes away unnecessary stack writes
+to stack locations. 
+When it does so, it will not
+necessarily optimize away all reads
+to that stack location. 
+This means that a location's first access,
+as suggested by the Libmarpa step instructions,
+may be a read. 
+This possibility
+requires a special awareness from the C
+programmer,
+as discussed in
+the sections
+<a href="Sizing-the-stack.html#Sizing-the-stack">Sizing the stack</a> and
+<a href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">Initializing locations in the stack</a>.
+
+   <p>In the discussions in this document,
+stack locations are non-negative integers. 
+The bottom of the stack is location 0. 
+In moving from the bottom of the stack to the top,
+the numbers increase. 
+Stack location <var>Y</var> is said to be &ldquo;greater&rdquo;
+than stack location <var>X</var> if stack location
+<var>Y</var> is closer to the top of stack than location <var>X</var>,
+and therefore stack locations are considered greater or
+lesser if the integers that represent them are
+greater or lesser. 
+Another way to state that
+a stack location <var>Y</var> is greater (lesser)
+than stack location <var>X</var> is to say that
+a stack location <var>Y</var> is later (earlier)
+than stack location <var>X</var>.
+
+<ul class="menu">
+<li><a accesskey="1" href="Sizing-the-stack.html#Sizing-the-stack">Sizing the stack</a>
+<li><a accesskey="2" href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">Initializing locations in the stack</a>
+</ul>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

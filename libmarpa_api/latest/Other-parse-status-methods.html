@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+<title>Other parse status methods - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
+<link rel="prev" href="Location-accessors.html#Location-accessors" title="Location accessors">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Other-parse-status-methods"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Location-accessors.html#Location-accessors">Location accessors</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
+<hr>
+</div>
+
+<h3 class="section">12.6 Other parse status methods</h3>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-60"></a></var><br>
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-61"></a></var><br>
+<blockquote><p>These methods, respectively, report and set the Earley item warning threshold. 
+The <dfn>Earley item warning threshold</dfn>
+is a number that is compared with
+the count of Earley items in each Earley set. 
+When it is matched or exceeded,
+a <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event is created.
+
+        <p>If <var>threshold</var> is zero or less,
+an unlimited number of Earley items
+will be allowed without warning. 
+This will rarely be what the user wants.
+
+        <p>By default, Libmarpa calculates a value based on the grammar. 
+The formula Libmarpa uses is the result of some experience,
+and most applications will
+be happy with it.
+
+        <p>Return value:
+The value that the Earley item warning threshold has
+after the method call is finished. 
+Always succeeds. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_terminals_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID* buffer</var>)<var><a name="index-marpa_005fr_005fterminals_005fexpected-62"></a></var><br>
+<blockquote><p>Returns a list of the ID's of the symbols
+that are acceptable as tokens
+at the current earleme. 
+<var>buffer</var> is expected to be large enough to hold
+the result. 
+This is guaranteed to be the case if the buffer
+is large enough to hold a number of
+<code>Marpa_Symbol_ID</code>'s that
+is greater than or equal to the number of symbols
+in the grammar.
+
+        <p>Return value:  On success, the number of <code>Marpa_Symbol_ID</code>'s
+in <var>buffer</var>. 
+On failure, &minus;2. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_is_exhausted</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fis_005fexhausted-63"></a></var><br>
+<blockquote><p>A parser is &ldquo;exhausted&rdquo; if it cannot accept any more input. 
+Both successful and failed parses can be exhausted. 
+In many grammars,
+the parse is always exhausted as soon as it succeeds. 
+Good parses may also exist at earlemes prior to the
+current one.
+
+        <p>Return value:
+1 if the parser is exhausted, 0 otherwise. 
+Always succeeds. 
+</p></blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

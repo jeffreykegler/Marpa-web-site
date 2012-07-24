@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+<title>Naming conventions - Libmarpa 2.13.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.13.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" title="Introduction to the external interface">
+<link rel="prev" href="Return-values.html#Return-values" title="Return values">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.13.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Naming-conventions"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Return-values.html#Return-values">Return values</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface">Introduction to the external interface</a>
+<hr>
+</div>
+
+<h3 class="section">8.3 Naming conventions</h3>
+
+<p>Methods in Libmarpa follow a strict naming convention. 
+All methods have a name beginning with <code>marpa_</code>,
+if they are part of the
+external interface. 
+If an external method is not a static method,
+its name is prefixed with one of
+<code>marpa_c_</code>,
+<code>marpa_g_</code>,
+<code>marpa_r_</code>,
+<code>marpa_b_</code>,
+<code>marpa_o_</code>,
+<code>marpa_t_</code> or
+<code>marpa_v_</code>,
+where the single letter between underscores
+is one of the Libmarpa major class abbreviations. 
+The letter indicates which class
+the method belongs to.
+
+   <p>Methods that are exported,
+but that are part of
+the internal interface,
+begin with <code>_marpa_</code>. 
+Methods that are part of the internal interface
+(often called &ldquo;internal methods&rdquo;)
+are subject to change and are intended for use
+only by Libmarpa's developers.
+
+   <p>Libmarpa reserves the <code>marpa_</code>
+and <code>_marpa_</code> prefixes for itself,
+with all their capitalization variants. 
+All Libmarpa names visible outside the package
+will begin with a capitalization variant
+of one of these two prefixes.
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

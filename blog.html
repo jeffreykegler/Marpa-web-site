@@ -15,7 +15,9 @@
     <div class="wrapper">
     <header>
         <p>Marpa web site</p>
-	<p class="view"><a href="#NOT_SERIES">Posts not part of a series</a></p>
+	<p class="view"><a href="#NOT_SERIES">Posts not part of a series</a>
+	You probably want to glance through this list first.
+	</p>
 	<p class="view"><a href="#BOVICIDE">The Bovicide series</a>
 	My comments about yacc-based parsing.
 	I respect the tradition and admire its inventors, but it is a
@@ -50,28 +52,52 @@ those posts that are still of interest.
 <li><p><a href="http://blogs.perl.org/users/jeffrey_kegler/2010/06/jay-earleys-idea.html">Jay Earley's Idea</a>: A user-friendly description of Earley's algorithm. Marpa's algorithm is much more complicated, but at heart, Marpa is an Earley parser.</p></li><li><p><a href="http://blogs.perl.org/users/jeffrey_kegler/2012/01/marpa-and-oo.html">Marpa and OO</a>: Comments on the relationship between object-oriented programming and Marpa.</p></li><li><p><a href="http://blogs.perl.org/users/jeffrey_kegler/2012/01/what-no-lexer.html">What? No Lexer!</a>: A generation of programmers have grown up identifying lexing with parsing. Marpa is not a lexer, and Marpa::XS does not even contain a lexer. This post explains why, and how to get your lexing done if you are using Marpa. (This post is rapidly becoming outdated. Several people have undertaken lexers specifically intended as Marpa front-ends, and I expect that one or more will soon be on CPAN.)</p></li><li><p><a href="http://blogs.perl.org/users/jeffrey_kegler/2012/01/developing-parsers-incrementally-with-marpa.html">Developing parsers incrementally with Marpa</a>: Hints on how to get started with Marpa::XS.</p></li><li><p><a href="http://blogs.perl.org/users/jeffrey_kegler/2012/03/user-experiences-with-marpa-some-observations.html">User experiences with Marpa</a>: How users react to Marpa. Of course, I am a hopelessly biased source. but I do get a lot of feedback.</p></li><li><p><a href="http://blogs.perl.org/users/jeffrey_kegler/2012/03/making-the-parsing-game-safe.html">Making the parsing game safe</a>: What Marpa means for Domain-Specific Languages (DSLs) and Language-Oriented Programming (LOP).</p></li>
 </ul>
 <h2><a name="BOVICIDE"></a>The Bovicide Series</h2>
-
-<p>Yacc and its derivatives are considered the standard in parser generators. Yacc is part of a great series of traditions it was my privilege to watch being formed, and I have the greatest respect for its inventors. But to my mind yacc is one tradition more honored in the breach than in the observance. In this series I describe what will be required for a parsing algorithm to displace yacc's LALR, and why I think the Marpa algorithm has what it takes and more.</p>
-The first three requirements are described in my first post, <a href="http://blogs.perl.org/users/jeffrey_kegler/2010/12/killing-yacc-1-2-3.html">Killing Yacc: 1, 2 &amp; 3</a>:
-
+<p>Yacc and its derivatives are considered the standard in parser
+generators. Yacc is part of a great series of traditions it was my
+privilege to watch being formed, and I have the greatest respect
+for its inventors. But to my mind yacc is one tradition more honored
+in the breach than in the observance. In this series I describe
+what will be required for a parsing algorithm to displace yacc's
+LALR, and why I think the Marpa algorithm has what it takes and
+more.
+The first three requirements are described in my first post,
+<a href="http://blogs.perl.org/users/jeffrey_kegler/2010/12/killing-yacc-1-2-3.html">Killing Yacc: 1, 2 &amp; 3</a>:
+</p>
 <ul><li><p>Requirement 1: Handle Arbitrary Context-Free Grammars in O(n<sup>3</sup>)</p></li>
 <li><p>Requirement 2: Handle "Average" Grammars in Linear Time</p></li>
 <li><p>Requirement 3: A Sound Theoretical Basis</p></li></ul>
 
-Error reporting has long been overlooked, and it is something at which yacc was astonishingly bad. I looked at the issue of development-time error reporting in <a href="http://blogs.perl.org/users/jeffrey_kegler/2010/12/why-the-bovicidal-rage-killing-yacc-4.html">Why the Bovicidal Rage?</a>:
+<p>Error reporting has long been overlooked, and it is something
+at which yacc was astonishingly bad. I looked at the issue of
+development-time error reporting in <a
+href="http://blogs.perl.org/users/jeffrey_kegler/2010/12/why-the-bovicidal-rage-killing-yacc-4.html">Why
+the Bovicidal Rage?</a>:</p>
 
 <ul><li><p>Requirement 4: Easy Diagnosis of Grammar Problems</p></li></ul>
 
-And in <a href="http://blogs.perl.org/users/jeffrey_kegler/2011/04/bovicide-5-parse-time-error-reporting.html">Bovicide 5: Parse-time Error Reporting</a>, I looked at the other half of error reporting.
+<p>And in <a
+href="http://blogs.perl.org/users/jeffrey_kegler/2011/04/bovicide-5-parse-time-error-reporting.html">Bovicide
+5: Parse-time Error Reporting</a>, I looked at the other half of
+error reporting.</p>
 
 <ul><li><p>Requirement 5: Good Reporting of Parse-time Errors</p></li></ul>
 
-Both hand-written recursive descent and Marpa meet, to various degrees, all five of the previous requirements. The last requirement, stated in <a href="http://blogs.perl.org/users/jeffrey_kegler/2011/05/bovicide-6-the-final-requirement.html">Bovicide 6: The Final Requirement</a>, was the tie-breaker. Hand-written recursive descent has many strengths, but it will never be available as a library.
+<p>Both hand-written recursive descent and Marpa meet, to various
+degrees, all five of the previous requirements. The last requirement,
+stated in <a
+href="http://blogs.perl.org/users/jeffrey_kegler/2011/05/bovicide-6-the-final-requirement.html">Bovicide
+6: The Final Requirement</a>, was the tie-breaker. Hand-written
+recursive descent has many strengths, but it will never be available
+as a library.</p>
 <ul><li><p>Requirement 6: Available as a Library</p></li></ul>
 
 <h2><a name="PERL_AND_PARSING"></a>The "Perl and parsing" series</h2>
-My "Perl and parsing" series used Perl to illustrate parsing theory and parsing theory to investigate Perl. I am not one of those who believes that mathematics takes place in vacuum -- it follows trends and even what are more accurately called fashions. Therefore this series has a lot of discussion of how current parsing theory came to be.
-
+<p>My "Perl and parsing" series used Perl to illustrate parsing theory
+and parsing theory to investigate Perl. I am not one of those who
+believes that mathematics takes place in vacuum -- it follows trends
+and even what are more accurately called fashions. Therefore this
+series has a lot of discussion of how current parsing theory came
+to be.</p>
 <ul>
 <li><p><a href="http://blogs.perl.org/users/jeffrey_kegler/2010/06/parsing-with-ruby-slippers.html">
 Parsing with Ruby Slippers</a>: This is the post where I debuted the "Ruby Slippers" parsing technique, using both HTML and an example from Perl to illustrate it.

@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+<title>Methods - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Error-macros-and-codes.html#Error-macros-and-codes" title="Error macros and codes">
+<link rel="prev" href="Error-macros-and-codes.html#Error-macros-and-codes" title="Error macros and codes">
+<link rel="next" href="Error-Macros.html#Error-Macros" title="Error Macros">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Methods"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Error-Macros.html#Error-Macros">Error Macros</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Error-macros-and-codes.html#Error-macros-and-codes">Error macros and codes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Error-macros-and-codes.html#Error-macros-and-codes">Error macros and codes</a>
+<hr>
+</div>
+
+<h3 class="section">19.1 Methods</h3>
+
+<div class="defun">
+&mdash; Function: Marpa_Error_Code <b>marpa_g_error</b> (<var> Marpa_Grammar g, const char** p_error_string</var>)<var><a name="index-marpa_005fg_005ferror-114"></a></var><br>
+<blockquote><p>When a method fails,
+this method allows the application to read
+the error code. 
+<var>p_error_string</var> is reserved for use by
+the internals. 
+Applications should set it to <code>NULL</code>.
+
+        <p>Return value: The last error code from a Libmarpa method. 
+Always succeeds. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: Marpa_Error_Code <b>marpa_g_error_clear</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005ferror_005fclear-115"></a></var><br>
+<blockquote>
+        <p>Sets the error code
+to <code>MARPA_ERR_NONE</code>. 
+Not often used,
+but now and then it can be useful
+to force the error code to a known state.
+
+        <p>Return value: <code>MARPA_ERR_NONE</code>. 
+Always succeeds. 
+</p></blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

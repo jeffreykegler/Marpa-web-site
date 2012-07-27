@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+<title>Grammar constructor - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
+<link rel="prev" href="Grammar-overview.html#Grammar-overview" title="Grammar overview">
+<link rel="next" href="Grammar-reference-counting.html#Grammar-reference-counting" title="Grammar reference counting">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Grammar-constructor"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Grammar-reference-counting.html#Grammar-reference-counting">Grammar reference counting</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Grammar-overview.html#Grammar-overview">Grammar overview</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">Grammar methods</a>
+<hr>
+</div>
+
+<h3 class="section">11.2 Creating a new grammar</h3>
+
+<p><a name="index-grammar-constructor-6"></a>
+
+<div class="defun">
+&mdash; Function: Marpa_Grammar <b>marpa_g_new</b> (<var> Marpa_Config* configuration </var>)<var><a name="index-marpa_005fg_005fnew-7"></a></var><br>
+<blockquote>
+        <p>Creates a new grammar time object. 
+The returned grammar object is not yet precomputed,
+and will have no symbols and rules. 
+Its reference count will be 1.
+
+        <p>Unless the application calls <code>marpa_c_error</code>,
+Libmarpa will not reference the location
+pointed to by the <var>configuration</var>
+argument after <code>marpa_g_new</code> returns. 
+The <var>configuration</var> argument may be <code>NULL</code>,
+but if it is,
+there will be no way to determine
+the error code on failure.
+
+        <p>Return value: On success, the grammar object. 
+On failure, <code>NULL</code>,
+and the error code is set in <var>configuration</var>.
+
+        </blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

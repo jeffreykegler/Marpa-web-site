@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+<title>Time objects - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Architecture.html#Architecture" title="Architecture">
+<link rel="prev" href="Major-objects.html#Major-objects" title="Major objects">
+<link rel="next" href="Reference-counting.html#Reference-counting" title="Reference counting">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Time-objects"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Reference-counting.html#Reference-counting">Reference counting</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Major-objects.html#Major-objects">Major objects</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Architecture.html#Architecture">Architecture</a>
+<hr>
+</div>
+
+<h3 class="section">3.2 Time objects</h3>
+
+<p>All of Libmarpa's major classes,
+except the configuration class,
+are &ldquo;time&rdquo; classes. 
+Except for objects in the grammar class,
+all time objects are created from another time
+object. 
+Each time object is created from a time object
+of the class before it in the sequence. 
+A recognizer cannot be created without a precomputed grammar;
+a bocage cannot be created without a recognizer;
+and so on.
+
+   <p>When one time object is used to create a second
+time object,
+the first time object is the <dfn>parent object</dfn>
+and the second time object is the <dfn>child object</dfn>. 
+For example, when a bocage is created from a
+recognizer,
+the recognizer is the parent object,
+and the bocage is the child object.
+
+   <p>Grammars have no parent object. 
+Every other time object has exactly one parent object. 
+Value objects have no child objects. 
+All other time objects can have any number of children,
+from zero up to a number determined by memory or
+some other machine-determined limit.
+
+   <p>Every time object has a <dfn>base grammar</dfn>. 
+A grammar object is its own base grammar. 
+The base grammar of a recognizer is the grammar
+that it was created with. 
+The base grammar of any other time object is the base
+grammar of its parent object. 
+For example,
+the base grammar of a bocage is the base
+grammar of the recognizer that it was created
+with.
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

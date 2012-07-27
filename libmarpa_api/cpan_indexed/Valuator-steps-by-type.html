@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+<title>Valuator steps by type - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
+<link rel="prev" href="Stepping-through-the-valuator.html#Stepping-through-the-valuator" title="Stepping through the valuator">
+<link rel="next" href="Basic-step-accessors.html#Basic-step-accessors" title="Basic step accessors">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Valuator-steps-by-type"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Basic-step-accessors.html#Basic-step-accessors">Basic step accessors</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">Stepping through the valuator</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Value-methods.html#Value-methods">Value methods</a>
+<hr>
+</div>
+
+<h3 class="section">17.9 Valuator steps by type</h3>
+
+<div class="defun">
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_RULE</b><var><a name="index-MARPA_005fSTEP_005fRULE-89"></a></var><br>
+<blockquote><p>The semantics of a rule should be performed. 
+The application can find the value of the rule's
+children in the stack locations from
+<code>marpa_v_arg_0(v)</code>
+to <code>marpa_v_arg_n(v)</code>. 
+The semantics for the rule whose ID is
+<code>marpa_v_rule(v)</code> should be executed
+on these child values,
+and the result placed in
+<code>marpa_v_result(v)</code>. 
+The stack location of
+<code>marpa_v_result(v)</code> is guaranteed to
+be equal to <code>marpa_v_arg_0(v)</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_TOKEN</b><var><a name="index-MARPA_005fSTEP_005fTOKEN-90"></a></var><br>
+<blockquote><p>The semantics of a non-null token should be performed. 
+The application's value for the token whose ID is
+<code>marpa_v_token(v)</code> should be
+placed in
+stack location <code>marpa_v_result(v)</code>. 
+Its value according to Libmarpa will be in
+<code>marpa_v_token_value(v)</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_NULLING_SYMBOL</b><var><a name="index-MARPA_005fSTEP_005fNULLING_005fSYMBOL-91"></a></var><br>
+<blockquote><p>The semantics for a nulling symbol should be performed. 
+The ID of the symbol is
+<code>marpa_v_symbol(v)</code> and its value should
+be placed in
+stack location <code>marpa_v_result(v)</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INACTIVE</b><var><a name="index-MARPA_005fSTEP_005fINACTIVE-92"></a></var><br>
+<blockquote><p>The valuator has gone through all of its steps
+and is now inactive. 
+The value of the parse will be in stack location 0. 
+Because of unvalued symbols,
+it is quite possible for valuator to immediately
+became inactive &mdash; <code>MARPA_STEP_INACTIVE</code> could
+be both the first and last step.
+
+        </blockquote></div>
+
+<div class="defun">
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INITIAL</b><var><a name="index-MARPA_005fSTEP_005fINITIAL-93"></a></var><br>
+<blockquote><p>The valuator is new and has
+yet to go through any steps. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INTERNAL1</b><var><a name="index-MARPA_005fSTEP_005fINTERNAL1-94"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INTERNAL2</b><var><a name="index-MARPA_005fSTEP_005fINTERNAL2-95"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_TRACE</b><var><a name="index-MARPA_005fSTEP_005fTRACE-96"></a></var><br>
+<blockquote><p>These step types are reserved for internal purposes. 
+</p></blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

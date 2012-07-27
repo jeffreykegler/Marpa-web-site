@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+<title>Recognizer reference counting - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
+<link rel="prev" href="Recognizer-constructor.html#Recognizer-constructor" title="Recognizer constructor">
+<link rel="next" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators" title="Recognizer life cycle mutators">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Recognizer-reference-counting"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">Recognizer life cycle mutators</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-constructor.html#Recognizer-constructor">Recognizer constructor</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
+<hr>
+</div>
+
+<h3 class="section">12.3 Keeping the reference count of a recognizer</h3>
+
+<div class="defun">
+&mdash; Function: Marpa_Recognizer <b>marpa_r_ref</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fref-51"></a></var><br>
+<blockquote><p>Increases the reference count by 1. 
+Not needed by most applications.
+
+        <p>Return value:
+On success, the recognizer object, <var>r</var>. 
+On failure, <code>NULL</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>marpa_r_unref</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005funref-52"></a></var><br>
+<blockquote><p>Decreases the reference count by 1,
+destroying <var>r</var> once the reference count reaches
+zero. 
+When <var>r</var> is destroyed, the reference count
+of its base grammar is decreased by one. 
+If this takes the reference count of the base grammar
+to zero, it too is destroyed.
+
+        </blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+<title>Design of numbered objects - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Design-notes.html#Design-notes" title="Design notes">
+<link rel="prev" href="Why-so-many-time-objects.html#Why-so-many-time-objects" title="Why so many time objects">
+<link rel="next" href="LHS-Terminals.html#LHS-Terminals" title="LHS Terminals">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Design-of-numbered-objects"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="LHS-Terminals.html#LHS-Terminals">LHS Terminals</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Why-so-many-time-objects.html#Why-so-many-time-objects">Why so many time objects</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Design-notes.html#Design-notes">Design notes</a>
+<hr>
+</div>
+
+<h3 class="section">20.2 Numbered objects</h3>
+
+<p>As the name suggests,
+the choice was made to implement
+numbered objects as integers,
+and not as
+pointers. 
+In standard-conformant C,
+integers can be safely checked for validity,
+while pointers cannot.
+
+   <p>There are efficiency tradeoffs between pointers and
+integers but they are complicated,
+and they go both ways. 
+Pointers can be faster, but integers can be used
+as indexes into more than one data structure. 
+Which is actually faster depends on the design. 
+Integers allow for a more flexible design,
+so that once the choice is settled on,
+careful programming can make them a win,
+possibly a very big one.
+
+   <p>The approach taken in Libmarpa was to settle,
+from the outset,
+on integers as the implementation for numbered
+objects,
+and to optimize on that basis. 
+The author concedes that it is
+possible that
+others redoing Libmarpa from scratch
+might find that pointers are faster. 
+But the author is confident
+that they will also discover,
+on modern architectures,
+that the lack of safe validity checking
+is far too high a price to pay
+for the difference in speed.
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

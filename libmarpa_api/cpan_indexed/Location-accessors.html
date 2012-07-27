@@ -1,0 +1,123 @@
+<html lang="en">
+<head>
+<title>Location accessors - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
+<link rel="prev" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators" title="Recognizer life cycle mutators">
+<link rel="next" href="Other-parse-status-methods.html#Other-parse-status-methods" title="Other parse status methods">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Location-accessors"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Other-parse-status-methods.html#Other-parse-status-methods">Other parse status methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">Recognizer life cycle mutators</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
+<hr>
+</div>
+
+<h3 class="section">12.5 Location accessors</h3>
+
+<div class="defun">
+&mdash; Function: Marpa_Earleme <b>marpa_r_earleme</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID set_id</var>)<var><a name="index-marpa_005fr_005fearleme-56"></a></var><br>
+<blockquote>
+        <p>In the default, token-stream model, Earley set ID and earleme
+are always equal, but this is not the case in other input
+models. 
+(The ID of an Earley set ID is also called its ordinal.) 
+If there is no Earley set whose ID is
+<var>set_id</var>,
+<code>marpa_r_earleme()</code> fails. 
+If <var>set_id</var> was negative,
+the error code is set to
+<code>MARPA_ERR_INVALID_LOCATION</code>. 
+If <var>set_id</var> is greater than the ordinal
+of the latest Earley set,
+the error code is set to
+<code>MARPA_ERR_NO_EARLEY_SET_AT_LOCATION</code>.
+
+        <p>At this writing, there is no method for
+the inverse operation (conversion of an earleme to an Earley set
+ID). 
+One consideration in writing
+such a method is that not all earlemes correspond to Earley sets. 
+Applications that want to map earlemes
+to Earley sets will have no trouble if they
+are using the standard input model &mdash;
+the Earley set
+ID is always exactly equal to the earleme in that model. 
+For other applications
+that want an earleme-to-ID mapping,
+the most general method is create an ID-to-earleme
+array using the <code>marpa_r_earleme()</code> method
+and invert it.
+
+        <p>Return value:
+On success,
+the earleme corresponding to Earley
+set <var>set_id</var>. 
+On failure, &minus;2. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: <code>unsigned int</code> <b>marpa_r_current_earleme</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fcurrent_005fearleme-57"></a></var><br>
+<blockquote><p>Return value: If input has started, the current earleme. 
+If input has not started, &minus;1. 
+Always succeeds. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: Marpa_Earley_Set_ID <b>marpa_r_latest_earley_set</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset-58"></a></var><br>
+<blockquote><p>This method returns the Earley set ID (ordinal) of the latest Earley set. 
+Applications that want the
+value of the latest earleme can convert
+this value using
+the <code>marpa_r_earleme()</code> method.
+
+        <p>Return value: On success, the ID of the latest Earley set. 
+Always succeeds. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: <code>unsigned int</code> <b>marpa_r_furthest_earleme</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005ffurthest_005fearleme-59"></a></var><br>
+<blockquote><p>Return value: On success, the furthest earleme. 
+Always succeeds. 
+</p></blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

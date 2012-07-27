@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+<title>Bocage reference counting - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Bocage-methods.html#Bocage-methods" title="Bocage methods">
+<link rel="prev" href="Bocage-constructor.html#Bocage-constructor" title="Bocage constructor">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Bocage-reference-counting"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Bocage-constructor.html#Bocage-constructor">Bocage constructor</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Bocage-methods.html#Bocage-methods">Bocage methods</a>
+<hr>
+</div>
+
+<h3 class="section">14.3 Reference counting</h3>
+
+<div class="defun">
+&mdash; Function: Marpa_Bocage <b>marpa_b_ref</b> (<var>Marpa_Bocage b</var>)<var><a name="index-marpa_005fb_005fref-68"></a></var><br>
+<blockquote><p>Increases the reference count by 1. 
+Not needed by most applications.
+
+        <p>Return value:
+On success, <var>b</var>. 
+On failure, <code>NULL</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>marpa_b_unref</b> (<var>Marpa_Bocage b</var>)<var><a name="index-marpa_005fb_005funref-69"></a></var><br>
+<blockquote><p>Decreases the reference count by 1,
+destroying <var>b</var> once the reference count reaches
+zero. 
+When <var>b</var> is destroyed, the reference count
+of its parent recognizer is decreased by 1. 
+If this takes the reference count of the parent recognizer
+to zero, it too is destroyed. 
+If the parent recognizer is destroyed, the reference count
+of its base grammar is decreased by 1. 
+If this takes the reference count of the base grammar
+to zero, it too is destroyed.
+
+        </blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

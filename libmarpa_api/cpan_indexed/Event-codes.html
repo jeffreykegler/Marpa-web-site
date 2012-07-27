@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+<title>Event codes - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Value-methods.html#Value-methods" title="Value methods">
+<link rel="next" href="Error-macros-and-codes.html#Error-macros-and-codes" title="Error macros and codes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Event-codes"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Error-macros-and-codes.html#Error-macros-and-codes">Error macros and codes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Value-methods.html#Value-methods">Value methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">18 Event codes</h2>
+
+<div class="defun">
+&mdash; Macro: int <b>MARPA_EVENT_NONE</b><var><a name="index-MARPA_005fEVENT_005fNONE-108"></a></var><br>
+<blockquote><p>Applications should never see this event. 
+Event value: Undefined. 
+Suggested message: "No event". 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: int <b>MARPA_EVENT_EXHAUSTED</b><var><a name="index-MARPA_005fEVENT_005fEXHAUSTED-109"></a></var><br>
+<blockquote><p>The parse is exhausted. 
+Event value: Undefined. 
+Suggested message: "Recognizer is exhausted". 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: int <b>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</b><var><a name="index-MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD-110"></a></var><br>
+<blockquote><p>The user-settable Earley item threshold was exceeded. 
+Event value: Undefined. 
+Suggested message: "Too many Earley items". 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: int <b>MARPA_EVENT_LOOP_RULES</b><var><a name="index-MARPA_005fEVENT_005fLOOP_005fRULES-111"></a></var><br>
+<blockquote><p>One or more rules are loop rules &mdash; rules
+that are part of a cycle. 
+Cycles are pathological cases of recursion,
+in which the same symbol string derives itself
+a potentially infinite number of times. 
+Nonetheless, Marpa parses in the presence of these,
+and it is up to the application to treat these
+as fatal errors,
+something they almost always will wish to do. 
+Event value: The count of loop rules. 
+Suggested message: "Grammar contains a infinite loop". 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: int <b>MARPA_EVENT_COUNTED_NULLABLE</b><var><a name="index-MARPA_005fEVENT_005fCOUNTED_005fNULLABLE-112"></a></var><br>
+<blockquote><p>A nullable symbol is either the separator
+for, or the right hand side of, a sequence. 
+Event value: The ID of the symbol. 
+Suggested message: "This symbol is a counted nullable". 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: int <b>MARPA_EVENT_NULLING_TERMINAL</b><var><a name="index-MARPA_005fEVENT_005fNULLING_005fTERMINAL-113"></a></var><br>
+<blockquote><p>A nulling symbol is also a terminal. 
+Event value: The ID of the symbol. 
+Suggested message: "This symbol is a nulling terminal". 
+</p></blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

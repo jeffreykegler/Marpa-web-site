@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+<title>Ordering reference counting - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Ordering-methods.html#Ordering-methods" title="Ordering methods">
+<link rel="prev" href="Ordering-constructor.html#Ordering-constructor" title="Ordering constructor">
+<link rel="next" href="Non_002ddefault-ordering.html#Non_002ddefault-ordering" title="Non-default ordering">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Ordering-reference-counting"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">Non-default ordering</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Ordering-constructor.html#Ordering-constructor">Ordering constructor</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Ordering-methods.html#Ordering-methods">Ordering methods</a>
+<hr>
+</div>
+
+<h3 class="section">15.3 Reference counting</h3>
+
+<div class="defun">
+&mdash; Function: Marpa_Order <b>marpa_o_ref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fref-71"></a></var><br>
+<blockquote><p>Increases the reference count by 1. 
+Not needed by most applications.
+
+        <p>Return value:
+On success, <var>o</var>. 
+On failure, <code>NULL</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>marpa_o_unref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005funref-72"></a></var><br>
+<blockquote><p>Decreases the reference count by 1,
+destroying <var>o</var> once the reference count reaches
+zero. 
+Beginning with <var>o</var>'s parent bocage,
+Libmarpa then proceeds up the chain of parent objects. 
+Every time a child is destroyed, the
+reference count of its parent is decreased by 1. 
+Every time the reference count of an object
+is decreased by 1,
+if that reference count is now zero,
+that object is destroyed. 
+Libmarpa follows this chain of decrements
+and destructions as required,
+all the way back to the
+base grammar, if necessary.
+
+        </blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

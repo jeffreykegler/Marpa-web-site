@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+<title>Why so many time objects - Libmarpa 2.14.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.14.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Design-notes.html#Design-notes" title="Design notes">
+<link rel="prev" href="Design-notes.html#Design-notes" title="Design notes">
+<link rel="next" href="Design-of-numbered-objects.html#Design-of-numbered-objects" title="Design of numbered objects">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for Libmarpa 2.14.0.
+Copyright (C) 2012 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation;
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Why-so-many-time-objects"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Design-of-numbered-objects.html#Design-of-numbered-objects">Design of numbered objects</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Design-notes.html#Design-notes">Design notes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Design-notes.html#Design-notes">Design notes</a>
+<hr>
+</div>
+
+<h3 class="section">20.1 Why so many time objects?</h3>
+
+<p>Marpa is an aggressively multi-pass algorithm. 
+Marpa achieves its efficiency,
+not in spite of making multiple
+passes over the data, but because of it. 
+Marpa regularly substitutes
+two fast O(<var>n</var>) passes for a single
+O(<var>n</var> log <var>n</var>) pass. 
+Marpa's proliferation of time objects is in
+keeping with its multi-pass approach.
+
+   <p>Bocage objects come at no cost,
+even for unambiguous parses,
+because the same pass which creates the bocage
+also deals with other issues which are of major
+significance for unambiguous parses. 
+It is the post-processing of the bocage pass
+that enables Marpa to do both left-
+and right-recursion in linear time.
+
+   <p>Of the various objects, the best
+case for elimination is of the
+ordering object. 
+In many cases, the ordering is trivial. 
+Either the parse is unambiguous, or the
+application does not care about the order in
+which parses are returned. 
+But while it would be easy to add an option
+to bypass creation of an ordering object,
+there is little to be gained from it. 
+When the ordering is trivial,
+its overhead is very small &mdash;
+essentially a handful of subroutine calls. 
+Many orderings accomplish nothing,
+but these cost next to nothing.
+
+   <p>Tree objects come at minimal cost to unambiguous grammars,
+because the same pass that allows iteration through multiple
+parse trees does the tree traversal. 
+This eliminates much of the work that otherwise would
+need to be done in
+the valuation time object. 
+In the current implement, the valuation time object
+needs only to step through a sequence already determined
+in the tree iterator.
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

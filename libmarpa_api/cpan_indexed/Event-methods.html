@@ -1,15 +1,16 @@
 <html lang="en">
 <head>
-<title>Grammar events - Libmarpa 2.14.0</title>
+<title>Event methods - Libmarpa 2.16.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.14.0">
+<meta name="description" content="Libmarpa 2.16.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
-<link rel="prev" href="Grammar-precomputation.html#Grammar-precomputation" title="Grammar precomputation">
+<link rel="up" href="Events.html#Events" title="Events">
+<link rel="prev" href="Events-overview.html#Events-overview" title="Events overview">
+<link rel="next" href="Event-codes.html#Event-codes" title="Event codes">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual is for Libmarpa 2.14.0.
+This manual is for Libmarpa 2.16.0.
 Copyright (C) 2012 Jeffrey Kegler.
 
      Permission is granted to copy, distribute and/or modify this
@@ -32,25 +33,22 @@ Copyright (C) 2012 Jeffrey Kegler.
 </head>
 <body>
 <div class="node">
-<a name="Grammar-events"></a>
+<a name="Event-methods"></a>
 <p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Grammar-precomputation.html#Grammar-precomputation">Grammar precomputation</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">Grammar methods</a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Event-codes.html#Event-codes">Event codes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Events-overview.html#Events-overview">Events overview</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Events.html#Events">Events</a>
 <hr>
 </div>
 
-<h3 class="section">11.9 Grammar events</h3>
+<h3 class="section">18.2 Methods</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Event_Type <b>marpa_g_event</b> (<var>Marpa_Grammar g, Marpa_Event* event, int ix</var>)<var><a name="index-marpa_005fg_005fevent-47"></a></var><br>
-<blockquote><p>This method provides access to the events generated
-by the <code>marpa_g_precompute()</code> method. 
-On success,
-the data for the <var>ix</var>'th event is placed
-in the location pointed to by <var>event</var>. 
-On failure,
-the locations pointed to by <var>event</var>
-are not changed.
+&mdash; Function: Marpa_Event_Type <b>marpa_g_event</b> (<var>Marpa_Grammar g, Marpa_Event* event, int ix</var>)<var><a name="index-marpa_005fg_005fevent-106"></a></var><br>
+<blockquote><p>On success,
+the type of the <var>ix</var>'th event is returned
+and the data for the <var>ix</var>'th event is placed
+in the location pointed to by <var>event</var>.
 
         <p>Event indexes are in sequence. 
 Valid events will be in the range from 0 to <var>n</var>,
@@ -63,16 +61,19 @@ method.
 If there is no <var>ix</var>'th event,
 if <var>ix</var> is negative,
 or on other failure, &minus;2. 
+On failure,
+the locations pointed to by <var>event</var>
+are not changed. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_event_count</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005fevent_005fcount-48"></a></var><br>
+&mdash; Function: int <b>marpa_g_event_count</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005fevent_005fcount-107"></a></var><br>
 <blockquote><p>Return value:  On success, the number of events. 
 On failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>marpa_g_event_value</b> (<var>Marpa_Event* event</var>)<var><a name="index-marpa_005fg_005fevent_005fvalue-49"></a></var><br>
+&mdash; Macro: int <b>marpa_g_event_value</b> (<var>Marpa_Event* event</var>)<var><a name="index-marpa_005fg_005fevent_005fvalue-108"></a></var><br>
 <blockquote><p>This macro provides access to the &ldquo;value&rdquo; of the event. 
 The semantics of the value varies according to the type
 of the event, and is described in the section on event

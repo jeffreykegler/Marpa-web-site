@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Recognizer life cycle mutators - Libmarpa 2.14.0</title>
+<title>Recognizer life cycle mutators - Libmarpa 2.16.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.14.0">
+<meta name="description" content="Libmarpa 2.16.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
@@ -10,7 +10,7 @@
 <link rel="next" href="Location-accessors.html#Location-accessors" title="Location accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual is for Libmarpa 2.14.0.
+This manual is for Libmarpa 2.16.0.
 Copyright (C) 2012 Jeffrey Kegler.
 
      Permission is granted to copy, distribute and/or modify this
@@ -44,7 +44,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-meth
 <h3 class="section">12.4 Life cycle mutators</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-53"></a></var><br>
+&mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-50"></a></var><br>
 <blockquote><p>Makes <var>r</var> ready to accept input.
 
         <p>Return value:  On success, a non-negative value. 
@@ -52,7 +52,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_alternative</b> (<var>Marpa_Recognizer r, Marpa_Symbol_ID token_id, int value, int length</var>)<var><a name="index-marpa_005fr_005falternative-54"></a></var><br>
+&mdash; Function: int <b>marpa_r_alternative</b> (<var>Marpa_Recognizer r, Marpa_Symbol_ID token_id, int value, int length</var>)<var><a name="index-marpa_005fr_005falternative-51"></a></var><br>
 <blockquote><p>Reads a token into <var>r</var>. 
 The token will start at the current earleme. 
 Libmarpa allows tokens to be ambiguous, to be of
@@ -169,7 +169,7 @@ On failure, some other error code.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Earleme <b>marpa_r_earleme_complete</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearleme_005fcomplete-55"></a></var><br>
+&mdash; Function: Marpa_Earleme <b>marpa_r_earleme_complete</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearleme_005fcomplete-52"></a></var><br>
 <blockquote><p>This method does the final processing for the current earleme. 
 It then advances the current earleme by one. 
 Note that <code>marpa_r_earleme_complete()</code> may be called
@@ -210,9 +210,7 @@ be at least as interested in the events as those
 that succeed.
 
         <p><code>MARPA_EVENT_EXHAUSTED</code> indicates that the parse is
-exhausted &mdash; that no input will be accepted at later earlemes. 
-Note that an exhausted parse can be a successful one &mdash; it
-just cannot succeed at a later earleme than the current one.
+exhausted &mdash; that no input will be accepted at later earlemes.
 
         <p>The <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event
 indicates that an application-settable threshold
@@ -222,6 +220,33 @@ but when the default threshold is exceeded,
 it means that it is very likely
 that the time and space resources consumed by
 the parse will prove excessive.
+
+        <p>Note that an exhausted parse may be returned
+as a failure,
+or it may be an event returned on success, depending on the
+circumstances. 
+If <code>marpa_r_earleme_complete()</code> is called
+with the furthest earleme equal to the current
+earleme,
+a failure will result
+whose error code is <code>MARPA_ERR_PARSE_EXHAUSTED</code>. 
+A failure of this sort can happen if the last
+call to
+<code>marpa_r_earleme_complete()</code> left the current
+earleme equal to the furthest earleme,
+and no alternatives were added at the current earleme. 
+Note that when a parse fails due to
+exhaustion, it may have succeeded at earlier earlemes.
+
+        <p>On the other hand, a parse can be exhausted on success. 
+In this case, a new Earley set is created,
+and the earleme advanced,
+but no input will be possible at the new current
+earleme. 
+It is quite common for a parse to accept no
+more input when it succeeds. 
+Many practical grammars are designed so that a
+successful parse cannot be extended.
 
         <p>Return value:  On success, the number of events generated. 
 On failure, &minus;2. 

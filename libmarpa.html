@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Marpa by jeffreykegler</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Libmarpa</h1>
+	<p class="view">
+	<a href="http://jeffreykegler.github.com/Marpa/libmarpa_api/cpan_indexed/index.html">
+	The Libmarpa API document (HTML)</a>.
+	</p>
+	<p class="view">
+	PDF versions of
+	the API docs for the most recent releases
+	of Libmarpa
+	can be found on
+	<a href="https://github.com/jeffreykegler/Marpa--R2/downloads">
+	Github's Marpa::R2 downloads page</a>.
+      </header>
+      <section>
+        <h2>About Libmarpa</h2>
+	<p>
+	Libmarpa is the C language library that implements the core of Marpa.
+	It is part of
+	<a href="https://metacpan.org/module/Marpa::R2">
+	Marpa::R2</a>,
+	a Perl CPAN module.
+	For the moment,
+	this entanglement makes sense --
+	all of Libmarpa's tests are in Perl, and you really don't want
+	to install Libmarpa without testing it
+	on your configuration.
+        <h2>Installing Libmarpa</h2>
+	<p>Libmarpa's only requirements are Perl 5.10 and a C90 compiler.
+	To install Libmarpa:
+	<ul>
+	<li><p>
+	Download, install and test Marpa::R2.  Please do not skip the testing.
+	<li><p>In the Marpa::R2 distribution file will be the file <code>Marpa-R2-N.NNNNNN/r2/libmarpa.tar</code>,
+	where N.NNNNNN is your Marpa::R2 version number.
+	Assuming that your Marpa::R2 distribution came as a tar file,
+	that means the Libmarpa comes as a tar file inside a tar file.
+	<li><p>
+	The Libmarpa tar file is a product of the GNU autotools.
+	I went to some trouble to keep it very "vanilla",
+	so that it should have all the standard targets
+	and install in all the usual ways.
+	<li><p>
+	The Libmarpa API document is online as
+	<a href="http://jeffreykegler.github.com/Marpa/libmarpa_api/cpan_indexed/index.html">
+	HTML</a>.
+	PDF's of the Libmarpa API docs for the most recent versions
+	can be found on <a href="https://github.com/jeffreykegler/Marpa--R2/downloads">
+	Github's Marpa::R2 downloads page</a>.
+	Sources for the Libmarpa documentation are included
+	in the Marpa::R2 distribution.
+	</ul>
+	<h3>The name of the tar file</h3>
+	<p>
+	Some may have noted, on reading my claim that
+	<code>libmarpa.tar</code> is a very standard GNU
+	autotools distribution file,
+	that its name is not GNU autotools standard --
+	it is not a compressed file,
+	and it does not have the version number as part of its name.
+	<code>libmarpa.tar</code> is not compressed because currently it is
+	delivered inside another tar file, one which is almost always compressed.
+	And the name is version-less for the convenience of the Perl build software.
+	<p>
+	The contents of <code>libmarpa.tar</code> are completely
+	autotools standard,
+	so that if you want
+	a more conventionally named distribution file,
+	the shell command "<code>./configure; make dist</code>"
+	will produce one.
+	<h2>Libmarpa and Perl</h2>
+	<p>
+	Libmarpa can run and even build on a system without Perl.
+	It has no runtime, build-time or compile-time dependence on Perl.
+	Testing, however, does require Perl and I strongly discourage
+	running Libmarpa in a configuration on which it has not been
+	tested.
+	<h2>Libmarpa internals</h2>
+	<p>
+	The source files for Libmarpa come as part of the Marpa::R2 distribution,
+	and can also be found in
+	<a href="https://github.com/jeffreykegler/Marpa--R2">
+	the Marpa::R2 github repository</a>.
+	I worked hard to limit the prerequisites needed to
+	configure, compile and run Libmarpa.
+	Working on Libmarpa's internals is another matter.
+	Libmarpa is literate programming --
+	and work on Libmarpa's internals requires,
+	among other things,
+	Knuth's CWeb and therefore Tex.
+	<p>
+	Libmarpa is highly mathematical code,
+	and its internals are, frankly, quite daunting.
+	As an algorithm, Marpa has its moments of beauty,
+	but nobody can say it achieves that beauty through simplicity.
+	I once had hopes that Marpa would have the powerful,
+	simple beauty of a late Picasso.
+	But Angkor Wat and Hieronymous Bosch have their own beauty.
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jeffreykegler">jeffreykegler</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>

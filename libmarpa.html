@@ -17,18 +17,32 @@
       <header>
         <h1>Libmarpa</h1>
 	<p class="view">
-	The Libmarpa API document as
 	<a href="http://jeffreykegler.github.com/Marpa/libmarpa_api/cpan_indexed/index.html">
-	HTML</a> or
-	<a href="https://github.com/downloads/jeffreykegler/Marpa--R2/api-v2.14.0.pdf">
-	PDF</a>
+	The Libmarpa API document (HTML)</a>.
 	</p>
+	<p class="view">
+	PDF versions of
+	the API docs for the most recent releases
+	of Libmarpa
+	can be found on
+	<a href="https://github.com/jeffreykegler/Marpa--R2/downloads">
+	Github's Marpa::R2 downloads page</a>.
+	</p>
+	For those who want a look at the internals,
+	<a href="https://github.com/jeffreykegler/Marpa--R2">
+	the Marpa::R2 github repository</a>
+	contains the source code and development environment
+	for Libmarpa.
+	This is, frankly, very daunting stuff.
       </header>
       <section>
         <h2>About Libmarpa</h2>
 	<p>
 	Libmarpa is the C language library that implements the core of Marpa.
-	It is part of Marpa::R2, a Perl CPAN module.
+	It is part of
+	<a href="https://metacpan.org/module/Marpa::R2">
+	Marpa::R2</a>,
+	a Perl CPAN module.
 	For the moment,
 	this entanglement makes sense --
 	all of Libmarpa's tests are in Perl, and you really don't want
@@ -50,11 +64,12 @@
 	so that it should have all the standard targets
 	and install in all the usual ways.
 	<li><p>
-	The Libmarpa API document is online in
+	The Libmarpa API document is online as
 	<a href="http://jeffreykegler.github.com/Marpa/libmarpa_api/cpan_indexed/index.html">
-	HTML</a> and
-	<a href="https://github.com/downloads/jeffreykegler/Marpa--R2/api-v2.14.0.pdf">
-	PDF</a> form.
+	HTML</a>.
+	PDF's of the Libmarpa API docs for the most recent versions
+	can be found on <a href="https://github.com/jeffreykegler/Marpa--R2/downloads">
+	Github's Marpa::R2 downloads page</a>.
 	Sources for the Libmarpa documentation are included
 	in the Marpa::R2 distribution.
 	</ul>
@@ -62,19 +77,48 @@
 	<p>
 	Some may have noted, on reading my claim that
 	<code>libmarpa.tar</code> is a very standard GNU
-	distribution file,
-	that it's name is not standard --
+	autotools distribution file,
+	that its name is not GNU autotools standard --
 	it is not a compressed file,
 	and it does not have the version number as part of its name.
 	<code>libmarpa.tar</code> is not compressed because currently it is
 	delivered inside another tar file, one which is almost always compressed.
 	And the name is version-less for the convenience of the Perl build software.
 	<p>
-	The contents of <code>libmarpa.tar</code> are completely standard,
+	The contents of <code>libmarpa.tar</code> are completely
+	autotools standard,
 	so that if you want
 	a more conventionally named distribution file,
 	the shell command "<code>./configure; make dist</code>"
 	will produce one.
+	<h3>Libmarpa and Perl</h3>
+	<p>
+	Libmarpa can run and even build on a system without Perl.
+	It has no runtime, build-time or compile-time dependence on Perl.
+	Testing, however, does require Perl and I strongly discourage
+	running Libmarpa in a configuration on which it has not been
+	tested.
+	<h2>Libmarpa internals</h2>
+	<p>
+	The source files for Libmarpa come as part of the Marpa::R2 distribution,
+	and can also be found in
+	<a href="https://github.com/jeffreykegler/Marpa--R2">
+	the Marpa::R2 github repository</a>.
+	I worked hard to limit the prerequisites needed to
+	configure, compile and run Libmarpa.
+	Working on Libmarpa's internals is another matter.
+	Libmarpa is literate programming --
+	and work on Libmarpa's internals requires,
+	among other things,
+	Knuth's CWeb and therefore Tex.
+	<p>
+	Libmarpa is highly mathematical code,
+	and its internals are, frankly, quite daunting.
+	As an algorithm, Marpa has its moments of beauty,
+	but nobody can say it achieves that beauty through simplicity.
+	I once had hopes that Marpa would have the powerful,
+	simple beauty of a late Picasso.
+	But Angkor Wat and Hieronymous Bosch have their own beauty.
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jeffreykegler">jeffreykegler</a></p>

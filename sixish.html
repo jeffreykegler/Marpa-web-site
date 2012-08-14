@@ -1,0 +1,124 @@
+<h1>The Marpa Sixish interface</h1>
+<h2>Why A Perl 6-ish interface?</h2>
+<p>The Perl 6 regexes represents careful, detailed
+and experienced thinking on representing
+complex BNF grammars
+to a modern programming audience.
+The team behind it has an unsurpassed record
+when it comes to language interfaces.
+It makes sense to for Marpa
+to leverage their work.
+<h2>About this document</h2>
+<p>At the moment, these
+are mainly notes to myself,
+while I take the Sixish interface through its
+early prototypes.
+<h2>The first prototypes</h2>
+<p>
+The first prototype will compile and match, unanchored,
+the following regex
+<code><pre>
+'(' &lt;~~&gt;* ')'
+</pre></code>
+It will also have a syntax sufficient to express any
+BNF grammar,
+but otherwise minimal.
+<p>
+The second prototype will be a self-compiling superset of
+the first.
+<h2>Syntax for the first prototype</h2>
+The following syntax is a description of the first prototype.
+It is written in a half-formal half-intuitive form,
+This form may resemble where Sixish goes,
+but it is not necessarily that of the second
+prototype.
+For the moment, whitespace issues are left to the reader's imagination.
+<code><pre>
+    &lt;sixish grammar&gt; ::= &lt;first sixish rule&gt; ';'?
+    &lt;sixish grammar&gt; ::= &lt;first sixish rule&gt; ';' &lt;sixish rule&gt;+
+    &lt;first sixish rule&gt; ::= &lt;sixish rule&gt;
+    &lt;first sixish rule&gt; ::= &lt;pattern&gt;
+    &lt;sixish rule&gt; ::= 'regex' &lt;ident&gt; '{' &lt;pattern&gt; '}'
+    &lt;pattern&gt; ::= &lt;pattern element&gt;*
+    &lt;pattern element&gt; ::= &lt;quantified atom&gt;
+    &lt;ident> ::= [ &lt;alpha> | _ ] \w*
+    &lt;hexint&gt; ::=  &lt;[ 0..9 a..f A..F ]&gt;+ [ _ &lt;[ 0..9 a..f A..F ]&gt;+ ]*
+    &lt;atom&gt; ::= &lt;subrule&gt;
+    &lt;atom&gt; ::= \w
+    &lt;atom&gt; ::= &lt;literal&gt;
+    &lt;quantified atom&gt; ::= &lt;atom&gt; &lt;quantifier&gt;
+    &lt;quantified atom&gt; ::= &lt;atom&gt;
+    &lt;subrule&gt; ::= '&lt;' &lt;ident&gt; '&gt;'
+</pre></code>
+A six-ish grammar will be a series of one or more rules,
+separated by a ';' character.
+Rules have a lhs and a rhs.
+The RHS consists of zero or more RHS elements,
+A RHS element is one of:
+<ul>
+<li>A quoted literal, in single quotes.
+Between single quotes may be any character other than an unescaped single
+<li>A unquoted literal, which must be a string of letters or digits.
+<li><code>ident</code>, where <code>ident</code> is the lhs
+of a rule.
+<li><code>&lt;~~&gt;</code>, which is idential to 
+<code>lhs</code>, where <code>lhs</code> is the left hand
+side symbol of the current rule.
+<li>Repetition of one of the previous zero or more times,
+expressed by the <code>*</code> quantifier.
+</ul>
+<p>Whitespace may be interspersed througout.  It is not
+significant, except inside literals.
+<p>
+The first rule, and only the first rule,
+may consist of only a RHS.
+When this is the case a LHS of <code>TARGET</code>
+is assumed.
+A top-level rule will be the one with
+<code>TARGET</code> as its LHS, explicitly or
+implicitly.
+There may be more than one such rule.
+<h2>Long term differences between Sixish and Perl 6</h2>
+<p>
+Marpa and LL differ heavily in their power,
+abilities, and approach.
+It does not make sense for
+the Sixish interface to be either
+a proper subset or superset of Perl 6.
+<p>
+<ul>
+<li>Lookahead:
+An LL-based parser like the Perl 6 one really cannot function without
+lookahed.
+Marpa on the other hand,
+does no lookahead.
+It is O(n) for all LR-regular grammars without lookahead.
+It may, however, be interesting to try to incorporate the Ruby
+Slippers into the Sixish interface.
+But most use of lookahead by Perl 6 is to get around limitations
+that Marpa does have.
+<li>Backtracking:
+The story here is similar to the one for lookahead.
+Marpa does non-deterministic general BNF parsing without having to
+backtrack.
+Backtracking could be added to the Sixish interface,
+but most use of lookahead by Perl 6 is to get around limitations
+that Marpa does have.
+In the Marpa context,
+backtracking is an expensive way to accomplish things
+that can be done more easily.
+<li>A PEG-style "pecking order"
+A PEG style pecking order
+will almost certainly never be implemented in the Sixish
+interface.
+Lookahead and backtracking are of limited use in
+the Marpa context,
+but there can be some applications for which they may be
+convenient.
+With PEG-style conflict resolution, on the other hand,
+it becomes difficult to know exactly what the language is
+that you are parsing.
+(This is sometimes also a problem for backtracking.)
+PEG-style disambiguation are a necessary evil in the LL context.
+In the Marpa context, it is an unnecessary evil.
+</ul>

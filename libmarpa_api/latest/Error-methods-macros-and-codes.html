@@ -1,13 +1,12 @@
 <html lang="en">
 <head>
-<title>Methods - Libmarpa 2.17.1</title>
+<title>Error methods macros and codes - Libmarpa 2.17.1</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="Libmarpa 2.17.1">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Error-macros-and-codes.html#Error-macros-and-codes" title="Error macros and codes">
-<link rel="prev" href="Error-macros-and-codes.html#Error-macros-and-codes" title="Error macros and codes">
-<link rel="next" href="Error-Macros.html#Error-Macros" title="Error Macros">
+<link rel="prev" href="Events.html#Events" title="Events">
+<link rel="next" href="Design-notes.html#Design-notes" title="Design notes">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual is for Libmarpa 2.17.1.
@@ -34,41 +33,22 @@ Libmarpa is alpha software.
 </head>
 <body>
 <div class="node">
-<a name="Methods"></a>
+<a name="Error-methods-macros-and-codes"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Error-Macros.html#Error-Macros">Error Macros</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Error-macros-and-codes.html#Error-macros-and-codes">Error macros and codes</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Error-macros-and-codes.html#Error-macros-and-codes">Error macros and codes</a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Design-notes.html#Design-notes">Design notes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Events.html#Events">Events</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <hr>
 </div>
 
-<h3 class="section">19.1 Methods</h3>
+<h2 class="chapter">19 Error methods, macros and codes</h2>
 
-<div class="defun">
-&mdash; Function: Marpa_Error_Code <b>marpa_g_error</b> (<var> Marpa_Grammar g, const char** p_error_string</var>)<var><a name="index-marpa_005fg_005ferror-116"></a></var><br>
-<blockquote><p>When a method fails,
-this method allows the application to read
-the error code. 
-<var>p_error_string</var> is reserved for use by
-the internals. 
-Applications should set it to <code>NULL</code>.
-
-        <p>Return value: The last error code from a Libmarpa method. 
-Always succeeds. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: Marpa_Error_Code <b>marpa_g_error_clear</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005ferror_005fclear-117"></a></var><br>
-<blockquote>
-        <p>Sets the error code
-to <code>MARPA_ERR_NONE</code>. 
-Not often used,
-but now and then it can be useful
-to force the error code to a known state.
-
-        <p>Return value: <code>MARPA_ERR_NONE</code>. 
-Always succeeds. 
-</p></blockquote></div>
+<ul class="menu">
+<li><a accesskey="1" href="Error-methods.html#Error-methods">Error methods</a>
+<li><a accesskey="2" href="Error-Macros.html#Error-Macros">Error Macros</a>
+<li><a accesskey="3" href="External-error-codes.html#External-error-codes">External error codes</a>
+<li><a accesskey="4" href="Internal-error-codes.html#Internal-error-codes">Internal error codes</a>
+</ul>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

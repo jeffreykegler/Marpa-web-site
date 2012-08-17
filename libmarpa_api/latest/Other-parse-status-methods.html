@@ -9,14 +9,18 @@
 <link rel="prev" href="Location-accessors.html#Location-accessors" title="Location accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual is for Libmarpa 2.17.1.
+This manual (16 August 2012)
+is for Libmarpa 2.17.1.
+
 Copyright (C) 2012 Jeffrey Kegler.
+
 Libmarpa is alpha software.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
-     Version 1.2 or any later version published by the Free Software
-     Foundation.
+     Version 1.3 or any later version published by the Free Software
+     Foundation.  A copy of the license is included in the section
+     entitled ``GNU Free Documentation License.''
    -->
 <meta http-equiv="Content-Style-Type" content="text/css">
 <style type="text/css"><!--
@@ -43,8 +47,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-meth
 <h3 class="section">12.6 Other parse status methods</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-57"></a></var><br>
-&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-58"></a></var><br>
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-56"></a></var><br>
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-57"></a></var><br>
 <blockquote><p>These methods, respectively, report and set the Earley item warning threshold. 
 The <dfn>Earley item warning threshold</dfn>
 is a number that is compared with
@@ -69,7 +73,7 @@ Always succeeds.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_expected_symbol_event_set</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fr_005fexpected_005fsymbol_005fevent_005fset-59"></a></var><br>
+&mdash; Function: int <b>marpa_r_expected_symbol_event_set</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fr_005fexpected_005fsymbol_005fevent_005fset-58"></a></var><br>
 <blockquote><p>Sets the &ldquo;expected symbol event bit&rdquo; for <var>symbol_id</var> to <var>value</var>. 
 A recognizer event is created whenever
 symbol <var>symbol_id</var> is expected at the current earleme. 
@@ -91,7 +95,7 @@ or on other failure.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_terminals_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID* buffer</var>)<var><a name="index-marpa_005fr_005fterminals_005fexpected-60"></a></var><br>
+&mdash; Function: int <b>marpa_r_terminals_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID* buffer</var>)<var><a name="index-marpa_005fr_005fterminals_005fexpected-59"></a></var><br>
 <blockquote><p>Returns a list of the ID's of the symbols
 that are acceptable as tokens
 at the current earleme. 
@@ -109,7 +113,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_is_exhausted</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fis_005fexhausted-61"></a></var><br>
+&mdash; Function: int <b>marpa_r_is_exhausted</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fis_005fexhausted-60"></a></var><br>
 <blockquote><p>A parser is &ldquo;exhausted&rdquo; if it cannot accept any more input. 
 Both successful and failed parses can be exhausted. 
 In many grammars,

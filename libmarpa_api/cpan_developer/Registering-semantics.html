@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Registering semantics - Libmarpa 2.17.0</title>
+<title>Registering semantics - Libmarpa 2.17.2</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.17.0">
+<meta name="description" content="Libmarpa 2.17.2">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
@@ -10,13 +10,18 @@
 <link rel="next" href="Stepping-through-the-valuator.html#Stepping-through-the-valuator" title="Stepping through the valuator">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual is for Libmarpa 2.17.0.
+This manual (17 August 2012)
+is for Libmarpa 2.17.2.
+
 Copyright (C) 2012 Jeffrey Kegler.
+
+Libmarpa is alpha software.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
-     Version 1.2 or any later version published by the Free Software
-     Foundation;
+     Version 1.3 or any later version published by the Free Software
+     Foundation.  A copy of the license is included in the section
+     entitled ``GNU Free Documentation License.''
    -->
 <meta http-equiv="Content-Style-Type" content="text/css">
 <style type="text/css"><!--
@@ -44,8 +49,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Value-methods.html#Value-methods">Value
 <h3 class="section">17.7 Registering semantics</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_v_symbol_is_valued</b> (<var> Marpa_Value v, Marpa_Symbol_ID symid </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued-82"></a></var><br>
-&mdash; Function: int <b>marpa_v_symbol_is_valued_set</b> (<var> Marpa_Value v, Marpa_Symbol_ID symid, int value </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued_005fset-83"></a></var><br>
+&mdash; Function: int <b>marpa_v_symbol_is_valued</b> (<var> Marpa_Value v, Marpa_Symbol_ID symid </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued-81"></a></var><br>
+&mdash; Function: int <b>marpa_v_symbol_is_valued_set</b> (<var> Marpa_Value v, Marpa_Symbol_ID symid, int value </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued_005fset-82"></a></var><br>
 <blockquote><p>These methods, respectively,
 discover and set to <var>value</var>,
 the valued status for symbol <var>symid</var>. 
@@ -63,8 +68,8 @@ or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_v_rule_is_valued</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued-84"></a></var><br>
-&mdash; Function: int <b>marpa_v_rule_is_valued_set</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id, int value </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued_005fset-85"></a></var><br>
+&mdash; Function: int <b>marpa_v_rule_is_valued</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued-83"></a></var><br>
+&mdash; Function: int <b>marpa_v_rule_is_valued_set</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id, int value </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued_005fset-84"></a></var><br>
 <blockquote><p>These methods respectively,
 discover and set to <var>value</var>,
 the valued status

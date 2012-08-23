@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Tree reference counting - Libmarpa 2.16.0</title>
+<title>Tree reference counting - Libmarpa 2.18.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.16.0">
+<meta name="description" content="Libmarpa 2.18.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Tree-methods.html#Tree-methods" title="Tree methods">
@@ -10,13 +10,18 @@
 <link rel="next" href="Tree-iteration.html#Tree-iteration" title="Tree iteration">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual is for Libmarpa 2.16.0.
+This manual (22 August 2012)
+is for Libmarpa 2.18.0.
+
 Copyright (C) 2012 Jeffrey Kegler.
+
+Libmarpa is alpha software.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
-     Version 1.2 or any later version published by the Free Software
-     Foundation;
+     Version 1.3 or any later version published by the Free Software
+     Foundation.  A copy of the license is included in the section
+     entitled ``GNU Free Documentation License.''
    -->
 <meta http-equiv="Content-Style-Type" content="text/css">
 <style type="text/css"><!--
@@ -44,7 +49,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Tree-methods.html#Tree-methods">Tree me
 <h3 class="section">16.3 Reference counting</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Tree <b>marpa_t_ref</b> (<var>Marpa_Tree t</var>)<var><a name="index-marpa_005ft_005fref-75"></a></var><br>
+&mdash; Function: Marpa_Tree <b>marpa_t_ref</b> (<var>Marpa_Tree t</var>)<var><a name="index-marpa_005ft_005fref-74"></a></var><br>
 <blockquote><p>Increases the reference count by 1. 
 Not needed by most applications.
 
@@ -54,7 +59,7 @@ On failure, <code>NULL</code>.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: void <b>marpa_t_unref</b> (<var>Marpa_Tree t</var>)<var><a name="index-marpa_005ft_005funref-76"></a></var><br>
+&mdash; Function: void <b>marpa_t_unref</b> (<var>Marpa_Tree t</var>)<var><a name="index-marpa_005ft_005funref-75"></a></var><br>
 <blockquote><p>Decreases the reference count by 1,
 destroying <var>t</var> once the reference count reaches
 zero. 

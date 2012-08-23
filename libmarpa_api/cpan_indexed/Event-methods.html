@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Event methods - Libmarpa 2.16.0</title>
+<title>Event methods - Libmarpa 2.18.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.16.0">
+<meta name="description" content="Libmarpa 2.18.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Events.html#Events" title="Events">
@@ -10,13 +10,18 @@
 <link rel="next" href="Event-codes.html#Event-codes" title="Event codes">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual is for Libmarpa 2.16.0.
+This manual (22 August 2012)
+is for Libmarpa 2.18.0.
+
 Copyright (C) 2012 Jeffrey Kegler.
+
+Libmarpa is alpha software.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
-     Version 1.2 or any later version published by the Free Software
-     Foundation;
+     Version 1.3 or any later version published by the Free Software
+     Foundation.  A copy of the license is included in the section
+     entitled ``GNU Free Documentation License.''
    -->
 <meta http-equiv="Content-Style-Type" content="text/css">
 <style type="text/css"><!--
@@ -44,7 +49,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Events.html#Events">Events</a>
 <h3 class="section">18.2 Methods</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Event_Type <b>marpa_g_event</b> (<var>Marpa_Grammar g, Marpa_Event* event, int ix</var>)<var><a name="index-marpa_005fg_005fevent-106"></a></var><br>
+&mdash; Function: Marpa_Event_Type <b>marpa_g_event</b> (<var>Marpa_Grammar g, Marpa_Event* event, int ix</var>)<var><a name="index-marpa_005fg_005fevent-105"></a></var><br>
 <blockquote><p>On success,
 the type of the <var>ix</var>'th event is returned
 and the data for the <var>ix</var>'th event is placed
@@ -67,13 +72,13 @@ are not changed.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_event_count</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005fevent_005fcount-107"></a></var><br>
+&mdash; Function: int <b>marpa_g_event_count</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005fevent_005fcount-106"></a></var><br>
 <blockquote><p>Return value:  On success, the number of events. 
 On failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>marpa_g_event_value</b> (<var>Marpa_Event* event</var>)<var><a name="index-marpa_005fg_005fevent_005fvalue-108"></a></var><br>
+&mdash; Macro: int <b>marpa_g_event_value</b> (<var>Marpa_Event* event</var>)<var><a name="index-marpa_005fg_005fevent_005fvalue-107"></a></var><br>
 <blockquote><p>This macro provides access to the &ldquo;value&rdquo; of the event. 
 The semantics of the value varies according to the type
 of the event, and is described in the section on event

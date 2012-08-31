@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Sequences - Libmarpa 2.17.2</title>
+<title>Sequences - Libmarpa 2.19.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.17.2">
+<meta name="description" content="Libmarpa 2.19.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Ranks.html#Ranks" title="Ranks">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (17 August 2012)
-is for Libmarpa 2.17.2.
+This manual (30 August 2012)
+is for Libmarpa 2.19.0.
 
 Copyright (C) 2012 Jeffrey Kegler.
 
@@ -59,6 +59,8 @@ is set, 1.
 On success, if rule <var>rule_id</var>
 is a sequence rule where the proper separation flag
 is <strong>not</strong> set, 0. 
+If <var>rule_id</var> is well-formed, but there is no
+such rule, -1. 
 On failure, &minus;2. 
 </p></blockquote></div>
 
@@ -68,6 +70,8 @@ On failure, &minus;2.
 On success,
 if rule <var>rule_id</var> is a sequence rule, 1;
 otherwise, 0. 
+If <var>rule_id</var> is well-formed, but there is no
+such rule, -1. 
 On failure, &minus;2. 
 </p></blockquote></div>
 
@@ -137,14 +141,14 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_counted</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fcounted-38"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_counted</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fcounted-38"></a></var><br>
 <blockquote><p>A symbol is <dfn>counted</dfn>
 if it appears on the RHS of a sequence rule,
 or if it is used as
 the separator symbol of a sequence rule.
 
         <p>Return value: On success,
-1 if symbol <var>symid</var> is counted, 0 if not. 
+1 if symbol <var>sym_id</var> is counted, 0 if not. 
 On failure, &minus;2. 
 </p></blockquote></div>
     <script src="javascripts/scale.fix.js"></script>

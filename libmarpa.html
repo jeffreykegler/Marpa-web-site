@@ -1,34 +1,33 @@
-<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Marpa by jeffreykegler</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
+<head>
+<title>Libmarpa</title>
+<style type="text/css">
+   strong {font-weight: 700;}
+</style>
+</head>
+<body>
+<div id="header"
+  style="color:white;background-color:#38B0C0;padding:1em;clear:left;text-align:center;">
+<h1>Libmarpa</h1>
+</div>
+  <div id="menu" style="margin:0;padding:10px;width:150px;float:left;">
         <h1>Libmarpa</h1>
-	<p class="view">
+  <h3>Resources</h3>
+  <p><a href="http://www.jeffreykegler.com/">Jeffrey Kegler's website</p>
+  <p><a href="http://www.jeffreykegler.com/marpa">The Marpa website</p>
+	<p>
 	<a href="http://jeffreykegler.github.com/Marpa/libmarpa_api/cpan_indexed/index.html">
 	The Libmarpa API document (HTML)</a>.
 	</p>
-	<p class="view">
+	<p>
 	PDF versions of
 	the API docs for the most recent releases
 	of Libmarpa
 	can be found on
 	<a href="https://github.com/jeffreykegler/Marpa--R2/downloads">
 	Github's Marpa::R2 downloads page</a>.
-      </header>
-      <section>
+  </div>
+  <div id="content" style="margin-left:190px;border-left:2px solid #38B0C0;padding:25px;">
         <h2>About Libmarpa</h2>
 	<p>
 	Libmarpa is the C language library that implements the core of Marpa.
@@ -48,7 +47,7 @@
 	<li><p>
 	Download, install and test Marpa::R2.  Please do not skip the testing.
 	<li><p>In the Marpa::R2 distribution file will be the file <code>Marpa-R2-N.NNNNNN/r2/libmarpa.tar</code>,
-	where N.NNNNNN is your Marpa::R2 version number.
+	where <tt>N.NNNNNN</tt> is the Marpa::R2 version number.
 	Assuming that your Marpa::R2 distribution came as a tar file,
 	that means the Libmarpa comes as a tar file inside a tar file.
 	<li><p>
@@ -56,29 +55,42 @@
 	I went to some trouble to keep it very "vanilla",
 	so that it should have all the standard targets
 	and install in all the usual ways.
+	</ul>
+	<h3>Documentation</h3>
+	<ul>
 	<li><p>
 	The Libmarpa API document is online as
 	<a href="http://jeffreykegler.github.com/Marpa/libmarpa_api/cpan_indexed/index.html">
 	HTML</a>.
+	<li><p>
 	PDF's of the Libmarpa API docs for the most recent versions
 	can be found on <a href="https://github.com/jeffreykegler/Marpa--R2/downloads">
 	Github's Marpa::R2 downloads page</a>.
+	<li><p>
 	Sources for the Libmarpa documentation are included
-	in the Marpa::R2 distribution.
+	in the Marpa::R2 distribution,
+	in the file <code>Marpa-R2-N.NNNNNN/r2/libmarpa-doc.tar</code>,
+	where <tt>N.NNNNNN</tt> is the Marpa::R2 version number.
+	This documentation-only tar file is a product of the GNU autotools,
+	and was intentionally kept very "vanilla".
+	It should have all the standard targets and install in all the usual ways.
 	</ul>
-	<h3>The name of the tar file</h3>
+	<h3>More about the tar files</h3>
 	<p>
 	Some may have noted, on reading my claim that
-	<code>libmarpa.tar</code> is a very standard GNU
-	autotools distribution file,
-	that its name is not GNU autotools standard --
-	it is not a compressed file,
-	and it does not have the version number as part of its name.
-	<code>libmarpa.tar</code> is not compressed because currently it is
+	<code>libmarpa.tar</code> and <code>libmarpa-doc.tar</code>
+	are very standard GNU
+	autotools distribution files,
+	that their names are not GNU autotools standard --
+	they are not compressed files,
+	and the version number is not part of the names.
+	The tar files are not compressed because currently they are
 	delivered inside another tar file, one which is almost always compressed.
-	And the name is version-less for the convenience of the Perl build software.
+	And the names are version-less for the convenience of the Perl build software.
 	<p>
-	The contents of <code>libmarpa.tar</code> are completely
+	The contents of
+	<code>libmarpa.tar</code> and <code>libmarpa-doc.tar</code>
+	are completely
 	autotools standard,
 	so that if you want
 	a more conventionally named distribution file,
@@ -112,13 +124,9 @@
 	I once had hopes that Marpa would have the powerful,
 	simple beauty of a late Picasso.
 	But Angkor Wat and Hieronymous Bosch have their own beauty.
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/jeffreykegler">jeffreykegler</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
+</div>
+<div id="footer" style="border-top:thick solid #38B0C0;clear:left;padding:1em;">
+</div>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -129,6 +137,5 @@
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-
-  </body>
+</body>
 </html>

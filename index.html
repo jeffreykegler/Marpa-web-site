@@ -1,61 +1,159 @@
-<!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Marpa by jeffreykegler</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="alternate" title="Ocean of Awareness RSS" type="application/rss+xml" title="RSS" href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog/index.rss" />
+    <title>
+      The Marpa parser
+    </title>
+    <style type="text/css">
+      strong {font-weight: 700;}
+    </style>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Marpa</h1>
-        <p>Marpa web site</p>
-	<p class="view"><a href="http://jeffreykegler.github.com/Marpa/blog.html">
-	Blog posts
-	</a>
-	&nbsp;&nbsp;&nbsp;
-	An annotated list of my blog posts about Marpa.
-	</p>
-	<p class="view"><a href="http://jeffreykegler.github.com/Marpa/libmarpa.html">
-	Libmarpa</a>
-	&nbsp;&nbsp;&nbsp;
-	Libmarpa is a C library, and is the core of Marpa.
-	</p>
-	<p class="view"><a href="http://jeffreykegler.github.com/Marpa/developer.html">
-	Marpa internals</a>
-	&nbsp;&nbsp;&nbsp;
+    <div
+  style="color:white;background-color:#38B0C0;padding:1em;clear:left;text-align:center;">
+      <h1>
+        The Marpa parser
+      </h1>
+    </div>
+    <div style="margin:0;padding:10px 30px 10px 10px;width:150px;float:left;border-right:2px solid #38B0C0">
+      <h2>
+        Jeffrey Kegler's website for Marpa, his new parsing algorithm
+      </h2>
+      <h3>
+        Resources
+      </h3>
+      <p>
+        <a href="http://www.jeffreykegler.com/">
+          Jeffrey Kegler's website
+        </a>
+      <p>
+	<a href="https://twitter.com/jeffreykegler" class="twitter-follow-button" data-show-count="false">Follow @jeffreykegler</a>
+      </p>
+      <p>
+        The Ocean of Awareness blog:
+        <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog">
+          home page</a>,
+        <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog/metapages/chronological.html">
+          chronological index</a>,
+        and
+        <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog/metapages/annotated.html">
+          annotated index</a>.
+      </p>
+      <p>Distributions:
+      <a href="http://search.cpan.org/dist/Marpa-XS/">CPAN</a>
+      | <a href="https://metacpan.org/module/Marpa::XS">MetaCPAN</a></p>
+      <p>Mailing List (quite active):
+      <a href="https://groups.google.com/forum/?hl=en&amp;fromgroups#%21forum/marpa-parser">marpa-parser@googlegroups.com</a>
+      </p>
+      <p>Repository of stable code:
+      <a href="https://github.com/jeffreykegler/Marpa--XS">github</a>
+      Experimental repository:
+      <a href="https://github.com/jeffreykegler/Marpa--R2">github</a></p>
+
+    </div>
+    <div style="margin-left:190px;border-left:2px solid #38B0C0;padding:25px;">
+      I hope Marpa will become the standard for parsing languages that are too complex for regular expressions to handle.
+      Marpa's first stable release is
+      <a href="https://metacpan.org/module/Marpa::XS">
+        Marpa::XS</a>,
+      a C language extension of Perl.
+      <h2>What Marpa Does</h2>
+      <ul>
+        <li>
+          Marpa parses anything you can write in BNF, including ambiguous and even infinitely ambiguous grammars.
+        </li>
+        <li>
+          Marpa easily and efficiently handles both left- and right-recursion.
+        </li>
+        <li>
+          If a grammar is in one of the classes in practical use today, Marpa parses it in O(n) (linear) time.
+        </li>
+        <li>
+          Marpa never goes exponential. Worst case, even for wildly ambiguous grammars, is O(n<sup>3</sup>)
+	  (cubic) time.
+        </li>
+        <li>
+          Marpa's run-time error detection is revolutionary. Marpa has complete situational awareness. It knows at all times which rules it is attempting to apply, how far it has progressed in them, and exactly which tokens it can accept. And Marpa can communicate its situational awareness back to the application.
+        </li>
+        <li>
+          Marpa allows the application to efficiently retry rejected input. This, combined with its situational awareness, allows "Ruby Slippers" parsing: When an application has a token rejected, it can ask the parse engine which tokens would be acceptable. It can then create a virtual token that allows the parse to continue -- the application can make the parse engine's "wishes" come true. The Ruby Slippers are easy to use and surprisingly wide in their application.
+        </li>
+      </ul>
+      <h2>What Marpa is</h2>
+      <p>
+        Marpa is a new parsing
+        algorithm with a decades-long heritage. Its lineage starts
+        with the algorithm invented by Jay Earley. Marpa is the first
+        algorithm to combine the improvements to Earley's algorithm made by Joop
+        Leo with those discovered by John Aycock and R. Nigel Horspool. Marpa's
+        "situational awareness", and Ruby Slippers parsing, are a new feature.
+      </p>
+    <h2>
+      Posts about Marpa
+    </h2>
+    I blog about Marpa on my
+        <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog">
+      Ocean of Awareness blog
+    </a>
+    These posts contain a lot of examples, pointers, explanations, etc. about Marpa. I also talk a lot about the history of parsing, and some readers have found them useful just on that basis.
+    <h2>
+      Examples
+    </h2>
+    Here are some simple &amp; elegant examples of Marpa parsers that others have done:
+    <br />
+    <ul>
+      <li>
+        A
+        <a href="http://blogs.perl.org/users/wolfgang_kinkeldei/2011/12/trying-marpa-to-parse-css.html" target="_blank">
+          CSS parser
+        </a>
+        by Wolfgang Kinkeldei
+      </li>
+      <li>
+        A
+        <a href="https://metacpan.org/release/Graph-Easy-Marpa" target="_blank">
+          Graph::Easy parser
+        </a>
+        by Ron Savage
+      </li>
+      <li>
+        A
+        <a href="http://peterstuifzand.nl/2011/11/19/marpa-parser-for-parsing-marpa.html" target="_blank">
+          Marpa parser that converts a grammar into another Marpa parser
+        </a>
+        by Peter Stuifzand
+      </li>
+    </ul>
+    Here is a more ambitious one:
+    <br />
+    <ul>
+      <li>
+        <a href="https://metacpan.org/module/GraphViz2::Marpa" target="_blank">
+          Graphviz2::Marpa
+        </a>
+        by Ron Savage.
+        <a href="http://savage.net.au/Ron/html/graphviz2.marpa/Lexing.and.Parsing.with.Marpa.html" target="_blank">
+          This article
+        </a>
+        describes the writing process, and has tips for using Marpa.
+      </li>
+    </ul>
+    <h2>Theory</h2>
+    For those interested in the mathematics behind Marpa, there's
+    <a href="https://github.com/downloads/jeffreykegler/Marpa-theory/recce.pdf" target="_blank">
+      a paper with pseudocode, and proofs of correctness and of my complexity claims</a>.
+    <h2>Other resources</h2>
+	<p><a href="http://jeffreykegler.github.com/Marpa/libmarpa.html">
+	Libmarpa</a> is a C library, and is the core of Marpa.
+	<p><a href="http://jeffreykegler.github.com/Marpa/developer.html">
+	Marpa internals</a>:
 	These are resources of interest only
 	to those working on the internals of Marpa itself --
 	"bleeding edge" documentation, etc.
 	</p>
-      </header>
-      <section>
-        <h3>In Progress.</h3>
-
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/jeffreykegler">jeffreykegler</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-33430331-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
-
+    <div id="footer" style="border-top:thick solid #38B0C0;clear:left;padding:1em;">
+    </div>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </body>
 </html>

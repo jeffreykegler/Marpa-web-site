@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Symbols - Libmarpa 2.18.0</title>
+<title>Symbols - Libmarpa 2.20.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.18.0">
+<meta name="description" content="Libmarpa 2.20.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Rules.html#Rules" title="Rules">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (22 August 2012)
-is for Libmarpa 2.18.0.
+This manual (12 September 2012)
+is for Libmarpa 2.20.0.
 
 Copyright (C) 2012 Jeffrey Kegler.
 
@@ -63,79 +63,92 @@ otherwise the ID of the new start symbol.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Symbol_ID <b>marpa_g_start_symbol_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID id</var>)<var><a name="index-marpa_005fg_005fstart_005fsymbol_005fset-13"></a></var><br>
+&mdash; Function: Marpa_Symbol_ID <b>marpa_g_start_symbol_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fstart_005fsymbol_005fset-13"></a></var><br>
 <blockquote>
         <p>Sets the start symbol of grammar <var>g</var> to symbol <var>id</var>.
 
         <p>Return value: On success, the ID of the new start symbol. 
+If <var>sym_id</var> is well-formed, but there is no
+such symbol, -1. 
 On failure, &minus;2.
 
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_count</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fsymbol_005fcount-14"></a></var><br>
-<blockquote><p>Return value:
-On success, the symbol count of the grammar. 
+&mdash; Function: int <b>marpa_g_highest_symbol_id</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fhighest_005fsymbol_005fid-14"></a></var><br>
+<blockquote><p>Return value: On success, the numerically largest symbol ID
+of <var>g</var>. 
 On failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_accessible</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005faccessible-15"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_accessible</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005faccessible-15"></a></var><br>
 <blockquote><p>A symbol is <dfn>accessible</dfn> if it can be reached from the start symbol.
 
-        <p>Return value: On success, 1 if symbol <var>symid</var> is accessible, 0 if not. 
+        <p>Return value: On success, 1 if symbol <var>sym_id</var> is accessible, 0 if not. 
+If <var>sym_id</var> is well-formed, but there is no
+such symbol, -1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_nullable</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnullable-16"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_nullable</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnullable-16"></a></var><br>
 <blockquote><p>A symbol is <dfn>nullable</dfn> if it sometimes produces the empty string. 
 A <strong>nulling</strong> symbol is always a <strong>nullable</strong> symbol,
 but not all <strong>nullable</strong> symbols are <strong>nulling</strong> symbols.
 
-        <p>Return value: On success, 1 if symbol <var>symid</var> is nullable, 0 if not. 
+        <p>Return value: On success, 1 if symbol <var>sym_id</var> is nullable, 0 if not. 
+If <var>sym_id</var> is well-formed, but there is no
+such symbol, -1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_nulling</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnulling-17"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_nulling</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnulling-17"></a></var><br>
 <blockquote><p>A symbol is <dfn>nulling</dfn> if it always produces the empty string.
 
-        <p>Return value: On success, 1 if symbol <var>symid</var> is nulling, 0 if not. 
+        <p>Return value: On success, 1 if symbol <var>sym_id</var> is nulling, 0 if not. 
+If <var>sym_id</var> is well-formed, but there is no
+such symbol, -1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_productive</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fproductive-18"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_productive</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fproductive-18"></a></var><br>
 <blockquote><p>A symbol is <dfn>productive</dfn> if it can produce a string of terminals. 
 All nullable symbols are considered productive.
 
-        <p>Return value: On success, 1 if symbol <var>symid</var> is productive, 0 if not.  If the grammar
+        <p>Return value: On success, 1 if symbol <var>sym_id</var> is productive, 0 if not.  If the grammar
+If <var>sym_id</var> is well-formed, but there is no
+such symbol, -1. 
 is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_start</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fstart-19"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_start</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fstart-19"></a></var><br>
 <blockquote>
-        <p>This return value of this call indicates whether <var>symid</var>
+        <p>This return value of this call indicates whether <var>sym_id</var>
 is the start symbol.
 
-        <p>Return value: &minus;2 if <var>symid</var> is not valid;
-    1 if <var>symid</var> is the start symbol;
-    0 otherwise.
+        <p>Return value:
+On success, 1 if <var>sym_id</var> is the start symbol;
+0 otherwise. 
+If <var>sym_id</var> is well-formed, but there is no
+such symbol, -1. 
+On other failure, &minus;2.
 
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_terminal</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal-20"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_terminal_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symid, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal_005fset-21"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_terminal</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal-20"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_terminal_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal_005fset-21"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the &ldquo;terminal status&rdquo; of a symbol. 
 To be used as an input symbol
 in the <code>marpa_r_alternative()</code> method,
 a symbol must be a terminal. 
-This function flags symbol <var>symid</var> as a terminal if
+This function flags symbol <var>sym_id</var> as a terminal if
 <var>value</var> is 1,
 or flags it as a non-terminal if <var>value</var> is 0.
 
@@ -145,7 +158,7 @@ the terminal status of a symbol is &ldquo;locked&rdquo; at that value.
 A subsequent call to
 <code>marpa_g_symbol_is_terminal_set()</code> that attempts
 to change the terminal status
-of <var>symid</var> to a value different from its current one
+of <var>sym_id</var> to a value different from its current one
 will fail. 
 The error code will be <code>MARPA_ERR_TERMINAL_IS_LOCKED</code>.
 
@@ -155,7 +168,7 @@ An attempt to flag a nulling symbol
 as a terminal will cause a failure,
 but this is not necesssarily detected before precomputation.
 
-        <p>Return value: On success, 1 if symbol <var>symid</var>
+        <p>Return value: On success, 1 if symbol <var>sym_id</var>
 is a terminal symbol after the
 call, 0 otherwise. 
 If <var>value</var> is not 0 or 1;
@@ -177,8 +190,8 @@ the valued status of a symbol is &ldquo;locked&rdquo; at that value.
 It cannot thereafter be changed. 
 Subsequent calls to
 <code>marpa_g_symbol_is_valued_set()</code>
-for the same <var>symid</var> will fail,
-leaving <var>symid</var>'s valued status unchanged,
+for the same <var>sym_id</var> will fail,
+leaving <var>sym_id</var>'s valued status unchanged,
 unless <var>value</var> is the same as the locked-in value.
 
         <p>Return value: On success, 1 if the symbol <var>symbol_id</var>

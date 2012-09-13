@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Rules - Libmarpa 2.18.0</title>
+<title>Rules - Libmarpa 2.20.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.18.0">
+<meta name="description" content="Libmarpa 2.20.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Sequences.html#Sequences" title="Sequences">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (22 August 2012)
-is for Libmarpa 2.18.0.
+This manual (12 September 2012)
+is for Libmarpa 2.20.0.
 
 Copyright (C) 2012 Jeffrey Kegler.
 
@@ -49,19 +49,22 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">G
 <h3 class="section">11.5 Rules</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_rule_count</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005frule_005fcount-25"></a></var><br>
-<blockquote><p>Return value: On success, the current number of rules in grammar <var>g</var>. 
+&mdash; Function: int <b>marpa_g_highest_rule_id</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fhighest_005frule_005fid-25"></a></var><br>
+<blockquote><p>Return value: On success, the numerically largest rule ID
+of <var>g</var>. 
 On failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_rule_is_accessible</b> (<var>Marpa_Grammar g, Marpa_Rule_ID id</var>)<var><a name="index-marpa_005fg_005frule_005fis_005faccessible-26"></a></var><br>
+&mdash; Function: int <b>marpa_g_rule_is_accessible</b> (<var>Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fis_005faccessible-26"></a></var><br>
 <blockquote><p>A rule is <dfn>accessible</dfn> if it can be reached from the start symbol. 
 A rule is accessible if and only if its LHS symbol is accessible. 
 The start rule is always an accessible rule.
 
         <p>Return value: On success, 1 if rule <var>rule_id</var>
 is accessible, 0 if not. 
+If <var>rule_id</var> is well-formed, but there is no
+such rule, -1. 
 If the grammar
 is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
@@ -74,6 +77,8 @@ but not all <strong>nullable</strong> rules are <strong>nulling</strong> rules.
 
         <p>Return value: On success,
 1 if rule <var>ruleid</var> is nullable, 0 if not. 
+If <var>rule_id</var> is well-formed, but there is no
+such rule, -1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -83,6 +88,8 @@ If the grammar is not precomputed, or on other failure, &minus;2.
 
         <p>Return value: On success,
 1 if rule <var>ruleid</var> is nulling, 0 if not. 
+If <var>rule_id</var> is well-formed, but there is no
+such rule, -1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -104,12 +111,14 @@ loop rules.
 
         <p>Return value: On success,
 1 if rule <var>rule_id</var> is a loop rule, 0 if not. 
+If <var>rule_id</var> is well-formed, but there is no
+such rule, -1. 
 If the grammar
 is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_rule_is_productive</b> (<var>Marpa_Grammar g, Marpa_Rule_ID id</var>)<var><a name="index-marpa_005fg_005frule_005fis_005fproductive-30"></a></var><br>
+&mdash; Function: int <b>marpa_g_rule_is_productive</b> (<var>Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fis_005fproductive-30"></a></var><br>
 <blockquote><p>A rule is <dfn>productive</dfn> if it can produce a string of terminals. 
 An rule is productive if and only if all the symbols on
 its RHS are productive. 
@@ -120,6 +129,8 @@ an empty rule is considered productive.
 
         <p>Return value: On success,
 1 if rule <var>rule_id</var> is productive, 0 if not. 
+If <var>rule_id</var> is well-formed, but there is no
+such rule, -1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -134,7 +145,9 @@ On failure, &minus;2.
 <div class="defun">
 &mdash; Function: Marpa_Symbol_ID <b>marpa_g_rule_lhs</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005flhs-32"></a></var><br>
 <blockquote><p>Return value: On success, the LHS symbol of rule <var>rule_id</var>. 
-On failure, &minus;2. 
+If <var>rule_id</var> is well-formed, but there is no
+such rule, -1. 
+On other failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
@@ -171,6 +184,8 @@ The RHS position, <var>ix</var>, is zero-based.
         <p>Return value: On success,
 the ID of the symbol in position <var>ix</var>
 on the rules RHS. 
+If <var>rule_id</var> is well-formed, but there is no
+such rule, -1. 
 If <var>ix</var> is greater than or equal to the length of
 the rule,
 or on other failure, &minus;2. 

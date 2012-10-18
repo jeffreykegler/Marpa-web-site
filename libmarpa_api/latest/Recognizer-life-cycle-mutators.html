@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Recognizer life cycle mutators - Libmarpa 2.21.2</title>
+<title>Recognizer life cycle mutators - Libmarpa 2.21.11</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.21.2">
+<meta name="description" content="Libmarpa 2.21.11">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Location-accessors.html#Location-accessors" title="Location accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (13 September 2012)
-is for Libmarpa 2.21.2.
+This manual (17 October 2012)
+is for Libmarpa 2.21.11.
 
 Copyright (C) 2012 Jeffrey Kegler.
 
@@ -49,7 +49,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-meth
 <h3 class="section">12.4 Life cycle mutators</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-49"></a></var><br>
+&mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-50"></a></var><br>
 <blockquote><p>Makes <var>r</var> ready to accept input.
 
         <p>Return value:  On success, a non-negative value. 
@@ -57,7 +57,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_alternative</b> (<var>Marpa_Recognizer r, Marpa_Symbol_ID token_id, int value, int length</var>)<var><a name="index-marpa_005fr_005falternative-50"></a></var><br>
+&mdash; Function: int <b>marpa_r_alternative</b> (<var>Marpa_Recognizer r, Marpa_Symbol_ID token_id, int value, int length</var>)<var><a name="index-marpa_005fr_005falternative-51"></a></var><br>
 <blockquote><p>Reads a token into <var>r</var>. 
 The token will start at the current earleme. 
 Libmarpa allows tokens to be ambiguous, to be of
@@ -174,7 +174,7 @@ On failure, some other error code.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Earleme <b>marpa_r_earleme_complete</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearleme_005fcomplete-51"></a></var><br>
+&mdash; Function: Marpa_Earleme <b>marpa_r_earleme_complete</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearleme_005fcomplete-52"></a></var><br>
 <blockquote><p>This method does the final processing for the current earleme. 
 It then advances the current earleme by one. 
 Note that <code>marpa_r_earleme_complete()</code> may be called

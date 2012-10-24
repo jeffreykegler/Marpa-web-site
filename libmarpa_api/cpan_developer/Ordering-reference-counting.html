@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Ordering reference counting - Libmarpa 2.21.2</title>
+<title>Ordering reference counting - Libmarpa 2.23.2</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.21.2">
+<meta name="description" content="Libmarpa 2.23.2">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Ordering-methods.html#Ordering-methods" title="Ordering methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Non_002ddefault-ordering.html#Non_002ddefault-ordering" title="Non-default ordering">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (30 September 2012)
-is for Libmarpa 2.21.2.
+This manual (24 October 2012)
+is for Libmarpa 2.23.2.
 
 Copyright (C) 2012 Jeffrey Kegler.
 
@@ -49,7 +49,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Ordering-methods.html#Ordering-methods"
 <h3 class="section">15.3 Reference counting</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Order <b>marpa_o_ref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fref-68"></a></var><br>
+&mdash; Function: Marpa_Order <b>marpa_o_ref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fref-69"></a></var><br>
 <blockquote><p>Increases the reference count by 1. 
 Not needed by most applications.
 
@@ -59,7 +59,7 @@ On failure, <code>NULL</code>.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: void <b>marpa_o_unref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005funref-69"></a></var><br>
+&mdash; Function: void <b>marpa_o_unref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005funref-70"></a></var><br>
 <blockquote><p>Decreases the reference count by 1,
 destroying <var>o</var> once the reference count reaches
 zero. 

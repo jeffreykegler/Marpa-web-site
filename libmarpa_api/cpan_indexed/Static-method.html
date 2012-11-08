@@ -1,20 +1,18 @@
 <html lang="en">
 <head>
-<title>Static method - Libmarpa 2.22.0</title>
+<title>Static method - Libmarpa 2.24.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.22.0">
+<meta name="description" content="Libmarpa 2.24.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" title="Introduction to the external interface">
 <link rel="next" href="Configuration-methods.html#Configuration-methods" title="Configuration methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (19 October 2012)
-is for Libmarpa 2.22.0.
+This manual (8 November 2012)
+is for Libmarpa 2.24.0.
 
 Copyright (C) 2012 Jeffrey Kegler.
-
-Libmarpa is alpha software.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -58,17 +56,8 @@ given version. Generally you will pass in the constants
 as the three arguments to this function; that produces
 a check that the library in use is compatible with
 the version of Libmarpa the application or module was compiled
-against.
-
-        <p>Currently Libmarpa is undergoing rapid development,
-and backward compatibility is not maintained. 
-This will be the case as long as Libmarpa stays
-alpha. 
-While Libmarpa is alpha,
-the major, minor and micro numbers must match exactly.
-
-        <p>Once Libmarpa is beyond alpha releases,
-compatibility will be defined by two things:
+against. 
+Compatibility is defined by two things:
 first the version
 of the running library is newer than the version
 <var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>. 

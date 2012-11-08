@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Recognizer reference counting - Libmarpa 2.22.0</title>
+<title>Recognizer reference counting - Libmarpa 2.24.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.22.0">
+<meta name="description" content="Libmarpa 2.24.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
@@ -10,12 +10,10 @@
 <link rel="next" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators" title="Recognizer life cycle mutators">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (19 October 2012)
-is for Libmarpa 2.22.0.
+This manual (8 November 2012)
+is for Libmarpa 2.24.0.
 
 Copyright (C) 2012 Jeffrey Kegler.
-
-Libmarpa is alpha software.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -49,7 +47,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-meth
 <h3 class="section">12.3 Keeping the reference count of a recognizer</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Recognizer <b>marpa_r_ref</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fref-47"></a></var><br>
+&mdash; Function: Marpa_Recognizer <b>marpa_r_ref</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fref-48"></a></var><br>
 <blockquote><p>Increases the reference count by 1. 
 Not needed by most applications.
 
@@ -59,7 +57,7 @@ On failure, <code>NULL</code>.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: void <b>marpa_r_unref</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005funref-48"></a></var><br>
+&mdash; Function: void <b>marpa_r_unref</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005funref-49"></a></var><br>
 <blockquote><p>Decreases the reference count by 1,
 destroying <var>r</var> once the reference count reaches
 zero. 

@@ -47,6 +47,10 @@
 	<img src="//ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:32px;height:32px;"/></a>
       </p>
       <p>
+	<a href="http://jeffreykegler.github.com/Marpa-web-site/">
+        The main web site for Marpa</a>
+      </p>
+      <p>
         The Ocean of Awareness blog:
         <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog">
           home page</a>,
@@ -88,15 +92,13 @@
 	<ul>
 	<li><p>
 	Download, install and test Marpa::R2.  Please do not skip the testing.
-	<li><p>In the Marpa::R2 distribution file will be the file <code>Marpa-R2-N.NNNNNN/r2/libmarpa.tar</code>,
-	where <tt>N.NNNNNN</tt> is the Marpa::R2 version number.
-	Assuming that your Marpa::R2 distribution came as a tar file,
-	that means the Libmarpa comes as a tar file inside a tar file.
-	<li><p>
-	The Libmarpa tar file is a product of the GNU autotools.
+	<li>
+	<p>The Libmarpa distribution is in the directory <tt>libmarpa_dist</tt>.
+	The contents of this directory are
+	unaltered, straight from a GNU autotools tarball.
 	I went to some trouble to keep it very "vanilla",
-	so that it should have all the standard targets
-	and install in all the usual ways.
+	and it should support all the standard GNU autotools targets
+	and install in all the standard ways.
 	</ul>
 	<h3>Documentation</h3>
 	<ul>
@@ -108,41 +110,22 @@
 	PDF's of the Libmarpa API docs for the most recent versions
 	can be found on <a href="https://github.com/jeffreykegler/Marpa--R2/downloads">
 	Github's Marpa::R2 downloads page</a>.
-	<li><p>
+	<li>
+	<p>
 	Sources for the Libmarpa documentation are included
 	in the Marpa::R2 distribution,
-	in the file <code>Marpa-R2-N.NNNNNN/r2/libmarpa-doc.tar</code>,
-	where <tt>N.NNNNNN</tt> is the Marpa::R2 version number.
-	This documentation-only tar file is a product of the GNU autotools,
-	and was intentionally kept very "vanilla".
-	It should have all the standard targets and install in all the usual ways.
+	in the directory <tt>libmarpa_doc_dist</tt>.
+	Like the directory for the source,
+	the contents of this directory are
+	unaltered, straight from a "vanilla" GNU autotools tarball.
+	It should support all the standard GNU autotools targets
+	and install in all the standard ways.
 	</ul>
-	<h3>More about the tar files</h3>
-	<p>
-	Some may have noted, on reading my claim that
-	<code>libmarpa.tar</code> and <code>libmarpa-doc.tar</code>
-	are very standard GNU
-	autotools distribution files,
-	that their names are not GNU autotools standard --
-	they are not compressed files,
-	and the version number is not part of the names.
-	The tar files are not compressed because currently they are
-	delivered inside another tar file, one which is almost always compressed.
-	And the names are version-less for the convenience of the Perl build software.
-	<p>
-	The contents of
-	<code>libmarpa.tar</code> and <code>libmarpa-doc.tar</code>
-	are completely
-	autotools standard,
-	so that if you want
-	a more conventionally named distribution file,
-	the shell command "<code>./configure; make dist</code>"
-	will produce one.
 	<h2>Libmarpa and Perl</h2>
 	<p>
 	Libmarpa can run and even build on a system without Perl.
 	It has no runtime, build-time or compile-time dependence on Perl.
-	Testing, however, does require Perl and I strongly discourage
+	Testing, however, does require Perl and I strongly advise against
 	running Libmarpa in a configuration on which it has not been
 	tested.
 	<h2>Libmarpa internals</h2>
@@ -159,13 +142,15 @@
 	among other things,
 	Knuth's CWeb and therefore Tex.
 	<p>
-	Libmarpa is highly mathematical code,
-	and its internals are, frankly, quite daunting.
-	As an algorithm, Marpa has its moments of beauty,
-	but nobody can say it achieves that beauty through simplicity.
-	I once had hopes that Marpa would have the powerful,
-	simple beauty of a late Picasso.
-	But Angkor Wat and Hieronymous Bosch have their own beauty.
+	Libmarpa is highly mathematical code.
+	Its internals are, frankly, daunting.
+	For me, Marpa has a real beauty,
+	but nobody could claim it achieves that beauty through simplicity.
+	I once had hopes that reading
+	Marpa would be like experiencing the effortless
+	power of a late Picasso.
+	But Angkor Wat and Hieronymous Bosch show that beauty
+	comes in many forms.
     </div>
     <!-- FOOTER -->
     <div style="border-top:thick solid #38B0C0;clear:left;padding:1em;">

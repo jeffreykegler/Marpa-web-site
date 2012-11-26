@@ -72,12 +72,9 @@
     </div>
     <div style="margin-left:190px;border-left:2px solid #38B0C0;padding:25px;">
       I hope Marpa will become the standard for parsing languages that are too complex for regular expressions to handle.
-      Marpa's first stable release is
-      <a href="https://metacpan.org/module/Marpa::XS">
-        Marpa::XS</a>,
-      a C language extension of Perl.
-      <h2>
-        What Marpa Does</h2>
+      Marpa's current release is
+      <a href="https://metacpan.org/module/Marpa::R2">Marpa::R2</a>.
+      <h2>What Marpa Does</h2>
       <ul>
         <li>
           Marpa parses anything you can write in BNF, including ambiguous and even infinitely ambiguous grammars.
@@ -89,9 +86,8 @@
           If a grammar is in one of the classes in practical use today, Marpa parses it in O(n) (linear) time.
         </li>
         <li>
-          Marpa never goes exponential. Worst case, even for wildly ambiguous grammars, is O(n<sup>
-            3</sup>)
-          (cubic) time.
+          Marpa never goes exponential. Worst case, even for wildly ambiguous grammars, is
+	  O(n<sup>3</sup>) (cubic) time.
         </li>
         <li>
           Marpa's run-time error detection is revolutionary. Marpa has complete situational awareness. It knows at all times which rules it is attempting to apply, how far it has progressed in them, and exactly which tokens it can accept. And Marpa can communicate its situational awareness back to the application.
@@ -115,7 +111,8 @@
         are the documentation of
         <a href="https://metacpan.org/module/Marpa::R2">
           Marpa::R2</a>,
-        its current release and my blog,
+        its current release,
+	and my blog,
         <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog">
           Ocean of Awareness</a>.
         Many of my blog posts are tutorials

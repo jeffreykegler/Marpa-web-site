@@ -10,7 +10,7 @@
 <link rel="next" href="Grammar-precomputation.html#Grammar-precomputation" title="Grammar precomputation">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (17 December 2012)
+This manual (22 December 2012)
 is for Libmarpa 2.33.2.
 
 Copyright (C) 2012 Jeffrey Kegler.
@@ -59,10 +59,20 @@ initialized to the default rank of the grammar.
 Methods to reset the grammar's default rank
 are currently in the experimental stage.
 
-        <p>Return value: On success, the rank <strong>after</strong>
-the call. 
-If the grammar has been precomputed,
-or on other failure, &minus;2.
+        <p>Return value: On success, returns
+the rank <strong>after</strong>
+the call,
+and sets the error code to
+<code>MARPA_ERR_NONE</code>. 
+On failure, returns &minus;2,
+and sets the error code to an appropriate
+value, which will never be
+<code>MARPA_ERR_NONE</code>. 
+Note that when the rank is &minus;2,
+the error code is the only way to distinguish
+success from failure. 
+The error code can be determined by using the
+<code>marpa_g_error()</code> call.
 
      </blockquote></div>
 

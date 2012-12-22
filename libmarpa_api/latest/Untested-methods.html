@@ -9,7 +9,7 @@
 <link rel="prev" href="Work-in-Progress.html#Work-in-Progress" title="Work in Progress">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (17 December 2012)
+This manual (22 December 2012)
 is for Libmarpa 2.33.2.
 
 Copyright (C) 2012 Jeffrey Kegler.
@@ -69,9 +69,20 @@ the grammar's default rank can be used to,
 in effect, assign ranks to groups of rules and symbols. 
 Applications may find this behavior useful.
 
-        <p>Return value: On success, the rank <strong>after</strong>
-the call. 
-On failure, &minus;2.
+        <p>Return value: On success, returns
+the rank <strong>after</strong>
+the call,
+and sets the error code to
+<code>MARPA_ERR_NONE</code>. 
+On failure, returns &minus;2,
+and sets the error code to an appropriate
+value, which will never be
+<code>MARPA_ERR_NONE</code>. 
+Note that when the rank is &minus;2,
+the error code is the only way to distinguish
+success from failure. 
+The error code can be determined by using the
+<code>marpa_g_error()</code> call.
 
         </blockquote></div>
 
@@ -84,10 +95,20 @@ and query the rank of a symbol <var>sym_id</var>.
 When <var>sym_id</var> is created, its rank
 initialized to the default rank of the grammar.
 
-        <p>Return value: On success, the rank <strong>after</strong>
-the call. 
-If the grammar has been precomputed,
-or on other failure, &minus;2.
+        <p>Return value: On success, returns
+the rank <strong>after</strong>
+the call,
+and sets the error code to
+<code>MARPA_ERR_NONE</code>. 
+On failure, returns &minus;2,
+and sets the error code to an appropriate
+value, which will never be
+<code>MARPA_ERR_NONE</code>. 
+Note that when the rank is &minus;2,
+the error code is the only way to distinguish
+success from failure. 
+The error code can be determined by using the
+<code>marpa_g_error()</code> call.
 
         </blockquote></div>
     <script src="javascripts/scale.fix.js"></script>

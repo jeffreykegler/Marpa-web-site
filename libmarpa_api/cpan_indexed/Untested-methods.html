@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Untested methods - Libmarpa 2.32.0</title>
+<title>Untested methods - Libmarpa 2.34.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.32.0">
+<meta name="description" content="Libmarpa 2.34.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Work-in-Progress.html#Work-in-Progress" title="Work in Progress">
 <link rel="prev" href="Work-in-Progress.html#Work-in-Progress" title="Work in Progress">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (9 December 2012)
-is for Libmarpa 2.32.0.
+This manual (26 December 2012)
+is for Libmarpa 2.34.0.
 
 Copyright (C) 2012 Jeffrey Kegler.
 
@@ -69,9 +69,20 @@ the grammar's default rank can be used to,
 in effect, assign ranks to groups of rules and symbols. 
 Applications may find this behavior useful.
 
-        <p>Return value: On success, the rank <strong>after</strong>
-the call. 
-On failure, &minus;2.
+        <p>Return value: On success, returns
+the rank <strong>after</strong>
+the call,
+and sets the error code to
+<code>MARPA_ERR_NONE</code>. 
+On failure, returns &minus;2,
+and sets the error code to an appropriate
+value, which will never be
+<code>MARPA_ERR_NONE</code>. 
+Note that when the rank is &minus;2,
+the error code is the only way to distinguish
+success from failure. 
+The error code can be determined by using the
+<code>marpa_g_error()</code> call.
 
         </blockquote></div>
 
@@ -84,10 +95,20 @@ and query the rank of a symbol <var>sym_id</var>.
 When <var>sym_id</var> is created, its rank
 initialized to the default rank of the grammar.
 
-        <p>Return value: On success, the rank <strong>after</strong>
-the call. 
-If the grammar has been precomputed,
-or on other failure, &minus;2.
+        <p>Return value: On success, returns
+the rank <strong>after</strong>
+the call,
+and sets the error code to
+<code>MARPA_ERR_NONE</code>. 
+On failure, returns &minus;2,
+and sets the error code to an appropriate
+value, which will never be
+<code>MARPA_ERR_NONE</code>. 
+Note that when the rank is &minus;2,
+the error code is the only way to distinguish
+success from failure. 
+The error code can be determined by using the
+<code>marpa_g_error()</code> call.
 
         </blockquote></div>
     <script src="javascripts/scale.fix.js"></script>

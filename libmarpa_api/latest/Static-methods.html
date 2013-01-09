@@ -1,18 +1,18 @@
 <html lang="en">
 <head>
-<title>Static method - Libmarpa 2.37.0</title>
+<title>Static methods - Libmarpa 4.0.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.37.0">
+<meta name="description" content="Libmarpa 4.0.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" title="Introduction to the external interface">
 <link rel="next" href="Configuration-methods.html#Configuration-methods" title="Configuration methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (26 December 2012)
-is for Libmarpa 2.37.0.
+This manual (9 January 2013)
+is for Libmarpa 4.0.0.
 
-Copyright (C) 2012 Jeffrey Kegler.
+Copyright (C) 2013 Jeffrey Kegler.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -35,7 +35,7 @@ Copyright (C) 2012 Jeffrey Kegler.
 </head>
 <body>
 <div class="node">
-<a name="Static-method"></a>
+<a name="Static-methods"></a>
 <p>
 Next:&nbsp;<a rel="next" accesskey="n" href="Configuration-methods.html#Configuration-methods">Configuration methods</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface">Introduction to the external interface</a>,
@@ -43,7 +43,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <hr>
 </div>
 
-<h2 class="chapter">9 Static method</h2>
+<h2 class="chapter">9 Static methods</h2>
 
 <div class="defun">
 &mdash; Function: Marpa_Error_Code <b>marpa_check_version</b> (<var>unsigned int required_major, unsigned int required_minor, unsigned int required_micro </var>)<var><a name="index-marpa_005fcheck_005fversion-1"></a></var><br>
@@ -77,6 +77,16 @@ one of the following is returned, indicating the nature of the mismatch:
 </ul>
 
      </blockquote></div>
+
+<div class="defun">
+&mdash; Function: Marpa_Error_Code <b>marpa_version</b> (<var>unsigned int* version</var>)<var><a name="index-marpa_005fversion-2"></a></var><br>
+<blockquote>
+        <p>Returns the version number in <var>version</var>,
+which must have room for three <code>unsigned int</code>'s.
+
+        <p>Return value: A non-negative number on success,
+&minus;2 on failure. 
+</p></blockquote></div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

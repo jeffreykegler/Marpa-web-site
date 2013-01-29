@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Basic step accessors - Libmarpa 4.0.0</title>
+<title>Basic step accessors - Libmarpa 2.45.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 4.0.0">
+<meta name="description" content="Libmarpa 2.45.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Other-step-accessors.html#Other-step-accessors" title="Other step accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (9 January 2013)
-is for Libmarpa 4.0.0.
+This manual (28 January 2013)
+is for Libmarpa 2.45.0.
 
 Copyright (C) 2013 Jeffrey Kegler.
 
@@ -52,7 +52,7 @@ The basic step accessors are implemented as macros.
 They always succeed.
 
 <div class="defun">
-&mdash; Macro: int <b>marpa_v_arg_0</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005farg_005f0-98"></a></var><br>
+&mdash; Macro: int <b>marpa_v_arg_0</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005farg_005f0-100"></a></var><br>
 <blockquote><p>For a <code>MARPA_STEP_RULE</code> step,
 returns the stack location where the value of first child
 can be found. 
@@ -61,27 +61,27 @@ macro.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>marpa_v_arg_n</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005farg_005fn-99"></a></var><br>
+&mdash; Macro: int <b>marpa_v_arg_n</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005farg_005fn-101"></a></var><br>
 <blockquote><p>For a <code>MARPA_STEP_RULE</code> step,
 returns the stack location where the value of the last child
 can be found. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>marpa_v_result</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fresult-100"></a></var><br>
+&mdash; Macro: int <b>marpa_v_result</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fresult-102"></a></var><br>
 <blockquote><p>Return the stack location where the result of the semantics
 should be placed. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: Marpa_Rule_ID <b>marpa_v_rule</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005frule-101"></a></var><br>
+&mdash; Macro: Marpa_Rule_ID <b>marpa_v_rule</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005frule-103"></a></var><br>
 <blockquote><p>Return value: Returns the ID of the rule
 token for the
 <code>MARPA_STEP_RULE</code> step. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: Marpa_Step_Type <b>marpa_v_step_type</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fstep_005ftype-102"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>marpa_v_step_type</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fstep_005ftype-104"></a></var><br>
 <blockquote><p>Return value: Returns the current step type:
 <code>MARPA_STEP_TOKEN</code>,
 <code>MARPA_STEP_RULE</code>,
@@ -91,7 +91,7 @@ Usually not needed since this is also the return value of
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: Marpa_Symbol_ID <b>marpa_v_symbol</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fsymbol-103"></a></var><br>
+&mdash; Macro: Marpa_Symbol_ID <b>marpa_v_symbol</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fsymbol-105"></a></var><br>
 <blockquote><p>Return value: Returns the ID of the symbol
 for the <code>MARPA_STEP_NULLING_SYMBOL</code> step. 
 The value is always the same as that for the <code>marpa_v_token()</code>
@@ -99,13 +99,13 @@ macro.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: Marpa_Symbol_ID <b>marpa_v_token</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005ftoken-104"></a></var><br>
+&mdash; Macro: Marpa_Symbol_ID <b>marpa_v_token</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005ftoken-106"></a></var><br>
 <blockquote><p>Return value: Returns the ID of the token
 for the <code>MARPA_STEP_TOKEN</code> step. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: void* <b>marpa_v_token_value</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005ftoken_005fvalue-105"></a></var><br>
+&mdash; Macro: void* <b>marpa_v_token_value</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005ftoken_005fvalue-107"></a></var><br>
 <blockquote><p>Return value: Returns the integer which is
 (or which represents)
 the value of the token for the

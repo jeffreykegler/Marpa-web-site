@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Location accessors - Libmarpa 4.0.0</title>
+<title>Location accessors - Libmarpa 2.45.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 4.0.0">
+<meta name="description" content="Libmarpa 2.45.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Other-parse-status-methods.html#Other-parse-status-methods" title="Other parse status methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (9 January 2013)
-is for Libmarpa 4.0.0.
+This manual (28 January 2013)
+is for Libmarpa 2.45.0.
 
 Copyright (C) 2013 Jeffrey Kegler.
 
@@ -97,27 +97,52 @@ On failure, &minus;2.
 <div class="defun">
 &mdash; Function: int <b>marpa_r_earley_set_value</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID earley_set</var>)<var><a name="index-marpa_005fr_005fearley_005fset_005fvalue-56"></a></var><br>
 <blockquote><p>Returns the integer value of <var>earley_set</var>. 
-The &ldquo;value&rdquo; of an Earley is an arbitrary integer that the application
-can use for its own purposes. 
-In character-per-earleme input models, for example,
-it can be the codepoint of the current character. 
-The Earley set value can be set using
-the
-<code>marpa_r_latest_earley_set()</code> method. 
-The Earley set value defaults to &minus;1.
+For more details, see
+the description of <code>marpa_r_earley_set_values()</code>.
 
         <p>Return value: On success, the value of <var>earley_set</var>. 
 On failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <code>unsigned int</code> <b>marpa_r_furthest_earleme</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005ffurthest_005fearleme-57"></a></var><br>
+&mdash; Function: int <b>marpa_r_earley_set_values</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID earley_set, int* p_value, void** p_pvalue </var>)<var><a name="index-marpa_005fr_005fearley_005fset_005fvalues-57"></a></var><br>
+<blockquote><p>If <var>p_value</var> is non-zero,
+sets the location pointed to by
+<var>p_value</var> to the integer value of the Earley set. 
+Similarly, if <var>p_pvalue</var> is non-zero,
+sets the location pointed to by
+<var>p_pvalue</var> to the pointer value of the Earley set.
+
+        <p>The &ldquo;value&rdquo; and &ldquo;pointer&rdquo; of an Earley set are
+an arbitrary integer
+and an arbitrary pointer
+that the application
+can use for its own purposes. 
+In character-per-earleme input models, for example,
+the integer can be the codepoint of the current character. 
+In a traditional token-per-earley input model,
+they could be used to indicate the string value of the token &ndash;
+the pointer could point to the start of the string,
+and the integer could indicate its length.
+
+        <p>The Earley set value and pointer can be set using
+the
+<code>marpa_r_latest_earley_set_values_set()</code> method. 
+The Earley set integer value defaults to &minus;1,
+and the pointer value defaults to <code>NULL</code>.
+
+        <p>Return value: On success, returns a non-negative integer. 
+On failure, returns &minus;2. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: <code>unsigned int</code> <b>marpa_r_furthest_earleme</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005ffurthest_005fearleme-58"></a></var><br>
 <blockquote><p>Return value: On success, the furthest earleme. 
 Always succeeds. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Earley_Set_ID <b>marpa_r_latest_earley_set</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset-58"></a></var><br>
+&mdash; Function: Marpa_Earley_Set_ID <b>marpa_r_latest_earley_set</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset-59"></a></var><br>
 <blockquote><p>This method returns the Earley set ID (ordinal) of the latest Earley set. 
 Applications that want the
 value of the latest earleme can convert
@@ -129,15 +154,26 @@ Always succeeds.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_latest_earley_set_value_set</b> (<var> Marpa_Recognizer r, int value</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset_005fvalue_005fset-59"></a></var><br>
+&mdash; Function: int <b>marpa_r_latest_earley_set_value_set</b> (<var> Marpa_Recognizer r, int value</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset_005fvalue_005fset-60"></a></var><br>
 <blockquote><p>Sets the integer value of the latest Earley set. 
-For more about the &ldquo;value&rdquo; of an Earley set,
-see the description of the
-<code>marpa_r_earley_set_value()</code> method. 
-The Earley set value defaults to &minus;1.
+For more details, see
+the description of
+<code>marpa_r_latest_earley_set_values_set()</code>.
 
         <p>Return value: On success, the new value of <var>earley_set</var>. 
 On failure, &minus;2. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_latest_earley_set_values_set</b> (<var> Marpa_Recognizer r, int value, void* pvalue</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset_005fvalues_005fset-61"></a></var><br>
+<blockquote><p>Sets the integer and pointer value of the latest Earley set. 
+For more about the &ldquo;integer value&rdquo; and &ldquo;pointer value&rdquo;
+of an Earley set,
+see the description of the
+<code>marpa_r_earley_set_values()</code> method.
+
+        <p>Return value: On success, returns a non-negative integer. 
+On failure, returns &minus;2. 
 </p></blockquote></div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">

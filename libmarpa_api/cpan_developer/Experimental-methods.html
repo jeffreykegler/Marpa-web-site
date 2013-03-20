@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+<title>Experimental methods - Libmarpa 2.51.0</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 2.51.0">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Work-in-Progress.html#Work-in-Progress" title="Work in Progress">
+<link rel="prev" href="Work-in-Progress.html#Work-in-Progress" title="Work in Progress">
+<link rel="next" href="Untested-methods.html#Untested-methods" title="Untested methods">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual (20 March 2013)
+is for Libmarpa 2.51.0.
+
+Copyright (C) 2013 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation.  A copy of the license is included in the section
+     entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Experimental-methods"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Untested-methods.html#Untested-methods">Untested methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Work-in-Progress.html#Work-in-Progress">Work in Progress</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Work-in-Progress.html#Work-in-Progress">Work in Progress</a>
+<hr>
+</div>
+
+<h3 class="section">21.1 Experimental methods</h3>
+
+<p>The methods of this section are not in the external interface,
+because they are experimental. 
+Their fate is uncertain. 
+Users should regard these methods
+as unsupported.
+
+<div class="defun">
+&mdash; Function: int <b>marpa_v_valued_force</b> (<var> Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fvalued_005fforce-216"></a></var><br>
+<blockquote>
+        <p>This methods locks the valued status of all symbols
+to 1, indicated that the symbol is valued. 
+If this is not possible, for example because one of
+the grammar's symbols already is locked at a valued
+status of 0,
+failure is returned.
+
+        <p>Return value: On success, a non-negative number. 
+On failure, returns &minus;2,
+and sets the error code to an appropriate
+value, which will never be
+<code>MARPA_ERR_NONE</code>.
+
+        </blockquote></div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

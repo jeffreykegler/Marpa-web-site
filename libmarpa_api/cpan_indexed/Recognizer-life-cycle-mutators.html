@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Recognizer life cycle mutators - Libmarpa 2.50.0</title>
+<title>Recognizer life cycle mutators - Libmarpa 5.152.100</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.50.0">
+<meta name="description" content="Libmarpa 5.152.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Location-accessors.html#Location-accessors" title="Location accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (18 March 2013)
-is for Libmarpa 2.50.0.
+This manual (25 April 2013)
+is for Libmarpa 5.152.100.
 
 Copyright (C) 2013 Jeffrey Kegler.
 
@@ -212,9 +212,6 @@ detailed in the events, applications that fail will often
 be at least as interested in the events as those
 that succeed.
 
-        <p><code>MARPA_EVENT_EXHAUSTED</code> indicates that the parse is
-exhausted &mdash; that no input will be accepted at later earlemes.
-
         <p>The <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event
 indicates that an application-settable threshold
 on the number of Earley items has been reached or exceeded. 
@@ -224,32 +221,58 @@ it means that it is very likely
 that the time and space resources consumed by
 the parse will prove excessive.
 
-        <p>Note that an exhausted parse may be returned
-as a failure,
-or it may be an event returned on success, depending on the
-circumstances. 
-If <code>marpa_r_earleme_complete()</code> is called
-with the furthest earleme equal to the current
-earleme,
-a failure will result
-whose error code is <code>MARPA_ERR_PARSE_EXHAUSTED</code>. 
-A failure of this sort can happen if the last
-call to
-<code>marpa_r_earleme_complete()</code> left the current
-earleme equal to the furthest earleme,
-and no alternatives were added at the current earleme. 
-Note that when a parse fails due to
-exhaustion, it may have succeeded at earlier earlemes.
+        <p>A parse is &ldquo;exhausted&rdquo; when it can accept no more
+input. 
+This can happen both on success and on failure. 
+Note that the failure due to parse exhaustion
+only means failure
+at the current earleme. 
+There may be successful parses
+at earlier earlemes.
 
-        <p>On the other hand, a parse can be exhausted on success. 
-In this case, a new Earley set is created,
-and the earleme advanced,
-but no input will be possible at the new current
-earleme. 
-It is quite common for a parse to accept no
-more input when it succeeds. 
+        <p>If a parse is exhausted, but successful,
+an event with the event code
+<code>MARPA_EVENT_EXHAUSTED</code> occurs. 
+Because the parse is exhausted,
+no input will be accepted at later earlemes. 
+It is quite common for a parse to become exhausted
+when it succeeds. 
 Many practical grammars are designed so that a
 successful parse cannot be extended.
+
+        <p>An exhausted parse may cause a failure,
+in which case
+<code>marpa_r_earleme_complete()</code> returns an
+error
+whose error code is <code>MARPA_ERR_PARSE_EXHAUSTED</code>. 
+For a parse to fail at an earleme due to exhaustion,
+it must be the case that no alternatives were
+accepted at that earleme. 
+In fact,
+in the standard input model,
+a failure due to parse exhaustion
+occurs if and only if
+no alternatives
+were accepted at the current earleme.
+
+        <p>The circumstances under which
+failure due to parse exhaustion occurs
+are slightly more complicated
+when variable length tokens are in use. 
+Informally,
+a parse will never fail due to exhaustion as long
+as it is possible that a token
+ending at some future
+earleme will continue the parse. 
+More precisely,
+a call to
+<code>marpa_r_earleme_complete()</code> fails
+due to parse exhaustion
+if and only if, first,
+no alternatives were added at the current earleme
+and, second,
+that call left the current
+earleme equal to the furthest earleme.
 
         <p>Return value:  On success, the number of events generated. 
 On failure, &minus;2. 

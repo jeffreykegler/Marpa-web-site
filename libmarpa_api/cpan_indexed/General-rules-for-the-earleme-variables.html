@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>General rules for the earleme variables - Libmarpa 2.50.0</title>
+<title>General rules for the earleme variables - Libmarpa 5.152.100</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 2.50.0">
+<meta name="description" content="Libmarpa 5.152.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Earlemes.html#Earlemes" title="Earlemes">
 <link rel="prev" href="The-generalized-model.html#The-generalized-model" title="The generalized model">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (18 March 2013)
-is for Libmarpa 2.50.0.
+This manual (25 April 2013)
+is for Libmarpa 5.152.100.
 
 Copyright (C) 2013 Jeffrey Kegler.
 
@@ -50,20 +50,36 @@ Here are some useful facts about the earleme variables that will always be the c
 no matter which of the input models is in use.
 
      <ul>
-<li>The current earleme is greater than
+<li>The current earleme is always greater than
 or equal to the latest earleme. 
-<li>The furthest earleme is greater than
+<li>The furthest earleme is always greater than
 or equal to the latest earleme. 
-<li>If the parser is not exhausted,
-the furthest earleme is always greater than
-or equal to the current earleme. 
-<li>In an exhausted parser,
-the furthest earleme is always less than
-or equal to the current earleme. 
 <li>If the furthest earleme is greater than the current earleme,
 the parser is not exhausted. 
-<li>For the furthest earleme to be less than the current earleme,
-the parser must be exhausted. 
+<li>If the furthest earleme is less than the current earleme,
+the parser is exhausted. 
+</ul>
+
+   <p>If the parser is not exhausted,
+the following will always be true,
+no matter which of the input models is in use.
+
+     <ul>
+<li>The furthest earleme is greater than
+or equal to the current earleme. 
+</ul>
+
+   <p>In an exhausted parser, the following will always be true,
+no matter which of the input models is in use.
+
+     <ul>
+<li>The furthest earleme is less than
+or equal to the current earleme. 
+<li>If
+the furthest earleme is equal to the current earleme,
+the parse was successful at the current earleme. 
+<li>If the furthest earleme is less than the current earleme,
+the parse failed at the current earleme. 
 </ul>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">

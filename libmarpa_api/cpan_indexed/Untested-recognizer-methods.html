@@ -1,12 +1,12 @@
 <html lang="en">
 <head>
-<title>Parsing theory - Libmarpa 5.153.102</title>
+<title>Untested recognizer methods - Libmarpa 5.153.102</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="Libmarpa 5.153.102">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="About-this-document.html#About-this-document" title="About this document">
-<link rel="prev" href="Prerequisites.html#Prerequisites" title="Prerequisites">
+<link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
+<link rel="prev" href="Other-parse-status-methods.html#Other-parse-status-methods" title="Other parse status methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (3 May 2013)
@@ -35,34 +35,45 @@ Copyright (C) 2013 Jeffrey Kegler.
 </head>
 <body>
 <div class="node">
-<a name="Parsing-theory"></a>
+<a name="Untested-recognizer-methods"></a>
 <p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Prerequisites.html#Prerequisites">Prerequisites</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="About-this-document.html#About-this-document">About this document</a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Other-parse-status-methods.html#Other-parse-status-methods">Other parse status methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
 <hr>
 </div>
 
-<h3 class="section">1.3 Parsing theory</h3>
+<h3 class="section">12.7 Untested recognizer methods</h3>
 
-<p>This document assumes some acquaintance
-with parsing theory. 
-The reader's
-level of knowledge is probably adequate
-if he can
-answer the following questions,
-either immediately or after a little reflection.
-     <ul>
-<li>What is a BNF rule? 
-<li>What is a Marpa sequence rule? 
-<li>As a reminder,
-Marpa's sequence rules are implemented
-as left recursions. 
-What does that mean? 
-<li>Take a Marpa sequence rule at random. 
-What does it look like when rewritten in BNF? 
-<li>What does the sequence look like when rewritten
-in BNF as a right-recursion? 
-</ul>
+<div class="defun">
+&mdash; Function: int <b>marpa_r_completion_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int reactivate </var>)<var><a name="index-marpa_005fr_005fcompletion_005fsymbol_005factivate-70"></a></var><br>
+<blockquote>
+        <p>Allows the user to deactivate and reactivate symbol completion
+events in the recognizer. 
+If <var>reactivate</var> is zero, the event is deactivated. 
+If <var>reactivate</var> is one, the event is activated.
+
+        <p>Symbol completion events are active by default if
+the symbol was set up for completion events in the
+grammar. 
+If a symbol was not set up for completion events in
+the grammar, symbol completion events are inactive
+by default and any attempt to change that is a fatal error.
+
+        <p>Success cases:
+On success,
+the method returns the value of <var>reactivate</var>. 
+The method succeeds trivially
+if the symbol is already set as indicated by
+<var>reactivate</var>.
+
+        <p>Failure cases:
+If the active status
+of the
+completion event for <var>sym_id</var>
+cannot be set as indicated by <var>reactivate</var>,
+the method fails. 
+On failure, &minus;2 is returned. 
+</p></blockquote></div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

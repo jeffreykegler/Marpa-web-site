@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Untested recognizer methods - Libmarpa 5.157.102</title>
+<title>Untested recognizer methods - Libmarpa 5.157.105</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.157.102">
+<meta name="description" content="Libmarpa 5.157.105">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
 <link rel="prev" href="Other-parse-status-methods.html#Other-parse-status-methods" title="Other parse status methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (5 June 2013)
-is for Libmarpa 5.157.102.
+This manual (6 June 2013)
+is for Libmarpa 5.157.105.
 
 Copyright (C) 2013 Jeffrey Kegler.
 
@@ -45,7 +45,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-meth
 <h3 class="section">12.7 Untested recognizer methods</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_completion_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int reactivate </var>)<var><a name="index-marpa_005fr_005fcompletion_005fsymbol_005factivate-70"></a></var><br>
+&mdash; Function: int <b>marpa_r_completion_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int reactivate </var>)<var><a name="index-marpa_005fr_005fcompletion_005fsymbol_005factivate-74"></a></var><br>
 <blockquote>
         <p>Allows the user to deactivate and reactivate symbol completion
 events in the recognizer. 
@@ -71,6 +71,68 @@ If the active status
 of the
 completion event for <var>sym_id</var>
 cannot be set as indicated by <var>reactivate</var>,
+the method fails. 
+On failure, &minus;2 is returned. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_nulled_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int boolean </var>)<var><a name="index-marpa_005fr_005fnulled_005fsymbol_005factivate-75"></a></var><br>
+<blockquote>
+        <p>Allows the user to deactivate and reactivate symbol nulled
+events in the recognizer. 
+If <var>boolean</var> is zero, the event is deactivated. 
+If <var>boolean</var> is one, the event is activated.
+
+        <p>Symbol nulled events are active by default if
+the symbol was set up for nulled events in the
+grammar. 
+If a symbol was not set up for nulled events in
+the grammar, symbol nulled events are inactive
+by default and any attempt to change that is a fatal error.
+
+        <p>Success cases:
+On success,
+the method returns the value of <var>boolean</var>. 
+The method succeeds trivially
+if the symbol is already set as indicated by
+<var>boolean</var>.
+
+        <p>Failure cases:
+If the active status
+of the
+nulled event for <var>sym_id</var>
+cannot be set as indicated by <var>boolean</var>,
+the method fails. 
+On failure, &minus;2 is returned. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_prediction_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int boolean </var>)<var><a name="index-marpa_005fr_005fprediction_005fsymbol_005factivate-76"></a></var><br>
+<blockquote>
+        <p>Allows the user to deactivate and reactivate symbol prediction
+events in the recognizer. 
+If <var>boolean</var> is zero, the event is deactivated. 
+If <var>boolean</var> is one, the event is activated.
+
+        <p>Symbol prediction events are active by default if
+the symbol was set up for prediction events in the
+grammar. 
+If a symbol was not set up for prediction events in
+the grammar, symbol prediction events are inactive
+by default and any attempt to change that is a fatal error.
+
+        <p>Success cases:
+On success,
+the method returns the value of <var>boolean</var>. 
+The method succeeds trivially
+if the symbol is already set as indicated by
+<var>boolean</var>.
+
+        <p>Failure cases:
+If the active status
+of the
+prediction event for <var>sym_id</var>
+cannot be set as indicated by <var>boolean</var>,
 the method fails. 
 On failure, &minus;2 is returned. 
 </p></blockquote></div>

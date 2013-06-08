@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Tree reference counting - Libmarpa 5.157.102</title>
+<title>Tree reference counting - Libmarpa 5.157.105</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.157.102">
+<meta name="description" content="Libmarpa 5.157.105">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Tree-methods.html#Tree-methods" title="Tree methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Tree-iteration.html#Tree-iteration" title="Tree iteration">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (5 June 2013)
-is for Libmarpa 5.157.102.
+This manual (6 June 2013)
+is for Libmarpa 5.157.105.
 
 Copyright (C) 2013 Jeffrey Kegler.
 
@@ -47,7 +47,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Tree-methods.html#Tree-methods">Tree me
 <h3 class="section">16.3 Reference counting</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Tree <b>marpa_t_ref</b> (<var>Marpa_Tree t</var>)<var><a name="index-marpa_005ft_005fref-85"></a></var><br>
+&mdash; Function: Marpa_Tree <b>marpa_t_ref</b> (<var>Marpa_Tree t</var>)<var><a name="index-marpa_005ft_005fref-91"></a></var><br>
 <blockquote><p>Increases the reference count by 1. 
 Not needed by most applications.
 
@@ -57,7 +57,7 @@ On failure, <code>NULL</code>.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: void <b>marpa_t_unref</b> (<var>Marpa_Tree t</var>)<var><a name="index-marpa_005ft_005funref-86"></a></var><br>
+&mdash; Function: void <b>marpa_t_unref</b> (<var>Marpa_Tree t</var>)<var><a name="index-marpa_005ft_005funref-92"></a></var><br>
 <blockquote><p>Decreases the reference count by 1,
 destroying <var>t</var> once the reference count reaches
 zero. 

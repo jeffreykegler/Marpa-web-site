@@ -1,13 +1,12 @@
 <html lang="en">
 <head>
-<title>Recognizer overview - Libmarpa 5.170.100</title>
+<title>Bocage accessor - Libmarpa 5.170.100</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="Libmarpa 5.170.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
-<link rel="prev" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
-<link rel="next" href="Recognizer-constructor.html#Recognizer-constructor" title="Recognizer constructor">
+<link rel="up" href="Bocage-methods.html#Bocage-methods" title="Bocage methods">
+<link rel="prev" href="Bocage-reference-counting.html#Bocage-reference-counting" title="Bocage reference counting">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (8 September 2013)
@@ -36,33 +35,28 @@ Copyright (C) 2013 Jeffrey Kegler.
 </head>
 <body>
 <div class="node">
-<a name="Recognizer-overview"></a>
+<a name="Bocage-accessor"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Recognizer-constructor.html#Recognizer-constructor">Recognizer constructor</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Bocage-reference-counting.html#Bocage-reference-counting">Bocage reference counting</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Bocage-methods.html#Bocage-methods">Bocage methods</a>
 <hr>
 </div>
 
-<h3 class="section">12.1 Overview</h3>
+<h3 class="section">14.4 Accessor</h3>
 
-<p>An archtypal application uses a recognizer to read input. 
-To create a recognizer, use the <code>marpa_r_new()</code> method. 
-When a recognizer is no longer in use, its memory can be freed
-using the
-<code>marpa_r_unref()</code> method.
+<div class="defun">
+&mdash; Function: int <b>marpa_b_ambiguity_metric</b> (<var>Marpa_Bocage b</var>)<var><a name="index-marpa_005fb_005fambiguity_005fmetric-84"></a></var><br>
+<blockquote><p>Returns an ambiguity metric. 
+For the time being, it is vaguely defined, but it does differentiate
+between an ambiguous and an unambiguous bocage.
 
-   <p>To make a recognizer ready for input,
-use the <code>marpa_r_start_input()</code> method.
+        <p>Return value:
+1 if the bocage is not for an ambiguous parse;
+a number greater than 1 if the bocage is for an ambiguous parse.
 
-   <p>The recognizer starts with its current earleme
-at location 0. 
-To read a token at the current earleme,
-use the <code>marpa_r_alternative()</code> call.
+        <p>Failures: On failure, &minus;2.
 
-   <p>To complete the processing of the current earleme,
-and move forward to a new one,
-use the <code>marpa_r_earleme_complete()</code> call.
+     </blockquote></div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

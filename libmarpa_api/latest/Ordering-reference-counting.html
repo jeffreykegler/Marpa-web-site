@@ -1,17 +1,17 @@
 <html lang="en">
 <head>
-<title>Ordering reference counting - Libmarpa 5.165.106</title>
+<title>Ordering reference counting - Libmarpa 5.171.100</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.165.106">
+<meta name="description" content="Libmarpa 5.171.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Ordering-methods.html#Ordering-methods" title="Ordering methods">
 <link rel="prev" href="Ordering-constructor.html#Ordering-constructor" title="Ordering constructor">
-<link rel="next" href="Non_002ddefault-ordering.html#Non_002ddefault-ordering" title="Non-default ordering">
+<link rel="next" href="Order-accessor.html#Order-accessor" title="Order accessor">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (25 June 2013)
-is for Libmarpa 5.165.106.
+This manual (7 September 2013)
+is for Libmarpa 5.171.100.
 
 Copyright (C) 2013 Jeffrey Kegler.
 
@@ -38,7 +38,7 @@ Copyright (C) 2013 Jeffrey Kegler.
 <div class="node">
 <a name="Ordering-reference-counting"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">Non-default ordering</a>,
+Next:&nbsp;<a rel="next" accesskey="n" href="Order-accessor.html#Order-accessor">Order accessor</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="Ordering-constructor.html#Ordering-constructor">Ordering constructor</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Ordering-methods.html#Ordering-methods">Ordering methods</a>
 <hr>
@@ -47,7 +47,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Ordering-methods.html#Ordering-methods"
 <h3 class="section">15.3 Reference counting</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Order <b>marpa_o_ref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fref-85"></a></var><br>
+&mdash; Function: Marpa_Order <b>marpa_o_ref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fref-86"></a></var><br>
 <blockquote><p>Increases the reference count by 1. 
 Not needed by most applications.
 
@@ -57,7 +57,7 @@ On failure, <code>NULL</code>.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: void <b>marpa_o_unref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005funref-86"></a></var><br>
+&mdash; Function: void <b>marpa_o_unref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005funref-87"></a></var><br>
 <blockquote><p>Decreases the reference count by 1,
 destroying <var>o</var> once the reference count reaches
 zero. 

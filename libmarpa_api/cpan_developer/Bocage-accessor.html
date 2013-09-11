@@ -1,12 +1,12 @@
 <html lang="en">
 <head>
-<title>LHS Terminals - Libmarpa 5.171.100</title>
+<title>Bocage accessor - Libmarpa 5.171.100</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="Libmarpa 5.171.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Design-notes.html#Design-notes" title="Design notes">
-<link rel="prev" href="Design-of-numbered-objects.html#Design-of-numbered-objects" title="Design of numbered objects">
+<link rel="up" href="Bocage-methods.html#Bocage-methods" title="Bocage methods">
+<link rel="prev" href="Bocage-reference-counting.html#Bocage-reference-counting" title="Bocage reference counting">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (10 September 2013)
@@ -35,34 +35,28 @@ Copyright (C) 2013 Jeffrey Kegler.
 </head>
 <body>
 <div class="node">
-<a name="LHS-Terminals"></a>
+<a name="Bocage-accessor"></a>
 <p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Design-of-numbered-objects.html#Design-of-numbered-objects">Design of numbered objects</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Design-notes.html#Design-notes">Design notes</a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Bocage-reference-counting.html#Bocage-reference-counting">Bocage reference counting</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Bocage-methods.html#Bocage-methods">Bocage methods</a>
 <hr>
 </div>
 
-<h3 class="section">20.3 LHS terminals</h3>
+<h3 class="section">14.4 Accessor</h3>
 
-<p>Marpa's idea
-in losing the sharp division between terminals
-and non-terminals is that the distinction,
-while helpful for proving theorems,
-is not essential in practice. 
-LHS symbols
-in the input might be useful for
-&ldquo;short circuiting&rdquo; the rules in which they occur. 
-This may
-prove helpful in debugging, or have other applications.
+<div class="defun">
+&mdash; Function: int <b>marpa_b_ambiguity_metric</b> (<var>Marpa_Bocage b</var>)<var><a name="index-marpa_005fb_005fambiguity_005fmetric-84"></a></var><br>
+<blockquote><p>Returns an ambiguity metric. 
+For the time being, it is vaguely defined, but it does differentiate
+between an ambiguous and an unambiguous bocage.
 
-   <p>However,
-it also can be useful,
-for checking input validity as well as for efficiency,
-to follow tradition and distinguish
-non-terminals from terminals. 
-For this reason,
-the traditional behavior is the default
-in Libmarpa.
+        <p>Return value:
+1 if the bocage is not for an ambiguous parse;
+a number greater than 1 if the bocage is for an ambiguous parse.
+
+        <p>Failures: On failure, &minus;2.
+
+     </blockquote></div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

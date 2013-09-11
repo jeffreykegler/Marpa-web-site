@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Non-default ordering - Libmarpa 5.165.106</title>
+<title>Non-default ordering - Libmarpa 5.171.100</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.165.106">
+<meta name="description" content="Libmarpa 5.171.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Ordering-methods.html#Ordering-methods" title="Ordering methods">
-<link rel="prev" href="Ordering-reference-counting.html#Ordering-reference-counting" title="Ordering reference counting">
+<link rel="prev" href="Order-accessor.html#Order-accessor" title="Order accessor">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (30 July 2013)
-is for Libmarpa 5.165.106.
+This manual (10 September 2013)
+is for Libmarpa 5.171.100.
 
 Copyright (C) 2013 Jeffrey Kegler.
 
@@ -38,16 +38,16 @@ Copyright (C) 2013 Jeffrey Kegler.
 <a name="Non-default-ordering"></a>
 <a name="Non_002ddefault-ordering"></a>
 <p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Ordering-reference-counting.html#Ordering-reference-counting">Ordering reference counting</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Order-accessor.html#Order-accessor">Order accessor</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Ordering-methods.html#Ordering-methods">Ordering methods</a>
 <hr>
 </div>
 
-<h3 class="section">15.4 Non-default ordering</h3>
+<h3 class="section">15.5 Non-default ordering</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_o_high_rank_only_set</b> (<var> Marpa_Order o, int flag</var>)<var><a name="index-marpa_005fo_005fhigh_005frank_005fonly_005fset-87"></a></var><br>
-&mdash; Function: int <b>marpa_o_high_rank_only</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fhigh_005frank_005fonly-88"></a></var><br>
+&mdash; Function: int <b>marpa_o_high_rank_only_set</b> (<var> Marpa_Order o, int flag</var>)<var><a name="index-marpa_005fo_005fhigh_005frank_005fonly_005fset-89"></a></var><br>
+&mdash; Function: int <b>marpa_o_high_rank_only</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fhigh_005frank_005fonly-90"></a></var><br>
 <blockquote><p>These methods, respectively, set and discover
 the &ldquo;high rank only&rdquo; flag of ordering <var>o</var>. 
 A flag of 1 indicates that, when ranking,
@@ -64,7 +64,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_o_rank</b> (<var> Marpa_Order o </var>)<var><a name="index-marpa_005fo_005frank-89"></a></var><br>
+&mdash; Function: int <b>marpa_o_rank</b> (<var> Marpa_Order o </var>)<var><a name="index-marpa_005fo_005frank-91"></a></var><br>
 <blockquote><p>By default, the ordering of parse trees is arbitrary. 
 This method causes the ordering to be ranked
 according to the ranks of symbols and rules,

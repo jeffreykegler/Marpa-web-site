@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Order accessor - Libmarpa 5.173.100</title>
+<title>Order accessor - Libmarpa 5.175.101</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.173.100">
+<meta name="description" content="Libmarpa 5.175.101">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Ordering-methods.html#Ordering-methods" title="Ordering methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Non_002ddefault-ordering.html#Non_002ddefault-ordering" title="Non-default ordering">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (13 September 2013)
-is for Libmarpa 5.173.100.
+This manual (30 October 2013)
+is for Libmarpa 5.175.101.
 
 Copyright (C) 2013 Jeffrey Kegler.
 
@@ -44,21 +44,31 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Ordering-methods.html#Ordering-methods"
 <hr>
 </div>
 
-<h3 class="section">15.4 Accessor</h3>
+<h3 class="section">15.4 Accessors</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_o_ambiguity_metric</b> (<var>Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fambiguity_005fmetric-88"></a></var><br>
+&mdash; Function: int <b>marpa_o_ambiguity_metric</b> (<var>Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fambiguity_005fmetric-89"></a></var><br>
 <blockquote><p>Returns an ambiguity metric. 
 For the time being, it is vaguely defined, but it does differentiate
 between an ambiguous and an unambiguous ordering.
 
-        <p>Return value:
+        <p>Return value on success:
 1 if the ordering is not for an ambiguous parse;
 a number greater than 1 if the ordering is for an ambiguous parse.
 
         <p>Failures: On failure, &minus;2.
 
      </blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_o_is_null</b> (<var>Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fis_005fnull-90"></a></var><br>
+<blockquote><p>Return value on success:
+A number greater than or equal to 1 if the ordering is for a null parse;
+otherwise, 0.
+
+        <p>Failures: On failure, &minus;2.
+
+        </blockquote></div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

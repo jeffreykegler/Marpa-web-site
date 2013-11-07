@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Bocage accessor - Libmarpa 5.173.100</title>
+<title>Bocage accessor - Libmarpa 5.175.101</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.173.100">
+<meta name="description" content="Libmarpa 5.175.101">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Bocage-methods.html#Bocage-methods" title="Bocage methods">
 <link rel="prev" href="Bocage-reference-counting.html#Bocage-reference-counting" title="Bocage reference counting">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (24 October 2013)
-is for Libmarpa 5.173.100.
+This manual (6 November 2013)
+is for Libmarpa 5.175.101.
 
 Copyright (C) 2013 Jeffrey Kegler.
 
@@ -42,7 +42,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Bocage-methods.html#Bocage-methods">Boc
 <hr>
 </div>
 
-<h3 class="section">14.4 Accessor</h3>
+<h3 class="section">14.4 Accessors</h3>
 
 <div class="defun">
 &mdash; Function: int <b>marpa_b_ambiguity_metric</b> (<var>Marpa_Bocage b</var>)<var><a name="index-marpa_005fb_005fambiguity_005fmetric-84"></a></var><br>
@@ -50,13 +50,23 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Bocage-methods.html#Bocage-methods">Boc
 For the time being, it is vaguely defined, but it does differentiate
 between an ambiguous and an unambiguous bocage.
 
-        <p>Return value:
+        <p>Return value on success:
 1 if the bocage is not for an ambiguous parse;
 a number greater than 1 if the bocage is for an ambiguous parse.
 
         <p>Failures: On failure, &minus;2.
 
      </blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_b_is_null</b> (<var>Marpa_Bocage b</var>)<var><a name="index-marpa_005fb_005fis_005fnull-85"></a></var><br>
+<blockquote><p>Return value on success:
+A number greater than or equal to 1 if the bocage is for a null parse;
+otherwise, 0.
+
+        <p>Failures: On failure, &minus;2.
+
+        </blockquote></div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

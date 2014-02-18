@@ -1,18 +1,18 @@
 <html lang="en">
 <head>
-<title>Event codes - Libmarpa 5.178.100</title>
+<title>Event codes - Libmarpa 5.180.100</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.178.100">
+<meta name="description" content="Libmarpa 5.180.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Events.html#Events" title="Events">
 <link rel="prev" href="Event-methods.html#Event-methods" title="Event methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (25 December 2013)
-is for Libmarpa 5.178.100.
+This manual (17 February 2014)
+is for Libmarpa 5.180.100.
 
-Copyright (C) 2013 Jeffrey Kegler.
+Copyright (C) 2014 Jeffrey Kegler.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -45,14 +45,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Events.html#Events">Events</a>
 <h3 class="section">18.3 Event codes</h3>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_NONE</b><var><a name="index-MARPA_005fEVENT_005fNONE-129"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_NONE</b><var><a name="index-MARPA_005fEVENT_005fNONE-130"></a></var><br>
 <blockquote><p>Applications should never see this event. 
 Event value: Undefined. 
 Suggested message: "No event". 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_COUNTED_NULLABLE</b><var><a name="index-MARPA_005fEVENT_005fCOUNTED_005fNULLABLE-130"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_COUNTED_NULLABLE</b><var><a name="index-MARPA_005fEVENT_005fCOUNTED_005fNULLABLE-131"></a></var><br>
 <blockquote><p>A nullable symbol is either the separator
 for, or the right hand side of, a sequence. 
 Event value: The ID of the symbol. 
@@ -60,7 +60,7 @@ Suggested message: "This symbol is a counted nullable".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</b><var><a name="index-MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD-131"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</b><var><a name="index-MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD-132"></a></var><br>
 <blockquote><p>This event indicates the current Earley item count
 exceeded a
 user-settable threshold. 
@@ -69,14 +69,14 @@ Suggested message: "Too many Earley items".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_EXHAUSTED</b><var><a name="index-MARPA_005fEVENT_005fEXHAUSTED-132"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_EXHAUSTED</b><var><a name="index-MARPA_005fEVENT_005fEXHAUSTED-133"></a></var><br>
 <blockquote><p>The parse is exhausted. 
 Event value: Undefined. 
 Suggested message: "Recognizer is exhausted". 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_LOOP_RULES</b><var><a name="index-MARPA_005fEVENT_005fLOOP_005fRULES-133"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_LOOP_RULES</b><var><a name="index-MARPA_005fEVENT_005fLOOP_005fRULES-134"></a></var><br>
 <blockquote><p>One or more rules are loop rules &mdash; rules
 that are part of a cycle. 
 Cycles are pathological cases of recursion,
@@ -91,14 +91,14 @@ Suggested message: "Grammar contains a infinite loop".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_NULLING_TERMINAL</b><var><a name="index-MARPA_005fEVENT_005fNULLING_005fTERMINAL-134"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_NULLING_TERMINAL</b><var><a name="index-MARPA_005fEVENT_005fNULLING_005fTERMINAL-135"></a></var><br>
 <blockquote><p>A nulling symbol is also a terminal. 
 Event value: The ID of the symbol. 
 Suggested message: "This symbol is a nulling terminal". 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_COMPLETED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fCOMPLETED-135"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_COMPLETED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fCOMPLETED-136"></a></var><br>
 <blockquote><p>The recognizer can be set to generate an event
 a symbol is completed
 using its <code>marpa_r_completed_symbol_event_set()</code>
@@ -112,7 +112,7 @@ Suggested message: "Completed symbol".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_EXPECTED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fEXPECTED-136"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_EXPECTED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fEXPECTED-137"></a></var><br>
 <blockquote><p>The recognizer can be set to generate an event when a
 symbol is expected
 using its <code>marpa_r_expected_symbol_event_set()</code>
@@ -124,7 +124,7 @@ Suggested message: "Expecting symbol".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_NULLED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fNULLED-137"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_NULLED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fNULLED-138"></a></var><br>
 <blockquote><p>The recognizer can be set to generate an event when a
 symbol is nulled &ndash; that is, recognized as a
 zero-length symbol. 
@@ -138,7 +138,7 @@ Suggested message: "Symbol was nulled".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_PREDICTED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fPREDICTED-138"></a></var><br>
+&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_PREDICTED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fPREDICTED-139"></a></var><br>
 <blockquote><p>The recognizer can be set to generate an event when a
 symbol is predicted &ndash; that is, recognized as a
 zero-length symbol. 

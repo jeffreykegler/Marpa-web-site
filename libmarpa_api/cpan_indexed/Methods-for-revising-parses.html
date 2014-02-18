@@ -1,13 +1,13 @@
 <html lang="en">
 <head>
-<title>Recognizer overview - Libmarpa 5.180.100</title>
+<title>Methods for revising parses - Libmarpa 5.180.100</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="Libmarpa 5.180.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
-<link rel="prev" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
-<link rel="next" href="Recognizer-constructor.html#Recognizer-constructor" title="Recognizer constructor">
+<link rel="prev" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators" title="Recognizer life cycle mutators">
+<link rel="next" href="Location-accessors.html#Location-accessors" title="Location accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (17 February 2014)
@@ -36,33 +36,25 @@ Copyright (C) 2014 Jeffrey Kegler.
 </head>
 <body>
 <div class="node">
-<a name="Recognizer-overview"></a>
+<a name="Methods-for-revising-parses"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Recognizer-constructor.html#Recognizer-constructor">Recognizer constructor</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>,
+Next:&nbsp;<a rel="next" accesskey="n" href="Location-accessors.html#Location-accessors">Location accessors</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">Recognizer life cycle mutators</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
 <hr>
 </div>
 
-<h3 class="section">12.1 Overview</h3>
+<h3 class="section">12.5 Methods for revising parses</h3>
 
-<p>An archtypal application uses a recognizer to read input. 
-To create a recognizer, use the <code>marpa_r_new()</code> method. 
-When a recognizer is no longer in use, its memory can be freed
-using the
-<code>marpa_r_unref()</code> method.
+<p>Marpa allows an application to &ldquo;change its mind&rdquo; about a parse,
+rejected rule previously recognized or predicted,
+and terminals previously scanned. 
+The methods in this section provide that capability.
 
-   <p>To make a recognizer ready for input,
-use the <code>marpa_r_start_input()</code> method.
+<div class="defun">
+&mdash; Function: Marpa_Earleme <b>marpa_r_clean</b> (<var> Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fclean-60"></a></var><br>
 
-   <p>The recognizer starts with its current earleme
-at location 0. 
-To read a token at the current earleme,
-use the <code>marpa_r_alternative()</code> call.
-
-   <p>To complete the processing of the current earleme,
-and move forward to a new one,
-use the <code>marpa_r_earleme_complete()</code> call.
+        </div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

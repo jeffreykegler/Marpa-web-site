@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Valuator steps by type - Libmarpa 5.179.110</title>
+<title>Valuator steps by type - Libmarpa 5.181.100</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.179.110">
+<meta name="description" content="Libmarpa 5.181.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
@@ -10,10 +10,10 @@
 <link rel="next" href="Basic-step-accessors.html#Basic-step-accessors" title="Basic step accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (17 January 2014)
-is for Libmarpa 5.179.110.
+This manual (21 February 2014)
+is for Libmarpa 5.181.100.
 
-Copyright (C) 2013 Jeffrey Kegler.
+Copyright (C) 2014 Jeffrey Kegler.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -47,7 +47,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Value-methods.html#Value-methods">Value
 <h3 class="section">17.9 Valuator steps by type</h3>
 
 <div class="defun">
-&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_RULE</b><var><a name="index-MARPA_005fSTEP_005fRULE-107"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_RULE</b><var><a name="index-MARPA_005fSTEP_005fRULE-108"></a></var><br>
 <blockquote><p>The semantics of a rule should be performed. 
 The application can find the value of the rule's
 children in the stack locations from
@@ -65,7 +65,7 @@ be equal to <code>marpa_v_arg_0(v)</code>.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_TOKEN</b><var><a name="index-MARPA_005fSTEP_005fTOKEN-108"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_TOKEN</b><var><a name="index-MARPA_005fSTEP_005fTOKEN-109"></a></var><br>
 <blockquote><p>The semantics of a non-null token should be performed. 
 The application's value for the token whose ID is
 <code>marpa_v_token(v)</code> should be
@@ -76,7 +76,7 @@ Its value according to Libmarpa will be in
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_NULLING_SYMBOL</b><var><a name="index-MARPA_005fSTEP_005fNULLING_005fSYMBOL-109"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_NULLING_SYMBOL</b><var><a name="index-MARPA_005fSTEP_005fNULLING_005fSYMBOL-110"></a></var><br>
 <blockquote><p>The semantics for a nulling symbol should be performed. 
 The ID of the symbol is
 <code>marpa_v_symbol(v)</code> and its value should
@@ -85,7 +85,7 @@ stack location <code>marpa_v_result(v)</code>.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INACTIVE</b><var><a name="index-MARPA_005fSTEP_005fINACTIVE-110"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INACTIVE</b><var><a name="index-MARPA_005fSTEP_005fINACTIVE-111"></a></var><br>
 <blockquote><p>The valuator has gone through all of its steps
 and is now inactive. 
 The value of the parse will be in stack location 0. 
@@ -97,15 +97,15 @@ be both the first and last step.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INITIAL</b><var><a name="index-MARPA_005fSTEP_005fINITIAL-111"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INITIAL</b><var><a name="index-MARPA_005fSTEP_005fINITIAL-112"></a></var><br>
 <blockquote><p>The valuator is new and has
 yet to go through any steps. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INTERNAL1</b><var><a name="index-MARPA_005fSTEP_005fINTERNAL1-112"></a></var><br>
-&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INTERNAL2</b><var><a name="index-MARPA_005fSTEP_005fINTERNAL2-113"></a></var><br>
-&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_TRACE</b><var><a name="index-MARPA_005fSTEP_005fTRACE-114"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INTERNAL1</b><var><a name="index-MARPA_005fSTEP_005fINTERNAL1-113"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_INTERNAL2</b><var><a name="index-MARPA_005fSTEP_005fINTERNAL2-114"></a></var><br>
+&mdash; Macro: Marpa_Step_Type <b>MARPA_STEP_TRACE</b><var><a name="index-MARPA_005fSTEP_005fTRACE-115"></a></var><br>
 <blockquote><p>These step types are reserved for internal purposes. 
 </p></blockquote></div>
     <script src="javascripts/scale.fix.js"></script>

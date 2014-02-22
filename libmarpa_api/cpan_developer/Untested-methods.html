@@ -1,18 +1,18 @@
 <html lang="en">
 <head>
-<title>Untested methods - Libmarpa 5.179.110</title>
+<title>Untested methods - Libmarpa 5.181.100</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.179.110">
+<meta name="description" content="Libmarpa 5.181.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Work-in-Progress.html#Work-in-Progress" title="Work in Progress">
 <link rel="prev" href="Experimental-methods.html#Experimental-methods" title="Experimental methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (17 January 2014)
-is for Libmarpa 5.179.110.
+This manual (21 February 2014)
+is for Libmarpa 5.181.100.
 
-Copyright (C) 2013 Jeffrey Kegler.
+Copyright (C) 2014 Jeffrey Kegler.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -51,8 +51,8 @@ Users should regard these methods
 as unsupported.
 
 <div class="defun">
-&mdash; Function: Marpa_Rank <b>marpa_g_default_rank</b> (<var> Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fdefault_005frank-238"></a></var><br>
-&mdash; Function: Marpa_Rank <b>marpa_g_default_rank_set</b> (<var> Marpa_Grammar g, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fdefault_005frank_005fset-239"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_default_rank</b> (<var> Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fdefault_005frank-242"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_default_rank_set</b> (<var> Marpa_Grammar g, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fdefault_005frank_005fset-243"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the default rank of the grammar. 
@@ -87,8 +87,8 @@ The error code can be determined by using the
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank-240"></a></var><br>
-&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank_005fset-241"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank-244"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank_005fset-245"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the rank of a symbol <var>sym_id</var>. 
@@ -111,6 +111,24 @@ The error code can be determined by using the
 <code>marpa_g_error()</code> call.
 
         </blockquote></div>
+
+<div class="defun">
+&mdash; Function: Marpa_Assertion_ID <b>marpa_g_zwa_new</b> (<var> Marpa_Grammar g, int default_value</var>)<var><a name="index-marpa_005fg_005fzwa_005fnew-246"></a></var><br>
+        </div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_g_zwa_place</b> (<var> Marpa_Grammar g, Marpa_Assertion_ID zwaid, Marpa_Rule_ID xrl_id, int rhs_ix</var>)<var><a name="index-marpa_005fg_005fzwa_005fplace-247"></a></var><br>
+        </div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_zwa_default_set</b> (<var> Marpa_Recognizer r, Marpa_Assertion_ID zwaid, int default_value</var>)<var><a name="index-marpa_005fr_005fzwa_005fdefault_005fset-248"></a></var><br>
+<blockquote>
+        <p>On success, returns previous default value of the assertion. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: Marpa_Assertion_ID <b>marpa_g_highest_zwa_id</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005fhighest_005fzwa_005fid-249"></a></var><br>
+        </div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

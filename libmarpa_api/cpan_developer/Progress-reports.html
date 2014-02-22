@@ -1,18 +1,18 @@
 <html lang="en">
 <head>
-<title>Progress reports - Libmarpa 5.179.110</title>
+<title>Progress reports - Libmarpa 5.181.100</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.179.110">
+<meta name="description" content="Libmarpa 5.181.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
 <link rel="next" href="Bocage-methods.html#Bocage-methods" title="Bocage methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (17 January 2014)
-is for Libmarpa 5.179.110.
+This manual (21 February 2014)
+is for Libmarpa 5.181.100.
 
-Copyright (C) 2013 Jeffrey Kegler.
+Copyright (C) 2014 Jeffrey Kegler.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -64,7 +64,7 @@ freeing the memory it uses,
 call the <code>marpa_r_progress_report_finish()</code> method.
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_progress_report_reset</b> (<var> Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fprogress_005freport_005freset-77"></a></var><br>
+&mdash; Function: int <b>marpa_r_progress_report_reset</b> (<var> Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fprogress_005freport_005freset-78"></a></var><br>
 <blockquote><p>Resets the progress report. 
 Assumes a report of the progress has already been initialized
 at some Earley set
@@ -79,7 +79,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_progress_report_start</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID set_id</var>)<var><a name="index-marpa_005fr_005fprogress_005freport_005fstart-78"></a></var><br>
+&mdash; Function: int <b>marpa_r_progress_report_start</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID set_id</var>)<var><a name="index-marpa_005fr_005fprogress_005freport_005fstart-79"></a></var><br>
 <blockquote><p>Initializes a report of the progress at Earley set <var>set_id</var>
 for recognizer <var>r</var>. 
 If a progress report already exists, it is destroyed and its
@@ -103,7 +103,7 @@ or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_progress_report_finish</b> (<var> Marpa_Recognizer r </var>)<var><a name="index-marpa_005fr_005fprogress_005freport_005ffinish-79"></a></var><br>
+&mdash; Function: int <b>marpa_r_progress_report_finish</b> (<var> Marpa_Recognizer r </var>)<var><a name="index-marpa_005fr_005fprogress_005freport_005ffinish-80"></a></var><br>
 <blockquote><p>Destroys the report of the progress at Earley set <var>set_id</var>
 for recognizer <var>r</var>,
 freeing the memory and other resources. 
@@ -119,7 +119,7 @@ On success, a non-negative value.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Rule_ID <b>marpa_r_progress_item</b> (<var> Marpa_Recognizer r, int* position, Marpa_Earley_Set_ID* origin </var>)<var><a name="index-marpa_005fr_005fprogress_005fitem-80"></a></var><br>
+&mdash; Function: Marpa_Rule_ID <b>marpa_r_progress_item</b> (<var> Marpa_Recognizer r, int* position, Marpa_Earley_Set_ID* origin </var>)<var><a name="index-marpa_005fr_005fprogress_005fitem-81"></a></var><br>
 <blockquote><p>This method allows access to the data
 for the next item of a
 progress report. 

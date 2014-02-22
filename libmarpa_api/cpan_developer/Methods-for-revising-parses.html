@@ -1,12 +1,13 @@
 <html lang="en">
 <head>
-<title>Ordering methods - Libmarpa 5.181.100</title>
+<title>Methods for revising parses - Libmarpa 5.181.100</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="Libmarpa 5.181.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Bocage-methods.html#Bocage-methods" title="Bocage methods">
-<link rel="next" href="Tree-methods.html#Tree-methods" title="Tree methods">
+<link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
+<link rel="prev" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators" title="Recognizer life cycle mutators">
+<link rel="next" href="Location-accessors.html#Location-accessors" title="Location accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (21 February 2014)
@@ -35,23 +36,25 @@ Copyright (C) 2014 Jeffrey Kegler.
 </head>
 <body>
 <div class="node">
-<a name="Ordering-methods"></a>
+<a name="Methods-for-revising-parses"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Tree-methods.html#Tree-methods">Tree methods</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Bocage-methods.html#Bocage-methods">Bocage methods</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Location-accessors.html#Location-accessors">Location accessors</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">Recognizer life cycle mutators</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
 <hr>
 </div>
 
-<h2 class="chapter">15 Ordering methods</h2>
+<h3 class="section">12.5 Methods for revising parses</h3>
 
-<ul class="menu">
-<li><a accesskey="1" href="Ordering-overview.html#Ordering-overview">Ordering overview</a>
-<li><a accesskey="2" href="Ordering-constructor.html#Ordering-constructor">Ordering constructor</a>
-<li><a accesskey="3" href="Ordering-reference-counting.html#Ordering-reference-counting">Ordering reference counting</a>
-<li><a accesskey="4" href="Order-accessor.html#Order-accessor">Order accessor</a>
-<li><a accesskey="5" href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">Non-default ordering</a>
-</ul>
+<p>Marpa allows an application to &ldquo;change its mind&rdquo; about a parse,
+rejected rule previously recognized or predicted,
+and terminals previously scanned. 
+The methods in this section provide that capability.
+
+<div class="defun">
+&mdash; Function: Marpa_Earleme <b>marpa_r_clean</b> (<var> Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fclean-60"></a></var><br>
+
+        </div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

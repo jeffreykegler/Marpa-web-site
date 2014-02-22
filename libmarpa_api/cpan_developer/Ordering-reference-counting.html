@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Ordering reference counting - Libmarpa 5.179.110</title>
+<title>Ordering reference counting - Libmarpa 5.181.100</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.179.110">
+<meta name="description" content="Libmarpa 5.181.100">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Ordering-methods.html#Ordering-methods" title="Ordering methods">
@@ -10,10 +10,10 @@
 <link rel="next" href="Order-accessor.html#Order-accessor" title="Order accessor">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (17 January 2014)
-is for Libmarpa 5.179.110.
+This manual (21 February 2014)
+is for Libmarpa 5.181.100.
 
-Copyright (C) 2013 Jeffrey Kegler.
+Copyright (C) 2014 Jeffrey Kegler.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -47,7 +47,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Ordering-methods.html#Ordering-methods"
 <h3 class="section">15.3 Reference counting</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Order <b>marpa_o_ref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fref-87"></a></var><br>
+&mdash; Function: Marpa_Order <b>marpa_o_ref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fref-88"></a></var><br>
 <blockquote><p>Increases the reference count by 1. 
 Not needed by most applications.
 
@@ -57,7 +57,7 @@ On failure, <code>NULL</code>.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: void <b>marpa_o_unref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005funref-88"></a></var><br>
+&mdash; Function: void <b>marpa_o_unref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005funref-89"></a></var><br>
 <blockquote><p>Decreases the reference count by 1,
 destroying <var>o</var> once the reference count reaches
 zero. 

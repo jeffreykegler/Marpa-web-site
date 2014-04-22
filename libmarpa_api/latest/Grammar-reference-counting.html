@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Grammar reference counting - Libmarpa 5.181.100</title>
+<title>Grammar reference counting - Libmarpa 6.0.2</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.181.100">
+<meta name="description" content="Libmarpa 6.0.2">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Symbols.html#Symbols" title="Symbols">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (17 February 2014)
-is for Libmarpa 5.181.100.
+This manual (21 April 2014)
+is for Libmarpa 6.0.2.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -46,10 +46,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">G
 
 <h3 class="section">11.3 Tracking the reference count of the grammar</h3>
 
-<p><a name="index-grammar-destructor-8"></a><a name="index-grammar-reference-9"></a><a name="index-grammar-reference-count-10"></a>
+<p><a name="index-grammar-destructor-9"></a><a name="index-grammar-reference-10"></a><a name="index-grammar-reference-count-11"></a>
 
 <div class="defun">
-&mdash; Function: Marpa_Grammar <b>marpa_g_ref</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fref-11"></a></var><br>
+&mdash; Function: Marpa_Grammar <b>marpa_g_ref</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fref-12"></a></var><br>
 <blockquote><p>Increases the reference count by 1. 
 Not needed by most applications.
 
@@ -60,7 +60,7 @@ On success, the grammar object it was called with;
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: void <b>marpa_g_unref</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005funref-12"></a></var><br>
+&mdash; Function: void <b>marpa_g_unref</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005funref-13"></a></var><br>
 <blockquote><p>Decreases the reference count by 1,
 destroying <var>g</var> once the reference count reaches
 zero.

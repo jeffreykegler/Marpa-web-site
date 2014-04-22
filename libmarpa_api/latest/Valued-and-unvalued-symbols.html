@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Valued and unvalued symbols - Libmarpa 5.181.100</title>
+<title>Valued and unvalued symbols - Libmarpa 6.0.2</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.181.100">
+<meta name="description" content="Libmarpa 6.0.2">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Semantics.html#Semantics" title="Semantics">
-<link rel="prev" href="How-Libmarpa-semantics-work.html#How-Libmarpa-semantics-work" title="How Libmarpa semantics work">
+<link rel="up" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods" title="Deprecated techniques and methods">
+<link rel="prev" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods" title="Deprecated techniques and methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (17 February 2014)
-is for Libmarpa 5.181.100.
+This manual (21 April 2014)
+is for Libmarpa 6.0.2.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -37,75 +37,18 @@ Copyright (C) 2014 Jeffrey Kegler.
 <div class="node">
 <a name="Valued-and-unvalued-symbols"></a>
 <p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="How-Libmarpa-semantics-work.html#How-Libmarpa-semantics-work">How Libmarpa semantics work</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Semantics.html#Semantics">Semantics</a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">Deprecated techniques and methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">Deprecated techniques and methods</a>
 <hr>
 </div>
 
-<h3 class="section">5.2 Valued and unvalued symbols</h3>
+<h3 class="section">22.1 Valued and unvalued symbols</h3>
 
-<p>Libmarpa symbols can have values,
-which is the traditional way of doing semantics. 
-Libmarpa also allows symbols to be unvalued. 
-An <dfn>unvalued</dfn> symbol is one whose value
-is unpredictable from instance to instance. 
-If a symbol is unvalued, we sometimes say that it
-has &ldquo;whatever&rdquo; semantics.
-
-   <p>Situations where the semantics can tolerate unvalued symbols
-are surprisingly frequent. 
-For example, the top-level of many languages is a series
-of major units, all of whose semantics are typically accomplished
-via side effects. 
-The compiler is typically indifferent to the actual value produced
-by these major units, and tracking them is a waste of time. 
-Similarly, the value of the separators in a list is typically
-ignored.
-
-   <p>Rules are unvalued if and only if their LHS symbols
-are unvalued. 
-When rules and symbols are unvalued,
-Libmarpa optimizes their evaluation.
-
-   <p>It is in principle unsafe to check the value
-of a symbol if it can be unvalued. 
-For this reason,
-once a symbol has been treated as valued,
-Libmarpa marks it as valued. 
-Similarly,
-once a symbol has been treated as unvalued,
-Libmarpa marks it as unvalued. 
-Once marked, a symbol's valued status is
-<dfn>locked</dfn> and cannot be changed later.
-
-   <p>The valued status of terminals is marked the first
-time they are read. 
-The valued status of LHS symbols must be explicitly
-marked by the application when initializing the
-valuator &mdash; this is Libmarpa's equivalent of
-registering a callback.
-
-   <p>LHS terminals are disabled by default. 
-If allowed, the user should be aware that the valued
-status of a LHS terminal
-will be locked in the recognizer
-if it is used as a terminal,
-and the symbol's use as a rule LHS
-in the valuator must be
-consistent with the recognizer's marking.
-
-   <p>Marpa reports an error when a symbol's use
-conflicts with its locked valued status. 
-Doing so usually saves the programmer
-some tricky debugging further down the road. 
-But it is possible that an application might deliberately
-want to mix
-valued and unvalued uses of a symbol &mdash; an application
-might be able to differentiate them using the larger
-context, or might be tolerant of the uncertainty. 
-If there is interest,
-a future Libmarpa extension might allow a locked
-valued status to be overriden.
+<ul class="menu">
+<li><a accesskey="1" href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">What unvalued symbols were</a>
+<li><a accesskey="2" href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">Grammar methods dealing with unvalued symbols</a>
+<li><a accesskey="3" href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">Registering semantics in the valuator</a>
+</ul>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

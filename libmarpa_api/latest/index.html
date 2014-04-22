@@ -1,14 +1,14 @@
 <html lang="en">
 <head>
-<title>Libmarpa 5.181.100</title>
+<title>Libmarpa 6.0.2</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.181.100">
+<meta name="description" content="Libmarpa 6.0.2">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (17 February 2014)
-is for Libmarpa 5.181.100.
+This manual (21 April 2014)
+is for Libmarpa 6.0.2.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -32,7 +32,7 @@ Copyright (C) 2014 Jeffrey Kegler.
 --></style>
 </head>
 <body>
-<h1 class="settitle">Libmarpa 5.181.100</h1>
+<h1 class="settitle">Libmarpa 6.0.2</h1>
    <div class="contents">
 <h2>Table of Contents</h2>
 <ul>
@@ -69,10 +69,6 @@ Copyright (C) 2014 Jeffrey Kegler.
 <li><a href="Terminals.html#Terminals">4.2 Terminals</a>
 </li></ul>
 <li><a name="toc_Semantics" href="Semantics.html#Semantics">5 Semantics</a>
-<ul>
-<li><a href="How-Libmarpa-semantics-work.html#How-Libmarpa-semantics-work">5.1 How the Libmarpa semantics work</a>
-<li><a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">5.2 Valued and unvalued symbols</a>
-</li></ul>
 <li><a name="toc_Threads" href="Threads.html#Threads">6 Threads</a>
 <li><a name="toc_Fatal-Errors" href="Fatal-Errors.html#Fatal-Errors">7 Fatal Errors</a>
 <li><a name="toc_Introduction-to-the-external-interface" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface">8 Introduction to the external interface</a>
@@ -100,10 +96,9 @@ Copyright (C) 2014 Jeffrey Kegler.
 <li><a href="Recognizer-constructor.html#Recognizer-constructor">12.2 Creating a new recognizer</a>
 <li><a href="Recognizer-reference-counting.html#Recognizer-reference-counting">12.3 Keeping the reference count of a recognizer</a>
 <li><a href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">12.4 Life cycle mutators</a>
-<li><a href="Methods-for-revising-parses.html#Methods-for-revising-parses">12.5 Methods for revising parses</a>
-<li><a href="Location-accessors.html#Location-accessors">12.6 Location accessors</a>
-<li><a href="Other-parse-status-methods.html#Other-parse-status-methods">12.7 Other parse status methods</a>
-<li><a href="Untested-recognizer-methods.html#Untested-recognizer-methods">12.8 Untested recognizer methods</a>
+<li><a href="Location-accessors.html#Location-accessors">12.5 Location accessors</a>
+<li><a href="Other-parse-status-methods.html#Other-parse-status-methods">12.6 Other parse status methods</a>
+<li><a href="Untested-recognizer-methods.html#Untested-recognizer-methods">12.7 Untested recognizer methods</a>
 </li></ul>
 <li><a name="toc_Progress-reports" href="Progress-reports.html#Progress-reports">13 Progress reports</a>
 <li><a name="toc_Bocage-methods" href="Bocage-methods.html#Bocage-methods">14 Bocage methods</a>
@@ -140,11 +135,10 @@ Copyright (C) 2014 Jeffrey Kegler.
 </li></ul>
 <li><a href="Valuator-constructor.html#Valuator-constructor">17.5 Creating a new valuator</a>
 <li><a href="Valuator-reference-counting.html#Valuator-reference-counting">17.6 Reference counting</a>
-<li><a href="Registering-semantics.html#Registering-semantics">17.7 Registering semantics</a>
-<li><a href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">17.8 Stepping through the valuator</a>
-<li><a href="Valuator-steps-by-type.html#Valuator-steps-by-type">17.9 Valuator steps by type</a>
-<li><a href="Basic-step-accessors.html#Basic-step-accessors">17.10 Basic step accessors</a>
-<li><a href="Other-step-accessors.html#Other-step-accessors">17.11 Other step accessors</a>
+<li><a href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">17.7 Stepping through the valuator</a>
+<li><a href="Valuator-steps-by-type.html#Valuator-steps-by-type">17.8 Valuator steps by type</a>
+<li><a href="Basic-step-accessors.html#Basic-step-accessors">17.9 Basic step accessors</a>
+<li><a href="Other-step-accessors.html#Other-step-accessors">17.10 Other step accessors</a>
 </li></ul>
 <li><a name="toc_Events" href="Events.html#Events">18 Events</a>
 <ul>
@@ -167,8 +161,21 @@ Copyright (C) 2014 Jeffrey Kegler.
 </li></ul>
 <li><a name="toc_Work-in-Progress" href="Work-in-Progress.html#Work-in-Progress">21 Work in Progress</a>
 <ul>
-<li><a href="Experimental-methods.html#Experimental-methods">21.1 Experimental methods</a>
-<li><a href="Untested-methods.html#Untested-methods">21.2 Untested methods</a>
+<li><a href="Untested-methods.html#Untested-methods">21.1 Untested methods</a>
+<ul>
+<li><a href="Ranking-methods.html#Ranking-methods">21.1.1 Ranking methods</a>
+<li><a href="Zero_002dwidth-assertion-methods.html#Zero_002dwidth-assertion-methods">21.1.2 Zero-width assertion methods</a>
+<li><a href="Methods-for-revising-parses.html#Methods-for-revising-parses">21.1.3 Methods for revising parses</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Deprecated-techniques-and-methods" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">22 Deprecated techniques and methods</a>
+<ul>
+<li><a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">22.1 Valued and unvalued symbols</a>
+<ul>
+<li><a href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">22.1.1 What unvalued symbols were</a>
+<li><a href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">22.1.2 Grammar methods dealing with unvalued symbols</a>
+<li><a href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">22.1.3 Registering semantics in the valuator</a>
+</li></ul>
 </li></ul>
 <li><a name="toc_GNU-Free-Documentation-License" href="GNU-Free-Documentation-License.html#GNU-Free-Documentation-License">Appendix A GNU Free Documentation License</a>
 </li></ul>
@@ -187,8 +194,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="../index.html#dir">(dir)</a>
 
 <h2 class="unnumbered">Libmarpa: The Marpa low-level library</h2>
 
-<p>This manual (17 February 2014)
-is for Libmarpa 5.181.100.
+<p>This manual (21 April 2014)
+is for Libmarpa 6.0.2.
 
    <p>Copyright &copy; 2014 Jeffrey Kegler.
 
@@ -224,6 +231,7 @@ A copy of the license is included in the section entitled
 <li><a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">Error methods macros and codes</a>
 <li><a href="Design-notes.html#Design-notes">Design notes</a>
 <li><a href="Work-in-Progress.html#Work-in-Progress">Work in Progress</a>
+<li><a href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">Deprecated techniques and methods</a>
 <li><a href="GNU-Free-Documentation-License.html#GNU-Free-Documentation-License">GNU Free Documentation License</a>
 
 </li></ul>
@@ -271,14 +279,6 @@ A copy of the license is included in the section entitled
 <li><a href="General-rules-for-the-earleme-variables.html#General-rules-for-the-earleme-variables">General rules for the earleme variables</a>
 
 </li></ul>
-<p>Semantics
-
-</p>
-<ul class="menu">
-<li><a href="How-Libmarpa-semantics-work.html#How-Libmarpa-semantics-work">How Libmarpa semantics work</a>
-<li><a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>
-
-</li></ul>
 <p>Introduction to the external interface
 
 </p>
@@ -310,7 +310,6 @@ A copy of the license is included in the section entitled
 <li><a href="Recognizer-constructor.html#Recognizer-constructor">Recognizer constructor</a>
 <li><a href="Recognizer-reference-counting.html#Recognizer-reference-counting">Recognizer reference counting</a>
 <li><a href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">Recognizer life cycle mutators</a>
-<li><a href="Methods-for-revising-parses.html#Methods-for-revising-parses">Methods for revising parses</a>
 <li><a href="Location-accessors.html#Location-accessors">Location accessors</a>
 <li><a href="Other-parse-status-methods.html#Other-parse-status-methods">Other parse status methods</a>
 <li><a href="Untested-recognizer-methods.html#Untested-recognizer-methods">Untested recognizer methods</a>
@@ -357,7 +356,6 @@ A copy of the license is included in the section entitled
 <li><a href="Maintaining-the-stack.html#Maintaining-the-stack">Maintaining the stack</a>
 <li><a href="Valuator-constructor.html#Valuator-constructor">Valuator constructor</a>
 <li><a href="Valuator-reference-counting.html#Valuator-reference-counting">Valuator reference counting</a>
-<li><a href="Registering-semantics.html#Registering-semantics">Registering semantics</a>
 <li><a href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">Stepping through the valuator</a>
 <li><a href="Valuator-steps-by-type.html#Valuator-steps-by-type">Valuator steps by type</a>
 <li><a href="Basic-step-accessors.html#Basic-step-accessors">Basic step accessors</a>
@@ -404,8 +402,32 @@ A copy of the license is included in the section entitled
 
 </p>
 <ul class="menu">
-<li><a href="Experimental-methods.html#Experimental-methods">Experimental methods</a>
 <li><a href="Untested-methods.html#Untested-methods">Untested methods</a>
+
+</li></ul>
+<p>Untested methods
+
+</p>
+<ul class="menu">
+<li><a href="Ranking-methods.html#Ranking-methods">Ranking methods</a>
+<li><a href="Zero_002dwidth-assertion-methods.html#Zero_002dwidth-assertion-methods">Zero-width assertion methods</a>
+<li><a href="Methods-for-revising-parses.html#Methods-for-revising-parses">Methods for revising parses</a>
+
+</li></ul>
+<p>Deprecated techniques and methods
+
+</p>
+<ul class="menu">
+<li><a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>
+
+</li></ul>
+<p>Valued and unvalued symbols
+
+</p>
+<ul class="menu">
+<li><a href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">What unvalued symbols were</a>
+<li><a href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">Grammar methods dealing with unvalued symbols</a>
+<li><a href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">Registering semantics in the valuator</a>
 
    </ul>
     <script src="javascripts/scale.fix.js"></script>

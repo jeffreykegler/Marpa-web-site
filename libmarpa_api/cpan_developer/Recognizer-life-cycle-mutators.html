@@ -1,17 +1,17 @@
 <html lang="en">
 <head>
-<title>Recognizer life cycle mutators - Libmarpa 5.181.101</title>
+<title>Recognizer life cycle mutators - Libmarpa 6.0.2</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.181.101">
+<meta name="description" content="Libmarpa 6.0.2">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
 <link rel="prev" href="Recognizer-reference-counting.html#Recognizer-reference-counting" title="Recognizer reference counting">
-<link rel="next" href="Methods-for-revising-parses.html#Methods-for-revising-parses" title="Methods for revising parses">
+<link rel="next" href="Location-accessors.html#Location-accessors" title="Location accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (24 February 2014)
-is for Libmarpa 5.181.101.
+This manual (21 April 2014)
+is for Libmarpa 6.0.2.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -38,7 +38,7 @@ Copyright (C) 2014 Jeffrey Kegler.
 <div class="node">
 <a name="Recognizer-life-cycle-mutators"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Methods-for-revising-parses.html#Methods-for-revising-parses">Methods for revising parses</a>,
+Next:&nbsp;<a rel="next" accesskey="n" href="Location-accessors.html#Location-accessors">Location accessors</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-reference-counting.html#Recognizer-reference-counting">Recognizer reference counting</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
 <hr>
@@ -47,7 +47,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-meth
 <h3 class="section">12.4 Life cycle mutators</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-57"></a></var><br>
+&mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-56"></a></var><br>
 <blockquote><p>Makes <var>r</var> ready to accept input.
 
         <p>Return value:  On success, a non-negative value. 
@@ -55,7 +55,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_alternative</b> (<var>Marpa_Recognizer r, Marpa_Symbol_ID token_id, int value, int length</var>)<var><a name="index-marpa_005fr_005falternative-58"></a></var><br>
+&mdash; Function: int <b>marpa_r_alternative</b> (<var>Marpa_Recognizer r, Marpa_Symbol_ID token_id, int value, int length</var>)<var><a name="index-marpa_005fr_005falternative-57"></a></var><br>
 <blockquote><p>Reads a token into <var>r</var>. 
 The token will start at the current earleme. 
 Libmarpa allows tokens to be ambiguous, to be of
@@ -80,56 +80,10 @@ their own, perhaps based on
 the earleme location and <var>token_id</var>,
 instead of using Libmarpa's token values.
 
-        <p>A <var>value</var> of 0 has special significance &mdash; it indicates
-that the token is unvalued &mdash; that its value is allowed
-to be unpredictable. 
-Note that if a token is unvalued,
-it must be the case,
-not just that Libmarpa need not care about its value,
-but also that <strong>the application</strong>
-does not care about the value of the token. 
-When a token is unvalued, Libmarpa
-optimizes away the valuator steps that
-give the application an opportunity to provide
-a value for that token. 
-Applications that do not use Libmarpa's token values,
-but that <strong>do</strong> care about the token's value,
-must tell Libmarpa not to optimize away the
-relevant valuator steps. 
-An application can do this by
-letting <var>value</var> be any non-zero integer.
-
-        <p>When <var>value</var>
-in a call to <code>marpa_r_alternative()</code>
-is 0,
-symbol <var>token_id</var> is considered to have
-been used as an unvalued symbol. 
-When <var>value</var>
-in a call to <code>marpa_r_alternative()</code>
-is not zero,
-symbol <var>token_id</var> is considered to have
-been used as an valued symbol. 
-On the first read by
-<code>marpa_r_alternative()</code>,
-if symbol <var>token_id</var> is used as a valued
-symbol,
-the valued status of
-symbol <var>token_id</var> will be set to 1
-and locked. 
-On the first read by
-<code>marpa_r_alternative()</code>,
-if symbol <var>token_id</var> is used as a unvalued
-symbol,
-the valued status of
-symbol <var>token_id</var> will be set to 0
-and locked.
-
-        <p>If the valued status of
-symbol <var>token_id</var> is locked at 0,
-it is a failure if that symbol is used as an valued symbol. 
-If the valued status of
-symbol <var>token_id</var> is locked at 1,
-it is a failure if that symbol is used as an unvalued symbol.
+        <p>A <var>value</var> of 0 is reserved for a now-deprecated feature. 
+Do not use it. 
+For more details on that feature, see the
+section <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>.
 
         <p>When <code>marpa_r_alternative()</code>
 is successful,
@@ -172,7 +126,7 @@ On failure, some other error code.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Earleme <b>marpa_r_earleme_complete</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearleme_005fcomplete-59"></a></var><br>
+&mdash; Function: Marpa_Earleme <b>marpa_r_earleme_complete</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearleme_005fcomplete-58"></a></var><br>
 <blockquote><p>This method does the final processing for the current earleme. 
 It then advances the current earleme by one. 
 Note that <code>marpa_r_earleme_complete()</code> may be called

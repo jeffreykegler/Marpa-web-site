@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Static methods - Libmarpa 5.181.101</title>
+<title>Static methods - Libmarpa 6.0.2</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.181.101">
+<meta name="description" content="Libmarpa 6.0.2">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" title="Introduction to the external interface">
 <link rel="next" href="Configuration-methods.html#Configuration-methods" title="Configuration methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (24 February 2014)
-is for Libmarpa 5.181.101.
+This manual (21 April 2014)
+is for Libmarpa 6.0.2.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -46,7 +46,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <h2 class="chapter">9 Static methods</h2>
 
 <div class="defun">
-&mdash; Function: Marpa_Error_Code <b>marpa_check_version</b> (<var>unsigned int required_major, unsigned int required_minor, unsigned int required_micro </var>)<var><a name="index-marpa_005fcheck_005fversion-1"></a></var><br>
+&mdash; Function: Marpa_Error_Code <b>marpa_check_version</b> (<var>int required_major, int required_minor, int required_micro </var>)<var><a name="index-marpa_005fcheck_005fversion-1"></a></var><br>
 <blockquote>
         <p>Checks that the Marpa library in use is compatible with the
 given version. Generally you will pass in the constants
@@ -79,10 +79,10 @@ one of the following is returned, indicating the nature of the mismatch:
      </blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Error_Code <b>marpa_version</b> (<var>unsigned int* version</var>)<var><a name="index-marpa_005fversion-2"></a></var><br>
+&mdash; Function: Marpa_Error_Code <b>marpa_version</b> (<var>int* version</var>)<var><a name="index-marpa_005fversion-2"></a></var><br>
 <blockquote>
         <p>Returns the version number in <var>version</var>,
-which must have room for three <code>unsigned int</code>'s.
+which must have room for three <code>int</code>'s.
 
         <p>Return value: A non-negative number on success,
 &minus;2 on failure. 

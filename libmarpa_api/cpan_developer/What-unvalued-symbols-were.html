@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+<title>What unvalued symbols were - Libmarpa 6.0.2</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Libmarpa 6.0.2">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" title="Valued and unvalued symbols">
+<link rel="prev" href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" title="Valued and unvalued symbols">
+<link rel="next" href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols" title="Grammar methods dealing with unvalued symbols">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual (21 April 2014)
+is for Libmarpa 6.0.2.
+
+Copyright (C) 2014 Jeffrey Kegler.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation.  A copy of the license is included in the section
+     entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="What-unvalued-symbols-were"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">Grammar methods dealing with unvalued symbols</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>
+<hr>
+</div>
+
+<h4 class="subsection">22.1.1 What unvalued symbols were</h4>
+
+<p>Libmarpa symbols can have values,
+which is the traditional way of doing semantics. 
+Libmarpa also allows symbols to be unvalued. 
+An <dfn>unvalued</dfn> symbol is one whose value
+is unpredictable from instance to instance. 
+If a symbol is unvalued, we sometimes say that it
+has &ldquo;whatever&rdquo; semantics.
+
+   <p>Situations where the semantics can tolerate unvalued symbols
+are surprisingly frequent. 
+For example, the top-level of many languages is a series
+of major units, all of whose semantics are typically accomplished
+via side effects. 
+The compiler is typically indifferent to the actual value produced
+by these major units, and tracking them is a waste of time. 
+Similarly, the value of the separators in a list is typically
+ignored.
+
+   <p>Rules are unvalued if and only if their LHS symbols
+are unvalued. 
+When rules and symbols are unvalued,
+Libmarpa optimizes their evaluation.
+
+   <p>It is in principle unsafe to check the value
+of a symbol if it can be unvalued. 
+For this reason,
+once a symbol has been treated as valued,
+Libmarpa marks it as valued. 
+Similarly,
+once a symbol has been treated as unvalued,
+Libmarpa marks it as unvalued. 
+Once marked, a symbol's valued status is
+<dfn>locked</dfn> and cannot be changed later.
+
+   <p>The valued status of terminals is marked the first
+time they are read. 
+The valued status of LHS symbols must be explicitly
+marked by the application when initializing the
+valuator &mdash; this is Libmarpa's equivalent of
+registering a callback.
+
+   <p>LHS terminals are disabled by default. 
+If allowed, the user should be aware that the valued
+status of a LHS terminal
+will be locked in the recognizer
+if it is used as a terminal,
+and the symbol's use as a rule LHS
+in the valuator must be
+consistent with the recognizer's marking.
+
+   <p>Marpa reports an error when a symbol's use
+conflicts with its locked valued status. 
+Doing so usually saves the programmer
+some tricky debugging further down the road.
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+  </body>
+</html>

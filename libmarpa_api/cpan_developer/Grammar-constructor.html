@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Grammar constructor - Libmarpa 5.181.101</title>
+<title>Grammar constructor - Libmarpa 6.0.2</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.181.101">
+<meta name="description" content="Libmarpa 6.0.2">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Grammar-reference-counting.html#Grammar-reference-counting" title="Grammar reference counting">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (24 February 2014)
-is for Libmarpa 5.181.101.
+This manual (21 April 2014)
+is for Libmarpa 6.0.2.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -70,6 +70,27 @@ On failure, <code>NULL</code>,
 and the error code is set in <var>configuration</var>.
 
         </blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_g_force_valued</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005fforce_005fvalued-8"></a></var><br>
+<blockquote>
+        <p>It is recommended that
+this call be made immediately after the
+grammar constructor. 
+It turns off a deprecated feature.
+
+        <p>The <code>marpa_g_force_valued</code> forces all the
+symbols in a grammar to be &ldquo;valued&rdquo;. 
+The opposite of a valued symbol is one about whose value
+you do not care. 
+This distinction has been made in the past in hope
+of gaining efficiencies at evaluation time. 
+Current thinking is that the gains do not repay the extra
+complexity.
+
+        <p>Return value: On success, a non-negative integer. 
+On failure, a negative integer. 
+</p></blockquote></div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Rules - Libmarpa 6.0.2</title>
+<title>Rules - Libmarpa 6.0.5</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 6.0.2">
+<meta name="description" content="Libmarpa 6.0.5">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Sequences.html#Sequences" title="Sequences">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (21 April 2014)
-is for Libmarpa 6.0.2.
+This manual (2 May 2014)
+is for Libmarpa 6.0.5.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -150,8 +150,17 @@ On other failure, &minus;2.
 
 <div class="defun">
 &mdash; Function: Marpa_Rule_ID <b>marpa_g_rule_new</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID lhs_id, Marpa_Symbol_ID *rhs_ids, int length</var>)<var><a name="index-marpa_005fg_005frule_005fnew-39"></a></var><br>
-<blockquote><p>Creates a new external rule in grammar <var>g</var>. 
-The LHS symbol is <var>lhs_id</var>,
+<blockquote><p>Creates a new external BNF rule in grammar <var>g</var>. 
+The ID of the new rule will be a non-negative integer,
+which will be unique to that rule. 
+In addition to BNF rules, Marpa also allows sequence rules,
+which are created by another method:
+<code>marpa_g_sequence_new()</code>. 
+Sequence rules and BNF rules are numbered in the same series,
+so that a BNF rule will never have the same rule ID as a sequence
+rule, and vice versa.
+
+        <p>The LHS symbol is <var>lhs_id</var>,
 and there are <var>length</var> symbols on the RHS. 
 The RHS symbols are in an array
 pointed to by <var>rhs_ids</var>.

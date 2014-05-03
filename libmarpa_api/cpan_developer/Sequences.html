@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Sequences - Libmarpa 6.0.2</title>
+<title>Sequences - Libmarpa 6.0.5</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 6.0.2">
+<meta name="description" content="Libmarpa 6.0.5">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Ranks.html#Ranks" title="Ranks">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (21 April 2014)
-is for Libmarpa 6.0.2.
+This manual (2 May 2014)
+is for Libmarpa 6.0.5.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -83,14 +83,11 @@ or on other failure, &minus;2.
 <div class="defun">
 &mdash; Function: Marpa_Rule_ID <b>marpa_g_sequence_new</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID lhs_id, Marpa_Symbol_ID rhs_id, Marpa_Symbol_ID separator_id, int min, int flags </var>)<var><a name="index-marpa_005fg_005fsequence_005fnew-43"></a></var><br>
 <blockquote><p>Adds a new sequence rule to grammar <var>g</var>. 
-Sequence rules do not add to the classes of grammar parsed
-by Libmarpa &mdash;
-a sequence can always be written as BNF rules. 
-When a rule is created
-with the <code>marpa_g_sequence_new()</code> method,
-Libmarpa will understand that it is a sequence,
-and will optimize accordingly. 
-The speedup is often considerable.
+The ID of the new sequence rule will be a non-negative integer,
+which is unique to that rule. 
+Sequence rules and BNF rules are numbered in the same series,
+so that a BNF rule will never have the same rule ID as a sequence
+rule, and vice versa.
 
         <p>The sequence is <var>lhs_id</var>,
 and the item to be repeated in the sequence is <var>rhs_id</var>. 
@@ -140,6 +137,15 @@ LHS,
 <code>marpa_g_sequence_new()</code> fails,
 setting the error code to
 <code>MARPA_ERR_SEQUENCE_LHS_NOT_UNIQUE</code>.
+
+        <p>Sequence rules do not add to the classes of grammar parsed
+by Libmarpa &mdash;
+a sequence can always be written as BNF rules. 
+When a rule is created
+with the <code>marpa_g_sequence_new()</code> method,
+Libmarpa will understand that it is a sequence,
+and will optimize accordingly. 
+The speedup is often considerable.
 
         <p>Return value:  On success, the ID of the external rule. 
 On failure, &minus;2. 

@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Event codes - Libmarpa 6.0.2</title>
+<title>Event codes - Libmarpa 6.0.5</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 6.0.2">
+<meta name="description" content="Libmarpa 6.0.5">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Events.html#Events" title="Events">
 <link rel="prev" href="Event-methods.html#Event-methods" title="Event methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (21 April 2014)
-is for Libmarpa 6.0.2.
+This manual (2 May 2014)
+is for Libmarpa 6.0.5.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -101,7 +101,7 @@ Suggested message: "This symbol is a nulling terminal".
 &mdash; Macro: int <b>MARPA_EVENT_SYMBOL_COMPLETED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fCOMPLETED-130"></a></var><br>
 <blockquote><p>The recognizer can be set to generate an event
 a symbol is completed
-using its <code>marpa_r_completed_symbol_event_set()</code>
+using its <code>marpa_g_symbol_is_completion_event_set()</code>
 method. 
 (A symbol is "completed" if and only if any rule with that symbol
 as its LHS is completed.) 
@@ -114,9 +114,13 @@ Suggested message: "Completed symbol".
 <div class="defun">
 &mdash; Macro: int <b>MARPA_EVENT_SYMBOL_EXPECTED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fEXPECTED-131"></a></var><br>
 <blockquote><p>The recognizer can be set to generate an event when a
-symbol is expected
+symbol is expected as a terminal,
 using its <code>marpa_r_expected_symbol_event_set()</code>
 method. 
+Note that this event only triggers if the symbol is
+expected as a terminal. 
+Predicted symbols which are not expected as terminals
+do not trigger this event. 
 This event code indicates that one of those events
 occurred. 
 Event value: The ID of the expected symbol. 
@@ -144,6 +148,11 @@ symbol is predicted.
 To set an predicted symbol event,
 use the recognizer's <code>marpa_r_predicted_symbol_event_set()</code>
 method. 
+Unlike the
+<code>MARPA_EVENT_SYMBOL_EXPECTED</code> event,
+the <code>MARPA_EVENT_SYMBOL_PREDICTED</code> event
+triggers for predictions of both
+non-terminals and terminals. 
 This event code indicates that a predicted symbol event
 occurred. 
 Event value: The ID of the predicted symbol. 

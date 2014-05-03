@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Symbols - Libmarpa 6.0.2</title>
+<title>Symbols - Libmarpa 6.0.5</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 6.0.2">
+<meta name="description" content="Libmarpa 6.0.5">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Rules.html#Rules" title="Rules">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (21 April 2014)
-is for Libmarpa 6.0.2.
+This manual (2 May 2014)
+is for Libmarpa 6.0.5.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -180,7 +180,7 @@ as non-zero in length can only generate completed events.
 
         <p>Zero length derivations can be ambiguous. 
 When a zero length symbol is recognized,
-all of its zero-length derviations are also considered to be
+all of its zero-length derivations are also considered to be
 recognized.
 
         <p>The nulled event marking cannot be changed once
@@ -336,7 +336,8 @@ or on other failure, &minus;2.
 <div class="defun">
 &mdash; Function: Marpa_Symbol_ID <b>marpa_g_symbol_new</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fsymbol_005fnew-30"></a></var><br>
 <blockquote>
-        <p>Creates a new symbol.
+        <p>Creates a new symbol. 
+The symbol ID will be a non-negative integer.
 
         <p>Return value: On success, the ID of a new symbol;
 On failure, &minus;2.

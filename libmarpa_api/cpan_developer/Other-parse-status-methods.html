@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Other parse status methods - Libmarpa 6.0.2</title>
+<title>Other parse status methods - Libmarpa 6.0.5</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 6.0.2">
+<meta name="description" content="Libmarpa 6.0.5">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Untested-recognizer-methods.html#Untested-recognizer-methods" title="Untested recognizer methods">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (21 April 2014)
-is for Libmarpa 6.0.2.
+This manual (2 May 2014)
+is for Libmarpa 6.0.5.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -80,6 +80,12 @@ symbol <var>symbol_id</var> is expected at the current earleme.
 if and only if the expected symbol event bit
 for <var>symbol_id</var> is 1. 
 The &ldquo;expected symbol event bit&rdquo; must be 1 or 0.
+
+        <p>In this context, &ldquo;expected&rdquo; means &ldquo;expected as a terminal&rdquo;. 
+Even if a symbol is predicted at the current earleme,
+if it is not acceptable as a terminal,
+it does not trigger an
+&ldquo;expected symbol event&rdquo;.
 
         <p>By default, the &ldquo;expected symbol event bit&rdquo; is 0. 
 It is an error to attempt to set the

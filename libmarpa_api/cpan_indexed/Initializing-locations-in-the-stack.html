@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Initializing locations in the stack - Libmarpa 5.184.100</title>
+<title>Initializing locations in the stack - Libmarpa 6.1.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.184.100">
+<meta name="description" content="Libmarpa 6.1.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Maintaining-the-stack.html#Maintaining-the-stack" title="Maintaining the stack">
 <link rel="prev" href="Sizing-the-stack.html#Sizing-the-stack" title="Sizing the stack">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (2 April 2014)
-is for Libmarpa 5.184.100.
+This manual (31 May 2014)
+is for Libmarpa 6.1.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -58,21 +58,17 @@ containing a trap value.)
 
    <p>The requirement that locations be initialized before
 reading occurs in other implementations. 
-Uninitialized locations will correspond to unvalued symbols,
-but an implementation may require even &ldquo;unvalued&rdquo; symbols to have
-a value that belongs to its &ldquo;universe&rdquo; of values. 
-A symbol is
-&ldquo;unvalued&rdquo; if it does not have a predictable <strong>specific</strong> value. 
-For example, an application may be implemented
-expecting every item on the stack
-to belong to a class,
-in which case
-the set of all objects of that class would
-be that application's
-&ldquo;universe&rdquo; of values. 
-In such an implementation,
-just as in standard-conformant C, every stack location
-would need to be initialized before being read.
+Any implementation that has a &ldquo;universe&rdquo; of &ldquo;safe&rdquo; values,
+may require special precautions. 
+The required precautions may amount to a need to initialize
+&ldquo;uninitialized&rdquo; values. 
+A practical example might be an implementation that expects
+all locations to contain a pointer which it can safely indirect
+from. 
+In such implementations,
+just as in standard-conformant C,
+every stack location
+needs to be initialized before being read.
 
    <p>Due to write optimizations, an application
 cannot rely on Libmarpa's step instructions to

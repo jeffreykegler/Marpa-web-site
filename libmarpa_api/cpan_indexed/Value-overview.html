@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Value overview - Libmarpa 5.184.100</title>
+<title>Value overview - Libmarpa 6.1.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 5.184.100">
+<meta name="description" content="Libmarpa 6.1.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="How-to-use-the-valuator.html#How-to-use-the-valuator" title="How to use the valuator">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (2 April 2014)
-is for Libmarpa 5.184.100.
+This manual (31 May 2014)
+is for Libmarpa 6.1.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -53,17 +53,6 @@ To create a valuator, use the <code>marpa_v_new()</code> method.
 When a valuator is no longer in use, its memory can be freed
 using the
 <code>marpa_v_unref()</code> method.
-
-   <p>By default, Libmarpa assumes that
-non-terminal symbols have
-no semantics. 
-The archetypal application will need to register
-symbols that contain semantics. 
-The primary method for doing this is
-<code>marpa_v_symbol_is_valued()</code>. 
-Applications will typically register semantics by rule,
-and these applications will find
-the <code>marpa_v_rule_is_valued()</code> method more convenient.
 
    <p>The application is required to maintain the stack,
 and the application is also required to implement

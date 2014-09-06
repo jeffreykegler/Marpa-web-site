@@ -20,8 +20,8 @@
       <h2>This is Jeffrey Kegler's website for Marpa, a parsing algorithm</h2>
       <h3>Resources</h3>
       <p>
-      <a href="http://savage.net.au/Marpa.html">The official Marpa
-      starting page</a>.
+        <a href="http://savage.net.au/Marpa.html">The official Marpa
+          starting page</a>.
       </p>
       <p>
         <a href="https://twitter.com/jeffreykegler" class="twitter-follow-button" data-show-count="false">
@@ -51,11 +51,11 @@
           MetaCPAN</a></p>
       <p>
         <a href="https://groups.google.com/forum/?hl=en&amp;fromgroups#%21forum/marpa-parser">
-        Mailing List</a>
+          Mailing List</a>
       </p>
       <p>
         <a href="https://github.com/jeffreykegler/Marpa--R2">
-        Github repository</a></p>
+          Github repository</a></p>
       <p>
         <a href="http://www.jeffreykegler.com/">
           Jeffrey Kegler's personal website
@@ -66,88 +66,99 @@
       <p>Marpa
         is a parsing algorithm.
         It is new, but very much based
-        on the prior work of Jay Earley, Joop Leo, John Aycock and R. Nigel Horspool.
+        on earlier work by Jay Earley, Joop Leo, John Aycock and R. Nigel Horspool.
         Marpa is intended to replace, and to go well beyond,
         recursive descent and the yacc family of parsers.
       </p><ul>
         <li>
           Marpa is fast. It parses in linear time:
           <ul>
-	    <li>All the grammars that recursive descent parses.
-            </li>
-	    <li>All grammars that the yacc family parses.
-            </li>
-            <li>
-              In fact, all unambiguous grammars, as long as they are free of unmarked middle recursions.
-            </li><li>
-              All the ambiguous grammars that are unions of a finite set of any of the above grammars.
-            </li>
-	    </ul>
+            <li>all the grammar classes that recursive descent parses;</li>
+            <li>the grammar class that the yacc family parses;</li>
+            <li>in fact, all unambiguous grammars, as long as they are free of unmarked middle recursions;
+              and</li>
+            <li>all
+              ambiguous grammars that are unions of a finite set of any of the above grammars.</li>
+          </ul>
         </li>
-	<li>
-          Marpa is powerful. Marpa will parse anything you can write in BNF,
-          including any mixture of left, right and middle recursion, as well as cycles.
+        <li>
+          Marpa is powerful. Marpa will parse anything that can be
+          written in BNF.
+          This includes any mixture of left, right and middle recursions.
         </li>
-	<li>
+        <li>Marpa is convenient.
+          Unlike recursive descent, you do not have to write a parser --
+          Marpa generates one from BNF.
+          Unlike PEG or yacc, parser generation is unrestricted and exact.
+          Marpa converts any grammar which can be written as BNF
+          into a parser which recognizes everything
+          in the language described by that BNF, and which rejects everything that is
+          not in that language.
+          The programmer is not forced to make arbitrary choices while parsing.
+          If a rule has several alternatives,
+          all of the alternatives are considered for as long as they might yield a valid parse.
+        </li>
+        <li>
           Marpa is flexible. Like recursive descent, Marpa allows you to stop and
           do your own custom processing. Unlike recursive descent, Marpa makes available
           to you detailed information about the parse so far --
           which rules and symbols have been recognized, with their locations,
           and which rules and symbols are expected next.
-        </li></ul>
-    <h2>Learning more about Marpa</h2>
-    <p>This is Jeffrey Kegler's Marpa web site.
-      (I'm the author of Marpa.)
-      The official starting point for learning about Marpa is
-      <a href="http://savage.net.au/Marpa.html">Ron Savage's Marpa page</a>.
-      Other good places to learn about Marpa
-      include the documentation of
-      <a href="https://metacpan.org/module/Marpa::R2">
-        Marpa::R2</a>,
-      its current release,
-      and my blog,
-      <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog">
-        Ocean of Awareness</a>.
-      Many of my blog posts are tutorials
-      and readers have found these especially helpful.
-      To get oriented in my blog,
-      start at its
-      <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog/metapages/annotated.html">
-        annotated list of the most interesting Marpa posts</a>.
-      Discussion of Marpa currently centers around
-      <a href="http://groups.google.com/group/marpa-parser">
-        the "marpa parser" Google Group</a>.
-    </p>
-    <ul>
-      <li>My blog contains
-        <a href="http://jeffreykegler.github.io/Ocean-of-Awareness-blog/metapages/annotated.html#TUTORIAL">
-          several tutorials</a>.</li>
-      <li>Peter Stuifzand has written another as part of
-        <a href="http://marpa-guide.github.io/index.html">
-          the Marpa Guide</a>.</li>
-      <li>And amon has written this
-        <a href="http://longanswers.blogspot.de/2013/06/transforming-syntax.html">
-          one for Stackoverflow</a>.</li>
-    </ul>
-    <h2>Theory</h2>
-    <p>
-      For those interested in the mathematics behind Marpa, there's
-      <a href="https://docs.google.com/file/d/0B9_mR_M2zOc4Ni1zSW5IYzk3TGc/edit?usp=sharing" target="_blank">
-        a paper with pseudocode, and proofs of correctness and of my complexity claims</a>.
-    </p>
-    <h2>Other resources</h2>
-    <p>
-      <a href="http://jeffreykegler.github.com/Marpa-web-site/libmarpa.html">
-        Libmarpa</a>
-      is a C library, and is the core of Marpa.
-    </p>
-    <p>
-      <a href="http://jeffreykegler.github.com/Marpa-web-site/developer.html">
-        Marpa internals</a>:
-      These are resources of interest only
-      to those working on the internals of Marpa itself --
-      "bleeding edge" documentation, etc.
-    </p>
+        </li>
+      </ul>
+      <h2>Learning more about Marpa</h2>
+      <p>This is Jeffrey Kegler's Marpa web site.
+        (I'm the author of Marpa.)
+        The official starting point for learning about Marpa is
+        <a href="http://savage.net.au/Marpa.html">Ron Savage's Marpa page</a>.
+        Other good places to learn about Marpa
+        include the documentation of
+        <a href="https://metacpan.org/module/Marpa::R2">
+          Marpa::R2</a>,
+        its current release,
+        and my blog,
+        <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog">
+          Ocean of Awareness</a>.
+        Many of my blog posts are tutorials
+        and readers have found these especially helpful.
+        To get oriented in my blog,
+        start at its
+        <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog/metapages/annotated.html">
+          annotated list of the most interesting Marpa posts</a>.
+        Discussion of Marpa currently centers around
+        <a href="http://groups.google.com/group/marpa-parser">
+          the "marpa parser" Google Group</a>.
+      </p>
+      <ul>
+        <li>My blog contains
+          <a href="http://jeffreykegler.github.io/Ocean-of-Awareness-blog/metapages/annotated.html#TUTORIAL">
+            several tutorials</a>.</li>
+        <li>Peter Stuifzand has written another as part of
+          <a href="http://marpa-guide.github.io/index.html">
+            the Marpa Guide</a>.</li>
+        <li>And amon has written this
+          <a href="http://longanswers.blogspot.de/2013/06/transforming-syntax.html">
+            one for Stackoverflow</a>.</li>
+      </ul>
+      <h2>Theory</h2>
+      <p>
+        For those interested in the mathematics behind Marpa, there's
+        <a href="https://docs.google.com/file/d/0B9_mR_M2zOc4Ni1zSW5IYzk3TGc/edit?usp=sharing" target="_blank">
+          a paper with pseudocode, and proofs of correctness and of my complexity claims</a>.
+      </p>
+      <h2>Other resources</h2>
+      <p>
+        <a href="http://jeffreykegler.github.com/Marpa-web-site/libmarpa.html">
+          Libmarpa</a>
+        is a C library, and is the core of Marpa.
+      </p>
+      <p>
+        <a href="http://jeffreykegler.github.com/Marpa-web-site/developer.html">
+          Marpa internals</a>:
+        These are resources of interest only
+        to those working on the internals of Marpa itself --
+        "bleeding edge" documentation, etc.
+      </p>
     </div>
     <div id="footer" style="border-top:thick solid #38B0C0;clear:left;padding:1em;">
     </div>

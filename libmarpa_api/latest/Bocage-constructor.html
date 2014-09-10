@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Bocage constructor - Libmarpa 6.0.7</title>
+<title>Bocage constructor - Libmarpa 7.0.3</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 6.0.7">
+<meta name="description" content="Libmarpa 7.0.3">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Bocage-methods.html#Bocage-methods" title="Bocage methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Bocage-reference-counting.html#Bocage-reference-counting" title="Bocage reference counting">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (28 May 2014)
-is for Libmarpa 6.0.7.
+This manual (9 September 2014)
+is for Libmarpa 7.0.3.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -55,6 +55,18 @@ is increased by 1.
 If there is no parse ending at Earley set <var>earley_set_ID</var>,
 <code>marpa_b_new</code> fails
 and the error code is set to
+<code>MARPA_ERR_NO_PARSE</code>.
+
+        <p>If <code>marpa_b_new</code> is called with
+<var>earley_set_ID</var> set to -1,
+the
+parse at the current earleme will be used,
+if there is one. 
+More exactly,
+if <var>earley_set_ID</var> is set to -1, the
+Earley set at the current earleme will be used. 
+If there is no Earley set at the current earleme,
+<code>marpa_b_new</code> will fail with
 <code>MARPA_ERR_NO_PARSE</code>.
 
         <p>Return value: On success, the new bocage object. 

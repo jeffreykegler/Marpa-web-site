@@ -72,29 +72,43 @@
     <div style="margin-left:190px;border-left:2px solid #38B0C0;padding:25px;">
         <h2>About Libmarpa</h2>
 	<p>
-	Libmarpa is the C language library that implements the core of Marpa.
-	It is part of
+	Libmarpa is the C language library that implements the parse engine
+	at the core of Marpa.
+	It is used by
 	<a href="https://metacpan.org/module/Marpa::R2">
 	Marpa::R2</a>,
-	a Perl CPAN module.
-	For the moment,
-	this entanglement makes sense --
-	all of Libmarpa's tests are in Perl, and you really don't want
-	to install Libmarpa without testing it
-	on your configuration.
+	the Perl CPAN module,
+	but it is completely separate, resides in
+	<a href="https://github.com/jeffreykegler/libmarpa">
+	its own github repo</a>.
         <h2>Installing Libmarpa</h2>
-	<p>Libmarpa's only requirements are Perl 5.10 and a C90 compiler.
+	<p>These instructions desribe how to install the separate Libmarpa.
+	Unless reading it is your only interest,
+	you'll also want to install Marpa::R2.
+	All of Libmarpa's tests are in Marpa::R2,
+	and you really do not want to work with
+	Libmarpa without the ability to test it
+	on your configuration.
 	To install Libmarpa:
 	<ul>
 	<li><p>
-	Download, install and test Marpa::R2.  Please do not skip the testing.
+	Clone
+	<a href="https://github.com/jeffreykegler/libmarpa">
+	the github repo</a>.
 	<li>
-	<p>The Libmarpa distribution is in the directory <tt>libmarpa_dist</tt>.
-	The contents of this directory are
-	unaltered, straight from a GNU autotools tarball.
-	I went to some trouble to keep it very "vanilla",
-	and it should support all the standard GNU autotools targets
-	and install in all the standard ways.
+	AT the top level, <tt>make dists</tt>.
+	Be aware that Libmarpa requires a lot of associated software,
+	including Knuth's literate programming system, Cweb.
+	So the install may be complicated.
+	<li>
+	This done, there will be three very standard autotools distribution
+	directory at the top level:
+	    <ul>
+		    <li><tt>dist/</tt>, containing the code.
+		    <li><tt>doc_dist/</tt>, containing the documentation, with the HTML version begin multi-page.
+		    <li><tt>doc1_dist/</tt>, containing a one-page HTML version of the documentation.
+	    </ul>
+	    Proceed as you would with any other standard autotools distribution directories.
 	</ul>
 	<h3>Documentation</h3>
 	<ul>
@@ -107,31 +121,9 @@
 	PDF</a> versions.
 	<li>
 	<p>
-	Sources for the Libmarpa documentation are included
-	in the Marpa::R2 distribution,
-	in the directory <tt>libmarpa_doc_dist</tt>.
-	Like the directory for the source,
-	the contents of this directory are
-	unaltered, straight from a "vanilla" GNU autotools tarball.
-	It should support all the standard GNU autotools targets
-	and install in all the standard ways.
 	</ul>
-	<h2>Libmarpa and Perl</h2>
+	<h2>Working on Libmarpa</h2>
 	<p>
-	Libmarpa can run and even build on a system without Perl.
-	It has no runtime, build-time or compile-time dependence on Perl.
-	Testing, however, does require Perl and I strongly advise against
-	running Libmarpa in a configuration on which it has not been
-	tested.
-	<h2>Libmarpa internals</h2>
-	<p>
-	The source files for Libmarpa
-	are in
-	<a href="https://github.com/jeffreykegler/libmarpa">
-	the Libmarpa github repository</a>.
-	Copies can also be found
-	as part of the Marpa::R2 distribution,
-	and can also be found in
 	I worked hard to limit the prerequisites needed to
 	configure, compile and run Libmarpa.
 	Working on Libmarpa's internals is another matter.

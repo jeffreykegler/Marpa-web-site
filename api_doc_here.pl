@@ -9,11 +9,15 @@ use File::Find;
 use File::Spec;
 
 sub usage {
-   die "$PROGRAM_NAME: dir_from";
+   die "$PROGRAM_NAME: from";
 }
 usage() if scalar @ARGV != 1;
-my $dir_name = $ARGV[0];
-die "$dir_name is not a directory" if not -d $dir_name;
+my $from_name = $ARGV[0];
+if (not -d $from_name) {
+    die qq{"$from_name" is not a file or a directory} if not -f $from_name;
+    copy_one_here( $from_name );
+    exit 0;
+}
 
 sub wanted {
     my $full_name = $File::Find::name;
@@ -22,7 +26,7 @@ sub wanted {
     copy_one_here( $full_name );
 }
 
-File::Find::find( { no_chdir => 1, wanted => \&wanted }, $dir_name );
+File::Find::find( { no_chdir => 1, wanted => \&wanted }, $from_name );
 
 sub copy_one_here {
     my ($filename) = @_;

@@ -1,0 +1,161 @@
+<html>
+  <head>
+    <link rel="alternate" title="Ocean of Awareness RSS" type="application/rss+xml" title="RSS" href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog/index.rss" />
+    <title>
+      Libmarpa
+    </title>
+    <style type="text/css">
+      strong {font-weight: 700;}
+    </style>
+  </head>
+  <body>
+    <!-- TITLE -->
+    <div
+  style="color:white;background-color:#38B0C0;padding:1em;clear:left;text-align:center;">
+      <h1>
+        Libmarpa
+      </h1>
+    </div>
+    <!-- HEADER -->
+    <div style="margin:0;padding:10px 30px 10px 10px;width:150px;float:left;border-right:2px solid #38B0C0">
+      <h2>
+        Libmarpa
+      </h2>
+      <h3>Libmarpa Resources</h3>
+	<p>
+	<a href="http://jeffreykegler.github.com/Marpa-web-site/libmarpa_api/cpan_indexed/index.html">
+	The Libmarpa API document (HTML)</a>.
+	</p>
+	<p>
+	<a href="https://docs.google.com/file/d/0B9_mR_M2zOc4ZkpJN0RaaGlkckU/edit?usp=sharing">
+	The Libmarpa API document (PDF)</a>.
+      <h3>Other Resources</h3>
+      <p>
+        <a href="http://www.jeffreykegler.com/">
+          Jeffrey Kegler's website
+        </a>
+      <p>
+	<a href="https://twitter.com/jeffreykegler" class="twitter-follow-button" data-show-count="false">Follow @jeffreykegler</a>
+      </p>
+      <p style="text-align:center">
+	<!-- Place this code where you want the badge to render. -->
+	<a href="//plus.google.com/101567692867247957860?prsrc=3" rel="publisher" style="text-decoration:none;">
+	<img src="//ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:32px;height:32px;"/></a>
+      </p>
+      <p>
+	<a href="http://jeffreykegler.github.com/Marpa-web-site/">
+        The main web site for Marpa</a>
+      </p>
+      <p>
+        The Ocean of Awareness blog:
+        <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog">
+          home page</a>,
+        <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog/metapages/chronological.html">
+          chronological index</a>,
+        and
+        <a href="http://jeffreykegler.github.com/Ocean-of-Awareness-blog/metapages/annotated.html">
+          annotated index</a>.
+      </p>
+      <p>Distribution:
+      <a href="http://search.cpan.org/dist/Marpa-R2/">CPAN</a>
+      | <a href="https://metacpan.org/module/Marpa::R2">MetaCPAN</a></p>
+      <p>Mailing List (quite active):
+      <a href="https://groups.google.com/forum/?hl=en&amp;fromgroups#%21forum/marpa-parser">marpa-parser@googlegroups.com</a>
+      </p>
+      <p>
+        Code repository:
+        <a href="https://github.com/jeffreykegler/Marpa--R2">
+          github</a></p>
+
+    </div>
+    <!-- BODY -->
+    <div style="margin-left:190px;border-left:2px solid #38B0C0;padding:25px;">
+        <h2>About Libmarpa</h2>
+	<p>
+	Libmarpa is the C language library that implements the parse engine
+	at the core of Marpa.
+	It is used by
+	<a href="https://metacpan.org/module/Marpa::R2">
+	Marpa::R2</a>,
+	the Perl CPAN module,
+	but it is completely separate, resides in
+	<a href="https://github.com/jeffreykegler/libmarpa">
+	its own github repo</a>.
+        <h2>Installing Libmarpa</h2>
+	<p>These instructions desribe how to install the separate Libmarpa.
+	Unless reading it is your only interest,
+	you'll also want to install Marpa::R2.
+	All of Libmarpa's tests are in Marpa::R2,
+	and you really do not want to work with
+	Libmarpa without the ability to test it
+	on your configuration.
+	To install Libmarpa:
+	<ul>
+	<li><p>
+	Clone
+	<a href="https://github.com/jeffreykegler/libmarpa">
+	the github repo</a>.
+	<li>
+	AT the top level, <tt>make dists</tt>.
+	Be aware that Libmarpa requires a lot of associated software,
+	including Knuth's literate programming system, Cweb.
+	So the install may be complicated.
+	<li>
+	This done, there will be three very standard autotools distribution
+	directory at the top level:
+	    <ul>
+		    <li><tt>dist/</tt>, containing the code.
+		    <li><tt>doc_dist/</tt>, containing the documentation, with the HTML version begin multi-page.
+		    <li><tt>doc1_dist/</tt>, containing a one-page HTML version of the documentation.
+	    </ul>
+	    Proceed as you would with any other standard autotools distribution directories.
+	</ul>
+	<h3>Documentation</h3>
+	<ul>
+	<li><p>
+	The Libmarpa API document is online in
+	<a href="http://jeffreykegler.github.com/Marpa-web-site/libmarpa_api/cpan_indexed/index.html">
+	HTML</a>
+	and
+	<a href="https://docs.google.com/file/d/0B9_mR_M2zOc4ZkpJN0RaaGlkckU/edit?usp=sharing">
+	PDF</a> versions.
+	<li>
+	<p>
+	</ul>
+	<h2>Working on Libmarpa</h2>
+	<p>
+	I worked hard to limit the prerequisites needed to
+	configure, compile and run Libmarpa.
+	Working on Libmarpa's internals is another matter.
+	Libmarpa is literate programming --
+	and work on Libmarpa's internals requires,
+	among other things,
+	Knuth's CWeb and therefore Tex.
+	<p>
+	Libmarpa is highly mathematical code.
+	Its internals are, frankly, daunting.
+	For me, Marpa has a real beauty,
+	but nobody could claim it achieves that beauty through simplicity.
+	I once had hopes that reading
+	Marpa would be like experiencing the effortless
+	power of a late Picasso.
+	But Angkor Wat and Hieronymous Bosch show that beauty
+	comes in many forms.
+    </div>
+    <!-- FOOTER -->
+    <div style="border-top:thick solid #38B0C0;clear:left;padding:1em;">
+    </div>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33430331-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>

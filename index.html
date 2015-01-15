@@ -75,11 +75,9 @@
           <ul>
             <li>all the grammar classes that recursive descent parses;</li>
             <li>the grammar class that the yacc family parses;</li>
-            <li>in fact, all unambiguous grammars, as long as they are
-	      <ul>
-	      <li>free of unmarked middle recursions; and</li>
-	      <li>free of ambiguous right recursions;</li>
-	      </ul>
+            <li>in fact, any unambiguous grammars,
+	    with a couple of exceptions that are not likely to
+	    be an issue in practice (see <a href="#quibbles">quibbles</a>); and
 	    </li>
             <li>all
               ambiguous grammars that are unions of a finite set of any of the above grammars.</li>
@@ -176,6 +174,47 @@
         to those working on the internals of Marpa itself --
         "bleeding edge" documentation, etc.
       </p>
+      <h2>Quibbles</h2><a name="quibbles">
+      <p>I mentioned above that Marpa parses unambiguous grammars in linear time,
+      with a couple of exceptions,
+      and claimed that those were unlikely to be bothersome in practice.
+      Here are the details.
+      <p>
+      For an unambiguous grammar to be parsed in linear time,
+      it must
+      <ul>
+      <li>be free of unmarked middle recursions; and
+      <li>be free of ambiguous right recursions.
+      </ul>
+      <h3>Unmarked middle recursions?</h3>
+      Unmarked middle recursions are what they sound like:
+      recursions that are not left and right, but in the middle of
+      a rule, and for which there is no "marker".
+      What's a marker?
+      That gets tricky.
+      <p>The marker of a middle recursion is anything that allows the parser to find the middle.
+      Since you can encode a Turing machine into the marker, that means the exact question
+      of what a marker is, is undecidable.
+      But, for practical purposes, if you can spot the middle by eyeball, the middle
+      recursion is "marked".
+      If you can't, the middle recursion might be unmarked.
+      <h3>Ambiguous right recursions</h3>
+      How does an unambiguous grammar manage to include an ambiguous right recursion?
+      The answer is not very easily, but you can sneak an ambiguous right recursion into
+      an unambigious grammar,
+      by having two different right recursive rules,
+      both of which recurse on the same symbol.
+      I call these ambiguities right recursive symches -- "symches"
+      because they are ambiguous due to a choice between symbols.
+      A right recursion can also be ambiguous because it is a "factoring" --
+      that is, it divides the input up differently
+      among its symbols.
+      But a factoring will make the whole grammar ambiguous, while a symch does not necessarily do so.
+      <p>Right recursive symches are very easy to avoid.
+      You just rewrite the rules so that they recurse on different symbols.
+      Preserving the semantics is no problem in this case --
+      you simply make sure both of the new symbols
+      have the same semantics as the original one.
     </div>
     <div id="footer" style="border-top:thick solid #38B0C0;clear:left;padding:1em;">
     </div>

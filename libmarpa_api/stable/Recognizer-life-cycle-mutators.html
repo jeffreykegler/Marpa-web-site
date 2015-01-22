@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Recognizer life cycle mutators - Libmarpa 7.6.0</title>
+<title>Recognizer life cycle mutators - Libmarpa 7.7.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 7.6.0">
+<meta name="description" content="Libmarpa 7.7.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
@@ -11,9 +11,9 @@
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (21 January 2015)
-is for Libmarpa 7.6.0.
+is for Libmarpa 7.7.0.
 
-Copyright (C) 2015 Jeffrey Kegler.
+Copyright (C) 2014 Jeffrey Kegler.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -48,7 +48,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-meth
 
 <div class="defun">
 &mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-56"></a></var><br>
-<blockquote><p>Makes <var>r</var> ready to accept input.
+<blockquote><p>Makes <var>r</var> ready to accept input. 
+The first Earley set,
+the one at earleme 0,
+will be completed during this call.
+
+        <p>Because the call to <code>marpa_r_start_input()</code>
+completes an Earley set,
+it may generate events. 
+For details about
+the events that may be generated during
+Earley set completion,
+see the description of the
+<code>marpa_r_earleme_complete()</code> method.
 
         <p>Return value:  On success, a non-negative value. 
 On failure, &minus;2. 
@@ -82,7 +94,6 @@ instead of using Libmarpa's token values.
 
         <p>A <var>value</var> of 0 is reserved for a now-deprecated feature. 
 Do not use it. 
-<var>value</var> may be negative. 
 For more details on that feature, see the
 section <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>.
 

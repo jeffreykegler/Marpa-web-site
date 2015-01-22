@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Libmarpa 7.6.0</title>
+<title>Libmarpa 7.7.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 7.6.0">
+<meta name="description" content="Libmarpa 7.7.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="top" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (21 January 2015)
-is for Libmarpa 7.6.0.
+is for Libmarpa 7.7.0.
 
-Copyright (C) 2015 Jeffrey Kegler.
+Copyright (C) 2014 Jeffrey Kegler.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -32,7 +32,7 @@ Copyright (C) 2015 Jeffrey Kegler.
 --></style>
 </head>
 <body>
-<h1 class="settitle">Libmarpa 7.6.0</h1>
+<h1 class="settitle">Libmarpa 7.7.0</h1>
    <div class="contents">
 <h2>Table of Contents</h2>
 <ul>
@@ -98,7 +98,6 @@ Copyright (C) 2015 Jeffrey Kegler.
 <li><a href="#Recognizer-life-cycle-mutators">12.4 Life cycle mutators</a>
 <li><a href="#Location-accessors">12.5 Location accessors</a>
 <li><a href="#Other-parse-status-methods">12.6 Other parse status methods</a>
-<li><a href="#Untested-recognizer-methods">12.7 Untested recognizer methods</a>
 </li></ul>
 <li><a name="toc_Progress-reports" href="#Progress-reports">13 Progress reports</a>
 <li><a name="toc_Bocage-methods" href="#Bocage-methods">14 Bocage methods</a>
@@ -188,9 +187,9 @@ Copyright (C) 2015 Jeffrey Kegler.
 <h2 class="unnumbered">Libmarpa: The Marpa low-level library</h2>
 
 <p>This manual (21 January 2015)
-is for Libmarpa 7.6.0.
+is for Libmarpa 7.7.0.
 
-   <p>Copyright &copy; 2015 Jeffrey Kegler.
+   <p>Copyright &copy; 2014 Jeffrey Kegler.
 
    <blockquote>
 Permission is granted to copy, distribute and/or modify this document
@@ -1428,7 +1427,7 @@ Always succeeds.
 
 <h3 class="section">11.1 Overview</h3>
 
-<p>An archetypal application has a grammar. 
+<p>An archtypal application has a grammar. 
 To create a grammar, use the <code>marpa_g_new()</code> method. 
 When a grammar is no longer in use, its memory can be freed
 using the
@@ -1658,11 +1657,6 @@ The <code>marpa_g_symbol_is_nulled_event()</code> method
 returns the current value of the nulled event marking
 for symbol <var>sym_id</var>.
 
-        <p>Note that Earleme 0 is a exception. 
-It is possible for a symbol to be nulled at
-earleme 0, the start of parsing,
-but no nulled symbol event will be generated.
-
         <p>When a symbol is recognized, it can generate
 a nulled event or a completion event,
 but recognition of a single instance of a symbol will
@@ -1739,10 +1733,6 @@ event when a symbol is predicted.
 A symbol is said to be <strong>predicted</strong>
 when a it is acceptable at the current
 earleme according to the grammar.
-
-        <p>Note that Earleme 0 is a exception. 
-Predicted symbol events are not generated
-for symbols predicted at the start of parsing.
 
         <p>For predicted events to occur, the symbol must be marked
 as a predicted event symbol. 
@@ -2109,7 +2099,7 @@ On failure, &minus;2.
 <blockquote>
         <p>Return value:
 If rule <var>rule_id</var> is a sequence rule, its separator. 
-If rule <var>rule_id</var> is a sequence rule, but there is no
+If rule <var>rule_id</var> is a sequence rule,, but there is no
 separator, &minus;1. 
 If <var>rule_id</var> is
 not a sequence rule,
@@ -2329,7 +2319,7 @@ On failure, &minus;2.
 
 <h3 class="section">12.1 Overview</h3>
 
-<p>An archetypal application uses a recognizer to read input. 
+<p>An archtypal application uses a recognizer to read input. 
 To create a recognizer, use the <code>marpa_r_new()</code> method. 
 When a recognizer is no longer in use, its memory can be freed
 using the
@@ -2395,7 +2385,19 @@ to zero, it too is destroyed.
 
 <div class="defun">
 &mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-56"></a></var><br>
-<blockquote><p>Makes <var>r</var> ready to accept input.
+<blockquote><p>Makes <var>r</var> ready to accept input. 
+The first Earley set,
+the one at earleme 0,
+will be completed during this call.
+
+        <p>Because the call to <code>marpa_r_start_input()</code>
+completes an Earley set,
+it may generate events. 
+For details about
+the events that may be generated during
+Earley set completion,
+see the description of the
+<code>marpa_r_earleme_complete()</code> method.
 
         <p>Return value:  On success, a non-negative value. 
 On failure, &minus;2. 
@@ -2429,7 +2431,6 @@ instead of using Libmarpa's token values.
 
         <p>A <var>value</var> of 0 is reserved for a now-deprecated feature. 
 Do not use it. 
-<var>value</var> may be negative. 
 For more details on that feature, see the
 section <a href="#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>.
 
@@ -2719,119 +2720,7 @@ On failure, returns &minus;2.
 <h3 class="section">12.6 Other parse status methods</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-67"></a></var><br>
-&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-68"></a></var><br>
-<blockquote><p>These methods, respectively, report and set the Earley item warning threshold. 
-The <dfn>Earley item warning threshold</dfn>
-is a number that is compared with
-the count of Earley items in each Earley set. 
-When it is matched or exceeded,
-a <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event is created.
-
-        <p>If <var>threshold</var> is zero or less,
-an unlimited number of Earley items
-will be allowed without warning. 
-This will rarely be what the user wants.
-
-        <p>By default, Libmarpa calculates a value based on the grammar. 
-The formula Libmarpa uses is the result of some experience,
-and most applications will
-be happy with it.
-
-        <p>Return value:
-The value that the Earley item warning threshold has
-after the method call is finished. 
-Always succeeds. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_expected_symbol_event_set</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fr_005fexpected_005fsymbol_005fevent_005fset-69"></a></var><br>
-<blockquote><p>Sets the &ldquo;expected symbol event bit&rdquo; for <var>symbol_id</var> to <var>value</var>. 
-A recognizer event is created whenever
-symbol <var>symbol_id</var> is expected at the current earleme. 
-if and only if the expected symbol event bit
-for <var>symbol_id</var> is 1. 
-The &ldquo;expected symbol event bit&rdquo; must be 1 or 0.
-
-        <p>In this context, &ldquo;expected&rdquo; means &ldquo;expected as a terminal&rdquo;. 
-Even if a symbol is predicted at the current earleme,
-if it is not acceptable as a terminal,
-it does not trigger an
-&ldquo;expected symbol event&rdquo;.
-
-        <p>By default, the &ldquo;expected symbol event bit&rdquo; is 0. 
-It is an error to attempt to set the
-&ldquo;expected symbol event bit&rdquo; to 1 for a nulling symbol,
-an inaccessible symbol,
-or an unproductive symbol.
-
-        <p>Return value:
-The value of the event bit after the method call is finished. 
--2 if <var>symbol_id</var> is not the ID of a valid symbol;
-if it is the ID of an nulling, inaccessible for unproductive symbol;
-or on other failure. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_is_exhausted</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fis_005fexhausted-70"></a></var><br>
-<blockquote><p>A parser is &ldquo;exhausted&rdquo; if it cannot accept any more input. 
-Both successful and failed parses can be exhausted. 
-In many grammars,
-the parse is always exhausted as soon as it succeeds. 
-Good parses may also exist at earlemes prior to the
-current one.
-
-        <p>Return value:
-1 if the parser is exhausted, 0 otherwise. 
-Always succeeds. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_terminals_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID* buffer</var>)<var><a name="index-marpa_005fr_005fterminals_005fexpected-71"></a></var><br>
-<blockquote><p>Returns a list of the ID's of the symbols
-that are acceptable as tokens
-at the current earleme. 
-<var>buffer</var> is expected to be large enough to hold
-the result. 
-This is guaranteed to be the case if the buffer
-is large enough to hold a number of
-<code>Marpa_Symbol_ID</code>'s that
-is greater than or equal to the number of symbols
-in the grammar.
-
-        <p>Return value:  On success, the number of <code>Marpa_Symbol_ID</code>'s
-in <var>buffer</var>. 
-On failure, &minus;2. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_terminal_is_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID symbol_id</var>)<var><a name="index-marpa_005fr_005fterminal_005fis_005fexpected-72"></a></var><br>
-<blockquote>
-        <p>Return values on success:
-If <var>symbol_id</var> is the
-ID of a valid terminal symbol that is expected at
-the current earleme,
-a number greater than zero. 
-If <var>symbol_id</var> is the
-ID of a valid terminal symbol that is
-<strong>not</strong> expected at
-the current earleme, or
-if <var>symbol_id</var> is the ID of a valid symbol
-that is not a terminal, zero.
-
-        <p>Failure cases:
-Returns &minus;2 on failure. 
-It is a failure
-if <var>symbol_id</var> is not the ID of a valid
-symbol. 
-</p></blockquote></div>
-
-<p><a name="Untested-recognizer-methods"></a>
-
-<h3 class="section">12.7 Untested recognizer methods</h3>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_completion_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int reactivate </var>)<var><a name="index-marpa_005fr_005fcompletion_005fsymbol_005factivate-73"></a></var><br>
+&mdash; Function: int <b>marpa_r_completion_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int reactivate </var>)<var><a name="index-marpa_005fr_005fcompletion_005fsymbol_005factivate-67"></a></var><br>
 <blockquote>
         <p>Allows the user to deactivate and reactivate symbol completion
 events in the recognizer. 
@@ -2862,7 +2751,75 @@ On failure, &minus;2 is returned.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_nulled_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int boolean </var>)<var><a name="index-marpa_005fr_005fnulled_005fsymbol_005factivate-74"></a></var><br>
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-68"></a></var><br>
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-69"></a></var><br>
+<blockquote><p>These methods, respectively, report and set the Earley item warning threshold. 
+The <dfn>Earley item warning threshold</dfn>
+is a number that is compared with
+the count of Earley items in each Earley set. 
+When it is matched or exceeded,
+a <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event is created.
+
+        <p>If <var>threshold</var> is zero or less,
+an unlimited number of Earley items
+will be allowed without warning. 
+This will rarely be what the user wants.
+
+        <p>By default, Libmarpa calculates a value based on the grammar. 
+The formula Libmarpa uses is the result of some experience,
+and most applications will
+be happy with it.
+
+        <p>Return value:
+The value that the Earley item warning threshold has
+after the method call is finished. 
+Always succeeds. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_expected_symbol_event_set</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fr_005fexpected_005fsymbol_005fevent_005fset-70"></a></var><br>
+<blockquote><p>Sets the &ldquo;expected symbol event bit&rdquo; for <var>symbol_id</var> to <var>value</var>. 
+A recognizer event is created whenever
+symbol <var>symbol_id</var> is expected at the current earleme. 
+if and only if the expected symbol event bit
+for <var>symbol_id</var> is 1. 
+The &ldquo;expected symbol event bit&rdquo; must be 1 or 0.
+
+        <p>In this context, &ldquo;expected&rdquo; means &ldquo;expected as a terminal&rdquo;. 
+Even if a symbol is predicted at the current earleme,
+if it is not acceptable as a terminal,
+it does not trigger an
+&ldquo;expected symbol event&rdquo;.
+
+        <p>By default, the &ldquo;expected symbol event bit&rdquo; is 0. 
+It is an error to attempt to set the
+&ldquo;expected symbol event bit&rdquo; to 1 for a nulling symbol,
+an inaccessible symbol,
+or an unproductive symbol.
+
+        <p>Return value:
+The value of the event bit after the method call is finished. 
+-2 if <var>symbol_id</var> is not the ID of a valid symbol;
+if it is the ID of an nulling, inaccessible for unproductive symbol;
+or on other failure. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_is_exhausted</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fis_005fexhausted-71"></a></var><br>
+<blockquote><p>A parser is &ldquo;exhausted&rdquo; if it cannot accept any more input. 
+Both successful and failed parses can be exhausted. 
+In many grammars,
+the parse is always exhausted as soon as it succeeds. 
+Good parses may also exist at earlemes prior to the
+current one.
+
+        <p>Return value:
+1 if the parser is exhausted, 0 otherwise. 
+Always succeeds. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_nulled_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int boolean </var>)<var><a name="index-marpa_005fr_005fnulled_005fsymbol_005factivate-72"></a></var><br>
 <blockquote>
         <p>Allows the user to deactivate and reactivate symbol nulled
 events in the recognizer. 
@@ -2893,7 +2850,7 @@ On failure, &minus;2 is returned.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_prediction_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int boolean </var>)<var><a name="index-marpa_005fr_005fprediction_005fsymbol_005factivate-75"></a></var><br>
+&mdash; Function: int <b>marpa_r_prediction_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int boolean </var>)<var><a name="index-marpa_005fr_005fprediction_005fsymbol_005factivate-73"></a></var><br>
 <blockquote>
         <p>Allows the user to deactivate and reactivate symbol prediction
 events in the recognizer. 
@@ -2921,6 +2878,46 @@ prediction event for <var>sym_id</var>
 cannot be set as indicated by <var>boolean</var>,
 the method fails. 
 On failure, &minus;2 is returned. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_terminals_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID* buffer</var>)<var><a name="index-marpa_005fr_005fterminals_005fexpected-74"></a></var><br>
+<blockquote><p>Returns a list of the ID's of the symbols
+that are acceptable as tokens
+at the current earleme. 
+<var>buffer</var> is expected to be large enough to hold
+the result. 
+This is guaranteed to be the case if the buffer
+is large enough to hold a number of
+<code>Marpa_Symbol_ID</code>'s that
+is greater than or equal to the number of symbols
+in the grammar.
+
+        <p>Return value:  On success, the number of <code>Marpa_Symbol_ID</code>'s
+in <var>buffer</var>. 
+On failure, &minus;2. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>marpa_r_terminal_is_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID symbol_id</var>)<var><a name="index-marpa_005fr_005fterminal_005fis_005fexpected-75"></a></var><br>
+<blockquote>
+        <p>Return values on success:
+If <var>symbol_id</var> is the
+ID of a valid terminal symbol that is expected at
+the current earleme,
+a number greater than zero. 
+If <var>symbol_id</var> is the
+ID of a valid terminal symbol that is
+<strong>not</strong> expected at
+the current earleme, or
+if <var>symbol_id</var> is the ID of a valid symbol
+that is not a terminal, zero.
+
+        <p>Failure cases:
+Returns &minus;2 on failure. 
+It is a failure
+if <var>symbol_id</var> is not the ID of a valid
+symbol. 
 </p></blockquote></div>
 
 <p><a name="Progress-reports"></a>
@@ -3063,18 +3060,6 @@ is increased by 1.
 If there is no parse ending at Earley set <var>earley_set_ID</var>,
 <code>marpa_b_new</code> fails
 and the error code is set to
-<code>MARPA_ERR_NO_PARSE</code>.
-
-        <p>If <code>marpa_b_new</code> is called with
-<var>earley_set_ID</var> set to -1,
-the
-parse at the current earleme will be used,
-if there is one. 
-More exactly,
-if <var>earley_set_ID</var> is set to -1, the
-Earley set at the current earleme will be used. 
-If there is no Earley set at the current earleme,
-<code>marpa_b_new</code> will fail with
 <code>MARPA_ERR_NO_PARSE</code>.
 
         <p>Return value: On success, the new bocage object. 
@@ -3453,7 +3438,7 @@ Libmarpa does not know that the operation
 is an addition. 
 It will tell the application that rule number <var>R</var>
 is to be applied to the arguments at stack locations
-<var>N</var> and <var>N</var>+1, and that the result is to be placed in
+<var>N</var> and <var>N</var>+1, and that the result is to placed in
 stack location <var>N</var>.
 
    <p>In this system
@@ -4862,9 +4847,9 @@ a way that requires it to be
 set up for completion events,
 but the symbol was not set
 set up for completion events. 
-The archetypal case is an attempt to activate completion
+The archtypal case is an attempt to activate completion
 events for the symbol in the recognizer. 
-The archetypal case is an attempt to activate a completion
+The archtypal case is an attempt to activate a completion
 event in the recognizer for
 a symbol that is not set up as a completion event. 
 Numeric value: 92. 
@@ -4878,8 +4863,8 @@ a way that requires it to be
 set up for nulled events,
 but the symbol was not set
 set up for nulled events. 
-The archetypal case is an attempt to activate a nulled
-event in the recognizer for
+The archtypal case is an attempt to activate a nulled
+events in the recognizer for
 a symbol that is not set up as a nulled event. 
 Numeric value: 93. 
 Suggested message: "Symbol is not set up for nulled events". 
@@ -4892,7 +4877,7 @@ a way that requires it to be
 set up for predictino events,
 but the symbol was not set
 set up for predictino events. 
-The archetypal case is an attempt to activate a prediction
+The archtypal case is an attempt to activate a prediction
 event in the recognizer for
 a symbol that is not set up as a prediction event. 
 Numeric value: 94. 

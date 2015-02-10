@@ -11,13 +11,16 @@ else
     echo $libmarpa_dir not found 1>&2
     exit 1
 fi
-branch=stage
+
+# These are the "configurable" settings
+branch=stable
+target_d=libmarpa_api/stable
+
 source_d=stage/$branch.d
 work_d=$source_d/work
 dev_d="$work_d"/dev
 doc_d="$work_d"/doc
 doc1_d="$work_d"/doc1
-target_d=libmarpa_api/stable
 
 test -d stage || mkdir stage
 rm -rf $source_d

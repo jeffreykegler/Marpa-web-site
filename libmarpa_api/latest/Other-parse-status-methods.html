@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Other parse status methods - Libmarpa 7.7.0</title>
+<title>Other parse status methods - Libmarpa 7.10.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 7.7.0">
+<meta name="description" content="Libmarpa 7.10.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
 <link rel="prev" href="Location-accessors.html#Location-accessors" title="Location accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (21 January 2015)
-is for Libmarpa 7.7.0.
+This manual (9 February 2015)
+is for Libmarpa 7.10.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -45,7 +45,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-meth
 <h3 class="section">12.6 Other parse status methods</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_completion_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int reactivate </var>)<var><a name="index-marpa_005fr_005fcompletion_005fsymbol_005factivate-67"></a></var><br>
+&mdash; Function: int <b>marpa_r_completion_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int reactivate </var>)<var><a name="index-marpa_005fr_005fcompletion_005fsymbol_005factivate-70"></a></var><br>
 <blockquote>
         <p>Allows the user to deactivate and reactivate symbol completion
 events in the recognizer. 
@@ -76,8 +76,8 @@ On failure, &minus;2 is returned.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-68"></a></var><br>
-&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-69"></a></var><br>
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-71"></a></var><br>
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-72"></a></var><br>
 <blockquote><p>These methods, respectively, report and set the Earley item warning threshold. 
 The <dfn>Earley item warning threshold</dfn>
 is a number that is compared with
@@ -102,7 +102,7 @@ Always succeeds.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_expected_symbol_event_set</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fr_005fexpected_005fsymbol_005fevent_005fset-70"></a></var><br>
+&mdash; Function: int <b>marpa_r_expected_symbol_event_set</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fr_005fexpected_005fsymbol_005fevent_005fset-73"></a></var><br>
 <blockquote><p>Sets the &ldquo;expected symbol event bit&rdquo; for <var>symbol_id</var> to <var>value</var>. 
 A recognizer event is created whenever
 symbol <var>symbol_id</var> is expected at the current earleme. 
@@ -130,7 +130,7 @@ or on other failure.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_is_exhausted</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fis_005fexhausted-71"></a></var><br>
+&mdash; Function: int <b>marpa_r_is_exhausted</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fis_005fexhausted-74"></a></var><br>
 <blockquote><p>A parser is &ldquo;exhausted&rdquo; if it cannot accept any more input. 
 Both successful and failed parses can be exhausted. 
 In many grammars,
@@ -144,7 +144,7 @@ Always succeeds.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_nulled_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int boolean </var>)<var><a name="index-marpa_005fr_005fnulled_005fsymbol_005factivate-72"></a></var><br>
+&mdash; Function: int <b>marpa_r_nulled_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int boolean </var>)<var><a name="index-marpa_005fr_005fnulled_005fsymbol_005factivate-75"></a></var><br>
 <blockquote>
         <p>Allows the user to deactivate and reactivate symbol nulled
 events in the recognizer. 
@@ -175,7 +175,7 @@ On failure, &minus;2 is returned.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_prediction_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int boolean </var>)<var><a name="index-marpa_005fr_005fprediction_005fsymbol_005factivate-73"></a></var><br>
+&mdash; Function: int <b>marpa_r_prediction_symbol_activate</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID sym_id, int boolean </var>)<var><a name="index-marpa_005fr_005fprediction_005fsymbol_005factivate-76"></a></var><br>
 <blockquote>
         <p>Allows the user to deactivate and reactivate symbol prediction
 events in the recognizer. 
@@ -206,7 +206,7 @@ On failure, &minus;2 is returned.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_terminals_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID* buffer</var>)<var><a name="index-marpa_005fr_005fterminals_005fexpected-74"></a></var><br>
+&mdash; Function: int <b>marpa_r_terminals_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID* buffer</var>)<var><a name="index-marpa_005fr_005fterminals_005fexpected-77"></a></var><br>
 <blockquote><p>Returns a list of the ID's of the symbols
 that are acceptable as tokens
 at the current earleme. 
@@ -224,7 +224,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_terminal_is_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID symbol_id</var>)<var><a name="index-marpa_005fr_005fterminal_005fis_005fexpected-75"></a></var><br>
+&mdash; Function: int <b>marpa_r_terminal_is_expected</b> (<var> Marpa_Recognizer r, Marpa_Symbol_ID symbol_id</var>)<var><a name="index-marpa_005fr_005fterminal_005fis_005fexpected-78"></a></var><br>
 <blockquote>
         <p>Return values on success:
 If <var>symbol_id</var> is the

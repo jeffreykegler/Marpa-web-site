@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Symbols - Libmarpa 7.7.0</title>
+<title>Symbols - Libmarpa 7.10.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 7.7.0">
+<meta name="description" content="Libmarpa 7.10.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Rules.html#Rules" title="Rules">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (21 January 2015)
-is for Libmarpa 7.7.0.
+This manual (9 February 2015)
+is for Libmarpa 7.10.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -90,113 +90,7 @@ If the grammar is not precomputed, or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_completion_event</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent-18"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_completion_event_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset-19"></a></var><br>
-<blockquote>
-        <p>Libmarpa can be set up to generate an
-<code>MARPA_EVENT_SYMBOL_COMPLETED</code>
-event whenever the symbol is completed. 
-A symbol is said to be <strong>completed</strong>
-when a non-nulling rule with
-that symbol on its LHS is completed.
-
-        <p>For completion events to occur, the symbol must be marked
-as a completion event symbol. 
-The <code>marpa_g_symbol_is_completion_event_set()</code> function
-marks symbol <var>sym_id</var> as a completion event symbol
-if <var>value</var> is 1,
-and unmarks it
-it as a completion event symbol if <var>value</var> is 0. 
-The <code>marpa_g_symbol_is_completion_event()</code> method
-returns the current value of the completion event marking
-for symbol <var>sym_id</var>.
-
-        <p>Nulled rules and symbols will never cause completion events. 
-Nullable symbols
-may be marked as completion event symbols,
-but this will have an effect only when the symbol
-is not nulled. 
-Nulling symbols
-may be marked as completion event symbols,
-but no completion events will ever be generated
-for a nulling symbol. 
-Note that this implies at no completion event will
-ever be generated at earleme 0,
-the start of parsing.
-
-        <p>The completion event marking cannot be changed once
-the grammar is precomputed. 
-However, if a symbol is marked as a completion event symbol,
-it can be deactivated
-and reactivated in the recognizer.
-
-        <p>Success: On success, 1 if symbol <var>sym_id</var>
-is a completion event symbol after the
-call, 0 otherwise.
-
-        <p>Failures:
-If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
-if the grammar <var>g</var> is precomputed;
-or on other failure, &minus;2. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_nulled_event</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnulled_005fevent-20"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_nulled_event_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset-21"></a></var><br>
-<blockquote>
-        <p>Libmarpa can set up to generate
-an <code>MARPA_EVENT_SYMBOL_NULLED</code>
-event whenever the symbol is nulled. 
-A symbol is said to be <strong>nulled</strong>
-when a zero length instance of that symbol
-is recognized.
-
-        <p>For nulled events to occur, the symbol must be marked
-as a nulled event symbol. 
-The <code>marpa_g_symbol_is_nulled_event_set()</code> function
-marks symbol <var>sym_id</var> as a nulled event symbol
-if <var>value</var> is 1,
-and unmarks it
-it as a nulled event symbol if <var>value</var> is 0. 
-The <code>marpa_g_symbol_is_nulled_event()</code> method
-returns the current value of the nulled event marking
-for symbol <var>sym_id</var>.
-
-        <p>When a symbol is recognized, it can generate
-a nulled event or a completion event,
-but recognition of a single instance of a symbol will
-generate at most one or the other event &ndash; never
-both. 
-Symbols recognized
-as zero length can only generate nulled events. 
-Symbols recognized
-as non-zero in length can only generate completed events.
-
-        <p>Zero length derivations can be ambiguous. 
-When a zero length symbol is recognized,
-all of its zero-length derivations are also considered to be
-recognized.
-
-        <p>The nulled event marking cannot be changed once
-the grammar is precomputed. 
-However, if a symbol is marked as a nulled event symbol,
-it can be deactivated
-and reactivated in the recognizer.
-
-        <p>Success: On success, 1 if symbol <var>sym_id</var>
-is a nulled event symbol after the
-call, 0 otherwise.
-
-        <p>Failures:
-If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
-if the grammar <var>g</var> is precomputed;
-or on other failure, &minus;2. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_nullable</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnullable-22"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_nullable</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnullable-18"></a></var><br>
 <blockquote><p>A symbol is <dfn>nullable</dfn> if it sometimes produces the empty string. 
 A <strong>nulling</strong> symbol is always a <strong>nullable</strong> symbol,
 but not all <strong>nullable</strong> symbols are <strong>nulling</strong> symbols.
@@ -208,7 +102,7 @@ If the grammar is not precomputed, or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_nulling</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnulling-23"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_nulling</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnulling-19"></a></var><br>
 <blockquote><p>A symbol is <dfn>nulling</dfn> if it always produces the empty string.
 
         <p>Return value: On success, 1 if symbol <var>sym_id</var> is nulling, 0 if not. 
@@ -218,7 +112,7 @@ If the grammar is not precomputed, or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_productive</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fproductive-24"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_productive</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fproductive-20"></a></var><br>
 <blockquote><p>A symbol is <dfn>productive</dfn> if it can produce a string of terminals. 
 All nullable symbols are considered productive.
 
@@ -229,47 +123,7 @@ is not precomputed, or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_prediction_event</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fprediction_005fevent-25"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_prediction_event_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fprediction_005fevent_005fset-26"></a></var><br>
-<blockquote>
-        <p>Libmarpa can be set up
-to generate a
-<code>MARPA_EVENT_SYMBOL_PREDICTED</code>
-event when a symbol is predicted. 
-A symbol is said to be <strong>predicted</strong>
-when a it is acceptable at the current
-earleme according to the grammar.
-
-        <p>For predicted events to occur, the symbol must be marked
-as a predicted event symbol. 
-The <code>marpa_g_symbol_is_predicted_event_set()</code> function
-marks symbol <var>sym_id</var> as a predicted event symbol
-if <var>value</var> is 1,
-and unmarks it
-it as a predicted event symbol if <var>value</var> is 0. 
-The <code>marpa_g_symbol_is_predicted_event()</code> method
-returns the current value of the predicted event marking
-for symbol <var>sym_id</var>.
-
-        <p>The predicted event marking cannot be changed once
-the grammar is precomputed. 
-However, if a symbol is marked as a predicted event symbol,
-it can be deactivated
-and reactivated in the recognizer.
-
-        <p>Success: On success, 1 if symbol <var>sym_id</var>
-is a predicted event symbol after the
-call, 0 otherwise.
-
-        <p>Failures:
-If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
-if the grammar <var>g</var> is precomputed;
-or on other failure, &minus;2. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_start</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fstart-27"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_start</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fstart-21"></a></var><br>
 <blockquote>
         <p>This return value of this call indicates whether <var>sym_id</var>
 is the start symbol.
@@ -284,8 +138,8 @@ On other failure, &minus;2.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_terminal</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal-28"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_terminal_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal_005fset-29"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_terminal</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal-22"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_terminal_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal_005fset-23"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the &ldquo;terminal status&rdquo; of a symbol. 
@@ -325,7 +179,7 @@ or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Symbol_ID <b>marpa_g_symbol_new</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fsymbol_005fnew-30"></a></var><br>
+&mdash; Function: Marpa_Symbol_ID <b>marpa_g_symbol_new</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fsymbol_005fnew-24"></a></var><br>
 <blockquote>
         <p>Creates a new symbol. 
 The symbol ID will be a non-negative integer.

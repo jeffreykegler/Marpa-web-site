@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Grammar precomputation - Libmarpa 7.7.0</title>
+<title>Grammar precomputation - Libmarpa 7.9.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 7.7.0">
+<meta name="description" content="Libmarpa 7.9.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
 <link rel="prev" href="Ranks.html#Ranks" title="Ranks">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (21 January 2015)
-is for Libmarpa 7.7.0.
+This manual (9 February 2015)
+is for Libmarpa 7.9.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -42,10 +42,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">G
 <hr>
 </div>
 
-<h3 class="section">11.8 Precomputing the Grammar</h3>
+<h3 class="section">11.9 Precomputing the Grammar</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_precompute</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fprecompute-50"></a></var><br>
+&mdash; Function: int <b>marpa_g_precompute</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fprecompute-53"></a></var><br>
 <blockquote>
         <p><a name="marpa_005fg_005fprecompute"></a>Precomputation is necessary for a recognizer to be generated
 from a grammar. 
@@ -145,7 +145,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_is_precomputed</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fis_005fprecomputed-51"></a></var><br>
+&mdash; Function: int <b>marpa_g_is_precomputed</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fis_005fprecomputed-54"></a></var><br>
 <blockquote><p>Return value: On success, 1
 if grammar <var>g</var> is already precomputed,
 0 otherwise. 
@@ -153,7 +153,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_has_cycle</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fhas_005fcycle-52"></a></var><br>
+&mdash; Function: int <b>marpa_g_has_cycle</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fhas_005fcycle-55"></a></var><br>
 <blockquote><p>This function allows the application to determine if grammar
 <var>g</var> has a cycle. 
 As mentioned, most applications will want to treat these

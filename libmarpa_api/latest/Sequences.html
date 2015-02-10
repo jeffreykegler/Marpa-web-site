@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Sequences - Libmarpa 7.7.0</title>
+<title>Sequences - Libmarpa 7.10.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 7.7.0">
+<meta name="description" content="Libmarpa 7.10.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Ranks.html#Ranks" title="Ranks">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (21 January 2015)
-is for Libmarpa 7.7.0.
+This manual (9 February 2015)
+is for Libmarpa 7.10.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -47,7 +47,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">G
 <h3 class="section">11.6 Sequences</h3>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_rule_is_proper_separation</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fis_005fproper_005fseparation-41"></a></var><br>
+&mdash; Function: int <b>marpa_g_rule_is_proper_separation</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fis_005fproper_005fseparation-35"></a></var><br>
 <blockquote>
         <p>Return value:
 On success, if rule <var>rule_id</var> is not a sequence rule, 0. 
@@ -63,7 +63,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_sequence_min</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005fsequence_005fmin-42"></a></var><br>
+&mdash; Function: int <b>marpa_g_sequence_min</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005fsequence_005fmin-36"></a></var><br>
 <blockquote>
         <p>Returns the mininum length of a sequence rule. 
 This accessor can be also be used to test whether
@@ -81,7 +81,7 @@ or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Rule_ID <b>marpa_g_sequence_new</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID lhs_id, Marpa_Symbol_ID rhs_id, Marpa_Symbol_ID separator_id, int min, int flags </var>)<var><a name="index-marpa_005fg_005fsequence_005fnew-43"></a></var><br>
+&mdash; Function: Marpa_Rule_ID <b>marpa_g_sequence_new</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID lhs_id, Marpa_Symbol_ID rhs_id, Marpa_Symbol_ID separator_id, int min, int flags </var>)<var><a name="index-marpa_005fg_005fsequence_005fnew-37"></a></var><br>
 <blockquote><p>Adds a new sequence rule to grammar <var>g</var>. 
 The ID of the new sequence rule will be a non-negative integer,
 which is unique to that rule. 
@@ -152,7 +152,7 @@ On failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_sequence_separator</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005fsequence_005fseparator-44"></a></var><br>
+&mdash; Function: int <b>marpa_g_sequence_separator</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005fsequence_005fseparator-38"></a></var><br>
 <blockquote>
         <p>Return value:
 If rule <var>rule_id</var> is a sequence rule, its separator. 
@@ -166,7 +166,7 @@ or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_counted</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fcounted-45"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_counted</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fcounted-39"></a></var><br>
 <blockquote><p>A symbol is <dfn>counted</dfn>
 if it appears on the RHS of a sequence rule,
 or if it is used as

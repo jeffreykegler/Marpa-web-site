@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Registering semantics in the valuator - Libmarpa 7.10.0</title>
+<title>Registering semantics in the valuator - Libmarpa 8.0.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 7.10.0">
+<meta name="description" content="Libmarpa 8.0.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" title="Valued and unvalued symbols">
 <link rel="prev" href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols" title="Grammar methods dealing with unvalued symbols">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (9 February 2015)
-is for Libmarpa 7.10.0.
+This manual (14 February 2015)
+is for Libmarpa 8.0.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -57,11 +57,16 @@ and these applications will find
 the <code>marpa_v_rule_is_valued()</code> method more convenient.
 
 <div class="defun">
-&mdash; Function: int <b>marpa_v_symbol_is_valued</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued-251"></a></var><br>
-&mdash; Function: int <b>marpa_v_symbol_is_valued_set</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id, int value </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued_005fset-252"></a></var><br>
-<blockquote><p>These methods, respectively,
-discover and set to <var>value</var>,
-the valued status for symbol <var>sym_id</var>. 
+&mdash; Function: int <b>marpa_v_symbol_is_valued_set</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id, int status </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued_005fset-251"></a></var><br>
+&mdash; Function: int <b>marpa_v_symbol_is_valued</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued-252"></a></var><br>
+<blockquote>
+        <p>These methods, respectively,
+set and query
+the valued status of symbol <var>sym_id</var>. 
+<code>marpa_v_symbol_is_valued_set()</code> will set
+the valued status to
+the value of
+its <var>status</var> argument. 
 A valued status of 1 indicates that the symbol is valued. 
 A valued status of 0 indicates that the symbol is unvalued. 
 If the valued status is locked,
@@ -76,13 +81,18 @@ or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_v_rule_is_valued</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued-253"></a></var><br>
-&mdash; Function: int <b>marpa_v_rule_is_valued_set</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id, int value </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued_005fset-254"></a></var><br>
-<blockquote><p>These methods respectively,
-discover and set to <var>value</var>,
+&mdash; Function: int <b>marpa_v_rule_is_valued_set</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id, int status </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued_005fset-253"></a></var><br>
+&mdash; Function: int <b>marpa_v_rule_is_valued</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued-254"></a></var><br>
+<blockquote>
+        <p>These methods, respectively,
+set and query
 the valued status
 for the LHS symbol of rule <var>rule_id</var>. 
-A valued status of 1 indicates that the symbol is valued. 
+<code>marpa_v_rule_is_valued_set()</code> sets
+the valued status to the value
+of its <var>status</var> argument.
+
+        <p>A valued status of 1 indicates that the symbol is valued. 
 A valued status of 0 indicates that the symbol is unvalued. 
 If the valued status is locked,
 an attempt to change to a status different from the

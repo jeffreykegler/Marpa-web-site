@@ -1,14 +1,14 @@
 <html lang="en">
 <head>
-<title>Libmarpa 7.10.0</title>
+<title>Libmarpa 8.0.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 7.10.0">
+<meta name="description" content="Libmarpa 8.0.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="top" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (9 February 2015)
-is for Libmarpa 7.10.0.
+This manual (14 February 2015)
+is for Libmarpa 8.0.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -32,7 +32,7 @@ Copyright (C) 2014 Jeffrey Kegler.
 --></style>
 </head>
 <body>
-<h1 class="settitle">Libmarpa 7.10.0</h1>
+<h1 class="settitle">Libmarpa 8.0.0</h1>
    <div class="contents">
 <h2>Table of Contents</h2>
 <ul>
@@ -187,8 +187,8 @@ Copyright (C) 2014 Jeffrey Kegler.
 
 <h2 class="unnumbered">Libmarpa: The Marpa low-level library</h2>
 
-<p>This manual (9 February 2015)
-is for Libmarpa 7.10.0.
+<p>This manual (14 February 2015)
+is for Libmarpa 8.0.0.
 
    <p>Copyright &copy; 2014 Jeffrey Kegler.
 
@@ -1092,8 +1092,8 @@ This is Marpa's behavior, by default.
 between terminals and non-terminals. 
 In this, it
 differs from traditional parsers. 
-A Libmarpa
-can arrange for a a terminal
+Libmarpa
+can arrange for a terminal
 to appear on the LHS of one or more rules,
 or for a terminal to be the start symbol. 
 However,
@@ -1428,7 +1428,7 @@ Always succeeds.
 
 <h3 class="section">11.1 Overview</h3>
 
-<p>An archtypal application has a grammar. 
+<p>An archetypal application has a grammar. 
 To create a grammar, use the <code>marpa_g_new()</code> method. 
 When a grammar is no longer in use, its memory can be freed
 using the
@@ -1580,7 +1580,7 @@ On failure, &minus;2.
 
         <p>Return value: On success, 1 if symbol <var>sym_id</var> is accessible, 0 if not. 
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
+such symbol, &minus;1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -1592,7 +1592,7 @@ but not all <strong>nullable</strong> symbols are <strong>nulling</strong> symbo
 
         <p>Return value: On success, 1 if symbol <var>sym_id</var> is nullable, 0 if not. 
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
+such symbol, &minus;1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -1602,7 +1602,7 @@ If the grammar is not precomputed, or on other failure, &minus;2.
 
         <p>Return value: On success, 1 if symbol <var>sym_id</var> is nulling, 0 if not. 
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
+such symbol, &minus;1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -1611,10 +1611,10 @@ If the grammar is not precomputed, or on other failure, &minus;2.
 <blockquote><p>A symbol is <dfn>productive</dfn> if it can produce a string of terminals. 
 All nullable symbols are considered productive.
 
-        <p>Return value: On success, 1 if symbol <var>sym_id</var> is productive, 0 if not.  If the grammar
+        <p>Return value: On success, 1 if symbol <var>sym_id</var> is productive, 0 if not. 
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
-is not precomputed, or on other failure, &minus;2. 
+such symbol, &minus;1. 
+If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
@@ -1623,18 +1623,23 @@ is not precomputed, or on other failure, &minus;2.
         <p>This return value of this call indicates whether <var>sym_id</var>
 is the start symbol.
 
-        <p>Return value:
-On success, 1 if <var>sym_id</var> is the start symbol;
-0 otherwise. 
+        <p>Success value:
+Returns 1 if <var>sym_id</var> is the start symbol. 
+Returns 0 if <var>sym_id</var> is not the start symbol,
+either because the start symbol is different from
+<var>sym_id</var>,
+or because the start symbol has not been set yet.
+
+        <p>Failure values:
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
+such symbol, &minus;1. 
 On other failure, &minus;2.
 
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_terminal</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal-22"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_terminal_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal_005fset-23"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_terminal_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal_005fset-22"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_terminal</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fterminal-23"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the &ldquo;terminal status&rdquo; of a symbol. 
@@ -1659,13 +1664,13 @@ The error code will be <code>MARPA_ERR_TERMINAL_IS_LOCKED</code>.
 does not appear on the LHS of any rule. 
 An attempt to flag a nulling symbol
 as a terminal will cause a failure,
-but this is not necesssarily detected before precomputation.
+but this is not necessarily detected before precomputation.
 
         <p>Return value: On success, 1 if symbol <var>sym_id</var>
 is a terminal symbol after the
 call, 0 otherwise. 
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
+such symbol, &minus;1. 
 If <var>value</var> is not 0 or 1;
 if the terminal status is locked and <var>value</var>
 is different from its current value;
@@ -1704,7 +1709,7 @@ The start rule is always an accessible rule.
         <p>Return value: On success, 1 if rule <var>rule_id</var>
 is accessible, 0 if not. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 If the grammar
 is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
@@ -1718,7 +1723,7 @@ but not all <strong>nullable</strong> rules are <strong>nulling</strong> rules.
         <p>Return value: On success,
 1 if rule <var>ruleid</var> is nullable, 0 if not. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -1752,7 +1757,7 @@ loop rules.
         <p>Return value: On success,
 1 if rule <var>rule_id</var> is a loop rule, 0 if not. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 If the grammar
 is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
@@ -1980,8 +1985,8 @@ On failure, &minus;2.
 <h3 class="section">11.7 Ranks</h3>
 
 <div class="defun">
-&mdash; Function: Marpa_Rank <b>marpa_g_rule_rank</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005frank-40"></a></var><br>
-&mdash; Function: Marpa_Rank <b>marpa_g_rule_rank_set</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005frule_005frank_005fset-41"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_rule_rank_set</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005frule_005frank_005fset-40"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_rule_rank</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005frank-41"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the rank of a rule <var>rule_id</var>. 
@@ -2010,11 +2015,11 @@ The error code can be determined by using the
      </blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_rule_null_high</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fnull_005fhigh-42"></a></var><br>
-&mdash; Function: int <b>marpa_g_rule_null_high_set</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id, int flag</var>)<var><a name="index-marpa_005fg_005frule_005fnull_005fhigh_005fset-43"></a></var><br>
+&mdash; Function: int <b>marpa_g_rule_null_high_set</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id, int flag</var>)<var><a name="index-marpa_005fg_005frule_005fnull_005fhigh_005fset-42"></a></var><br>
+&mdash; Function: int <b>marpa_g_rule_null_high</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fnull_005fhigh-43"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
-and discover the &ldquo;null ranks high&rdquo; setting of the rule <var>rule_id</var>. 
+and query the &ldquo;null ranks high&rdquo; setting of the rule <var>rule_id</var>. 
 The &ldquo;null ranks high&rdquo; setting is either 0 or 1. 
 When <var>rule_id</var> is created, its &ldquo;null ranks high&rdquo;
 setting is initialized to 0.
@@ -2530,7 +2535,7 @@ On failure, &minus;2.
 
 <h3 class="section">12.1 Overview</h3>
 
-<p>An archtypal application uses a recognizer to read input. 
+<p>An archetypal application uses a recognizer to read input. 
 To create a recognizer, use the <code>marpa_r_new()</code> method. 
 When a recognizer is no longer in use, its memory can be freed
 using the
@@ -2962,9 +2967,11 @@ On failure, &minus;2 is returned.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-71"></a></var><br>
-&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-72"></a></var><br>
-<blockquote><p>These methods, respectively, report and set the Earley item warning threshold. 
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-71"></a></var><br>
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-72"></a></var><br>
+<blockquote>
+        <p>These methods, respectively, set and query
+the Earley item warning threshold. 
 The <dfn>Earley item warning threshold</dfn>
 is a number that is compared with
 the count of Earley items in each Earley set. 
@@ -3464,7 +3471,7 @@ otherwise, 0.
 <div class="defun">
 &mdash; Function: int <b>marpa_o_high_rank_only_set</b> (<var> Marpa_Order o, int flag</var>)<var><a name="index-marpa_005fo_005fhigh_005frank_005fonly_005fset-93"></a></var><br>
 &mdash; Function: int <b>marpa_o_high_rank_only</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fhigh_005frank_005fonly-94"></a></var><br>
-<blockquote><p>These methods, respectively, set and discover
+<blockquote><p>These methods, respectively, set and query
 the &ldquo;high rank only&rdquo; flag of ordering <var>o</var>. 
 A <var>flag</var> of 1 indicates that, when ranking,
 all choices should be discarded except those of the
@@ -5079,9 +5086,9 @@ a way that requires it to be
 set up for completion events,
 but the symbol was not set
 set up for completion events. 
-The archtypal case is an attempt to activate completion
+The archetypal case is an attempt to activate completion
 events for the symbol in the recognizer. 
-The archtypal case is an attempt to activate a completion
+The archetypal case is an attempt to activate a completion
 event in the recognizer for
 a symbol that is not set up as a completion event. 
 Numeric value: 92. 
@@ -5095,7 +5102,7 @@ a way that requires it to be
 set up for nulled events,
 but the symbol was not set
 set up for nulled events. 
-The archtypal case is an attempt to activate a nulled
+The archetypal case is an attempt to activate a nulled
 events in the recognizer for
 a symbol that is not set up as a nulled event. 
 Numeric value: 93. 
@@ -5109,7 +5116,7 @@ a way that requires it to be
 set up for predictino events,
 but the symbol was not set
 set up for predictino events. 
-The archtypal case is an attempt to activate a prediction
+The archetypal case is an attempt to activate a prediction
 event in the recognizer for
 a symbol that is not set up as a prediction event. 
 Numeric value: 94. 
@@ -5249,14 +5256,13 @@ Suggested message: "Symbol is nulling".
 
 <div class="defun">
 &mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_UNUSED</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fUNUSED-205"></a></var><br>
-<blockquote><p>An attempt was made to do something with a nulling
-symbol that is not allowed. 
+<blockquote><p>An attempt was made to do something with an unused symbol that is not allowed. 
 An &ldquo;unused&rdquo; symbol is a inaccessible or unproductive symbol. 
 For example,
 the ID of a unused symbol cannot be an argument
 to <code>marpa_r_expected_symbol_event_set</code> &mdash;
 because it is not possible to create an &ldquo;expected symbol&rdquo; event
-for a nulling symbol. 
+for an unused symbol. 
 Numeric value: 88. 
 Suggested message: "Symbol is not used". 
 </p></blockquote></div>
@@ -5613,8 +5619,8 @@ as unsupported.
 <h4 class="subsection">21.1.1 Ranking methods</h4>
 
 <div class="defun">
-&mdash; Function: Marpa_Rank <b>marpa_g_default_rank</b> (<var> Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fdefault_005frank-239"></a></var><br>
-&mdash; Function: Marpa_Rank <b>marpa_g_default_rank_set</b> (<var> Marpa_Grammar g, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fdefault_005frank_005fset-240"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_default_rank_set</b> (<var> Marpa_Grammar g, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fdefault_005frank_005fset-239"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_default_rank</b> (<var> Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fdefault_005frank-240"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the default rank of the grammar. 
@@ -5649,8 +5655,8 @@ The error code can be determined by using the
      </blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank-241"></a></var><br>
-&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank_005fset-242"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank_005fset-241"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank-242"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the rank of a symbol <var>sym_id</var>. 
@@ -5790,8 +5796,8 @@ some tricky debugging further down the road.
 <h4 class="subsection">22.1.2 Grammar methods dealing with unvalued symbols</h4>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_valued</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued-249"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_valued_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued_005fset-250"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_valued_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued_005fset-249"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_valued</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued-250"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the &ldquo;valued status&rdquo; of a symbol. 
@@ -5831,11 +5837,16 @@ and these applications will find
 the <code>marpa_v_rule_is_valued()</code> method more convenient.
 
 <div class="defun">
-&mdash; Function: int <b>marpa_v_symbol_is_valued</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued-251"></a></var><br>
-&mdash; Function: int <b>marpa_v_symbol_is_valued_set</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id, int value </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued_005fset-252"></a></var><br>
-<blockquote><p>These methods, respectively,
-discover and set to <var>value</var>,
-the valued status for symbol <var>sym_id</var>. 
+&mdash; Function: int <b>marpa_v_symbol_is_valued_set</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id, int status </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued_005fset-251"></a></var><br>
+&mdash; Function: int <b>marpa_v_symbol_is_valued</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued-252"></a></var><br>
+<blockquote>
+        <p>These methods, respectively,
+set and query
+the valued status of symbol <var>sym_id</var>. 
+<code>marpa_v_symbol_is_valued_set()</code> will set
+the valued status to
+the value of
+its <var>status</var> argument. 
 A valued status of 1 indicates that the symbol is valued. 
 A valued status of 0 indicates that the symbol is unvalued. 
 If the valued status is locked,
@@ -5850,13 +5861,18 @@ or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_v_rule_is_valued</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued-253"></a></var><br>
-&mdash; Function: int <b>marpa_v_rule_is_valued_set</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id, int value </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued_005fset-254"></a></var><br>
-<blockquote><p>These methods respectively,
-discover and set to <var>value</var>,
+&mdash; Function: int <b>marpa_v_rule_is_valued_set</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id, int status </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued_005fset-253"></a></var><br>
+&mdash; Function: int <b>marpa_v_rule_is_valued</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued-254"></a></var><br>
+<blockquote>
+        <p>These methods, respectively,
+set and query
 the valued status
 for the LHS symbol of rule <var>rule_id</var>. 
-A valued status of 1 indicates that the symbol is valued. 
+<code>marpa_v_rule_is_valued_set()</code> sets
+the valued status to the value
+of its <var>status</var> argument.
+
+        <p>A valued status of 1 indicates that the symbol is valued. 
 A valued status of 0 indicates that the symbol is unvalued. 
 If the valued status is locked,
 an attempt to change to a status different from the

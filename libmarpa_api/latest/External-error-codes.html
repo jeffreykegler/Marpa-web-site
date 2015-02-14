@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>External error codes - Libmarpa 7.10.0</title>
+<title>External error codes - Libmarpa 8.0.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 7.10.0">
+<meta name="description" content="Libmarpa 8.0.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" title="Error methods macros and codes">
@@ -10,8 +10,8 @@
 <link rel="next" href="Internal-error-codes.html#Internal-error-codes" title="Internal error codes">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (9 February 2015)
-is for Libmarpa 7.10.0.
+This manual (14 February 2015)
+is for Libmarpa 8.0.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -647,9 +647,9 @@ a way that requires it to be
 set up for completion events,
 but the symbol was not set
 set up for completion events. 
-The archtypal case is an attempt to activate completion
+The archetypal case is an attempt to activate completion
 events for the symbol in the recognizer. 
-The archtypal case is an attempt to activate a completion
+The archetypal case is an attempt to activate a completion
 event in the recognizer for
 a symbol that is not set up as a completion event. 
 Numeric value: 92. 
@@ -663,7 +663,7 @@ a way that requires it to be
 set up for nulled events,
 but the symbol was not set
 set up for nulled events. 
-The archtypal case is an attempt to activate a nulled
+The archetypal case is an attempt to activate a nulled
 events in the recognizer for
 a symbol that is not set up as a nulled event. 
 Numeric value: 93. 
@@ -677,7 +677,7 @@ a way that requires it to be
 set up for predictino events,
 but the symbol was not set
 set up for predictino events. 
-The archtypal case is an attempt to activate a prediction
+The archetypal case is an attempt to activate a prediction
 event in the recognizer for
 a symbol that is not set up as a prediction event. 
 Numeric value: 94. 
@@ -817,14 +817,13 @@ Suggested message: "Symbol is nulling".
 
 <div class="defun">
 &mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_UNUSED</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fUNUSED-205"></a></var><br>
-<blockquote><p>An attempt was made to do something with a nulling
-symbol that is not allowed. 
+<blockquote><p>An attempt was made to do something with an unused symbol that is not allowed. 
 An &ldquo;unused&rdquo; symbol is a inaccessible or unproductive symbol. 
 For example,
 the ID of a unused symbol cannot be an argument
 to <code>marpa_r_expected_symbol_event_set</code> &mdash;
 because it is not possible to create an &ldquo;expected symbol&rdquo; event
-for a nulling symbol. 
+for an unused symbol. 
 Numeric value: 88. 
 Suggested message: "Symbol is not used". 
 </p></blockquote></div>

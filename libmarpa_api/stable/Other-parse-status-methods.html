@@ -1,16 +1,16 @@
 <html lang="en">
 <head>
-<title>Other parse status methods - Libmarpa 7.9.0</title>
+<title>Other parse status methods - Libmarpa 8.0.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 7.9.0">
+<meta name="description" content="Libmarpa 8.0.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
 <link rel="prev" href="Location-accessors.html#Location-accessors" title="Location accessors">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (9 February 2015)
-is for Libmarpa 7.9.0.
+This manual (14 February 2015)
+is for Libmarpa 8.0.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -76,9 +76,11 @@ On failure, &minus;2 is returned.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-71"></a></var><br>
-&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-72"></a></var><br>
-<blockquote><p>These methods, respectively, report and set the Earley item warning threshold. 
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold_set</b> (<var>Marpa_Recognizer r, int threshold</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset-71"></a></var><br>
+&mdash; Function: int <b>marpa_r_earley_item_warning_threshold</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold-72"></a></var><br>
+<blockquote>
+        <p>These methods, respectively, set and query
+the Earley item warning threshold. 
 The <dfn>Earley item warning threshold</dfn>
 is a number that is compared with
 the count of Earley items in each Earley set. 

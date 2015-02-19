@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Ranks - Libmarpa 8.0.0</title>
+<title>Ranks - Libmarpa 8.1.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.0.0">
+<meta name="description" content="Libmarpa 8.1.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Grammar-precomputation.html#Grammar-precomputation" title="Grammar precomputation">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (14 February 2015)
-is for Libmarpa 8.0.0.
+This manual (19 February 2015)
+is for Libmarpa 8.1.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -99,11 +99,21 @@ If the &ldquo;null ranks high&rdquo; setting is 1,
 nulled symbols rank high. 
 Ranking of a null variants is done from left-to-right.
 
-        <p>Return value: On success, the setting
+        <p>The <code>marpa_g_rule_null_high_set()</code> method will
+return failure
+after the grammar has been precomputed. 
+If there is no other cause of failure,
+the <code>marpa_g_rule_null_high()</code> method succeeds
+on both precomputed and unprecomputed grammars.
+
+        <p>Success return value:
+The value
 of the &ldquo;null ranks high&rdquo; flag <strong>after</strong>
-the call. 
-If the grammar has been precomputed,
-or on other failure, &minus;2.
+the call.
+
+        <p>Failure return value:
+If rule_id is well-formed, but there is no such rule, &minus;1. 
+On all other failures, &minus;2.
 
         </blockquote></div>
 
@@ -301,8 +311,8 @@ call, 0 otherwise.
 
         <p>Failures:
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
-if the grammar <var>g</var> is precomputed;
+such symbol, &minus;1. 
+If the grammar <var>g</var> is precomputed;
 or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -336,7 +346,7 @@ the grammar is precomputed.
         <p>If a nulled event is marked,
 its activation status can be changed using the
 <code>marpa_g_nulled_symbol_activate()</code> method. 
-Note that, If a symbol is marked as a nulled event symbol
+Note that, if a symbol is marked as a nulled event symbol
 in the recognizer,
 its nulled event can be deactivated
 and reactivated in the recognizer.
@@ -373,7 +383,7 @@ when acceptable at a location,
 generates a prediction event at that location,
 and does not generate a nulled event.
 
-        <p>while it is not possible for
+        <p>While it is not possible for
 a <strong>symbol instance</strong>
 to generate both a nulled event and
 a completion event at a location,
@@ -393,7 +403,7 @@ the first will generate only nulled events,
 while the second will generate only completion events. 
 For similar reasons,
 while a <strong>symbol instance</strong> will never
-generated both a null event and a prediction
+generate both a null event and a prediction
 event at a location,
 multiple instances of the same symbol
 may do so.
@@ -409,8 +419,8 @@ call, 0 otherwise.
 
         <p>Failures:
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
-if the grammar <var>g</var> is precomputed;
+such symbol, &minus;1. 
+If the grammar <var>g</var> is precomputed;
 or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -447,7 +457,7 @@ the grammar is precomputed.
         <p>If a prediction event is marked,
 its activation status can be changed using the
 <code>marpa_g_prediction_symbol_activate()</code> method. 
-Note that, If a symbol is marked as a prediction event symbol
+Note that, if a symbol is marked as a prediction event symbol
 in the recognizer,
 its prediction event can be deactivated
 and reactivated in the recognizer.
@@ -458,8 +468,8 @@ call, 0 otherwise.
 
         <p>Failures:
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
-if the grammar <var>g</var> is precomputed;
+such symbol, &minus;1. 
+If the grammar <var>g</var> is precomputed;
 or on other failure, &minus;2. 
 </p></blockquote></div>
     <script src="javascripts/scale.fix.js"></script>

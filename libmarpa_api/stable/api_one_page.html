@@ -1,14 +1,14 @@
 <html lang="en">
 <head>
-<title>Libmarpa 8.0.0</title>
+<title>Libmarpa 8.1.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.0.0">
+<meta name="description" content="Libmarpa 8.1.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="top" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (14 February 2015)
-is for Libmarpa 8.0.0.
+This manual (19 February 2015)
+is for Libmarpa 8.1.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -32,7 +32,7 @@ Copyright (C) 2014 Jeffrey Kegler.
 --></style>
 </head>
 <body>
-<h1 class="settitle">Libmarpa 8.0.0</h1>
+<h1 class="settitle">Libmarpa 8.1.0</h1>
    <div class="contents">
 <h2>Table of Contents</h2>
 <ul>
@@ -187,8 +187,8 @@ Copyright (C) 2014 Jeffrey Kegler.
 
 <h2 class="unnumbered">Libmarpa: The Marpa low-level library</h2>
 
-<p>This manual (14 February 2015)
-is for Libmarpa 8.0.0.
+<p>This manual (19 February 2015)
+is for Libmarpa 8.1.0.
 
    <p>Copyright &copy; 2014 Jeffrey Kegler.
 
@@ -1562,7 +1562,7 @@ otherwise the ID of the new start symbol.
 
         <p>Return value: On success, the ID of the new start symbol. 
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
+such symbol, &minus;1. 
 On failure, &minus;2.
 
         </blockquote></div>
@@ -1666,16 +1666,24 @@ An attempt to flag a nulling symbol
 as a terminal will cause a failure,
 but this is not necessarily detected before precomputation.
 
-        <p>Return value: On success, 1 if symbol <var>sym_id</var>
+        <p>Success returns:
+When successful,
+these methods return
+1 if symbol <var>sym_id</var>
 is a terminal symbol after the
-call, 0 otherwise. 
+call, 0 otherwise.
+
+        <p>Failure returns:
 If <var>sym_id</var> is well-formed, but there is no
 such symbol, &minus;1. 
-If <var>value</var> is not 0 or 1;
-if the terminal status is locked and <var>value</var>
+On all other failures, &minus;2. 
+Other failures include
+when <var>value</var> is not 0 or 1;
+when the terminal status is locked and <var>value</var>
 is different from its current value;
-if the grammar <var>g</var> is precomputed;
-or on other failure, &minus;2. 
+and,
+in the case of <code>marpa_g_symbol_is_terminal_set()</code>,
+when the grammar <var>g</var> is precomputed. 
 </p></blockquote></div>
 
 <div class="defun">
@@ -1734,7 +1742,7 @@ If the grammar is not precomputed, or on other failure, &minus;2.
         <p>Return value: On success,
 1 if rule <var>ruleid</var> is nulling, 0 if not. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -1775,7 +1783,7 @@ an empty rule is considered productive.
         <p>Return value: On success,
 1 if rule <var>rule_id</var> is productive, 0 if not. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -1791,7 +1799,7 @@ On failure, &minus;2.
 &mdash; Function: Marpa_Symbol_ID <b>marpa_g_rule_lhs</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005flhs-32"></a></var><br>
 <blockquote><p>Return value: On success, the LHS symbol of rule <var>rule_id</var>. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 On other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -1839,7 +1847,7 @@ The RHS position, <var>ix</var>, is zero-based.
 the ID of the symbol in position <var>ix</var>
 on the rules RHS. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 If <var>ix</var> is greater than or equal to the length of
 the rule,
 or on other failure, &minus;2. 
@@ -1852,17 +1860,21 @@ or on other failure, &minus;2.
 <div class="defun">
 &mdash; Function: int <b>marpa_g_rule_is_proper_separation</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fis_005fproper_005fseparation-35"></a></var><br>
 <blockquote>
-        <p>Return value:
-On success, if rule <var>rule_id</var> is not a sequence rule, 0. 
-On success, if rule <var>rule_id</var>
+        <p>Success returns:
+<code>marpa_g_rule_is_proper_separation()</code>
+succeeds if and only if <var>rule_id</var> is valid. 
+If rule <var>rule_id</var>
 is a sequence rule where the proper separation flag
-is set, 1. 
-On success, if rule <var>rule_id</var>
-is a sequence rule where the proper separation flag
-is <strong>not</strong> set, 0. 
+is set, returns 1. 
+On other success,
+including the case
+where rule <var>rule_id</var>
+is not a sequence rule, returns 0.
+
+        <p>Failure returns:
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
-On failure, &minus;2. 
+such rule, returns &minus;1. 
+On other failure, &minus;2. 
 </p></blockquote></div>
 
 <div class="defun">
@@ -1959,7 +1971,7 @@ On failure, &minus;2.
 <blockquote>
         <p>Return value:
 If rule <var>rule_id</var> is a sequence rule, its separator. 
-If rule <var>rule_id</var> is a sequence rule,, but there is no
+If rule <var>rule_id</var> is a sequence rule, but there is no
 separator, &minus;1. 
 If <var>rule_id</var> is
 not a sequence rule,
@@ -1975,9 +1987,14 @@ if it appears on the RHS of a sequence rule,
 or if it is used as
 the separator symbol of a sequence rule.
 
-        <p>Return value: On success,
-1 if symbol <var>sym_id</var> is counted, 0 if not. 
-On failure, &minus;2. 
+        <p>Success return:
+Returns 1 if symbol <var>sym_id</var> is counted, 0 if not.
+
+        <p>Failure return:
+If <var>sym_id</var> is well-formed, but there is no
+such symbol, &minus;1. 
+If <var>sym_id</var> is not well-formed,
+and on other failure, &minus;2. 
 </p></blockquote></div>
 
 <p><a name="Ranks"></a>
@@ -2037,11 +2054,21 @@ If the &ldquo;null ranks high&rdquo; setting is 1,
 nulled symbols rank high. 
 Ranking of a null variants is done from left-to-right.
 
-        <p>Return value: On success, the setting
+        <p>The <code>marpa_g_rule_null_high_set()</code> method will
+return failure
+after the grammar has been precomputed. 
+If there is no other cause of failure,
+the <code>marpa_g_rule_null_high()</code> method succeeds
+on both precomputed and unprecomputed grammars.
+
+        <p>Success return value:
+The value
 of the &ldquo;null ranks high&rdquo; flag <strong>after</strong>
-the call. 
-If the grammar has been precomputed,
-or on other failure, &minus;2.
+the call.
+
+        <p>Failure return value:
+If rule_id is well-formed, but there is no such rule, &minus;1. 
+On all other failures, &minus;2.
 
         </blockquote></div>
 
@@ -2239,8 +2266,8 @@ call, 0 otherwise.
 
         <p>Failures:
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
-if the grammar <var>g</var> is precomputed;
+such symbol, &minus;1. 
+If the grammar <var>g</var> is precomputed;
 or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -2274,7 +2301,7 @@ the grammar is precomputed.
         <p>If a nulled event is marked,
 its activation status can be changed using the
 <code>marpa_g_nulled_symbol_activate()</code> method. 
-Note that, If a symbol is marked as a nulled event symbol
+Note that, if a symbol is marked as a nulled event symbol
 in the recognizer,
 its nulled event can be deactivated
 and reactivated in the recognizer.
@@ -2311,7 +2338,7 @@ when acceptable at a location,
 generates a prediction event at that location,
 and does not generate a nulled event.
 
-        <p>while it is not possible for
+        <p>While it is not possible for
 a <strong>symbol instance</strong>
 to generate both a nulled event and
 a completion event at a location,
@@ -2331,7 +2358,7 @@ the first will generate only nulled events,
 while the second will generate only completion events. 
 For similar reasons,
 while a <strong>symbol instance</strong> will never
-generated both a null event and a prediction
+generate both a null event and a prediction
 event at a location,
 multiple instances of the same symbol
 may do so.
@@ -2347,8 +2374,8 @@ call, 0 otherwise.
 
         <p>Failures:
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
-if the grammar <var>g</var> is precomputed;
+such symbol, &minus;1. 
+If the grammar <var>g</var> is precomputed;
 or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -2385,7 +2412,7 @@ the grammar is precomputed.
         <p>If a prediction event is marked,
 its activation status can be changed using the
 <code>marpa_g_prediction_symbol_activate()</code> method. 
-Note that, If a symbol is marked as a prediction event symbol
+Note that, if a symbol is marked as a prediction event symbol
 in the recognizer,
 its prediction event can be deactivated
 and reactivated in the recognizer.
@@ -2396,8 +2423,8 @@ call, 0 otherwise.
 
         <p>Failures:
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, -1. 
-if the grammar <var>g</var> is precomputed;
+such symbol, &minus;1. 
+If the grammar <var>g</var> is precomputed;
 or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -4868,7 +4895,19 @@ Suggested message: "No token is expected at this earleme location".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NULLING_TERMINAL</b><var><a name="index-MARPA_005fERR_005fNULLING_005fTERMINAL-171"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NOT_A_SEQUENCE</b><var><a name="index-MARPA_005fERR_005fNOT_005fA_005fSEQUENCE-171"></a></var><br>
+<blockquote><p>This error occurs in situations where a rule
+is required to be a sequence,
+and indicates that the rule of interest is,
+in fact,
+not a sequence.
+
+        <p>Numeric value: 99. 
+Suggested message: "Rule is not a sequence". 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: int <b>MARPA_ERR_NULLING_TERMINAL</b><var><a name="index-MARPA_005fERR_005fNULLING_005fTERMINAL-172"></a></var><br>
 <blockquote><p>Marpa does not allow a symbol to be both nulling
 and a terminal. 
 Numeric value: 49. 
@@ -4876,7 +4915,7 @@ Suggested message: "A symbol is both terminal and nulling".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_ORDER_FROZEN</b><var><a name="index-MARPA_005fERR_005fORDER_005fFROZEN-172"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_ORDER_FROZEN</b><var><a name="index-MARPA_005fERR_005fORDER_005fFROZEN-173"></a></var><br>
 <blockquote><p>The Marpa order object has been frozen. 
 If a Marpa order object is frozen, it cannot be
 changed.
@@ -4892,14 +4931,14 @@ Suggested message: "The ordering is frozen".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_PARSE_EXHAUSTED</b><var><a name="index-MARPA_005fERR_005fPARSE_005fEXHAUSTED-173"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_PARSE_EXHAUSTED</b><var><a name="index-MARPA_005fERR_005fPARSE_005fEXHAUSTED-174"></a></var><br>
 <blockquote><p>The parse is exhausted. 
 Numeric value: 53. 
 Suggested message: "The parse is exhausted". 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_PARSE_TOO_LONG</b><var><a name="index-MARPA_005fERR_005fPARSE_005fTOO_005fLONG-174"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_PARSE_TOO_LONG</b><var><a name="index-MARPA_005fERR_005fPARSE_005fTOO_005fLONG-175"></a></var><br>
 <blockquote><p>The parse is too long. 
 The limit on the length of a parse is implementation
 dependent, but it is very large,
@@ -4924,7 +4963,7 @@ Suggested message: "This input would make the parse too long".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_POINTER_ARG_NULL</b><var><a name="index-MARPA_005fERR_005fPOINTER_005fARG_005fNULL-175"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_POINTER_ARG_NULL</b><var><a name="index-MARPA_005fERR_005fPOINTER_005fARG_005fNULL-176"></a></var><br>
 <blockquote><p>In a method which takes pointers as arguments,
 one of the pointer arguments is <code>NULL</code>,
 in a case where that is not allowed. 
@@ -4934,7 +4973,7 @@ Suggested message: "An argument is null when it should not be".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_PRECOMPUTED</b><var><a name="index-MARPA_005fERR_005fPRECOMPUTED-176"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_PRECOMPUTED</b><var><a name="index-MARPA_005fERR_005fPRECOMPUTED-177"></a></var><br>
 <blockquote><p>An attempt was made to use a precomputed grammar
 in a way that is not allowed. 
 Often this is an attempt to change the grammar. 
@@ -4946,7 +4985,7 @@ Suggested message: "This grammar is precomputed".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_PROGRESS_REPORT_NOT_STARTED</b><var><a name="index-MARPA_005fERR_005fPROGRESS_005fREPORT_005fNOT_005fSTARTED-177"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_PROGRESS_REPORT_NOT_STARTED</b><var><a name="index-MARPA_005fERR_005fPROGRESS_005fREPORT_005fNOT_005fSTARTED-178"></a></var><br>
 <blockquote><p>No recognizer progress report is currently active,
 and an action has been attempted which
 is inconsistent with that. 
@@ -4957,7 +4996,7 @@ Suggested message: "No progress report has been started".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_PROGRESS_REPORT_EXHAUSTED</b><var><a name="index-MARPA_005fERR_005fPROGRESS_005fREPORT_005fEXHAUSTED-178"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_PROGRESS_REPORT_EXHAUSTED</b><var><a name="index-MARPA_005fERR_005fPROGRESS_005fREPORT_005fEXHAUSTED-179"></a></var><br>
 <blockquote><p>The progress report is &ldquo;exhausted&rdquo; &mdash; all its
 items have been iterated through. 
 Numeric value: 58. 
@@ -4965,7 +5004,7 @@ Suggested message: "The progress report is exhausted".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_RANK_TOO_LOW</b><var><a name="index-MARPA_005fERR_005fRANK_005fTOO_005fLOW-179"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_RANK_TOO_LOW</b><var><a name="index-MARPA_005fERR_005fRANK_005fTOO_005fLOW-180"></a></var><br>
 <blockquote><p>A symbol or rule rank was specified which
 was less than an implementation-defined minimum. 
 Implementations will always allow at least those
@@ -4976,7 +5015,7 @@ Suggested message: "Rule or symbol rank too low".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_RANK_TOO_HIGH</b><var><a name="index-MARPA_005fERR_005fRANK_005fTOO_005fHIGH-180"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_RANK_TOO_HIGH</b><var><a name="index-MARPA_005fERR_005fRANK_005fTOO_005fHIGH-181"></a></var><br>
 <blockquote><p>A symbol or rule rank was specified which
 was greater than an implementation-defined maximum. 
 Implementations will always allow at least those
@@ -4987,7 +5026,7 @@ Suggested message: "Rule or symbol rank too high".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_RECCE_IS_INCONSISTENT</b><var><a name="index-MARPA_005fERR_005fRECCE_005fIS_005fINCONSISTENT-181"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_RECCE_IS_INCONSISTENT</b><var><a name="index-MARPA_005fERR_005fRECCE_005fIS_005fINCONSISTENT-182"></a></var><br>
 <blockquote><p>The recognizer is &ldquo;inconsistent&rdquo;,
 usually because the user has rejected one or
 more rules or terminals,
@@ -4998,7 +5037,7 @@ Suggested message: "The recognizer is inconsistent.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_RECCE_NOT_ACCEPTING_INPUT</b><var><a name="index-MARPA_005fERR_005fRECCE_005fNOT_005fACCEPTING_005fINPUT-182"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_RECCE_NOT_ACCEPTING_INPUT</b><var><a name="index-MARPA_005fERR_005fRECCE_005fNOT_005fACCEPTING_005fINPUT-183"></a></var><br>
 <blockquote><p>The recognizer is not accepting input,
 and the application has attempted something that
 is inconsistent with that fact. 
@@ -5007,7 +5046,7 @@ Suggested message: "The recognizer is not accepting input".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_RECCE_NOT_STARTED</b><var><a name="index-MARPA_005fERR_005fRECCE_005fNOT_005fSTARTED-183"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_RECCE_NOT_STARTED</b><var><a name="index-MARPA_005fERR_005fRECCE_005fNOT_005fSTARTED-184"></a></var><br>
 <blockquote><p>The recognizer has not been started. 
 and the application has attempted something that
 is inconsistent with that fact. 
@@ -5016,7 +5055,7 @@ Suggested message: "The recognizer has not been started".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_RECCE_STARTED</b><var><a name="index-MARPA_005fERR_005fRECCE_005fSTARTED-184"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_RECCE_STARTED</b><var><a name="index-MARPA_005fERR_005fRECCE_005fSTARTED-185"></a></var><br>
 <blockquote><p>The recognizer has been started. 
 and the application has attempted something that
 is inconsistent with that fact. 
@@ -5025,7 +5064,7 @@ Suggested message: "The recognizer has been started".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_RHS_IX_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fRHS_005fIX_005fNEGATIVE-185"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_RHS_IX_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fRHS_005fIX_005fNEGATIVE-186"></a></var><br>
 <blockquote><p>The index of a RHS symbol was specified,
 and it was negative. 
 That is not allowed. 
@@ -5034,7 +5073,7 @@ Suggested message: "RHS index cannot be negative".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_RHS_IX_OOB</b><var><a name="index-MARPA_005fERR_005fRHS_005fIX_005fOOB-186"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_RHS_IX_OOB</b><var><a name="index-MARPA_005fERR_005fRHS_005fIX_005fOOB-187"></a></var><br>
 <blockquote><p>A non-negative index of RHS symbol was specified,
 but there is no symbol at that index. 
 Since the indexes are in sequence, this means the
@@ -5044,7 +5083,7 @@ Suggested message: "RHS index must be less than rule length".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_RHS_TOO_LONG</b><var><a name="index-MARPA_005fERR_005fRHS_005fTOO_005fLONG-187"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_RHS_TOO_LONG</b><var><a name="index-MARPA_005fERR_005fRHS_005fTOO_005fLONG-188"></a></var><br>
 <blockquote><p>An attempt was made to add a rule with too many
 right hand side symbols. 
 The limit on the RHS symbol count is implementation
@@ -5059,7 +5098,7 @@ Suggested message: "The RHS is too long".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SEQUENCE_LHS_NOT_UNIQUE</b><var><a name="index-MARPA_005fERR_005fSEQUENCE_005fLHS_005fNOT_005fUNIQUE-188"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SEQUENCE_LHS_NOT_UNIQUE</b><var><a name="index-MARPA_005fERR_005fSEQUENCE_005fLHS_005fNOT_005fUNIQUE-189"></a></var><br>
 <blockquote><p>The LHS of a
 sequence rule cannot be the LHS of any other rule,
 whether a sequence rule or a BNF rule. 
@@ -5069,7 +5108,7 @@ Suggested message: "LHS of sequence rule would not be unique".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_START_NOT_LHS</b><var><a name="index-MARPA_005fERR_005fSTART_005fNOT_005fLHS-189"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_START_NOT_LHS</b><var><a name="index-MARPA_005fERR_005fSTART_005fNOT_005fLHS-190"></a></var><br>
 <blockquote><p>The start symbol is not on the LHS on
 any rule. 
 That means it could never match any possible input,
@@ -5080,7 +5119,7 @@ Suggested message: "Start symbol not on LHS of any rule".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_NOT_COMPLETION_EVENT</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fCOMPLETION_005fEVENT-190"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_NOT_COMPLETION_EVENT</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fCOMPLETION_005fEVENT-191"></a></var><br>
 <blockquote><p>An attempt was made to use a symbol in
 a way that requires it to be
 set up for completion events,
@@ -5096,7 +5135,7 @@ Suggested message: "Symbol is not set up for completion events".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_NOT_NULLED_EVENT</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fNULLED_005fEVENT-191"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_NOT_NULLED_EVENT</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fNULLED_005fEVENT-192"></a></var><br>
 <blockquote><p>An attempt was made to use a symbol in
 a way that requires it to be
 set up for nulled events,
@@ -5110,7 +5149,7 @@ Suggested message: "Symbol is not set up for nulled events".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_NOT_PREDICTION_EVENT</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fPREDICTION_005fEVENT-192"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_NOT_PREDICTION_EVENT</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fPREDICTION_005fEVENT-193"></a></var><br>
 <blockquote><p>An attempt was made to use a symbol in
 a way that requires it to be
 set up for predictino events,
@@ -5124,7 +5163,7 @@ Suggested message: "Symbol is not set up for prediction events".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SYMBOL_VALUED_CONFLICT</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fVALUED_005fCONFLICT-193"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SYMBOL_VALUED_CONFLICT</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fVALUED_005fCONFLICT-194"></a></var><br>
 <blockquote><p>Unvalued symbols are a deprecated Marpa feature,
 which may be avoided with
 the <code>marpa_g_force_valued</code> method. 
@@ -5139,7 +5178,7 @@ Suggested message: "Symbol is treated both as valued and unvalued".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_TERMINAL_IS_LOCKED</b><var><a name="index-MARPA_005fERR_005fTERMINAL_005fIS_005fLOCKED-194"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_TERMINAL_IS_LOCKED</b><var><a name="index-MARPA_005fERR_005fTERMINAL_005fIS_005fLOCKED-195"></a></var><br>
 <blockquote><p>An attempt was made to change the terminal status
 of a symbol to a different value
 after it was locked. 
@@ -5148,7 +5187,7 @@ Suggested message: "The terminal status of the symbol is locked".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_TOKEN_IS_NOT_TERMINAL</b><var><a name="index-MARPA_005fERR_005fTOKEN_005fIS_005fNOT_005fTERMINAL-195"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_TOKEN_IS_NOT_TERMINAL</b><var><a name="index-MARPA_005fERR_005fTOKEN_005fIS_005fNOT_005fTERMINAL-196"></a></var><br>
 <blockquote><p>A token was specified whose symbol ID is not
 a terminal. 
 Numeric value: 76. 
@@ -5156,7 +5195,7 @@ Suggested message: "Token symbol must be a terminal".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_TOKEN_LENGTH_LE_ZERO</b><var><a name="index-MARPA_005fERR_005fTOKEN_005fLENGTH_005fLE_005fZERO-196"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_TOKEN_LENGTH_LE_ZERO</b><var><a name="index-MARPA_005fERR_005fTOKEN_005fLENGTH_005fLE_005fZERO-197"></a></var><br>
 <blockquote><p>A token length was specified which is less than
 or equal to zero. 
 Zero-length tokens are not allowed in Libmarpa. 
@@ -5165,7 +5204,7 @@ Suggested message: "Token length must greater than zero".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_TOKEN_TOO_LONG</b><var><a name="index-MARPA_005fERR_005fTOKEN_005fTOO_005fLONG-197"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_TOKEN_TOO_LONG</b><var><a name="index-MARPA_005fERR_005fTOKEN_005fTOO_005fLONG-198"></a></var><br>
 <blockquote><p>The token length is too long. 
 The limit on the length of a token
 is implementation dependent, but it
@@ -5178,7 +5217,7 @@ Suggested message: "Token is too long".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_TREE_EXHAUSTED</b><var><a name="index-MARPA_005fERR_005fTREE_005fEXHAUSTED-198"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_TREE_EXHAUSTED</b><var><a name="index-MARPA_005fERR_005fTREE_005fEXHAUSTED-199"></a></var><br>
 <blockquote><p>A Libmarpa parse tree iterator
 is &ldquo;exhausted&rdquo;, that is,
 it has no more parses. 
@@ -5187,7 +5226,7 @@ Suggested message: "Tree iterator is exhausted".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_TREE_PAUSED</b><var><a name="index-MARPA_005fERR_005fTREE_005fPAUSED-199"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_TREE_PAUSED</b><var><a name="index-MARPA_005fERR_005fTREE_005fPAUSED-200"></a></var><br>
 <blockquote><p>A Libmarpa tree is &ldquo;paused&rdquo;
 and an operation was attempted which
 is inconsistent with that fact. 
@@ -5198,7 +5237,7 @@ Suggested message: "Tree iterator is paused".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_UNEXPECTED_TOKEN_ID</b><var><a name="index-MARPA_005fERR_005fUNEXPECTED_005fTOKEN_005fID-200"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_UNEXPECTED_TOKEN_ID</b><var><a name="index-MARPA_005fERR_005fUNEXPECTED_005fTOKEN_005fID-201"></a></var><br>
 <blockquote><p>An attempt was made to read a token
 where a token with that symbol ID is not
 expected. 
@@ -5210,7 +5249,7 @@ Suggested message: "Unexpected token".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_UNPRODUCTIVE_START</b><var><a name="index-MARPA_005fERR_005fUNPRODUCTIVE_005fSTART-201"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_UNPRODUCTIVE_START</b><var><a name="index-MARPA_005fERR_005fUNPRODUCTIVE_005fSTART-202"></a></var><br>
 <blockquote><p>The start symbol is unproductive. 
 That means it could never match any possible input,
 not even the null string. 
@@ -5220,7 +5259,7 @@ Suggested message: "Unproductive start symbol".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_VALUATOR_INACTIVE</b><var><a name="index-MARPA_005fERR_005fVALUATOR_005fINACTIVE-202"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_VALUATOR_INACTIVE</b><var><a name="index-MARPA_005fERR_005fVALUATOR_005fINACTIVE-203"></a></var><br>
 <blockquote><p>The valuator is inactive in a context where that
 should not be the case. 
 Numeric value: 83. 
@@ -5228,7 +5267,7 @@ Suggested message: "Valuator inactive".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_VALUED_IS_LOCKED</b><var><a name="index-MARPA_005fERR_005fVALUED_005fIS_005fLOCKED-203"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_VALUED_IS_LOCKED</b><var><a name="index-MARPA_005fERR_005fVALUED_005fIS_005fLOCKED-204"></a></var><br>
 <blockquote><p>Unvalued symbols are a deprecated Marpa feature,
 which may be avoided with
 the <code>marpa_g_force_valued</code> method. 
@@ -5242,7 +5281,7 @@ Suggested message: "The valued status of the symbol is locked".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_NULLING</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNULLING-204"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_NULLING</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNULLING-205"></a></var><br>
 <blockquote><p>An attempt was made to do something with a nulling
 symbol that is not allowed. 
 For example,
@@ -5255,7 +5294,7 @@ Suggested message: "Symbol is nulling".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_UNUSED</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fUNUSED-205"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SYMBOL_IS_UNUSED</b><var><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fUNUSED-206"></a></var><br>
 <blockquote><p>An attempt was made to do something with an unused symbol that is not allowed. 
 An &ldquo;unused&rdquo; symbol is a inaccessible or unproductive symbol. 
 For example,
@@ -5290,37 +5329,37 @@ to follow up on them.
 They usually do not have descriptions or suggested messages.
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_AHFA_IX_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fAHFA_005fIX_005fNEGATIVE-206"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_AHFA_IX_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fAHFA_005fIX_005fNEGATIVE-207"></a></var><br>
 <blockquote><p>Numeric value: 1. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_AHFA_IX_OOB</b><var><a name="index-MARPA_005fERR_005fAHFA_005fIX_005fOOB-207"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_AHFA_IX_OOB</b><var><a name="index-MARPA_005fERR_005fAHFA_005fIX_005fOOB-208"></a></var><br>
 <blockquote><p>Numeric value: 2. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_ANDID_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fANDID_005fNEGATIVE-208"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_ANDID_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fANDID_005fNEGATIVE-209"></a></var><br>
 <blockquote><p>Numeric value: 3. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_ANDID_NOT_IN_OR</b><var><a name="index-MARPA_005fERR_005fANDID_005fNOT_005fIN_005fOR-209"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_ANDID_NOT_IN_OR</b><var><a name="index-MARPA_005fERR_005fANDID_005fNOT_005fIN_005fOR-210"></a></var><br>
 <blockquote><p>Numeric value: 4. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_ANDIX_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fANDIX_005fNEGATIVE-210"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_ANDIX_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fANDIX_005fNEGATIVE-211"></a></var><br>
 <blockquote><p>Numeric value: 5. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_BOCAGE_ITERATION_EXHAUSTED</b><var><a name="index-MARPA_005fERR_005fBOCAGE_005fITERATION_005fEXHAUSTED-211"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_BOCAGE_ITERATION_EXHAUSTED</b><var><a name="index-MARPA_005fERR_005fBOCAGE_005fITERATION_005fEXHAUSTED-212"></a></var><br>
 <blockquote><p>Numeric value: 7. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_DEVELOPMENT</b><var><a name="index-MARPA_005fERR_005fDEVELOPMENT-212"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_DEVELOPMENT</b><var><a name="index-MARPA_005fERR_005fDEVELOPMENT-213"></a></var><br>
 <blockquote><p>"Development" errors were used heavily during
 Libmarpa's development,
 when it was not yet clear how precisely
@@ -5340,30 +5379,30 @@ Suggested message: "Development error, see string".
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_DUPLICATE_AND_NODE</b><var><a name="index-MARPA_005fERR_005fDUPLICATE_005fAND_005fNODE-213"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_DUPLICATE_AND_NODE</b><var><a name="index-MARPA_005fERR_005fDUPLICATE_005fAND_005fNODE-214"></a></var><br>
 <blockquote><p>Numeric value: 10. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_YIM_ID_INVALID</b><var><a name="index-MARPA_005fERR_005fYIM_005fID_005fINVALID-214"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_YIM_ID_INVALID</b><var><a name="index-MARPA_005fERR_005fYIM_005fID_005fINVALID-215"></a></var><br>
 <blockquote><p>Numeric value: 14. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_INTERNAL</b><var><a name="index-MARPA_005fERR_005fINTERNAL-215"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_INTERNAL</b><var><a name="index-MARPA_005fERR_005fINTERNAL-216"></a></var><br>
 <blockquote><p>A &ldquo;catchall&rdquo; internal error. 
 Numeric value: 19. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_INVALID_AHFA_ID</b><var><a name="index-MARPA_005fERR_005fINVALID_005fAHFA_005fID-216"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_INVALID_AHFA_ID</b><var><a name="index-MARPA_005fERR_005fINVALID_005fAHFA_005fID-217"></a></var><br>
 <blockquote><p>The AHFA ID was invalid.  There are no AHFAs
 any more, so this message should not occur. 
 Numeric value: 20. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_INVALID_AIMID</b><var><a name="index-MARPA_005fERR_005fINVALID_005fAIMID-217"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_INVALID_AIMID</b><var><a name="index-MARPA_005fERR_005fINVALID_005fAIMID-218"></a></var><br>
 <blockquote><p>The AHM ID was invalid.  The term &ldquo;AIMID&rdquo;
 is a legacy of earlier implementations and must
 be kept for backward compatibility. 
@@ -5372,107 +5411,107 @@ Numeric value: 21.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_INVALID_IRLID</b><var><a name="index-MARPA_005fERR_005fINVALID_005fIRLID-218"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_INVALID_IRLID</b><var><a name="index-MARPA_005fERR_005fINVALID_005fIRLID-219"></a></var><br>
 <blockquote><p>Numeric value: 23. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_INVALID_NSYID</b><var><a name="index-MARPA_005fERR_005fINVALID_005fNSYID-219"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_INVALID_NSYID</b><var><a name="index-MARPA_005fERR_005fINVALID_005fNSYID-220"></a></var><br>
 <blockquote><p>Numeric value: 24. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NOOKID_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fNOOKID_005fNEGATIVE-220"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NOOKID_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fNOOKID_005fNEGATIVE-221"></a></var><br>
 <blockquote><p>Numeric value: 33. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NOT_TRACING_COMPLETION_LINKS</b><var><a name="index-MARPA_005fERR_005fNOT_005fTRACING_005fCOMPLETION_005fLINKS-221"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NOT_TRACING_COMPLETION_LINKS</b><var><a name="index-MARPA_005fERR_005fNOT_005fTRACING_005fCOMPLETION_005fLINKS-222"></a></var><br>
 <blockquote><p>Numeric value: 35. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NOT_TRACING_LEO_LINKS</b><var><a name="index-MARPA_005fERR_005fNOT_005fTRACING_005fLEO_005fLINKS-222"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NOT_TRACING_LEO_LINKS</b><var><a name="index-MARPA_005fERR_005fNOT_005fTRACING_005fLEO_005fLINKS-223"></a></var><br>
 <blockquote><p>Numeric value: 36. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NOT_TRACING_TOKEN_LINKS</b><var><a name="index-MARPA_005fERR_005fNOT_005fTRACING_005fTOKEN_005fLINKS-223"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NOT_TRACING_TOKEN_LINKS</b><var><a name="index-MARPA_005fERR_005fNOT_005fTRACING_005fTOKEN_005fLINKS-224"></a></var><br>
 <blockquote><p>Numeric value: 37. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NO_AND_NODES</b><var><a name="index-MARPA_005fERR_005fNO_005fAND_005fNODES-224"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NO_AND_NODES</b><var><a name="index-MARPA_005fERR_005fNO_005fAND_005fNODES-225"></a></var><br>
 <blockquote><p>Numeric value: 38. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NO_OR_NODES</b><var><a name="index-MARPA_005fERR_005fNO_005fOR_005fNODES-225"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NO_OR_NODES</b><var><a name="index-MARPA_005fERR_005fNO_005fOR_005fNODES-226"></a></var><br>
 <blockquote><p>Numeric value: 40. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NO_TRACE_YS</b><var><a name="index-MARPA_005fERR_005fNO_005fTRACE_005fYS-226"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NO_TRACE_YS</b><var><a name="index-MARPA_005fERR_005fNO_005fTRACE_005fYS-227"></a></var><br>
 <blockquote><p>Numeric value: 46. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NO_TRACE_PIM</b><var><a name="index-MARPA_005fERR_005fNO_005fTRACE_005fPIM-227"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NO_TRACE_PIM</b><var><a name="index-MARPA_005fERR_005fNO_005fTRACE_005fPIM-228"></a></var><br>
 <blockquote><p>Numeric value: 47. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NO_TRACE_YIM</b><var><a name="index-MARPA_005fERR_005fNO_005fTRACE_005fYIM-228"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NO_TRACE_YIM</b><var><a name="index-MARPA_005fERR_005fNO_005fTRACE_005fYIM-229"></a></var><br>
 <blockquote><p>Numeric value: 45. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_NO_TRACE_SRCL</b><var><a name="index-MARPA_005fERR_005fNO_005fTRACE_005fSRCL-229"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_NO_TRACE_SRCL</b><var><a name="index-MARPA_005fERR_005fNO_005fTRACE_005fSRCL-230"></a></var><br>
 <blockquote><p>Numeric value: 48. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_ORID_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fORID_005fNEGATIVE-230"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_ORID_NEGATIVE</b><var><a name="index-MARPA_005fERR_005fORID_005fNEGATIVE-231"></a></var><br>
 <blockquote><p>Numeric value: 51. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_OR_ALREADY_ORDERED</b><var><a name="index-MARPA_005fERR_005fOR_005fALREADY_005fORDERED-231"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_OR_ALREADY_ORDERED</b><var><a name="index-MARPA_005fERR_005fOR_005fALREADY_005fORDERED-232"></a></var><br>
 <blockquote><p>Numeric value: 52. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_PIM_IS_NOT_LIM</b><var><a name="index-MARPA_005fERR_005fPIM_005fIS_005fNOT_005fLIM-232"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_PIM_IS_NOT_LIM</b><var><a name="index-MARPA_005fERR_005fPIM_005fIS_005fNOT_005fLIM-233"></a></var><br>
 <blockquote><p>Numeric value: 55. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_NONE</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fNONE-233"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_NONE</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fNONE-234"></a></var><br>
 <blockquote><p>Numeric value: 70. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_TOKEN</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fTOKEN-234"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_TOKEN</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fTOKEN-235"></a></var><br>
 <blockquote><p>Numeric value: 71. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_COMPLETION</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fCOMPLETION-235"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_COMPLETION</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fCOMPLETION-236"></a></var><br>
 <blockquote><p>Numeric value: 68. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_LEO</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fLEO-236"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_LEO</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fLEO-237"></a></var><br>
 <blockquote><p>Numeric value: 69. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_AMBIGUOUS</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fAMBIGUOUS-237"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_AMBIGUOUS</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fAMBIGUOUS-238"></a></var><br>
 <blockquote><p>Numeric value: 67. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_UNKNOWN</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fUNKNOWN-238"></a></var><br>
+&mdash; Macro: int <b>MARPA_ERR_SOURCE_TYPE_IS_UNKNOWN</b><var><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fUNKNOWN-239"></a></var><br>
 <blockquote><p>Numeric value: 72. 
 </p></blockquote></div>
 
@@ -5619,8 +5658,8 @@ as unsupported.
 <h4 class="subsection">21.1.1 Ranking methods</h4>
 
 <div class="defun">
-&mdash; Function: Marpa_Rank <b>marpa_g_default_rank_set</b> (<var> Marpa_Grammar g, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fdefault_005frank_005fset-239"></a></var><br>
-&mdash; Function: Marpa_Rank <b>marpa_g_default_rank</b> (<var> Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fdefault_005frank-240"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_default_rank_set</b> (<var> Marpa_Grammar g, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fdefault_005frank_005fset-240"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_default_rank</b> (<var> Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fdefault_005frank-241"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the default rank of the grammar. 
@@ -5655,8 +5694,8 @@ The error code can be determined by using the
      </blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank_005fset-241"></a></var><br>
-&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank-242"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank_005fset-242"></a></var><br>
+&mdash; Function: Marpa_Rank <b>marpa_g_symbol_rank</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005frank-243"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the rank of a symbol <var>sym_id</var>. 
@@ -5686,28 +5725,28 @@ The error code can be determined by using the
 <h4 class="subsection">21.1.2 Zero-width assertion methods</h4>
 
 <div class="defun">
-&mdash; Function: Marpa_Assertion_ID <b>marpa_g_zwa_new</b> (<var> Marpa_Grammar g, int default_value</var>)<var><a name="index-marpa_005fg_005fzwa_005fnew-243"></a></var><br>
+&mdash; Function: Marpa_Assertion_ID <b>marpa_g_zwa_new</b> (<var> Marpa_Grammar g, int default_value</var>)<var><a name="index-marpa_005fg_005fzwa_005fnew-244"></a></var><br>
      </div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_zwa_place</b> (<var> Marpa_Grammar g, Marpa_Assertion_ID zwaid, Marpa_Rule_ID xrl_id, int rhs_ix</var>)<var><a name="index-marpa_005fg_005fzwa_005fplace-244"></a></var><br>
+&mdash; Function: int <b>marpa_g_zwa_place</b> (<var> Marpa_Grammar g, Marpa_Assertion_ID zwaid, Marpa_Rule_ID xrl_id, int rhs_ix</var>)<var><a name="index-marpa_005fg_005fzwa_005fplace-245"></a></var><br>
         </div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_zwa_default</b> (<var> Marpa_Recognizer r, Marpa_Assertion_ID zwaid</var>)<var><a name="index-marpa_005fr_005fzwa_005fdefault-245"></a></var><br>
+&mdash; Function: int <b>marpa_r_zwa_default</b> (<var> Marpa_Recognizer r, Marpa_Assertion_ID zwaid</var>)<var><a name="index-marpa_005fr_005fzwa_005fdefault-246"></a></var><br>
 <blockquote>
         <p>On success, returns previous default value of the assertion. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_r_zwa_default_set</b> (<var> Marpa_Recognizer r, Marpa_Assertion_ID zwaid, int default_value</var>)<var><a name="index-marpa_005fr_005fzwa_005fdefault_005fset-246"></a></var><br>
+&mdash; Function: int <b>marpa_r_zwa_default_set</b> (<var> Marpa_Recognizer r, Marpa_Assertion_ID zwaid, int default_value</var>)<var><a name="index-marpa_005fr_005fzwa_005fdefault_005fset-247"></a></var><br>
 <blockquote>
         <p>Changes default value to <var>default_value</var>. 
 On success, returns previous default value of the assertion. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: Marpa_Assertion_ID <b>marpa_g_highest_zwa_id</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005fhighest_005fzwa_005fid-247"></a></var><br>
+&mdash; Function: Marpa_Assertion_ID <b>marpa_g_highest_zwa_id</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005fhighest_005fzwa_005fid-248"></a></var><br>
         </div>
 
 <p><a name="Methods-for-revising-parses"></a>
@@ -5720,7 +5759,7 @@ and terminals previously scanned.
 The methods in this section provide that capability.
 
 <div class="defun">
-&mdash; Function: Marpa_Earleme <b>marpa_r_clean</b> (<var> Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fclean-248"></a></var><br>
+&mdash; Function: Marpa_Earleme <b>marpa_r_clean</b> (<var> Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fclean-249"></a></var><br>
 
         </div>
 
@@ -5796,8 +5835,8 @@ some tricky debugging further down the road.
 <h4 class="subsection">22.1.2 Grammar methods dealing with unvalued symbols</h4>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_valued_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued_005fset-249"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_valued</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued-250"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_valued_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued_005fset-250"></a></var><br>
+&mdash; Function: int <b>marpa_g_symbol_is_valued</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID symbol_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued-251"></a></var><br>
 <blockquote>
         <p>These methods, respectively, set
 and query the &ldquo;valued status&rdquo; of a symbol. 
@@ -5837,8 +5876,8 @@ and these applications will find
 the <code>marpa_v_rule_is_valued()</code> method more convenient.
 
 <div class="defun">
-&mdash; Function: int <b>marpa_v_symbol_is_valued_set</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id, int status </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued_005fset-251"></a></var><br>
-&mdash; Function: int <b>marpa_v_symbol_is_valued</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued-252"></a></var><br>
+&mdash; Function: int <b>marpa_v_symbol_is_valued_set</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id, int status </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued_005fset-252"></a></var><br>
+&mdash; Function: int <b>marpa_v_symbol_is_valued</b> (<var> Marpa_Value v, Marpa_Symbol_ID sym_id </var>)<var><a name="index-marpa_005fv_005fsymbol_005fis_005fvalued-253"></a></var><br>
 <blockquote>
         <p>These methods, respectively,
 set and query
@@ -5861,8 +5900,8 @@ or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_v_rule_is_valued_set</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id, int status </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued_005fset-253"></a></var><br>
-&mdash; Function: int <b>marpa_v_rule_is_valued</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued-254"></a></var><br>
+&mdash; Function: int <b>marpa_v_rule_is_valued_set</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id, int status </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued_005fset-254"></a></var><br>
+&mdash; Function: int <b>marpa_v_rule_is_valued</b> (<var> Marpa_Value v, Marpa_Rule_ID rule_id </var>)<var><a name="index-marpa_005fv_005frule_005fis_005fvalued-255"></a></var><br>
 <blockquote>
         <p>These methods, respectively,
 set and query
@@ -5894,7 +5933,7 @@ or on other failure, &minus;2.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: int <b>marpa_v_valued_force</b> (<var> Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fvalued_005fforce-255"></a></var><br>
+&mdash; Function: int <b>marpa_v_valued_force</b> (<var> Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fvalued_005fforce-256"></a></var><br>
 <blockquote>
         <p>This methods locks the valued status of all symbols
 to 1, indicated that the symbol is valued. 

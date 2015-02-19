@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Rules - Libmarpa 8.0.0</title>
+<title>Rules - Libmarpa 8.1.0</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.0.0">
+<meta name="description" content="Libmarpa 8.1.0">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
@@ -10,8 +10,8 @@
 <link rel="next" href="Sequences.html#Sequences" title="Sequences">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (14 February 2015)
-is for Libmarpa 8.0.0.
+This manual (19 February 2015)
+is for Libmarpa 8.1.0.
 
 Copyright (C) 2014 Jeffrey Kegler.
 
@@ -87,7 +87,7 @@ If the grammar is not precomputed, or on other failure, &minus;2.
         <p>Return value: On success,
 1 if rule <var>ruleid</var> is nulling, 0 if not. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -128,7 +128,7 @@ an empty rule is considered productive.
         <p>Return value: On success,
 1 if rule <var>rule_id</var> is productive, 0 if not. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 If the grammar is not precomputed, or on other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -144,7 +144,7 @@ On failure, &minus;2.
 &mdash; Function: Marpa_Symbol_ID <b>marpa_g_rule_lhs</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005flhs-32"></a></var><br>
 <blockquote><p>Return value: On success, the LHS symbol of rule <var>rule_id</var>. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 On other failure, &minus;2. 
 </p></blockquote></div>
 
@@ -192,7 +192,7 @@ The RHS position, <var>ix</var>, is zero-based.
 the ID of the symbol in position <var>ix</var>
 on the rules RHS. 
 If <var>rule_id</var> is well-formed, but there is no
-such rule, -1. 
+such rule, &minus;1. 
 If <var>ix</var> is greater than or equal to the length of
 the rule,
 or on other failure, &minus;2. 

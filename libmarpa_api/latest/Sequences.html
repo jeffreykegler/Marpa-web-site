@@ -10,7 +10,7 @@
 <link rel="next" href="Ranks.html#Ranks" title="Ranks">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (1 March 2015)
+This manual (2 March 2015)
 is for Libmarpa 8.3.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
@@ -73,6 +73,16 @@ On other success,
 including the case
 where rule <var>rule_id</var>
 is not a sequence rule, returns 0.
+
+        <p>The <code>marpa_g_rule_is_proper_separation()</code>
+does not distinguish rules without proper
+separation from rules for which separation
+is not defined, because they are not
+sequence rules. 
+Applications for which this distinction is
+important should use
+the
+<code>marpa_g_sequence_min()</code> method.
 
         <p>Failure returns:
 If <var>rule_id</var> is well-formed, but there is no

@@ -7,7 +7,7 @@
 <link title="Top" rel="top" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (1 March 2015)
+This manual (2 March 2015)
 is for Libmarpa 8.3.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
@@ -199,7 +199,7 @@ Copyright (C) 2015 Jeffrey Kegler.
 
 <h2 class="unnumbered">Libmarpa: The Marpa low-level library</h2>
 
-<p>This manual (1 March 2015)
+<p>This manual (2 March 2015)
 is for Libmarpa 8.3.0.
 
    <p>Copyright &copy; 2015 Jeffrey Kegler.
@@ -1718,6 +1718,16 @@ including the case
 where rule <var>rule_id</var>
 is not a sequence rule, returns 0.
 
+        <p>The <code>marpa_g_rule_is_proper_separation()</code>
+does not distinguish rules without proper
+separation from rules for which separation
+is not defined, because they are not
+sequence rules. 
+Applications for which this distinction is
+important should use
+the
+<code>marpa_g_sequence_min()</code> method.
+
         <p>Failure returns:
 If <var>rule_id</var> is well-formed, but there is no
 such rule, returns &minus;1. 
@@ -2214,6 +2224,20 @@ may do so.
 When a zero length symbol is recognized,
 all of its zero-length derivations are also considered to be
 recognized.
+
+        <p>The <code>marpa_g_symbol_is_nulled_event_set()</code> method will
+mark a symbol as a nulled event symbol,
+even if the symbol is non-nullable. 
+This is convenient, for example,
+for automatically generated grammars. 
+Applications which wish to treat
+it as a failure if there is an
+attempt to
+mark a non-nullable symbol
+as a nulled event symbol,
+can check for this case using
+the <code>marpa_g_symbol_is_nullable()</code>
+method.
 
         <p>Success: On success, 1 if symbol <var>sym_id</var>
 is a nulled event symbol after the

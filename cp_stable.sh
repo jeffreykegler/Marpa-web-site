@@ -24,7 +24,7 @@ doc1_d="$work_d"/doc1
 
 test -d stage || mkdir stage
 rm -rf $source_d
-git clone -b "$branch" file://$libmarpa_dir "$source_d"
+git clone --depth 1 -b "$branch" file://$libmarpa_dir "$source_d"
 
 test -d "$dev_d" || exit 1
 (cd "$dev_d" && make ../doc/api.html/index.html)

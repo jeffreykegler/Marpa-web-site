@@ -1,94 +1,113 @@
-<html lang="en">
-<head>
-<title>Ordering reference counting - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Ordering-methods.html#Ordering-methods" title="Ordering methods">
-<link rel="prev" href="Ordering-constructor.html#Ordering-constructor" title="Ordering constructor">
-<link rel="next" href="Order-accessor.html#Order-accessor" title="Order accessor">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Ordering reference counting</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Ordering reference counting">
+<meta name="keywords" content="Libmarpa 8.4.0: Ordering reference counting">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Ordering-methods.html#Ordering-methods" rel="up" title="Ordering methods">
+<link href="Order-accessor.html#Order-accessor" rel="next" title="Order accessor">
+<link href="Ordering-constructor.html#Ordering-constructor" rel="prev" title="Ordering constructor">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Ordering-reference-counting"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Order-accessor.html#Order-accessor">Order accessor</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Ordering-constructor.html#Ordering-constructor">Ordering constructor</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Ordering-methods.html#Ordering-methods">Ordering methods</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Ordering-reference-counting"></a>
+<div class="header">
+<p>
+Next: <a href="Order-accessor.html#Order-accessor" accesskey="n" rel="next">Order accessor</a>, Previous: <a href="Ordering-constructor.html#Ordering-constructor" accesskey="p" rel="prev">Ordering constructor</a>, Up: <a href="Ordering-methods.html#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Reference-counting-3"></a>
 <h3 class="section">15.3 Reference counting</h3>
 
-<div class="defun">
-&mdash; Function: Marpa_Order <b>marpa_o_ref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fref-89"></a></var><br>
-<blockquote><p>Increases the reference count by 1. 
+<dl>
+<dt><a name="index-marpa_005fo_005fref"></a>Function: <em>Marpa_Order</em> <strong>marpa_o_ref</strong> <em>(     Marpa_Order <var>o</var>)</em></dt>
+<dd><p>Increases the reference count by 1.
 Not needed by most applications.
+</p>
+<p>Return value:
+On success, <var>o</var>.
+On failure, <code>NULL</code>.
+</p></dd></dl>
 
-        <p>Return value:
-On success, <var>o</var>. 
-On failure, <code>NULL</code>. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: void <b>marpa_o_unref</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005funref-90"></a></var><br>
-<blockquote><p>Decreases the reference count by 1,
+<dl>
+<dt><a name="index-marpa_005fo_005funref"></a>Function: <em>void</em> <strong>marpa_o_unref</strong> <em>(     Marpa_Order <var>o</var>)</em></dt>
+<dd><p>Decreases the reference count by 1,
 destroying <var>o</var> once the reference count reaches
-zero. 
-Beginning with <var>o</var>'s parent bocage,
-Libmarpa then proceeds up the chain of parent objects. 
+zero.
+Beginning with <var>o</var>&rsquo;s parent bocage,
+Libmarpa then proceeds up the chain of parent objects.
 Every time a child is destroyed, the
-reference count of its parent is decreased by 1. 
+reference count of its parent is decreased by 1.
 Every time the reference count of an object
 is decreased by 1,
 if that reference count is now zero,
-that object is destroyed. 
+that object is destroyed.
 Libmarpa follows this chain of decrements
 and destructions as required,
 all the way back to the
 base grammar, if necessary.
-
-        </blockquote></div>
+</p>
+</dd></dl>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

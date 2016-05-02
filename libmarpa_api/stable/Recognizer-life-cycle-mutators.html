@@ -1,251 +1,270 @@
-<html lang="en">
-<head>
-<title>Recognizer life cycle mutators - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
-<link rel="prev" href="Recognizer-reference-counting.html#Recognizer-reference-counting" title="Recognizer reference counting">
-<link rel="next" href="Location-accessors.html#Location-accessors" title="Location accessors">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Recognizer life cycle mutators</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Recognizer life cycle mutators">
+<meta name="keywords" content="Libmarpa 8.4.0: Recognizer life cycle mutators">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Recognizer-methods.html#Recognizer-methods" rel="up" title="Recognizer methods">
+<link href="Location-accessors.html#Location-accessors" rel="next" title="Location accessors">
+<link href="Recognizer-reference-counting.html#Recognizer-reference-counting" rel="prev" title="Recognizer reference counting">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Recognizer-life-cycle-mutators"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Location-accessors.html#Location-accessors">Location accessors</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-reference-counting.html#Recognizer-reference-counting">Recognizer reference counting</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Recognizer-life-cycle-mutators"></a>
+<div class="header">
+<p>
+Next: <a href="Location-accessors.html#Location-accessors" accesskey="n" rel="next">Location accessors</a>, Previous: <a href="Recognizer-reference-counting.html#Recognizer-reference-counting" accesskey="p" rel="prev">Recognizer reference counting</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Life-cycle-mutators"></a>
 <h3 class="section">12.4 Life cycle mutators</h3>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_r_start_input</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fstart_005finput-59"></a></var><br>
-<blockquote><p>Makes <var>r</var> ready to accept input. 
+<dl>
+<dt><a name="index-marpa_005fr_005fstart_005finput"></a>Function: <em>int</em> <strong>marpa_r_start_input</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
+<dd><p>Makes <var>r</var> ready to accept input.
 The first Earley set,
 the one at earleme 0,
 will be completed during this call.
-
-        <p>Because the call to <code>marpa_r_start_input()</code>
+</p>
+<p>Because the call to <code>marpa_r_start_input()</code>
 completes an Earley set,
-it may generate events. 
+it may generate events.
 For details about
 the events that may be generated during
 Earley set completion,
 see the description of the
 <code>marpa_r_earleme_complete()</code> method.
+</p>
+<p>Return value:  On success, a non-negative value.
+On failure, -2.
+</p></dd></dl>
 
-        <p>Return value:  On success, a non-negative value. 
-On failure, &minus;2. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_alternative</b> (<var>Marpa_Recognizer r, Marpa_Symbol_ID token_id, int value, int length</var>)<var><a name="index-marpa_005fr_005falternative-60"></a></var><br>
-<blockquote><p>Reads a token into <var>r</var>. 
-The token will start at the current earleme. 
+<dl>
+<dt><a name="index-marpa_005fr_005falternative"></a>Function: <em>int</em> <strong>marpa_r_alternative</strong> <em>(Marpa_Recognizer <var>r</var>,     Marpa_Symbol_ID <var>token_id</var>,     int <var>value</var>,     int <var>length</var>)</em></dt>
+<dd><p>Reads a token into <var>r</var>.
+The token will start at the current earleme.
 Libmarpa allows tokens to be ambiguous, to be of
-variable length and to overlap. 
+variable length and to overlap.
 <var>token_id</var> is the symbol ID of the token,
-which must be a terminal. 
+which must be a terminal.
 <var>length</var> is the length of the token.
-
-        <p><var>value</var> is an
+</p>
+<p><var>value</var> is an
 integer that represents the value of the
-token. 
-In applications where the token's actual value is not an integer, it is
+token.
+In applications where the token&rsquo;s actual value is not an integer, it is
 expected that the application will use this value as
 a &ldquo;virtual&rdquo; value,
 perhaps finding the actual value by using <var>value</var>
-to index an array. 
+to index an array.
 <var>value</var> is not used inside Libmarpa &mdash; it is simply
 stored to be returned by the valuator
-as a convenience for the application. 
+as a convenience for the application.
 Some applications may prefer to track token values on
 their own, perhaps based on
 the earleme location and <var>token_id</var>,
-instead of using Libmarpa's token values.
-
-        <p>A <var>value</var> of 0 is reserved for a now-deprecated feature. 
-Do not use it. 
+instead of using Libmarpa&rsquo;s token values.
+</p>
+<p>A <var>value</var> of 0 is reserved for a now-deprecated feature.
+Do not use it.
 For more details on that feature, see the
 section <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>.
-
-        <p>When <code>marpa_r_alternative()</code>
+</p>
+<p>When <code>marpa_r_alternative()</code>
 is successful,
 the value of the furthest earleme is set to
 the greater of its value before the call,
 and <var>current</var>+<var>length</var>,
-where <var>current</var> is the value of the current earleme. 
+where <var>current</var> is the value of the current earleme.
 The values of the current and latest earlemes
 are unchanged by
 calls to <code>marpa_r_alternative()</code>.
-
-        <p>Several error codes leave the recognizer in a fully
+</p>
+<p>Several error codes leave the recognizer in a fully
 recoverable state, allowing the application to
-retry the <code>marpa_r_alternative()</code> method. 
+retry the <code>marpa_r_alternative()</code> method.
 Retry is efficient, and quite useable as a parsing
-technique. 
+technique.
 The error code
 of primary interest from this point of view
 is <code>MARPA_ERR_UNEXPECTED_TOKEN_ID</code>,
 which indicates that the token was not accepted
-because of its token ID. 
+because of its token ID.
 Retry after this condition is used in several
 applications,
 and is called &ldquo;the Ruby Slippers technique&rdquo;.
-
-        <p>The error codes
+</p>
+<p>The error codes
 <code>MARPA_ERR_DUPLICATE_TOKEN</code>,
 <code>MARPA_ERR_NO_TOKEN_EXPECTED_HERE</code>
 and <code>MARPA_ERR_INACCESSIBLE_TOKEN</code>
 also leave the recognizer in a fully recoverable
 state, and may also be useable for the
-Ruby Slippers or similar techniques. 
+Ruby Slippers or similar techniques.
 At this writing,
 the author knows of no applications which
 attempt to recover from these errors.
-
-        <p>Return value:  On success, <code>MARPA_ERR_NONE</code>. 
+</p>
+<p>Return value:  On success, <code>MARPA_ERR_NONE</code>.
 On failure, some other error code.
+</p>
+</dd></dl>
 
-        </blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_earleme_complete</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fearleme_005fcomplete-61"></a></var><br>
-<blockquote><p>This method does the final processing for the current earleme. 
-It then advances the current earleme by one. 
+<dl>
+<dt><a name="index-marpa_005fr_005fearleme_005fcomplete"></a>Function: <em>int</em> <strong>marpa_r_earleme_complete</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
+<dd><p>This method does the final processing for the current earleme.
+It then advances the current earleme by one.
 Note that <code>marpa_r_earleme_complete()</code> may be called
 even when no tokens have been read at the current earleme &mdash;
 in the character-per-earleme input model, for example, tokens
 can span many characters and, if the input is unambiguous over that
 span, there will be no other tokens that start inside it.
-
-        <p>As mentioned,
+</p>
+<p>As mentioned,
 <code>marpa_r_earleme_complete()</code> always advances the current earleme,
-incrementing its value by 1. 
+incrementing its value by 1.
 This means that value of the current earleme after the call
 will be the one plus the value of the earleme processed by the call
-to <code>marpa_r_earleme_complete()</code>. 
+to <code>marpa_r_earleme_complete()</code>.
 If any token was accepted at the earleme being processed,
 <code>marpa_r_earleme_complete()</code> creates a new Earley set
 which will be the latest Earley set
 and, after the call, the latest
-earleme will be equal to the new current earleme. 
+earleme will be equal to the new current earleme.
 If no token was accepted at the
 earleme being processed,
 no Earley set is created,
-and the value of the latest earleme remains unchanged. 
+and the value of the latest earleme remains unchanged.
 The value of the furthest earleme is never changed by
 a call to <code>marpa_r_earleme_complete()</code>.
-
-        <p>During this method, one or more events may occur. 
+</p>
+<p>During this method, one or more events may occur.
 On success, this function returns the number of events
 generated,
 but it is important to note that events may be
-created whether earleme completion fails or succeeds. 
+created whether earleme completion fails or succeeds.
 When this method fails,
 the application must call <code>marpa_g_event()</code>
-if it wants to determine if any events occurred. 
+if it wants to determine if any events occurred.
 Since the reason for failure to complete an earleme is often
 detailed in the events, applications that fail will often
 be at least as interested in the events as those
 that succeed.
-
-        <p>The <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event
+</p>
+<p>The <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event
 indicates that an application-settable threshold
-on the number of Earley items has been reached or exceeded. 
+on the number of Earley items has been reached or exceeded.
 What this means depends on the application,
 but when the default threshold is exceeded,
 it means that it is very likely
 that the time and space resources consumed by
 the parse will prove excessive.
-
-        <p>A parse is &ldquo;exhausted&rdquo; when it can accept no more
-input. 
-This can happen both on success and on failure. 
+</p>
+<p>A parse is &ldquo;exhausted&rdquo; when it can accept no more
+input.
+This can happen both on success and on failure.
 Note that the failure due to parse exhaustion
 only means failure
-at the current earleme. 
+at the current earleme.
 There may be successful parses
 at earlier earlemes.
-
-        <p>If a parse is exhausted, but successful,
+</p>
+<p>If a parse is exhausted, but successful,
 an event with the event code
-<code>MARPA_EVENT_EXHAUSTED</code> occurs. 
+<code>MARPA_EVENT_EXHAUSTED</code> occurs.
 Because the parse is exhausted,
-no input will be accepted at later earlemes. 
+no input will be accepted at later earlemes.
 It is quite common for a parse to become exhausted
-when it succeeds. 
+when it succeeds.
 Many practical grammars are designed so that a
 successful parse cannot be extended.
-
-        <p>An exhausted parse may cause a failure,
+</p>
+<p>An exhausted parse may cause a failure,
 in which case
 <code>marpa_r_earleme_complete()</code> returns an
 error
-whose error code is <code>MARPA_ERR_PARSE_EXHAUSTED</code>. 
+whose error code is <code>MARPA_ERR_PARSE_EXHAUSTED</code>.
 For a parse to fail at an earleme due to exhaustion,
 it must be the case that no alternatives were
-accepted at that earleme. 
+accepted at that earleme.
 In fact,
 in the standard input model,
 a failure due to parse exhaustion
 occurs if and only if
 no alternatives
 were accepted at the current earleme.
-
-        <p>The circumstances under which
+</p>
+<p>The circumstances under which
 failure due to parse exhaustion occurs
 are slightly more complicated
-when variable length tokens are in use. 
+when variable length tokens are in use.
 Informally,
 a parse will never fail due to exhaustion as long
 as it is possible that a token
 ending at some future
-earleme will continue the parse. 
+earleme will continue the parse.
 More precisely,
-a call to
+a call to 
 <code>marpa_r_earleme_complete()</code> fails
 due to parse exhaustion
 if and only if, first,
@@ -253,10 +272,16 @@ no alternatives were added at the current earleme
 and, second,
 that call left the current
 earleme equal to the furthest earleme.
+</p>
+<p>Return value:  On success, the number of events generated.
+On failure, -2.
+</p></dd></dl>
 
-        <p>Return value:  On success, the number of events generated. 
-On failure, &minus;2. 
-</p></blockquote></div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Location-accessors.html#Location-accessors" accesskey="n" rel="next">Location accessors</a>, Previous: <a href="Recognizer-reference-counting.html#Recognizer-reference-counting" accesskey="p" rel="prev">Recognizer reference counting</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

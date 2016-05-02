@@ -1,68 +1,88 @@
-<html lang="en">
-<head>
-<title>Static methods - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" title="Introduction to the external interface">
-<link rel="next" href="Configuration-methods.html#Configuration-methods" title="Configuration methods">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Static methods</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Static methods">
+<meta name="keywords" content="Libmarpa 8.4.0: Static methods">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Configuration-methods.html#Configuration-methods" rel="next" title="Configuration methods">
+<link href="Naming-conventions.html#Naming-conventions" rel="prev" title="Naming conventions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Static-methods"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Configuration-methods.html#Configuration-methods">Configuration methods</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface">Introduction to the external interface</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Static-methods"></a>
+<div class="header">
+<p>
+Next: <a href="Configuration-methods.html#Configuration-methods" accesskey="n" rel="next">Configuration methods</a>, Previous: <a href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" accesskey="p" rel="prev">Introduction to the external interface</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Static-methods-1"></a>
 <h2 class="chapter">9 Static methods</h2>
 
-<div class="defun">
-&mdash; Function: Marpa_Error_Code <b>marpa_check_version</b> (<var>int required_major, int required_minor, int required_micro </var>)<var><a name="index-marpa_005fcheck_005fversion-1"></a></var><br>
-<blockquote>
-        <p>Checks that the Marpa library in use is compatible with the
+<dl>
+<dt><a name="index-marpa_005fcheck_005fversion"></a>Function: <em>Marpa_Error_Code</em> <strong>marpa_check_version</strong> <em>(int <var>required_major</var>,     int <var>required_minor</var>,     int <var>required_micro</var>     )</em></dt>
+<dd>
+<p>Checks that the Marpa library in use is compatible with the
 given version. Generally you will pass in the constants
 <code>MARPA_MAJOR_VERSION</code>,
 <code>MARPA_MINOR_VERSION</code>,
@@ -70,37 +90,37 @@ given version. Generally you will pass in the constants
 as the three arguments to this function; that produces
 a check that the library in use is compatible with
 the version of Libmarpa the application or module was compiled
-against. 
+against.
 Compatibility is defined by two things:
 first the version
 of the running library is newer than the version
-<var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>. 
+<var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>.
 Second
 the running library must be binary compatible with the
 version
 <var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>
 (same major version.)
-
-        <p>Return value: <code>MARPA_ERR_NONE</code> if the Marpa library is compatible with the
+</p>
+<p>Return value: <code>MARPA_ERR_NONE</code> if the Marpa library is compatible with the
 requested version.  If the library is not compatible,
 one of the following is returned, indicating the nature of the mismatch:
-          <ul>
-<li><code>MARPA_ERR_MAJOR_VERSION_MISMATCH</code>,
-<li><code>MARPA_ERR_MINOR_VERSION_MISMATCH</code>
-<li><code>MARPA_ERR_MICRO_VERSION_MISMATCH</code>
-</ul>
+</p><ul>
+<li> <code>MARPA_ERR_MAJOR_VERSION_MISMATCH</code>,
+</li><li> <code>MARPA_ERR_MINOR_VERSION_MISMATCH</code>
+</li><li> <code>MARPA_ERR_MICRO_VERSION_MISMATCH</code>
+</li></ul>
 
-     </blockquote></div>
+</dd></dl>
 
-<div class="defun">
-&mdash; Function: Marpa_Error_Code <b>marpa_version</b> (<var>int* version</var>)<var><a name="index-marpa_005fversion-2"></a></var><br>
-<blockquote>
-        <p>Returns the version number in <var>version</var>,
-which must have room for three <code>int</code>'s.
-
-        <p>Return value: A non-negative number on success,
-&minus;2 on failure. 
-</p></blockquote></div>
+<dl>
+<dt><a name="index-marpa_005fversion"></a>Function: <em>Marpa_Error_Code</em> <strong>marpa_version</strong> <em>(int* version)</em></dt>
+<dd>
+<p>Returns the version number in <var>version</var>,
+which must have room for three <code>int</code>&rsquo;s.
+</p>
+<p>Return value: A non-negative number on success,
+-2 on failure.
+</p></dd></dl>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

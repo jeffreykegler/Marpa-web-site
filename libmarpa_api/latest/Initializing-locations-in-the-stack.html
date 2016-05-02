@@ -1,110 +1,137 @@
-<html lang="en">
-<head>
-<title>Initializing locations in the stack - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Maintaining-the-stack.html#Maintaining-the-stack" title="Maintaining the stack">
-<link rel="prev" href="Sizing-the-stack.html#Sizing-the-stack" title="Sizing the stack">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Initializing locations in the stack</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Initializing locations in the stack">
+<meta name="keywords" content="Libmarpa 8.4.0: Initializing locations in the stack">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Maintaining-the-stack.html#Maintaining-the-stack" rel="up" title="Maintaining the stack">
+<link href="Valuator-constructor.html#Valuator-constructor" rel="next" title="Valuator constructor">
+<link href="Sizing-the-stack.html#Sizing-the-stack" rel="prev" title="Sizing the stack">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Initializing-locations-in-the-stack"></a>
-<p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Sizing-the-stack.html#Sizing-the-stack">Sizing the stack</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Maintaining-the-stack.html#Maintaining-the-stack">Maintaining the stack</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Initializing-locations-in-the-stack"></a>
+<div class="header">
+<p>
+Previous: <a href="Sizing-the-stack.html#Sizing-the-stack" accesskey="p" rel="prev">Sizing the stack</a>, Up: <a href="Maintaining-the-stack.html#Maintaining-the-stack" accesskey="u" rel="up">Maintaining the stack</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Initializing-locations-in-the-stack-1"></a>
 <h4 class="subsection">17.4.2 Initializing locations in the stack</h4>
 
 <p>Write optimizations also creates issues for implementations
-which require data to be initialized before reading. 
+which require data to be initialized before reading.
 Every fully standard-conforming C application is such an
-implementation. 
+implementation.
 Both C90 and C99 allow &ldquo;trap values&rdquo;,
 and therefore conforming applications must be
 prepared for
-an uninitialized location to contain one of those. 
-Reading a trap value may cause an abend. 
+an uninitialized location to contain one of those.
+Reading a trap value may cause an abend.
 (It is safe, in standard-conforming C, to write to a location
 containing a trap value.)
-
-   <p>The requirement that locations be initialized before
-reading occurs in other implementations. 
+</p>
+<p>The requirement that locations be initialized before
+reading occurs in other implementations.
 Any implementation that has a &ldquo;universe&rdquo; of &ldquo;safe&rdquo; values,
-may require special precautions. 
+may require special precautions.
 The required precautions may amount to a need to initialize
-&ldquo;uninitialized&rdquo; values. 
+&ldquo;uninitialized&rdquo; values.
 A practical example might be an implementation that expects
 all locations to contain a pointer which it can safely indirect
-from. 
+from.
 In such implementations,
 just as in standard-conformant C,
 every stack location
 needs to be initialized before being read.
-
-   <p>Due to write optimizations, an application
-cannot rely on Libmarpa's step instructions to
-initialize every stack location before its first read. 
+</p>
+<p>Due to write optimizations, an application
+cannot rely on Libmarpa&rsquo;s step instructions to
+initialize every stack location before its first read.
 One way to safely deal with the
 initialization of stack locations,
 is to do all of the following:
-     <ul>
-<li>When starting evaluation, ensure that the stack contains at least location 0. 
-<li>Also, when starting evaluation, initialize every location in the stack. 
-<li>Whenever the stack is extended,
-initialize every stack location added. 
-</ul>
+</p><ul>
+<li> When starting evaluation, ensure that the stack contains at least location 0.
+</li><li> Also, when starting evaluation, initialize every location in the stack.
+</li><li> Whenever the stack is extended,
+initialize every stack location added.
+</li></ul>
 
-   <p>Applications which try to optimize out some of
+<p>Applications which try to optimize out some of
 these initializations
 need to be aware that
 an application can never assume that activity in
-the stack is safely &ldquo;beyond&rdquo; an uninitialized location. 
+the stack is safely &ldquo;beyond&rdquo; an uninitialized location.
 Libmarpa steps often revisit earlier sections of the stack,
 and these revisits may include reads of previously
 unvisited stack locations.
+</p>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Sizing-the-stack.html#Sizing-the-stack" accesskey="p" rel="prev">Sizing the stack</a>, Up: <a href="Maintaining-the-stack.html#Maintaining-the-stack" accesskey="u" rel="up">Maintaining the stack</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

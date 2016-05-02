@@ -1,102 +1,121 @@
-<html lang="en">
-<head>
-<title>Event methods - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Events.html#Events" title="Events">
-<link rel="prev" href="Events-overview.html#Events-overview" title="Events overview">
-<link rel="next" href="Event-codes.html#Event-codes" title="Event codes">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Event methods</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Event methods">
+<meta name="keywords" content="Libmarpa 8.4.0: Event methods">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Events.html#Events" rel="up" title="Events">
+<link href="Event-codes.html#Event-codes" rel="next" title="Event codes">
+<link href="Events-overview.html#Events-overview" rel="prev" title="Events overview">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Event-methods"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Event-codes.html#Event-codes">Event codes</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Events-overview.html#Events-overview">Events overview</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Events.html#Events">Events</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Event-methods"></a>
+<div class="header">
+<p>
+Next: <a href="Event-codes.html#Event-codes" accesskey="n" rel="next">Event codes</a>, Previous: <a href="Events-overview.html#Events-overview" accesskey="p" rel="prev">Events overview</a>, Up: <a href="Events.html#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Methods"></a>
 <h3 class="section">18.2 Methods</h3>
 
-<div class="defun">
-&mdash; Function: Marpa_Event_Type <b>marpa_g_event</b> (<var>Marpa_Grammar g, Marpa_Event* event, int ix</var>)<var><a name="index-marpa_005fg_005fevent-124"></a></var><br>
-<blockquote><p>On success,
-the type of the <var>ix</var>'th event is returned
-and the data for the <var>ix</var>'th event is placed
+<dl>
+<dt><a name="index-marpa_005fg_005fevent"></a>Function: <em>Marpa_Event_Type</em> <strong>marpa_g_event</strong> <em>(Marpa_Grammar <var>g</var>,     Marpa_Event* <var>event</var>,                int <var>ix</var>)</em></dt>
+<dd><p>On success,
+the type of the <var>ix</var>&rsquo;th event is returned
+and the data for the <var>ix</var>&rsquo;th event is placed
 in the location pointed to by <var>event</var>.
-
-        <p>Event indexes are in sequence. 
+</p>
+<p>Event indexes are in sequence.
 Valid events will be in the range from 0 to <var>n</var>,
-where <var>n</var> is one less than the event count. 
+where <var>n</var> is one less than the event count.
 The event count
 can be queried using the <code>marpa_g_event_count()</code>
 method.
-
-        <p>Return value:  On success, the type of event <var>ix</var>. 
-If there is no <var>ix</var>'th event,
+</p>
+<p>Return value:  On success, the type of event <var>ix</var>.
+If there is no <var>ix</var>&rsquo;th event,
 if <var>ix</var> is negative,
-or on other failure, &minus;2. 
+or on other failure, -2.
 On failure,
 the locations pointed to by <var>event</var>
-are not changed. 
-</p></blockquote></div>
+are not changed.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_event_count</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005fevent_005fcount-125"></a></var><br>
-<blockquote><p>Return value:  On success, the number of events. 
-On failure, &minus;2. 
-</p></blockquote></div>
+<dl>
+<dt><a name="index-marpa_005fg_005fevent_005fcount"></a>Function: <em>int</em> <strong>marpa_g_event_count</strong> <em>( Marpa_Grammar g )</em></dt>
+<dd><p>Return value:  On success, the number of events.
+On failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>marpa_g_event_value</b> (<var>Marpa_Event* event</var>)<var><a name="index-marpa_005fg_005fevent_005fvalue-126"></a></var><br>
-<blockquote><p>This macro provides access to the &ldquo;value&rdquo; of the event. 
+<dl>
+<dt><a name="index-marpa_005fg_005fevent_005fvalue"></a>Macro: <em>int</em> <strong>marpa_g_event_value</strong> <em>(Marpa_Event* <var>event</var>)</em></dt>
+<dd><p>This macro provides access to the &ldquo;value&rdquo; of the event.
 The semantics of the value varies according to the type
 of the event, and is described in the section on event
-codes. 
-See <a href="Event-codes.html#Event-codes">Event codes</a>. 
-</p></blockquote></div>
+codes.
+See <a href="Event-codes.html#Event-codes">Event codes</a>.
+</p></dd></dl>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

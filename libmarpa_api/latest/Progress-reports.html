@@ -1,167 +1,193 @@
-<html lang="en">
-<head>
-<title>Progress reports - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
-<link rel="next" href="Bocage-methods.html#Bocage-methods" title="Bocage methods">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Progress reports</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Progress reports">
+<meta name="keywords" content="Libmarpa 8.4.0: Progress reports">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Bocage-methods.html#Bocage-methods" rel="next" title="Bocage methods">
+<link href="Other-parse-status-methods.html#Other-parse-status-methods" rel="prev" title="Other parse status methods">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Progress-reports"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Bocage-methods.html#Bocage-methods">Bocage methods</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Progress-reports"></a>
+<div class="header">
+<p>
+Next: <a href="Bocage-methods.html#Bocage-methods" accesskey="n" rel="next">Bocage methods</a>, Previous: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Progress-reports-1"></a>
 <h2 class="chapter">13 Progress reports</h2>
 
 <p>An important advantage of the Marpa algorithm is the ability
 to easily get full information about the state of the parse.
-
-   <p>To start a progress report,
-use the <code>marpa_r_progress_report_start()</code> command. 
+</p>
+<p>To start a progress report,
+use the <code>marpa_r_progress_report_start()</code> command.
 Only one progress report can be in use at any one time.
-
-   <p>To get the information in a progress report,
+</p>
+<p>To get the information in a progress report,
 it is necessary to step through the progress report
-items. 
+items.
 To get the data for the current progress report item,
 and advance to the next one,
 use the <code>marpa_r_progress_item()</code> method.
-
-   <p>To destroy a progress report,
+</p>
+<p>To destroy a progress report,
 freeing the memory it uses,
 call the <code>marpa_r_progress_report_finish()</code> method.
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_progress_report_reset</b> (<var> Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fprogress_005freport_005freset-79"></a></var><br>
-<blockquote><p>Resets the progress report. 
+</p>
+<dl>
+<dt><a name="index-marpa_005fr_005fprogress_005freport_005freset"></a>Function: <em>int</em> <strong>marpa_r_progress_report_reset</strong> <em>(   Marpa_Recognizer <var>r</var>)</em></dt>
+<dd><p>Resets the progress report.
 Assumes a report of the progress has already been initialized
 at some Earley set
 for recognizer <var>r</var>,
-with
-<code>marpa_r_progress_report_start()</code>. 
+with 
+<code>marpa_r_progress_report_start()</code>.
 The reset progress report will
 be positioned before its first item.
+</p>
+<p>Return value: On success, a non-negative value.
+On failure, -2.
+</p></dd></dl>
 
-        <p>Return value: On success, a non-negative value. 
-On failure, &minus;2. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_progress_report_start</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID set_id</var>)<var><a name="index-marpa_005fr_005fprogress_005freport_005fstart-80"></a></var><br>
-<blockquote><p>Initializes a report of the progress at Earley set <var>set_id</var>
-for recognizer <var>r</var>. 
+<dl>
+<dt><a name="index-marpa_005fr_005fprogress_005freport_005fstart"></a>Function: <em>int</em> <strong>marpa_r_progress_report_start</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Earley_Set_ID <var>set_id</var>)</em></dt>
+<dd><p>Initializes a report of the progress at Earley set <var>set_id</var>
+for recognizer <var>r</var>.
 If a progress report already exists, it is destroyed and its
-memory is freed. 
+memory is freed.
 Initially,
 the progress report is positioned before its first item.
-
-        <p>If no Earley set with ID
+</p>
+<p>If no Earley set with ID
 <var>set_id</var> exists,
-<code>marpa_r_progress_report_start()</code> fails. 
+<code>marpa_r_progress_report_start()</code> fails.
 The error code is <code>MARPA_ERR_INVALID_LOCATION</code> if <var>set_id</var>
-is negative. 
+is negative.
 The error code is <code>MARPA_ERR_NO_EARLEY_SET_AT_LOCATION</code>
 if <var>set_id</var> is greater than the ID of
 the latest Earley set.
-
-        <p>Return value: On success, the number of report items available. 
+</p>
+<p>Return value: On success, the number of report items available.
 If the recognizer has not been started;
 if <var>set_id</var> does not exist;
-or on other failure, &minus;2. 
-</p></blockquote></div>
+or on other failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_r_progress_report_finish</b> (<var> Marpa_Recognizer r </var>)<var><a name="index-marpa_005fr_005fprogress_005freport_005ffinish-81"></a></var><br>
-<blockquote><p>Destroys the report of the progress at Earley set <var>set_id</var>
+<dl>
+<dt><a name="index-marpa_005fr_005fprogress_005freport_005ffinish"></a>Function: <em>int</em> <strong>marpa_r_progress_report_finish</strong> <em>(   Marpa_Recognizer <var>r</var> )</em></dt>
+<dd><p>Destroys the report of the progress at Earley set <var>set_id</var>
 for recognizer <var>r</var>,
-freeing the memory and other resources. 
-It is often not necessary to call this method. 
+freeing the memory and other resources.
+It is often not necessary to call this method.
 Any previously existing progress report
 is destroyed automatically
 whenever a new progress report is started,
 and when the recognizer is destroyed.
+</p>
+<p>Return value: -2 if no progress report has been started,
+or on other failure.
+On success, a non-negative value.
+</p></dd></dl>
 
-        <p>Return value: &minus;2 if no progress report has been started,
-or on other failure. 
-On success, a non-negative value. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: Marpa_Rule_ID <b>marpa_r_progress_item</b> (<var> Marpa_Recognizer r, int* position, Marpa_Earley_Set_ID* origin </var>)<var><a name="index-marpa_005fr_005fprogress_005fitem-82"></a></var><br>
-<blockquote><p>This method allows access to the data
+<dl>
+<dt><a name="index-marpa_005fr_005fprogress_005fitem"></a>Function: <em>Marpa_Rule_ID</em> <strong>marpa_r_progress_item</strong> <em>(   Marpa_Recognizer <var>r</var>,   int* <var>position</var>,   Marpa_Earley_Set_ID* <var>origin</var> )</em></dt>
+<dd><p>This method allows access to the data
 for the next item of a
-progress report. 
+progress report.
 If there are no more progress report items,
-it returns &minus;1 as a termination indicator
-and sets the error code to <code>MARPA_ERR_PROGRESS_REPORT_EXHAUSTED</code>. 
+it returns -1 as a termination indicator
+and sets the error code to <code>MARPA_ERR_PROGRESS_REPORT_EXHAUSTED</code>.
 Either the termination indicator,
 or the item count returned by
 <code>marpa_r_progress_report_start()</code>,
 can be used to determine when the last
 item has been seen.
-
-        <p>On success,
+</p>
+<p>On success,
 the dot position is returned in the location
 pointed to by the <var>position</var> argument,
 and the origin is returned in the location
-pointed to by the <var>origin</var> argument. 
+pointed to by the <var>origin</var> argument.
 On failure, the locations pointed to by
 the <var>position</var> and <var>origin</var>
 arguments are unchanged.
-
-        <p>Return value: On success, the rule ID of
-the next progress report item. 
-If there are no more progress report items, &minus;1. 
+</p>
+<p>Return value: On success, the rule ID of
+the next progress report item.
+If there are no more progress report items, -1.
 If either the <var>position</var> or the <var>origin</var>
 argument is <code>NULL</code>,
-or on other failure, &minus;2. 
-</p></blockquote></div>
+or on other failure, -2.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Bocage-methods.html#Bocage-methods" accesskey="n" rel="next">Bocage methods</a>, Previous: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

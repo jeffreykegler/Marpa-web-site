@@ -1,135 +1,154 @@
-<html lang="en">
-<head>
-<title>Basic step accessors - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Value-methods.html#Value-methods" title="Value methods">
-<link rel="prev" href="Valuator-steps-by-type.html#Valuator-steps-by-type" title="Valuator steps by type">
-<link rel="next" href="Other-step-accessors.html#Other-step-accessors" title="Other step accessors">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Basic step accessors</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Basic step accessors">
+<meta name="keywords" content="Libmarpa 8.4.0: Basic step accessors">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Value-methods.html#Value-methods" rel="up" title="Value methods">
+<link href="Other-step-accessors.html#Other-step-accessors" rel="next" title="Other step accessors">
+<link href="Valuator-steps-by-type.html#Valuator-steps-by-type" rel="prev" title="Valuator steps by type">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Basic-step-accessors"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Other-step-accessors.html#Other-step-accessors">Other step accessors</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Valuator-steps-by-type.html#Valuator-steps-by-type">Valuator steps by type</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Value-methods.html#Value-methods">Value methods</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Basic-step-accessors"></a>
+<div class="header">
+<p>
+Next: <a href="Other-step-accessors.html#Other-step-accessors" accesskey="n" rel="next">Other step accessors</a>, Previous: <a href="Valuator-steps-by-type.html#Valuator-steps-by-type" accesskey="p" rel="prev">Valuator steps by type</a>, Up: <a href="Value-methods.html#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Basic-step-accessors-1"></a>
 <h3 class="section">17.9 Basic step accessors</h3>
 
 <p>The basic step accessors are so called because their information
-is basic to the stack manipulation. 
-The basic step accessors are implemented as macros. 
+is basic to the stack manipulation.
+The basic step accessors are implemented as macros.
 They always succeed.
-
-<div class="defun">
-&mdash; Macro: int <b>marpa_v_arg_0</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005farg_005f0-113"></a></var><br>
-<blockquote><p>For a <code>MARPA_STEP_RULE</code> step,
+</p>
+<dl>
+<dt><a name="index-marpa_005fv_005farg_005f0"></a>Macro: <em>int</em> <strong>marpa_v_arg_0</strong> <em>(Marpa_Value <var>v</var>)</em></dt>
+<dd><p>For a <code>MARPA_STEP_RULE</code> step,
 returns the stack location where the value of first child
-can be found. 
-</p></blockquote></div>
+can be found.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>marpa_v_arg_n</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005farg_005fn-114"></a></var><br>
-<blockquote><p>For a <code>MARPA_STEP_RULE</code> step,
+<dl>
+<dt><a name="index-marpa_005fv_005farg_005fn"></a>Macro: <em>int</em> <strong>marpa_v_arg_n</strong> <em>(Marpa_Value <var>v</var>)</em></dt>
+<dd><p>For a <code>MARPA_STEP_RULE</code> step,
 returns the stack location where the value of the last child
-can be found. 
-</p></blockquote></div>
+can be found.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>marpa_v_result</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fresult-115"></a></var><br>
-<blockquote><p>For <code>MARPA_STEP_RULE</code>,
+<dl>
+<dt><a name="index-marpa_005fv_005fresult"></a>Macro: <em>int</em> <strong>marpa_v_result</strong> <em>(Marpa_Value <var>v</var>)</em></dt>
+<dd><p>For <code>MARPA_STEP_RULE</code>,
 <code>MARPA_STEP_TOKEN</code>,
 and <code>MARPA_STEP_NULLING_SYMBOL</code> steps,
 returns the stack location where the result of the semantics
-should be placed. 
-</p></blockquote></div>
+should be placed.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: Marpa_Rule_ID <b>marpa_v_rule</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005frule-116"></a></var><br>
-<blockquote><p>For the
+<dl>
+<dt><a name="index-marpa_005fv_005frule"></a>Macro: <em>Marpa_Rule_ID</em> <strong>marpa_v_rule</strong> <em>(Marpa_Value <var>v</var>)</em></dt>
+<dd><p>For the
 <code>MARPA_STEP_RULE</code> step,
-returns the ID of the rule. 
-</p></blockquote></div>
+returns the ID of the rule.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: Marpa_Step_Type <b>marpa_v_step_type</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fstep_005ftype-117"></a></var><br>
-<blockquote><p>Returns the current step type:
+<dl>
+<dt><a name="index-marpa_005fv_005fstep_005ftype"></a>Macro: <em>Marpa_Step_Type</em> <strong>marpa_v_step_type</strong> <em>(Marpa_Value <var>v</var>)</em></dt>
+<dd><p>Returns the current step type:
 <code>MARPA_STEP_TOKEN</code>,
 <code>MARPA_STEP_RULE</code>,
-etc. 
+etc.
 Usually not needed since this is also the return value of
-<code>marpa_v_step()</code>. 
-</p></blockquote></div>
+<code>marpa_v_step()</code>.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: Marpa_Symbol_ID <b>marpa_v_symbol</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005fsymbol-118"></a></var><br>
-<blockquote><p>For the <code>MARPA_STEP_NULLING_SYMBOL</code> step,
-returns the ID of the symbol. 
+<dl>
+<dt><a name="index-marpa_005fv_005fsymbol"></a>Macro: <em>Marpa_Symbol_ID</em> <strong>marpa_v_symbol</strong> <em>(Marpa_Value <var>v</var>)</em></dt>
+<dd><p>For the <code>MARPA_STEP_NULLING_SYMBOL</code> step,
+returns the ID of the symbol.
 The value returned is the same as that
 returned by the <code>marpa_v_token()</code>
-macro. 
-</p></blockquote></div>
+macro.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: Marpa_Symbol_ID <b>marpa_v_token</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005ftoken-119"></a></var><br>
-<blockquote><p>For the <code>MARPA_STEP_TOKEN</code> step,
-returns the ID of the token. 
+<dl>
+<dt><a name="index-marpa_005fv_005ftoken"></a>Macro: <em>Marpa_Symbol_ID</em> <strong>marpa_v_token</strong> <em>(Marpa_Value <var>v</var>)</em></dt>
+<dd><p>For the <code>MARPA_STEP_TOKEN</code> step,
+returns the ID of the token.
 The value returned is the same as that
 returned by the <code>marpa_v_symbol()</code>
-macro. 
-</p></blockquote></div>
+macro.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>marpa_v_token_value</b> (<var>Marpa_Value v</var>)<var><a name="index-marpa_005fv_005ftoken_005fvalue-120"></a></var><br>
-<blockquote><p>For the <code>MARPA_STEP_TOKEN</code> step,
+<dl>
+<dt><a name="index-marpa_005fv_005ftoken_005fvalue"></a>Macro: <em>int</em> <strong>marpa_v_token_value</strong> <em>(Marpa_Value <var>v</var>)</em></dt>
+<dd><p>For the <code>MARPA_STEP_TOKEN</code> step,
 returns the integer which is
 (or which represents)
-the value of the token. 
-</p></blockquote></div>
+the value of the token.
+</p></dd></dl>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

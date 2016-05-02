@@ -1,194 +1,219 @@
-<html lang="en">
-<head>
-<title>Location accessors - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Recognizer-methods.html#Recognizer-methods" title="Recognizer methods">
-<link rel="prev" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators" title="Recognizer life cycle mutators">
-<link rel="next" href="Other-parse-status-methods.html#Other-parse-status-methods" title="Other parse status methods">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Location accessors</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Location accessors">
+<meta name="keywords" content="Libmarpa 8.4.0: Location accessors">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Recognizer-methods.html#Recognizer-methods" rel="up" title="Recognizer methods">
+<link href="Other-parse-status-methods.html#Other-parse-status-methods" rel="next" title="Other parse status methods">
+<link href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators" rel="prev" title="Recognizer life cycle mutators">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Location-accessors"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Other-parse-status-methods.html#Other-parse-status-methods">Other parse status methods</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">Recognizer life cycle mutators</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Location-accessors"></a>
+<div class="header">
+<p>
+Next: <a href="Other-parse-status-methods.html#Other-parse-status-methods" accesskey="n" rel="next">Other parse status methods</a>, Previous: <a href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators" accesskey="p" rel="prev">Recognizer life cycle mutators</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Location-accessors-1"></a>
 <h3 class="section">12.5 Location accessors</h3>
 
-<div class="defun">
-&mdash; Function: <code>Marpa_Earleme</code> <b>marpa_r_current_earleme</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005fcurrent_005fearleme-62"></a></var><br>
-<blockquote><p>Return value: If input has started, the current earleme. 
-If input has not started, &minus;1. 
-Always succeeds. 
-</p></blockquote></div>
+<dl>
+<dt><a name="index-marpa_005fr_005fcurrent_005fearleme"></a>Function: <em><code>Marpa_Earleme</code></em> <strong>marpa_r_current_earleme</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
+<dd><p>Return value: If input has started, the current earleme.
+If input has not started, -1.
+Always succeeds.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: Marpa_Earleme <b>marpa_r_earleme</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID set_id</var>)<var><a name="index-marpa_005fr_005fearleme-63"></a></var><br>
-<blockquote>
-        <p>In the default, token-stream model, Earley set ID and earleme
+<dl>
+<dt><a name="index-marpa_005fr_005fearleme"></a>Function: <em>Marpa_Earleme</em> <strong>marpa_r_earleme</strong> <em>(     Marpa_Recognizer <var>r</var>,     Marpa_Earley_Set_ID <var>set_id</var>)</em></dt>
+<dd>
+<p>In the default, token-stream model, Earley set ID and earleme
 are always equal, but this is not the case in other input
-models. 
-(The ID of an Earley set ID is also called its ordinal.) 
+models.
+(The ID of an Earley set ID is also called its ordinal.)
 If there is no Earley set whose ID is
 <var>set_id</var>,
-<code>marpa_r_earleme()</code> fails. 
+<code>marpa_r_earleme()</code> fails.
 If <var>set_id</var> was negative,
 the error code is set to
-<code>MARPA_ERR_INVALID_LOCATION</code>. 
+<code>MARPA_ERR_INVALID_LOCATION</code>.
 If <var>set_id</var> is greater than the ordinal
 of the latest Earley set,
 the error code is set to
 <code>MARPA_ERR_NO_EARLEY_SET_AT_LOCATION</code>.
-
-        <p>At this writing, there is no method for
+</p>
+<p>At this writing, there is no method for
 the inverse operation (conversion of an earleme to an Earley set
-ID). 
+ID).
 One consideration in writing
-such a method is that not all earlemes correspond to Earley sets. 
+such a method is that not all earlemes correspond to Earley sets.
 Applications that want to map earlemes
 to Earley sets will have no trouble if they
 are using the standard input model &mdash;
 the Earley set
-ID is always exactly equal to the earleme in that model. 
+ID is always exactly equal to the earleme in that model.
 For other applications
 that want an earleme-to-ID mapping,
 the most general method is create an ID-to-earleme
 array using the <code>marpa_r_earleme()</code> method
 and invert it.
-
-        <p>Return value:
+</p>
+<p>Return value:
 On success,
 the earleme corresponding to Earley
-set <var>set_id</var>. 
-On failure, &minus;2. 
-</p></blockquote></div>
+set <var>set_id</var>.
+On failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_r_earley_set_value</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID earley_set</var>)<var><a name="index-marpa_005fr_005fearley_005fset_005fvalue-64"></a></var><br>
-<blockquote><p>Returns the integer value of <var>earley_set</var>. 
+<dl>
+<dt><a name="index-marpa_005fr_005fearley_005fset_005fvalue"></a>Function: <em>int</em> <strong>marpa_r_earley_set_value</strong> <em>(  Marpa_Recognizer <var>r</var>,   Marpa_Earley_Set_ID earley_set)</em></dt>
+<dd><p>Returns the integer value of <var>earley_set</var>.
 For more details, see
 the description of <code>marpa_r_earley_set_values()</code>.
+</p>
+<p>Return value: On success, the value of <var>earley_set</var>.
+On failure, -2.
+</p></dd></dl>
 
-        <p>Return value: On success, the value of <var>earley_set</var>. 
-On failure, &minus;2. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_earley_set_values</b> (<var> Marpa_Recognizer r, Marpa_Earley_Set_ID earley_set, int* p_value, void** p_pvalue </var>)<var><a name="index-marpa_005fr_005fearley_005fset_005fvalues-65"></a></var><br>
-<blockquote><p>If <var>p_value</var> is non-zero,
+<dl>
+<dt><a name="index-marpa_005fr_005fearley_005fset_005fvalues"></a>Function: <em>int</em> <strong>marpa_r_earley_set_values</strong> <em>(  Marpa_Recognizer <var>r</var>,   Marpa_Earley_Set_ID earley_set,   int* p_value,   void** p_pvalue   )</em></dt>
+<dd><p>If <var>p_value</var> is non-zero,
 sets the location pointed to by
-<var>p_value</var> to the integer value of the Earley set. 
+<var>p_value</var> to the integer value of the Earley set.
 Similarly, if <var>p_pvalue</var> is non-zero,
 sets the location pointed to by
 <var>p_pvalue</var> to the pointer value of the Earley set.
-
-        <p>The &ldquo;value&rdquo; and &ldquo;pointer&rdquo; of an Earley set are
+</p>
+<p>The &ldquo;value&rdquo; and &ldquo;pointer&rdquo; of an Earley set are
 an arbitrary integer
 and an arbitrary pointer
 that the application
-can use for its own purposes. 
+can use for its own purposes.
 In character-per-earleme input models, for example,
-the integer can be the codepoint of the current character. 
+the integer can be the codepoint of the current character.
 In a traditional token-per-earleme input model,
 they could be used to indicate the string value of the token &ndash;
 the pointer could point to the start of the string,
 and the integer could indicate its length.
-
-        <p>The Earley set value and pointer can be set using
-the
-<code>marpa_r_latest_earley_set_values_set()</code> method. 
-The Earley set integer value defaults to &minus;1,
+</p>
+<p>The Earley set value and pointer can be set using
+the 
+<code>marpa_r_latest_earley_set_values_set()</code> method.
+The Earley set integer value defaults to -1,
 and the pointer value defaults to <code>NULL</code>.
+</p>
+<p>Return value: On success, returns a non-negative integer.
+On failure, returns -2.
+</p></dd></dl>
 
-        <p>Return value: On success, returns a non-negative integer. 
-On failure, returns &minus;2. 
-</p></blockquote></div>
+<dl>
+<dt><a name="index-marpa_005fr_005ffurthest_005fearleme"></a>Function: <em><code>unsigned int</code></em> <strong>marpa_r_furthest_earleme</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
+<dd><p>Return value: On success, the furthest earleme.
+Always succeeds.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: <code>unsigned int</code> <b>marpa_r_furthest_earleme</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005ffurthest_005fearleme-66"></a></var><br>
-<blockquote><p>Return value: On success, the furthest earleme. 
-Always succeeds. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: Marpa_Earley_Set_ID <b>marpa_r_latest_earley_set</b> (<var>Marpa_Recognizer r</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset-67"></a></var><br>
-<blockquote><p>This method returns the Earley set ID (ordinal) of the latest Earley set. 
+<dl>
+<dt><a name="index-marpa_005fr_005flatest_005fearley_005fset"></a>Function: <em>Marpa_Earley_Set_ID</em> <strong>marpa_r_latest_earley_set</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
+<dd><p>This method returns the Earley set ID (ordinal) of the latest Earley set.
 Applications that want the
 value of the latest earleme can convert
 this value using
 the <code>marpa_r_earleme()</code> method.
+</p>
+<p>Return value: On success, the ID of the latest Earley set.
+Always succeeds.
+</p></dd></dl>
 
-        <p>Return value: On success, the ID of the latest Earley set. 
-Always succeeds. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_latest_earley_set_value_set</b> (<var> Marpa_Recognizer r, int value</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset_005fvalue_005fset-68"></a></var><br>
-<blockquote><p>Sets the integer value of the latest Earley set. 
+<dl>
+<dt><a name="index-marpa_005fr_005flatest_005fearley_005fset_005fvalue_005fset"></a>Function: <em>int</em> <strong>marpa_r_latest_earley_set_value_set</strong> <em>(  Marpa_Recognizer <var>r</var>,   int value)</em></dt>
+<dd><p>Sets the integer value of the latest Earley set.
 For more details, see
-the description of
+the description of 
 <code>marpa_r_latest_earley_set_values_set()</code>.
+</p>
+<p>Return value: On success, the new value of <var>earley_set</var>.
+On failure, -2.
+</p></dd></dl>
 
-        <p>Return value: On success, the new value of <var>earley_set</var>. 
-On failure, &minus;2. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_r_latest_earley_set_values_set</b> (<var> Marpa_Recognizer r, int value, void* pvalue</var>)<var><a name="index-marpa_005fr_005flatest_005fearley_005fset_005fvalues_005fset-69"></a></var><br>
-<blockquote><p>Sets the integer and pointer value of the latest Earley set. 
+<dl>
+<dt><a name="index-marpa_005fr_005flatest_005fearley_005fset_005fvalues_005fset"></a>Function: <em>int</em> <strong>marpa_r_latest_earley_set_values_set</strong> <em>(  Marpa_Recognizer <var>r</var>,   int value,   void* pvalue)</em></dt>
+<dd><p>Sets the integer and pointer value of the latest Earley set.
 For more about the &ldquo;integer value&rdquo; and &ldquo;pointer value&rdquo;
 of an Earley set,
 see the description of the
 <code>marpa_r_earley_set_values()</code> method.
+</p>
+<p>Return value: On success, returns a non-negative integer.
+On failure, returns -2.
+</p></dd></dl>
 
-        <p>Return value: On success, returns a non-negative integer. 
-On failure, returns &minus;2. 
-</p></blockquote></div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Other-parse-status-methods.html#Other-parse-status-methods" accesskey="n" rel="next">Other parse status methods</a>, Previous: <a href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators" accesskey="p" rel="prev">Recognizer life cycle mutators</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

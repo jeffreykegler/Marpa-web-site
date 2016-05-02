@@ -1,491 +1,531 @@
-<html lang="en">
-<head>
-<title>Ranks - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
-<link rel="prev" href="Sequences.html#Sequences" title="Sequences">
-<link rel="next" href="Grammar-precomputation.html#Grammar-precomputation" title="Grammar precomputation">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Ranks</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Ranks">
+<meta name="keywords" content="Libmarpa 8.4.0: Ranks">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Grammar-methods.html#Grammar-methods" rel="up" title="Grammar methods">
+<link href="Grammar-precomputation.html#Grammar-precomputation" rel="next" title="Grammar precomputation">
+<link href="Sequences.html#Sequences" rel="prev" title="Sequences">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Ranks"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Grammar-precomputation.html#Grammar-precomputation">Grammar precomputation</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Sequences.html#Sequences">Sequences</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">Grammar methods</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Ranks"></a>
+<div class="header">
+<p>
+Next: <a href="Grammar-precomputation.html#Grammar-precomputation" accesskey="n" rel="next">Grammar precomputation</a>, Previous: <a href="Sequences.html#Sequences" accesskey="p" rel="prev">Sequences</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Ranks-1"></a>
 <h3 class="section">11.7 Ranks</h3>
 
-<div class="defun">
-&mdash; Function: Marpa_Rank <b>marpa_g_rule_rank_set</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id, Marpa_Rank rank</var>)<var><a name="index-marpa_005fg_005frule_005frank_005fset-40"></a></var><br>
-&mdash; Function: Marpa_Rank <b>marpa_g_rule_rank</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005frank-41"></a></var><br>
-<blockquote>
-        <p>These methods, respectively, set
-and query the rank of a rule <var>rule_id</var>. 
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005frank_005fset"></a>Function: <em>Marpa_Rank</em> <strong>marpa_g_rule_rank_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>,     Marpa_Rank <var>rank</var>)</em></dt>
+<dt><a name="index-marpa_005fg_005frule_005frank"></a>Function: <em>Marpa_Rank</em> <strong>marpa_g_rule_rank</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID rule_id)</em></dt>
+<dd>
+<p>These methods, respectively, set
+and query the rank of a rule <var>rule_id</var>.
 When <var>rule_id</var> is created, its rank
 initialized to the default rank of the grammar.
-
-        <p>Initially, the default rank of the grammar is 0. 
-Methods to reset the grammar's default rank
+</p>
+<p>Initially, the default rank of the grammar is 0.
+Methods to reset the grammar&rsquo;s default rank
 are currently in the experimental stage.
-
-        <p>Return value: On success, returns
+</p>
+<p>Return value: On success, returns
 the rank <strong>after</strong>
 the call,
 and sets the error code to
-<code>MARPA_ERR_NONE</code>. 
-On failure, returns &minus;2,
+<code>MARPA_ERR_NONE</code>.
+On failure, returns -2,
 and sets the error code to an appropriate
 value, which will never be
-<code>MARPA_ERR_NONE</code>. 
-Note that when the rank is &minus;2,
+<code>MARPA_ERR_NONE</code>.
+Note that when the rank is -2,
 the error code is the only way to distinguish
-success from failure. 
+success from failure.
 The error code can be determined by using the
 <code>marpa_g_error()</code> call.
+</p>
+</dd></dl>
 
-     </blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_g_rule_null_high_set</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id, int flag</var>)<var><a name="index-marpa_005fg_005frule_005fnull_005fhigh_005fset-42"></a></var><br>
-&mdash; Function: int <b>marpa_g_rule_null_high</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fnull_005fhigh-43"></a></var><br>
-<blockquote>
-        <p>These methods, respectively, set
-and query the &ldquo;null ranks high&rdquo; setting of the rule <var>rule_id</var>. 
-The &ldquo;null ranks high&rdquo; setting is either 0 or 1. 
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005fnull_005fhigh_005fset"></a>Function: <em>int</em> <strong>marpa_g_rule_null_high_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>,     int <var>flag</var>)</em></dt>
+<dt><a name="index-marpa_005fg_005frule_005fnull_005fhigh"></a>Function: <em>int</em> <strong>marpa_g_rule_null_high</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID rule_id)</em></dt>
+<dd>
+<p>These methods, respectively, set
+and query the &ldquo;null ranks high&rdquo; setting of the rule <var>rule_id</var>.
+The &ldquo;null ranks high&rdquo; setting is either 0 or 1.
 When <var>rule_id</var> is created, its &ldquo;null ranks high&rdquo;
 setting is initialized to 0.
-
-        <p>The &ldquo;null ranks high&rdquo; setting affects the ranking of rules
-with properly nullable symbols on their right hand side. 
+</p>
+<p>The &ldquo;null ranks high&rdquo; setting affects the ranking of rules
+with properly nullable symbols on their right hand side.
 If a rule has properly nullable symbols on its RHS,
 each instance in which it appears in a parse will have a pattern
-of nulled and non-nulled symbols. 
+of nulled and non-nulled symbols.
 Such a pattern is called a &ldquo;null variant&rdquo;.
-
-        <p>If the &ldquo;null ranks high&rdquo; setting is 0 (the default),
-nulled symbols rank low. 
+</p>
+<p>If the &ldquo;null ranks high&rdquo; setting is 0 (the default),
+nulled symbols rank low.
 If the &ldquo;null ranks high&rdquo; setting is 1,
-nulled symbols rank high. 
+nulled symbols rank high.
 Ranking of a null variants is done from left-to-right.
-
-        <p>The <code>marpa_g_rule_null_high_set()</code> method will
+</p>
+<p>The <code>marpa_g_rule_null_high_set()</code> method will
 return failure
-after the grammar has been precomputed. 
+after the grammar has been precomputed.
 If there is no other cause of failure,
 the <code>marpa_g_rule_null_high()</code> method succeeds
 on both precomputed and unprecomputed grammars.
-
-        <p>Success return value:
+</p>
+<p>Success return value:
 The value
 of the &ldquo;null ranks high&rdquo; flag <strong>after</strong>
 the call.
+</p>
+<p>Failure return value:
+If rule_id is well-formed, but there is no such rule, -1.
+On all other failures, -2.
+</p>
+</dd></dl>
 
-        <p>Failure return value:
-If rule_id is well-formed, but there is no such rule, &minus;1. 
-On all other failures, &minus;2.
-
-        </blockquote></div>
-
+<a name="Events-1"></a>
 <h3 class="section">11.8 Events</h3>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_completion_symbol_activate</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int reactivate </var>)<var><a name="index-marpa_005fg_005fcompletion_005fsymbol_005factivate-44"></a></var><br>
-<blockquote>
-        <p>Allows the user to deactivate and reactivate symbol completion
-events in the grammar. 
+<dl>
+<dt><a name="index-marpa_005fg_005fcompletion_005fsymbol_005factivate"></a>Function: <em>int</em> <strong>marpa_g_completion_symbol_activate</strong> <em>(   Marpa_Grammar <var>g</var>,   Marpa_Symbol_ID <var>sym_id</var>,   int <var>reactivate</var> )</em></dt>
+<dd>
+<p>Allows the user to deactivate and reactivate symbol completion
+events in the grammar.
 When a recognizer is created,
 the activation status of each of its events is initialized
-to the activation status of that event in the base grammar. 
+to the activation status of that event in the base grammar.
 If <var>reactivate</var> is zero, the event is deactivated
-in the grammar. 
+in the grammar.
 If <var>reactivate</var> is one, the event is activated
 in the grammar.
-
-        <p>Symbol completion events are active by default if
+</p>
+<p>Symbol completion events are active by default if
 the symbol was set up for completion events in the
-grammar. 
+grammar.
 If a symbol was not set up for completion events in
 the grammar, symbol completion events are inactive
 by default and any attempt to change that is a fatal error.
-
-        <p>The activation status of a completion event in the grammar
+</p>
+<p>The activation status of a completion event in the grammar
 can only be changed if the symbol is marked as a completion event symbol
 in the grammar,
 and before
-the grammar is precomputed. 
+the grammar is precomputed.
 However, if a symbol is marked as a completion event symbol in
 the recognizer,
 the completion event can be deactivated
 and reactivated in the recognizer.
-
-        <p>Success cases:
+</p>
+<p>Success cases:
 On success,
-the method returns the value of <var>reactivate</var>. 
+the method returns the value of <var>reactivate</var>.
 The method succeeds trivially
 if the symbol is already set as indicated by
 <var>reactivate</var>.
-
-        <p>Failure cases:
+</p>
+<p>Failure cases:
 If the active status
 of the
 completion event for <var>sym_id</var>
 cannot be set as indicated by <var>reactivate</var>,
-the method fails. 
-On failure, &minus;2 is returned. 
-</p></blockquote></div>
+the method fails.
+On failure, -2 is returned.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_nulled_symbol_activate</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int reactivate </var>)<var><a name="index-marpa_005fg_005fnulled_005fsymbol_005factivate-45"></a></var><br>
-<blockquote>
-        <p>Allows the user to deactivate and reactivate symbol nulled
-events in the grammar. 
+<dl>
+<dt><a name="index-marpa_005fg_005fnulled_005fsymbol_005factivate"></a>Function: <em>int</em> <strong>marpa_g_nulled_symbol_activate</strong> <em>(   Marpa_Grammar <var>g</var>,   Marpa_Symbol_ID <var>sym_id</var>,   int <var>reactivate</var> )</em></dt>
+<dd>
+<p>Allows the user to deactivate and reactivate symbol nulled
+events in the grammar.
 When a recognizer is created,
 the activation status of each of its events is initialized
-to the activation status of that event in the base grammar. 
+to the activation status of that event in the base grammar.
 If <var>reactivate</var> is zero, the event is deactivated
-in the grammar. 
+in the grammar.
 If <var>reactivate</var> is one, the event is activated
 in the grammar.
-
-        <p>Symbol nulled events are active by default if
+</p>
+<p>Symbol nulled events are active by default if
 the symbol was set up for nulled events in the
-grammar. 
+grammar.
 If a symbol was not set up for nulled events in
 the grammar, symbol nulled events are inactive
 by default and any attempt to change that is a fatal error.
-
-        <p>The activation status of a nulled event in the grammar
+</p>
+<p>The activation status of a nulled event in the grammar
 can only be changed if the symbol is marked as a nulled event symbol
 in the grammar,
 and before
-the grammar is precomputed. 
+the grammar is precomputed.
 However, if a symbol is marked as a nulled event symbol in
 the recognizer,
 the nulled event can be deactivated
 and reactivated in the recognizer.
-
-        <p>Success cases:
+</p>
+<p>Success cases:
 On success,
-the method returns the value of <var>reactivate</var>. 
+the method returns the value of <var>reactivate</var>.
 The method succeeds trivially
 if the symbol is already set as indicated by
 <var>reactivate</var>.
-
-        <p>Failure cases:
+</p>
+<p>Failure cases:
 If the active status
 of the
 nulled event for <var>sym_id</var>
 cannot be set as indicated by <var>reactivate</var>,
-the method fails. 
-On failure, &minus;2 is returned. 
-</p></blockquote></div>
+the method fails.
+On failure, -2 is returned.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_prediction_symbol_activate</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int reactivate </var>)<var><a name="index-marpa_005fg_005fprediction_005fsymbol_005factivate-46"></a></var><br>
-<blockquote>
-        <p>Allows the user to deactivate and reactivate symbol prediction
-events in the grammar. 
+<dl>
+<dt><a name="index-marpa_005fg_005fprediction_005fsymbol_005factivate"></a>Function: <em>int</em> <strong>marpa_g_prediction_symbol_activate</strong> <em>(   Marpa_Grammar <var>g</var>,   Marpa_Symbol_ID <var>sym_id</var>,   int <var>reactivate</var> )</em></dt>
+<dd>
+<p>Allows the user to deactivate and reactivate symbol prediction
+events in the grammar.
 When a recognizer is created,
 the activation status of each of its events is initialized
-to the activation status of that event in the base grammar. 
+to the activation status of that event in the base grammar.
 If <var>reactivate</var> is zero, the event is deactivated
-in the grammar. 
+in the grammar.
 If <var>reactivate</var> is one, the event is activated
 in the grammar.
-
-        <p>Symbol prediction events are active by default if
+</p>
+<p>Symbol prediction events are active by default if
 the symbol was set up for prediction events in the
-grammar. 
+grammar.
 If a symbol was not set up for prediction events in
 the grammar, symbol prediction events are inactive
 by default and any attempt to change that is a fatal error.
-
-        <p>The activation status of a prediction event in the grammar
+</p>
+<p>The activation status of a prediction event in the grammar
 can only be changed if the symbol is marked as a prediction event symbol
 in the grammar,
 and before
-the grammar is precomputed. 
+the grammar is precomputed.
 However, if a symbol is marked as a prediction event symbol in
 the recognizer,
 the prediction event can be deactivated
 and reactivated in the recognizer.
-
-        <p>Success cases:
+</p>
+<p>Success cases:
 On success,
-the method returns the value of <var>reactivate</var>. 
+the method returns the value of <var>reactivate</var>.
 The method succeeds trivially
 if the symbol is already set as indicated by
 <var>reactivate</var>.
-
-        <p>Failure cases:
+</p>
+<p>Failure cases:
 If the active status
 of the
 prediction event for <var>sym_id</var>
 cannot be set as indicated by <var>reactivate</var>,
-the method fails. 
-On failure, &minus;2 is returned. 
-</p></blockquote></div>
+the method fails.
+On failure, -2 is returned.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_completion_event</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent-47"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_completion_event_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset-48"></a></var><br>
-<blockquote>
-        <p>Libmarpa can be set up to generate an
+<dl>
+<dt><a name="index-marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_completion_event</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>)</em></dt>
+<dt><a name="index-marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_completion_event_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>,  int <var>value</var>)</em></dt>
+<dd>
+<p>Libmarpa can be set up to generate an 
 <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
-event whenever the symbol is completed. 
+event whenever the symbol is completed.
 A symbol is said to be <strong>completed</strong>
 when a non-nulling rule with
 that symbol on its LHS is completed.
-
-        <p>For completion events to occur, the symbol must be marked
-as a completion event symbol. 
+</p>
+<p>For completion events to occur, the symbol must be marked
+as a completion event symbol.
 The <code>marpa_g_symbol_is_completion_event_set()</code> function
 marks symbol <var>sym_id</var> as a completion event symbol
 if <var>value</var> is 1,
 and unmarks it
-it as a completion event symbol if <var>value</var> is 0. 
+it as a completion event symbol if <var>value</var> is 0.
 The <code>marpa_g_symbol_is_completion_event()</code> method
 returns the current value of the completion event marking
 for symbol <var>sym_id</var>.
-
-        <p>Marking a completion event sets its activation status to on. 
-Unmarking a completion event sets its activation status to off. 
+</p>
+<p>Marking a completion event sets its activation status to on.
+Unmarking a completion event sets its activation status to off.
 The completion event marking cannot be changed once
 the grammar is precomputed.
-
-        <p>If a completion event is marked,
+</p>
+<p>If a completion event is marked,
 its activation status can be changed using the
-<code>marpa_g_completion_symbol_activate()</code> method. 
+<code>marpa_g_completion_symbol_activate()</code> method.
 Note that, if a symbol is marked as a completion event symbol
 in the recognizer,
 its completion event can be deactivated
 and reactivated in the recognizer.
-
-        <p>Nulled rules and symbols will never cause completion events. 
+</p>
+<p>Nulled rules and symbols will never cause completion events.
 Nullable symbols
 may be marked as completion event symbols,
 but this will have an effect only when the symbol
-is not nulled. 
+is not nulled.
 Nulling symbols
 may be marked as completion event symbols,
 but no completion events will ever be generated
-for a nulling symbol. 
+for a nulling symbol.
 Note that this implies at no completion event will
 ever be generated at earleme 0,
 the start of parsing.
-
-        <p>Success: On success, 1 if symbol <var>sym_id</var>
+</p>
+<p>Success: On success, 1 if symbol <var>sym_id</var>
 is a completion event symbol after the
 call, 0 otherwise.
-
-        <p>Failures:
+</p>
+<p>Failures:
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, &minus;1. 
+such symbol, -1.
 If the grammar <var>g</var> is precomputed;
-or on other failure, &minus;2. 
-</p></blockquote></div>
+or on other failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_nulled_event</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnulled_005fevent-49"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_nulled_event_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset-50"></a></var><br>
-<blockquote>
-        <p>Libmarpa can set up to generate
+<dl>
+<dt><a name="index-marpa_005fg_005fsymbol_005fis_005fnulled_005fevent"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_nulled_event</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>)</em></dt>
+<dt><a name="index-marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_nulled_event_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>,  int <var>value</var>)</em></dt>
+<dd>
+<p>Libmarpa can set up to generate
 an <code>MARPA_EVENT_SYMBOL_NULLED</code>
-event whenever the symbol is nulled. 
+event whenever the symbol is nulled.
 A symbol is said to be <strong>nulled</strong>
 when a zero length instance of that symbol
 is recognized.
-
-        <p>For nulled events to occur, the symbol must be marked
-as a nulled event symbol. 
+</p>
+<p>For nulled events to occur, the symbol must be marked
+as a nulled event symbol.
 The <code>marpa_g_symbol_is_nulled_event_set()</code> function
 marks symbol <var>sym_id</var> as a nulled event symbol
 if <var>value</var> is 1,
 and unmarks it
-it as a nulled event symbol if <var>value</var> is 0. 
+it as a nulled event symbol if <var>value</var> is 0.
 The <code>marpa_g_symbol_is_nulled_event()</code> method
 returns the current value of the nulled event marking
 for symbol <var>sym_id</var>.
-
-        <p>Marking a nulled event sets its activation status to on. 
-Unmarking a nulled event sets its activation status to off. 
+</p>
+<p>Marking a nulled event sets its activation status to on.
+Unmarking a nulled event sets its activation status to off.
 The nulled event marking cannot be changed once
 the grammar is precomputed.
-
-        <p>If a nulled event is marked,
+</p>
+<p>If a nulled event is marked,
 its activation status can be changed using the
-<code>marpa_g_nulled_symbol_activate()</code> method. 
+<code>marpa_g_nulled_symbol_activate()</code> method.
 Note that, if a symbol is marked as a nulled event symbol
 in the recognizer,
 its nulled event can be deactivated
 and reactivated in the recognizer.
-
-        <p>As a reminder, a symbol instance is a symbol
+</p>
+<p>As a reminder, a symbol instance is a symbol
 at a specific location in the input,
-and with a specific length. 
+and with a specific length.
 Also, whenever a nulled symbol instance is
 recognized at a location, it is acceptable
 at that location,
 and vice versa.
-
-        <p>When a symbol instance is recognized at a location,
+</p>
+<p>When a symbol instance is recognized at a location,
 it will generate a nulled event or a prediction event,
-but never both. 
+but never both.
 A symbol instance of zero length,
 when recognized at a location,
 generates a nulled event at that location,
-and does not generate a completion event. 
+and does not generate a completion event.
 A symbol instance of non-zero length,
 when acceptable at a location,
 generates a completion event at that location,
 and does not generate a nulled event.
-
-        <p>When a symbol instance is acceptable at a location,
+</p>
+<p>When a symbol instance is acceptable at a location,
 it will generate a nulled event or a prediction event,
-but never both. 
+but never both.
 A symbol instance of zero length,
 when acceptable at a location,
 generates a nulled event at that location,
-and does not generate a prediction event. 
+and does not generate a prediction event.
 A symbol instance of non-zero length,
 when acceptable at a location,
 generates a prediction event at that location,
 and does not generate a nulled event.
-
-        <p>While it is not possible for
+</p>
+<p>While it is not possible for
 a <strong>symbol instance</strong>
 to generate both a nulled event and
 a completion event at a location,
 it is quite possible that
 a <strong>symbol</strong> might generate
-both kinds of event at that location. 
+both kinds of event at that location.
 This is because multiple instances
 of the same symbol may be recognized at
 a given location,
 and these instances will have
-different lengths. 
+different lengths.
 If one instance is recognized at a given location
 as zero length and
 a second, non-zero-length,
 instance is recognized at the same location,
 the first will generate only nulled events,
-while the second will generate only completion events. 
+while the second will generate only completion events.
 For similar reasons,
 while a <strong>symbol instance</strong> will never
 generate both a null event and a prediction
 event at a location,
 multiple instances of the same symbol
 may do so.
-
-        <p>Zero length derivations can be ambiguous. 
+</p>
+<p>Zero length derivations can be ambiguous.
 When a zero length symbol is recognized,
 all of its zero-length derivations are also considered to be
 recognized.
-
-        <p>Success: On success, 1 if symbol <var>sym_id</var>
+</p>
+<p>The <code>marpa_g_symbol_is_nulled_event_set()</code> method will
+mark a symbol as a nulled event symbol,
+even if the symbol is non-nullable.
+This is convenient, for example,
+for automatically generated grammars.
+Applications which wish to treat
+it as a failure if there is an
+attempt to
+mark a non-nullable symbol
+as a nulled event symbol,
+can check for this case using
+the <code>marpa_g_symbol_is_nullable()</code>
+method.
+</p>
+<p>Success: On success, 1 if symbol <var>sym_id</var>
 is a nulled event symbol after the
 call, 0 otherwise.
-
-        <p>Failures:
+</p>
+<p>Failures:
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, &minus;1. 
+such symbol, -1.
 If the grammar <var>g</var> is precomputed;
-or on other failure, &minus;2. 
-</p></blockquote></div>
+or on other failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_symbol_is_prediction_event</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fprediction_005fevent-51"></a></var><br>
-&mdash; Function: int <b>marpa_g_symbol_is_prediction_event_set</b> (<var> Marpa_Grammar g, Marpa_Symbol_ID sym_id, int value</var>)<var><a name="index-marpa_005fg_005fsymbol_005fis_005fprediction_005fevent_005fset-52"></a></var><br>
-<blockquote>
-        <p>Libmarpa can be set up
+<dl>
+<dt><a name="index-marpa_005fg_005fsymbol_005fis_005fprediction_005fevent"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_prediction_event</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>)</em></dt>
+<dt><a name="index-marpa_005fg_005fsymbol_005fis_005fprediction_005fevent_005fset"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_prediction_event_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>,  int <var>value</var>)</em></dt>
+<dd>
+<p>Libmarpa can be set up
 to generate a
 <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
-event when a non-nulled symbol is predicted. 
+event when a non-nulled symbol is predicted.
 A non-nulled symbol is said to be <strong>predicted</strong>
 when a instance of it
 is acceptable at the current
-earleme according to the grammar. 
+earleme according to the grammar.
 Nulled symbols do not generate predictions.
-
-        <p>For predicted events to occur, the symbol must be marked
-as a predicted event symbol. 
+</p>
+<p>For predicted events to occur, the symbol must be marked
+as a predicted event symbol.
 The <code>marpa_g_symbol_is_predicted_event_set()</code> function
 marks symbol <var>sym_id</var> as a predicted event symbol
 if <var>value</var> is 1,
 and unmarks it
-it as a predicted event symbol if <var>value</var> is 0. 
+it as a predicted event symbol if <var>value</var> is 0.
 The <code>marpa_g_symbol_is_predicted_event()</code> method
 returns the current value of the predicted event marking
 for symbol <var>sym_id</var>.
-
-        <p>Marking a prediction event sets its activation status to on. 
-Unmarking a prediction event sets its activation status to off. 
+</p>
+<p>Marking a prediction event sets its activation status to on.
+Unmarking a prediction event sets its activation status to off.
 The prediction event marking cannot be changed once
 the grammar is precomputed.
-
-        <p>If a prediction event is marked,
+</p>
+<p>If a prediction event is marked,
 its activation status can be changed using the
-<code>marpa_g_prediction_symbol_activate()</code> method. 
+<code>marpa_g_prediction_symbol_activate()</code> method.
 Note that, if a symbol is marked as a prediction event symbol
 in the recognizer,
 its prediction event can be deactivated
 and reactivated in the recognizer.
-
-        <p>Success: On success, 1 if symbol <var>sym_id</var>
+</p>
+<p>Success: On success, 1 if symbol <var>sym_id</var>
 is a predicted event symbol after the
 call, 0 otherwise.
-
-        <p>Failures:
+</p>
+<p>Failures:
 If <var>sym_id</var> is well-formed, but there is no
-such symbol, &minus;1. 
+such symbol, -1.
 If the grammar <var>g</var> is precomputed;
-or on other failure, &minus;2. 
-</p></blockquote></div>
+or on other failure, -2.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Grammar-precomputation.html#Grammar-precomputation" accesskey="n" rel="next">Grammar precomputation</a>, Previous: <a href="Sequences.html#Sequences" accesskey="p" rel="prev">Sequences</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

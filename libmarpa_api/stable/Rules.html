@@ -1,216 +1,241 @@
-<html lang="en">
-<head>
-<title>Rules - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
-<link rel="prev" href="Symbols.html#Symbols" title="Symbols">
-<link rel="next" href="Sequences.html#Sequences" title="Sequences">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Rules</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Rules">
+<meta name="keywords" content="Libmarpa 8.4.0: Rules">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Grammar-methods.html#Grammar-methods" rel="up" title="Grammar methods">
+<link href="Sequences.html#Sequences" rel="next" title="Sequences">
+<link href="Symbols.html#Symbols" rel="prev" title="Symbols">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Rules"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Sequences.html#Sequences">Sequences</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Symbols.html#Symbols">Symbols</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">Grammar methods</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Rules"></a>
+<div class="header">
+<p>
+Next: <a href="Sequences.html#Sequences" accesskey="n" rel="next">Sequences</a>, Previous: <a href="Symbols.html#Symbols" accesskey="p" rel="prev">Symbols</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Rules-1"></a>
 <h3 class="section">11.5 Rules</h3>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_highest_rule_id</b> (<var>Marpa_Grammar g</var>)<var><a name="index-marpa_005fg_005fhighest_005frule_005fid-25"></a></var><br>
-<blockquote><p>Return value: On success, the numerically largest rule ID
-of <var>g</var>. 
-On failure, &minus;2. 
-</p></blockquote></div>
+<dl>
+<dt><a name="index-marpa_005fg_005fhighest_005frule_005fid"></a>Function: <em>int</em> <strong>marpa_g_highest_rule_id</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
+<dd><p>Return value: On success, the numerically largest rule ID
+of <var>g</var>.
+On failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_rule_is_accessible</b> (<var>Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fis_005faccessible-26"></a></var><br>
-<blockquote><p>A rule is <dfn>accessible</dfn> if it can be reached from the start symbol. 
-A rule is accessible if and only if its LHS symbol is accessible. 
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005fis_005faccessible"></a>Function: <em>int</em> <strong>marpa_g_rule_is_accessible</strong> <em>(Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>)</em></dt>
+<dd><p>A rule is <em>accessible</em> if it can be reached from the start symbol.
+A rule is accessible if and only if its LHS symbol is accessible.
 The start rule is always an accessible rule.
-
-        <p>Return value: On success, 1 if rule <var>rule_id</var>
-is accessible, 0 if not. 
+</p>
+<p>Return value: On success, 1 if rule <var>rule_id</var>
+is accessible, 0 if not.
 If <var>rule_id</var> is well-formed, but there is no
-such rule, &minus;1. 
+such rule, -1.
 If the grammar
-is not precomputed, or on other failure, &minus;2. 
-</p></blockquote></div>
+is not precomputed, or on other failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_rule_is_nullable</b> (<var> Marpa_Grammar g, Marpa_Rule_ID ruleid</var>)<var><a name="index-marpa_005fg_005frule_005fis_005fnullable-27"></a></var><br>
-<blockquote><p>A rule is <dfn>nullable</dfn> if it sometimes produces the empty string. 
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005fis_005fnullable"></a>Function: <em>int</em> <strong>marpa_g_rule_is_nullable</strong> <em>(   Marpa_Grammar <var>g</var>, Marpa_Rule_ID <var>ruleid</var>)</em></dt>
+<dd><p>A rule is <em>nullable</em> if it sometimes produces the empty string.
 A <strong>nulling</strong> rule is always a <strong>nullable</strong> rule,
 but not all <strong>nullable</strong> rules are <strong>nulling</strong> rules.
-
-        <p>Return value: On success,
-1 if rule <var>ruleid</var> is nullable, 0 if not. 
+</p>
+<p>Return value: On success,
+1 if rule <var>ruleid</var> is nullable, 0 if not.
 If <var>rule_id</var> is well-formed, but there is no
-such rule, &minus;1. 
-If the grammar is not precomputed, or on other failure, &minus;2. 
-</p></blockquote></div>
+such rule, -1.
+If the grammar is not precomputed, or on other failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_rule_is_nulling</b> (<var>Marpa_Grammar g, Marpa_Rule_ID ruleid</var>)<var><a name="index-marpa_005fg_005frule_005fis_005fnulling-28"></a></var><br>
-<blockquote><p>A rule is <dfn>nulling</dfn> if it always produces the empty string.
-
-        <p>Return value: On success,
-1 if rule <var>ruleid</var> is nulling, 0 if not. 
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005fis_005fnulling"></a>Function: <em>int</em> <strong>marpa_g_rule_is_nulling</strong> <em>(Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>ruleid</var>)</em></dt>
+<dd><p>A rule is <em>nulling</em> if it always produces the empty string.
+</p>
+<p>Return value: On success,
+1 if rule <var>ruleid</var> is nulling, 0 if not.
 If <var>rule_id</var> is well-formed, but there is no
-such rule, &minus;1. 
-If the grammar is not precomputed, or on other failure, &minus;2. 
-</p></blockquote></div>
+such rule, -1.
+If the grammar is not precomputed, or on other failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_rule_is_loop</b> (<var>Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fis_005floop-29"></a></var><br>
-<blockquote><p>A rule is a loop rule if it non-trivially
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005fis_005floop"></a>Function: <em>int</em> <strong>marpa_g_rule_is_loop</strong> <em>(Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>)</em></dt>
+<dd><p>A rule is a loop rule if it non-trivially
 produces the string of length one
-which consists only of its LHS symbol. 
+which consists only of its LHS symbol.
 Such a derivation takes the parse back to where
-it started, hence the term &ldquo;loop&rdquo;. 
+it started, hence the term &ldquo;loop&rdquo;.
 &ldquo;Non-trivially&rdquo; means the zero-step derivation does not count &mdash; the
 derivation must have at least one step.
-
-        <p>The presence of a loop rule makes a grammar infinitely ambiguous,
-and applications will typically want to treat them as fatal errors. 
+</p>
+<p>The presence of a loop rule makes a grammar infinitely ambiguous,
+and applications will typically want to treat them as fatal errors.
 But nothing forces an application to do this,
 and Marpa will successfully parse and evaluate grammars with
 loop rules.
-
-        <p>Return value: On success,
-1 if rule <var>rule_id</var> is a loop rule, 0 if not. 
+</p>
+<p>Return value: On success,
+1 if rule <var>rule_id</var> is a loop rule, 0 if not.
 If <var>rule_id</var> is well-formed, but there is no
-such rule, &minus;1. 
+such rule, -1.
 If the grammar
-is not precomputed, or on other failure, &minus;2. 
-</p></blockquote></div>
+is not precomputed, or on other failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_rule_is_productive</b> (<var>Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005fis_005fproductive-30"></a></var><br>
-<blockquote><p>A rule is <dfn>productive</dfn> if it can produce a string of terminals. 
-An rule is productive if and only if all the symbols on
-its RHS are productive. 
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005fis_005fproductive"></a>Function: <em>int</em> <strong>marpa_g_rule_is_productive</strong> <em>(Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>)</em></dt>
+<dd><p>A rule is <em>productive</em> if it can produce a string of terminals.
+A rule is productive if and only if all the symbols on
+its RHS are productive.
 The empty string counts as a string of terminals,
-so that a nullable rule is always a productive rule. 
+so that a nullable rule is always a productive rule.
 For that same reason,
 an empty rule is considered productive.
-
-        <p>Return value: On success,
-1 if rule <var>rule_id</var> is productive, 0 if not. 
+</p>
+<p>Return value: On success,
+1 if rule <var>rule_id</var> is productive, 0 if not.
 If <var>rule_id</var> is well-formed, but there is no
-such rule, &minus;1. 
-If the grammar is not precomputed, or on other failure, &minus;2. 
-</p></blockquote></div>
+such rule, -1.
+If the grammar is not precomputed, or on other failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_g_rule_length</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005flength-31"></a></var><br>
-<blockquote><p>The length of a rule is the number of symbols on its RHS.
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005flength"></a>Function: <em>int</em> <strong>marpa_g_rule_length</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>)</em></dt>
+<dd><p>The length of a rule is the number of symbols on its RHS.
+</p>
+<p>Return value: On success, the length of rule <var>rule_id</var>.
+On failure, -2.
+</p></dd></dl>
 
-        <p>Return value: On success, the length of rule <var>rule_id</var>. 
-On failure, &minus;2. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: Marpa_Symbol_ID <b>marpa_g_rule_lhs</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id</var>)<var><a name="index-marpa_005fg_005frule_005flhs-32"></a></var><br>
-<blockquote><p>Return value: On success, the LHS symbol of rule <var>rule_id</var>. 
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005flhs"></a>Function: <em>Marpa_Symbol_ID</em> <strong>marpa_g_rule_lhs</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>)</em></dt>
+<dd><p>Return value: On success, the LHS symbol of rule <var>rule_id</var>.
 If <var>rule_id</var> is well-formed, but there is no
-such rule, &minus;1. 
-On other failure, &minus;2. 
-</p></blockquote></div>
+such rule, -1.
+On other failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: Marpa_Rule_ID <b>marpa_g_rule_new</b> (<var>Marpa_Grammar g, Marpa_Symbol_ID lhs_id, Marpa_Symbol_ID *rhs_ids, int length</var>)<var><a name="index-marpa_005fg_005frule_005fnew-33"></a></var><br>
-<blockquote><p>Creates a new external BNF rule in grammar <var>g</var>. 
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005fnew"></a>Function: <em>Marpa_Rule_ID</em> <strong>marpa_g_rule_new</strong> <em>(Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>lhs_id</var>,  Marpa_Symbol_ID *<var>rhs_ids</var>,      int <var>length</var>)</em></dt>
+<dd><p>Creates a new external BNF rule in grammar <var>g</var>.
 The ID of the new rule will be a non-negative integer,
-which will be unique to that rule. 
+which will be unique to that rule.
 In addition to BNF rules, Marpa also allows sequence rules,
 which are created by another method:
-<code>marpa_g_sequence_new()</code>. 
+<code>marpa_g_sequence_new()</code>.
 Sequence rules and BNF rules are numbered in the same series,
 so that a BNF rule will never have the same rule ID as a sequence
 rule, and vice versa.
-
-        <p>The LHS symbol is <var>lhs_id</var>,
-and there are <var>length</var> symbols on the RHS. 
+</p>
+<p>The LHS symbol is <var>lhs_id</var>,
+and there are <var>length</var> symbols on the RHS.
 The RHS symbols are in an array
 pointed to by <var>rhs_ids</var>.
-
-        <p>Possible failures, with their error codes, include:
-          <ul>
-<li><code>MARPA_ERR_SEQUENCE_LHS_NOT_UNIQUE</code>: The LHS symbol is the same
-as that of a sequence rule. 
-<li><code>MARPA_ERR_DUPLICATE_RULE</code>: The new rule would duplicate another BNF
-rule. 
+</p>
+<p>Possible failures, with their error codes, include:
+</p><ul>
+<li> <code>MARPA_ERR_SEQUENCE_LHS_NOT_UNIQUE</code>: The LHS symbol is the same
+as that of a sequence rule.
+</li><li> <code>MARPA_ERR_DUPLICATE_RULE</code>: The new rule would duplicate another BNF
+rule.
 Another BNF rule is considered the duplicate of the new one,
 if its LHS symbol is the same as symbol <var>lhs_id</var>,
 if its length is the same as <var>length</var>,
 and if its RHS symbols match one for one those
-in the array of symbols <var>rhs_ids</var>. 
-</ul>
+in the array of symbols <var>rhs_ids</var>.
+</li></ul>
 
-        <p>Return value:  On success, the ID of new external rule. 
-On failure, &minus;2. 
-</p></blockquote></div>
+<p>Return value:  On success, the ID of new external rule.
+On failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: Marpa_Symbol_ID <b>marpa_g_rule_rhs</b> (<var> Marpa_Grammar g, Marpa_Rule_ID rule_id, int ix</var>)<var><a name="index-marpa_005fg_005frule_005frhs-34"></a></var><br>
-<blockquote><p>Returns the ID of the symbol in position <var>ix</var>
-in the RHS of rule <var>rule_id</var>. 
+<dl>
+<dt><a name="index-marpa_005fg_005frule_005frhs"></a>Function: <em>Marpa_Symbol_ID</em> <strong>marpa_g_rule_rhs</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>,     int <var>ix</var>)</em></dt>
+<dd><p>Returns the ID of the symbol in position <var>ix</var>
+in the RHS of rule <var>rule_id</var>.
 The RHS position, <var>ix</var>, is zero-based.
-
-        <p>Return value: On success,
+</p>
+<p>Return value: On success,
 the ID of the symbol in position <var>ix</var>
-on the rules RHS. 
+on the rules RHS.
 If <var>rule_id</var> is well-formed, but there is no
-such rule, &minus;1. 
+such rule, -1.
 If <var>ix</var> is greater than or equal to the length of
 the rule,
-or on other failure, &minus;2. 
-</p></blockquote></div>
+or on other failure, -2.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Sequences.html#Sequences" accesskey="n" rel="next">Sequences</a>, Previous: <a href="Symbols.html#Symbols" accesskey="p" rel="prev">Symbols</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

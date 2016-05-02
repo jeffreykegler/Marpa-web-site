@@ -1,86 +1,105 @@
-<html lang="en">
-<head>
-<title>Bocage constructor - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Bocage-methods.html#Bocage-methods" title="Bocage methods">
-<link rel="prev" href="Bocage-overview.html#Bocage-overview" title="Bocage overview">
-<link rel="next" href="Bocage-reference-counting.html#Bocage-reference-counting" title="Bocage reference counting">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Bocage constructor</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Bocage constructor">
+<meta name="keywords" content="Libmarpa 8.4.0: Bocage constructor">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Bocage-methods.html#Bocage-methods" rel="up" title="Bocage methods">
+<link href="Bocage-reference-counting.html#Bocage-reference-counting" rel="next" title="Bocage reference counting">
+<link href="Bocage-overview.html#Bocage-overview" rel="prev" title="Bocage overview">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Bocage-constructor"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Bocage-reference-counting.html#Bocage-reference-counting">Bocage reference counting</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Bocage-overview.html#Bocage-overview">Bocage overview</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Bocage-methods.html#Bocage-methods">Bocage methods</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Bocage-constructor"></a>
+<div class="header">
+<p>
+Next: <a href="Bocage-reference-counting.html#Bocage-reference-counting" accesskey="n" rel="next">Bocage reference counting</a>, Previous: <a href="Bocage-overview.html#Bocage-overview" accesskey="p" rel="prev">Bocage overview</a>, Up: <a href="Bocage-methods.html#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Creating-a-new-bocage"></a>
 <h3 class="section">14.2 Creating a new bocage</h3>
 
-<div class="defun">
-&mdash; Function: Marpa_Bocage <b>marpa_b_new</b> (<var>Marpa_Recognizer r, Marpa_Earley_Set_ID earley_set_ID</var>)<var><a name="index-marpa_005fb_005fnew-83"></a></var><br>
-<blockquote>
-        <p>Creates a new bocage object, with a reference count of 1. 
+<dl>
+<dt><a name="index-marpa_005fb_005fnew"></a>Function: <em>Marpa_Bocage</em> <strong>marpa_b_new</strong> <em>(Marpa_Recognizer <var>r</var>,     Marpa_Earley_Set_ID <var>earley_set_ID</var>)</em></dt>
+<dd>
+<p>Creates a new bocage object, with a reference count of 1.
 The reference count of its parent recognizer object, <var>r</var>,
-is increased by 1. 
-If <var>earley_set_ID</var> is &minus;1,
+is increased by 1.
+If <var>earley_set_ID</var> is -1,
 the Earley set at the current earleme is used,
 if there is one.
-
-        <p>If <var>earley_set_ID</var> is &minus;1
+</p>
+<p>If <var>earley_set_ID</var> is -1
 and there is no Earley set at the current earleme;
-or if <var>earley_set_ID</var> is &minus;1
+or if <var>earley_set_ID</var> is -1
 and there is no parse ending at Earley set <var>earley_set_ID</var>,
 <code>marpa_b_new()</code> fails
 and the error code is set to
 <code>MARPA_ERR_NO_PARSE</code>.
-
-        <p>Success return value: On success, the new bocage object. 
-On failure, <code>NULL</code>. 
-</p></blockquote></div>
+</p>
+<p>Success return value: On success, the new bocage object.
+On failure, <code>NULL</code>.
+</p></dd></dl>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

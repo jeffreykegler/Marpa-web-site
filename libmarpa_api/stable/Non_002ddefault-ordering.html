@@ -1,100 +1,120 @@
-<html lang="en">
-<head>
-<title>Non-default ordering - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Ordering-methods.html#Ordering-methods" title="Ordering methods">
-<link rel="prev" href="Order-accessor.html#Order-accessor" title="Order accessor">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Non-default ordering</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Non-default ordering">
+<meta name="keywords" content="Libmarpa 8.4.0: Non-default ordering">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Ordering-methods.html#Ordering-methods" rel="up" title="Ordering methods">
+<link href="Tree-methods.html#Tree-methods" rel="next" title="Tree methods">
+<link href="Order-accessor.html#Order-accessor" rel="prev" title="Order accessor">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Non-default-ordering"></a>
-<a name="Non_002ddefault-ordering"></a>
-<p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Order-accessor.html#Order-accessor">Order accessor</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Ordering-methods.html#Ordering-methods">Ordering methods</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Non_002ddefault-ordering"></a>
+<div class="header">
+<p>
+Previous: <a href="Order-accessor.html#Order-accessor" accesskey="p" rel="prev">Order accessor</a>, Up: <a href="Ordering-methods.html#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Non_002ddefault-ordering-1"></a>
 <h3 class="section">15.5 Non-default ordering</h3>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_o_high_rank_only_set</b> (<var> Marpa_Order o, int flag</var>)<var><a name="index-marpa_005fo_005fhigh_005frank_005fonly_005fset-93"></a></var><br>
-&mdash; Function: int <b>marpa_o_high_rank_only</b> (<var> Marpa_Order o</var>)<var><a name="index-marpa_005fo_005fhigh_005frank_005fonly-94"></a></var><br>
-<blockquote><p>These methods, respectively, set and query
-the &ldquo;high rank only&rdquo; flag of ordering <var>o</var>. 
+<dl>
+<dt><a name="index-marpa_005fo_005fhigh_005frank_005fonly_005fset"></a>Function: <em>int</em> <strong>marpa_o_high_rank_only_set</strong> <em>(     Marpa_Order <var>o</var>,     int <var>flag</var>)</em></dt>
+<dt><a name="index-marpa_005fo_005fhigh_005frank_005fonly"></a>Function: <em>int</em> <strong>marpa_o_high_rank_only</strong> <em>(     Marpa_Order <var>o</var>)</em></dt>
+<dd><p>These methods, respectively, set and query
+the &ldquo;high rank only&rdquo; flag of ordering <var>o</var>.
 A <var>flag</var> of 1 indicates that, when ranking,
 all choices should be discarded except those of the
-highest rank. 
+highest rank.
 A <var>flag</var> of 0 indicates that
 no choices should be discarded on the
 basis of their rank.
-
-        <p>A value of 1 is the default. 
+</p>
+<p>A value of 1 is the default.
 The value of the &ldquo;high rank only&rdquo; flag has no effect
 unless ranking has been turned on using the
 <code>marpa_o_rank()</code> method.
-
-        <p>Return value:  On success, the  value of the
+</p>
+<p>Return value:  On success, the  value of the
 &ldquo;high rank only&rdquo; flag <strong>after</strong>
-the call. 
-On failure, &minus;2. 
-</p></blockquote></div>
+the call.
+On failure, -2.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Function: int <b>marpa_o_rank</b> (<var> Marpa_Order o </var>)<var><a name="index-marpa_005fo_005frank-95"></a></var><br>
-<blockquote><p>By default, the ordering of parse trees is arbitrary. 
+<dl>
+<dt><a name="index-marpa_005fo_005frank"></a>Function: <em>int</em> <strong>marpa_o_rank</strong> <em>( Marpa_Order <var>o</var> )</em></dt>
+<dd><p>By default, the ordering of parse trees is arbitrary.
 This method causes the ordering to be ranked
 according to the ranks of symbols and rules,
 the &ldquo;null ranks high&rdquo; flags of the rules,
-and the &ldquo;high rank only&rdquo; flag of the ordering. 
+and the &ldquo;high rank only&rdquo; flag of the ordering.
 Once this method returns, the ordering is frozen.
-
-        <p>Return value:  On success, a non-negative value. 
-On failure, &minus;2.
-
-        </blockquote></div>
+</p>
+<p>Return value:  On success, a non-negative value.
+On failure, -2.
+</p>
+</dd></dl>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

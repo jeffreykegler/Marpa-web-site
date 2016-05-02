@@ -1,115 +1,136 @@
-<html lang="en">
-<head>
-<title>About Libmarpa - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="About-this-document.html#About-this-document" title="About this document">
-<link rel="next" href="Architecture.html#Architecture" title="Architecture">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: About Libmarpa</title>
+
+<meta name="description" content="Libmarpa 8.4.0: About Libmarpa">
+<meta name="keywords" content="Libmarpa 8.4.0: About Libmarpa">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Architecture.html#Architecture" rel="next" title="Architecture">
+<link href="Parsing-theory.html#Parsing-theory" rel="prev" title="Parsing theory">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="About-Libmarpa"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Architecture.html#Architecture">Architecture</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="About-this-document.html#About-this-document">About this document</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="About-Libmarpa"></a>
+<div class="header">
+<p>
+Next: <a href="Architecture.html#Architecture" accesskey="n" rel="next">Architecture</a>, Previous: <a href="About-this-document.html#About-this-document" accesskey="p" rel="prev">About this document</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="About-Libmarpa-1"></a>
 <h2 class="chapter">2 About Libmarpa</h2>
 
-<p>Libmarpa implements the Marpa parsing algorithm. 
+<p>Libmarpa implements the Marpa parsing algorithm.
 Marpa is named
 after the legendary 11th century Tibetan translator,
-Marpa Lotsawa. 
+Marpa Lotsawa.
 In creating Marpa,
 I depended heavily on previous work by Jay Earley,
 Joop Leo,
 John Aycock and Nigel Horspool.
-
-   <p>Libmarpa implements the entire Marpa algorithm. 
+</p>
+<p>Libmarpa implements the entire Marpa algorithm.
 This library does
 the necessary grammar preprocessing, recognizes the input,
-and produces parse trees. 
+and produces parse trees.
 It also supports the ordering, iteration
 and evaluation of the parse
 trees.
-
-   <p>Libmarpa is very low-level. 
-For example, it has no strings. 
+</p>
+<p>Libmarpa is very low-level.
+For example, it has no strings.
 Rules, symbols, and token values are all represented
-by integers. 
-This, of course, will not suffice for many applications. 
+by integers.
+This, of course, will not suffice for many applications.
 Users will very often want
 names for the symbols, non-integer values for
-tokens, or both. 
+tokens, or both.
 Typically, applications will use arrays to
-translate Libmarpa's integer ID's to strings or other
+translate Libmarpa&rsquo;s integer ID&rsquo;s to strings or other
 values as required.
-
-   <p>Libmarpa also does <strong>not</strong> implement most of the semantics. 
+</p>
+<p>Libmarpa also does <strong>not</strong> implement most of the semantics.
 Libmarpa does have an evaluator (called a &ldquo;valuator&rdquo;),
 but it does <strong>not</strong>
-manipulate the stack directly. 
+manipulate the stack directly.
 Instead, Libmarpa,
 based on its traversal of the parse tree,
 passes optimized step by step stack manipulation
-instructions to the upper layer. 
+instructions to the upper layer.
 These instructions indicate the token or rule involved,
 and the proper location for the true token value or
-the result of the rule evaluation. 
+the result of the rule evaluation.
 For rule evaluations, the instructions include the stack location
 of the arguments.
-
-   <p>Marpa requires most semantics to be
-implemented in the application. 
-This allows the application total flexibility. 
+</p>
+<p>Marpa requires most semantics to be
+implemented in the application.
+This allows the application total flexibility.
 It also puts
 the application is in a much better position to prevent errors,
 to catch errors at runtime or,
 failing all else,
 to successfully debug the logic.
+</p>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

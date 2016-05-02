@@ -1,90 +1,109 @@
-<html lang="en">
-<head>
-<title>Error methods - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" title="Error methods macros and codes">
-<link rel="prev" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" title="Error methods macros and codes">
-<link rel="next" href="Error-Macros.html#Error-Macros" title="Error Macros">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Error methods</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Error methods">
+<meta name="keywords" content="Libmarpa 8.4.0: Error methods">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" rel="up" title="Error methods macros and codes">
+<link href="Error-Macros.html#Error-Macros" rel="next" title="Error Macros">
+<link href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" rel="prev" title="Error methods macros and codes">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Error-methods"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Error-Macros.html#Error-Macros">Error Macros</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">Error methods macros and codes</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">Error methods macros and codes</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Error-methods"></a>
+<div class="header">
+<p>
+Next: <a href="Error-Macros.html#Error-Macros" accesskey="n" rel="next">Error Macros</a>, Previous: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="p" rel="prev">Error methods macros and codes</a>, Up: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Error-methods-1"></a>
 <h3 class="section">19.1 Error methods</h3>
 
-<div class="defun">
-&mdash; Function: Marpa_Error_Code <b>marpa_g_error</b> (<var> Marpa_Grammar g, const char** p_error_string</var>)<var><a name="index-marpa_005fg_005ferror-137"></a></var><br>
-<blockquote><p>When a method fails,
+<dl>
+<dt><a name="index-marpa_005fg_005ferror"></a>Function: <em>Marpa_Error_Code</em> <strong>marpa_g_error</strong> <em>( Marpa_Grammar <var>g</var>,     const char** <var>p_error_string</var>)</em></dt>
+<dd><p>When a method fails,
 this method allows the application to read
-the error code. 
+the error code.
 <var>p_error_string</var> is reserved for use by
-the internals. 
+the internals.
 Applications should set it to <code>NULL</code>.
+</p>
+<p>Return value: The last error code from a Libmarpa method.
+Always succeeds.
+</p></dd></dl>
 
-        <p>Return value: The last error code from a Libmarpa method. 
-Always succeeds. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: Marpa_Error_Code <b>marpa_g_error_clear</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005ferror_005fclear-138"></a></var><br>
-<blockquote>
-        <p>Sets the error code
-to <code>MARPA_ERR_NONE</code>. 
+<dl>
+<dt><a name="index-marpa_005fg_005ferror_005fclear"></a>Function: <em>Marpa_Error_Code</em> <strong>marpa_g_error_clear</strong> <em>( Marpa_Grammar <var>g</var> )</em></dt>
+<dd>
+<p>Sets the error code
+to <code>MARPA_ERR_NONE</code>.
 Not often used,
 but now and then it can be useful
 to force the error code to a known state.
-
-        <p>Return value: <code>MARPA_ERR_NONE</code>. 
-Always succeeds. 
-</p></blockquote></div>
+</p>
+<p>Return value: <code>MARPA_ERR_NONE</code>.
+Always succeeds.
+</p></dd></dl>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

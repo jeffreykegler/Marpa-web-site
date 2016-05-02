@@ -1,177 +1,205 @@
-<html lang="en">
-<head>
-<title>Event codes - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Events.html#Events" title="Events">
-<link rel="prev" href="Event-methods.html#Event-methods" title="Event methods">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Event codes</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Event codes">
+<meta name="keywords" content="Libmarpa 8.4.0: Event codes">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Events.html#Events" rel="up" title="Events">
+<link href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" rel="next" title="Error methods macros and codes">
+<link href="Event-methods.html#Event-methods" rel="prev" title="Event methods">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Event-codes"></a>
-<p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Event-methods.html#Event-methods">Event methods</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Events.html#Events">Events</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Event-codes"></a>
+<div class="header">
+<p>
+Previous: <a href="Event-methods.html#Event-methods" accesskey="p" rel="prev">Event methods</a>, Up: <a href="Events.html#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Event-codes-1"></a>
 <h3 class="section">18.3 Event codes</h3>
 
-<div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_NONE</b><var><a name="index-MARPA_005fEVENT_005fNONE-127"></a></var><br>
-<blockquote><p>Applications should never see this event. 
-Event value: Undefined. 
-Suggested message: "No event". 
-</p></blockquote></div>
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fNONE"></a>Macro: <em>int</em> <strong>MARPA_EVENT_NONE</strong></dt>
+<dd><p>Applications should never see this event.
+Event value: Undefined.
+Suggested message: &quot;No event&quot;.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_COUNTED_NULLABLE</b><var><a name="index-MARPA_005fEVENT_005fCOUNTED_005fNULLABLE-128"></a></var><br>
-<blockquote><p>A nullable symbol is either the separator
-for, or the right hand side of, a sequence. 
-Event value: The ID of the symbol. 
-Suggested message: "This symbol is a counted nullable". 
-</p></blockquote></div>
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fCOUNTED_005fNULLABLE"></a>Macro: <em>int</em> <strong>MARPA_EVENT_COUNTED_NULLABLE</strong></dt>
+<dd><p>A nullable symbol is either the separator
+for, or the right hand side of, a sequence.
+Event value: The ID of the symbol.
+Suggested message: &quot;This symbol is a counted nullable&quot;.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</b><var><a name="index-MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD-129"></a></var><br>
-<blockquote><p>This event indicates the current Earley item count
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD"></a>Macro: <em>int</em> <strong>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</strong></dt>
+<dd><p>This event indicates the current Earley item count
 exceeded a
-user-settable threshold. 
-Event value: The current Earley item count. 
-Suggested message: "Too many Earley items". 
-</p></blockquote></div>
+user-settable threshold.
+Event value: The current Earley item count.
+Suggested message: &quot;Too many Earley items&quot;.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_EXHAUSTED</b><var><a name="index-MARPA_005fEVENT_005fEXHAUSTED-130"></a></var><br>
-<blockquote><p>The parse is exhausted. 
-Event value: Undefined. 
-Suggested message: "Recognizer is exhausted". 
-</p></blockquote></div>
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fEXHAUSTED"></a>Macro: <em>int</em> <strong>MARPA_EVENT_EXHAUSTED</strong></dt>
+<dd><p>The parse is exhausted.
+Event value: Undefined.
+Suggested message: &quot;Recognizer is exhausted&quot;.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_LOOP_RULES</b><var><a name="index-MARPA_005fEVENT_005fLOOP_005fRULES-131"></a></var><br>
-<blockquote><p>One or more rules are loop rules &mdash; rules
-that are part of a cycle. 
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fLOOP_005fRULES"></a>Macro: <em>int</em> <strong>MARPA_EVENT_LOOP_RULES</strong></dt>
+<dd><p>One or more rules are loop rules &mdash; rules
+that are part of a cycle.
 Cycles are pathological cases of recursion,
 in which the same symbol string derives itself
-a potentially infinite number of times. 
+a potentially infinite number of times.
 Nonetheless, Marpa parses in the presence of these,
 and it is up to the application to treat these
 as fatal errors,
-something they almost always will wish to do. 
-Event value: The count of loop rules. 
-Suggested message: "Grammar contains a infinite loop". 
-</p></blockquote></div>
+something they almost always will wish to do.
+Event value: The count of loop rules.
+Suggested message: &quot;Grammar contains a infinite loop&quot;.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_NULLING_TERMINAL</b><var><a name="index-MARPA_005fEVENT_005fNULLING_005fTERMINAL-132"></a></var><br>
-<blockquote><p>A nulling symbol is also a terminal. 
-Event value: The ID of the symbol. 
-Suggested message: "This symbol is a nulling terminal". 
-</p></blockquote></div>
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fNULLING_005fTERMINAL"></a>Macro: <em>int</em> <strong>MARPA_EVENT_NULLING_TERMINAL</strong></dt>
+<dd><p>A nulling symbol is also a terminal.
+Event value: The ID of the symbol.
+Suggested message: &quot;This symbol is a nulling terminal&quot;.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_COMPLETED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fCOMPLETED-133"></a></var><br>
-<blockquote><p>The recognizer can be set to generate an event
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fCOMPLETED"></a>Macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_COMPLETED</strong></dt>
+<dd><p>The recognizer can be set to generate an event 
 a symbol is completed
 using its <code>marpa_g_symbol_is_completion_event_set()</code>
-method. 
-(A symbol is "completed" if and only if any rule with that symbol
-as its LHS is completed.) 
+method.
+(A symbol is &quot;completed&quot; if and only if any rule with that symbol
+as its LHS is completed.)
 This event code indicates that one of those events
-occurred. 
-Event value: The ID of the completed symbol. 
-Suggested message: "Completed symbol". 
-</p></blockquote></div>
+occurred.
+Event value: The ID of the completed symbol.
+Suggested message: &quot;Completed symbol&quot;.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_EXPECTED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fEXPECTED-134"></a></var><br>
-<blockquote><p>The recognizer can be set to generate an event when a
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fEXPECTED"></a>Macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_EXPECTED</strong></dt>
+<dd><p>The recognizer can be set to generate an event when a
 symbol is expected as a terminal,
 using its <code>marpa_r_expected_symbol_event_set()</code>
-method. 
+method.
 Note that this event only triggers if the symbol is
-expected as a terminal. 
+expected as a terminal.
 Predicted symbols which are not expected as terminals
-do not trigger this event. 
+do not trigger this event.
 This event code indicates that one of those events
-occurred. 
-Event value: The ID of the expected symbol. 
-Suggested message: "Expecting symbol". 
-</p></blockquote></div>
+occurred.
+Event value: The ID of the expected symbol.
+Suggested message: &quot;Expecting symbol&quot;.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_NULLED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fNULLED-135"></a></var><br>
-<blockquote><p>The recognizer can be set to generate an event when a
+
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fNULLED"></a>Macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_NULLED</strong></dt>
+<dd><p>The recognizer can be set to generate an event when a
 symbol is nulled &ndash; that is, recognized as a
-zero-length symbol. 
+zero-length symbol.
 To set an nulled symbol event,
-use the recognizer's <code>marpa_r_nulled_symbol_event_set()</code>
-method. 
+use the recognizer&rsquo;s <code>marpa_r_nulled_symbol_event_set()</code>
+method.
 This event code indicates that a nulled symbol event
-occurred. 
-Event value: The ID of the nulled symbol. 
-Suggested message: "Symbol was nulled". 
-</p></blockquote></div>
+occurred.
+Event value: The ID of the nulled symbol.
+Suggested message: &quot;Symbol was nulled&quot;.
+</p></dd></dl>
 
-<div class="defun">
-&mdash; Macro: int <b>MARPA_EVENT_SYMBOL_PREDICTED</b><var><a name="index-MARPA_005fEVENT_005fSYMBOL_005fPREDICTED-136"></a></var><br>
-<blockquote><p>The recognizer can be set to generate an event when a
-symbol is predicted. 
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fPREDICTED"></a>Macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_PREDICTED</strong></dt>
+<dd><p>The recognizer can be set to generate an event when a
+symbol is predicted.
 To set an predicted symbol event,
-use the recognizer's <code>marpa_r_predicted_symbol_event_set()</code>
-method. 
-Unlike the
+use the recognizer&rsquo;s <code>marpa_g_symbol_is_prediction_event_set()</code>
+method.
+Unlike the 
 <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event,
 the <code>MARPA_EVENT_SYMBOL_PREDICTED</code> event
 triggers for predictions of both
-non-terminals and terminals. 
+non-terminals and terminals.
 This event code indicates that a predicted symbol event
-occurred. 
-Event value: The ID of the predicted symbol. 
-Suggested message: "Symbol was predicted". 
-</p></blockquote></div>
+occurred.
+Event value: The ID of the predicted symbol.
+Suggested message: &quot;Symbol was predicted&quot;.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Event-methods.html#Event-methods" accesskey="p" rel="prev">Event methods</a>, Up: <a href="Events.html#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

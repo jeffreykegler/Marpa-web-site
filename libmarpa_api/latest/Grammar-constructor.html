@@ -1,110 +1,128 @@
-<html lang="en">
-<head>
-<title>Grammar constructor - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
-<link rel="prev" href="Grammar-overview.html#Grammar-overview" title="Grammar overview">
-<link rel="next" href="Grammar-reference-counting.html#Grammar-reference-counting" title="Grammar reference counting">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Grammar constructor</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Grammar constructor">
+<meta name="keywords" content="Libmarpa 8.4.0: Grammar constructor">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Grammar-methods.html#Grammar-methods" rel="up" title="Grammar methods">
+<link href="Grammar-reference-counting.html#Grammar-reference-counting" rel="next" title="Grammar reference counting">
+<link href="Grammar-overview.html#Grammar-overview" rel="prev" title="Grammar overview">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Grammar-constructor"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Grammar-reference-counting.html#Grammar-reference-counting">Grammar reference counting</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Grammar-overview.html#Grammar-overview">Grammar overview</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Grammar-methods.html#Grammar-methods">Grammar methods</a>
-<hr>
+Next: <a href="Grammar-reference-counting.html#Grammar-reference-counting" accesskey="n" rel="next">Grammar reference counting</a>, Previous: <a href="Grammar-overview.html#Grammar-overview" accesskey="p" rel="prev">Grammar overview</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-
+<hr>
+<a name="Creating-a-new-grammar"></a>
 <h3 class="section">11.2 Creating a new grammar</h3>
+<a name="index-grammar-constructor"></a>
 
-<p><a name="index-grammar-constructor-6"></a>
-
-<div class="defun">
-&mdash; Function: Marpa_Grammar <b>marpa_g_new</b> (<var> Marpa_Config* configuration </var>)<var><a name="index-marpa_005fg_005fnew-7"></a></var><br>
-<blockquote>
-        <p>Creates a new grammar time object. 
+<dl>
+<dt><a name="index-marpa_005fg_005fnew"></a>Function: <em>Marpa_Grammar</em> <strong>marpa_g_new</strong> <em>(     Marpa_Config* <var>configuration</var> )</em></dt>
+<dd>
+<p>Creates a new grammar time object.
 The returned grammar object is not yet precomputed,
-and will have no symbols and rules. 
+and will have no symbols and rules.
 Its reference count will be 1.
-
-        <p>Unless the application calls <code>marpa_c_error</code>,
+</p>
+<p>Unless the application calls <code>marpa_c_error</code>,
 Libmarpa will not reference the location
 pointed to by the <var>configuration</var>
-argument after <code>marpa_g_new</code> returns. 
+argument after <code>marpa_g_new</code> returns.
 The <var>configuration</var> argument may be <code>NULL</code>,
 but if it is,
 there will be no way to determine
 the error code on failure.
-
-        <p>Return value: On success, the grammar object. 
+</p>
+<p>Return value: On success, the grammar object.
 On failure, <code>NULL</code>,
 and the error code is set in <var>configuration</var>.
+</p>
+</dd></dl>
 
-        </blockquote></div>
-
-<div class="defun">
-&mdash; Function: int <b>marpa_g_force_valued</b> (<var> Marpa_Grammar g </var>)<var><a name="index-marpa_005fg_005fforce_005fvalued-8"></a></var><br>
-<blockquote>
-        <p>It is recommended that
+<dl>
+<dt><a name="index-marpa_005fg_005fforce_005fvalued"></a>Function: <em>int</em> <strong>marpa_g_force_valued</strong> <em>(     Marpa_Grammar <var>g</var> )</em></dt>
+<dd>
+<p>It is recommended that
 this call be made immediately after the
-grammar constructor. 
+grammar constructor.
 It turns off a deprecated feature.
-
-        <p>The <code>marpa_g_force_valued</code> forces all the
-symbols in a grammar to be &ldquo;valued&rdquo;. 
+</p>
+<p>The <code>marpa_g_force_valued</code> forces all the
+symbols in a grammar to be &ldquo;valued&rdquo;.
 The opposite of a valued symbol is one about whose value
-you do not care. 
+you do not care.
 This distinction has been made in the past in hope
-of gaining efficiencies at evaluation time. 
+of gaining efficiencies at evaluation time.
 Current thinking is that the gains do not repay the extra
 complexity.
-
-        <p>Return value: On success, a non-negative integer. 
-On failure, a negative integer. 
-</p></blockquote></div>
+</p>
+<p>Return value: On success, a non-negative integer.
+On failure, a negative integer.
+</p></dd></dl>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

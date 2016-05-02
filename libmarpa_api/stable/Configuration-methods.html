@@ -1,115 +1,135 @@
-<html lang="en">
-<head>
-<title>Configuration methods - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Static-methods.html#Static-methods" title="Static methods">
-<link rel="next" href="Grammar-methods.html#Grammar-methods" title="Grammar methods">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Configuration methods</title>
+
+<meta name="description" content="Libmarpa 8.4.0: Configuration methods">
+<meta name="keywords" content="Libmarpa 8.4.0: Configuration methods">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Grammar-methods.html#Grammar-methods" rel="next" title="Grammar methods">
+<link href="Static-methods.html#Static-methods" rel="prev" title="Static methods">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Configuration-methods"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Grammar-methods.html#Grammar-methods">Grammar methods</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Static-methods.html#Static-methods">Static methods</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Configuration-methods"></a>
+<div class="header">
+<p>
+Next: <a href="Grammar-methods.html#Grammar-methods" accesskey="n" rel="next">Grammar methods</a>, Previous: <a href="Static-methods.html#Static-methods" accesskey="p" rel="prev">Static methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Configuration-methods-1"></a>
 <h2 class="chapter">10 Configuration methods</h2>
 
-<p>The configuration object is intended for future extensions. 
+<p>The configuration object is intended for future extensions.
 These may
-allow the application to override Libmarpa's memory allocation
+allow the application to override Libmarpa&rsquo;s memory allocation
 and fatal error handling without resorting to global
-variables, and therefore in a thread-safe way. 
+variables, and therefore in a thread-safe way.
 Currently, the only function of the <code>Marpa_Config</code>
 class is to give <code>marpa_g_new()</code>
 a place to put its error code.
-
-   <p><code>Marpa_Config</code> is Libmarpa's only &ldquo;major&rdquo;
-class which is not a time class. 
+</p>
+<p><code>Marpa_Config</code> is Libmarpa&rsquo;s only &ldquo;major&rdquo;
+class which is not a time class.
 There is no constructor or destructor, although
 <code>Marpa_Config</code> objects <strong>do</strong> need to be initialized
-before use. 
+before use.
 Aside from its own accessor,
 <code>Marpa_Config</code> objects are only used by <code>marpa_g_new</code>
 and no reference to their location is not kept
-in any of Libmarpa's time objects. 
+in any of Libmarpa&rsquo;s time objects.
 The intent is to that it be convenient
 to have them in memory that might be deallocated
-soon after <code>marpa_g_new</code> returns. 
+soon after <code>marpa_g_new</code> returns.
 For example, they could be put on the stack.
-
-<div class="defun">
-&mdash; Function: int <b>marpa_c_init</b> (<var> Marpa_Config* config</var>)<var><a name="index-marpa_005fc_005finit-3"></a></var><br>
-<blockquote>
-        <p>Initialize the <var>config</var> information to &ldquo;safe&rdquo; default
-values. 
+</p>
+<dl>
+<dt><a name="index-marpa_005fc_005finit"></a>Function: <em>int</em> <strong>marpa_c_init</strong> <em>(   Marpa_Config* <var>config</var>)</em></dt>
+<dd>
+<p>Initialize the <var>config</var> information to &ldquo;safe&rdquo; default
+values.
 Unspecified behavior will result
 if an initialized
 configuration is used to create a grammar.
+</p>
+<p>Return value: A non-negative value.  Always succeeds.
+</p></dd></dl>
 
-        <p>Return value: A non-negative value.  Always succeeds. 
-</p></blockquote></div>
-
-<div class="defun">
-&mdash; Function: Marpa_Error_Code <b>marpa_c_error</b> (<var> Marpa_Config* config, const char** p_error_string </var>)<var><a name="index-marpa_005fc_005ferror-4"></a></var><br>
-<blockquote>
-        <p>Error codes are usually kept in the base grammar,
+<dl>
+<dt><a name="index-marpa_005fc_005ferror"></a>Function: <em>Marpa_Error_Code</em> <strong>marpa_c_error</strong> <em>(   Marpa_Config* <var>config</var>, const char** <var>p_error_string</var> )</em></dt>
+<dd>
+<p>Error codes are usually kept in the base grammar,
 which leaves <code>marpa_g_new()</code> no place to put
-its error code on failure. 
+its error code on failure.
 Objects of
-the <code>Marpa_Config</code> class provide such a place. 
+the <code>Marpa_Config</code> class provide such a place.
 <var>p_error_string</var> is reserved for use by
-the internals. 
+the internals.
 Applications should set it to <code>NULL</code>.
-
-        <p>Return value:
-The error code in <var>config</var>. 
-Always succeeds. 
-</p></blockquote></div>
+</p>
+<p>Return value:
+The error code in <var>config</var>.
+Always succeeds.
+</p></dd></dl>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

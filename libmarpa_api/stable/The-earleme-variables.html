@@ -1,105 +1,130 @@
-<html lang="en">
-<head>
-<title>The earleme variables - Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Earlemes.html#Earlemes" title="Earlemes">
-<link rel="prev" href="The-traditional-model.html#The-traditional-model" title="The traditional model">
-<link rel="next" href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables" title="The significances of the earleme variables">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the ``Software''), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: The earleme variables</title>
+
+<meta name="description" content="Libmarpa 8.4.0: The earleme variables">
+<meta name="keywords" content="Libmarpa 8.4.0: The earleme variables">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Earlemes.html#Earlemes" rel="up" title="Earlemes">
+<link href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables" rel="next" title="The significances of the earleme variables">
+<link href="The-traditional-model.html#The-traditional-model" rel="prev" title="The traditional model">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="The-earleme-variables"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables">The significances of the earleme variables</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="The-traditional-model.html#The-traditional-model">The traditional model</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Earlemes.html#Earlemes">Earlemes</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="The-earleme-variables"></a>
+<div class="header">
+<p>
+Next: <a href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables" accesskey="n" rel="next">The significances of the earleme variables</a>, Previous: <a href="The-traditional-model.html#The-traditional-model" accesskey="p" rel="prev">The traditional model</a>, Up: <a href="Earlemes.html#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="The-earleme-variables-1"></a>
 <h4 class="subsection">4.1.2 The earleme variables</h4>
 
 <p>The important earleme variables are the current earleme, the furthest earleme
-and the latest earleme. 
-The <dfn>current earleme</dfn> is the earleme that Libmarpa is currently working on. 
-More specifically, it is the one at which new tokens will <strong>start</strong>. 
+and the latest earleme.
+The <em>current earleme</em> is the earleme that Libmarpa is currently working on.
+More specifically, it is the one at which new tokens will <strong>start</strong>.
 Since tokens are never zero length, a new token will always end after the
-current earleme. 
-The current earleme is initially earleme 0. 
+current earleme.
+The current earleme is initially earleme 0.
 Every call to <code>marpa_r_earleme_complete()</code> advances the
 current earleme by 1.
-
-   <p>The <dfn>furthest earleme</dfn> is the highest numbered (and therefore &ldquo;furthest&rdquo;)
-earleme at which a token ends. 
-The furthest earleme is initially earleme 0. 
+</p>
+<p>The <em>furthest earleme</em> is the highest numbered (and therefore &ldquo;furthest&rdquo;)
+earleme at which a token ends.
+The furthest earleme is initially earleme 0.
 With every call to <code>marpa_r_alternative()</code>, the end of the token
-it adds is calculated. 
+it adds is calculated.
 A token ends at the earleme location <var>current</var>+<var>length</var>,
 where <var>current</var> is the current earleme,
-and <var>length</var> is the length of the newly added token. 
+and <var>length</var> is the length of the newly added token.
 After a call to <code>marpa_r_alternative()</code>,
 the furthest earleme is its value before the call,
 or <var>current</var>+<var>length</var>,
 whichever is greater.
-
-   <p>The <dfn>latest earleme</dfn> is the earleme of the latest
-Earley set. 
-The <dfn>latest Earley set</dfn> is the last Earley set completed. 
-This is always the highest numbered Earley set. 
+</p>
+<p>The <em>latest earleme</em> is the earleme of the latest
+Earley set.
+The <em>latest Earley set</em> is the last Earley set completed.
+This is always the highest numbered Earley set.
 If there is an Earley set at the current earleme,
 it is the latest Earley set and the latest earleme
-is equal to the current earleme. 
+is equal to the current earleme.
 There is never an Earley set after the current earleme.
-
-   <p>After every call to the <code>marpa_r_earleme_complete()</code> method
+</p>
+<p>After every call to the <code>marpa_r_earleme_complete()</code> method
 that adds a token,
-the value of the latest earleme is
-same as the value of the current earleme. 
+the value of the latest earleme is 
+same as the value of the current earleme.
 After every call to the <code>marpa_r_earleme_complete()</code> method
 that does <strong>not</strong> add a token,
 the value of the latest earleme is unchanged
 from its value before the call.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables" accesskey="n" rel="next">The significances of the earleme variables</a>, Previous: <a href="The-traditional-model.html#The-traditional-model" accesskey="p" rel="prev">The traditional model</a>, Up: <a href="Earlemes.html#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

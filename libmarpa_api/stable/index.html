@@ -1,455 +1,531 @@
-<html lang="en">
-<head>
-<title>Libmarpa 8.3.0</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="Libmarpa 8.3.0">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="#Top">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (2 March 2015)
-is for Libmarpa 8.3.0.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 
 Copyright (C) 2015 Jeffrey Kegler.
 
-     Permission is hereby granted, free of charge, to any person
-     obtaining a copy of this software and associated documentation
-     files (the "Software"), to deal in the Software without
-     restriction, including without limitation the rights to use, copy,
-     modify, merge, publish, distribute, sublicense, and/or sell copies
-     of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
-
-     The above copyright notice and this permission notice shall be
-     included in all copies or substantial portions of the Software.
-
-     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-     DEALINGS IN THE SOFTWARE.
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
-</head>
-<body>
-<h1 class="settitle">Libmarpa 8.3.0</h1>
-   <div class="contents">
-<h2>Table of Contents</h2>
-<ul>
-<li><a name="toc_Top" href="index.html#Top">Libmarpa: The Marpa low-level library</a>
-<li><a name="toc_About-this-document" href="About-this-document.html#About-this-document">1 About this document</a>
-<ul>
-<li><a href="How-to-read-this-document.html#How-to-read-this-document">1.1 How to read this document</a>
-<li><a href="Prerequisites.html#Prerequisites">1.2 Prerequisites</a>
-<li><a href="Parsing-theory.html#Parsing-theory">1.3 Parsing theory</a>
-</li></ul>
-<li><a name="toc_About-Libmarpa" href="About-Libmarpa.html#About-Libmarpa">2 About Libmarpa</a>
-<li><a name="toc_Architecture" href="Architecture.html#Architecture">3 Architecture</a>
-<ul>
-<li><a href="Major-objects.html#Major-objects">3.1 Major objects</a>
-<li><a href="Time-objects.html#Time-objects">3.2 Time objects</a>
-<li><a href="Reference-counting.html#Reference-counting">3.3 Reference counting</a>
-<li><a href="Numbered-objects.html#Numbered-objects">3.4 Numbered objects</a>
-</li></ul>
-<li><a name="toc_Input" href="Input.html#Input">4 Input</a>
-<ul>
-<li><a href="Earlemes.html#Earlemes">4.1 Earlemes</a>
-<ul>
-<li><a href="The-traditional-model.html#The-traditional-model">4.1.1 The traditional model</a>
-<li><a href="The-earleme-variables.html#The-earleme-variables">4.1.2 The earleme variables</a>
-<li><a href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables">4.1.3 The significances of the earleme variables</a>
-<li><a href="The-initial-earleme-settings.html#The-initial-earleme-settings">4.1.4 The initial earleme settings</a>
-<li><a href="The-standard-model-of-input.html#The-standard-model-of-input">4.1.5 The standard model of input</a>
-<li><a href="Ambiguous-input.html#Ambiguous-input">4.1.6 Ambiguous input</a>
-<li><a href="Variable-length-tokens.html#Variable-length-tokens">4.1.7 Variable length tokens</a>
-<li><a href="The-generalized-model.html#The-generalized-model">4.1.8 The generalized model</a>
-<li><a href="General-rules-for-the-earleme-variables.html#General-rules-for-the-earleme-variables">4.1.9 General rules for the earleme variables</a>
-</li></ul>
-<li><a href="Terminals.html#Terminals">4.2 Terminals</a>
-</li></ul>
-<li><a name="toc_Semantics" href="Semantics.html#Semantics">5 Semantics</a>
-<li><a name="toc_Threads" href="Threads.html#Threads">6 Threads</a>
-<li><a name="toc_Fatal-Errors" href="Fatal-Errors.html#Fatal-Errors">7 Fatal Errors</a>
-<li><a name="toc_Introduction-to-the-external-interface" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface">8 Introduction to the external interface</a>
-<ul>
-<li><a href="About-the-overviews.html#About-the-overviews">8.1 About the overviews</a>
-<li><a href="Return-values.html#Return-values">8.2 Return values</a>
-<li><a href="Naming-conventions.html#Naming-conventions">8.3 Naming conventions</a>
-</li></ul>
-<li><a name="toc_Static-methods" href="Static-methods.html#Static-methods">9 Static methods</a>
-<li><a name="toc_Configuration-methods" href="Configuration-methods.html#Configuration-methods">10 Configuration methods</a>
-<li><a name="toc_Grammar-methods" href="Grammar-methods.html#Grammar-methods">11 Grammar methods</a>
-<ul>
-<li><a href="Grammar-overview.html#Grammar-overview">11.1 Overview</a>
-<li><a href="Grammar-constructor.html#Grammar-constructor">11.2 Creating a new grammar</a>
-<li><a href="Grammar-reference-counting.html#Grammar-reference-counting">11.3 Tracking the reference count of the grammar</a>
-<li><a href="Symbols.html#Symbols">11.4 Symbols</a>
-<li><a href="Rules.html#Rules">11.5 Rules</a>
-<li><a href="Sequences.html#Sequences">11.6 Sequences</a>
-<li><a href="Ranks.html#Ranks">11.7 Ranks</a>
-<li><a href="Ranks.html#Ranks">11.8 Events</a>
-<li><a href="Grammar-precomputation.html#Grammar-precomputation">11.9 Precomputing the Grammar</a>
-</li></ul>
-<li><a name="toc_Recognizer-methods" href="Recognizer-methods.html#Recognizer-methods">12 Recognizer methods</a>
-<ul>
-<li><a href="Recognizer-overview.html#Recognizer-overview">12.1 Overview</a>
-<li><a href="Recognizer-constructor.html#Recognizer-constructor">12.2 Creating a new recognizer</a>
-<li><a href="Recognizer-reference-counting.html#Recognizer-reference-counting">12.3 Keeping the reference count of a recognizer</a>
-<li><a href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">12.4 Life cycle mutators</a>
-<li><a href="Location-accessors.html#Location-accessors">12.5 Location accessors</a>
-<li><a href="Other-parse-status-methods.html#Other-parse-status-methods">12.6 Other parse status methods</a>
-</li></ul>
-<li><a name="toc_Progress-reports" href="Progress-reports.html#Progress-reports">13 Progress reports</a>
-<li><a name="toc_Bocage-methods" href="Bocage-methods.html#Bocage-methods">14 Bocage methods</a>
-<ul>
-<li><a href="Bocage-overview.html#Bocage-overview">14.1 Overview</a>
-<li><a href="Bocage-constructor.html#Bocage-constructor">14.2 Creating a new bocage</a>
-<li><a href="Bocage-reference-counting.html#Bocage-reference-counting">14.3 Reference counting</a>
-<li><a href="Bocage-accessor.html#Bocage-accessor">14.4 Accessors</a>
-</li></ul>
-<li><a name="toc_Ordering-methods" href="Ordering-methods.html#Ordering-methods">15 Ordering methods</a>
-<ul>
-<li><a href="Ordering-overview.html#Ordering-overview">15.1 Overview</a>
-<li><a href="Ordering-constructor.html#Ordering-constructor">15.2 Creating an ordering</a>
-<li><a href="Ordering-reference-counting.html#Ordering-reference-counting">15.3 Reference counting</a>
-<li><a href="Order-accessor.html#Order-accessor">15.4 Accessors</a>
-<li><a href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">15.5 Non-default ordering</a>
-</li></ul>
-<li><a name="toc_Tree-methods" href="Tree-methods.html#Tree-methods">16 Tree methods</a>
-<ul>
-<li><a href="Tree-overview.html#Tree-overview">16.1 Overview</a>
-<li><a href="Tree-constructor.html#Tree-constructor">16.2 Creating a new tree iterator</a>
-<li><a href="Tree-reference-counting.html#Tree-reference-counting">16.3 Reference counting</a>
-<li><a href="Tree-iteration.html#Tree-iteration">16.4 Iterating through the trees</a>
-</li></ul>
-<li><a name="toc_Value-methods" href="Value-methods.html#Value-methods">17 Value methods</a>
-<ul>
-<li><a href="Value-overview.html#Value-overview">17.1 Overview</a>
-<li><a href="How-to-use-the-valuator.html#How-to-use-the-valuator">17.2 How to use the valuator</a>
-<li><a href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation">17.3 Advantages of step-driven valuation</a>
-<li><a href="Maintaining-the-stack.html#Maintaining-the-stack">17.4 Maintaining the stack</a>
-<ul>
-<li><a href="Sizing-the-stack.html#Sizing-the-stack">17.4.1 Sizing the stack</a>
-<li><a href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">17.4.2 Initializing locations in the stack</a>
-</li></ul>
-<li><a href="Valuator-constructor.html#Valuator-constructor">17.5 Creating a new valuator</a>
-<li><a href="Valuator-reference-counting.html#Valuator-reference-counting">17.6 Reference counting</a>
-<li><a href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">17.7 Stepping through the valuator</a>
-<li><a href="Valuator-steps-by-type.html#Valuator-steps-by-type">17.8 Valuator steps by type</a>
-<li><a href="Basic-step-accessors.html#Basic-step-accessors">17.9 Basic step accessors</a>
-<li><a href="Other-step-accessors.html#Other-step-accessors">17.10 Other step accessors</a>
-</li></ul>
-<li><a name="toc_Events" href="Events.html#Events">18 Events</a>
-<ul>
-<li><a href="Events-overview.html#Events-overview">18.1 Overview</a>
-<li><a href="Event-methods.html#Event-methods">18.2 Methods</a>
-<li><a href="Event-codes.html#Event-codes">18.3 Event codes</a>
-</li></ul>
-<li><a name="toc_Error-methods-macros-and-codes" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">19 Error methods, macros and codes</a>
-<ul>
-<li><a href="Error-methods.html#Error-methods">19.1 Error methods</a>
-<li><a href="Error-Macros.html#Error-Macros">19.2 Error Macros</a>
-<li><a href="External-error-codes.html#External-error-codes">19.3 External error codes</a>
-<li><a href="Internal-error-codes.html#Internal-error-codes">19.4 Internal error codes</a>
-</li></ul>
-<li><a name="toc_Design-notes" href="Design-notes.html#Design-notes">20 Design notes</a>
-<ul>
-<li><a href="Why-so-many-time-objects.html#Why-so-many-time-objects">20.1 Why so many time objects?</a>
-<li><a href="Design-of-numbered-objects.html#Design-of-numbered-objects">20.2 Numbered objects</a>
-<li><a href="LHS-Terminals.html#LHS-Terminals">20.3 LHS terminals</a>
-</li></ul>
-<li><a name="toc_Work-in-Progress" href="Work-in-Progress.html#Work-in-Progress">21 Work in Progress</a>
-<ul>
-<li><a href="Untested-methods.html#Untested-methods">21.1 Untested methods</a>
-<ul>
-<li><a href="Ranking-methods.html#Ranking-methods">21.1.1 Ranking methods</a>
-<li><a href="Zero_002dwidth-assertion-methods.html#Zero_002dwidth-assertion-methods">21.1.2 Zero-width assertion methods</a>
-<li><a href="Methods-for-revising-parses.html#Methods-for-revising-parses">21.1.3 Methods for revising parses</a>
-</li></ul>
-</li></ul>
-<li><a name="toc_Deprecated-techniques-and-methods" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">22 Deprecated techniques and methods</a>
-<ul>
-<li><a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">22.1 Valued and unvalued symbols</a>
-<ul>
-<li><a href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">22.1.1 What unvalued symbols were</a>
-<li><a href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">22.1.2 Grammar methods dealing with unvalued symbols</a>
-<li><a href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">22.1.3 Registering semantics in the valuator</a>
-</li></ul>
-</li></ul>
-</li></ul>
-</div>
-
-
-
-<div class="node">
-<a name="Top"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="About-this-document.html#About-this-document">About this document</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="../index.html#dir">(dir)</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="../index.html#dir">(dir)</a>
-<hr>
-</div>
-
-<h2 class="unnumbered">Libmarpa: The Marpa low-level library</h2>
-
-<p>This manual (2 March 2015)
-is for Libmarpa 8.3.0.
-
-   <p>Copyright &copy; 2015 Jeffrey Kegler.
-
-   <blockquote>
 Permission is hereby granted, free of charge, to any person obtaining a
-copy of this software and associated documentation files (the &ldquo;Software&rdquo;),
+copy of this software and associated documentation files (the "Software"),
 to deal in the Software without restriction, including without limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
 
-   <p>The above copyright notice and this permission notice shall be included
+The above copyright notice and this permission notice shall be included
 in all copies or substantial portions of the Software.
 
-   <p>THE SOFTWARE IS PROVIDED &ldquo;AS IS&rdquo;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
 OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE. 
-</blockquote>
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Libmarpa 8.4.0: Top</title>
 
-<ul class="menu">
-<li><a accesskey="1" href="About-this-document.html#About-this-document">About this document</a>
-<li><a accesskey="2" href="About-Libmarpa.html#About-Libmarpa">About Libmarpa</a>
-<li><a accesskey="3" href="Architecture.html#Architecture">Architecture</a>
-<li><a accesskey="4" href="Input.html#Input">Input</a>
-<li><a accesskey="5" href="Semantics.html#Semantics">Semantics</a>
-<li><a accesskey="6" href="Threads.html#Threads">Threads</a>
-<li><a accesskey="7" href="Fatal-Errors.html#Fatal-Errors">Fatal Errors</a>
-<li><a accesskey="8" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface">Introduction to the external interface</a>
-<li><a accesskey="9" href="Static-methods.html#Static-methods">Static methods</a>
-<li><a href="Configuration-methods.html#Configuration-methods">Configuration methods</a>
-<li><a href="Grammar-methods.html#Grammar-methods">Grammar methods</a>
-<li><a href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>
-<li><a href="Progress-reports.html#Progress-reports">Progress reports</a>
-<li><a href="Bocage-methods.html#Bocage-methods">Bocage methods</a>
-<li><a href="Ordering-methods.html#Ordering-methods">Ordering methods</a>
-<li><a href="Tree-methods.html#Tree-methods">Tree methods</a>
-<li><a href="Value-methods.html#Value-methods">Value methods</a>
-<li><a href="Events.html#Events">Events</a>
-<li><a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">Error methods macros and codes</a>
-<li><a href="Design-notes.html#Design-notes">Design notes</a>
-<li><a href="Work-in-Progress.html#Work-in-Progress">Work in Progress</a>
-<li><a href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">Deprecated techniques and methods</a>
+<meta name="description" content="Libmarpa 8.4.0: Top">
+<meta name="keywords" content="Libmarpa 8.4.0: Top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="../dir/index.html" rel="up" title="(dir)">
+<link href="About-this-document.html#About-this-document" rel="next" title="About this document">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
 
-</li></ul>
-<p>--- The Detailed Node Listing ---
 
-<p>About this document
+</head>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h1 class="settitle" align="center">Libmarpa 8.4.0</h1>
+
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-About-this-document-1" href="About-this-document.html#About-this-document">1 About this document</a>
+  <ul class="no-bullet">
+    <li><a name="toc-How-to-read-this-document-1" href="How-to-read-this-document.html#How-to-read-this-document">1.1 How to read this document</a></li>
+    <li><a name="toc-Prerequisites-1" href="Prerequisites.html#Prerequisites">1.2 Prerequisites</a></li>
+    <li><a name="toc-Parsing-theory-1" href="Parsing-theory.html#Parsing-theory">1.3 Parsing theory</a></li>
+  </ul></li>
+  <li><a name="toc-About-Libmarpa-1" href="About-Libmarpa.html#About-Libmarpa">2 About Libmarpa</a></li>
+  <li><a name="toc-Architecture-1" href="Architecture.html#Architecture">3 Architecture</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Major-objects-1" href="Major-objects.html#Major-objects">3.1 Major objects</a></li>
+    <li><a name="toc-Time-objects-1" href="Time-objects.html#Time-objects">3.2 Time objects</a></li>
+    <li><a name="toc-Reference-counting-1" href="Reference-counting.html#Reference-counting">3.3 Reference counting</a></li>
+    <li><a name="toc-Numbered-objects-1" href="Numbered-objects.html#Numbered-objects">3.4 Numbered objects</a></li>
+  </ul></li>
+  <li><a name="toc-Input-1" href="Input.html#Input">4 Input</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Earlemes-1" href="Earlemes.html#Earlemes">4.1 Earlemes</a>
+    <ul class="no-bullet">
+      <li><a name="toc-The-traditional-model-1" href="The-traditional-model.html#The-traditional-model">4.1.1 The traditional model</a></li>
+      <li><a name="toc-The-earleme-variables-1" href="The-earleme-variables.html#The-earleme-variables">4.1.2 The earleme variables</a></li>
+      <li><a name="toc-The-significances-of-the-earleme-variables-1" href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables">4.1.3 The significances of the earleme variables</a></li>
+      <li><a name="toc-The-initial-earleme-settings-1" href="The-initial-earleme-settings.html#The-initial-earleme-settings">4.1.4 The initial earleme settings</a></li>
+      <li><a name="toc-The-standard-model-of-input-1" href="The-standard-model-of-input.html#The-standard-model-of-input">4.1.5 The standard model of input</a></li>
+      <li><a name="toc-Ambiguous-input-1" href="Ambiguous-input.html#Ambiguous-input">4.1.6 Ambiguous input</a></li>
+      <li><a name="toc-Variable-length-tokens-1" href="Variable-length-tokens.html#Variable-length-tokens">4.1.7 Variable length tokens</a></li>
+      <li><a name="toc-The-generalized-model-1" href="The-generalized-model.html#The-generalized-model">4.1.8 The generalized model</a></li>
+      <li><a name="toc-General-rules-for-the-earleme-variables-1" href="General-rules-for-the-earleme-variables.html#General-rules-for-the-earleme-variables">4.1.9 General rules for the earleme variables</a></li>
+    </ul></li>
+    <li><a name="toc-Terminals-1" href="Terminals.html#Terminals">4.2 Terminals</a></li>
+  </ul></li>
+  <li><a name="toc-Semantics-1" href="Semantics.html#Semantics">5 Semantics</a></li>
+  <li><a name="toc-Threads-1" href="Threads.html#Threads">6 Threads</a></li>
+  <li><a name="toc-Fatal-Errors-1" href="Fatal-Errors.html#Fatal-Errors">7 Fatal Errors</a></li>
+  <li><a name="toc-Introduction-to-the-external-interface-1" href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface">8 Introduction to the external interface</a>
+  <ul class="no-bullet">
+    <li><a name="toc-About-the-overviews-1" href="About-the-overviews.html#About-the-overviews">8.1 About the overviews</a></li>
+    <li><a name="toc-Return-values-1" href="Return-values.html#Return-values">8.2 Return values</a></li>
+    <li><a name="toc-Naming-conventions-1" href="Naming-conventions.html#Naming-conventions">8.3 Naming conventions</a></li>
+  </ul></li>
+  <li><a name="toc-Static-methods-1" href="Static-methods.html#Static-methods">9 Static methods</a></li>
+  <li><a name="toc-Configuration-methods-1" href="Configuration-methods.html#Configuration-methods">10 Configuration methods</a></li>
+  <li><a name="toc-Grammar-methods-1" href="Grammar-methods.html#Grammar-methods">11 Grammar methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Overview" href="Grammar-overview.html#Grammar-overview">11.1 Overview</a></li>
+    <li><a name="toc-Creating-a-new-grammar" href="Grammar-constructor.html#Grammar-constructor">11.2 Creating a new grammar</a></li>
+    <li><a name="toc-Tracking-the-reference-count-of-the-grammar" href="Grammar-reference-counting.html#Grammar-reference-counting">11.3 Tracking the reference count of the grammar</a></li>
+    <li><a name="toc-Symbols-1" href="Symbols.html#Symbols">11.4 Symbols</a></li>
+    <li><a name="toc-Rules-1" href="Rules.html#Rules">11.5 Rules</a></li>
+    <li><a name="toc-Sequences-1" href="Sequences.html#Sequences">11.6 Sequences</a></li>
+    <li><a name="toc-Ranks-1" href="Ranks.html#Ranks">11.7 Ranks</a></li>
+    <li><a name="toc-Events-1" href="Ranks.html#Events-1">11.8 Events</a></li>
+    <li><a name="toc-Precomputing-the-Grammar" href="Grammar-precomputation.html#Grammar-precomputation">11.9 Precomputing the Grammar</a></li>
+  </ul></li>
+  <li><a name="toc-Recognizer-methods-1" href="Recognizer-methods.html#Recognizer-methods">12 Recognizer methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Overview-1" href="Recognizer-overview.html#Recognizer-overview">12.1 Overview</a></li>
+    <li><a name="toc-Creating-a-new-recognizer" href="Recognizer-constructor.html#Recognizer-constructor">12.2 Creating a new recognizer</a></li>
+    <li><a name="toc-Keeping-the-reference-count-of-a-recognizer" href="Recognizer-reference-counting.html#Recognizer-reference-counting">12.3 Keeping the reference count of a recognizer</a></li>
+    <li><a name="toc-Life-cycle-mutators" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">12.4 Life cycle mutators</a></li>
+    <li><a name="toc-Location-accessors-1" href="Location-accessors.html#Location-accessors">12.5 Location accessors</a></li>
+    <li><a name="toc-Other-parse-status-methods-1" href="Other-parse-status-methods.html#Other-parse-status-methods">12.6 Other parse status methods</a></li>
+  </ul></li>
+  <li><a name="toc-Progress-reports-1" href="Progress-reports.html#Progress-reports">13 Progress reports</a></li>
+  <li><a name="toc-Bocage-methods-1" href="Bocage-methods.html#Bocage-methods">14 Bocage methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Overview-2" href="Bocage-overview.html#Bocage-overview">14.1 Overview</a></li>
+    <li><a name="toc-Creating-a-new-bocage" href="Bocage-constructor.html#Bocage-constructor">14.2 Creating a new bocage</a></li>
+    <li><a name="toc-Reference-counting-2" href="Bocage-reference-counting.html#Bocage-reference-counting">14.3 Reference counting</a></li>
+    <li><a name="toc-Accessors" href="Bocage-accessor.html#Bocage-accessor">14.4 Accessors</a></li>
+  </ul></li>
+  <li><a name="toc-Ordering-methods-1" href="Ordering-methods.html#Ordering-methods">15 Ordering methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Overview-3" href="Ordering-overview.html#Ordering-overview">15.1 Overview</a></li>
+    <li><a name="toc-Creating-an-ordering" href="Ordering-constructor.html#Ordering-constructor">15.2 Creating an ordering</a></li>
+    <li><a name="toc-Reference-counting-3" href="Ordering-reference-counting.html#Ordering-reference-counting">15.3 Reference counting</a></li>
+    <li><a name="toc-Accessors-1" href="Order-accessor.html#Order-accessor">15.4 Accessors</a></li>
+    <li><a name="toc-Non_002ddefault-ordering-1" href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">15.5 Non-default ordering</a></li>
+  </ul></li>
+  <li><a name="toc-Tree-methods-1" href="Tree-methods.html#Tree-methods">16 Tree methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Overview-4" href="Tree-overview.html#Tree-overview">16.1 Overview</a></li>
+    <li><a name="toc-Creating-a-new-tree-iterator" href="Tree-constructor.html#Tree-constructor">16.2 Creating a new tree iterator</a></li>
+    <li><a name="toc-Reference-counting-4" href="Tree-reference-counting.html#Tree-reference-counting">16.3 Reference counting</a></li>
+    <li><a name="toc-Iterating-through-the-trees" href="Tree-iteration.html#Tree-iteration">16.4 Iterating through the trees</a></li>
+  </ul></li>
+  <li><a name="toc-Value-methods-1" href="Value-methods.html#Value-methods">17 Value methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Overview-5" href="Value-overview.html#Value-overview">17.1 Overview</a></li>
+    <li><a name="toc-How-to-use-the-valuator-1" href="How-to-use-the-valuator.html#How-to-use-the-valuator">17.2 How to use the valuator</a></li>
+    <li><a name="toc-Advantages-of-step_002ddriven-valuation-1" href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation">17.3 Advantages of step-driven valuation</a></li>
+    <li><a name="toc-Maintaining-the-stack-1" href="Maintaining-the-stack.html#Maintaining-the-stack">17.4 Maintaining the stack</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Sizing-the-stack-1" href="Sizing-the-stack.html#Sizing-the-stack">17.4.1 Sizing the stack</a></li>
+      <li><a name="toc-Initializing-locations-in-the-stack-1" href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">17.4.2 Initializing locations in the stack</a></li>
+    </ul></li>
+    <li><a name="toc-Creating-a-new-valuator" href="Valuator-constructor.html#Valuator-constructor">17.5 Creating a new valuator</a></li>
+    <li><a name="toc-Reference-counting-5" href="Valuator-reference-counting.html#Valuator-reference-counting">17.6 Reference counting</a></li>
+    <li><a name="toc-Stepping-through-the-valuator-1" href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">17.7 Stepping through the valuator</a></li>
+    <li><a name="toc-Valuator-steps-by-type-1" href="Valuator-steps-by-type.html#Valuator-steps-by-type">17.8 Valuator steps by type</a></li>
+    <li><a name="toc-Basic-step-accessors-1" href="Basic-step-accessors.html#Basic-step-accessors">17.9 Basic step accessors</a></li>
+    <li><a name="toc-Other-step-accessors-1" href="Other-step-accessors.html#Other-step-accessors">17.10 Other step accessors</a></li>
+  </ul></li>
+  <li><a name="toc-Events-2" href="Events.html#Events">18 Events</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Overview-6" href="Events-overview.html#Events-overview">18.1 Overview</a></li>
+    <li><a name="toc-Methods" href="Event-methods.html#Event-methods">18.2 Methods</a></li>
+    <li><a name="toc-Event-codes-1" href="Event-codes.html#Event-codes">18.3 Event codes</a></li>
+  </ul></li>
+  <li><a name="toc-Error-methods_002c-macros-and-codes" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">19 Error methods, macros and codes</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Error-methods-1" href="Error-methods.html#Error-methods">19.1 Error methods</a></li>
+    <li><a name="toc-Error-Macros-1" href="Error-Macros.html#Error-Macros">19.2 Error Macros</a></li>
+    <li><a name="toc-External-error-codes-1" href="External-error-codes.html#External-error-codes">19.3 External error codes</a></li>
+    <li><a name="toc-Internal-error-codes-1" href="Internal-error-codes.html#Internal-error-codes">19.4 Internal error codes</a></li>
+  </ul></li>
+  <li><a name="toc-Design-notes-1" href="Design-notes.html#Design-notes">20 Design notes</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Why-so-many-time-objects_003f" href="Why-so-many-time-objects.html#Why-so-many-time-objects">20.1 Why so many time objects?</a></li>
+    <li><a name="toc-Numbered-objects-2" href="Design-of-numbered-objects.html#Design-of-numbered-objects">20.2 Numbered objects</a></li>
+    <li><a name="toc-LHS-terminals" href="LHS-Terminals.html#LHS-Terminals">20.3 LHS terminals</a></li>
+  </ul></li>
+  <li><a name="toc-Work-in-Progress-1" href="Work-in-Progress.html#Work-in-Progress">21 Work in Progress</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Untested-methods-1" href="Untested-methods.html#Untested-methods">21.1 Untested methods</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Ranking-methods-1" href="Ranking-methods.html#Ranking-methods">21.1.1 Ranking methods</a></li>
+      <li><a name="toc-Zero_002dwidth-assertion-methods-1" href="Zero_002dwidth-assertion-methods.html#Zero_002dwidth-assertion-methods">21.1.2 Zero-width assertion methods</a></li>
+      <li><a name="toc-Methods-for-revising-parses-1" href="Methods-for-revising-parses.html#Methods-for-revising-parses">21.1.3 Methods for revising parses</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-Deprecated-techniques-and-methods-1" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">22 Deprecated techniques and methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Valued-and-unvalued-symbols-1" href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">22.1 Valued and unvalued symbols</a>
+    <ul class="no-bullet">
+      <li><a name="toc-What-unvalued-symbols-were-1" href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">22.1.1 What unvalued symbols were</a></li>
+      <li><a name="toc-Grammar-methods-dealing-with-unvalued-symbols-1" href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">22.1.2 Grammar methods dealing with unvalued symbols</a></li>
+      <li><a name="toc-Registering-semantics-in-the-valuator-1" href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">22.1.3 Registering semantics in the valuator</a></li>
+    </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="About-this-document.html#About-this-document" accesskey="n" rel="next">About this document</a>, Previous: <a href="../dir/index.html" accesskey="p" rel="prev">(dir)</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
+<h1 class="top">Libmarpa: The Marpa low-level library</h1>
+<p>This manual (2 May 2016)
+is for Libmarpa 8.4.0.
 </p>
-<ul class="menu">
-<li><a href="How-to-read-this-document.html#How-to-read-this-document">How to read this document</a>
-<li><a href="Prerequisites.html#Prerequisites">Prerequisites</a>
-<li><a href="Parsing-theory.html#Parsing-theory">Parsing theory</a>
-
-</li></ul>
-<p>Architecture
-
+<p>Copyright &copy; 2015 Jeffrey Kegler.
 </p>
-<ul class="menu">
-<li><a href="Major-objects.html#Major-objects">Major objects</a>
-<li><a href="Time-objects.html#Time-objects">Time objects</a>
-<li><a href="Reference-counting.html#Reference-counting">Reference counting</a>
-<li><a href="Numbered-objects.html#Numbered-objects">Numbered objects</a>
-
-</li></ul>
-<p>Input
-
+<blockquote>
+<p>Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the &ldquo;Software&rdquo;),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 </p>
-<ul class="menu">
-<li><a href="Earlemes.html#Earlemes">Earlemes</a>
-<li><a href="Terminals.html#Terminals">Terminals</a>
-
-</li></ul>
-<p>Earlemes
-
+<p>The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 </p>
-<ul class="menu">
-<li><a href="The-traditional-model.html#The-traditional-model">The traditional model</a>
-<li><a href="The-earleme-variables.html#The-earleme-variables">The earleme variables</a>
-<li><a href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables">The significances of the earleme variables</a>
-<li><a href="The-initial-earleme-settings.html#The-initial-earleme-settings">The initial earleme settings</a>
-<li><a href="The-standard-model-of-input.html#The-standard-model-of-input">The standard model of input</a>
-<li><a href="Ambiguous-input.html#Ambiguous-input">Ambiguous input</a>
-<li><a href="Variable-length-tokens.html#Variable-length-tokens">Variable length tokens</a>
-<li><a href="The-generalized-model.html#The-generalized-model">The generalized model</a>
-<li><a href="General-rules-for-the-earleme-variables.html#General-rules-for-the-earleme-variables">General rules for the earleme variables</a>
+<p>THE SOFTWARE IS PROVIDED &ldquo;AS IS&rdquo;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+</p></blockquote>
 
-</li></ul>
-<p>Introduction to the external interface
 
-</p>
-<ul class="menu">
-<li><a href="About-the-overviews.html#About-the-overviews">About the overviews</a>
-<li><a href="Return-values.html#Return-values">Return values</a>
-<li><a href="Naming-conventions.html#Naming-conventions">Naming conventions</a>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="About-this-document.html#About-this-document" accesskey="1">About this document</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="About-Libmarpa.html#About-Libmarpa" accesskey="2">About Libmarpa</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Architecture.html#Architecture" accesskey="3">Architecture</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Input.html#Input" accesskey="4">Input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Semantics.html#Semantics" accesskey="5">Semantics</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Threads.html#Threads" accesskey="6">Threads</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Fatal-Errors.html#Fatal-Errors" accesskey="7">Fatal Errors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" accesskey="8">Introduction to the external interface</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Static-methods.html#Static-methods" accesskey="9">Static methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Configuration-methods.html#Configuration-methods">Configuration methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Grammar-methods.html#Grammar-methods">Grammar methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Recognizer-methods.html#Recognizer-methods">Recognizer methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Progress-reports.html#Progress-reports">Progress reports</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Bocage-methods.html#Bocage-methods">Bocage methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Ordering-methods.html#Ordering-methods">Ordering methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tree-methods.html#Tree-methods">Tree methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Value-methods.html#Value-methods">Value methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Events.html#Events">Events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">Error methods macros and codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Design-notes.html#Design-notes">Design notes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Work-in-Progress.html#Work-in-Progress">Work in Progress</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">Deprecated techniques and methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+</pre></th></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment"> &mdash; The Detailed Node Listing &mdash;
 
-</li></ul>
-<p>Grammar methods
+About this document
 
-</p>
-<ul class="menu">
-<li><a href="Grammar-overview.html#Grammar-overview">Grammar overview</a>
-<li><a href="Grammar-constructor.html#Grammar-constructor">Grammar constructor</a>
-<li><a href="Grammar-reference-counting.html#Grammar-reference-counting">Grammar reference counting</a>
-<li><a href="Symbols.html#Symbols">Symbols</a>
-<li><a href="Rules.html#Rules">Rules</a>
-<li><a href="Sequences.html#Sequences">Sequences</a>
-<li><a href="Ranks.html#Ranks">Ranks</a>
-<li><a href="Grammar-precomputation.html#Grammar-precomputation">Grammar precomputation</a>
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="How-to-read-this-document.html#How-to-read-this-document">How to read this document</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Prerequisites.html#Prerequisites">Prerequisites</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Parsing-theory.html#Parsing-theory">Parsing theory</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Architecture
 
-</li></ul>
-<p>Recognizer methods
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Major-objects.html#Major-objects">Major objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Time-objects.html#Time-objects">Time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Reference-counting.html#Reference-counting">Reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Numbered-objects.html#Numbered-objects">Numbered objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Input
 
-</p>
-<ul class="menu">
-<li><a href="Recognizer-overview.html#Recognizer-overview">Recognizer overview</a>
-<li><a href="Recognizer-constructor.html#Recognizer-constructor">Recognizer constructor</a>
-<li><a href="Recognizer-reference-counting.html#Recognizer-reference-counting">Recognizer reference counting</a>
-<li><a href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">Recognizer life cycle mutators</a>
-<li><a href="Location-accessors.html#Location-accessors">Location accessors</a>
-<li><a href="Other-parse-status-methods.html#Other-parse-status-methods">Other parse status methods</a>
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Earlemes.html#Earlemes">Earlemes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Terminals.html#Terminals">Terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Earlemes
 
-</li></ul>
-<p>Bocage methods
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="The-traditional-model.html#The-traditional-model">The traditional model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="The-earleme-variables.html#The-earleme-variables">The earleme variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="The-significances-of-the-earleme-variables.html#The-significances-of-the-earleme-variables">The significances of the earleme variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="The-initial-earleme-settings.html#The-initial-earleme-settings">The initial earleme settings</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="The-standard-model-of-input.html#The-standard-model-of-input">The standard model of input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Ambiguous-input.html#Ambiguous-input">Ambiguous input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Variable-length-tokens.html#Variable-length-tokens">Variable length tokens</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="The-generalized-model.html#The-generalized-model">The generalized model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="General-rules-for-the-earleme-variables.html#General-rules-for-the-earleme-variables">General rules for the earleme variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Introduction to the external interface
 
-</p>
-<ul class="menu">
-<li><a href="Bocage-overview.html#Bocage-overview">Bocage overview</a>
-<li><a href="Bocage-constructor.html#Bocage-constructor">Bocage constructor</a>
-<li><a href="Bocage-reference-counting.html#Bocage-reference-counting">Bocage reference counting</a>
-<li><a href="Bocage-accessor.html#Bocage-accessor">Bocage accessor</a>
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="About-the-overviews.html#About-the-overviews">About the overviews</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Return-values.html#Return-values">Return values</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Naming-conventions.html#Naming-conventions">Naming conventions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Grammar methods
 
-</li></ul>
-<p>Ordering methods
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Grammar-overview.html#Grammar-overview">Grammar overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Grammar-constructor.html#Grammar-constructor">Grammar constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Grammar-reference-counting.html#Grammar-reference-counting">Grammar reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Symbols.html#Symbols">Symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Rules.html#Rules">Rules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Sequences.html#Sequences">Sequences</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Ranks.html#Ranks">Ranks</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Events.html#Events">Events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Grammar-precomputation.html#Grammar-precomputation">Grammar precomputation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Recognizer methods
 
-</p>
-<ul class="menu">
-<li><a href="Ordering-overview.html#Ordering-overview">Ordering overview</a>
-<li><a href="Ordering-constructor.html#Ordering-constructor">Ordering constructor</a>
-<li><a href="Ordering-reference-counting.html#Ordering-reference-counting">Ordering reference counting</a>
-<li><a href="Order-accessor.html#Order-accessor">Order accessor</a>
-<li><a href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">Non-default ordering</a>
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Recognizer-overview.html#Recognizer-overview">Recognizer overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Recognizer-constructor.html#Recognizer-constructor">Recognizer constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Recognizer-reference-counting.html#Recognizer-reference-counting">Recognizer reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">Recognizer life cycle mutators</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Location-accessors.html#Location-accessors">Location accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Other-parse-status-methods.html#Other-parse-status-methods">Other parse status methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Bocage methods
 
-</li></ul>
-<p>Tree methods
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Bocage-overview.html#Bocage-overview">Bocage overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Bocage-constructor.html#Bocage-constructor">Bocage constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Bocage-reference-counting.html#Bocage-reference-counting">Bocage reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Bocage-accessor.html#Bocage-accessor">Bocage accessor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Ordering methods
 
-</p>
-<ul class="menu">
-<li><a href="Tree-overview.html#Tree-overview">Tree overview</a>
-<li><a href="Tree-constructor.html#Tree-constructor">Tree constructor</a>
-<li><a href="Tree-reference-counting.html#Tree-reference-counting">Tree reference counting</a>
-<li><a href="Tree-iteration.html#Tree-iteration">Tree iteration</a>
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Ordering-overview.html#Ordering-overview">Ordering overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Ordering-constructor.html#Ordering-constructor">Ordering constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Ordering-reference-counting.html#Ordering-reference-counting">Ordering reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Order-accessor.html#Order-accessor">Order accessor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">Non-default ordering</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Tree methods
 
-</li></ul>
-<p>Value methods
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Tree-overview.html#Tree-overview">Tree overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tree-constructor.html#Tree-constructor">Tree constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tree-reference-counting.html#Tree-reference-counting">Tree reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tree-iteration.html#Tree-iteration">Tree iteration</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Value methods
 
-</p>
-<ul class="menu">
-<li><a href="Value-overview.html#Value-overview">Value overview</a>
-<li><a href="How-to-use-the-valuator.html#How-to-use-the-valuator">How to use the valuator</a>
-<li><a href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation">Advantages of step-driven valuation</a>
-<li><a href="Maintaining-the-stack.html#Maintaining-the-stack">Maintaining the stack</a>
-<li><a href="Valuator-constructor.html#Valuator-constructor">Valuator constructor</a>
-<li><a href="Valuator-reference-counting.html#Valuator-reference-counting">Valuator reference counting</a>
-<li><a href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">Stepping through the valuator</a>
-<li><a href="Valuator-steps-by-type.html#Valuator-steps-by-type">Valuator steps by type</a>
-<li><a href="Basic-step-accessors.html#Basic-step-accessors">Basic step accessors</a>
-<li><a href="Other-step-accessors.html#Other-step-accessors">Other step accessors</a>
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Value-overview.html#Value-overview">Value overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="How-to-use-the-valuator.html#How-to-use-the-valuator">How to use the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation">Advantages of step-driven valuation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Maintaining-the-stack.html#Maintaining-the-stack">Maintaining the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Valuator-constructor.html#Valuator-constructor">Valuator constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Valuator-reference-counting.html#Valuator-reference-counting">Valuator reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">Stepping through the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Valuator-steps-by-type.html#Valuator-steps-by-type">Valuator steps by type</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Basic-step-accessors.html#Basic-step-accessors">Basic step accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Other-step-accessors.html#Other-step-accessors">Other step accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Maintaining the stack
 
-</li></ul>
-<p>Maintaining the stack
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Sizing-the-stack.html#Sizing-the-stack">Sizing the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">Initializing locations in the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Events
 
-</p>
-<ul class="menu">
-<li><a href="Sizing-the-stack.html#Sizing-the-stack">Sizing the stack</a>
-<li><a href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">Initializing locations in the stack</a>
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Events-overview.html#Events-overview">Events overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Event-methods.html#Event-methods">Event methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Event-codes.html#Event-codes">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Error methods, macros and codes
 
-</li></ul>
-<p>Events
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Error-methods.html#Error-methods">Error methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Error-Macros.html#Error-Macros">Error Macros</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="External-error-codes.html#External-error-codes">External error codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Internal-error-codes.html#Internal-error-codes">Internal error codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Design notes
 
-</p>
-<ul class="menu">
-<li><a href="Events-overview.html#Events-overview">Events overview</a>
-<li><a href="Event-methods.html#Event-methods">Event methods</a>
-<li><a href="Event-codes.html#Event-codes">Event codes</a>
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Why-so-many-time-objects.html#Why-so-many-time-objects">Why so many time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Design-of-numbered-objects.html#Design-of-numbered-objects">Design of numbered objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="LHS-Terminals.html#LHS-Terminals">LHS Terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Work in Progress
 
-</li></ul>
-<p>Error methods, macros and codes
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Untested-methods.html#Untested-methods">Untested methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Untested methods
 
-</p>
-<ul class="menu">
-<li><a href="Error-methods.html#Error-methods">Error methods</a>
-<li><a href="Error-Macros.html#Error-Macros">Error Macros</a>
-<li><a href="External-error-codes.html#External-error-codes">External error codes</a>
-<li><a href="Internal-error-codes.html#Internal-error-codes">Internal error codes</a>
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Ranking-methods.html#Ranking-methods">Ranking methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Zero_002dwidth-assertion-methods.html#Zero_002dwidth-assertion-methods">Zero-width assertion methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Methods-for-revising-parses.html#Methods-for-revising-parses">Methods for revising parses</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Deprecated techniques and methods
 
-</li></ul>
-<p>Design notes
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Valued and unvalued symbols
 
-</p>
-<ul class="menu">
-<li><a href="Why-so-many-time-objects.html#Why-so-many-time-objects">Why so many time objects</a>
-<li><a href="Design-of-numbered-objects.html#Design-of-numbered-objects">Design of numbered objects</a>
-<li><a href="LHS-Terminals.html#LHS-Terminals">LHS Terminals</a>
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">What unvalued symbols were</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">Grammar methods dealing with unvalued symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">Registering semantics in the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+</pre></th></tr></table>
 
-</li></ul>
-<p>Work in Progress
-
-</p>
-<ul class="menu">
-<li><a href="Untested-methods.html#Untested-methods">Untested methods</a>
-
-</li></ul>
-<p>Untested methods
-
-</p>
-<ul class="menu">
-<li><a href="Ranking-methods.html#Ranking-methods">Ranking methods</a>
-<li><a href="Zero_002dwidth-assertion-methods.html#Zero_002dwidth-assertion-methods">Zero-width assertion methods</a>
-<li><a href="Methods-for-revising-parses.html#Methods-for-revising-parses">Methods for revising parses</a>
-
-</li></ul>
-<p>Deprecated techniques and methods
-
-</p>
-<ul class="menu">
-<li><a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>
-
-</li></ul>
-<p>Valued and unvalued symbols
-
-</p>
-<ul class="menu">
-<li><a href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">What unvalued symbols were</a>
-<li><a href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">Grammar methods dealing with unvalued symbols</a>
-<li><a href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">Registering semantics in the valuator</a>
-
-   </ul>
+<hr>
+<div class="header">
+<p>
+Next: <a href="About-this-document.html#About-this-document" accesskey="n" rel="next">About this document</a>, Previous: <a href="../dir/index.html" accesskey="p" rel="prev">(dir)</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
     <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

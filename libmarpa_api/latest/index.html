@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (14 July 2017)
-is for Libmarpa 8.6.0.
+<!-- This manual (27 March 2022)
+is for Libmarpa 8.6.2.
 
-Copyright (C) 2015 Jeffrey Kegler.
+Copyright (C) 2018 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -22,16 +22,16 @@ THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
 OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE. -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>Libmarpa 8.6.0: Top</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Top (Libmarpa 8.6.2)</title>
 
-<meta name="description" content="Libmarpa 8.6.0: Top">
-<meta name="keywords" content="Libmarpa 8.6.0: Top">
+<meta name="description" content="Top (Libmarpa 8.6.2)">
+<meta name="keywords" content="Top (Libmarpa 8.6.2)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="../dir/index.html" rel="up" title="(dir)">
@@ -39,16 +39,16 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -57,10 +57,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -68,8 +67,8 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">Libmarpa 8.6.0</h1>
+<body lang="en">
+<h1 class="settitle" align="center">Libmarpa 8.6.2</h1>
 
 
 
@@ -230,10 +229,10 @@ Next: <a href="About-this-document.html#About-this-document" accesskey="n" rel="
 <hr>
 <a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
 <h1 class="top">Libmarpa: The Marpa low-level library</h1>
-<p>This manual (14 July 2017)
-is for Libmarpa 8.6.0.
+<p>This manual (27 March 2022)
+is for Libmarpa 8.6.2.
 </p>
-<p>Copyright &copy; 2015 Jeffrey Kegler.
+<p>Copyright &copy; 2018 Jeffrey Kegler.
 </p>
 <blockquote>
 <p>Permission is hereby granted, free of charge, to any person obtaining a
@@ -302,6 +301,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 <tr><td align="left" valign="top">&bull; <a href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">Deprecated techniques and methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment"> &mdash; The Detailed Node Listing &mdash;
 
 About this document
@@ -313,6 +313,7 @@ About this document
 <tr><td align="left" valign="top">&bull; <a href="Parsing-theory.html#Parsing-theory">Parsing theory</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Architecture
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Major-objects.html#Major-objects">Major objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -324,6 +325,7 @@ Architecture
 <tr><td align="left" valign="top">&bull; <a href="Numbered-objects.html#Numbered-objects">Numbered objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Input
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Earlemes.html#Earlemes">Earlemes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -331,6 +333,7 @@ Input
 <tr><td align="left" valign="top">&bull; <a href="Terminals.html#Terminals">Terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Earlemes
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="The-traditional-model.html#The-traditional-model">The traditional model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -352,6 +355,7 @@ Earlemes
 <tr><td align="left" valign="top">&bull; <a href="General-rules-for-the-earleme-variables.html#General-rules-for-the-earleme-variables">General rules for the earleme variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Introduction to the external interface
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="About-the-overviews.html#About-the-overviews">About the overviews</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -361,6 +365,7 @@ Introduction to the external interface
 <tr><td align="left" valign="top">&bull; <a href="Naming-conventions.html#Naming-conventions">Naming conventions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Grammar methods
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Grammar-overview.html#Grammar-overview">Grammar overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -382,6 +387,7 @@ Grammar methods
 <tr><td align="left" valign="top">&bull; <a href="Grammar-precomputation.html#Grammar-precomputation">Grammar precomputation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Recognizer methods
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Recognizer-overview.html#Recognizer-overview">Recognizer overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -397,6 +403,7 @@ Recognizer methods
 <tr><td align="left" valign="top">&bull; <a href="Other-parse-status-methods.html#Other-parse-status-methods">Other parse status methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Bocage methods
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Bocage-overview.html#Bocage-overview">Bocage overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -408,6 +415,7 @@ Bocage methods
 <tr><td align="left" valign="top">&bull; <a href="Bocage-accessor.html#Bocage-accessor">Bocage accessor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Ordering methods
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Ordering-overview.html#Ordering-overview">Ordering overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -421,6 +429,7 @@ Ordering methods
 <tr><td align="left" valign="top">&bull; <a href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">Non-default ordering</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Tree methods
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Tree-overview.html#Tree-overview">Tree overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -432,6 +441,7 @@ Tree methods
 <tr><td align="left" valign="top">&bull; <a href="Tree-iteration.html#Tree-iteration">Tree iteration</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Value methods
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Value-overview.html#Value-overview">Value overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -455,6 +465,7 @@ Value methods
 <tr><td align="left" valign="top">&bull; <a href="Other-step-accessors.html#Other-step-accessors">Other step accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Maintaining the stack
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Sizing-the-stack.html#Sizing-the-stack">Sizing the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -462,6 +473,7 @@ Maintaining the stack
 <tr><td align="left" valign="top">&bull; <a href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">Initializing locations in the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Events
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Events-overview.html#Events-overview">Events overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -471,6 +483,7 @@ Events
 <tr><td align="left" valign="top">&bull; <a href="Event-codes.html#Event-codes">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Error methods, macros and codes
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Error-methods.html#Error-methods">Error methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -482,6 +495,7 @@ Error methods, macros and codes
 <tr><td align="left" valign="top">&bull; <a href="Internal-error-codes.html#Internal-error-codes">Internal error codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Design notes
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Why-so-many-time-objects.html#Why-so-many-time-objects">Why so many time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -491,11 +505,13 @@ Design notes
 <tr><td align="left" valign="top">&bull; <a href="LHS-Terminals.html#LHS-Terminals">LHS Terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Work in Progress
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Untested-methods.html#Untested-methods">Untested methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Untested methods
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Ranking-methods.html#Ranking-methods">Ranking methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -505,11 +521,13 @@ Untested methods
 <tr><td align="left" valign="top">&bull; <a href="Methods-for-revising-parses.html#Methods-for-revising-parses">Methods for revising parses</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Deprecated techniques and methods
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Valued and unvalued symbols
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">What unvalued symbols were</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -519,6 +537,7 @@ Valued and unvalued symbols
 <tr><td align="left" valign="top">&bull; <a href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">Registering semantics in the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr></table>
 
 <hr>

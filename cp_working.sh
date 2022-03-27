@@ -3,7 +3,7 @@ set -x
 
 # NOTE: This is NOT portable
 # It relies on my directory layout
-libmarpa_dir=$HOME/projects/libmarpa
+libmarpa_dir=$HOME/Desktop/projects/libmarpa
 
 if test -d $libmarpa_dir
 then :

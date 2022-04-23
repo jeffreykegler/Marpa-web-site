@@ -1,0 +1,10 @@
+To update the HTML for the Libmarpa API doc ...
+
+* for the stable single-page version, copy the single HTML page to http://jeffreykegler.github.io/Marpa-web-site/libmarpa_api/stable/single-page/index.html.
+
+* for the stable multi-page version,
+    + delete all the files in
+      http://jeffreykegler.github.io/Marpa-web-site/libmarpa_api/stable/multi-page/;
+    + tar up the multi-page HTML; and
+    + untar into
+      http://jeffreykegler.github.io/Marpa-web-site/libmarpa_api/stable/multi-page/.

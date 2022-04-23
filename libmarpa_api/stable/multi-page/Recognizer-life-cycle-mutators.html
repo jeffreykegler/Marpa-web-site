@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2022)
-is for Libmarpa 8.4.0.
+<!-- This manual (23 April 2022)
+is for Libmarpa 8.6.2.
 
-Copyright (C) 2015 Jeffrey Kegler.
+Copyright (C) 2018 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Recognizer life cycle mutators (Libmarpa 8.4.0)</title>
+<title>Recognizer life cycle mutators (Libmarpa 8.6.2)</title>
 
-<meta name="description" content="Recognizer life cycle mutators (Libmarpa 8.4.0)">
-<meta name="keywords" content="Recognizer life cycle mutators (Libmarpa 8.4.0)">
+<meta name="description" content="Recognizer life cycle mutators (Libmarpa 8.6.2)">
+<meta name="keywords" content="Recognizer life cycle mutators (Libmarpa 8.6.2)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -183,7 +183,7 @@ span, there will be no other tokens that start inside it.
 <code>marpa_r_earleme_complete()</code> always advances the current earleme,
 incrementing its value by 1.
 This means that value of the current earleme after the call
-will be the one plus the value of the earleme processed by the call
+will be one plus the value of the earleme processed by the call
 to <code>marpa_r_earleme_complete()</code>.
 If any token was accepted at the earleme being processed,
 <code>marpa_r_earleme_complete()</code> creates a new Earley set
@@ -281,16 +281,8 @@ On failure, -2.
 <p>
 Next: <a href="Location-accessors.html#Location-accessors" accesskey="n" rel="next">Location accessors</a>, Previous: <a href="Recognizer-reference-counting.html#Recognizer-reference-counting" accesskey="p" rel="prev">Recognizer reference counting</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-33430331-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
-  </body>
+
+
+
+</body>
 </html>

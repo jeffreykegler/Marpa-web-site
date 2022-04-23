@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2022)
-is for Libmarpa 8.4.0.
+<!-- This manual (23 April 2022)
+is for Libmarpa 8.6.2.
 
-Copyright (C) 2015 Jeffrey Kegler.
+Copyright (C) 2018 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Libmarpa 8.4.0</title>
+<title>Libmarpa 8.6.2</title>
 
-<meta name="description" content="Libmarpa 8.4.0">
-<meta name="keywords" content="Libmarpa 8.4.0">
+<meta name="description" content="Libmarpa 8.6.2">
+<meta name="keywords" content="Libmarpa 8.6.2">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -67,7 +67,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">Libmarpa 8.4.0</h1>
+<h1 class="settitle" align="center">Libmarpa 8.6.2</h1>
 
 
 
@@ -223,10 +223,10 @@ ul.no-bullet {list-style: none}
 <a name="Top"></a>
 <a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
 <h1 class="top">Libmarpa: The Marpa low-level library</h1>
-<p>This manual (27 March 2022)
-is for Libmarpa 8.4.0.
+<p>This manual (23 April 2022)
+is for Libmarpa 8.6.2.
 </p>
-<p>Copyright &copy; 2015 Jeffrey Kegler.
+<p>Copyright &copy; 2018 Jeffrey Kegler.
 </p>
 <blockquote>
 <p>Permission is hereby granted, free of charge, to any person obtaining a
@@ -884,12 +884,31 @@ it falls into one of these two cases:
 <li> There has been no call
 to <code>marpa_r_alternative()</code> since
 recognizer initialization.
-</li><li> There has been no call
-to <code>marpa_r_alternative()</code> since
-the previous call
-to <code>marpa_r_earleme_complete()</code>.
+</li><li> No previous call to <code>marpa_r_alternative()</code> created
+a lexeme which ends at the next earleme.
+The &quot;next earleme&quot; is <var>c+1</var>,
+where <var>c</var> is the current earleme.
 </li></ul>
 
+<p>A previous call to
+<code>marpa_r_alternative()</code> created
+an earleme which ends at <var>lex_end</var>,
+if
+</p><ul>
+<li> It was called when the current earleme
+was <var>lex_start</var>.
+</li><li> It created a lexeme of length <var>lex_len</var>.
+</li><li> <var>lex_start+lex_len</var> is equal to
+<var>lex_end</var>.
+</li></ul>
+
+<p>Note that the above implies the ordinary case:
+If <code>marpa_r_alternative()</code> is called
+at current location <var>c</var>,
+and the lexeme it creates has the default length of 1,
+then that lexeme will end at <var>c+1</var>,
+the &quot;next earleme&quot;.
+</p>
 <p>Suppose, in the generalized input model that,
 for a call
 to <code>marpa_r_earleme_complete()</code>
@@ -2682,7 +2701,7 @@ span, there will be no other tokens that start inside it.
 <code>marpa_r_earleme_complete()</code> always advances the current earleme,
 incrementing its value by 1.
 This means that value of the current earleme after the call
-will be the one plus the value of the earleme processed by the call
+will be one plus the value of the earleme processed by the call
 to <code>marpa_r_earleme_complete()</code>.
 If any token was accepted at the earleme being processed,
 <code>marpa_r_earleme_complete()</code> creates a new Earley set
@@ -5945,16 +5964,8 @@ value, which will never be
 </dd></dl>
 
 <hr>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-33430331-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
-  </body>
+
+
+
+</body>
 </html>

@@ -8,3 +8,6 @@ To update the HTML for the Libmarpa API doc ...
     + tar up the multi-page HTML; and
     + untar into
       http://jeffreykegler.github.io/Marpa-web-site/libmarpa_api/stable/multi-page/.
+
+* for the bleeding edge single-page version, copy the single HTML page to http://jeffreykegler.github.io/Marpa-web-site/libmarpa_api/latest/index.html.
+

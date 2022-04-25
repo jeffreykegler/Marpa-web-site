@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.3.
+<!-- This manual (25 April 2022)
+is for Libmarpa 8.6.4.
 
 Copyright (C) 2018 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Libmarpa 8.6.3</title>
+<title>Libmarpa 8.6.4</title>
 
-<meta name="description" content="Libmarpa 8.6.3">
-<meta name="keywords" content="Libmarpa 8.6.3">
+<meta name="description" content="Libmarpa 8.6.4">
+<meta name="keywords" content="Libmarpa 8.6.4">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -67,7 +67,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">Libmarpa 8.6.3</h1>
+<h1 class="settitle" align="center">Libmarpa 8.6.4</h1>
 
 
 
@@ -221,10 +221,14 @@ ul.no-bullet {list-style: none}
 
 
 <a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="#About-this-document" accesskey="n" rel="next">About this document</a>, Previous: <a href="dir.html#Top" accesskey="p" rel="prev">(dir)</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
 <h1 class="top">Libmarpa: The Marpa low-level library</h1>
-<p>This manual (23 April 2022)
-is for Libmarpa 8.6.3.
+<p>This manual (25 April 2022)
+is for Libmarpa 8.6.4.
 </p>
 <p>Copyright &copy; 2018 Jeffrey Kegler.
 </p>
@@ -249,15 +253,315 @@ OTHER DEALINGS IN THE SOFTWARE.
 </p></blockquote>
 
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#About-this-document" accesskey="1">About this document</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#About-Libmarpa" accesskey="2">About Libmarpa</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Architecture" accesskey="3">Architecture</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Input" accesskey="4">Input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Semantics" accesskey="5">Semantics</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Threads" accesskey="6">Threads</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Fatal-Errors" accesskey="7">Fatal Errors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Introduction-to-the-external-interface" accesskey="8">Introduction to the external interface</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Static-methods" accesskey="9">Static methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Configuration-methods">Configuration methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Grammar-methods">Grammar methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Recognizer-methods">Recognizer methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Progress-reports">Progress reports</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bocage-methods">Bocage methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ordering-methods">Ordering methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tree-methods">Tree methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Value-methods">Value methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Events">Events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Error-methods-macros-and-codes">Error methods macros and codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Design-notes">Design notes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Work-in-Progress">Work in Progress</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Deprecated-techniques-and-methods">Deprecated techniques and methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+</pre></th></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment"> &mdash; The Detailed Node Listing &mdash;
+
+About this document
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#How-to-read-this-document">How to read this document</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Prerequisites">Prerequisites</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Parsing-theory">Parsing theory</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Architecture
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Major-objects">Major objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Time-objects">Time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Reference-counting">Reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Numbered-objects">Numbered objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Input
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Earlemes">Earlemes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Terminals">Terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Earlemes
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#The-traditional-model">The traditional model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-earleme-variables">The earleme variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-significances-of-the-earleme-variables">The significances of the earleme variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-initial-earleme-settings">The initial earleme settings</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-standard-model-of-input">The standard model of input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ambiguous-input">Ambiguous input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Variable-length-tokens">Variable length tokens</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-generalized-model">The generalized model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#General-rules-for-the-earleme-variables">General rules for the earleme variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Introduction to the external interface
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#About-the-overviews">About the overviews</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Return-values">Return values</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Naming-conventions">Naming conventions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Grammar methods
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Grammar-overview">Grammar overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Grammar-constructor">Grammar constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Grammar-reference-counting">Grammar reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Symbols">Symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Rules">Rules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Sequences">Sequences</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ranks">Ranks</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Events">Events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Grammar-precomputation">Grammar precomputation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Recognizer methods
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Recognizer-overview">Recognizer overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Recognizer-constructor">Recognizer constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Recognizer-reference-counting">Recognizer reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Recognizer-life-cycle-mutators">Recognizer life cycle mutators</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Location-accessors">Location accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Other-parse-status-methods">Other parse status methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Bocage methods
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Bocage-overview">Bocage overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bocage-constructor">Bocage constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bocage-reference-counting">Bocage reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bocage-accessor">Bocage accessor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Ordering methods
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Ordering-overview">Ordering overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ordering-constructor">Ordering constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ordering-reference-counting">Ordering reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Order-accessor">Order accessor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Non_002ddefault-ordering">Non-default ordering</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Tree methods
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Tree-overview">Tree overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tree-constructor">Tree constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tree-reference-counting">Tree reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tree-iteration">Tree iteration</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Value methods
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Value-overview">Value overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#How-to-use-the-valuator">How to use the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Advantages-of-step_002ddriven-valuation">Advantages of step-driven valuation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Maintaining-the-stack">Maintaining the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Valuator-constructor">Valuator constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Valuator-reference-counting">Valuator reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Stepping-through-the-valuator">Stepping through the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Valuator-steps-by-type">Valuator steps by type</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Basic-step-accessors">Basic step accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Other-step-accessors">Other step accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Maintaining the stack
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Sizing-the-stack">Sizing the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Initializing-locations-in-the-stack">Initializing locations in the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Events
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Events-overview">Events overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Event-methods">Event methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Event-codes">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Error methods, macros and codes
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Error-methods">Error methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Error-Macros">Error Macros</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#External-error-codes">External error codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Internal-error-codes">Internal error codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Design notes
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Why-so-many-time-objects">Why so many time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Design-of-numbered-objects">Design of numbered objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#LHS-Terminals">LHS Terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Work in Progress
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Untested-methods">Untested methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Untested methods
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Ranking-methods">Ranking methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Zero_002dwidth-assertion-methods">Zero-width assertion methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Methods-for-revising-parses">Methods for revising parses</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Deprecated techniques and methods
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Valued and unvalued symbols
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#What-unvalued-symbols-were">What unvalued symbols were</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Grammar-methods-dealing-with-unvalued-symbols">Grammar methods dealing with unvalued symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Registering-semantics-in-the-valuator">Registering semantics in the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+</pre></th></tr></table>
 
 <hr>
 <a name="About-this-document"></a>
+<div class="header">
+<p>
+Next: <a href="#About-Libmarpa" accesskey="n" rel="next">About Libmarpa</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="About-this-document-1"></a>
 <h2 class="chapter">1 About this document</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#How-to-read-this-document" accesskey="1">How to read this document</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Prerequisites" accesskey="2">Prerequisites</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Parsing-theory" accesskey="3">Parsing theory</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="How-to-read-this-document"></a>
+<div class="header">
+<p>
+Next: <a href="#Prerequisites" accesskey="n" rel="next">Prerequisites</a>, Previous: <a href="#About-this-document" accesskey="p" rel="prev">About this document</a>, Up: <a href="#About-this-document" accesskey="u" rel="up">About this document</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="How-to-read-this-document-1"></a>
 <h3 class="section">1.1 How to read this document</h3>
 
@@ -272,6 +576,10 @@ Otherwise, they should follow their interests.
 </p>
 <hr>
 <a name="Prerequisites"></a>
+<div class="header">
+<p>
+Next: <a href="#Parsing-theory" accesskey="n" rel="next">Parsing theory</a>, Previous: <a href="#How-to-read-this-document" accesskey="p" rel="prev">How to read this document</a>, Up: <a href="#About-this-document" accesskey="u" rel="up">About this document</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Prerequisites-1"></a>
 <h3 class="section">1.2 Prerequisites</h3>
 
@@ -292,6 +600,10 @@ See <a href="#Parsing-theory">Parsing theory</a>.
 
 <hr>
 <a name="Parsing-theory"></a>
+<div class="header">
+<p>
+Previous: <a href="#Prerequisites" accesskey="p" rel="prev">Prerequisites</a>, Up: <a href="#About-this-document" accesskey="u" rel="up">About this document</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Parsing-theory-1"></a>
 <h3 class="section">1.3 Parsing theory</h3>
 
@@ -317,6 +629,10 @@ in BNF as a right-recursion?
 
 <hr>
 <a name="About-Libmarpa"></a>
+<div class="header">
+<p>
+Next: <a href="#Architecture" accesskey="n" rel="next">Architecture</a>, Previous: <a href="#About-this-document" accesskey="p" rel="prev">About this document</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="About-Libmarpa-1"></a>
 <h2 class="chapter">2 About Libmarpa</h2>
 
@@ -374,12 +690,30 @@ to successfully debug the logic.
 </p>
 <hr>
 <a name="Architecture"></a>
+<div class="header">
+<p>
+Next: <a href="#Input" accesskey="n" rel="next">Input</a>, Previous: <a href="#About-Libmarpa" accesskey="p" rel="prev">About Libmarpa</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Architecture-1"></a>
 <h2 class="chapter">3 Architecture</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Major-objects" accesskey="1">Major objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Time-objects" accesskey="2">Time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Reference-counting" accesskey="3">Reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Numbered-objects" accesskey="4">Numbered objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Major-objects"></a>
+<div class="header">
+<p>
+Next: <a href="#Time-objects" accesskey="n" rel="next">Time objects</a>, Previous: <a href="#Architecture" accesskey="p" rel="prev">Architecture</a>, Up: <a href="#Architecture" accesskey="u" rel="up">Architecture</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Major-objects-1"></a>
 <h3 class="section">3.1 Major objects</h3>
 
@@ -438,6 +772,10 @@ These are, in the standard sequence,
 
 <hr>
 <a name="Time-objects"></a>
+<div class="header">
+<p>
+Next: <a href="#Reference-counting" accesskey="n" rel="next">Reference counting</a>, Previous: <a href="#Major-objects" accesskey="p" rel="prev">Major objects</a>, Up: <a href="#Architecture" accesskey="u" rel="up">Architecture</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Time-objects-1"></a>
 <h3 class="section">3.2 Time objects</h3>
 
@@ -483,6 +821,10 @@ with.
 
 <hr>
 <a name="Reference-counting"></a>
+<div class="header">
+<p>
+Next: <a href="#Numbered-objects" accesskey="n" rel="next">Numbered objects</a>, Previous: <a href="#Time-objects" accesskey="p" rel="prev">Time objects</a>, Up: <a href="#Architecture" accesskey="u" rel="up">Architecture</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Reference-counting-1"></a>
 <h3 class="section">3.3 Reference counting</h3>
 
@@ -542,6 +884,10 @@ will be needed.
 </p>
 <hr>
 <a name="Numbered-objects"></a>
+<div class="header">
+<p>
+Previous: <a href="#Reference-counting" accesskey="p" rel="prev">Reference counting</a>, Up: <a href="#Architecture" accesskey="u" rel="up">Architecture</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Numbered-objects-1"></a>
 <h3 class="section">3.4 Numbered objects</h3>
 
@@ -556,18 +902,56 @@ objects.
 </p>
 <hr>
 <a name="Input"></a>
+<div class="header">
+<p>
+Next: <a href="#Semantics" accesskey="n" rel="next">Semantics</a>, Previous: <a href="#Architecture" accesskey="p" rel="prev">Architecture</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Input-1"></a>
 <h2 class="chapter">4 Input</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Earlemes" accesskey="1">Earlemes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Terminals" accesskey="2">Terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Earlemes"></a>
+<div class="header">
+<p>
+Next: <a href="#Terminals" accesskey="n" rel="next">Terminals</a>, Previous: <a href="#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="#Input" accesskey="u" rel="up">Input</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Earlemes-1"></a>
 <h3 class="section">4.1 Earlemes</h3>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#The-traditional-model" accesskey="1">The traditional model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-earleme-variables" accesskey="2">The earleme variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-significances-of-the-earleme-variables" accesskey="3">The significances of the earleme variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-initial-earleme-settings" accesskey="4">The initial earleme settings</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-standard-model-of-input" accesskey="5">The standard model of input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ambiguous-input" accesskey="6">Ambiguous input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Variable-length-tokens" accesskey="7">Variable length tokens</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-generalized-model" accesskey="8">The generalized model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#General-rules-for-the-earleme-variables" accesskey="9">General rules for the earleme variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="The-traditional-model"></a>
+<div class="header">
+<p>
+Next: <a href="#The-earleme-variables" accesskey="n" rel="next">The earleme variables</a>, Previous: <a href="#Earlemes" accesskey="p" rel="prev">Earlemes</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="The-traditional-model-1"></a>
 <h4 class="subsection">4.1.1 The traditional model</h4>
 
@@ -605,6 +989,10 @@ they will be different.
 </p>
 <hr>
 <a name="The-earleme-variables"></a>
+<div class="header">
+<p>
+Next: <a href="#The-significances-of-the-earleme-variables" accesskey="n" rel="next">The significances of the earleme variables</a>, Previous: <a href="#The-traditional-model" accesskey="p" rel="prev">The traditional model</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="The-earleme-variables-1"></a>
 <h4 class="subsection">4.1.2 The earleme variables</h4>
 
@@ -651,6 +1039,10 @@ from its value before the call.
 </p>
 <hr>
 <a name="The-significances-of-the-earleme-variables"></a>
+<div class="header">
+<p>
+Next: <a href="#The-initial-earleme-settings" accesskey="n" rel="next">The initial earleme settings</a>, Previous: <a href="#The-earleme-variables" accesskey="p" rel="prev">The earleme variables</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="The-significances-of-the-earleme-variables-1"></a>
 <h4 class="subsection">4.1.3 The significances of the earleme variables</h4>
 
@@ -689,6 +1081,10 @@ from earleme 0 to the latest earleme.
 </p>
 <hr>
 <a name="The-initial-earleme-settings"></a>
+<div class="header">
+<p>
+Next: <a href="#The-standard-model-of-input" accesskey="n" rel="next">The standard model of input</a>, Previous: <a href="#The-significances-of-the-earleme-variables" accesskey="p" rel="prev">The significances of the earleme variables</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="The-initial-earleme-settings-1"></a>
 <h4 class="subsection">4.1.4 The initial earleme settings</h4>
 
@@ -707,6 +1103,10 @@ It will proceed to less restrictive models.
 </p>
 <hr>
 <a name="The-standard-model-of-input"></a>
+<div class="header">
+<p>
+Next: <a href="#Ambiguous-input" accesskey="n" rel="next">Ambiguous input</a>, Previous: <a href="#The-initial-earleme-settings" accesskey="p" rel="prev">The initial earleme settings</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="The-standard-model-of-input-1"></a>
 <h4 class="subsection">4.1.5 The standard model of input</h4>
 
@@ -773,6 +1173,10 @@ the following will be true:
 
 <hr>
 <a name="Ambiguous-input"></a>
+<div class="header">
+<p>
+Next: <a href="#Variable-length-tokens" accesskey="n" rel="next">Variable length tokens</a>, Previous: <a href="#The-standard-model-of-input" accesskey="p" rel="prev">The standard model of input</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Ambiguous-input-1"></a>
 <h4 class="subsection">4.1.6 Ambiguous input</h4>
 
@@ -804,6 +1208,10 @@ the value of the furthest earleme before the call will be
 </p>
 <hr>
 <a name="Variable-length-tokens"></a>
+<div class="header">
+<p>
+Next: <a href="#The-generalized-model" accesskey="n" rel="next">The generalized model</a>, Previous: <a href="#Ambiguous-input" accesskey="p" rel="prev">Ambiguous input</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Variable-length-tokens-1"></a>
 <h4 class="subsection">4.1.7 Variable length tokens</h4>
 
@@ -861,6 +1269,10 @@ to <code>marpa_r_earleme_complete()</code>.
 
 <hr>
 <a name="The-generalized-model"></a>
+<div class="header">
+<p>
+Next: <a href="#General-rules-for-the-earleme-variables" accesskey="n" rel="next">General rules for the earleme variables</a>, Previous: <a href="#Variable-length-tokens" accesskey="p" rel="prev">Variable length tokens</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="The-generalized-model-1"></a>
 <h4 class="subsection">4.1.8 The generalized model</h4>
 
@@ -957,6 +1369,10 @@ to <code>marpa_r_earleme_complete()</code>.
 
 <hr>
 <a name="General-rules-for-the-earleme-variables"></a>
+<div class="header">
+<p>
+Previous: <a href="#The-generalized-model" accesskey="p" rel="prev">The generalized model</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="General-rules-for-the-earleme-variables-1"></a>
 <h4 class="subsection">4.1.9 General rules for the earleme variables</h4>
 
@@ -995,6 +1411,10 @@ or equal to the current earleme.
 
 <hr>
 <a name="Terminals"></a>
+<div class="header">
+<p>
+Previous: <a href="#Earlemes" accesskey="p" rel="prev">Earlemes</a>, Up: <a href="#Input" accesskey="u" rel="up">Input</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Terminals-1"></a>
 <h3 class="section">4.2 Terminals</h3>
 
@@ -1026,6 +1446,10 @@ parse evaluation.
 </p>
 <hr>
 <a name="Semantics"></a>
+<div class="header">
+<p>
+Next: <a href="#Threads" accesskey="n" rel="next">Threads</a>, Previous: <a href="#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Semantics-1"></a>
 <h2 class="chapter">5 Semantics</h2>
 
@@ -1054,6 +1478,10 @@ See <a href="#Value-methods">Value methods</a>.
 </p>
 <hr>
 <a name="Threads"></a>
+<div class="header">
+<p>
+Next: <a href="#Fatal-Errors" accesskey="n" rel="next">Fatal Errors</a>, Previous: <a href="#Semantics" accesskey="p" rel="prev">Semantics</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Threads-1"></a>
 <h2 class="chapter">6 Threads</h2>
 
@@ -1098,6 +1526,10 @@ time objects.
 </p>
 <hr>
 <a name="Fatal-Errors"></a>
+<div class="header">
+<p>
+Next: <a href="#Introduction-to-the-external-interface" accesskey="n" rel="next">Introduction to the external interface</a>, Previous: <a href="#Threads" accesskey="p" rel="prev">Threads</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Fatal-Errors-1"></a>
 <h2 class="chapter">7 Fatal Errors</h2>
 
@@ -1115,15 +1547,31 @@ be called when an out-of-memory condition occurs.
 </p>
 <hr>
 <a name="Introduction-to-the-external-interface"></a>
+<div class="header">
+<p>
+Next: <a href="#Static-methods" accesskey="n" rel="next">Static methods</a>, Previous: <a href="#Fatal-Errors" accesskey="p" rel="prev">Fatal Errors</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Introduction-to-the-external-interface-1"></a>
 <h2 class="chapter">8 Introduction to the external interface</h2>
 
 <p>The following chapters describe Libmarpa&rsquo;s external
 interface in detail.
 </p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#About-the-overviews" accesskey="1">About the overviews</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Return-values" accesskey="2">Return values</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Naming-conventions" accesskey="3">Naming conventions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="About-the-overviews"></a>
+<div class="header">
+<p>
+Next: <a href="#Return-values" accesskey="n" rel="next">Return values</a>, Previous: <a href="#Introduction-to-the-external-interface" accesskey="p" rel="prev">Introduction to the external interface</a>, Up: <a href="#Introduction-to-the-external-interface" accesskey="u" rel="up">Introduction to the external interface</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="About-the-overviews-1"></a>
 <h3 class="section">8.1 About the overviews</h3>
 
@@ -1147,6 +1595,10 @@ all small but non-trivial.
 </p>
 <hr>
 <a name="Return-values"></a>
+<div class="header">
+<p>
+Next: <a href="#Naming-conventions" accesskey="n" rel="next">Naming conventions</a>, Previous: <a href="#About-the-overviews" accesskey="p" rel="prev">About the overviews</a>, Up: <a href="#Introduction-to-the-external-interface" accesskey="u" rel="up">Introduction to the external interface</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Return-values-1"></a>
 <h3 class="section">8.2 Return values</h3>
 
@@ -1206,6 +1658,10 @@ See <a href="#External-error-codes">External error codes</a>.
 </p>
 <hr>
 <a name="Naming-conventions"></a>
+<div class="header">
+<p>
+Previous: <a href="#Return-values" accesskey="p" rel="prev">Return values</a>, Up: <a href="#Introduction-to-the-external-interface" accesskey="u" rel="up">Introduction to the external interface</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Naming-conventions-1"></a>
 <h3 class="section">8.3 Naming conventions</h3>
 
@@ -1245,6 +1701,10 @@ of one of these two prefixes.
 </p>
 <hr>
 <a name="Static-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Configuration-methods" accesskey="n" rel="next">Configuration methods</a>, Previous: <a href="#Introduction-to-the-external-interface" accesskey="p" rel="prev">Introduction to the external interface</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Static-methods-1"></a>
 <h2 class="chapter">9 Static methods</h2>
 
@@ -1293,6 +1753,10 @@ which must have room for three <code>int</code>&rsquo;s.
 
 <hr>
 <a name="Configuration-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Grammar-methods" accesskey="n" rel="next">Grammar methods</a>, Previous: <a href="#Static-methods" accesskey="p" rel="prev">Static methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Configuration-methods-1"></a>
 <h2 class="chapter">10 Configuration methods</h2>
 
@@ -1350,13 +1814,39 @@ Always succeeds.
 
 <hr>
 <a name="Grammar-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Recognizer-methods" accesskey="n" rel="next">Recognizer methods</a>, Previous: <a href="#Configuration-methods" accesskey="p" rel="prev">Configuration methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Grammar-methods-1"></a>
 <h2 class="chapter">11 Grammar methods</h2>
 <a name="index-grammars"></a>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Grammar-overview" accesskey="1">Grammar overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Grammar-constructor" accesskey="2">Grammar constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Grammar-reference-counting" accesskey="3">Grammar reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Symbols" accesskey="4">Symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Rules" accesskey="5">Rules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Sequences" accesskey="6">Sequences</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ranks" accesskey="7">Ranks</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Grammar-precomputation" accesskey="8">Grammar precomputation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Grammar-overview"></a>
+<div class="header">
+<p>
+Next: <a href="#Grammar-constructor" accesskey="n" rel="next">Grammar constructor</a>, Previous: <a href="#Grammar-methods" accesskey="p" rel="prev">Grammar methods</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Overview"></a>
 <h3 class="section">11.1 Overview</h3>
 
@@ -1396,6 +1886,10 @@ use the
 </p>
 <hr>
 <a name="Grammar-constructor"></a>
+<div class="header">
+<p>
+Next: <a href="#Grammar-reference-counting" accesskey="n" rel="next">Grammar reference counting</a>, Previous: <a href="#Grammar-overview" accesskey="p" rel="prev">Grammar overview</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Creating-a-new-grammar"></a>
 <h3 class="section">11.2 Creating a new grammar</h3>
 <a name="index-grammar-constructor"></a>
@@ -1446,6 +1940,10 @@ On failure, a negative integer.
 
 <hr>
 <a name="Grammar-reference-counting"></a>
+<div class="header">
+<p>
+Next: <a href="#Symbols" accesskey="n" rel="next">Symbols</a>, Previous: <a href="#Grammar-constructor" accesskey="p" rel="prev">Grammar constructor</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Tracking-the-reference-count-of-the-grammar"></a>
 <h3 class="section">11.3 Tracking the reference count of the grammar</h3>
 <a name="index-grammar-destructor"></a>
@@ -1473,6 +1971,10 @@ zero.
 
 <hr>
 <a name="Symbols"></a>
+<div class="header">
+<p>
+Next: <a href="#Rules" accesskey="n" rel="next">Rules</a>, Previous: <a href="#Grammar-reference-counting" accesskey="p" rel="prev">Grammar reference counting</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Symbols-1"></a>
 <h3 class="section">11.4 Symbols</h3>
 
@@ -1634,6 +2136,10 @@ On failure, -2.
 
 <hr>
 <a name="Rules"></a>
+<div class="header">
+<p>
+Next: <a href="#Sequences" accesskey="n" rel="next">Sequences</a>, Previous: <a href="#Symbols" accesskey="p" rel="prev">Symbols</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Rules-1"></a>
 <h3 class="section">11.5 Rules</h3>
 
@@ -1791,6 +2297,10 @@ or on other failure, -2.
 
 <hr>
 <a name="Sequences"></a>
+<div class="header">
+<p>
+Next: <a href="#Ranks" accesskey="n" rel="next">Ranks</a>, Previous: <a href="#Rules" accesskey="p" rel="prev">Rules</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Sequences-1"></a>
 <h3 class="section">11.6 Sequences</h3>
 
@@ -1946,6 +2456,10 @@ and on other failure, -2.
 
 <hr>
 <a name="Ranks"></a>
+<div class="header">
+<p>
+Next: <a href="#Grammar-precomputation" accesskey="n" rel="next">Grammar precomputation</a>, Previous: <a href="#Sequences" accesskey="p" rel="prev">Sequences</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Ranks-1"></a>
 <h3 class="section">11.7 Ranks</h3>
 
@@ -2393,6 +2907,10 @@ or on other failure, -2.
 
 <hr>
 <a name="Grammar-precomputation"></a>
+<div class="header">
+<p>
+Previous: <a href="#Ranks" accesskey="p" rel="prev">Ranks</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Precomputing-the-Grammar"></a>
 <h3 class="section">11.9 Precomputing the Grammar</h3>
 
@@ -2520,12 +3038,34 @@ On failure, -2.
 
 <hr>
 <a name="Recognizer-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Progress-reports" accesskey="n" rel="next">Progress reports</a>, Previous: <a href="#Grammar-methods" accesskey="p" rel="prev">Grammar methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Recognizer-methods-1"></a>
 <h2 class="chapter">12 Recognizer methods</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Recognizer-overview" accesskey="1">Recognizer overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Recognizer-constructor" accesskey="2">Recognizer constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Recognizer-reference-counting" accesskey="3">Recognizer reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Recognizer-life-cycle-mutators" accesskey="4">Recognizer life cycle mutators</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Location-accessors" accesskey="5">Location accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Other-parse-status-methods" accesskey="6">Other parse status methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Recognizer-overview"></a>
+<div class="header">
+<p>
+Next: <a href="#Recognizer-constructor" accesskey="n" rel="next">Recognizer constructor</a>, Previous: <a href="#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Overview-1"></a>
 <h3 class="section">12.1 Overview</h3>
 
@@ -2549,6 +3089,10 @@ use the <code>marpa_r_earleme_complete()</code> call.
 </p>
 <hr>
 <a name="Recognizer-constructor"></a>
+<div class="header">
+<p>
+Next: <a href="#Recognizer-reference-counting" accesskey="n" rel="next">Recognizer reference counting</a>, Previous: <a href="#Recognizer-overview" accesskey="p" rel="prev">Recognizer overview</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Creating-a-new-recognizer"></a>
 <h3 class="section">12.2 Creating a new recognizer</h3>
 
@@ -2566,6 +3110,10 @@ If <var>g</var> is not precomputed, or on other failure, <code>NULL</code>.
 
 <hr>
 <a name="Recognizer-reference-counting"></a>
+<div class="header">
+<p>
+Next: <a href="#Recognizer-life-cycle-mutators" accesskey="n" rel="next">Recognizer life cycle mutators</a>, Previous: <a href="#Recognizer-constructor" accesskey="p" rel="prev">Recognizer constructor</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Keeping-the-reference-count-of-a-recognizer"></a>
 <h3 class="section">12.3 Keeping the reference count of a recognizer</h3>
 
@@ -2593,6 +3141,10 @@ to zero, it too is destroyed.
 
 <hr>
 <a name="Recognizer-life-cycle-mutators"></a>
+<div class="header">
+<p>
+Next: <a href="#Location-accessors" accesskey="n" rel="next">Location accessors</a>, Previous: <a href="#Recognizer-reference-counting" accesskey="p" rel="prev">Recognizer reference counting</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Life-cycle-mutators"></a>
 <h3 class="section">12.4 Life cycle mutators</h3>
 
@@ -2795,6 +3347,10 @@ On failure, -2.
 
 <hr>
 <a name="Location-accessors"></a>
+<div class="header">
+<p>
+Next: <a href="#Other-parse-status-methods" accesskey="n" rel="next">Other parse status methods</a>, Previous: <a href="#Recognizer-life-cycle-mutators" accesskey="p" rel="prev">Recognizer life cycle mutators</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Location-accessors-1"></a>
 <h3 class="section">12.5 Location accessors</h3>
 
@@ -2930,6 +3486,10 @@ On failure, returns -2.
 
 <hr>
 <a name="Other-parse-status-methods"></a>
+<div class="header">
+<p>
+Previous: <a href="#Location-accessors" accesskey="p" rel="prev">Location accessors</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Other-parse-status-methods-1"></a>
 <h3 class="section">12.6 Other parse status methods</h3>
 
@@ -3138,6 +3698,10 @@ symbol.
 
 <hr>
 <a name="Progress-reports"></a>
+<div class="header">
+<p>
+Next: <a href="#Bocage-methods" accesskey="n" rel="next">Bocage methods</a>, Previous: <a href="#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Progress-reports-1"></a>
 <h2 class="chapter">13 Progress reports</h2>
 
@@ -3247,12 +3811,30 @@ or on other failure, -2.
 
 <hr>
 <a name="Bocage-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Ordering-methods" accesskey="n" rel="next">Ordering methods</a>, Previous: <a href="#Progress-reports" accesskey="p" rel="prev">Progress reports</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Bocage-methods-1"></a>
 <h2 class="chapter">14 Bocage methods</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Bocage-overview" accesskey="1">Bocage overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bocage-constructor" accesskey="2">Bocage constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bocage-reference-counting" accesskey="3">Bocage reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bocage-accessor" accesskey="4">Bocage accessor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Bocage-overview"></a>
+<div class="header">
+<p>
+Next: <a href="#Bocage-constructor" accesskey="n" rel="next">Bocage constructor</a>, Previous: <a href="#Bocage-methods" accesskey="p" rel="prev">Bocage methods</a>, Up: <a href="#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Overview-2"></a>
 <h3 class="section">14.1 Overview</h3>
 
@@ -3269,6 +3851,10 @@ using the
 </p>
 <hr>
 <a name="Bocage-constructor"></a>
+<div class="header">
+<p>
+Next: <a href="#Bocage-reference-counting" accesskey="n" rel="next">Bocage reference counting</a>, Previous: <a href="#Bocage-overview" accesskey="p" rel="prev">Bocage overview</a>, Up: <a href="#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Creating-a-new-bocage"></a>
 <h3 class="section">14.2 Creating a new bocage</h3>
 
@@ -3296,6 +3882,10 @@ On failure, <code>NULL</code>.
 
 <hr>
 <a name="Bocage-reference-counting"></a>
+<div class="header">
+<p>
+Next: <a href="#Bocage-accessor" accesskey="n" rel="next">Bocage accessor</a>, Previous: <a href="#Bocage-constructor" accesskey="p" rel="prev">Bocage constructor</a>, Up: <a href="#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Reference-counting-2"></a>
 <h3 class="section">14.3 Reference counting</h3>
 <dl>
@@ -3326,6 +3916,10 @@ to zero, it too is destroyed.
 
 <hr>
 <a name="Bocage-accessor"></a>
+<div class="header">
+<p>
+Previous: <a href="#Bocage-reference-counting" accesskey="p" rel="prev">Bocage reference counting</a>, Up: <a href="#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Accessors"></a>
 <h3 class="section">14.4 Accessors</h3>
 <dl>
@@ -3360,12 +3954,32 @@ otherwise, 0.
 
 <hr>
 <a name="Ordering-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Tree-methods" accesskey="n" rel="next">Tree methods</a>, Previous: <a href="#Bocage-methods" accesskey="p" rel="prev">Bocage methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Ordering-methods-1"></a>
 <h2 class="chapter">15 Ordering methods</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Ordering-overview" accesskey="1">Ordering overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ordering-constructor" accesskey="2">Ordering constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ordering-reference-counting" accesskey="3">Ordering reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Order-accessor" accesskey="4">Order accessor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Non_002ddefault-ordering" accesskey="5">Non-default ordering</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Ordering-overview"></a>
+<div class="header">
+<p>
+Next: <a href="#Ordering-constructor" accesskey="n" rel="next">Ordering constructor</a>, Previous: <a href="#Ordering-methods" accesskey="p" rel="prev">Ordering methods</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Overview-3"></a>
 <h3 class="section">15.1 Overview</h3>
 
@@ -3387,6 +4001,10 @@ This is expected to change.
 </p>
 <hr>
 <a name="Ordering-constructor"></a>
+<div class="header">
+<p>
+Next: <a href="#Ordering-reference-counting" accesskey="n" rel="next">Ordering reference counting</a>, Previous: <a href="#Ordering-overview" accesskey="p" rel="prev">Ordering overview</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Creating-an-ordering"></a>
 <h3 class="section">15.2 Creating an ordering</h3>
 
@@ -3402,6 +4020,10 @@ On failure, <code>NULL</code>.
 
 <hr>
 <a name="Ordering-reference-counting"></a>
+<div class="header">
+<p>
+Next: <a href="#Order-accessor" accesskey="n" rel="next">Order accessor</a>, Previous: <a href="#Ordering-constructor" accesskey="p" rel="prev">Ordering constructor</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Reference-counting-3"></a>
 <h3 class="section">15.3 Reference counting</h3>
 
@@ -3437,6 +4059,10 @@ base grammar, if necessary.
 
 <hr>
 <a name="Order-accessor"></a>
+<div class="header">
+<p>
+Next: <a href="#Non_002ddefault-ordering" accesskey="n" rel="next">Non-default ordering</a>, Previous: <a href="#Ordering-reference-counting" accesskey="p" rel="prev">Ordering reference counting</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Accessors-1"></a>
 <h3 class="section">15.4 Accessors</h3>
 <dl>
@@ -3480,6 +4106,10 @@ otherwise, 0.
 
 <hr>
 <a name="Non_002ddefault-ordering"></a>
+<div class="header">
+<p>
+Previous: <a href="#Order-accessor" accesskey="p" rel="prev">Order accessor</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Non_002ddefault-ordering-1"></a>
 <h3 class="section">15.5 Non-default ordering</h3>
 
@@ -3522,12 +4152,30 @@ On failure, -2.
 
 <hr>
 <a name="Tree-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Value-methods" accesskey="n" rel="next">Value methods</a>, Previous: <a href="#Ordering-methods" accesskey="p" rel="prev">Ordering methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Tree-methods-1"></a>
 <h2 class="chapter">16 Tree methods</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Tree-overview" accesskey="1">Tree overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tree-constructor" accesskey="2">Tree constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tree-reference-counting" accesskey="3">Tree reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tree-iteration" accesskey="4">Tree iteration</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Tree-overview"></a>
+<div class="header">
+<p>
+Next: <a href="#Tree-constructor" accesskey="n" rel="next">Tree constructor</a>, Previous: <a href="#Tree-methods" accesskey="p" rel="prev">Tree methods</a>, Up: <a href="#Tree-methods" accesskey="u" rel="up">Tree methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Overview-4"></a>
 <h3 class="section">16.1 Overview</h3>
 
@@ -3551,6 +4199,10 @@ to position it to the next parse tree.
 </p>
 <hr>
 <a name="Tree-constructor"></a>
+<div class="header">
+<p>
+Next: <a href="#Tree-reference-counting" accesskey="n" rel="next">Tree reference counting</a>, Previous: <a href="#Tree-overview" accesskey="p" rel="prev">Tree overview</a>, Up: <a href="#Tree-methods" accesskey="u" rel="up">Tree methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Creating-a-new-tree-iterator"></a>
 <h3 class="section">16.2 Creating a new tree iterator</h3>
 
@@ -3571,6 +4223,10 @@ On failure, <code>NULL</code>.
 
 <hr>
 <a name="Tree-reference-counting"></a>
+<div class="header">
+<p>
+Next: <a href="#Tree-iteration" accesskey="n" rel="next">Tree iteration</a>, Previous: <a href="#Tree-constructor" accesskey="p" rel="prev">Tree constructor</a>, Up: <a href="#Tree-methods" accesskey="u" rel="up">Tree methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Reference-counting-4"></a>
 <h3 class="section">16.3 Reference counting</h3>
 
@@ -3606,6 +4262,10 @@ base grammar, if necessary.
 
 <hr>
 <a name="Tree-iteration"></a>
+<div class="header">
+<p>
+Previous: <a href="#Tree-reference-counting" accesskey="p" rel="prev">Tree reference counting</a>, Up: <a href="#Tree-methods" accesskey="u" rel="up">Tree methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Iterating-through-the-trees"></a>
 <h3 class="section">16.4 Iterating through the trees</h3>
 
@@ -3647,12 +4307,42 @@ Always succeeds.
 
 <hr>
 <a name="Value-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Events" accesskey="n" rel="next">Events</a>, Previous: <a href="#Tree-methods" accesskey="p" rel="prev">Tree methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Value-methods-1"></a>
 <h2 class="chapter">17 Value methods</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Value-overview" accesskey="1">Value overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#How-to-use-the-valuator" accesskey="2">How to use the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Advantages-of-step_002ddriven-valuation" accesskey="3">Advantages of step-driven valuation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Maintaining-the-stack" accesskey="4">Maintaining the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Valuator-constructor" accesskey="5">Valuator constructor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Valuator-reference-counting" accesskey="6">Valuator reference counting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Stepping-through-the-valuator" accesskey="7">Stepping through the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Valuator-steps-by-type" accesskey="8">Valuator steps by type</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Basic-step-accessors" accesskey="9">Basic step accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Other-step-accessors">Other step accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Value-overview"></a>
+<div class="header">
+<p>
+Next: <a href="#How-to-use-the-valuator" accesskey="n" rel="next">How to use the valuator</a>, Previous: <a href="#Value-methods" accesskey="p" rel="prev">Value methods</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Overview-5"></a>
 <h3 class="section">17.1 Overview</h3>
 
@@ -3685,6 +4375,10 @@ and <a href="#Stepping-through-the-valuator">Stepping through the valuator</a>.
 </p>
 <hr>
 <a name="How-to-use-the-valuator"></a>
+<div class="header">
+<p>
+Next: <a href="#Advantages-of-step_002ddriven-valuation" accesskey="n" rel="next">Advantages of step-driven valuation</a>, Previous: <a href="#Value-overview" accesskey="p" rel="prev">Value overview</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="How-to-use-the-valuator-1"></a>
 <h3 class="section">17.2 How to use the valuator</h3>
 <p>Libmarpa&rsquo;s valuator provides the application with
@@ -3735,6 +4429,10 @@ capable of being any of these things and more.
 </p>
 <hr>
 <a name="Advantages-of-step_002ddriven-valuation"></a>
+<div class="header">
+<p>
+Next: <a href="#Maintaining-the-stack" accesskey="n" rel="next">Maintaining the stack</a>, Previous: <a href="#How-to-use-the-valuator" accesskey="p" rel="prev">How to use the valuator</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Advantages-of-step_002ddriven-valuation-1"></a>
 <h3 class="section">17.3 Advantages of step-driven valuation</h3>
 
@@ -3830,6 +4528,10 @@ one which <strong>does</strong> know about semantics.
 </p>
 <hr>
 <a name="Maintaining-the-stack"></a>
+<div class="header">
+<p>
+Next: <a href="#Valuator-constructor" accesskey="n" rel="next">Valuator constructor</a>, Previous: <a href="#Advantages-of-step_002ddriven-valuation" accesskey="p" rel="prev">Advantages of step-driven valuation</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Maintaining-the-stack-1"></a>
 <h3 class="section">17.4 Maintaining the stack</h3>
 
@@ -3890,9 +4592,19 @@ than stack location <var>X</var> is to say that
 a stack location <var>Y</var> is later (earlier)
 than stack location <var>X</var>.
 </p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Sizing-the-stack" accesskey="1">Sizing the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Initializing-locations-in-the-stack" accesskey="2">Initializing locations in the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Sizing-the-stack"></a>
+<div class="header">
+<p>
+Next: <a href="#Initializing-locations-in-the-stack" accesskey="n" rel="next">Initializing locations in the stack</a>, Previous: <a href="#Maintaining-the-stack" accesskey="p" rel="prev">Maintaining the stack</a>, Up: <a href="#Maintaining-the-stack" accesskey="u" rel="up">Maintaining the stack</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Sizing-the-stack-1"></a>
 <h4 class="subsection">17.4.1 Sizing the stack</h4>
 
@@ -3950,6 +4662,10 @@ either reads from or writes to location 0.
 </p>
 <hr>
 <a name="Initializing-locations-in-the-stack"></a>
+<div class="header">
+<p>
+Previous: <a href="#Sizing-the-stack" accesskey="p" rel="prev">Sizing the stack</a>, Up: <a href="#Maintaining-the-stack" accesskey="u" rel="up">Maintaining the stack</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Initializing-locations-in-the-stack-1"></a>
 <h4 class="subsection">17.4.2 Initializing locations in the stack</h4>
 
@@ -4003,6 +4719,10 @@ unvisited stack locations.
 </p>
 <hr>
 <a name="Valuator-constructor"></a>
+<div class="header">
+<p>
+Next: <a href="#Valuator-reference-counting" accesskey="n" rel="next">Valuator reference counting</a>, Previous: <a href="#Maintaining-the-stack" accesskey="p" rel="prev">Maintaining the stack</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Creating-a-new-valuator"></a>
 <h3 class="section">17.5 Creating a new valuator</h3>
 
@@ -4029,6 +4749,10 @@ On failure, <code>NULL</code>.
 
 <hr>
 <a name="Valuator-reference-counting"></a>
+<div class="header">
+<p>
+Next: <a href="#Stepping-through-the-valuator" accesskey="n" rel="next">Stepping through the valuator</a>, Previous: <a href="#Valuator-constructor" accesskey="p" rel="prev">Valuator constructor</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Reference-counting-5"></a>
 <h3 class="section">17.6 Reference counting</h3>
 
@@ -4064,6 +4788,10 @@ base grammar, if necessary.
 
 <hr>
 <a name="Stepping-through-the-valuator"></a>
+<div class="header">
+<p>
+Next: <a href="#Valuator-steps-by-type" accesskey="n" rel="next">Valuator steps by type</a>, Previous: <a href="#Valuator-reference-counting" accesskey="p" rel="prev">Valuator reference counting</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Stepping-through-the-valuator-1"></a>
 <h3 class="section">17.7 Stepping through the valuator</h3>
 
@@ -4086,6 +4814,10 @@ On failure, -2.
 
 <hr>
 <a name="Valuator-steps-by-type"></a>
+<div class="header">
+<p>
+Next: <a href="#Basic-step-accessors" accesskey="n" rel="next">Basic step accessors</a>, Previous: <a href="#Stepping-through-the-valuator" accesskey="p" rel="prev">Stepping through the valuator</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Valuator-steps-by-type-1"></a>
 <h3 class="section">17.8 Valuator steps by type</h3>
 
@@ -4154,6 +4886,10 @@ yet to go through any steps.
 
 <hr>
 <a name="Basic-step-accessors"></a>
+<div class="header">
+<p>
+Next: <a href="#Other-step-accessors" accesskey="n" rel="next">Other step accessors</a>, Previous: <a href="#Valuator-steps-by-type" accesskey="p" rel="prev">Valuator steps by type</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Basic-step-accessors-1"></a>
 <h3 class="section">17.9 Basic step accessors</h3>
 
@@ -4230,6 +4966,10 @@ the value of the token.
 
 <hr>
 <a name="Other-step-accessors"></a>
+<div class="header">
+<p>
+Previous: <a href="#Basic-step-accessors" accesskey="p" rel="prev">Basic step accessors</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Other-step-accessors-1"></a>
 <h3 class="section">17.10 Other step accessors</h3>
 
@@ -4276,12 +5016,28 @@ If the current step type is anything else, an unspecified value.
 
 <hr>
 <a name="Events"></a>
+<div class="header">
+<p>
+Next: <a href="#Error-methods-macros-and-codes" accesskey="n" rel="next">Error methods macros and codes</a>, Previous: <a href="#Value-methods" accesskey="p" rel="prev">Value methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Events-2"></a>
 <h2 class="chapter">18 Events</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Events-overview" accesskey="1">Events overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Event-methods" accesskey="2">Event methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Event-codes" accesskey="3">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Events-overview"></a>
+<div class="header">
+<p>
+Next: <a href="#Event-methods" accesskey="n" rel="next">Event methods</a>, Previous: <a href="#Events" accesskey="p" rel="prev">Events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Overview-6"></a>
 <h3 class="section">18.1 Overview</h3>
 
@@ -4313,6 +5069,10 @@ use the <code>marpa_g_event</code> and
 </p>
 <hr>
 <a name="Event-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Event-codes" accesskey="n" rel="next">Event codes</a>, Previous: <a href="#Events-overview" accesskey="p" rel="prev">Events overview</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Methods"></a>
 <h3 class="section">18.2 Methods</h3>
 
@@ -4356,6 +5116,10 @@ See <a href="#Event-codes">Event codes</a>.
 
 <hr>
 <a name="Event-codes"></a>
+<div class="header">
+<p>
+Previous: <a href="#Event-methods" accesskey="p" rel="prev">Event methods</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Event-codes-1"></a>
 <h3 class="section">18.3 Event codes</h3>
 
@@ -4477,12 +5241,30 @@ Suggested message: &quot;Symbol was predicted&quot;.
 
 <hr>
 <a name="Error-methods-macros-and-codes"></a>
+<div class="header">
+<p>
+Next: <a href="#Design-notes" accesskey="n" rel="next">Design notes</a>, Previous: <a href="#Events" accesskey="p" rel="prev">Events</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Error-methods_002c-macros-and-codes"></a>
 <h2 class="chapter">19 Error methods, macros and codes</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Error-methods" accesskey="1">Error methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Error-Macros" accesskey="2">Error Macros</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#External-error-codes" accesskey="3">External error codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Internal-error-codes" accesskey="4">Internal error codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Error-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Error-Macros" accesskey="n" rel="next">Error Macros</a>, Previous: <a href="#Error-methods-macros-and-codes" accesskey="p" rel="prev">Error methods macros and codes</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Error-methods-1"></a>
 <h3 class="section">19.1 Error methods</h3>
 
@@ -4514,6 +5296,10 @@ Always succeeds.
 
 <hr>
 <a name="Error-Macros"></a>
+<div class="header">
+<p>
+Next: <a href="#External-error-codes" accesskey="n" rel="next">External error codes</a>, Previous: <a href="#Error-methods" accesskey="p" rel="prev">Error methods</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Error-Macros-1"></a>
 <h3 class="section">19.2 Error Macros</h3>
 
@@ -4527,6 +5313,10 @@ strictly less than <code>MARPA_ERRCODE_COUNT</code>.
 
 <hr>
 <a name="External-error-codes"></a>
+<div class="header">
+<p>
+Next: <a href="#Internal-error-codes" accesskey="n" rel="next">Internal error codes</a>, Previous: <a href="#Error-Macros" accesskey="p" rel="prev">Error Macros</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="External-error-codes-1"></a>
 <h3 class="section">19.3 External error codes</h3>
 
@@ -5325,6 +6115,10 @@ Suggested message: &quot;Symbol is not used&quot;.
 
 <hr>
 <a name="Internal-error-codes"></a>
+<div class="header">
+<p>
+Previous: <a href="#External-error-codes" accesskey="p" rel="prev">External error codes</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Internal-error-codes-1"></a>
 <h3 class="section">19.4 Internal error codes</h3>
 
@@ -5512,6 +6306,10 @@ Numeric value: 21.
 
 <hr>
 <a name="Design-notes"></a>
+<div class="header">
+<p>
+Next: <a href="#Work-in-Progress" accesskey="n" rel="next">Work in Progress</a>, Previous: <a href="#Error-methods-macros-and-codes" accesskey="p" rel="prev">Error methods macros and codes</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Design-notes-1"></a>
 <h2 class="chapter">20 Design notes</h2>
 
@@ -5522,9 +6320,21 @@ hoped that they motivate the description or discussion.
 The notes in this section 
 did not find a home elsewhere.
 </p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Why-so-many-time-objects" accesskey="1">Why so many time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Design-of-numbered-objects" accesskey="2">Design of numbered objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#LHS-Terminals" accesskey="3">LHS Terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Why-so-many-time-objects"></a>
+<div class="header">
+<p>
+Next: <a href="#Design-of-numbered-objects" accesskey="n" rel="next">Design of numbered objects</a>, Previous: <a href="#Design-notes" accesskey="p" rel="prev">Design notes</a>, Up: <a href="#Design-notes" accesskey="u" rel="up">Design notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Why-so-many-time-objects_003f"></a>
 <h3 class="section">20.1 Why so many time objects?</h3>
 
@@ -5575,6 +6385,10 @@ in the tree iterator.
 </p>
 <hr>
 <a name="Design-of-numbered-objects"></a>
+<div class="header">
+<p>
+Next: <a href="#LHS-Terminals" accesskey="n" rel="next">LHS Terminals</a>, Previous: <a href="#Why-so-many-time-objects" accesskey="p" rel="prev">Why so many time objects</a>, Up: <a href="#Design-notes" accesskey="u" rel="up">Design notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Numbered-objects-2"></a>
 <h3 class="section">20.2 Numbered objects</h3>
 
@@ -5616,6 +6430,10 @@ for the difference in speed.
 </p>
 <hr>
 <a name="LHS-Terminals"></a>
+<div class="header">
+<p>
+Previous: <a href="#Design-of-numbered-objects" accesskey="p" rel="prev">Design of numbered objects</a>, Up: <a href="#Design-notes" accesskey="u" rel="up">Design notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="LHS-terminals"></a>
 <h3 class="section">20.3 LHS terminals</h3>
 
@@ -5641,12 +6459,24 @@ in Libmarpa.
 </p>
 <hr>
 <a name="Work-in-Progress"></a>
+<div class="header">
+<p>
+Next: <a href="#Deprecated-techniques-and-methods" accesskey="n" rel="next">Deprecated techniques and methods</a>, Previous: <a href="#Design-notes" accesskey="p" rel="prev">Design notes</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Work-in-Progress-1"></a>
 <h2 class="chapter">21 Work in Progress</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Untested-methods" accesskey="1">Untested methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Untested-methods"></a>
+<div class="header">
+<p>
+Previous: <a href="#Work-in-Progress" accesskey="p" rel="prev">Work in Progress</a>, Up: <a href="#Work-in-Progress" accesskey="u" rel="up">Work in Progress</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Untested-methods-1"></a>
 <h3 class="section">21.1 Untested methods</h3>
 
@@ -5656,9 +6486,21 @@ Their fate is uncertain.
 Users should regard these methods
 as unsupported.
 </p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Ranking-methods" accesskey="1">Ranking methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Zero_002dwidth-assertion-methods" accesskey="2">Zero-width assertion methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Methods-for-revising-parses" accesskey="3">Methods for revising parses</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Ranking-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Zero_002dwidth-assertion-methods" accesskey="n" rel="next">Zero-width assertion methods</a>, Previous: <a href="#Untested-methods" accesskey="p" rel="prev">Untested methods</a>, Up: <a href="#Untested-methods" accesskey="u" rel="up">Untested methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Ranking-methods-1"></a>
 <h4 class="subsection">21.1.1 Ranking methods</h4>
 
@@ -5726,6 +6568,10 @@ The error code can be determined by using the
 
 <hr>
 <a name="Zero_002dwidth-assertion-methods"></a>
+<div class="header">
+<p>
+Next: <a href="#Methods-for-revising-parses" accesskey="n" rel="next">Methods for revising parses</a>, Previous: <a href="#Ranking-methods" accesskey="p" rel="prev">Ranking methods</a>, Up: <a href="#Untested-methods" accesskey="u" rel="up">Untested methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Zero_002dwidth-assertion-methods-1"></a>
 <h4 class="subsection">21.1.2 Zero-width assertion methods</h4>
 
@@ -5756,6 +6602,10 @@ On success, returns previous default value of the assertion.
 
 <hr>
 <a name="Methods-for-revising-parses"></a>
+<div class="header">
+<p>
+Previous: <a href="#Zero_002dwidth-assertion-methods" accesskey="p" rel="prev">Zero-width assertion methods</a>, Up: <a href="#Untested-methods" accesskey="u" rel="up">Untested methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Methods-for-revising-parses-1"></a>
 <h4 class="subsection">21.1.3 Methods for revising parses</h4>
 
@@ -5770,18 +6620,42 @@ The methods in this section provide that capability.
 
 <hr>
 <a name="Deprecated-techniques-and-methods"></a>
+<div class="header">
+<p>
+Previous: <a href="#Work-in-Progress" accesskey="p" rel="prev">Work in Progress</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Deprecated-techniques-and-methods-1"></a>
 <h2 class="chapter">22 Deprecated techniques and methods</h2>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Valued-and-unvalued-symbols" accesskey="1">Valued and unvalued symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="Valued-and-unvalued-symbols"></a>
+<div class="header">
+<p>
+Previous: <a href="#Deprecated-techniques-and-methods" accesskey="p" rel="prev">Deprecated techniques and methods</a>, Up: <a href="#Deprecated-techniques-and-methods" accesskey="u" rel="up">Deprecated techniques and methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Valued-and-unvalued-symbols-1"></a>
 <h3 class="section">22.1 Valued and unvalued symbols</h3>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#What-unvalued-symbols-were" accesskey="1">What unvalued symbols were</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Grammar-methods-dealing-with-unvalued-symbols" accesskey="2">Grammar methods dealing with unvalued symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Registering-semantics-in-the-valuator" accesskey="3">Registering semantics in the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="What-unvalued-symbols-were"></a>
+<div class="header">
+<p>
+Next: <a href="#Grammar-methods-dealing-with-unvalued-symbols" accesskey="n" rel="next">Grammar methods dealing with unvalued symbols</a>, Previous: <a href="#Valued-and-unvalued-symbols" accesskey="p" rel="prev">Valued and unvalued symbols</a>, Up: <a href="#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="What-unvalued-symbols-were-1"></a>
 <h4 class="subsection">22.1.1 What unvalued symbols were</h4>
 
@@ -5842,6 +6716,10 @@ some tricky debugging further down the road.
 </p>
 <hr>
 <a name="Grammar-methods-dealing-with-unvalued-symbols"></a>
+<div class="header">
+<p>
+Next: <a href="#Registering-semantics-in-the-valuator" accesskey="n" rel="next">Registering semantics in the valuator</a>, Previous: <a href="#What-unvalued-symbols-were" accesskey="p" rel="prev">What unvalued symbols were</a>, Up: <a href="#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Grammar-methods-dealing-with-unvalued-symbols-1"></a>
 <h4 class="subsection">22.1.2 Grammar methods dealing with unvalued symbols</h4>
 
@@ -5872,6 +6750,10 @@ or on other failure, -2.
 
 <hr>
 <a name="Registering-semantics-in-the-valuator"></a>
+<div class="header">
+<p>
+Previous: <a href="#Grammar-methods-dealing-with-unvalued-symbols" accesskey="p" rel="prev">Grammar methods dealing with unvalued symbols</a>, Up: <a href="#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 <a name="Registering-semantics-in-the-valuator-1"></a>
 <h4 class="subsection">22.1.3 Registering semantics in the valuator</h4>
 

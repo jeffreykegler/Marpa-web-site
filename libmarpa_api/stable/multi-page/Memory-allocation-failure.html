@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Memory allocation failure (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Memory allocation failure (Libmarpa 11.0.5)">
+<meta name="keywords" content="Memory allocation failure (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Failure.html#Failure" rel="up" title="Failure">
+<link href="Undetected-failure.html#Undetected-failure" rel="next" title="Undetected failure">
+<link href="Classifying-failure.html#Classifying-failure" rel="prev" title="Classifying failure">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Memory-allocation-failure"></a>
+<div class="header">
+<p>
+Next: <a href="Undetected-failure.html#Undetected-failure" accesskey="n" rel="next">Undetected failure</a>, Previous: <a href="Classifying-failure.html#Classifying-failure" accesskey="p" rel="prev">Classifying failure</a>, Up: <a href="Failure.html#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Memory-allocation-failure-1"></a>
+<h3 class="section">13.4 Memory allocation failure</h3>
+
+<p>Failure to allocate memory is the most irrecoverable of irrecoverable
+errors.
+On
+<a name="index-memory-allocation-failure"></a>
+<a name="index-failure_002c-memory-allocation"></a>
+<em>memory allocation failure</em>,
+as with all irrecoverable failures,
+Libmarpa&rsquo;s behavior is undefined.
+Libmarpa attempts to terminate the current program abnormally by calling <code>abort()</code>,
+but a component of many modern operating systems is
+an out-of-memory (OOM) killer,
+which takes the decision out of the hands
+of both Libmarpa and the user.
+See <a href="Out_002dof_002dmemory-handling.html#Out_002dof_002dmemory-handling">Out-of-memory handling</a>.
+</p>
+<p>Memory allocation failure is the only case in which
+the decision to terminate the program is made for
+the user.
+In all other cases,
+Libmarpa leaves the decision to terminate the program,
+whether normally or abnormally,
+up to the application programmer.
+</p>
+<p>Memory allocation failure does not have an error code.
+As a pedantic matter, memory allocation failure
+is neither a hard or a soft failure.
+</p>
+
+
+
+</body>
+</html>

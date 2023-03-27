@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Miscellaneous definitions (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Miscellaneous definitions (Libmarpa 11.0.5)">
+<meta name="keywords" content="Miscellaneous definitions (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Terms.html#Terms" rel="up" title="Terms">
+<link href="Parsing-theory-preliminaries.html#Parsing-theory-preliminaries" rel="next" title="Parsing theory preliminaries">
+<link href="Terms.html#Terms" rel="prev" title="Terms">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Miscellaneous-definitions"></a>
+<div class="header">
+<p>
+Next: <a href="Parsing-theory-preliminaries.html#Parsing-theory-preliminaries" accesskey="n" rel="next">Parsing theory preliminaries</a>, Previous: <a href="Terms.html#Terms" accesskey="p" rel="prev">Terms</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Miscellaneous-definitions-1"></a>
+<h3 class="section">5.1 Miscellaneous definitions</h3>
+
+<ul>
+<li> <a name="index-application"></a>
+<em>Application</em> means an &ldquo;application&rdquo; of Libmarpa.
+In this document,
+a Libmarpa application is not necessarily an application program.
+For our purposes, an &ldquo;application&rdquo;
+might be another library that uses Libmarpa.
+</li><li> The components of the
+<a name="index-application-environment"></a>
+<a name="index-environment_002c-application"></a>
+<em>application environment</em>
+are the system components other than Libmarpa and
+the application itself.
+Application environments vary,
+but their components often include an operating system,
+system libraries,
+a C compiler and its libraries,
+and hardware.
+</li><li> A
+<a name="index-value_002c-boolean"></a>
+<a name="index-boolean"></a>
+<a name="index-boolean-value"></a>
+<em>boolean</em> value, or <em>boolean</em>,
+is an integer that is 0 or 1.
+</li><li> An
+<a name="index-application-environment-limit"></a>
+<a name="index-limit_002c-application-environment"></a>
+<em>application environment limit</em>,
+more often called simply an
+<a name="index-environment-limit"></a>
+<a name="index-limit_002c-environment"></a>
+<em>environment limit</em>,
+is a limit imposed by the application
+enviroment.
+For our purposes, the most important environment limit
+is usually available memory.
+</li><li> <a name="index-iff"></a>
+The lexeme <em>iff</em> is an abbreviation for &ldquo;if and only if&rdquo;.
+</li><li> <a name="index-max_0028x_002cy_0029"></a>
+<code>max(x,y)</code> is the maximum of
+<code>x</code> and <code>y</code>,
+where <code>x</code> and <code>y</code> are two numbers.
+</li><li> <a name="index-method"></a>
+<em>Libmarpa method</em>, or just <em>method</em>, means a C function
+or a function-like macro of the Libmarpa library.
+</li><li> <a name="index-user"></a>
+<em>User</em> means a &ldquo;user&rdquo; of the Libmarpa library.
+A user of the library is also a programmer,
+so that in this document, &ldquo;user&rdquo;
+and &ldquo;programmer&rdquo; are essentially synonyms.
+</li><li> <a name="index-we"></a>
+<a name="index-us"></a>
+<a name="index-our"></a>
+<em>We</em> (as well as &ldquo;us&rdquo; and &rdquo;our&rdquo;) refers to the authors,
+but is also intended to suggest that the reader
+is joining the authors
+on the millenia-old voyage of discovery
+into mathematics and language.
+As of this writing, there is a one primary author.
+</li></ul>
+
+<p>The following terms are used in a way that is consistent
+with their use in the C99 standard:
+</p><ul>
+<li> <a name="index-indeterminate-value"></a>
+An <em>indeterminate value</em>
+is either an unspecified value or a trap value.
+</li><li> <a name="index-trap-value"></a>
+A <em>trap value</em>,
+also called a <em>trap representation</em>,
+is a value that when accessed causes undefined behavior.
+See <a href="Trap-representations.html#Trap-representations">Trap representations</a>.
+</li><li> <a name="index-undefined-behavior"></a>
+An <em>undefined behavior</em>
+is a behavior that this document does not specify.
+One implication is that this behavior might be problematic.
+</li><li> <a name="index-unspecified-behavior"></a>
+An <em>unspecified behavior</em>
+is a behavior that, within a range of possibilities,
+is not further specified by this document.
+This is usually not problematic.
+</li><li> <a name="index-unspecified-value"></a>
+An <em>unspecified value</em>
+is a value on which this document imposes no restrictions,
+except that it cannot be a trap value.
+</li></ul>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Parsing-theory-preliminaries.html#Parsing-theory-preliminaries" accesskey="n" rel="next">Parsing theory preliminaries</a>, Previous: <a href="Terms.html#Terms" accesskey="p" rel="prev">Terms</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

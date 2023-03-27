@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The furthest earleme (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="The furthest earleme (Libmarpa 11.0.5)">
+<meta name="keywords" content="The furthest earleme (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Earlemes.html#Earlemes" rel="up" title="Earlemes">
+<link href="The-basic-models-of-input.html#The-basic-models-of-input" rel="next" title="The basic models of input">
+<link href="The-current-earleme.html#The-current-earleme" rel="prev" title="The current earleme">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="The-furthest-earleme"></a>
+<div class="header">
+<p>
+Previous: <a href="The-current-earleme.html#The-current-earleme" accesskey="p" rel="prev">The current earleme</a>, Up: <a href="Earlemes.html#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-furthest-earleme-1"></a>
+<h4 class="subsection">7.1.4 The furthest earleme</h4>
+
+<p>Loosely speaking,
+the
+<a name="index-earleme_002c-furthest"></a>
+<em>furthest earleme</em>
+is the furthest earleme reached by the parse.
+More precisely,
+it is the highest numbered
+earleme at which a token ends
+and is 0 if there are no tokens.
+The furthest earleme is 0 when a recognizer is
+created.
+With every call to
+<code>marpa_r_alternative()</code>, the end of the token
+it adds is calculated.
+A token ends at the earleme location <var>current</var>+<var>length</var>,
+where <var>current</var> is the current earleme,
+and <var>length</var> is the length of the newly added token.
+If <code>old_f</code> is the furthest earleme before
+a call to
+<code>marpa_r_alternative()</code>,
+the furthest earleme after the call
+is <code>max(old_f, current+length)</code>.
+The <code>marpa_r_new()</code> and
+<code>marpa_r_alternative()</code> methods
+are only ones that change the furthest earleme.
+See <a href="Creating-a-new-recognizer.html#marpa_005fr_005fnew">marpa_r_new()</a>, and
+<a href="Recognizer-life-cycle-mutators.html#marpa_005fr_005falternative">marpa_r_alternative()</a>.
+</p>
+<p>In the basic input models,
+where every token has length 1,
+calling
+<code>marpa_r_earleme_complete()</code>
+after each
+<code>marpa_r_alternative()</code>
+call is sufficient to process
+all inputs,
+and the furthest earleme&rsquo;s value
+can be ignored.
+In alternative input models,
+where tokens have lengths greater than 1,
+calling <code>marpa_r_earleme_complete()</code>
+once after the last token
+is read may not be enough to ensure that all tokens have been processed.
+To ensure that all tokens have been processed,
+an application must advance the current earleme
+by calling
+<code>marpa_r_earleme_complete()</code>,
+until the current earleme is equal to the furthest earleme.
+</p>
+
+
+
+</body>
+</html>

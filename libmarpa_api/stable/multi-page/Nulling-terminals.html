@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Nulling terminals (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Nulling terminals (Libmarpa 11.0.5)">
+<meta name="keywords" content="Nulling terminals (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="LHS-terminals.html#LHS-terminals" rel="up" title="LHS terminals">
+<link href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" rel="next" title="Valued and unvalued symbols">
+<link href="Precomputation-and-LHS-terminals.html#Precomputation-and-LHS-terminals" rel="prev" title="Precomputation and LHS terminals">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Nulling-terminals"></a>
+<div class="header">
+<p>
+Previous: <a href="Precomputation-and-LHS-terminals.html#Precomputation-and-LHS-terminals" accesskey="p" rel="prev">Precomputation and LHS terminals</a>, Up: <a href="LHS-terminals.html#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Nulling-terminals-1"></a>
+<h4 class="subsection">30.1.5 Nulling terminals</h4>
+
+<p>When LHS terminals are not in use, nulling terminals
+cannot occur,
+and applications need not take them in account.
+This is because, in order to be nullable,
+a symbol must appear on the LHS of a nullable rule.
+Without LHS terminals, therefore, no terminals can
+ever be either nullable or nulling.
+</p>
+<p>Things become more complicated if LHS terminals are allowed.
+In that case nulling terminals can be created,
+and Libmarpa must take measures to prevent a recognizer from being
+created for a grammar with nulling terminals.
+Libmarpa will not allow a recognizer to be created from a grammar
+with nulling terminals because they are a logical contradiction.
+A terminal is (by definition) a symbol which can appear in the input,
+and a nulling symbol, by definition, cannot appear in the input.
+</p>
+<p>Libmarpa&rsquo;s <code>marpa_g_precompute</code> method
+fails with the error code <code>MARPA_ERR_NULLING_TERMINAL</code>
+if it detects nulling terminals during precomputation.
+The error code <code>MARPA_ERR_NULLING_TERMINAL</code>
+is library-recoverable.
+See <a href="Grammar-precomputation.html#marpa_005fg_005fprecompute">marpa_g_precompute()</a>.
+</p>
+<p>Libmarpa&rsquo;s <code>marpa_g_precompute</code> method
+also triggers
+one <code>MARPA_EVENT_NULLING_TERMINAL</code> event
+for every nulling terminal in the grammar.
+This implies that
+one or more <code>MARPA_EVENT_NULLING_TERMINAL</code> events
+occur iff
+<code>marpa_g_precompute</code> fails
+with error code <code>MARPA_ERR_NULLING_TERMINAL</code>.
+</p>
+
+
+
+</body>
+</html>

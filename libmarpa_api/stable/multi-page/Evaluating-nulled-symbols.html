@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Evaluating nulled symbols (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Evaluating nulled symbols (Libmarpa 11.0.5)">
+<meta name="keywords" content="Evaluating nulled symbols (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Nullability.html#Nullability" rel="up" title="Nullability">
+<link href="Example-of-nulled-symbol.html#Example-of-nulled-symbol" rel="next" title="Example of nulled symbol">
+<link href="Assigning-semantics-to-nulled-symbols.html#Assigning-semantics-to-nulled-symbols" rel="prev" title="Assigning semantics to nulled symbols">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Evaluating-nulled-symbols"></a>
+<div class="header">
+<p>
+Next: <a href="Example-of-nulled-symbol.html#Example-of-nulled-symbol" accesskey="n" rel="next">Example of nulled symbol</a>, Previous: <a href="Assigning-semantics-to-nulled-symbols.html#Assigning-semantics-to-nulled-symbols" accesskey="p" rel="prev">Assigning semantics to nulled symbols</a>, Up: <a href="Nullability.html#Nullability" accesskey="u" rel="up">Nullability</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Evaluating-nulled-symbols-1"></a>
+<h3 class="section">12.3 Evaluating nulled symbols</h3>
+
+<p>In theory, the semantics of nulled symbols,
+like any semantics,
+can be arbitrarily complex.
+In practice,
+we are dealing with the semantics of the empty string,
+which is literally the &ldquo;semantics of nothing&rdquo;.
+If what we are dealing with truly is primarily a parsing problem,
+we can usually expect that the semantics of nothing will be simple.
+</p>
+<p>The possible subtrees below a nulled symbol can be seen
+as a set,
+and that set is a constant that depends on the grammar.
+Since the input corresponding to the nulled symbol
+is also a constant (the empty string),
+the semantics of a nulled symbol will also be constant,
+unless one of the following is true:
+</p><ul>
+<li> The semantics is non-deterministic.
+</li><li> The semantics takes into account, not just the input, but its context.
+For example, the semantics might depend on parse location,
+in which case the nulled symbol instance
+of <var>x</var> at location 5
+might mean something different
+from an nulled instance of <var>x</var> at location 50.
+</li></ul>
+<p>Both of these exceptions are unusual.
+When they do occur, the upper layer can
+implement the semantics of the nulled
+symbols with
+a function or a closure.
+</p>
+
+
+
+</body>
+</html>

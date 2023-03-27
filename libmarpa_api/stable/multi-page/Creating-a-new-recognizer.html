@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Creating a new recognizer (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Creating a new recognizer (Libmarpa 11.0.5)">
+<meta name="keywords" content="Creating a new recognizer (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Recognizer-methods.html#Recognizer-methods" rel="up" title="Recognizer methods">
+<link href="Recognizer-reference-counting.html#Recognizer-reference-counting" rel="next" title="Recognizer reference counting">
+<link href="Recognizer-overview.html#Recognizer-overview" rel="prev" title="Recognizer overview">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Creating-a-new-recognizer"></a>
+<div class="header">
+<p>
+Next: <a href="Recognizer-reference-counting.html#Recognizer-reference-counting" accesskey="n" rel="next">Recognizer reference counting</a>, Previous: <a href="Recognizer-overview.html#Recognizer-overview" accesskey="p" rel="prev">Recognizer overview</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Creating-a-new-recognizer-1"></a>
+<h3 class="section">18.2 Creating a new recognizer</h3>
+
+<a name="marpa_005fr_005fnew"></a><dl>
+<dt><a name="index-marpa_005fr_005fnew"></a>Constructor function: <em>Marpa_Recognizer</em> <strong>marpa_r_new</strong> <em>( Marpa_Grammar <var>g</var> )</em></dt>
+<dd>
+<p>On success, creates a new recognizer and
+increments the reference count of <var>g</var>,
+the base grammar, by one.
+In the new recognizer,
+</p><ul>
+<li> the reference count will be 1;
+</li><li> the furthest earleme will be 0; and
+</li><li> the values of the latest and current earleme will be unspecified.
+</li></ul>
+
+<p><strong>Return value</strong>:
+On success, the newly created recognizer, which is never <code>NULL</code>.
+If <var>g</var> is not precomputed, or on other hard failure, <code>NULL</code>.
+</p></dd></dl>
+
+
+
+
+</body>
+</html>

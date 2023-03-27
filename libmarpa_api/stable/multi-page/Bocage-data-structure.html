@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Bocage data structure (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Bocage data structure (Libmarpa 11.0.5)">
+<meta name="keywords" content="Bocage data structure (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Bocage-methods.html#Bocage-methods" rel="up" title="Bocage methods">
+<link href="Bocage-constructor.html#Bocage-constructor" rel="next" title="Bocage constructor">
+<link href="Bocage-overview.html#Bocage-overview" rel="prev" title="Bocage overview">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Bocage-data-structure"></a>
+<div class="header">
+<p>
+Next: <a href="Bocage-constructor.html#Bocage-constructor" accesskey="n" rel="next">Bocage constructor</a>, Previous: <a href="Bocage-overview.html#Bocage-overview" accesskey="p" rel="prev">Bocage overview</a>, Up: <a href="Bocage-methods.html#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Bocage-data-structure-1"></a>
+<h3 class="section">20.2 Bocage data structure</h3>
+
+<p>A bocage is a data structure containing the parses
+found by processing the input according to the grammar.
+It is related to a parse forest,
+but is in a form that is more compact and easily traversable.
+&ldquo;Bocage&rdquo; is our term, and we discovered this structure
+independently,
+but we were preceded in the discovery by Elizabeth Scott.
+And, unlike us,
+Prof. Scott did the all-important
+work of documenting it and providing the
+appropriate mathematical apparatus.
+See <a href="Elizabeth-Scott_0027s-SPPFs.html#Elizabeth-Scott_0027s-SPPFs">Elizabeth Scott's SPPFs</a>.
+</p>
+<p>The bocage contains the data for the parse trees whose root is
+an instance of the start symbol that begins at Earley set 0
+and ends at the
+<a name="index-End-of-parse-Earley-set"></a>
+<a name="index-Earley-set_002c-end-of-parse"></a>
+<em>end of parse Earley set</em>.
+Applications usually use the Earley set at the current earleme
+as the
+&ldquo;end of parse Earley set&rdquo;,
+so that the bocage is for parses of the entire input.
+But some applications may be interested in parsing prefixes of
+the input, and these applications can choose other
+end of parse Earley sets in their constructor.
+See <a href="Bocage-constructor.html#marpa_005fb_005fnew">marpa_b_new()</a>.
+</p>
+
+
+
+</body>
+</html>

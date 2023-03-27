@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>An example tree (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="An example tree (Libmarpa 11.0.5)">
+<meta name="keywords" content="An example tree (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Terms.html#Terms" rel="up" title="Terms">
+<link href="Traversal.html#Traversal" rel="next" title="Traversal">
+<link href="Trees.html#Trees" rel="prev" title="Trees">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="An-example-tree"></a>
+<div class="header">
+<p>
+Next: <a href="Traversal.html#Traversal" accesskey="n" rel="next">Traversal</a>, Previous: <a href="Trees.html#Trees" accesskey="p" rel="prev">Trees</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="An-example-tree-1"></a>
+<h3 class="section">5.9 An example tree</h3>
+
+<pre class="verbatim">     &lt; &lt; &quot;S&quot;, 0, 7 &gt;, [
+         &lt; &lt; &quot;A&quot;, 0, 2 &gt;, [
+             &lt; &lt; &quot;T&quot;, 0, 1 &gt;, [ ] &gt;,
+             &lt; &lt; &quot;U&quot;, 1, 2 &gt;, [ ] &gt;
+         ] &gt;,
+         &lt; &lt; &quot;B&quot;, 2, 2 &gt;, [ ] &gt;,
+         &lt; &lt; &quot;C&quot;, 2, 3 &gt;, [
+             &lt; &lt; &quot;V&quot;, 2, 3 &gt;, [ ] &gt;
+         ] &gt;,
+         &lt; &lt; &quot;D&quot;, 3, 5 &gt;, [
+             &lt; &lt; &quot;W&quot;, 3, 4 &gt;, [ ] &gt;,
+             &lt; &lt; &quot;X&quot;, 4, 5 &gt;, [ ] &gt;
+         ] &gt;,
+         &lt; &lt; &quot;E&quot;, 5, 7 &gt;, [
+             &lt; &lt; &quot;Y&quot;, 5, 6 &gt;, [ ] &gt;,
+             &lt; &lt; &quot;Z&quot;, 6, 7 &gt;, [ ] &gt;
+         ] &gt;
+      ] &gt;
+</pre>
+<p>In the tree above, we use symbol names (for example, <code>&quot;S&quot;</code>)
+as symbol IDs.
+Since we have not used the same symbol twice, we will be able to
+refer to a node by its symbol name.
+In practical parse trees, symbols usually occur many times.
+</p>
+<p>Node <code>S</code> has 5 children.
+Node <code>A</code> has 2 children.
+Node <code>B</code> has no children and is a nulled node.
+Nodes <code>T</code>, <code>U</code>, <code>V</code>, <code>W</code>, <code>X</code>,
+<code>Y</code>, and <code>Z</code>
+are terminal nodes.
+Nodes
+<code>S</code>,
+<code>A</code>,
+<code>C</code>,
+<code>D</code>, and
+<code>E</code>
+are BNF rule nodes.
+The tree implies a grammar with at least
+the following rules:
+</p><pre class="verbatim">    S ::= A B C D E
+    A ::= T U
+    B ::=
+    C ::= V
+    D ::= W X
+    E ::= Y Z
+</pre>
+<p>The tree derives the sentence
+</p><pre class="verbatim">      T U V W X Y X
+</pre><p>and can do so in several ways.
+One is these is its rightmost derviation:
+</p><pre class="verbatim">    S -&gt; A B C D E
+      -&gt; A B C D Y Z
+      -&gt; A B C W X Y Z
+      -&gt; A B V W X Y Z
+      -&gt; A V W X Y Z
+      -&gt; T U V W X Y Z
+</pre><p>This is called the
+<a name="index-rightmost-derivation"></a>
+<a name="index-derivation_002c-rightmost"></a>
+<em>rightmost derviation</em>
+because,
+at each derivation step,
+the symbol that is expanded is the rightmost symbol possible.
+There is also a
+<a name="index-leftmost-derivation"></a>
+<a name="index-derivation_002c-leftmost"></a>
+<em>leftmost derivation</em>:
+</p><pre class="verbatim">    S -&gt; A B C D E
+      -&gt; T U B C D E
+      -&gt; T U C D E
+      -&gt; T U V D E
+      -&gt; T U V W X E
+      -&gt; T U V W X Y Z
+</pre>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Traversal.html#Traversal" accesskey="n" rel="next">Traversal</a>, Previous: <a href="Trees.html#Trees" accesskey="p" rel="prev">Trees</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

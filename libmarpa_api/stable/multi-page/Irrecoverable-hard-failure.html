@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Irrecoverable hard failure (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Irrecoverable hard failure (Libmarpa 11.0.5)">
+<meta name="keywords" content="Irrecoverable hard failure (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Failure.html#Failure" rel="up" title="Failure">
+<link href="Partially-recoverable-hard-failure.html#Partially-recoverable-hard-failure" rel="next" title="Partially recoverable hard failure">
+<link href="Undetected-failure.html#Undetected-failure" rel="prev" title="Undetected failure">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Irrecoverable-hard-failure"></a>
+<div class="header">
+<p>
+Next: <a href="Partially-recoverable-hard-failure.html#Partially-recoverable-hard-failure" accesskey="n" rel="next">Partially recoverable hard failure</a>, Previous: <a href="Undetected-failure.html#Undetected-failure" accesskey="p" rel="prev">Undetected failure</a>, Up: <a href="Failure.html#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Irrecoverable-hard-failure-1"></a>
+<h3 class="section">13.6 Irrecoverable hard failure</h3>
+
+<p>An
+<a name="index-irrecoverable-hard-failure"></a>
+<a name="index-hard-failure_002c-irrecoverable"></a>
+<a name="index-failure_002c-irrecoverable-hard"></a>
+<em>irrecoverable hard failure</em>
+is
+an irrecoverable Libmarpa application programming failure that has an
+error code associated with it.
+Libmarpa attempts to behave as predictably as possible
+in the face of a hard failure,
+but once an irrecoverable failure occurs,
+the behavior of a Libmarpa application is undefined.
+</p>
+<p>In the event of an irrecoverable failure,
+there are no application behaviors.
+The diagnostic behavior for a hard failure is as described
+for the method that detects the hard failure.
+At a minimum, this diagnostic behavior will be returning from
+the method that detects the hard failure with the return
+value specified for hard failure,
+and setting the error code as specified for hard failure.
+</p>
+
+
+
+</body>
+</html>

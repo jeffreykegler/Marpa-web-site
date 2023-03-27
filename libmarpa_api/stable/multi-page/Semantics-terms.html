@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Semantics terms (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Semantics terms (Libmarpa 11.0.5)">
+<meta name="keywords" content="Semantics terms (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Terms.html#Terms" rel="up" title="Terms">
+<link href="Ambiguity.html#Ambiguity" rel="next" title="Ambiguity">
+<link href="Traversal.html#Traversal" rel="prev" title="Traversal">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Semantics-terms"></a>
+<div class="header">
+<p>
+Next: <a href="Ambiguity.html#Ambiguity" accesskey="n" rel="next">Ambiguity</a>, Previous: <a href="Traversal.html#Traversal" accesskey="p" rel="prev">Traversal</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Semantics-terms-1"></a>
+<h3 class="section">5.11 Semantics terms</h3>
+
+<p>Rarely is an application interested only in the tree.
+Traditionally and most often, the tree
+is an intermediate step in producing the &ldquo;value&rdquo; of the parse run.
+A value of a parse run is a &ldquo;meaning&rdquo; of the input string.
+</p>
+<p>Grammars almost always have a
+<a name="index-semantics-1"></a>
+<em>semantics</em>
+associated with them.
+The purpose of parsing is to use the
+grammar and its semantics to find the
+<a name="index-value-1"></a>
+<em>value</em>
+of the input string.
+Finding the value of a parse tree
+is called
+<a name="index-evaluate-_0028a-tree_0029"></a>
+<em>evaluating a tree</em>.
+More loosely,
+we also speak of
+<a name="index-evaluate-_0028a-parse-run_0029"></a>
+<em>evaluating the parse run</em>,
+or
+<a name="index-evaluate-_0028an-input-string_0029"></a>
+<em>evaluating the input string</em>.
+</p>
+<p>We recall that Libmarpa provides instructions for stack manipulation.
+See <a href="Value-methods.html#Value-methods">Value methods</a>.
+Libmarpa does not directly do evaluation
+because Libmarpa is usually used
+together with a higher-level language,
+and the semantics is first known,
+and the evaluation is most easily performed,
+in the higher-level language.
+</p>
+<p>In the most common method of evaluating a parse tree,
+every node
+has a value associated with it.
+An application might determine the value of a terminal node from
+</p><ul>
+<li> the node&rsquo;s symbol;
+</li><li> a &ldquo;token value&rdquo;, which Libmarpa allows the user
+to specify for
+each input symbol at the time the input symbol is recognized;
+</li><li> context information, including the node&rsquo;s location information; or
+</li><li> any combination of the above.
+</li></ul>
+
+<p>In determining the value of nulled nodes, the application may also
+consider the node&rsquo;s symbol and context information.
+Libmarpa prunes nulled subtrees back to their root,
+which usually is what the application expects.
+The evaluation of nulled nodes is discussed in detail
+in the chapter on nullability.
+See <a href="Nullability.html#Nullability">Nullability</a>.
+</p>
+<p>To find the value of a rule node, an application
+may use the rule, context information, and the values of the
+rule node&rsquo;s children.
+Let <code>nd</code> be a rule node,
+and let <code>childCount</code> be the number of children of <code>nd</code>.
+Frequently, the semantics of <code>nd</code> is implemented as
+a &ldquo;semantic function&rdquo;.
+The arguments of the semantic function are typically a scratchpad variable, call it <code>scratch</code>,
+followed by the values of the children of <code>nd</code>,
+so that the number of arguments for the function is <code>childCount+1</code>.
+The return value of the semantic function becomes the value of <code>nd</code>.
+</p>
+<p>Semantic functions often have side effects.
+For example, a grammar for a language often wants its semantic functions
+to build and refer to a symbol table.
+The <code>scratch</code> variable allows for this.
+</p>
+<p>Implementing this traditional method of tree evaluation requires
+a bottom-up traversal of the parse tree.
+In the final step of a bottom-up traversal,
+the start node is evaluated,
+and the value of the start node becomes the value of the parse run.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Ambiguity.html#Ambiguity" accesskey="n" rel="next">Ambiguity</a>, Previous: <a href="Traversal.html#Traversal" accesskey="p" rel="prev">Traversal</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

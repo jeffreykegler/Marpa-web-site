@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Derivations (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Derivations (Libmarpa 11.0.5)">
+<meta name="keywords" content="Derivations (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Terms.html#Terms" rel="up" title="Terms">
+<link href="Nulling.html#Nulling" rel="next" title="Nulling">
+<link href="Rules.html#Rules" rel="prev" title="Rules">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Derivations"></a>
+<div class="header">
+<p>
+Next: <a href="Nulling.html#Nulling" accesskey="n" rel="next">Nulling</a>, Previous: <a href="Rules.html#Rules" accesskey="p" rel="prev">Rules</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Derivations-1"></a>
+<h3 class="section">5.4 Derivations</h3>
+
+<p>A
+<a name="index-step"></a>
+<em>step</em>
+of a derivation, or
+<a name="index-derivation-step"></a>
+<em>derivation step</em>, is a change made to a symbol string
+by applying one of the rules from the grammar.
+The rule must be one of those with a LHS that occurs in the symbol string.
+The result of the derivation step is another symbol string,
+one in which an occurrence of the LHS symbol from the rule is
+replaced by the RHS of the rule.
+<a name="derivation_002dexample"></a>For example, if <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>, and <var>X</var> are symbols,
+and
+</p>
+<pre class="verbatim">    X ::= B C
+</pre>
+<p>is a rule, then
+</p>
+<pre class="verbatim">    A X D -&gt; A B C D
+</pre>
+<p>is a derivation step,
+</p><ul>
+<li> with &ldquo;<code>A X D</code>&rdquo; as its beginning,
+</li><li> &ldquo;<code>A B C D</code>&rdquo; as its end or result, and
+</li><li> <tt>X ::= B C</tt> as its rule.
+</li></ul>
+<p>A
+<a name="index-derivation"></a>
+<em>derivation</em>
+is a sequence of derivation steps.
+The
+<a name="index-length-1"></a>
+<em>length</em>
+of a derivation is its length in steps.
+</p>
+<ul>
+<li> A string <var>X</var>
+<a name="index-derives"></a>
+<em>derives</em>
+a string <var>Y</var>
+iff
+there is a derivation of zero or more steps
+which begins with the string
+<var>X</var> and ends in the string <var>Y</var>.
+In the example above (see <a href="#derivation_002dexample">derivation-example</a>),
+we say that the symbol string &ldquo;<code>A X D</code>&rdquo;
+derives
+the symbol string
+&ldquo;<code>A B C D</code>&rdquo; in one step.
+</li><li> We say that
+a first symbol string
+<a name="index-directly-derives"></a>
+<a name="index-derives_002c-directly"></a>
+<em>directly derives</em>
+a second symbol string iff there is a derivation of length 1 from the first symbol
+string to the second symbol string.
+In the example above (see <a href="#derivation_002dexample">derivation-example</a>),
+we say that the symbol string &ldquo;<code>A X D</code>&rdquo;
+directly derives
+the symbol string
+&ldquo;<code>A B C D</code>&rdquo;.
+</li><li> Every symbol string is said to derive itself in a derivation
+of length 0.  A zero length derivation is a
+<a name="index-trivial-derivation"></a>
+<em>trivial derivation</em>.
+</li><li> A derivation which is not trivial
+(that is,
+a derivation which has one or more steps)
+is a
+<a name="index-non_002dtrivial"></a>
+<em>non-trivial</em>
+derivation.
+</li><li> If a derivation is not trivial or direct, that is, if it has more than one step,
+then it is an
+<a name="index-indirect"></a>
+<em>indirect</em>
+derivation.
+</li></ul>
+
+<p>Pedantically, a symbol <var>X</var> and a string
+that consists of only that symbol
+are two different things.
+But we often say &ldquo;the symbol <var>X</var>&rdquo;,
+or &ldquo;<var>X</var>&rdquo;,
+as shorthand for &ldquo;the string
+of length 1
+whose only symbol is <var>X</var>&rdquo;.
+For example, if the string containing only the
+symbol <var>X</var> derives a string <var>Y</var>,
+we will usually say simply that &ldquo;<var>X</var> derives <var>Y</var>&rdquo;.
+</p>
+<p>Wherever symbol or string <var>X</var> derives <var>Y</var>,
+we may also say <var>X</var>
+<a name="index-produces"></a>
+<em>produces</em>
+<var>Y</var>.
+Derivations are often described as symbol matches.
+Wherever symbol or string <var>X</var> derives <var>Y</var>,
+we may also say that <var>Y</var>
+<a name="index-matches"></a>
+<em>matches</em>
+<var>X</var>
+or that <var>X</var>
+<a name="index-matches-1"></a>
+<em>matches</em>
+<var>Y</var>.
+It is particularly common to say that
+<var>X</var> matches <var>Y</var> when <var>Y</var> is a sentence.
+</p>
+<p>The parse of an input by a grammar is
+<a name="index-successful"></a>
+<em>successful</em>
+iff, according to the grammar,
+the start symbol produces the input sentence.
+The set of all input sentences that
+a grammar
+will successfully parse is
+the
+<a name="index-language-1"></a>
+<em>language</em>
+of
+the grammar.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Nulling.html#Nulling" accesskey="n" rel="next">Nulling</a>, Previous: <a href="Rules.html#Rules" accesskey="p" rel="prev">Rules</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

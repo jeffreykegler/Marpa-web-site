@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Furthest earleme values (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Furthest earleme values (Libmarpa 11.0.5)">
+<meta name="keywords" content="Furthest earleme values (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Futures.html#Futures" rel="up" title="Futures">
+<link href="Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029.html#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029" rel="next" title="Additional recoverable failures in marpa_r_alternative()">
+<link href="Orthogonal-treatment-of-exhaustion.html#Orthogonal-treatment-of-exhaustion" rel="prev" title="Orthogonal treatment of exhaustion">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Furthest-earleme-values"></a>
+<div class="header">
+<p>
+Next: <a href="Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029.html#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029" accesskey="n" rel="next">Additional recoverable failures in marpa_r_alternative()</a>, Previous: <a href="Orthogonal-treatment-of-exhaustion.html#Orthogonal-treatment-of-exhaustion" accesskey="p" rel="prev">Orthogonal treatment of exhaustion</a>, Up: <a href="Futures.html#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Furthest-earleme-values-1"></a>
+<h3 class="section">29.8 Furthest earleme values</h3>
+
+<p><code>marpa_r_furthest_earleme</code> returns
+<code>unsigned int</code>, which is non-orthogonal with
+<code>marpa_r_current_earleme</code>.
+This leaves no room for an failure return value,
+which we deal with by not checking for failures.
+The only important potential failure is calling
+<code>marpa_r_furthest_earleme</code> when the furthest
+earleme is an indeterminate value.
+We eliminate this potential cause of failure by
+regarding furthest earleme as having
+been initialized when the recognizer was created,
+which is another non-orthogonality with
+<code>marpa_r_current_earleme</code>.
+</p>
+<p>All this might be fine, if something were gained, but in fact
+nothing ever is gained.
+The furthest
+earleme, unless the parse fails, always becomes the current earleme,
+and no use cases for extremely long variable-length tokens are envisioned,
+so that current and furthest earleme should never be far apart.
+Additionally, the additional values for the furthest earleme only come into
+play if the length of parse causes the application to exceed
+the memory limit imposed by modern application environments.
+Summarizing, <code>marpa_r_furthest_earleme</code>,
+should return an <code>int</code>,
+like <code>marpa_r_current_earleme</code>,
+and the non-orthogonalities should be eliminated.
+</p>
+
+
+
+</body>
+</html>

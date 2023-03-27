@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Soft failure (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Soft failure (Libmarpa 11.0.5)">
+<meta name="keywords" content="Soft failure (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Failure.html#Failure" rel="up" title="Failure">
+<link href="Error-codes.html#Error-codes" rel="next" title="Error codes">
+<link href="Fully-recoverable-hard-failure.html#Fully-recoverable-hard-failure" rel="prev" title="Fully recoverable hard failure">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Soft-failure"></a>
+<div class="header">
+<p>
+Next: <a href="Error-codes.html#Error-codes" accesskey="n" rel="next">Error codes</a>, Previous: <a href="Fully-recoverable-hard-failure.html#Fully-recoverable-hard-failure" accesskey="p" rel="prev">Fully recoverable hard failure</a>, Up: <a href="Failure.html#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Soft-failure-1"></a>
+<h3 class="section">13.11 Soft failure</h3>
+
+<p>A
+<a name="index-soft-failure-1"></a>
+<a name="index-failure_002c-soft-1"></a>
+<em>soft failure</em>
+is
+a recoverable Libmarpa application programming failure that has no
+error code associated with it.
+Hard errors are assigned error codes in order to tell them apart.
+Error codes are not necessary or useful for soft errors,
+because there is at most one type of soft failure per Libmarpa method.
+</p>
+<p><em>Soft failures</em>
+are so called,
+because they are the least severe kind of failure.
+The most severe failures are &ldquo;bugs&rdquo; &mdash;
+unintended, and a symptom of a problem.
+Soft failures, on the other hand, are a frequent occurrence
+in normal, successful, processing.
+In the phrase &ldquo;soft failure&rdquo;, the word &ldquo;failure&rdquo; is used
+in the same sense that its cognate &ldquo;fail&rdquo; is used
+when we say that a loop terminates when it &ldquo;fails&rdquo; its
+loop condition.
+That &rdquo;failure&rdquo; is the failure of a condition necessary to continue on
+a main branch of processing, and a signal to proceed on another branch.
+</p>
+<p>It is expected that Libmarpa applications will be designed
+such that successful execution
+requires handling soft failures.
+In fact, a non-trivial Libmarpa application can hardly be designed
+except on that basis.
+</p>
+
+
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The basic models of input (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="The basic models of input (Libmarpa 11.0.5)">
+<meta name="keywords" content="The basic models of input (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Input.html#Input" rel="up" title="Input">
+<link href="The-standard-model-of-input.html#The-standard-model-of-input" rel="next" title="The standard model of input">
+<link href="The-furthest-earleme.html#The-furthest-earleme" rel="prev" title="The furthest earleme">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="The-basic-models-of-input"></a>
+<div class="header">
+<p>
+Next: <a href="Terminals.html#Terminals" accesskey="n" rel="next">Terminals</a>, Previous: <a href="Earlemes.html#Earlemes" accesskey="p" rel="prev">Earlemes</a>, Up: <a href="Input.html#Input" accesskey="u" rel="up">Input</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-basic-models-of-input-1"></a>
+<h3 class="section">7.2 The basic models of input</h3>
+
+<p>For the purposes of presentation,
+we (somewhat arbitrarily)
+divide Libmarpa&rsquo;s input models
+into two groups:
+basic and advanced.
+In the
+<a name="index-basic-models-of-input"></a>
+<a name="index-models-of-input_002c-basic"></a>
+<a name="index-input_002c-basic-models-of"></a>
+<em>basic input models of input</em>,
+every token is exactly one earleme long.
+This implies that, in a basic model of input,
+</p><ul>
+<li> every token is the same length,
+</li><li> the ordinal of an Earley set
+will always be the same as its earleme location, and
+</li><li> the latest earleme and the current earleme are always equal.
+</li></ul>
+
+<p>In the
+<a name="index-advanced-models-of-input"></a>
+<a name="index-models-of-input_002c-advanced"></a>
+<a name="index-input_002c-advanced-models-of"></a>
+<em>advanced models of input</em>,
+tokens may have a length other than 1.
+Most applications use the basic input models.
+The details of the advanced models of input are
+presented in a later chapter.
+See <a href="Advanced-input-models.html#Advanced-input-models">Advanced input models</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="The-standard-model-of-input.html#The-standard-model-of-input" accesskey="1">The standard model of input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Ambiguous-input.html#Ambiguous-input" accesskey="2">Ambiguous input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

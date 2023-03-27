@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Recursion and cycles (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Recursion and cycles (Libmarpa 11.0.5)">
+<meta name="keywords" content="Recursion and cycles (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Terms.html#Terms" rel="up" title="Terms">
+<link href="Trees.html#Trees" rel="next" title="Trees">
+<link href="Useless-rules.html#Useless-rules" rel="prev" title="Useless rules">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Recursion-and-cycles"></a>
+<div class="header">
+<p>
+Next: <a href="Trees.html#Trees" accesskey="n" rel="next">Trees</a>, Previous: <a href="Useless-rules.html#Useless-rules" accesskey="p" rel="prev">Useless rules</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Recursion-and-cycles-1"></a>
+<h3 class="section">5.7 Recursion and cycles</h3>
+
+<p>If any symbol in the grammar non-trivially produces a symbol string containing itself,
+the grammar is said to be
+<a name="index-recursive"></a>
+<em>recursive</em>.
+If any symbol non-trivially produces a symbol string in which it is the leftmost symbol,
+the grammar is said to be
+<a name="index-left_002drecursive"></a>
+<em>left-recursive</em>.
+If any symbol non-trivially produces a symbol string in which it is the rightmost symbol,
+the grammar is said to be
+<a name="index-right_002drecursive"></a>
+<em>right-recursive</em>.
+Marpa can handle all recursive grammars,
+including
+grammars which are left-recursive,
+grammars which are right-recursive,
+and grammars
+which contain both left- and right-recursion.
+</p>
+<p>A
+<a name="index-cycle"></a>
+<em>cycle</em>
+is a non-trivial derivation
+of a string of symbols from itself.
+If it is not possible for any derivation using a grammar
+to contain a cycle,
+then that grammar is said to be
+<a name="index-cycle_002dfree"></a>
+<em>cycle-free</em>.
+Traditionally, a grammar is
+considered useless
+if it is not cycle-free.
+</p>
+<p>The traditional deprecation of cycles is well-founded.
+A cycle is
+the parsing equivalent of an infinite loop.
+Once a cycle appears, it can be
+repeated over and over again.
+Even a very short input sentence can have an
+infinite number of parses when the grammar is not
+cycle-free.
+</p>
+<p>For that reason,
+a grammar which contains a cycle is also
+called
+<a name="index-infinitely-ambiguous"></a>
+<em>infinitely ambiguous</em>.
+Marpa can parse with grammars which are not
+cycle-free,
+but use of this feature is deprecated.
+See <a href="Cycles.html#Cycles">Cycles</a>.
+</p>
+
+
+
+</body>
+</html>

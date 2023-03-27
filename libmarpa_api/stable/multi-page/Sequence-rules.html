@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Sequence rules (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Sequence rules (Libmarpa 11.0.5)">
+<meta name="keywords" content="Sequence rules (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Nullability.html#Nullability" rel="next" title="Nullability">
+<link href="Threads.html#Threads" rel="prev" title="Threads">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Sequence-rules"></a>
+<div class="header">
+<p>
+Next: <a href="Nullability.html#Nullability" accesskey="n" rel="next">Nullability</a>, Previous: <a href="Threads.html#Threads" accesskey="p" rel="prev">Threads</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Sequence-rules-1"></a>
+<h2 class="chapter">11 Sequence rules</h2>
+
+<p>Traditionally, grammars only allow BNF rules.
+Libmarpa allows sequence rules, which express sequences
+by allowing
+a single RHS symbol to be repeated.
+</p>
+<p>A sequence rule consists of a LHS and a RHS symbol.
+Additionally, the application must indicate the minimum number
+of repetitions.
+The minimum count must be 0 or 1.
+</p>
+<p>Optionally, a separator symbol may be specified.
+For example, a comma-separated sequence of numbers
+</p><pre class="verbatim">     1,42,7192,711,
+</pre><p>may be recognized
+by specifying the rule <tt>Seq ::= num</tt> and
+the separator <tt>comma ::= ','</tt>.
+By default, an optional final separator,
+as shown in the example above,
+is recognized,
+but &ldquo;proper separation&rdquo; may also be specified.
+In proper separation separators must,
+in fact,
+come between (&ldquo;separate&rdquo;) items of the sequence.
+A final separator is not a separator in the strict sense,
+and therefore is not recognized when proper separation is in effect.
+For more on specifying sequence rules,
+see <a href="Sequence-methods.html#marpa_005fg_005fsequence_005fnew">marpa_g_sequence_new</a>.
+</p>
+<p>Sequence rules are &ldquo;sugar&rdquo; &mdash;
+their presence in the Libmarpa interface does not extend its power.
+Every Libmarpa grammar that can be written using sequence rules
+can be rewritten as a grammar without sequence rules.
+</p>
+<p>The RHS symbol and the separator, if there is one,
+must not be nullable.
+This is because it is not completely clear what
+an application intends
+when it asks for a sequence of items,
+some of which are nullable &mdash;
+the most natural interpretation of this usually results in a highly
+ambiguous grammar.
+</p>
+<p>Libmarpa allows highly ambiquous grammars
+and a programmer who wants a grammar
+with sequences containing nullable items or separators
+can write that grammar using BNF rules.
+The use of BNF rules
+make it clearer that ambiguity is what the programmer
+intended, and allows the programmer more flexibility.
+</p>
+<p>A sequence rule must have a dedicated LHS &mdash;
+that is, the LHS of a sequence rule must not be the LHS of
+any other rule.
+This implies that the LHS of a sequence rule can
+never be the LHS of a BNF rule.
+</p>
+<p>The requirement that the LHS of a sequence rule be
+unique is imposed for reasons similar to those
+for the
+prohibition against RHS and separator nullables.
+Often reuse of the LHS of a sequence rule
+is simply a mistake.
+Even when deliberate,
+reuse of the LHS results in a complex grammar,
+one which often parses in ways that the programmer
+did not intend.
+</p>
+<p>A programmer who believes they know what they
+are doing, and really does want alternative sequences starting
+at the same input location, can specify this behavior indirectly.
+They can do this by creating two sequence rules with distinct LHS&rsquo;s:
+</p><pre class="verbatim">     Seq1 ::= Item1
+     Seq2 ::= Item2
+</pre><p>and adding a new &ldquo;parent&rdquo; LHS which recognizes the sequences as alternatives.
+</p><pre class="verbatim">     SeqChoice ::= Seq1
+     SeqChoice ::= Seq2
+</pre>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Nullability.html#Nullability" accesskey="n" rel="next">Nullability</a>, Previous: <a href="Threads.html#Threads" accesskey="p" rel="prev">Threads</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

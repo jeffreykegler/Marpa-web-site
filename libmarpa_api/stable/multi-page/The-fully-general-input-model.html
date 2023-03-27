@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The fully general input model (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="The fully general input model (Libmarpa 11.0.5)">
+<meta name="keywords" content="The fully general input model (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Advanced-input-models.html#Advanced-input-models" rel="up" title="Advanced input models">
+<link href="Support.html#Support" rel="next" title="Support">
+<link href="The-dense-variable_002dlength-token-model.html#The-dense-variable_002dlength-token-model" rel="prev" title="The dense variable-length token model">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="The-fully-general-input-model"></a>
+<div class="header">
+<p>
+Previous: <a href="The-dense-variable_002dlength-token-model.html#The-dense-variable_002dlength-token-model" accesskey="p" rel="prev">The dense variable-length token model</a>, Up: <a href="Advanced-input-models.html#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-fully-general-input-model-1"></a>
+<h3 class="section">27.2 The fully general input model</h3>
+
+<p>In the
+<a name="index-sparse-variable_002dlength-input-model"></a>
+<a name="index-variable_002dlength-input-model_002c-sparse"></a>
+<a name="index-input-model_002c-sparse-variable_002dlength"></a>
+<em>sparse variable-length model of input</em>,
+zero or more successful
+calls of
+<code>marpa_r_alternative()</code>
+must be immediately previous
+to every call to
+<code>marpa_r_earleme_complete()</code>.
+The sparse model is the dense variable-length model,
+with its only restriction lifted &mdash;
+the sparse variable-length input model
+allows calls to
+<code>marpa_r_earleme_complete()</code>
+that are not immediately preceded by successful calls to
+<code>marpa_r_alternative()</code>.
+</p>
+<p>Since it is unrestricted, the sparse input model
+is Libmarpa&rsquo;s fully general input model.
+Because of this,
+it may be useful for us
+to state the effect of mutators
+on the earleme variables in detail,
+even at the expense of some repetition.
+</p>
+<p>In the sparse input model,
+<a name="index-empty-earleme"></a>
+<a name="index-earleme_002c-empty"></a>
+<em>empty earlemes</em>
+are now possible.
+An empty earleme is an earleme
+with no tokens and no Earley set.
+An empty earleme occurs iff
+<code>marpa_r_earleme_complete()</code>
+is called when there is no immediately previous
+successful call to
+<code>marpa_r_alternative()</code>.
+The sparse model takes its name
+from the fact that there may be earlemes with no
+Earley set.
+In the sparse model, Earley sets are &ldquo;sparsely&rdquo;
+distributed among the earlemes.
+</p>
+<p>The latest earleme is the most recent non-empty earleme.
+In other words, the latest earleme is the most recent
+earleme with an Earley set at it.
+In the dense input models,
+the current earleme and the latest earleme were always
+the same.
+Because the sparse input models allow empty earlemes,
+it becomes possible for the latest earleme
+and the current earleme to differ.
+The latest earleme must always be the earleme of an Earley set.
+The current earleme is not necessarily the earleme of an Earley set.
+</p>
+<p>In the sparse model of input,
+the effect on the earleme variables of
+a successful call of the
+<code>marpa_r_alternative()</code> mutator
+is the same as for the dense model of input:
+</p><ul>
+<li> The furthest earleme will be
+<code>max(old_f, old_c+length)</code>,
+    <ul>
+<li> where <code>old_f</code> is the furthest earleme
+        before the call to <code>marpa_r_alternative()</code>,
+    </li><li> <code>old_c</code> is the value of the current earleme
+        before the call to <code>marpa_r_alternative()</code>, and
+    </li><li> <code>length</code> is the length of the token read.
+    </li></ul>
+</li><li> <code>marpa_r_alternative()</code> never changes the
+latest or current earleme.
+</li></ul>
+
+<p>In the sparse model,
+when the earleme is not empty,
+the effect of
+a call to
+<code>marpa_r_earleme_complete()</code>
+on the earleme variables is the same as
+in the dense and the basic models of input.
+Specifically, the following will be true:
+</p><ul>
+<li> The current earleme will be advanced to <code>old_c+1</code>,
+where <code>old_c</code> is the current earleme before the call.
+</li><li> The latest earleme will be <code>old_c+1</code>, and therefore
+will be equal to the current earleme.
+</li><li> The value of the furthest earleme is never changed by
+a call to
+<code>marpa_r_earleme_complete()</code>.
+</li></ul>
+
+<p>For the sparse input model,
+in the case of an empty earleme,
+the effect of the
+<code>marpa_r_earleme_complete()</code>
+mutator on the earleme variables
+is the following:
+</p><ul>
+<li> The current earleme will be advanced to <code>old_c+1</code>,
+where <code>old_c</code> is the current earleme before the call.
+</li><li> The latest earleme will remain at <code>old_l</code>,
+where the latest earleme before the call is <code>old_l</code>.
+This implies that the latest earleme will be less than
+the current earleme.
+</li><li> The furthest earleme is never changed by a call
+to
+<code>marpa_r_earleme_complete()</code>.
+</li></ul>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="The-dense-variable_002dlength-token-model.html#The-dense-variable_002dlength-token-model" accesskey="p" rel="prev">The dense variable-length token model</a>, Up: <a href="Advanced-input-models.html#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

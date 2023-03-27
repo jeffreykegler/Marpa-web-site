@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Library-recoverable hard failure (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Library-recoverable hard failure (Libmarpa 11.0.5)">
+<meta name="keywords" content="Library-recoverable hard failure (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Failure.html#Failure" rel="up" title="Failure">
+<link href="Ancestry_002drecoverable-hard-failure.html#Ancestry_002drecoverable-hard-failure" rel="next" title="Ancestry-recoverable hard failure">
+<link href="Partially-recoverable-hard-failure.html#Partially-recoverable-hard-failure" rel="prev" title="Partially recoverable hard failure">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Library_002drecoverable-hard-failure"></a>
+<div class="header">
+<p>
+Next: <a href="Ancestry_002drecoverable-hard-failure.html#Ancestry_002drecoverable-hard-failure" accesskey="n" rel="next">Ancestry-recoverable hard failure</a>, Previous: <a href="Partially-recoverable-hard-failure.html#Partially-recoverable-hard-failure" accesskey="p" rel="prev">Partially recoverable hard failure</a>, Up: <a href="Failure.html#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Library_002drecoverable-hard-failure-1"></a>
+<h3 class="section">13.8 Library-recoverable hard failure</h3>
+
+<p>A
+<a name="index-library_002drecoverable-hard-failure"></a>
+<a name="index-hard-failure_002c-library_002drecoverable"></a>
+<a name="index-failure_002c-library_002drecoverable-hard"></a>
+<em>library-recoverable hard failure</em>
+is a type of partially recoverable hard failure.
+Loosely described, it is a hard failure that
+allows the programmer to continue to use many
+of the Libmarpa methods in the library,
+but that disallows certain methods on  some objects.
+</p>
+<p>To state the restrictions of application behaviors
+more precisely, let
+the &ldquo;failure grammar&rdquo; be the base grammar
+of the method that detected the library-recoverable hard failure.
+After a library-recoverable hard failure,
+the following behaviors are no longer application
+behaviors:
+</p><ul>
+<li> Libmarpa mutator and constructor method calls where the base grammar is the
+  failure grammar.
+</li></ul>
+<p>Recall that any use of a behavior that is not an application
+behavior is an irrecoverable failure.
+</p>
+<p>The application behaviors
+remaining after a library-recoverable hard failure
+are the following:
+</p><ul>
+<li> All non-Libmarpa interfaces,
+including calls to libraries
+in the application and in the application environment.
+</li><li> All Libmarpa static method calls.
+</li><li> All Libmarpa accessor and destructor method calls.
+</li><li> All Libmarpa mutator and constructor method calls
+whose base grammar is not the failure grammar.
+</li></ul>
+
+<p>Note that Libmarpa destructors remain available after
+a library recoverable failure.
+An application will often want to destroy all Libmarpa objects
+whose base grammar is the failure grammar,
+in order to clear memory of problematic objects.
+</p>
+<p>An example of a library-recoverable hard failure is
+the <code>MARPA_ERR_COUNTED_NULLABLE</code> error
+in the <code>marpa_g_precompute</code> method.
+See <a href="Grammar-precomputation.html#marpa_005fg_005fprecompute">marpa_g_precompute()</a>.
+</p>
+
+
+
+</body>
+</html>

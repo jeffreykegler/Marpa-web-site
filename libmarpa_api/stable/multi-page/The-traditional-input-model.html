@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The traditional input model (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="The traditional input model (Libmarpa 11.0.5)">
+<meta name="keywords" content="The traditional input model (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Earlemes.html#Earlemes" rel="up" title="Earlemes">
+<link href="The-latest-earleme.html#The-latest-earleme" rel="next" title="The latest earleme">
+<link href="Earlemes.html#Earlemes" rel="prev" title="Earlemes">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="The-traditional-input-model"></a>
+<div class="header">
+<p>
+Next: <a href="The-latest-earleme.html#The-latest-earleme" accesskey="n" rel="next">The latest earleme</a>, Previous: <a href="Earlemes.html#Earlemes" accesskey="p" rel="prev">Earlemes</a>, Up: <a href="Earlemes.html#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-traditional-input-model-1"></a>
+<h4 class="subsection">7.1.1 The traditional input model</h4>
+
+<p>In traditional Earley parsers, the concept of location is very simple.
+Locations are numbered from 0 to <var>n</var>, where <var>n</var> is the length of
+the input.
+Every location has an Earley set, and vice versa.
+Location 0 is the start location.
+Every location after the start location has exactly one input token
+associated with it.
+</p>
+<p>Some applications
+do not fit this traditional input model &mdash;
+natural language processing requires ambiguous tokens,
+for example.
+Libmarpa allows a wide variety of alternative input models.
+</p>
+<p>In Libmarpa a location is called a
+<a name="index-earleme"></a>
+<em>earleme</em>.
+The number of an Earley set is the
+<a name="index-ID-_0028of-an-Earley-set_0029"></a>
+<em>ID of the Earley set</em>,
+or its
+<a name="index-ordinal-_0028of-an-Earley-set_0029"></a>
+<em>ordinal</em>.
+In the traditional model, the ordinal of an Earley set and
+its earleme are always exactly the same, but in Libmarpa&rsquo;s
+advanced input models
+the ordinal of an Earley set can be different from
+its location (earleme).
+</p>
+<p>The important earleme values are
+the latest earleme.
+the current earleme, and
+the furthest earleme.
+Latest, current and furthest earleme,
+when they have specified values,
+obey a lexical order in this sense:
+The latest earleme is always at or before the current earleme,
+and the current earleme is always at or before the furthest earleme.
+</p>
+
+
+
+</body>
+</html>

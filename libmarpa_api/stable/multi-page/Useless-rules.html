@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Useless rules (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Useless rules (Libmarpa 11.0.5)">
+<meta name="keywords" content="Useless rules (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Terms.html#Terms" rel="up" title="Terms">
+<link href="Recursion-and-cycles.html#Recursion-and-cycles" rel="next" title="Recursion and cycles">
+<link href="Nulling.html#Nulling" rel="prev" title="Nulling">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Useless-rules"></a>
+<div class="header">
+<p>
+Next: <a href="Recursion-and-cycles.html#Recursion-and-cycles" accesskey="n" rel="next">Recursion and cycles</a>, Previous: <a href="Nulling.html#Nulling" accesskey="p" rel="prev">Nulling</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Useless-rules-1"></a>
+<h3 class="section">5.6 Useless rules</h3>
+
+<p>If any derivation from the start symbol uses a rule,
+that rule is called
+<a name="index-reachable-rule"></a>
+<a name="index-rule_002c-reachable"></a>
+<em>reachable</em>
+or
+<a name="index-accessible-rule"></a>
+<a name="index-rule_002c-accessible"></a>
+<em>accessible</em>.
+A rule that is not accessible
+is called
+<a name="index-unreachable-rule"></a>
+<a name="index-rule_002c-unreachable"></a>
+<em>unreachable</em>
+or
+<a name="index-inaccessible-rule"></a>
+<a name="index-rule_002c-inaccessible"></a>
+<em>inaccessible</em>.
+A symbol is
+<a name="index-reachable-symbol"></a>
+<a name="index-symbol_002c-reachable"></a>
+<em>reachable</em>
+or
+<a name="index-accessible-symbol"></a>
+<a name="index-symbol_002c-accessible"></a>
+<em>accessible</em>
+iff it appears in a accessible rule.
+If a symbol is not accessible, it is
+<a name="index-unreachable-symbol"></a>
+<a name="index-symbol_002c-unreachable"></a>
+<a name="index-unreachable"></a>
+<em>unreachable</em>
+or
+<a name="index-inaccessible-symbol"></a>
+<a name="index-symbol_002c-inaccessible"></a>
+<em>inaccessible</em>.
+</p>
+<p>If any derivation which results in a sentence uses a rule,
+that rule is said to be
+<a name="index-productive-rule"></a>
+<a name="index-rule_002c-productive"></a>
+<em>productive</em>.
+A rule that is not productive is called
+<a name="index-unproductive-rule"></a>
+<a name="index-rule_002c-unproductive"></a>
+<em>unproductive</em>.
+A rule is productive iff every symbol on
+its RHS is productive.
+An empty rule is productive, vacuously.
+</p>
+<p>A symbol is
+<a name="index-productive-symbol"></a>
+<a name="index-symbol_002c-productive"></a>
+<em>productive</em>
+iff
+it is a terminal or it is the LHS of a productive rule.
+A symbol that is not productive is called
+<a name="index-unproductive-symbol"></a>
+<a name="index-symbol_002c-unproductive"></a>
+<em>unproductive</em>.
+</p>
+<p>These definitions imply that all nullable rules are productive.
+They also imply that every nullable symbol is productive,
+because every nullable symbol must be on the LHS of a nullable rule.
+</p>
+<p>A rule which is inaccessible or unproductive is called a
+<a name="index-useless-rule"></a>
+<a name="index-rule_002c-useless"></a>
+<em>useless</em>
+rule.
+A symbol which is inaccessible or unproductive is called a
+<a name="index-useless-symbol"></a>
+<a name="index-symbol_002c-useless"></a>
+<em>useless</em>
+symbol.
+Marpa can handle grammars with useless rules and symbols.
+</p>
+
+
+
+</body>
+</html>

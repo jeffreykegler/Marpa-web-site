@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Completion events (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Completion events (Libmarpa 11.0.5)">
+<meta name="keywords" content="Completion events (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Events.html#Events" rel="up" title="Events">
+<link href="Symbol-nulled-events.html#Symbol-nulled-events" rel="next" title="Symbol nulled events">
+<link href="Basic-event-accessors.html#Basic-event-accessors" rel="prev" title="Basic event accessors">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Completion-events"></a>
+<div class="header">
+<p>
+Next: <a href="Symbol-nulled-events.html#Symbol-nulled-events" accesskey="n" rel="next">Symbol nulled events</a>, Previous: <a href="Basic-event-accessors.html#Basic-event-accessors" accesskey="p" rel="prev">Basic event accessors</a>, Up: <a href="Events.html#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Completion-events-1"></a>
+<h3 class="section">24.3 Completion events</h3>
+
+<p>Libmarpa can be set up to generate
+a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+whenever the symbol is completed.
+A symbol is said to be <strong>completed</strong>
+when a non-nulling rule with
+that symbol on its LHS is completed.
+</p>
+<p>For a completion event to be generated,
+the symbol must be
+<a name="index-mark-_0028as-a-completion-event-symbol_0029"></a>
+<em>marked</em>,
+and the event must be
+<a name="index-activate-_0028a-completion-symbol-event_0029"></a>
+<em>activated</em>.
+</p>
+<p>To mark a symbol as a completion event symbol
+use the <code>marpa_g_symbol_is_completion_event_set()</code>
+method.
+The event will be activated by default.
+</p>
+<p>To activate or deactivate a completion symbol event
+use the <code>marpa_r_completion_symbol_activate()</code>
+method.
+</p>
+<a name="marpa_005fg_005fcompletion_005fsymbol_005factivate"></a><dl>
+<dt><a name="index-marpa_005fg_005fcompletion_005fsymbol_005factivate"></a>Mutator function: <em>int</em> <strong>marpa_g_completion_symbol_activate</strong> <em>(   Marpa_Grammar <var>g</var>,   Marpa_Symbol_ID <var>sym_id</var>,   int <var>reactivate</var> )</em></dt>
+<dd>
+<p>Allows the user to deactivate and reactivate symbol completion
+events in the grammar.
+On success, does the following:
+</p><ul>
+<li> If <var>reactivate</var> is zero, deactivates the event in the grammar.
+</li><li> If <var>reactivate</var> is one, activates the event in the grammar.
+</li></ul>
+
+<p>The activation status of a completion event in the grammar becomes the initial
+activation status of a completion event in all of its child recognizers.
+</p>
+<p>This method is seldom needed.
+When a symbol is marked as a completion event symbol in
+the grammar,
+it is activated by default.
+See <a href="#marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset">marpa_g_symbol_is_completion_event_set()</a>.
+And a completion event can be deactivated
+and reactivated in the recognizer
+using the
+<code>marpa_r_completion_symbol_activate</code> method.
+See <a href="#marpa_005fr_005fcompletion_005fsymbol_005factivate">marpa_r_completion_symbol_activate()</a>.
+</p>
+<p>Hard fails
+if the <var>sym_id</var> is not marked as a completion event symbol
+in the grammar,
+or if the grammar has not been precomputed.
+</p>
+<p><strong>Return value</strong>:
+On success, the value of <var>reactivate</var>, which is a boolean.
+On hard failure, -2.
+</p></dd></dl>
+
+<a name="marpa_005fr_005fcompletion_005fsymbol_005factivate"></a><dl>
+<dt><a name="index-marpa_005fr_005fcompletion_005fsymbol_005factivate"></a>Mutator function: <em>int</em> <strong>marpa_r_completion_symbol_activate</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Symbol_ID <var>sym_id</var>,   int <var>reactivate</var> )</em></dt>
+<dd>
+<p>Allows the user to deactivate and reactivate symbol completion
+events in the recognizer.
+On success, does the following:
+</p><ul>
+<li> If <var>reactivate</var> is zero, deactivates the event in the recognizer.
+</li><li> If <var>reactivate</var> is one, activates the event in the recognizer.
+</li></ul>
+
+<p>When a recognizer is created,
+the activation status of its symbol completion event for <var>sym_id</var>
+is initialized to the activation status of the symbol completion event
+for <var>sym_id</var> in the base grammar.
+</p>
+<p>Hard fails if
+<var>sym_id</var> was not marked for completion events in the base grammar.
+</p>
+<p><strong>Return value</strong>:
+On success, the value of <var>reactivate</var>, which is a boolean.
+On hard failure, -2.
+</p></dd></dl>
+
+<a name="marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent"></a><dl>
+<dt><a name="index-marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent"></a>Accessor function: <em>int</em> <strong>marpa_g_symbol_is_completion_event</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>)</em></dt>
+<dd>
+<p>On success, returns a boolean which is 1 iff <var>sym_id</var> is marked
+as a completion event symbol in <var>g</var>.
+For more about completion events,
+see <a href="#marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset">marpa_g_symbol_is_completion_event_set()</a>.
+</p>
+<p>Soft fails iff <var>sym_id</var> is well-formed (a non-negative integer), but there is no
+such symbol.
+</p>
+<p>Hard fails if <var>g</var> is precomputed.
+</p>
+<p><strong>Return value</strong>:
+On success, a boolean .
+On soft failure, -1.
+On hard failure, -2.
+</p></dd></dl>
+
+<a name="marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset"></a><dl>
+<dt><a name="index-marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset"></a>Mutator function: <em>int</em> <strong>marpa_g_symbol_is_completion_event_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>,  int <var>value</var>)</em></dt>
+<dd>
+<p>Libmarpa can be set up to generate an
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+event whenever the symbol is completed.
+A symbol is said to be <strong>completed</strong>
+when a non-nulling rule with
+that symbol on its LHS is completed.
+</p>
+<p>For completion events for <var>sym_id</var> to occur, <var>sym_id</var> must be marked
+as a completion event symbol,
+and the completion event for <var>sym_id</var> must be activated in the recognizer.
+Event activation also occurs in the grammar,
+and the recognizer event activation status for <var>sym_id</var>
+is initialized
+from
+the grammar event activation status for <var>sym_id</var>.
+See <a href="#marpa_005fg_005fcompletion_005fsymbol_005factivate">marpa_g_completion_symbol_activate()</a>, and
+see <a href="#marpa_005fr_005fcompletion_005fsymbol_005factivate">marpa_r_completion_symbol_activate()</a>.
+</p>
+<p>On success, if <var>value</var> is 1,
+</p><ul>
+<li> marks symbol <var>sym_id</var> as a completion event symbol,
+</li><li> activates the completion event for <var>sym_id</var> in <var>g</var>, and
+</li><li> returns 1.
+</li></ul>
+
+<p>On success, if <var>value</var> is 0,
+</p><ul>
+<li> unmarks symbol <var>sym_id</var> as a completion event symbol,
+</li><li> deactivates the completion event for <var>sym_id</var> in <var>g</var>, and
+</li><li> returns 0.
+</li></ul>
+
+<p>Nulled rules and symbols will never cause completion events.
+Nullable symbols
+may be marked as completion event symbols,
+but this will have an effect only when the symbol
+is not nulled.
+Nulling symbols
+may be marked as completion event symbols,
+but no completion events will ever be generated
+for a nulling symbol.
+Note that this implies that no completion event will
+ever be generated at earleme 0,
+the start of parsing.
+</p>
+<p>Soft fails iff <var>sym_id</var> is well-formed (a non-negative integer), but there is no
+such symbol.
+</p>
+<p>Hards fails if
+the grammar is precomputed.
+</p>
+<p><strong>Return value</strong>:
+On success, <var>value</var>, which is a boolean.
+On soft failure, -1.
+On hard failure, -2.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Symbol-nulled-events.html#Symbol-nulled-events" accesskey="n" rel="next">Symbol nulled events</a>, Previous: <a href="Basic-event-accessors.html#Basic-event-accessors" accesskey="p" rel="prev">Basic event accessors</a>, Up: <a href="Events.html#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

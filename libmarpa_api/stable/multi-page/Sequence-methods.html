@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Sequence methods (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Sequence methods (Libmarpa 11.0.5)">
+<meta name="keywords" content="Sequence methods (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Grammar-methods.html#Grammar-methods" rel="up" title="Grammar methods">
+<link href="Rank-methods.html#Rank-methods" rel="next" title="Rank methods">
+<link href="Rule-methods.html#Rule-methods" rel="prev" title="Rule methods">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Sequence-methods"></a>
+<div class="header">
+<p>
+Next: <a href="Rank-methods.html#Rank-methods" accesskey="n" rel="next">Rank methods</a>, Previous: <a href="Rule-methods.html#Rule-methods" accesskey="p" rel="prev">Rule methods</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Sequence-methods-1"></a>
+<h3 class="section">17.6 Sequence methods</h3>
+
+<a name="marpa_005fg_005frule_005fis_005fproper_005fseparation"></a><dl>
+<dt><a name="index-marpa_005fg_005frule_005fis_005fproper_005fseparation"></a>Accessor function: <em>int</em> <strong>marpa_g_rule_is_proper_separation</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>)</em></dt>
+<dd>
+<p>When successful, returns
+</p><ul>
+<li> 1 if <var>rule_id</var> is the ID of a sequence rule whose
+proper separation flag is set,
+</li><li> 0 if <var>rule_id</var> is the ID of a sequence rule whose
+proper separation flag is not set,
+</li><li> 0 if <var>rule_id</var> is the ID of a rule that is not
+a sequence rule.
+</li></ul>
+<p>Does not distinguish sequence rules without proper
+separation from non-sequence rules.
+That is,
+does not distinguish an unset proper separation flag
+from a
+proper separation flag whose value is unspecified
+because <var>rule_id</var> is the ID of a BNF rule.
+Applications that want to determine whether
+or not a rule is a sequence rule
+can use
+<code>marpa_g_sequence_min()</code> to do this.
+See <a href="#marpa_005fg_005fsequence_005fmin">marpa_g_sequence_min()</a>.
+</p>
+<p>Soft fails iff <var>rule_id</var> is well-formed (a non-negative integer),
+but a rule with that ID does not exist.
+</p>
+<p><strong>Return value</strong>:
+On success, 1 or 0.
+On soft failure, -1.
+On hard failure, -2.
+</p>
+</dd></dl>
+
+<a name="marpa_005fg_005fsequence_005fmin"></a><dl>
+<dt><a name="index-marpa_005fg_005fsequence_005fmin"></a>Accessor function: <em>int</em> <strong>marpa_g_sequence_min</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>)</em></dt>
+<dd>
+<p>On success, returns the mininum length of a sequence rule.
+Soft fails iff a rule with ID <var>rule_id</var> exists,
+but is not a sequence rule.
+This soft failure can used to test whether
+or not a rule is a sequence rule.
+</p>
+<p>Hard fails irrecoverably if
+<var>rule_id</var> is not well-formed (a non-negative integer).
+Also, hard fails irrecoverably if no rule with ID <var>rule_id</var> exists,
+even when <var>rule_id</var> is well formed.
+Note that,
+in its handling of the non-existence of a rule for its rule
+argument, this method differs from many of the other grammar
+methods.
+Grammar methods that take a rule ID argument
+more often treat the
+non-existence of rule for a well-formed
+rule ID as a soft, recoverable, failure.
+</p>
+<p><strong>Return value</strong>:
+On success, the minimum length of the sequence rule
+with ID <var>rule_id</var>, which is always non-negative.
+On soft failure, -1.
+On hard failure, -2.
+</p>
+</dd></dl>
+
+<a name="marpa_005fg_005fsequence_005fnew"></a><dl>
+<dt><a name="index-marpa_005fg_005fsequence_005fnew"></a>Mutator function: <em>Marpa_Rule_ID</em> <strong>marpa_g_sequence_new</strong> <em>(Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>lhs_id</var>,  Marpa_Symbol_ID <var>rhs_id</var>,      Marpa_Symbol_ID <var>separator_id</var>,     int <var>min</var>,  int <var>flags</var> )</em></dt>
+<dd>
+<p><code>marpa_g_sequence_new()</code> is one of the
+<a name="index-rule-creation-methods-1"></a>
+<em>rule creation methods</em>.
+On success, the following are true:
+</p><ul>
+<li> This method creates a new sequence rule in grammar <var>g</var>.
+</li><li> This method gives the new rule an ID.
+</li><li> The ID of the new rule is a non-negative integer,
+which is unique to that rule.
+</li><li> If grammar <var>g</var> had no rules when
+this method was called,
+the new rule will have ID 0.
+</li><li> If grammar <var>g</var> had one or more rules when
+this method was called,
+let <code><var>n</var></code> be the maximum rule ID
+in grammar <var>g</var> when this method was called.
+Then the new rule will have
+rule ID <code><var>n</var>+1</code>.
+</li><li> The ID of the LHS symbol of the new rule will be <var>lhs_id</var>.
+</li><li> The ID of the symbol to be repeated on the RHS of the sequence will be <var>rhs_id</var>.
+It is a irrecoverable hard error if <var>rhs_id</var> is the ID of a nullable symbol.
+</li><li> The sequence must be repeated at least <var>min</var> times.
+<var>min</var> must be 0 or 1.
+</li><li> If <var>separator_id</var> is a non-negative integer,
+it is the ID of a separator symbol.
+It is a irrecoverable hard error if <var>separator_id</var> is the ID of a nullable symbol.
+</li><li> <var>flags</var> is treated as a bit vector.
+The behavior when any bit other than <code>MARPA_PROPER_SEPARATION</code>
+is set is undefined.
+</li><li> By default, the sequence rule recognizes a trailing separator.
+If <code>flags &amp; MARPA_PROPER_SEPARATION</code> is non-zero,
+separation is &ldquo;proper&rdquo;.
+Proper separation means the the rule does
+not recognize a trailing separator.
+Specifying proper separation has no effect if
+a separator symbol has not been specified.
+</li><li> The return value of this method is the ID of the new rule.
+</li></ul>
+
+<p>In addition to sequence rules, Marpa also allows BNF rules,
+which are created by
+the
+<code>marpa_g_rule_new()</code> method.
+See <a href="Rule-methods.html#marpa_005fg_005frule_005fnew">marpa_g_rule_new()</a>.
+We call
+<code>marpa_g_rule_new()</code> and
+<code>marpa_g_sequence_new()</code>
+<em>rule creation methods</em>.
+For details on the use of sequence rules,
+see <a href="Sequence-rules.html#Sequence-rules">Sequence rules</a>.
+</p>
+<p>Sequence rules and BNF rules are both rules:
+They share the same series of rule IDs,
+and are accessed and manipulated by the same methods,
+with the only differences being as noted
+in the descriptions of those methods.
+</p>
+<p>Each grammar&rsquo;s rule ID&rsquo;s are a consecutive sequence of non-negative integers,
+starting at 0.
+The consecutive numbering of rule ID&rsquo;s
+is intended to make it convenient for applications to store additional information
+about a grammar&rsquo;s rules in an array.
+</p>
+<p>The LHS symbol cannot be the LHS of any other rule,
+whether a BNF rule or a sequence rule.
+On an attempt to create an sequence rule with a duplicate
+LHS,
+this method hard fails,
+with an error code of
+<code>MARPA_ERR_SEQUENCE_LHS_NOT_UNIQUE</code>.
+</p>
+<p><strong>Return value</strong>:  On success, the ID of the newly added
+sequence rule, which is always non-negative.
+On hard failure, -2.
+</p>
+</dd></dl>
+
+<a name="marpa_005fg_005fsequence_005fseparator"></a><dl>
+<dt><a name="index-marpa_005fg_005fsequence_005fseparator"></a>Accessor function: <em>int</em> <strong>marpa_g_sequence_separator</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>)</em></dt>
+<dd>
+<p>On success, returns the symbol ID of the separator
+of the sequence rule with ID <var>rule_id</var>.
+Soft fails iff there is no separator.
+Hard fails
+if <var>rule_id</var> is a negative integer;
+if <var>rule_id</var> is not the ID of a rule that exists; or
+if <var>rule_id</var> is not the ID a sequence rule.
+</p>
+<p><strong>Return value</strong>:
+On success, a symbol ID, which is always non-negative.
+On soft failure, -1.
+On hard failure, -2.
+</p>
+</dd></dl>
+
+<a name="marpa_005fg_005fsymbol_005fis_005fcounted"></a><dl>
+<dt><a name="index-marpa_005fg_005fsymbol_005fis_005fcounted"></a>Accessor function: <em>int</em> <strong>marpa_g_symbol_is_counted</strong> <em>(Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>)</em></dt>
+<dd>
+<p>On success, returns a boolean whose value is
+1 iff the symbol with
+ID <var>sym_id</var> is counted.
+A symbol is
+<a name="index-counted-symbol"></a>
+<a name="index-symbol_002c-counted"></a>
+<em>counted</em>
+iff
+</p><ul>
+<li> it appears on the RHS of a sequence rule, or
+</li><li> it is used as the separator symbol of a sequence rule.
+</li></ul>
+
+<p>Soft fails iff <var>sym_id</var> is well-formed (a non-negative integer),
+but a symbol with that ID does not exist.
+</p>
+<p><strong>Return value</strong>:
+On success, a boolean.
+On soft failure, -1.
+On hard failure, -2.
+</p>
+</dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Rank-methods.html#Rank-methods" accesskey="n" rel="next">Rank methods</a>, Previous: <a href="Rule-methods.html#Rule-methods" accesskey="p" rel="prev">Rule methods</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

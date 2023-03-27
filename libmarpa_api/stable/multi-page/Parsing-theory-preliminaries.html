@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Parsing theory preliminaries (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Parsing theory preliminaries (Libmarpa 11.0.5)">
+<meta name="keywords" content="Parsing theory preliminaries (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Terms.html#Terms" rel="up" title="Terms">
+<link href="Rules.html#Rules" rel="next" title="Rules">
+<link href="Miscellaneous-definitions.html#Miscellaneous-definitions" rel="prev" title="Miscellaneous definitions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Parsing-theory-preliminaries"></a>
+<div class="header">
+<p>
+Next: <a href="Rules.html#Rules" accesskey="n" rel="next">Rules</a>, Previous: <a href="Miscellaneous-definitions.html#Miscellaneous-definitions" accesskey="p" rel="prev">Miscellaneous definitions</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Parsing-theory-preliminaries-1"></a>
+<h3 class="section">5.2 Parsing theory preliminaries</h3>
+
+<p>This document assumes the reader is familiar with parsing
+theory.
+The following exposition is <strong>not</strong> intended
+as either an introduction or a reference.
+Instead, it is intended to serve as a guide to the definitions
+of parsing terms as used in this document.
+</p>
+<p>The definitions given are intended to be applicable within Libmarpa,
+rather than to reflect general usage.
+For example,
+Marpa sometimes uses a standard term
+with a definition that is different from
+the standard definition.
+&ldquo;Ambiguous grammar&rdquo; is one example:
+See <a href="Ambiguity.html#Ambiguity">Ambiguity</a>.
+The term &ldquo;terminal&rdquo; is
+another.
+See <a href="Terminals.html#Terminals">Terminals</a>.
+When a standard term is defined in a non-standard way.
+this is explicitly pointed out.
+</p>
+<p>Readers who want a textbook or tutorial in parsing theory
+can look at
+Mark Jason Dominus&rsquo;s
+excellent chapter on parsing in the Perl context.
+See <a href="Dominus-2005.html#Bibliography_002dDominus_002d2005">Bibliography-Dominus-2005</a>.
+It is available on-line.
+Wikipedia is also an excellent place to start.
+See <a href="Leo-1991.html#Bibliography_002dWikipedia">Bibliography-Wikipedia</a>.
+</p>
+<p>A
+<a name="index-grammar"></a>
+<em>grammar</em>
+is a set of
+<a name="index-rule"></a>
+<em>rules</em>,
+associated with a set of symbols,
+one of which is distinguished as the start symbol.
+A
+<a name="index-symbol-string"></a>
+<em>symbol string</em>,
+or simply
+<a name="index-string"></a>
+<em>string</em>
+where the meaning is clear,
+is an ordered series of symbols.
+The
+<a name="index-length"></a>
+<em>length</em>
+of a string is the number of symbols in it.
+A symbol string is also called a
+<a name="index-sentential-form"></a>
+<em>sentential form</em>.
+</p>
+<p>Some of the symbols are terminals.
+For the the moment, we will say that a terminal is a symbol
+which may occur in an input to a parse of a grammar.
+A careful definition appropriate specifically to Marpa
+is below (see <a href="Terminals.html#Terminals">Terminals</a>).
+In a parse, an input is either accepted or rejected.
+A potential input string,
+that is, a sentential form which is made up entirely of terminal symbols,
+is called a
+<a name="index-sentence"></a>
+<em>sentence</em>.
+The set of sentences that a grammar accepts is the
+<a name="index-language"></a>
+<em>language</em>
+of the grammar.
+</p>
+<p>It is important to note that the term language, as it is
+used in parsing theory, means something very different
+from what it means in ordinary use.
+The meaning of the strings is an essential part
+of the ordinary idea of what a language is.
+In parsing terminology, meaning (or
+<a name="index-semantics"></a>
+<em>semantics</em>
+as it is
+called) is a separate issue.
+For parsing theory a
+language is exactly a set of strings &ndash;
+that and nothing more.
+</p>
+<p>A
+<a name="index-recognizer"></a>
+<em>recognizer</em>
+is a program that determines whether its
+<a name="index-input"></a>
+<em>input</em>
+is in the language of a grammar.
+A
+<a name="index-parser"></a>
+<em>parser</em>
+is a program which finds the structure of that input.
+</p>
+<p>Parsers often use a
+<a name="index-lexical-analyzer"></a>
+<em>lexical analyzer</em>
+to convert
+<a name="index-raw-input"></a>
+<em>raw input</em>,
+usually
+<a name="index-input-text"></a>
+<em>input text</em>,
+into a
+<a name="index-token-stream"></a>
+<em>token stream</em>,
+which is a series of
+<a name="index-tokens"></a>
+<em>tokens</em>.
+Each token represents one or more
+<a name="index-symbol"></a>
+<em>symbols</em>
+of the grammar and has a
+<a name="index-value"></a>
+<em>value</em>.
+(Libmarpa tokens may be ambiguous.
+See <a href="Ambiguous-input.html#Ambiguous-input">Ambiguous input</a>.)
+A token is also sometimes called a
+<a name="index-lexeme"></a>
+<em>lexeme</em>.
+A lexical analyzer is often called a
+<a name="index-lexer"></a>
+<em>lexer</em>
+or a
+<a name="index-scanner"></a>
+<em>scanner</em>,
+and
+<a name="index-lexical-analysis"></a>
+<em>lexical analysis</em>
+is often called
+<a name="index-lexing"></a>
+<em>lexing</em>
+or
+<a name="index-scanning"></a>
+<em>scanning</em>.
+</p>
+<p>The series of symbols represented by the series of tokens
+becomes the
+<a name="index-symbol-string-input"></a>
+<em>symbol string input</em>
+seen by the recognizer.
+The
+<a name="index-symbol-string-input-1"></a>
+<em>symbol string input</em>
+is more often called the
+<a name="index-input-sentence"></a>
+<em>input sentence</em>,
+or simply the
+<a name="index-input-1"></a>
+<em>input</em>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Rules.html#Rules" accesskey="n" rel="next">Rules</a>, Previous: <a href="Miscellaneous-definitions.html#Miscellaneous-definitions" accesskey="p" rel="prev">Miscellaneous definitions</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

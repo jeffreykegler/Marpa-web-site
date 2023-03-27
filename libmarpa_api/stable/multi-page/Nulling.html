@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Nulling (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Nulling (Libmarpa 11.0.5)">
+<meta name="keywords" content="Nulling (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Terms.html#Terms" rel="up" title="Terms">
+<link href="Useless-rules.html#Useless-rules" rel="next" title="Useless rules">
+<link href="Derivations.html#Derivations" rel="prev" title="Derivations">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Nulling"></a>
+<div class="header">
+<p>
+Next: <a href="Useless-rules.html#Useless-rules" accesskey="n" rel="next">Useless rules</a>, Previous: <a href="Derivations.html#Derivations" accesskey="p" rel="prev">Derivations</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Nulling-1"></a>
+<h3 class="section">5.5 Nulling</h3>
+
+<p>The zero length symbol string is called the
+<a name="index-empty-string"></a>
+<em>empty string</em>.
+The empty string can be considered to be a sentence, in which
+case it is the
+<a name="index-empty-sentence"></a>
+<em>empty sentence</em>.
+A string of one or more symbols is
+<a name="index-non_002dempty"></a>
+<em>non-empty</em>.
+A derivation which produces the empty string is a
+<a name="index-null-derivation"></a>
+<em>null derivation</em>.
+A derivation from the start symbol which produces the empty string
+is a
+<a name="index-null-parse"></a>
+<em>null parse</em>.
+</p>
+<p>If a symbol produces the empty string,
+it is a
+<a name="index-nullable-symbol"></a>
+<em>nullable symbol</em>.
+If
+the only sentence produced by a symbol is the empty sentence,
+it is a
+<a name="index-nulling-symbol"></a>
+<em>nulling symbol</em>.
+All nulling symbols are nullable symbols.
+</p>
+<p>If a symbol is not nullable, it is
+<a name="index-non_002dnullable"></a>
+<em>non-nullable</em>.
+If a symbol is not nulling, it is
+<a name="index-non_002dnulling"></a>
+<em>non-nulling</em>.
+</p>
+<p>A rule is
+<a name="index-nullable-rule"></a>
+<a name="index-rule_002c-nullable"></a>
+<em>nullable</em>
+iff it is the rule of the first step of
+a null derivation.
+A rule is
+nullable iff its LHS symbol is nullable.
+</p>
+<p>A rule <var>r</var> is
+<a name="index-nulling-rule"></a>
+<a name="index-rule_002c-nulling"></a>
+<em>nulling</em>
+iff every derivation whose first step has <var>r</var>
+as its rule is a null derivation.
+A rule is
+nulling iff its LHS symbol is nulling.
+</p>
+<p>If a rule is not nullable, it is
+<a name="index-non_002dnullable-1"></a>
+<em>non-nullable</em>.
+If a rule is not nulling, it is
+<a name="index-non_002dnulling-1"></a>
+<em>non-nulling</em>.
+</p>
+
+
+
+</body>
+</html>

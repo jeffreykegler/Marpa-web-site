@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Exhaustion (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Exhaustion (Libmarpa 11.0.5)">
+<meta name="keywords" content="Exhaustion (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Semantics.html#Semantics" rel="next" title="Semantics">
+<link href="Terminals.html#Terminals" rel="prev" title="Terminals">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Exhaustion"></a>
+<div class="header">
+<p>
+Next: <a href="Semantics.html#Semantics" accesskey="n" rel="next">Semantics</a>, Previous: <a href="Input.html#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Exhaustion-1"></a>
+<h2 class="chapter">8 Exhaustion</h2>
+
+<p>A parse is
+<a name="index-exhausted-parse"></a>
+<a name="index-parse_002c-exhausted"></a>
+<em>exhausted</em> when it cannot accept any further input.
+A parse is
+<a name="index-active-parse"></a>
+<a name="index-parse_002c-active"></a>
+<em>active</em> iff it is not exhausted.
+For a parse to be exhausted,
+the furthest earleme and the current earleme
+must be equal.
+However, the converse is not always the case:
+if more tokens can be read at the current earleme,
+then it is possible for
+the furthest earleme and the current earleme
+to be equal in an active parse.
+</p>
+<p>Parse exhaustion always has a location.
+That is, if a parse is exhausted it is exhausted at some earleme location <code>X</code>.
+If a parse is exhausted at location <code>X</code>, then
+</p><ul>
+<li> There may be valid parses at <code>X</code>.
+</li><li> The parse was active at all locations earlier than <code>X</code>.
+</li><li> There may be valid parses at locations before <code>X</code>.
+</li><li> There will be no valid parses at locations after <code>X</code>.
+</li><li> No tokens can start at location <code>X</code>.
+</li><li> No tokens can end at a location after <code>X</code>.
+</li><li> No tokens can start at any location after <code>X</code>.
+</li><li> No tokens will be accepted by an exhausted parser.
+    It is an irrecoverable hard failure to call <code>marpa_r_alternative()</code>
+    after a parser has become exhausted.
+</li><li> No Earley sets will be at any location after <code>X</code>.
+</li><li> No earlemes are completed by, and no Earley sets are created by, an exhausted parser.
+    It is an irrecoverable hard failure to call <code>marpa_r_earleme_complete()</code>
+    after a parser has become exhausted.
+</li></ul>
+
+<p>Users sometimes assume that parse exhaustion means parse failure.
+But other users sometimes assume that parse exhaustion means parse success.
+For many grammars,
+there are strong associations between parse exhaustion
+and parse success,
+but the strong association can go either way,
+Both exhaustion-loving and exhaustion-hating
+grammars are very common in
+practical application.
+</p>
+<p>In an
+<a name="index-exhaustion_002dhating-applications"></a>
+<a name="index-applications_002c-exhaustion_002dhating"></a>
+<em>exhaustion-hating</em>
+application,
+parse exhaustion typically means parse failure.
+C programs, Perl scripts and most programming languages
+are exhaustion-hating applications.
+If a C program is well-formed,
+it is always possible to read more input.
+The same is true of a Perl program that does not have a <code>__DATA__</code> section.
+</p>
+<p>In an
+<a name="index-exhaustion_002dloving-applications"></a>
+<a name="index-applications_002c-exhaustion_002dloving"></a>
+<em>exhaustion-loving</em>
+application
+parse exhaustion means parse success.
+A toy example of an exhaustion-loving
+application is the language consisting of balanced parentheses.
+When the parentheses come into perfect balance the parse is exhausted,
+because any further input would unbalance the brackets.
+And the parse succeeds when the parentheses come into perfect balance.
+Exhaustion means success.
+Any language that balances start and end indicators will tend to
+be exhaustion-loving.
+HTML and XML, with their start and end tags, can be seen
+as exhaustion-loving languages.
+</p>
+<p>One common form of exhaustion-loving parsing
+occurs in lexers that look for longest matches.
+Exhaustion will indicate that the longest match has been found.
+</p>
+<p>It is possible for a language to be
+exhaustion-loving at some points
+and exhaustion-hating at others.
+We mentioned Perl&rsquo;s <code>__DATA__</code> as a complication in a
+basically exhaustion-hating language.
+</p>
+<p><code>marpa_r_earleme_complete()</code> and
+<code>marpa_r_start_input</code> are the only methods
+that may encounter parse exhaustion.
+See <a href="Recognizer-life-cycle-mutators.html#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete()</a>, and
+<a href="Recognizer-life-cycle-mutators.html#marpa_005fr_005fstart_005finput">marpa_r_start_input()</a>.
+When the <code>marpa_r_start_input</code> or
+<code>marpa_r_earleme_complete()</code> methods
+exhaust the parse,
+they generate a <code>MARPA_EVENT_EXHAUSTED</code> event.
+Applications
+can also query
+parse exhaustion status directly
+with the
+<code>marpa_r_is_exhausted()</code> method.
+See <a href="Other-parse-status-methods.html#marpa_005fr_005fis_005fexhausted">marpa_r_is_exhausted()</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Semantics.html#Semantics" accesskey="n" rel="next">Semantics</a>, Previous: <a href="Input.html#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

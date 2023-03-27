@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Step location accessors (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Step location accessors (Libmarpa 11.0.5)">
+<meta name="keywords" content="Step location accessors (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Value-methods.html#Value-methods" rel="up" title="Value methods">
+<link href="Events.html#Events" rel="next" title="Events">
+<link href="Basic-step-accessors.html#Basic-step-accessors" rel="prev" title="Basic step accessors">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Step-location-accessors"></a>
+<div class="header">
+<p>
+Previous: <a href="Basic-step-accessors.html#Basic-step-accessors" accesskey="p" rel="prev">Basic step accessors</a>, Up: <a href="Value-methods.html#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Step-location-accessors-1"></a>
+<h3 class="section">23.10 Step location accessors</h3>
+
+<p>This section describes step accessors that are not basic to stack manipulation.
+They provide Earley set location information about the parse tree.
+</p>
+<p>A step&rsquo;s location in terms of Earley sets is called its ES location.
+Every ES location is the ID of an Earley set.
+ES location is only relevant for steps that correspond to tree nodes.
+</p>
+<p>Every tree node has both a start ES location
+and an end ES location.
+The start ES location is the first ES location of
+that parse node.
+</p>
+<p>The end ES location of a leaf is the ES location where
+the next leaf symbol in the fringe of the current parse tree would start.
+Typically, this is the location where a leaf node actually starts but,
+at the end of a parse, there is not an actual next leaf node.
+</p>
+<p>The start ES location of a MARPA_RULE_STEP step is the start ES location
+of its first child node in the current parse tree.
+The end ES location of a MARPA_RULE_STEP step is the end ES location
+of its last child node in the current parse tree.
+</p>
+<dl>
+<dt><a name="index-marpa_005fv_005fes_005fid"></a>Accessor macro: <em>Marpa_Earley_Set_ID</em> <strong>marpa_v_es_id</strong> <em>(Marpa_Value v)</em></dt>
+<dd>
+<p><strong>Return value</strong>:
+If the current step type is MARPA_STEP_RULE, MARPA_STEP_TOKEN, or MARPA_STEP_NULLING_SYMBOL,
+the return value is the end ES location of the parse node.
+If the current step type is anything else,
+or if the valuator is inactive,
+the return value is unspecified.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-marpa_005fv_005frule_005fstart_005fes_005fid"></a>Accessor macro: <em>Marpa_Earley_Set_ID</em> <strong>marpa_v_rule_start_es_id</strong> <em>(Marpa_Value v)</em></dt>
+<dd>
+<p><strong>Return value</strong>:
+If the current step type is MARPA_STEP_RULE, the start ES location of the rule node.
+If the current step type is anything else,
+or if the valuator is inactive,
+the return value is unspecified.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-marpa_005fv_005ftoken_005fstart_005fes_005fid"></a>Accessor macro: <em>Marpa_Earley_Set_ID</em> <strong>marpa_v_token_start_es_id</strong> <em>(Marpa_Value v)</em></dt>
+<dd>
+<p><strong>Return value</strong>:
+If the current step type is MARPA_STEP_TOKEN or MARPA_STEP_NULLING_SYMBOL,
+the start ES location of the leaf node.
+If the current step type is anything else,
+or if the valuator is inactive,
+the return value is unspecified.
+</p></dd></dl>
+
+<p>For every parse node of the current parse tree,
+the Earley set length (ES length) of the node is the end ES location,
+less the start ES location.
+The ES length of a nulled node is always 0.
+</p>
+<p>If v is a valuator whose current step type is MARPA_STEP_NULLING_SYMBOL, it is always the case that
+</p>
+<pre class="verbatim">         marpa_v_token_start_es_id(v) == marpa_v_es_id(v)
+</pre>
+<p>If v is a valuator whose current step type is MARPA_STEP_RULE or MARPA_STEP_TOKEN,
+it is always the case that
+</p>
+<pre class="verbatim">        marpa_v_token_start_es_id(v) &lt;= marpa_v_es_id(v)
+</pre>
+<p>For the following examples,
+</p><ul>
+<li> let <tt>Null</tt> be a nulling symbol,
+</li><li> let <tt>Tok</tt> be a non-nullable symbol, and
+</li><li> let the notation <tt>Sym@m-n</tt> indicate that the symbol
+<tt>Sym</tt> has ES start location <tt>m</tt> and ES end location <tt>n</tt>.
+</li></ul>
+
+<p>Ordered from left to right, a possible fringe is
+</p><pre class="verbatim">        Null@0-0, Tok@0-1, Null@1-1, Tok@1-2, Null@2-2
+</pre><p>Another example is
+</p><pre class="verbatim">        Null@0-0, Null@0-0, Tok@0-1, Null@1-1, Null@1-1, Tok@1-2,
+        Null@2-2, Null@2-2
+</pre><p>In this second example note that when a nulled leaf immediately follows another
+nulled leaf, both leaves has the same start ES location and the same end ES location.
+This makes sense, because nulled symbol instances do not advance the current ES location,
+but it also implies that the ES locations and LHS symbol
+cannot be used to uniquely identify a parse node.
+</p>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Basic-step-accessors.html#Basic-step-accessors" accesskey="p" rel="prev">Basic step accessors</a>, Up: <a href="Value-methods.html#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

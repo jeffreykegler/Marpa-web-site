@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>History of the Marpa algorithm (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="History of the Marpa algorithm (Libmarpa 11.0.5)">
+<meta name="keywords" content="History of the Marpa algorithm (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Annotated-bibliography.html#Annotated-bibliography" rel="next" title="Annotated bibliography">
+<link href="Cycles.html#Cycles" rel="prev" title="Cycles">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="History-of-the-Marpa-algorithm"></a>
+<div class="header">
+<p>
+Next: <a href="Annotated-bibliography.html#Annotated-bibliography" accesskey="n" rel="next">Annotated bibliography</a>, Previous: <a href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods" accesskey="p" rel="prev">Deprecated techniques and methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="History-of-the-Marpa-algorithm-1"></a>
+<h2 class="chapter">31 History of the Marpa algorithm</h2>
+
+<p>This chapter is a quick summary of the most important
+events in Marpa&rsquo;s development.
+My &ldquo;timeline&rdquo; of the major events in parsing theory
+has a much broader scope,
+and also includes more detail
+about Marpa&rsquo;s development.
+See <a href="Timeline.html#Timeline">Timeline</a>.
+</p>
+<ul>
+<li> <strong>1970</strong>:
+Jay Earley invents the algorithm that now bears his
+name
+See <a href="Earley-1970.html#Bibliography_002dEarley_002d1970">Bibliography-Earley-1970</a>.
+
+</li><li> <strong>1991</strong>:
+Joop Leo describes a way to modify Earley&rsquo;s algorithm so that it
+runs in O(n) time for all LR-regular
+grammars.
+See <a href="Leo-1991.html#Bibliography_002dLeo_002d1991">Bibliography-Leo-1991</a>.
+LR-regular is a vast class of grammars, including all the
+LR(k) grammars, all grammars parseable with recursive descent,
+and regular expressions.
+LR-regular can safely be thought of as including all grammars
+in practical use today, and then some.
+
+</li><li> <strong>2002</strong>:
+Aycock and Horspool describe a way to do LR(0)
+precomputation
+for Earley&rsquo;s algorithm.
+See <a href="Aycock-and-Horspool-2002.html#Bibliography_002dAycock_002dand_002dHorspool_002d2002">Bibliography-Aycock-and-Horspool-2002</a>.
+Their method makes Earley&rsquo;s faster in most
+practical situations, but not all.
+In particular, right-recursion remains quadratic in
+the Aycock and Horspool algorithm.
+Worst case is no better than Earley&rsquo;s.
+Leo is unaware of Aycock and Horspool&rsquo;s work
+and Aycock and Horspool seem unaware of Leo.
+
+</li><li> <strong>2010</strong>:
+Marpa combines the Leo and Aycock-Horspool
+algorithms
+in the process making significant
+changes to both of them.
+See <a href="Kegler-2022.html#Bibliography_002dKegler_002d2022">Bibliography-Kegler-2022</a>.
+The result preserves the
+best features of both
+and tackles the many remaining
+implementation issues.
+
+</li></ul>
+
+
+
+
+</body>
+</html>

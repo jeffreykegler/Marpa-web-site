@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>How to read the method descriptions (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="How to read the method descriptions (Libmarpa 11.0.5)">
+<meta name="keywords" content="How to read the method descriptions (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Introduction-to-the-method-descriptions.html#Introduction-to-the-method-descriptions" rel="up" title="Introduction to the method descriptions">
+<link href="Static-methods.html#Static-methods" rel="next" title="Static methods">
+<link href="Return-values.html#Return-values" rel="prev" title="Return values">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="How-to-read-the-method-descriptions"></a>
+<div class="header">
+<p>
+Previous: <a href="Return-values.html#Return-values" accesskey="p" rel="prev">Return values</a>, Up: <a href="Introduction-to-the-method-descriptions.html#Introduction-to-the-method-descriptions" accesskey="u" rel="up">Introduction to the method descriptions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="How-to-read-the-method-descriptions-1"></a>
+<h3 class="section">14.4 How to read the method descriptions</h3>
+
+<p>The method descriptions are written on the assumption
+that the reader has the following in mind while reading them:
+</p>
+<ul>
+<li> Each method description begins with the signature
+of its &ldquo;topic method&rdquo;.
+</li><li> In the method description, the phrase &ldquo;this method&rdquo;
+always refers to the topic method.
+</li><li> Whenever &ldquo;this method&rdquo; is the subject of a sentence
+in the method description, it may be elided,
+so that, for example,
+<blockquote>
+<p>This method returns 42.
+</p></blockquote>
+<p>becomes
+</p><blockquote>
+<p>Returns 42.
+</p></blockquote>
+</li><li> In a time object method,
+    the instance, sometimes called the &ldquo;self argument&rdquo;,
+    is always the first argument of the method.
+    In the descriptions of time object methods,
+    references to the base objects of the instance
+    are often left implied.
+    For example, rather than write
+    &ldquo;the rule with ID <var>id</var> in the base grammar&rdquo;,
+    we will usually write
+    &ldquo;the rule with ID <var>id</var>&rdquo;.
+    References to time objects other than base objects
+    of the instance are always explicitly stated,
+    as are references to multiple time objects.
+</li><li> If the return type of a method is not <code>void</code>,
+the last paragraph of its method description is a
+&ldquo;return value summary&rdquo;.
+The return value summary
+starts with the label &ldquo;<strong>Return Value</strong>&rdquo;.
+</li><li> Every method returns in exactly one of three
+statuses: success, hard failure, or soft failure.
+</li><li> A return status of hard failure indicates that the method detected
+a hard failure.
+</li><li> A method may have several kinds of hard failure,
+including several kinds of irrecoverable hard failure
+and several kinds of recoverable hard failure.
+On return, these can be distinguished by their error codes.
+</li><li> If a method call hard fails,
+its error code is that associated with the hard failure.
+Unless stated otherwise in the return value summary,
+the error code is set in the base
+grammar of the method call, and may be accessed
+with the methods described below.
+See <a href="Error-methods.html#Error-methods">Error methods</a>.
+</li><li> If a method allows a recoverable hard failure, this is explicitly stated
+in its return value summary,
+along with the associated error code.
+The method description will state
+the circumstances under which the recoverable hard failure occurs,
+and what the application must do to recover.
+</li><li> A return status of soft failure indicates that the method detected
+a soft failure.
+</li><li> Every method has at most one kind of soft failure.
+</li><li> If a method allows a soft failure, this is explicitly stated
+in its return value summary,
+and the method description will state
+the circumstances under which the soft failure occurs,
+and what the application must do to recover.
+</li><li> If a method call soft fails, the value of the error code is
+unspecified.
+</li><li> If a method call succeeds, the value of the error code is
+unspecified.
+</li><li> A return status of success indicates that the method did not detect
+any failures.
+</li><li> If both a hard failure and a soft failure occur,
+the return status will be hard failure.
+</li><li> If both a recoverable hard failure and
+an irrecoverable hard failure occur,
+the error code will be for an irrecoverable hard failure.
+</li><li> The behaviors specified for success and soft failure
+are application behaviors.
+</li><li> The behaviors specified for hard failures
+are diagnostic behaviors if an irrecoverable failure
+occurred,
+and application behaviors otherwise.
+</li></ul>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Return-values.html#Return-values" accesskey="p" rel="prev">Return values</a>, Up: <a href="Introduction-to-the-method-descriptions.html#Introduction-to-the-method-descriptions" accesskey="u" rel="up">Introduction to the method descriptions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

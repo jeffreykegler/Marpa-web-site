@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ambiguity (Libmarpa 11.0.5)</title>
+
+<meta name="description" content="Ambiguity (Libmarpa 11.0.5)">
+<meta name="keywords" content="Ambiguity (Libmarpa 11.0.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Terms.html#Terms" rel="up" title="Terms">
+<link href="Application-and-diagnostic-behavior.html#Application-and-diagnostic-behavior" rel="next" title="Application and diagnostic behavior">
+<link href="Semantics-terms.html#Semantics-terms" rel="prev" title="Semantics terms">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Ambiguity"></a>
+<div class="header">
+<p>
+Next: <a href="Application-and-diagnostic-behavior.html#Application-and-diagnostic-behavior" accesskey="n" rel="next">Application and diagnostic behavior</a>, Previous: <a href="Semantics-terms.html#Semantics-terms" accesskey="p" rel="prev">Semantics terms</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Ambiguity-1"></a>
+<h3 class="section">5.12 Ambiguity</h3>
+
+<p>In our discussion of evaluation above
+(see <a href="Semantics-terms.html#Semantics-terms">Semantics terms</a>),
+we spoke of evaluating trees.
+In fact, the result of a successful Libmarpa parse run is a parse forest.
+We say that a Libmarpa parse run is
+<a name="index-ambiguous"></a>
+<em>ambiguous</em>
+iff the parse run returns
+a forest containing more than one parse tree.
+We say that a succcessful Libmarpa parse run is
+<a name="index-unambiguous"></a>
+<em>unambiguous</em>
+iff
+it contains exactly one parse tree.
+</p>
+<p>Most applications care only about one parse tree.
+An application is free to decide what to do in case a parse
+forest is ambiguous.
+Among the application&rsquo;s options are picking one tree and evaluating that tree;
+iterating through the parse trees;
+or treating the ambiguity as an error.
+</p>
+<p>Libmarpa&rsquo;s treatment of ambiguity differs somewhat
+from the traditional one, for two reasons.
+First, Libmarpa allows ambiguous tokens.
+Second, Libmarpa prunes nulled subtrees back to their topmost
+nulled symbol.
+</p>
+<p>An ambiguous token occurs when the same lexeme can be
+recognized as more than one token symbol.
+Traditionally, parsers do not allow this,
+but it is the most natural way of parsing some real-life applications.
+For example, natural languages often allow words to be
+used as more than one part of speech.
+In this document, the English word &ldquo;parse&rdquo;
+is used as an adjective, a verb, and a noun,
+and each of these uses is common.
+Ambiguous tokens are
+a source of ambiguity not present in traditional
+parsing.
+See <a href="Ambiguous-input.html#Ambiguous-input">Ambiguous input</a>.
+</p>
+<p>On the other hand, the pruning of nulled subtrees
+eliminates a source of ambiguity
+that is present in traditional parsing.
+Multiple nulled subtrees may share their topmost nulled symbol.
+When the subtrees are pruned to their shared root,
+ambiguity is removed.
+See <a href="Nullability.html#Nullability">Nullability</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Application-and-diagnostic-behavior.html#Application-and-diagnostic-behavior" accesskey="n" rel="next">Application and diagnostic behavior</a>, Previous: <a href="Semantics-terms.html#Semantics-terms" accesskey="p" rel="prev">Semantics terms</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

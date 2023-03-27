@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Other parse status methods (Libmarpa 8.6.2)</title>
+<title>Other parse status methods (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Other parse status methods (Libmarpa 8.6.2)">
-<meta name="keywords" content="Other parse status methods (Libmarpa 8.6.2)">
+<meta name="description" content="Other parse status methods (Libmarpa 11.0.5)">
+<meta name="keywords" content="Other parse status methods (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Recognizer-methods.html#Recognizer-methods" rel="up" title="Recognizer methods">
 <link href="Progress-reports.html#Progress-reports" rel="next" title="Progress reports">
@@ -72,54 +73,38 @@ ul.no-bullet {list-style: none}
 <a name="Other-parse-status-methods"></a>
 <div class="header">
 <p>
-Previous: <a href="Location-accessors.html#Location-accessors" accesskey="p" rel="prev">Location accessors</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Previous: <a href="Location-accessors.html#Location-accessors" accesskey="p" rel="prev">Location accessors</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Other-parse-status-methods-1"></a>
-<h3 class="section">12.6 Other parse status methods</h3>
+<h3 class="section">18.6 Other parse status methods</h3>
 
-<dl>
-<dt><a name="index-marpa_005fr_005fcompletion_005fsymbol_005factivate"></a>Function: <em>int</em> <strong>marpa_r_completion_symbol_activate</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Symbol_ID <var>sym_id</var>,   int <var>reactivate</var> )</em></dt>
+<a name="marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold"></a><dl>
+<dt><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold"></a>Accessor function: <em>int</em> <strong>marpa_r_earley_item_warning_threshold</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
 <dd>
-<p>Allows the user to deactivate and reactivate symbol completion
-events in the recognizer.
-If <var>reactivate</var> is zero, the event is deactivated.
-If <var>reactivate</var> is one, the event is activated.
+<p>Details about the &ldquo;earley item warning threshold&rdquo; are
+in the description of the
+<code>marpa_r_earley_item_warning_threshold_set()</code> method.
+See <a href="#marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset">marpa_r_earley_item_warning_threshold_set()</a>.
 </p>
-<p>Symbol completion events are active by default if
-the symbol was set up for completion events in the
-grammar.
-If a symbol was not set up for completion events in
-the grammar, symbol completion events are inactive
-by default and any attempt to change that is a fatal error.
-</p>
-<p>Success cases:
-On success,
-the method returns the value of <var>reactivate</var>.
-The method succeeds trivially
-if the symbol is already set as indicated by
-<var>reactivate</var>.
-</p>
-<p>Failure cases:
-If the active status
-of the
-completion event for <var>sym_id</var>
-cannot be set as indicated by <var>reactivate</var>,
-the method fails.
-On failure, -2 is returned.
+<p><strong>Return value</strong>:
+The Earley item warning threshold.
+Always succeeds.
 </p></dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset"></a>Function: <em>int</em> <strong>marpa_r_earley_item_warning_threshold_set</strong> <em>(Marpa_Recognizer <var>r</var>,     int <var>threshold</var>)</em></dt>
-<dt><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold"></a>Function: <em>int</em> <strong>marpa_r_earley_item_warning_threshold</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
+<a name="marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset"></a><dl>
+<dt><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset"></a>Mutator function: <em>int</em> <strong>marpa_r_earley_item_warning_threshold_set</strong> <em>(Marpa_Recognizer <var>r</var>,     int <var>threshold</var>)</em></dt>
 <dd>
-<p>These methods, respectively, set and query
+<p>On success, sets
 the Earley item warning threshold.
-The <em>Earley item warning threshold</em>
+The
+<a name="index-Earley-item-warning-threshold"></a>
+<em>Earley item warning threshold</em>
 is a number that is compared with
 the count of Earley items in each Earley set.
 When it is matched or exceeded,
 a <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event is created.
+See <a href="Event-codes.html#MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD">MARPA_EVENT_EARLEY_ITEM_THRESHOLD</a>.
 </p>
 <p>If <var>threshold</var> is zero or less,
 an unlimited number of Earley items
@@ -131,160 +116,81 @@ The formula Libmarpa uses is the result of some experience,
 and most applications will
 be happy with it.
 </p>
-<p>Return value:
+<p>What should be done when the threshold is exceeded, depends on the application,
+but exceeding the threshold means that it is very likely
+that the time and space resources consumed by
+the parse will prove excessive.
+This is often a sign of a bug in the grammar.
+Applications often will want to smoothly shut down
+the parse,
+in effect treating
+the <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event
+as equivalent to library-recoverable hard failure.
+</p>
+<p><strong>Return value</strong>:
 The value that the Earley item warning threshold has
 after the method call is finished.
 Always succeeds.
 </p></dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fr_005fexpected_005fsymbol_005fevent_005fset"></a>Function: <em>int</em> <strong>marpa_r_expected_symbol_event_set</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Symbol_ID <var>symbol_id</var>,   int <var>value</var>)</em></dt>
-<dd><p>Sets the &ldquo;expected symbol event bit&rdquo; for <var>symbol_id</var> to <var>value</var>.
-A recognizer event is created whenever 
-symbol <var>symbol_id</var> is expected at the current earleme.
-if and only if the expected symbol event bit
-for <var>symbol_id</var> is 1.
-The &ldquo;expected symbol event bit&rdquo; must be 1 or 0.
-</p>
-<p>In this context, &ldquo;expected&rdquo; means &ldquo;expected as a terminal&rdquo;.
-Even if a symbol is predicted at the current earleme,
-if it is not acceptable as a terminal,
-it does not trigger an
-&ldquo;expected symbol event&rdquo;.
-</p>
-<p>By default, the &ldquo;expected symbol event bit&rdquo; is 0.
-It is an error to attempt to set the
-&ldquo;expected symbol event bit&rdquo; to 1 for a nulling symbol,
-an inaccessible symbol,
-or an unproductive symbol.
-</p>
-<p>Return value:
-The value of the event bit after the method call is finished.
--2 if <var>symbol_id</var> is not the ID of a valid symbol;
-if it is the ID of an nulling, inaccessible for unproductive symbol;
-or on other failure.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-marpa_005fr_005fis_005fexhausted"></a>Function: <em>int</em> <strong>marpa_r_is_exhausted</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
+<a name="marpa_005fr_005fis_005fexhausted"></a><dl>
+<dt><a name="index-marpa_005fr_005fis_005fexhausted"></a>Accessor function: <em>int</em> <strong>marpa_r_is_exhausted</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
 <dd><p>A parser is &ldquo;exhausted&rdquo; if it cannot accept any more input.
-Both successful and failed parses can be exhausted.
-In many grammars,
-the parse is always exhausted as soon as it succeeds.
-Good parses may also exist at earlemes prior to the
-current one.
+See <a href="Exhaustion.html#Exhaustion">Exhaustion</a>.
 </p>
-<p>Return value:
+<p><strong>Return value</strong>:
 1 if the parser is exhausted, 0 otherwise.
 Always succeeds.
 </p></dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fr_005fnulled_005fsymbol_005factivate"></a>Function: <em>int</em> <strong>marpa_r_nulled_symbol_activate</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Symbol_ID <var>sym_id</var>,   int <var>boolean</var> )</em></dt>
-<dd>
-<p>Allows the user to deactivate and reactivate symbol nulled
-events in the recognizer.
-If <var>boolean</var> is zero, the event is deactivated.
-If <var>boolean</var> is one, the event is activated.
-</p>
-<p>Symbol nulled events are active by default if
-the symbol was set up for nulled events in the
-grammar.
-If a symbol was not set up for nulled events in
-the grammar, symbol nulled events are inactive
-by default and any attempt to change that is a fatal error.
-</p>
-<p>Success cases:
-On success,
-the method returns the value of <var>boolean</var>.
-The method succeeds trivially
-if the symbol is already set as indicated by
-<var>boolean</var>.
-</p>
-<p>Failure cases:
-If the active status
-of the
-nulled event for <var>sym_id</var>
-cannot be set as indicated by <var>boolean</var>,
-the method fails.
-On failure, -2 is returned.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-marpa_005fr_005fprediction_005fsymbol_005factivate"></a>Function: <em>int</em> <strong>marpa_r_prediction_symbol_activate</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Symbol_ID <var>sym_id</var>,   int <var>boolean</var> )</em></dt>
-<dd>
-<p>Allows the user to deactivate and reactivate symbol prediction
-events in the recognizer.
-If <var>boolean</var> is zero, the event is deactivated.
-If <var>boolean</var> is one, the event is activated.
-</p>
-<p>Symbol prediction events are active by default if
-the symbol was set up for prediction events in the
-grammar.
-If a symbol was not set up for prediction events in
-the grammar, symbol prediction events are inactive
-by default and any attempt to change that is a fatal error.
-</p>
-<p>Success cases:
-On success,
-the method returns the value of <var>boolean</var>.
-The method succeeds trivially
-if the symbol is already set as indicated by
-<var>boolean</var>.
-</p>
-<p>Failure cases:
-If the active status
-of the
-prediction event for <var>sym_id</var>
-cannot be set as indicated by <var>boolean</var>,
-the method fails.
-On failure, -2 is returned.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-marpa_005fr_005fterminals_005fexpected"></a>Function: <em>int</em> <strong>marpa_r_terminals_expected</strong> <em>(     Marpa_Recognizer <var>r</var>,     Marpa_Symbol_ID* <var>buffer</var>)</em></dt>
+<a name="marpa_005fr_005fterminals_005fexpected"></a><dl>
+<dt><a name="index-marpa_005fr_005fterminals_005fexpected"></a>Accessor function: <em>int</em> <strong>marpa_r_terminals_expected</strong> <em>(     Marpa_Recognizer <var>r</var>,     Marpa_Symbol_ID* <var>buffer</var>)</em></dt>
 <dd><p>Returns a list of the ID&rsquo;s of the symbols
 that are acceptable as tokens
 at the current earleme.
 <var>buffer</var> is expected to be large enough to hold
 the result.
 This is guaranteed to be the case if the buffer
-is large enough to hold a number of
-<code>Marpa_Symbol_ID</code>&rsquo;s that
+is large enough to hold an array of
+<code>Marpa_Symbol_ID</code>&rsquo;s whose length
 is greater than or equal to the number of symbols
 in the grammar.
 </p>
-<p>Return value:  On success, the number of <code>Marpa_Symbol_ID</code>&rsquo;s
-in <var>buffer</var>.
-On failure, -2.
+<p><strong>Return value</strong>:  On success, the number of <code>Marpa_Symbol_ID</code>&rsquo;s
+in <var>buffer</var>, which is always non-negative.
+On hard failure, -2.
 </p></dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fr_005fterminal_005fis_005fexpected"></a>Function: <em>int</em> <strong>marpa_r_terminal_is_expected</strong> <em>(     Marpa_Recognizer <var>r</var>,     Marpa_Symbol_ID <var>symbol_id</var>)</em></dt>
+<a name="marpa_005fr_005fterminal_005fis_005fexpected"></a><dl>
+<dt><a name="index-marpa_005fr_005fterminal_005fis_005fexpected"></a>Accessor function: <em>int</em> <strong>marpa_r_terminal_is_expected</strong> <em>(     Marpa_Recognizer <var>r</var>,     Marpa_Symbol_ID <var>symbol_id</var>)</em></dt>
 <dd>
-<p>Return values on success:
-If <var>symbol_id</var> is the
-ID of a valid terminal symbol that is expected at
-the current earleme,
-a number greater than zero.
-If <var>symbol_id</var> is the
-ID of a valid terminal symbol that is
-<strong>not</strong> expected at
-the current earleme, or
-if <var>symbol_id</var> is the ID of a valid symbol
-that is not a terminal, zero.
+<p>On success, does the folloing:
+</p><ul>
+<li> If
+<var>symbol_id</var> is not the ID of
+a terminal symbol, returns 0.
+</li><li> If
+<var>symbol_id</var> is the ID of
+a terminal symbol, but that symbol is <strong>not</strong>
+expected at the current earleme, returns 0.
+</li><li> If
+<var>symbol_id</var> is the ID of
+a terminal symbol, but that symbol <strong>is</strong>
+expected at the current earleme, returns 1.
+</li></ul>
+<p>Hard fails if
+the symbol with ID <var>symbol_id</var> does not
+exist.
 </p>
-<p>Failure cases:
-Returns -2 on failure.
-It is a failure
-if <var>symbol_id</var> is not the ID of a valid
-symbol.
-</p></dd></dl>
+<p><strong>Return value</strong>: On success, 0 or 1.
+On hard failure, -2.
+</p>
+</dd></dl>
 
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Location-accessors.html#Location-accessors" accesskey="p" rel="prev">Location accessors</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Previous: <a href="Location-accessors.html#Location-accessors" accesskey="p" rel="prev">Location accessors</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

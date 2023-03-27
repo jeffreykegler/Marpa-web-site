@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Value overview (Libmarpa 8.6.2)</title>
+<title>Value overview (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Value overview (Libmarpa 8.6.2)">
-<meta name="keywords" content="Value overview (Libmarpa 8.6.2)">
+<meta name="description" content="Value overview (Libmarpa 11.0.5)">
+<meta name="keywords" content="Value overview (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Value-methods.html#Value-methods" rel="up" title="Value methods">
 <link href="How-to-use-the-valuator.html#How-to-use-the-valuator" rel="next" title="How to use the valuator">
@@ -72,19 +73,20 @@ ul.no-bullet {list-style: none}
 <a name="Value-overview"></a>
 <div class="header">
 <p>
-Next: <a href="How-to-use-the-valuator.html#How-to-use-the-valuator" accesskey="n" rel="next">How to use the valuator</a>, Previous: <a href="Value-methods.html#Value-methods" accesskey="p" rel="prev">Value methods</a>, Up: <a href="Value-methods.html#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="How-to-use-the-valuator.html#How-to-use-the-valuator" accesskey="n" rel="next">How to use the valuator</a>, Previous: <a href="Value-methods.html#Value-methods" accesskey="p" rel="prev">Value methods</a>, Up: <a href="Value-methods.html#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Overview-5"></a>
-<h3 class="section">17.1 Overview</h3>
+<a name="Overview-4"></a>
+<h3 class="section">23.1 Overview</h3>
 
 <p>The archetypal application needs
-a value object (or <em>valuator</em>) to produce
-the value of the parse.
-To create a valuator, use the <code>marpa_v_new()</code> method.
-When a valuator is no longer in use, its memory can be freed
-using the 
-<code>marpa_v_unref()</code> method.
+a value object (or
+<a name="index-valuator"></a>
+<em>valuator</em>) to produce
+the value of the parse tree.
+To create a valuator, use the
+<code>marpa_v_new()</code>
+method.
 </p>
 <p>The application is required to maintain the stack,
 and the application is also required to implement
@@ -93,17 +95,22 @@ of rules.
 Libmarpa&rsquo;s valuator provides instructions to
 the application on how to manipulate the stack.
 To iterate through this series of instructions,
-use the <code>marpa_v_step()</code> method.
+use the
+<code>marpa_v_step()</code>
+method.
 </p>
-<p><code>marpa_v_step()</code> returns the type
+<p>When successful, <code>marpa_v_step()</code>
+returns the type
 of step.
 Most step types have values associated with them.
-To access these values use the methods
-described in the section <a href="Basic-step-accessors.html#Basic-step-accessors">Basic step accessors</a>.
-How to perform the steps is described in
-the sections
-<a href="How-to-use-the-valuator.html#How-to-use-the-valuator">How to use the valuator</a>
-and <a href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">Stepping through the valuator</a>.
+See <a href="Basic-step-accessors.html#Basic-step-accessors">Basic step accessors</a>,
+see <a href="How-to-use-the-valuator.html#How-to-use-the-valuator">How to use the valuator</a>, and
+see <a href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">Stepping through the valuator</a>.
+</p>
+<p>When a valuator is no longer in use, its memory can be freed
+using the
+<code>marpa_v_unref()</code>
+method.
 </p>
 
 

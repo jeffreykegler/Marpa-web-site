@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Terminals (Libmarpa 8.6.2)</title>
+<title>Terminals (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Terminals (Libmarpa 8.6.2)">
-<meta name="keywords" content="Terminals (Libmarpa 8.6.2)">
+<meta name="description" content="Terminals (Libmarpa 11.0.5)">
+<meta name="keywords" content="Terminals (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Input.html#Input" rel="up" title="Input">
-<link href="Semantics.html#Semantics" rel="next" title="Semantics">
-<link href="General-rules-for-the-earleme-variables.html#General-rules-for-the-earleme-variables" rel="prev" title="General rules for the earleme variables">
+<link href="Exhaustion.html#Exhaustion" rel="next" title="Exhaustion">
+<link href="Ambiguous-input.html#Ambiguous-input" rel="prev" title="Ambiguous input">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,34 +73,47 @@ ul.no-bullet {list-style: none}
 <a name="Terminals"></a>
 <div class="header">
 <p>
-Previous: <a href="Earlemes.html#Earlemes" accesskey="p" rel="prev">Earlemes</a>, Up: <a href="Input.html#Input" accesskey="u" rel="up">Input</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Previous: <a href="The-basic-models-of-input.html#The-basic-models-of-input" accesskey="p" rel="prev">The basic models of input</a>, Up: <a href="Input.html#Input" accesskey="u" rel="up">Input</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Terminals-1"></a>
-<h3 class="section">4.2 Terminals</h3>
+<h3 class="section">7.3 Terminals</h3>
 
-<p>A terminal symbol is a symbol which
+<p>Traditionally,
+a terminal symbol is a symbol that
 may appear in the input.
-Traditionally,
-all LHS symbols, as well as
-the start symbol, must be non-terminals.
-This is Marpa&rsquo;s behavior, by default.
+Traditional grammars
+divide all symbols sharply into terminals
+and non-terminals:
+A terminal symbol must <strong>always</strong> be used as a terminal.
+A non-terminal symbol can <strong>never</strong> be used as a terminal.
 </p>
-<p>Marpa allows the user to eliminate the distinction
-between terminals and non-terminals.
-In this, it
-differs from traditional parsers.
-Libmarpa
-can arrange for a terminal
-to appear on the LHS of one or more rules,
-or for a terminal to be the start symbol.
-However,
-since terminals can never be zero length,
-it is a logical contradiction for a nulling
-symbol to also be a terminal
-and Marpa does not allow it.
+<p>In Libmarpa, by default, a symbol is a terminal,
+and therefore may appear in the input iff
+both of the following are true:
+</p><ul>
+<li> The symbol is non-nulling.
+It is a logical contradiction for a nulling symbol
+to appear in the input.
+For this reason, Marpa does not allow it.
+</li><li> The symbol does not appear on the
+LHS of any rule.
+</li></ul>
+
+<p>Marpa&rsquo;s default behavior follows tradition.
+A now-deprecated feature of
+Marpa allowed for LHS terminals.
+See <a href="LHS-terminals.html#LHS-terminals">LHS terminals</a>.
+Most readers will want to stick to
+Marpa&rsquo;s default behavior,
+and can and should ignore the possibility
+of LHS terminals.
+Even when LHS terminals are allowed,
+terminals can never be zero length.
 </p>
-<p>Token values are <code>int</code>&rsquo;s.
+<p>In Libmarpa,
+every terminal instance has a token value associated with it.
+Token values are <code>int</code>&rsquo;s.
 Libmarpa does nothing with token values except accept
 them from the application and return them during
 parse evaluation.

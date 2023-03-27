@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Ordering constructor (Libmarpa 8.6.2)</title>
+<title>Ordering constructor (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Ordering constructor (Libmarpa 8.6.2)">
-<meta name="keywords" content="Ordering constructor (Libmarpa 8.6.2)">
+<meta name="description" content="Ordering constructor (Libmarpa 11.0.5)">
+<meta name="keywords" content="Ordering constructor (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Ordering-methods.html#Ordering-methods" rel="up" title="Ordering methods">
 <link href="Ordering-reference-counting.html#Ordering-reference-counting" rel="next" title="Ordering reference counting">
-<link href="Ordering-overview.html#Ordering-overview" rel="prev" title="Ordering overview">
+<link href="Freezing-the-ordering.html#Freezing-the-ordering" rel="prev" title="Freezing the ordering">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,20 +73,23 @@ ul.no-bullet {list-style: none}
 <a name="Ordering-constructor"></a>
 <div class="header">
 <p>
-Next: <a href="Ordering-reference-counting.html#Ordering-reference-counting" accesskey="n" rel="next">Ordering reference counting</a>, Previous: <a href="Ordering-overview.html#Ordering-overview" accesskey="p" rel="prev">Ordering overview</a>, Up: <a href="Ordering-methods.html#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Ordering-reference-counting.html#Ordering-reference-counting" accesskey="n" rel="next">Ordering reference counting</a>, Previous: <a href="Freezing-the-ordering.html#Freezing-the-ordering" accesskey="p" rel="prev">Freezing the ordering</a>, Up: <a href="Ordering-methods.html#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Creating-an-ordering"></a>
-<h3 class="section">15.2 Creating an ordering</h3>
+<h3 class="section">21.3 Creating an ordering</h3>
 
-<dl>
-<dt><a name="index-marpa_005fo_005fnew"></a>Function: <em>Marpa_Order</em> <strong>marpa_o_new</strong> <em>(     Marpa_Bocage <var>b</var>)</em></dt>
-<dd><p>Creates a new ordering object, with a reference count of 1.
-The reference count of its parent bocage object, <var>b</var>,
-is increased by 1.
-</p>
-<p>Return value: On success, the new ordering object.
-On failure, <code>NULL</code>.
+<a name="marpa_005fo_005fnew"></a><dl>
+<dt><a name="index-marpa_005fo_005fnew"></a>Constructor function: <em>Marpa_Order</em> <strong>marpa_o_new</strong> <em>( Marpa_Bocage <var>b</var>)</em></dt>
+<dd>
+<p>On success, does the following:
+</p><ul>
+<li> Creates a new ordering object, with a reference count of 1.
+</li><li> Increases the reference count of its parent bocage object, <var>b</var>, by 1.
+</li></ul>
+
+<p><strong>Return value</strong>: On success, the new ordering object.
+On hard failure, <code>NULL</code>.
 </p></dd></dl>
 
 

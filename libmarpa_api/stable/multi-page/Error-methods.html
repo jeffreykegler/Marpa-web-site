@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Error methods (Libmarpa 8.6.2)</title>
+<title>Error methods (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Error methods (Libmarpa 8.6.2)">
-<meta name="keywords" content="Error methods (Libmarpa 8.6.2)">
+<meta name="description" content="Error methods (Libmarpa 11.0.5)">
+<meta name="keywords" content="Error methods (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" rel="up" title="Error methods macros and codes">
 <link href="Error-Macros.html#Error-Macros" rel="next" title="Error Macros">
@@ -72,27 +73,26 @@ ul.no-bullet {list-style: none}
 <a name="Error-methods"></a>
 <div class="header">
 <p>
-Next: <a href="Error-Macros.html#Error-Macros" accesskey="n" rel="next">Error Macros</a>, Previous: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="p" rel="prev">Error methods macros and codes</a>, Up: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Error-Macros.html#Error-Macros" accesskey="n" rel="next">Error Macros</a>, Previous: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="p" rel="prev">Error methods macros and codes</a>, Up: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Error-methods-1"></a>
-<h3 class="section">19.1 Error methods</h3>
+<h3 class="section">25.1 Error methods</h3>
 
-<dl>
-<dt><a name="index-marpa_005fg_005ferror"></a>Function: <em>Marpa_Error_Code</em> <strong>marpa_g_error</strong> <em>( Marpa_Grammar <var>g</var>,     const char** <var>p_error_string</var>)</em></dt>
-<dd><p>When a method fails,
-this method allows the application to read
-the error code.
+<a name="marpa_005fg_005ferror"></a><dl>
+<dt><a name="index-marpa_005fg_005ferror"></a>Accessor function: <em>Marpa_Error_Code</em> <strong>marpa_g_error</strong> <em>(     Marpa_Grammar <var>g</var>,     const char** <var>p_error_string</var>)</em></dt>
+<dd>
+<p>Allows the application to read the error code.
 <var>p_error_string</var> is reserved for use by
 the internals.
 Applications should set it to <code>NULL</code>.
 </p>
-<p>Return value: The last error code from a Libmarpa method.
+<p><strong>Return value</strong>: The current error code.
 Always succeeds.
 </p></dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fg_005ferror_005fclear"></a>Function: <em>Marpa_Error_Code</em> <strong>marpa_g_error_clear</strong> <em>( Marpa_Grammar <var>g</var> )</em></dt>
+<a name="marpa_005fg_005ferror_005fclear"></a><dl>
+<dt><a name="index-marpa_005fg_005ferror_005fclear"></a>Mutator function: <em>Marpa_Error_Code</em> <strong>marpa_g_error_clear</strong> <em>(     Marpa_Grammar <var>g</var> )</em></dt>
 <dd>
 <p>Sets the error code
 to <code>MARPA_ERR_NONE</code>.
@@ -100,7 +100,7 @@ Not often used,
 but now and then it can be useful
 to force the error code to a known state.
 </p>
-<p>Return value: <code>MARPA_ERR_NONE</code>.
+<p><strong>Return value</strong>: <code>MARPA_ERR_NONE</code>.
 Always succeeds.
 </p></dd></dl>
 

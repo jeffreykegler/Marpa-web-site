@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,17 +25,18 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Recognizer overview (Libmarpa 8.6.2)</title>
+<title>Recognizer overview (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Recognizer overview (Libmarpa 8.6.2)">
-<meta name="keywords" content="Recognizer overview (Libmarpa 8.6.2)">
+<meta name="description" content="Recognizer overview (Libmarpa 11.0.5)">
+<meta name="keywords" content="Recognizer overview (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Recognizer-methods.html#Recognizer-methods" rel="up" title="Recognizer methods">
-<link href="Recognizer-constructor.html#Recognizer-constructor" rel="next" title="Recognizer constructor">
+<link href="Creating-a-new-recognizer.html#Creating-a-new-recognizer" rel="next" title="Creating a new recognizer">
 <link href="Recognizer-methods.html#Recognizer-methods" rel="prev" title="Recognizer methods">
 <style type="text/css">
 <!--
@@ -72,29 +73,38 @@ ul.no-bullet {list-style: none}
 <a name="Recognizer-overview"></a>
 <div class="header">
 <p>
-Next: <a href="Recognizer-constructor.html#Recognizer-constructor" accesskey="n" rel="next">Recognizer constructor</a>, Previous: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Creating-a-new-recognizer.html#Creating-a-new-recognizer" accesskey="n" rel="next">Creating a new recognizer</a>, Previous: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Overview-1"></a>
-<h3 class="section">12.1 Overview</h3>
+<a name="Recognizer-overview-1"></a>
+<h3 class="section">18.1 Recognizer overview</h3>
 
 <p>An archetypal application uses a recognizer to read input.
-To create a recognizer, use the <code>marpa_r_new()</code> method.
+To create a recognizer, use the
+<code>marpa_r_new()</code>
+method.
 When a recognizer is no longer in use, its memory can be freed
-using the 
-<code>marpa_r_unref()</code> method.
+using the
+<code>marpa_r_unref()</code>
+method.
 </p>
 <p>To make a recognizer ready for input,
-use the <code>marpa_r_start_input()</code> method.
+use the
+<code>marpa_r_start_input()</code>
+method.
 </p>
 <p>The recognizer starts with its current earleme
 at location 0.
 To read a token at the current earleme,
-use the <code>marpa_r_alternative()</code> call.
+use the
+<code>marpa_r_alternative()</code>
+call.
 </p>
 <p>To complete the processing of the current earleme,
 and move forward to a new one,
-use the <code>marpa_r_earleme_complete()</code> call.
+use the
+<code>marpa_r_earleme_complete()</code>
+call.
 </p>
 
 

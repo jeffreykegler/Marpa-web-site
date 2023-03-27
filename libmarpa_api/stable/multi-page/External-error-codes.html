@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>External error codes (Libmarpa 8.6.2)</title>
+<title>External error codes (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="External error codes (Libmarpa 8.6.2)">
-<meta name="keywords" content="External error codes (Libmarpa 8.6.2)">
+<meta name="description" content="External error codes (Libmarpa 11.0.5)">
+<meta name="keywords" content="External error codes (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" rel="up" title="Error methods macros and codes">
 <link href="Internal-error-codes.html#Internal-error-codes" rel="next" title="Internal error codes">
@@ -72,52 +73,55 @@ ul.no-bullet {list-style: none}
 <a name="External-error-codes"></a>
 <div class="header">
 <p>
-Next: <a href="Internal-error-codes.html#Internal-error-codes" accesskey="n" rel="next">Internal error codes</a>, Previous: <a href="Error-Macros.html#Error-Macros" accesskey="p" rel="prev">Error Macros</a>, Up: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Internal-error-codes.html#Internal-error-codes" accesskey="n" rel="next">Internal error codes</a>, Previous: <a href="Error-Macros.html#Error-Macros" accesskey="p" rel="prev">Error Macros</a>, Up: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="External-error-codes-1"></a>
-<h3 class="section">19.3 External error codes</h3>
+<h3 class="section">25.3 External error codes</h3>
 
 <p>This section lists the external error codes.
 These are the only error codes that users
 of the Libmarpa external interface should ever see.
-Internal error codes are in their own section.
-See <a href="Internal-error-codes.html#Internal-error-codes">Internal error codes</a>.
+Internal error codes are in their own section
+(<a href="Internal-error-codes.html#Internal-error-codes">Internal error codes</a>).
 </p>
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNONE"></a>Macro: <em>int</em> <strong>MARPA_ERR_NONE</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fNONE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NONE</strong></dt>
 <dd><p>No error condition.
 The error code is initialized to this value.
-Methods which do not result in failure
+Methods that do not result in failure
 sometimes reset the error code to <code>MARPA_ERR_NONE</code>.
-Numeric value: 0.
-Suggested message: &quot;No error&quot;.
+<strong>Numeric value</strong>: 0.
+<strong>Suggested message</strong>: &quot;No error&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fBAD_005fSEPARATOR"></a>Macro: <em>int</em> <strong>MARPA_ERR_BAD_SEPARATOR</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fBAD_005fSEPARATOR"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_BAD_SEPARATOR</strong></dt>
 <dd><p>A separator was specified for a sequence rule,
 but its ID was not that
 of a valid symbol.
-Numeric value: 6.
-Suggested message: &quot;Separator has invalid symbol ID&quot;.
+<strong>Numeric value</strong>: 6.
+<strong>Suggested message</strong>: &quot;Separator has invalid symbol ID&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fBEFORE_005fFIRST_005fTREE"></a>Macro: <em>int</em> <strong>MARPA_ERR_BEFORE_FIRST_TREE</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fBEFORE_005fFIRST_005fTREE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_BEFORE_FIRST_TREE</strong></dt>
 <dd><p>A tree iterator is positioned before the first tree,
-and it was specified in a context where that is not
-allowed.
+and the tree iterator was specified in a context where
+the tree iterator must be positioned at or after
+the first tree.
 A newly created tree is positioned before the first
 tree.
 To position a newly created tree iterator to the first tree
-use the <code>marpa_t_next()</code> method.
-Numeric value: 91.
-Suggested message: &quot;Tree iterator is before first tree&quot;.
+use the
+<code>marpa_t_next()</code>
+method.
+<strong>Numeric value</strong>: 91.
+<strong>Suggested message</strong>: &quot;Tree iterator is before first tree&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fCOUNTED_005fNULLABLE"></a>Macro: <em>int</em> <strong>MARPA_ERR_COUNTED_NULLABLE</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fCOUNTED_005fNULLABLE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_COUNTED_NULLABLE</strong></dt>
 <dd><p>A &ldquo;counted&rdquo; symbol was found
 that is also a nullable symbol.
 A &ldquo;counted&rdquo; symbol is one that appears on the RHS
@@ -138,13 +142,13 @@ nothing in Libmarpa prevents you from specifying
 that sequence
 with ordinary BNF rules.
 </p>
-<p>Numeric value: 8.
-Suggested message: &quot;Nullable symbol on RHS of a sequence rule&quot;.
+<p><strong>Numeric value</strong>: 8.
+<strong>Suggested message</strong>: &quot;Nullable symbol on RHS of a sequence rule&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fDUPLICATE_005fRULE"></a>Macro: <em>int</em> <strong>MARPA_ERR_DUPLICATE_RULE</strong></dt>
-<dd><p>This error indicates an attempt to add a BNF rule which
+<dt><a name="index-MARPA_005fERR_005fDUPLICATE_005fRULE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_DUPLICATE_RULE</strong></dt>
+<dd><p>This error indicates an attempt to add a BNF rule that
 is a duplicate of a BNF rule already in the grammar.
 Two BNF rules are considered duplicates if
 </p>
@@ -158,121 +162,114 @@ and duplication between BNF rules and sequence rules,
 is dealt with by requiring that the LHS of a sequence rule
 not be the LHS of any other rule.
 </p>
-<p>Numeric value: 11.
-Suggested message: &quot;Duplicate rule&quot;.
+<p><strong>Numeric value</strong>: 11.
+<strong>Suggested message</strong>: &quot;Duplicate rule&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fDUPLICATE_005fTOKEN"></a>Macro: <em>int</em> <strong>MARPA_ERR_DUPLICATE_TOKEN</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fDUPLICATE_005fTOKEN"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_DUPLICATE_TOKEN</strong></dt>
 <dd><p>This error indicates an attempt to add a duplicate token.
 A token is a duplicate if one already read at the same
 earleme has the same symbol ID and the same length.
-Numeric value: 12.
-Suggested message: &quot;Duplicate token&quot;.
+<strong>Numeric value</strong>: 12.
+<strong>Suggested message</strong>: &quot;Duplicate token&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fYIM_005fCOUNT"></a>Macro: <em>int</em> <strong>MARPA_ERR_YIM_COUNT</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fYIM_005fCOUNT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_YIM_COUNT</strong></dt>
 <dd><p>This error code indicates that
 an implementation-defined limit on the
 number of Earley items per Earley set
-was exceedeed.
+was exceeded.
 This limit is different from
 the Earley item warning threshold,
 an optional limit on the number
 of Earley items in an Earley set,
 which can be set by the application.
 </p>
-<p>The implementation defined-limit is very large,
-at least 500,000,000 earlemes.
+<p>The implementation-defined limit is very large,
+at least 500,000,000 Earley items.
 An application is unlikely ever to see this
 error.
 Libmarpa&rsquo;s use of memory
-would almost certainly exceed the implementation&rsquo;s
-limits before it occurred.
-Numeric value: 13.
-Suggested message: &quot;Maximum number of Earley items exceeded&quot;.
+would almost certainly exceed the
+limit imposed by the application environment
+before this error occurs.
+<strong>Numeric value</strong>: 13.
+<strong>Suggested message</strong>: &quot;Maximum number of Earley items exceeded&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fEVENT_005fIX_005fNEGATIVE"></a>Macro: <em>int</em> <strong>MARPA_ERR_EVENT_IX_NEGATIVE</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fEVENT_005fIX_005fNEGATIVE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_EVENT_IX_NEGATIVE</strong></dt>
 <dd><p>A negative event index was specified.
 That is not allowed.
-Numeric value: 15.
-Suggested message: &quot;Negative event index&quot;.
+<strong>Numeric value</strong>: 15.
+<strong>Suggested message</strong>: &quot;Negative event index&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fEVENT_005fIX_005fOOB"></a>Macro: <em>int</em> <strong>MARPA_ERR_EVENT_IX_OOB</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fEVENT_005fIX_005fOOB"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_EVENT_IX_OOB</strong></dt>
 <dd><p>An non-negative event index was specified,
 but there is no event at that index.
 Since the events are in sequence, this means it
 was too large.
-Numeric value: 16.
-Suggested message: &quot;No event at that index&quot;.
+<strong>Numeric value</strong>: 16.
+<strong>Suggested message</strong>: &quot;No event at that index&quot;.
+</p></dd></dl>
+
+<a name="MARPA_005fERR_005fGRAMMAR_005fHAS_005fCYCLE"></a><dl>
+<dt><a name="index-MARPA_005fERR_005fGRAMMAR_005fHAS_005fCYCLE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_GRAMMAR_HAS_CYCLE</strong></dt>
+<dd><p>The grammar has a cycle.
+Parsing using a grammar that contains a cycle is deprecated.
+See <a href="Cycles.html#Cycles">Cycles</a>.
+<strong>Numeric value</strong>: 17.
+<strong>Suggested message</strong>: &quot;Grammar has cycle&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fGRAMMAR_005fHAS_005fCYCLE"></a>Macro: <em>int</em> <strong>MARPA_ERR_GRAMMAR_HAS_CYCLE</strong></dt>
-<dd><p>The grammar has a cycle &mdash; one or more loop
-rules.
-This is a recoverable error,
-although most applications will want to treat
-it as fatal.
-For more see the description of <a href="Grammar-precomputation.html#marpa_005fg_005fprecompute">marpa_g_precompute</a>.
-Numeric value: 17.
-Suggested message: &quot;Grammar has cycle&quot;.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-MARPA_005fERR_005fHEADERS_005fDO_005fNOT_005fMATCH"></a>Macro: <em>int</em> <strong>MARPA_ERR_HEADERS_DO_NOT_MATCH</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fHEADERS_005fDO_005fNOT_005fMATCH"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_HEADERS_DO_NOT_MATCH</strong></dt>
 <dd><p>This is an internal error, and indicates that
 Libmarpa was wrongly built.
-Libmarpa was compiled with headers which do not
+Libmarpa was compiled with headers that do not
 match the rest of the code.
 The solution is to find a correctly built
 Libmarpa.
-Numeric value: 98.
-Suggested message: &quot;Internal error: Libmarpa was built incorrectly&quot;
+<strong>Numeric value</strong>: 98.
+<strong>Suggested message</strong>: &quot;Internal error: Libmarpa was built incorrectly&quot;
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fI_005fAM_005fNOT_005fOK"></a>Macro: <em>int</em> <strong>MARPA_ERR_I_AM_NOT_OK</strong></dt>
-<dd><p>The Libmarpa base grammar is in a &quot;not ok&quot;
+<dt><a name="index-MARPA_005fERR_005fI_005fAM_005fNOT_005fOK"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_I_AM_NOT_OK</strong></dt>
+<dd><p>The Libmarpa base grammar is in a &ldquo;not ok&rdquo;
 state.
 Currently, the only way this can happen
 is if Libmarpa memory is being overwritten.
-Numeric value: 29.
-Suggested message: &quot;Marpa is in a not OK state&quot;.
+<strong>Numeric value</strong>: 29.
+<strong>Suggested message</strong>: &quot;Marpa is in a not OK state&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fINACCESSIBLE_005fTOKEN"></a>Macro: <em>int</em> <strong>MARPA_ERR_INACCESSIBLE_TOKEN</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fINACCESSIBLE_005fTOKEN"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_INACCESSIBLE_TOKEN</strong></dt>
 <dd><p>This error code indicates that
-the token symbol is an inaccessible symbol &mdash; one which
+the token symbol is an inaccessible symbol &mdash; one that
 cannot be reached from the start symbol.
-</p>
-<p>Since the inaccessibility of a symbol is a property of the grammar,
+Since the inaccessibility of a symbol is a property of the grammar,
 this error code typically indicates an application error.
-Nevertheless, a retry at this location, using another token ID,
-may succeed.
-At this writing,
-the author knows of no uses of this technique.
 </p>
-<p>Numeric value: 18.
-Suggested message: &quot;Token symbol is inaccessible&quot;.
+<p><strong>Numeric value</strong>: 18.
+<strong>Suggested message</strong>: &quot;Token symbol is inaccessible&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fINVALID_005fBOOLEAN"></a>Macro: <em>int</em> <strong>MARPA_ERR_INVALID_BOOLEAN</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fINVALID_005fBOOLEAN"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_INVALID_BOOLEAN</strong></dt>
 <dd><p>A function was called that takes a boolean argument,
 but the value of that argument was not either 0 or 1.
-Numeric value: 22.
-Suggested message: &quot;Argument is not boolean&quot;.
+<strong>Numeric value</strong>: 22.
+<strong>Suggested message</strong>: &quot;Argument is not boolean&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fINVALID_005fLOCATION"></a>Macro: <em>int</em> <strong>MARPA_ERR_INVALID_LOCATION</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fINVALID_005fLOCATION"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_INVALID_LOCATION</strong></dt>
 <dd><p>The location (Earley set ID) is not valid.
 It may be invalid for one of two reasons:
 </p><ul>
@@ -290,197 +287,186 @@ In the standard input model, this will always
 be identical with Libmarpa&rsquo;s other idea of
 location, the earleme.
 </p>
-<p>Numeric value: 25.
-Suggested message: &quot;Location is not valid&quot;.
+<p><strong>Numeric value</strong>: 25.
+<strong>Suggested message</strong>: &quot;Location is not valid&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fINVALID_005fSTART_005fSYMBOL"></a>Macro: <em>int</em> <strong>MARPA_ERR_INVALID_START_SYMBOL</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fINVALID_005fSTART_005fSYMBOL"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_INVALID_START_SYMBOL</strong></dt>
 <dd><p>A start symbol was specified,
 but its symbol ID is not that of a valid symbol.
-Numeric value: 27.
-Suggested message: &quot;Specified start symbol is not valid&quot;.
+<strong>Numeric value</strong>: 27.
+<strong>Suggested message</strong>: &quot;Specified start symbol is not valid&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fINVALID_005fASSERTION_005fID"></a>Macro: <em>int</em> <strong>MARPA_ERR_INVALID_ASSERTION_ID</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fINVALID_005fASSERTION_005fID"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_INVALID_ASSERTION_ID</strong></dt>
 <dd><p>A method was called with an invalid assertion ID.
-This is a assertion ID which not only does
+This is a assertion ID that not only does
 not exist, but cannot exist.
 Currently that means its value is less than zero.
-Numeric value: 96.
-Suggested message: &quot;Assertion ID is malformed&quot;.
+<strong>Numeric value</strong>: 96.
+<strong>Suggested message</strong>: &quot;Assertion ID is malformed&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fINVALID_005fRULE_005fID"></a>Macro: <em>int</em> <strong>MARPA_ERR_INVALID_RULE_ID</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fINVALID_005fRULE_005fID"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_INVALID_RULE_ID</strong></dt>
 <dd><p>A method was called with an invalid rule ID.
-This is a rule ID which not only does
+This is a rule ID that not only does
 not exist, but cannot exist.
 Currently that means its value is less than zero.
-Numeric value: 26.
-Suggested message: &quot;Rule ID is malformed&quot;.
+<strong>Numeric value</strong>: 26.
+<strong>Suggested message</strong>: &quot;Rule ID is malformed&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fINVALID_005fSYMBOL_005fID"></a>Macro: <em>int</em> <strong>MARPA_ERR_INVALID_SYMBOL_ID</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fINVALID_005fSYMBOL_005fID"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_INVALID_SYMBOL_ID</strong></dt>
 <dd><p>A method was called with an invalid symbol ID.
-This is a symbol ID which not only does
+This is a symbol ID that not only does
 not exist, but cannot exist.
 Currently that means its value is less than zero.
-Numeric value: 28.
-Suggested message: &quot;Symbol ID is malformed&quot;.
+<strong>Numeric value</strong>: 28.
+<strong>Suggested message</strong>: &quot;Symbol ID is malformed&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fMAJOR_005fVERSION_005fMISMATCH"></a>Macro: <em>int</em> <strong>MARPA_ERR_MAJOR_VERSION_MISMATCH</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fMAJOR_005fVERSION_005fMISMATCH"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_MAJOR_VERSION_MISMATCH</strong></dt>
 <dd><p>There was a mismatch in the major version number
 between the requested version
 of libmarpa, and the actual one.
-Numeric value: 30.
-Suggested message: &quot;Libmarpa major version number is a mismatch&quot;.
+<strong>Numeric value</strong>: 30.
+<strong>Suggested message</strong>: &quot;Libmarpa major version number is a mismatch&quot;.
 </p>
 </dd></dl>
 <dl>
-<dt><a name="index-MARPA_005fERR_005fMICRO_005fVERSION_005fMISMATCH"></a>Macro: <em>int</em> <strong>MARPA_ERR_MICRO_VERSION_MISMATCH</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fMICRO_005fVERSION_005fMISMATCH"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_MICRO_VERSION_MISMATCH</strong></dt>
 <dd><p>There was a mismatch in the micro version number
 between the requested version
 of libmarpa, and the actual one.
-Numeric value: 31.
-Suggested message: &quot;Libmarpa micro version number is a mismatch&quot;.
+<strong>Numeric value</strong>: 31.
+<strong>Suggested message</strong>: &quot;Libmarpa micro version number is a mismatch&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fMINOR_005fVERSION_005fMISMATCH"></a>Macro: <em>int</em> <strong>MARPA_ERR_MINOR_VERSION_MISMATCH</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fMINOR_005fVERSION_005fMISMATCH"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_MINOR_VERSION_MISMATCH</strong></dt>
 <dd><p>There was a mismatch in the minor version number
 between the requested version
 of libmarpa, and the actual one.
-Numeric value: 32.
-Suggested message: &quot;Libmarpa minor version number is a mismatch&quot;.
+<strong>Numeric value</strong>: 32.
+<strong>Suggested message</strong>: &quot;Libmarpa minor version number is a mismatch&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNO_005fEARLEY_005fSET_005fAT_005fLOCATION"></a>Macro: <em>int</em> <strong>MARPA_ERR_NO_EARLEY_SET_AT_LOCATION</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fNO_005fEARLEY_005fSET_005fAT_005fLOCATION"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NO_EARLEY_SET_AT_LOCATION</strong></dt>
 <dd><p>A non-negative Earley set ID (also called an Earley set ordinal)
 was specified,
 but there is no corresponding Earley set.
 Since the Earley set ordinals are in sequence,
 this means that the specified ID is greater
 than that of the latest Earley set.
-Numeric value: 39.
-Suggested message: &quot;Earley set ID is after latest Earley set&quot;.
+<strong>Numeric value</strong>: 39.
+<strong>Suggested message</strong>: &quot;Earley set ID is after latest Earley set&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNOT_005fPRECOMPUTED"></a>Macro: <em>int</em> <strong>MARPA_ERR_NOT_PRECOMPUTED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fNOT_005fPRECOMPUTED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NOT_PRECOMPUTED</strong></dt>
 <dd><p>The grammar is not precomputed,
 and attempt was made to do something with it
 that is not allowed for unprecomputed
 grammars.
 For example, a recognizer cannot be
 created from a grammar until it is precomputed.
-Numeric value: 34.
-Suggested message: &quot;This grammar is not precomputed&quot;.
+<strong>Numeric value</strong>: 34.
+<strong>Suggested message</strong>: &quot;This grammar is not precomputed&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNO_005fPARSE"></a>Macro: <em>int</em> <strong>MARPA_ERR_NO_PARSE</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fNO_005fPARSE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NO_PARSE</strong></dt>
 <dd><p>The application attempted to create a bocage
-from a recognizer without a parse.
-Applications will often want to treat this as
-a soft error.
-Numeric value: 41.
-Suggested message: &quot;No parse&quot;.
+from a recognizer with no parse tree.
+<strong>Numeric value</strong>: 41.
+<strong>Suggested message</strong>: &quot;No parse&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNO_005fRULES"></a>Macro: <em>int</em> <strong>MARPA_ERR_NO_RULES</strong></dt>
-<dd><p>A grammar which has no rules is being used
+<dt><a name="index-MARPA_005fERR_005fNO_005fRULES"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NO_RULES</strong></dt>
+<dd><p>A grammar that has no rules is being used
 in a way that is not allowed.
 Usually the problem is that the user is
 trying to precompute the grammar.
-Numeric value: 42.
-Suggested message: &quot;This grammar does not have any rules&quot;.
+<strong>Numeric value</strong>: 42.
+<strong>Suggested message</strong>: &quot;This grammar does not have any rules&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNO_005fSTART_005fSYMBOL"></a>Macro: <em>int</em> <strong>MARPA_ERR_NO_START_SYMBOL</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fNO_005fSTART_005fSYMBOL"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NO_START_SYMBOL</strong></dt>
 <dd><p>The grammar has no start symbol,
 and an attempt was made to perform an
-operation which requires one.
+operation that requires one.
 Usually the problem is that the user is
 trying to precompute the grammar.
-Numeric value: 43.
-Suggested message: &quot;This grammar has no start symbol&quot;.
+<strong>Numeric value</strong>: 43.
+<strong>Suggested message</strong>: &quot;This grammar has no start symbol&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNO_005fSUCH_005fASSERTION_005fID"></a>Macro: <em>int</em> <strong>MARPA_ERR_NO_SUCH_ASSERTION_ID</strong></dt>
-<dd><p>A method was called with an assertion ID which is well-formed,
+<dt><a name="index-MARPA_005fERR_005fNO_005fSUCH_005fASSERTION_005fID"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NO_SUCH_ASSERTION_ID</strong></dt>
+<dd><p>A method was called with an assertion ID that is well-formed (a non-negative integer),
 but the assertion does not exist.
-Numeric value: 97.
-Suggested message: &quot;No assertion with this ID exists&quot;.
+<strong>Numeric value</strong>: 97.
+<strong>Suggested message</strong>: &quot;No assertion with this ID exists&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNO_005fSUCH_005fRULE_005fID"></a>Macro: <em>int</em> <strong>MARPA_ERR_NO_SUCH_RULE_ID</strong></dt>
-<dd><p>A method was called with a rule ID which is well-formed,
+<dt><a name="index-MARPA_005fERR_005fNO_005fSUCH_005fRULE_005fID"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NO_SUCH_RULE_ID</strong></dt>
+<dd><p>A method was called with a rule ID that is well-formed (a non-negative integer),
 but the rule does not exist.
-Numeric value: 89.
-Suggested message: &quot;No rule with this ID exists&quot;.
+<strong>Numeric value</strong>: 89.
+<strong>Suggested message</strong>: &quot;No rule with this ID exists&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNO_005fSUCH_005fSYMBOL_005fID"></a>Macro: <em>int</em> <strong>MARPA_ERR_NO_SUCH_SYMBOL_ID</strong></dt>
-<dd><p>A method was called with a symbol ID which is well-formed,
+<dt><a name="index-MARPA_005fERR_005fNO_005fSUCH_005fSYMBOL_005fID"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NO_SUCH_SYMBOL_ID</strong></dt>
+<dd><p>A method was called with a symbol ID that is well-formed (a non-negative integer),
 but the symbol does not exist.
-Numeric value: 90.
-Suggested message: &quot;No symbol with this ID exists&quot;.
+<strong>Numeric value</strong>: 90.
+<strong>Suggested message</strong>: &quot;No symbol with this ID exists&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNO_005fTOKEN_005fEXPECTED_005fHERE"></a>Macro: <em>int</em> <strong>MARPA_ERR_NO_TOKEN_EXPECTED_HERE</strong></dt>
-<dd><p>This error code indicates that
-no tokens at all were expected at this earleme
-location.
+<dt><a name="index-MARPA_005fERR_005fNO_005fTOKEN_005fEXPECTED_005fHERE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NO_TOKEN_EXPECTED_HERE</strong></dt>
+<dd><p>An attempt was made to read a token using <code>marpa_r_alternative</code>,
+but no tokens were expected at this earleme location.
 This can only happen in alternative input models.
+See <a href="Recognizer-life-cycle-mutators.html#marpa_005fr_005falternative">marpa_r_alternative()</a>
 </p>
-<p>Typically, this indicates an application programming
-error.
-Retrying input at this location will always fail.
-But if the application is able to leave this
-earleme empty, a retry at a later location,
-using this or another token,
-may succeed.
-At this writing,
-the author knows of no uses of this technique.
-</p>
-<p>Numeric value: 44.
-Suggested message: &quot;No token is expected at this earleme location&quot;.
+<p><strong>Numeric value</strong>: 44.
+<strong>Suggested message</strong>: &quot;No token is expected at this earleme location&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNOT_005fA_005fSEQUENCE"></a>Macro: <em>int</em> <strong>MARPA_ERR_NOT_A_SEQUENCE</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fNOT_005fA_005fSEQUENCE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NOT_A_SEQUENCE</strong></dt>
 <dd><p>This error occurs in situations where a rule
 is required to be a sequence,
 and indicates that the rule of interest is,
 in fact,
 not a sequence.
 </p>
-<p>Numeric value: 99.
-Suggested message: &quot;Rule is not a sequence&quot;.
+<p><strong>Numeric value</strong>: 99.
+<strong>Suggested message</strong>: &quot;Rule is not a sequence&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fNULLING_005fTERMINAL"></a>Macro: <em>int</em> <strong>MARPA_ERR_NULLING_TERMINAL</strong></dt>
-<dd><p>Marpa does not allow a symbol to be both nulling
-and a terminal.
-Numeric value: 49.
-Suggested message: &quot;A symbol is both terminal and nulling&quot;.
+<dt><a name="index-MARPA_005fERR_005fNULLING_005fTERMINAL"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_NULLING_TERMINAL</strong></dt>
+<dd><p>This error occurs only if LHS terminals feature is in use.
+The LHS terminals feature is deprecated.
+See <a href="LHS-terminals.html#LHS-terminals">LHS terminals</a>.
+<strong>Numeric value</strong>: 49.
+<strong>Suggested message</strong>: &quot;A symbol is both terminal and nulling&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fORDER_005fFROZEN"></a>Macro: <em>int</em> <strong>MARPA_ERR_ORDER_FROZEN</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fORDER_005fFROZEN"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_ORDER_FROZEN</strong></dt>
 <dd><p>The Marpa order object has been frozen.
 If a Marpa order object is frozen, it cannot be
 changed.
@@ -491,390 +477,403 @@ iterator is created from it.
 Applications can order an bocage in many ways,
 but they must do so by creating multiple order objects.
 </p>
-<p>Numeric value: 50.
-Suggested message: &quot;The ordering is frozen&quot;.
+<p><strong>Numeric value</strong>: 50.
+<strong>Suggested message</strong>: &quot;The ordering is frozen&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fPARSE_005fEXHAUSTED"></a>Macro: <em>int</em> <strong>MARPA_ERR_PARSE_EXHAUSTED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fPARSE_005fEXHAUSTED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_PARSE_EXHAUSTED</strong></dt>
 <dd><p>The parse is exhausted.
-Numeric value: 53.
-Suggested message: &quot;The parse is exhausted&quot;.
+<strong>Numeric value</strong>: 53.
+<strong>Suggested message</strong>: &quot;The parse is exhausted&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fPARSE_005fTOO_005fLONG"></a>Macro: <em>int</em> <strong>MARPA_ERR_PARSE_TOO_LONG</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fPARSE_005fTOO_005fLONG"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_PARSE_TOO_LONG</strong></dt>
 <dd><p>The parse is too long.
 The limit on the length of a parse is implementation
 dependent, but it is very large,
 at least 500,000,000 earlemes.
 </p>
-<p>This error code is unlikely in the standard input model.
-Almost certainly memory would be exceeded
-before it could occur.
+<p>In the standard input model,
+Libmarpa&rsquo;s use of memory
+would almost certainly exceed the
+limit imposed by the application environment
+before this error could occur.
 If an application sees this error,
 it almost certainly using one of the non-standard
 input models.
 </p>
-<p>Most often this messsage will occur because
-of a request to add a single extremely long token,
+<p>In the non-standard
+input models,
+this message will occur most often because
+of an attempt to add a single extremely long token,
 perhaps as a result of an application error.
-But it is also possible this error condition will 
+It is also possible this error condition will
 occur after the input of a large number
 of long tokens.
 </p>
-<p>Numeric value: 54.
-Suggested message: &quot;This input would make the parse too long&quot;.
+<p><strong>Numeric value</strong>: 54.
+<strong>Suggested message</strong>: &quot;This input would make the parse too long&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fPOINTER_005fARG_005fNULL"></a>Macro: <em>int</em> <strong>MARPA_ERR_POINTER_ARG_NULL</strong></dt>
-<dd><p>In a method which takes pointers as arguments,
+<dt><a name="index-MARPA_005fERR_005fPOINTER_005fARG_005fNULL"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_POINTER_ARG_NULL</strong></dt>
+<dd><p>In a method that takes pointers as arguments,
 one of the pointer arguments is <code>NULL</code>,
 in a case where that is not allowed.
 One such method is&nbsp;<code>marpa_r_progress_item()</code>.
-Numeric value: 56.
-Suggested message: &quot;An argument is null when it should not be&quot;.
+<strong>Numeric value</strong>: 56.
+<strong>Suggested message</strong>: &quot;An argument is null when it should not be&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fPRECOMPUTED"></a>Macro: <em>int</em> <strong>MARPA_ERR_PRECOMPUTED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fPRECOMPUTED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_PRECOMPUTED</strong></dt>
 <dd><p>An attempt was made to use a precomputed grammar
 in a way that is not allowed.
 Often this is an attempt to change the grammar.
 Nearly every change to a grammar after
 precomputation invalidates the precomputation,
 and is therefore not allowed.
-Numeric value: 57.
-Suggested message: &quot;This grammar is precomputed&quot;.
+<strong>Numeric value</strong>: 57.
+<strong>Suggested message</strong>: &quot;This grammar is precomputed&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fPROGRESS_005fREPORT_005fNOT_005fSTARTED"></a>Macro: <em>int</em> <strong>MARPA_ERR_PROGRESS_REPORT_NOT_STARTED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fPROGRESS_005fREPORT_005fNOT_005fSTARTED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_PROGRESS_REPORT_NOT_STARTED</strong></dt>
 <dd><p>No recognizer progress report is currently active,
-and an action has been attempted which
-is inconsistent with that.
+and an action has been attempted that
+requires the progress report to be active.
 One such action would be a
-<code>marpa_r_progress_item()</code> call.
-Numeric value: 59.
-Suggested message: &quot;No progress report has been started&quot;.
+<code>marpa_r_progress_item()</code>
+call.
+<strong>Numeric value</strong>: 59.
+<strong>Suggested message</strong>: &quot;No progress report has been started&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fPROGRESS_005fREPORT_005fEXHAUSTED"></a>Macro: <em>int</em> <strong>MARPA_ERR_PROGRESS_REPORT_EXHAUSTED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fPROGRESS_005fREPORT_005fEXHAUSTED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_PROGRESS_REPORT_EXHAUSTED</strong></dt>
 <dd><p>The progress report is &ldquo;exhausted&rdquo; &mdash; all its
 items have been iterated through.
-Numeric value: 58.
-Suggested message: &quot;The progress report is exhausted&quot;.
+<strong>Numeric value</strong>: 58.
+<strong>Suggested message</strong>: &quot;The progress report is exhausted&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fRANK_005fTOO_005fLOW"></a>Macro: <em>int</em> <strong>MARPA_ERR_RANK_TOO_LOW</strong></dt>
-<dd><p>A symbol or rule rank was specified which
+<dt><a name="index-MARPA_005fERR_005fRANK_005fTOO_005fLOW"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RANK_TOO_LOW</strong></dt>
+<dd><p>A symbol or rule rank was specified that
 was less than an implementation-defined minimum.
 Implementations will always allow at least those
 ranks in the range between
 -134,217,727 and 134,217,727.
-Numeric value: 85.
-Suggested message: &quot;Rule or symbol rank too low&quot;.
+<strong>Numeric value</strong>: 85.
+<strong>Suggested message</strong>: &quot;Rule or symbol rank too low&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fRANK_005fTOO_005fHIGH"></a>Macro: <em>int</em> <strong>MARPA_ERR_RANK_TOO_HIGH</strong></dt>
-<dd><p>A symbol or rule rank was specified which
+<dt><a name="index-MARPA_005fERR_005fRANK_005fTOO_005fHIGH"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RANK_TOO_HIGH</strong></dt>
+<dd><p>A symbol or rule rank was specified that
 was greater than an implementation-defined maximum.
 Implementations will always allow at least those
 ranks in the range between
 -134,217,727 and 134,217,727.
-Numeric value: 86.
-Suggested message: &quot;Rule or symbol rank too high&quot;.
+<strong>Numeric value</strong>: 86.
+<strong>Suggested message</strong>: &quot;Rule or symbol rank too high&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fRECCE_005fIS_005fINCONSISTENT"></a>Macro: <em>int</em> <strong>MARPA_ERR_RECCE_IS_INCONSISTENT</strong></dt>
-<dd><p>The recognizer is &ldquo;inconsistent&rdquo;,
-usually because the user has rejected one or
-more rules or terminals,
-and has not yet called 
-the  <code>marpa_r_consistent()</code> method.
-Numeric value: 95.
-Suggested message: &quot;The recognizer is inconsistent.
+<dt><a name="index-MARPA_005fERR_005fRECCE_005fIS_005fINCONSISTENT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RECCE_IS_INCONSISTENT</strong></dt>
+<dd><p>This is an internal error.
+An application should never see it.
+<strong>Numeric value</strong>: 95.
+<strong>Suggested message</strong>: &quot;The recognizer is inconsistent&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fRECCE_005fNOT_005fACCEPTING_005fINPUT"></a>Macro: <em>int</em> <strong>MARPA_ERR_RECCE_NOT_ACCEPTING_INPUT</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fRECCE_005fNOT_005fACCEPTING_005fINPUT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RECCE_NOT_ACCEPTING_INPUT</strong></dt>
 <dd><p>The recognizer is not accepting input,
 and the application has attempted something that
 is inconsistent with that fact.
-Numeric value: 60.
-Suggested message: &quot;The recognizer is not accepting input&quot;.
+<strong>Numeric value</strong>: 60.
+<strong>Suggested message</strong>: &quot;The recognizer is not accepting input&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fRECCE_005fNOT_005fSTARTED"></a>Macro: <em>int</em> <strong>MARPA_ERR_RECCE_NOT_STARTED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fRECCE_005fNOT_005fSTARTED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RECCE_NOT_STARTED</strong></dt>
 <dd><p>The recognizer has not been started.
 and the application has attempted something that
 is inconsistent with that fact.
-Numeric value: 61.
-Suggested message: &quot;The recognizer has not been started&quot;.
+<strong>Numeric value</strong>: 61.
+<strong>Suggested message</strong>: &quot;The recognizer has not been started&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fRECCE_005fSTARTED"></a>Macro: <em>int</em> <strong>MARPA_ERR_RECCE_STARTED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fRECCE_005fSTARTED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RECCE_STARTED</strong></dt>
 <dd><p>The recognizer has been started.
 and the application has attempted something that
 is inconsistent with that fact.
-Numeric value: 62.
-Suggested message: &quot;The recognizer has been started&quot;.
+<strong>Numeric value</strong>: 62.
+<strong>Suggested message</strong>: &quot;The recognizer has been started&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fRHS_005fIX_005fNEGATIVE"></a>Macro: <em>int</em> <strong>MARPA_ERR_RHS_IX_NEGATIVE</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fRHS_005fIX_005fNEGATIVE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RHS_IX_NEGATIVE</strong></dt>
 <dd><p>The index of a RHS symbol was specified,
 and it was negative.
 That is not allowed.
-Numeric value: 63.
-Suggested message: &quot;RHS index cannot be negative&quot;.
+<strong>Numeric value</strong>: 63.
+<strong>Suggested message</strong>: &quot;RHS index cannot be negative&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fRHS_005fIX_005fOOB"></a>Macro: <em>int</em> <strong>MARPA_ERR_RHS_IX_OOB</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fRHS_005fIX_005fOOB"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RHS_IX_OOB</strong></dt>
 <dd><p>A non-negative index of RHS symbol was specified,
 but there is no symbol at that index.
 Since the indexes are in sequence, this means the
 index was greater than or equal to the rule length.
-Numeric value: 64.
-Suggested message: &quot;RHS index must be less than rule length&quot;.
+<strong>Numeric value</strong>: 64.
+<strong>Suggested message</strong>: &quot;RHS index must be less than rule length&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fRHS_005fTOO_005fLONG"></a>Macro: <em>int</em> <strong>MARPA_ERR_RHS_TOO_LONG</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fRHS_005fTOO_005fLONG"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RHS_TOO_LONG</strong></dt>
 <dd><p>An attempt was made to add a rule with too many
 right hand side symbols.
 The limit on the RHS symbol count is implementation
 dependent, but it is very large,
 at least 500,000,000 symbols.
-This is
-far beyond what is required in any current practical grammar.
-An application with rules of this length is almost
-certain to run into memory and other limits.
-Numeric value: 65.
-Suggested message: &quot;The RHS is too long&quot;.
+Libmarpa&rsquo;s use of memory
+would almost certainly exceed the
+limit imposed by the application environment
+before this error could occur.
+<strong>Numeric value</strong>: 65.
+<strong>Suggested message</strong>: &quot;The RHS is too long&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fSEQUENCE_005fLHS_005fNOT_005fUNIQUE"></a>Macro: <em>int</em> <strong>MARPA_ERR_SEQUENCE_LHS_NOT_UNIQUE</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fSEQUENCE_005fLHS_005fNOT_005fUNIQUE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_SEQUENCE_LHS_NOT_UNIQUE</strong></dt>
 <dd><p>The LHS of a
 sequence rule cannot be the LHS of any other rule,
 whether a sequence rule or a BNF rule.
 An attempt was made to violate this restriction.
-Numeric value: 66.
-Suggested message: &quot;LHS of sequence rule would not be unique&quot;.
+<strong>Numeric value</strong>: 66.
+<strong>Suggested message</strong>: &quot;LHS of sequence rule would not be unique&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fSTART_005fNOT_005fLHS"></a>Macro: <em>int</em> <strong>MARPA_ERR_START_NOT_LHS</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fSTART_005fNOT_005fLHS"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_START_NOT_LHS</strong></dt>
 <dd><p>The start symbol is not on the LHS on
 any rule.
 That means it could never match any possible input,
 not even the null string.
-Presumably, an error in writing the grammar.
-Numeric value: 73.
-Suggested message: &quot;Start symbol not on LHS of any rule&quot;.
+This is likely to be a mistake in writing the grammar,
+which can be fixed by rewriting the grammar.
+<strong>Numeric value</strong>: 73.
+<strong>Suggested message</strong>: &quot;Start symbol not on LHS of any rule&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fCOMPLETION_005fEVENT"></a>Macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_IS_NOT_COMPLETION_EVENT</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fCOMPLETION_005fEVENT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_IS_NOT_COMPLETION_EVENT</strong></dt>
 <dd><p>An attempt was made to use a symbol in
 a way that requires it to be
 set up for completion events,
-but the symbol was not set
-set up for completion events.
-The archetypal case is an attempt to activate completion
-events for the symbol in the recognizer.
-The archetypal case is an attempt to activate a completion
+but the symbol was
+not set up for completion events.
+This error can occur when
+the application attempts to activate a completion
 event in the recognizer for
 a symbol that is not set up as a completion event.
-Numeric value: 92.
-Suggested message: &quot;Symbol is not set up for completion events&quot;.
+<strong>Numeric value</strong>: 92.
+<strong>Suggested message</strong>: &quot;Symbol is not set up for completion events&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fNULLED_005fEVENT"></a>Macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_IS_NOT_NULLED_EVENT</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fNULLED_005fEVENT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_IS_NOT_NULLED_EVENT</strong></dt>
 <dd><p>An attempt was made to use a symbol in
 a way that requires it to be
 set up for nulled events,
-but the symbol was not set
-set up for nulled events.
-The archetypal case is an attempt to activate a nulled
-events in the recognizer for
+but the symbol was not set up for nulled events.
+This error can occur when
+the application attempts to activate a nulled symbol
+event in the recognizer for
 a symbol that is not set up as a nulled event.
-Numeric value: 93.
-Suggested message: &quot;Symbol is not set up for nulled events&quot;.
+<strong>Numeric value</strong>: 93.
+<strong>Suggested message</strong>: &quot;Symbol is not set up for nulled events&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fPREDICTION_005fEVENT"></a>Macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_IS_NOT_PREDICTION_EVENT</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNOT_005fPREDICTION_005fEVENT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_IS_NOT_PREDICTION_EVENT</strong></dt>
 <dd><p>An attempt was made to use a symbol in
 a way that requires it to be
-set up for predictino events,
-but the symbol was not set
-set up for predictino events.
-The archetypal case is an attempt to activate a prediction
+set up for prediction events,
+but the symbol was not set up for prediction events.
+This error can occur when
+the application attempts to activate a prediction
 event in the recognizer for
 a symbol that is not set up as a prediction event.
-Numeric value: 94.
-Suggested message: &quot;Symbol is not set up for prediction events&quot;.
+<strong>Numeric value</strong>: 94.
+<strong>Suggested message</strong>: &quot;Symbol is not set up for prediction events&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fVALUED_005fCONFLICT"></a>Macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_VALUED_CONFLICT</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fVALUED_005fCONFLICT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_VALUED_CONFLICT</strong></dt>
 <dd><p>Unvalued symbols are a deprecated Marpa feature,
-which may be avoided with 
-the <code>marpa_g_force_valued</code> method.
+which may be avoided with
+the
+<code>marpa_g_force_valued()</code>
+method.
 An unvalued symbol may take on any value,
-and therefore a symbol which is unvalued at some points
+and therefore a symbol that is unvalued at some points
 cannot safely to be used to contain a value at
 others.
 This error indicates that such an unsafe use is
 being attempted.
-Numeric value: 74.
-Suggested message: &quot;Symbol is treated both as valued and unvalued&quot;.
+<strong>Numeric value</strong>: 74.
+<strong>Suggested message</strong>: &quot;Symbol is treated both as valued and unvalued&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fTERMINAL_005fIS_005fLOCKED"></a>Macro: <em>int</em> <strong>MARPA_ERR_TERMINAL_IS_LOCKED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fTERMINAL_005fIS_005fLOCKED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_TERMINAL_IS_LOCKED</strong></dt>
 <dd><p>An attempt was made to change the terminal status
 of a symbol to a different value
 after it was locked.
-Numeric value: 75.
-Suggested message: &quot;The terminal status of the symbol is locked&quot;.
+<strong>Numeric value</strong>: 75.
+<strong>Suggested message</strong>: &quot;The terminal status of the symbol is locked&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fTOKEN_005fIS_005fNOT_005fTERMINAL"></a>Macro: <em>int</em> <strong>MARPA_ERR_TOKEN_IS_NOT_TERMINAL</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fTOKEN_005fIS_005fNOT_005fTERMINAL"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_TOKEN_IS_NOT_TERMINAL</strong></dt>
 <dd><p>A token was specified whose symbol ID is not
 a terminal.
-Numeric value: 76.
-Suggested message: &quot;Token symbol must be a terminal&quot;.
+<strong>Numeric value</strong>: 76.
+<strong>Suggested message</strong>: &quot;Token symbol must be a terminal&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fTOKEN_005fLENGTH_005fLE_005fZERO"></a>Macro: <em>int</em> <strong>MARPA_ERR_TOKEN_LENGTH_LE_ZERO</strong></dt>
-<dd><p>A token length was specified which is less than
+<dt><a name="index-MARPA_005fERR_005fTOKEN_005fLENGTH_005fLE_005fZERO"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_TOKEN_LENGTH_LE_ZERO</strong></dt>
+<dd><p>A token length was specified that is less than
 or equal to zero.
 Zero-length tokens are not allowed in Libmarpa.
-Numeric value: 77.
-Suggested message: &quot;Token length must greater than zero&quot;.
+<strong>Numeric value</strong>: 77.
+<strong>Suggested message</strong>: &quot;Token length must greater than zero&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fTOKEN_005fTOO_005fLONG"></a>Macro: <em>int</em> <strong>MARPA_ERR_TOKEN_TOO_LONG</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fTOKEN_005fTOO_005fLONG"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_TOKEN_TOO_LONG</strong></dt>
 <dd><p>The token length is too long.
 The limit on the length of a token
 is implementation dependent, but it
 is at least 500,000,000 earlemes.
-An application using a token that long
-is almost certain to run into some other
-limit.
-Numeric value: 78.
-Suggested message: &quot;Token is too long&quot;.
+Libmarpa&rsquo;s use of memory
+would almost certainly exceed the
+limit imposed by the application environment
+before this error could occur.
+<strong>Numeric value</strong>: 78.
+<strong>Suggested message</strong>: &quot;Token is too long&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fTREE_005fEXHAUSTED"></a>Macro: <em>int</em> <strong>MARPA_ERR_TREE_EXHAUSTED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fTREE_005fEXHAUSTED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_TREE_EXHAUSTED</strong></dt>
 <dd><p>A Libmarpa parse tree iterator
 is &ldquo;exhausted&rdquo;, that is,
-it has no more parses.
-Numeric value: 79.
-Suggested message: &quot;Tree iterator is exhausted&quot;.
+it has no more parse trees.
+<strong>Numeric value</strong>: 79.
+<strong>Suggested message</strong>: &quot;Tree iterator is exhausted&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fTREE_005fPAUSED"></a>Macro: <em>int</em> <strong>MARPA_ERR_TREE_PAUSED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fTREE_005fPAUSED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_TREE_PAUSED</strong></dt>
 <dd><p>A Libmarpa tree is &ldquo;paused&rdquo;
-and an operation was attempted which
+and an operation was attempted that
 is inconsistent with that fact.
 Typically, this operation will be
-a call of the <code>marpa_t_next()</code> method.
-Numeric value: 80.
-Suggested message: &quot;Tree iterator is paused&quot;.
+a call of the
+<code>marpa_t_next()</code>
+method.
+<strong>Numeric value</strong>: 80.
+<strong>Suggested message</strong>: &quot;Tree iterator is paused&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fUNEXPECTED_005fTOKEN_005fID"></a>Macro: <em>int</em> <strong>MARPA_ERR_UNEXPECTED_TOKEN_ID</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fUNEXPECTED_005fTOKEN_005fID"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_UNEXPECTED_TOKEN_ID</strong></dt>
 <dd><p>An attempt was made to read a token
 where a token with that symbol ID is not
 expected.
 This message can also occur when an
 attempt is made to read a token
 at a location where no token is expected.
-Numeric value: 81.
-Suggested message: &quot;Unexpected token&quot;.
+<strong>Numeric value</strong>: 81.
+<strong>Suggested message</strong>: &quot;Unexpected token&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fUNPRODUCTIVE_005fSTART"></a>Macro: <em>int</em> <strong>MARPA_ERR_UNPRODUCTIVE_START</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fUNPRODUCTIVE_005fSTART"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_UNPRODUCTIVE_START</strong></dt>
 <dd><p>The start symbol is unproductive.
 That means it could never match any possible input,
 not even the null string.
-Presumably, an error in writing the grammar.
-Numeric value: 82.
-Suggested message: &quot;Unproductive start symbol&quot;.
+This is likely to be a mistake in writing the grammar,
+which can be fixed by rewriting the grammar.
+<strong>Numeric value</strong>: 82.
+<strong>Suggested message</strong>: &quot;Unproductive start symbol&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fVALUATOR_005fINACTIVE"></a>Macro: <em>int</em> <strong>MARPA_ERR_VALUATOR_INACTIVE</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fVALUATOR_005fINACTIVE"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_VALUATOR_INACTIVE</strong></dt>
 <dd><p>The valuator is inactive in a context where that
 should not be the case.
-Numeric value: 83.
-Suggested message: &quot;Valuator inactive&quot;.
+<strong>Numeric value</strong>: 83.
+<strong>Suggested message</strong>: &quot;Valuator inactive&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fVALUED_005fIS_005fLOCKED"></a>Macro: <em>int</em> <strong>MARPA_ERR_VALUED_IS_LOCKED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fVALUED_005fIS_005fLOCKED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_VALUED_IS_LOCKED</strong></dt>
 <dd><p>Unvalued symbols are a deprecated Marpa feature,
-which may be avoided with 
-the <code>marpa_g_force_valued</code> method.
+which may be avoided with
+the
+<code>marpa_g_force_valued()</code>
+method.
+See <a href="Grammar-constructor.html#marpa_005fg_005fforce_005fvalued">marpa_g_force_valued()</a>.
 This error code
 indicates that the valued status of a symbol is locked,
-and an attempt was made 
+and an attempt was made
 to change it to a status different from the
 current one.
-Numeric value: 84.
-Suggested message: &quot;The valued status of the symbol is locked&quot;.
+<strong>Numeric value</strong>: 84.
+<strong>Suggested message</strong>: &quot;The valued status of the symbol is locked&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNULLING"></a>Macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_IS_NULLING</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fNULLING"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_IS_NULLING</strong></dt>
 <dd><p>An attempt was made to do something with a nulling
 symbol that is not allowed.
 For example,
 the ID of a nulling symbol cannot be an argument
-to <code>marpa_r_expected_symbol_event_set</code> &mdash;
+to
+<code>marpa_r_expected_symbol_event_set()</code>,
 because it is not possible to create an &ldquo;expected symbol&rdquo; event
 for a nulling symbol.
-Numeric value: 87.
-Suggested message: &quot;Symbol is nulling&quot;.
+<strong>Numeric value</strong>: 87.
+<strong>Suggested message</strong>: &quot;Symbol is nulling&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fUNUSED"></a>Macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_IS_UNUSED</strong></dt>
+<dt><a name="index-MARPA_005fERR_005fSYMBOL_005fIS_005fUNUSED"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_SYMBOL_IS_UNUSED</strong></dt>
 <dd><p>An attempt was made to do something with an unused symbol that is not allowed.
 An &ldquo;unused&rdquo; symbol is a inaccessible or unproductive symbol.
 For example,
 the ID of a unused symbol cannot be an argument
-to <code>marpa_r_expected_symbol_event_set</code> &mdash;
+to
+<code>marpa_r_expected_symbol_event_set()</code>,
 because it is not possible to create an &ldquo;expected symbol&rdquo; event
 for an unused symbol.
-Numeric value: 88.
-Suggested message: &quot;Symbol is not used&quot;.
+<strong>Numeric value</strong>: 88.
+<strong>Suggested message</strong>: &quot;Symbol is not used&quot;.
 </p></dd></dl>
 
 <hr>
 <div class="header">
 <p>
-Next: <a href="Internal-error-codes.html#Internal-error-codes" accesskey="n" rel="next">Internal error codes</a>, Previous: <a href="Error-Macros.html#Error-Macros" accesskey="p" rel="prev">Error Macros</a>, Up: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Internal-error-codes.html#Internal-error-codes" accesskey="n" rel="next">Internal error codes</a>, Previous: <a href="Error-Macros.html#Error-Macros" accesskey="p" rel="prev">Error Macros</a>, Up: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

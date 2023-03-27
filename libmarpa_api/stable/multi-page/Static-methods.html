@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Static methods (Libmarpa 8.6.2)</title>
+<title>Static methods (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Static methods (Libmarpa 8.6.2)">
-<meta name="keywords" content="Static methods (Libmarpa 8.6.2)">
+<meta name="description" content="Static methods (Libmarpa 11.0.5)">
+<meta name="keywords" content="Static methods (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
 <link href="Configuration-methods.html#Configuration-methods" rel="next" title="Configuration methods">
-<link href="Naming-conventions.html#Naming-conventions" rel="prev" title="Naming conventions">
+<link href="How-to-read-the-method-descriptions.html#How-to-read-the-method-descriptions" rel="prev" title="How to read the method descriptions">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,54 +73,48 @@ ul.no-bullet {list-style: none}
 <a name="Static-methods"></a>
 <div class="header">
 <p>
-Next: <a href="Configuration-methods.html#Configuration-methods" accesskey="n" rel="next">Configuration methods</a>, Previous: <a href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" accesskey="p" rel="prev">Introduction to the external interface</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Configuration-methods.html#Configuration-methods" accesskey="n" rel="next">Configuration methods</a>, Previous: <a href="Introduction-to-the-method-descriptions.html#Introduction-to-the-method-descriptions" accesskey="p" rel="prev">Introduction to the method descriptions</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Static-methods-1"></a>
-<h2 class="chapter">9 Static methods</h2>
+<h2 class="chapter">15 Static methods</h2>
 
-<dl>
-<dt><a name="index-marpa_005fcheck_005fversion"></a>Function: <em>Marpa_Error_Code</em> <strong>marpa_check_version</strong> <em>(int <var>required_major</var>,     int <var>required_minor</var>,     int <var>required_micro</var>     )</em></dt>
+<a name="marpa_005fcheck_005fversion"></a><dl>
+<dt><a name="index-marpa_005fcheck_005fversion"></a>Accessor function: <em>Marpa_Error_Code</em> <strong>marpa_check_version</strong> <em>(     int <var>required_major</var>,     int <var>required_minor</var>,     int <var>required_micro</var>     )</em></dt>
 <dd>
 <p>Checks that the Marpa library in use is compatible with the
-given version. Generally you will pass in the constants
+given version. Generally, the application programmer will pass in the constants
 <code>MARPA_MAJOR_VERSION</code>,
-<code>MARPA_MINOR_VERSION</code>,
+<code>MARPA_MINOR_VERSION</code>, and
 <code>MARPA_MICRO_VERSION</code>
-as the three arguments to this function; that produces
-a check that the library in use is compatible with
-the version of Libmarpa the application or module was compiled
-against.
-Compatibility is defined by two things:
-first the version
-of the running library is newer than the version
-<var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>.
-Second
-the running library must be binary compatible with the
-version
-<var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>
-(same major version.)
+as the three arguments,
+to check that their application was compiled with headers
+that match the version of Libmarpa that they
+are using.
 </p>
-<p>Return value: <code>MARPA_ERR_NONE</code> if the Marpa library is compatible with the
-requested version.  If the library is not compatible,
-one of the following is returned, indicating the nature of the mismatch:
-</p><ul>
-<li> <code>MARPA_ERR_MAJOR_VERSION_MISMATCH</code>,
-</li><li> <code>MARPA_ERR_MINOR_VERSION_MISMATCH</code>
-</li><li> <code>MARPA_ERR_MICRO_VERSION_MISMATCH</code>
-</li></ul>
-
+<p>If <var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>
+is an exact match with the version of Libmarpa,
+the method succeeds.
+The version of Libmarpa described in this manual is 11.0.5.
+Otherwise the return status is an irrecoverable
+hard failure.
+</p>
+<p><strong>Return value</strong>: On success, <code>MARPA_ERR_NONE</code>.
+On hard failure, the error code.
+</p>
 </dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fversion"></a>Function: <em>Marpa_Error_Code</em> <strong>marpa_version</strong> <em>(int* version)</em></dt>
+<a name="marpa_005fversion"></a><dl>
+<dt><a name="index-marpa_005fversion"></a>Accessor function: <em>Marpa_Error_Code</em> <strong>marpa_version</strong> <em>(     int* version)</em></dt>
 <dd>
-<p>Returns the version number in <var>version</var>,
-which must have room for three <code>int</code>&rsquo;s.
+<p>Writes the version number in <var>version</var>.
+It is an undetected irrecoverable hard failure
+if <var>version</var> does not have room for three <code>int</code>&rsquo;s.
 </p>
-<p>Return value: A non-negative number on success,
--2 on failure.
-</p></dd></dl>
+<p><strong>Return value</strong>: Always succeeds.
+The return value is unspecified.
+</p>
+</dd></dl>
 
 
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Grammar constructor (Libmarpa 8.6.2)</title>
+<title>Grammar constructor (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Grammar constructor (Libmarpa 8.6.2)">
-<meta name="keywords" content="Grammar constructor (Libmarpa 8.6.2)">
+<meta name="description" content="Grammar constructor (Libmarpa 11.0.5)">
+<meta name="keywords" content="Grammar constructor (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Grammar-methods.html#Grammar-methods" rel="up" title="Grammar methods">
 <link href="Grammar-reference-counting.html#Grammar-reference-counting" rel="next" title="Grammar reference counting">
@@ -72,55 +73,66 @@ ul.no-bullet {list-style: none}
 <a name="Grammar-constructor"></a>
 <div class="header">
 <p>
-Next: <a href="Grammar-reference-counting.html#Grammar-reference-counting" accesskey="n" rel="next">Grammar reference counting</a>, Previous: <a href="Grammar-overview.html#Grammar-overview" accesskey="p" rel="prev">Grammar overview</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Grammar-reference-counting.html#Grammar-reference-counting" accesskey="n" rel="next">Grammar reference counting</a>, Previous: <a href="Grammar-overview.html#Grammar-overview" accesskey="p" rel="prev">Grammar overview</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Creating-a-new-grammar"></a>
-<h3 class="section">11.2 Creating a new grammar</h3>
+<h3 class="section">17.2 Creating a new grammar</h3>
 <a name="index-grammar-constructor"></a>
 
-<dl>
-<dt><a name="index-marpa_005fg_005fnew"></a>Function: <em>Marpa_Grammar</em> <strong>marpa_g_new</strong> <em>(     Marpa_Config* <var>configuration</var> )</em></dt>
+<a name="marpa_005fg_005fnew"></a><dl>
+<dt><a name="index-marpa_005fg_005fnew"></a>Constructor function: <em>Marpa_Grammar</em> <strong>marpa_g_new</strong> <em>(     Marpa_Config* <var>configuration</var> )</em></dt>
 <dd>
 <p>Creates a new grammar time object.
 The returned grammar object is not yet precomputed,
 and will have no symbols and rules.
 Its reference count will be 1.
 </p>
-<p>Unless the application calls <code>marpa_c_error</code>,
+<p>Unless the application calls
+<code>marpa_c_error()</code>,
 Libmarpa will not reference the location
 pointed to by the <var>configuration</var>
-argument after <code>marpa_g_new</code> returns.
+argument after
+<code>marpa_g_new()</code>
+returns.
+(See <a href="Configuration-methods.html#marpa_005fc_005ferror">marpa_c_error()</a>.)
 The <var>configuration</var> argument may be <code>NULL</code>,
 but if it is,
 there will be no way to determine
 the error code on failure.
 </p>
-<p>Return value: On success, the grammar object.
-On failure, <code>NULL</code>,
-and the error code is set in <var>configuration</var>.
+<p><strong>Return value</strong>: On success, the grammar object.
+On hard failure, <code>NULL</code>.
+Also on hard failure,
+if the <var>configuration</var> argument is not <code>NULL</code>,
+the error code is set in <var>configuration</var>.
+The error code may be accessed using
+<code>marpa_c_error()</code>.
 </p>
 </dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fg_005fforce_005fvalued"></a>Function: <em>int</em> <strong>marpa_g_force_valued</strong> <em>(     Marpa_Grammar <var>g</var> )</em></dt>
+<a name="marpa_005fg_005fforce_005fvalued"></a><dl>
+<dt><a name="index-marpa_005fg_005fforce_005fvalued"></a>Mutator function: <em>int</em> <strong>marpa_g_force_valued</strong> <em>(     Marpa_Grammar <var>g</var> )</em></dt>
 <dd>
 <p>It is recommended that
 this call be made immediately after the
 grammar constructor.
 It turns off a deprecated feature.
 </p>
-<p>The <code>marpa_g_force_valued</code> forces all the
+<p>The
+<code>marpa_g_force_valued()</code> method
+forces all the
 symbols in a grammar to be &ldquo;valued&rdquo;.
-The opposite of a valued symbol is one about whose value
-you do not care.
-This distinction has been made in the past in hope
-of gaining efficiencies at evaluation time.
-Current thinking is that the gains do not repay the extra
+The parse cares about the value of the symbol iff
+the symbol is &ldquo;valued&rdquo;.
+In the past, symbols were allowed to be &ldquo;unvalued&rdquo;
+in the hope of gaining efficiencies at evaluation time.
+Use of unvalued symbols is now deprecated,
+because current thinking is that the gains do not repay the extra
 complexity.
 </p>
-<p>Return value: On success, a non-negative integer.
-On failure, a negative integer.
+<p><strong>Return value</strong>: On success, a non-negative integer, whose value is otherwise unspecified.
+On failure, -2.
 </p></dd></dl>
 
 

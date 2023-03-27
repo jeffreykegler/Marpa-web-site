@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Progress reports (Libmarpa 8.6.2)</title>
+<title>Progress reports (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Progress reports (Libmarpa 8.6.2)">
-<meta name="keywords" content="Progress reports (Libmarpa 8.6.2)">
+<meta name="description" content="Progress reports (Libmarpa 11.0.5)">
+<meta name="keywords" content="Progress reports (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
 <link href="Bocage-methods.html#Bocage-methods" rel="next" title="Bocage methods">
@@ -72,120 +73,239 @@ ul.no-bullet {list-style: none}
 <a name="Progress-reports"></a>
 <div class="header">
 <p>
-Next: <a href="Bocage-methods.html#Bocage-methods" accesskey="n" rel="next">Bocage methods</a>, Previous: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Bocage-methods.html#Bocage-methods" accesskey="n" rel="next">Bocage methods</a>, Previous: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Progress-reports-1"></a>
-<h2 class="chapter">13 Progress reports</h2>
+<h2 class="chapter">19 Progress reports</h2>
 
-<p>An important advantage of the Marpa algorithm is the ability
-to easily get full information about the state of the parse.
+<p>It is an important property of the Marpa algorithm that the
+Earley sets are added one at a time,
+so that
+before we have started the construction of the Earley set at <code>n+1</code>,
+we know the full state of the parse at and before
+location <code>n</code>.
+Libmarpa&rsquo;s progress reports allow access to the Earley items
+in an Earley set.
 </p>
 <p>To start a progress report,
-use the <code>marpa_r_progress_report_start()</code> command.
-Only one progress report can be in use at any one time.
+use the
+<code>marpa_r_progress_report_start()</code>
+command.
+For each recognizer,
+only one progress report can be in use at any one time.
 </p>
-<p>To get the information in a progress report,
-it is necessary to step through the progress report
-items.
-To get the data for the current progress report item,
-and advance to the next one,
-use the <code>marpa_r_progress_item()</code> method.
+<p>To step through the Earley items,
+use the
+<code>marpa_r_progress_item()</code>
+method.
 </p>
-<p>To destroy a progress report,
-freeing the memory it uses,
-call the <code>marpa_r_progress_report_finish()</code> method.
+<a name="marpa_005fr_005fprogress_005freport_005freset"></a><dl>
+<dt><a name="index-marpa_005fr_005fprogress_005freport_005freset"></a>Mutator function: <em>int</em> <strong>marpa_r_progress_report_reset</strong> <em>(   Marpa_Recognizer <var>r</var>)</em></dt>
+<dd>
+<p>On success, sets the current vertex of the report traverser
+to the null vertex.
+For more about the report traverser,
+including details about the current and null vertices,
+see <a href="#marpa_005fr_005fprogress_005freport_005fstart">marpa_r_progress_report_start()</a>.
 </p>
-<dl>
-<dt><a name="index-marpa_005fr_005fprogress_005freport_005freset"></a>Function: <em>int</em> <strong>marpa_r_progress_report_reset</strong> <em>(   Marpa_Recognizer <var>r</var>)</em></dt>
-<dd><p>Resets the progress report.
-Assumes a report of the progress has already been initialized
-at some Earley set
-for recognizer <var>r</var>,
-with 
-<code>marpa_r_progress_report_start()</code>.
-The reset progress report will
-be positioned before its first item.
+<p>This method is not usually needed.
+Its effect is to leave the traverser in the same state as it is
+immediately after the
+<code>marpa_r_progress_report_start()</code> method.
+Loosely speaking, it allows the traversal to &ldquo;start over&rdquo;.
 </p>
-<p>Return value: On success, a non-negative value.
+<p>Hard fails if the recognizer is not started,
+or if no progress report traverser is active.
+</p>
+<p><strong>Return value</strong>: On success, a non-negative value.
 On failure, -2.
 </p></dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fr_005fprogress_005freport_005fstart"></a>Function: <em>int</em> <strong>marpa_r_progress_report_start</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Earley_Set_ID <var>set_id</var>)</em></dt>
-<dd><p>Initializes a report of the progress at Earley set <var>set_id</var>
-for recognizer <var>r</var>.
-If a progress report already exists, it is destroyed and its
-memory is freed.
-Initially,
-the progress report is positioned before its first item.
+<a name="marpa_005fr_005fprogress_005freport_005fstart"></a><dl>
+<dt><a name="index-marpa_005fr_005fprogress_005freport_005fstart"></a>Mutator function: <em>int</em> <strong>marpa_r_progress_report_start</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Earley_Set_ID <var>set_id</var>)</em></dt>
+<dd>
+<p>Creates a progress report traverser
+in recognizer <var>r</var>
+for the Earley set with ID <var>set_id</var>.
+A
+<a name="index-progress-report-traverser"></a>
+<a name="index-traverser_002c-progress-report"></a>
+<em>progress report traverser</em>
+is a non-empty directed cycle graph whose vertices consist
+of the following:
+</p><ul>
+<li> For every Earley item,
+exactly one vertex that corresponds to
+that Earley item.
+This vertex is called the
+<a name="index-progress-report-item"></a>
+<em>progress report item</em>
+or, when the meaning is clear, the
+<a name="index-report-item"></a>
+<em>report item</em>.
+In this method description,
+we will say that the number of report items is <code>n</code>,
+and we will write <code>ritem[i]</code>
+for the <code>i</code>&rsquo;th report item.
+</li><li> A special vertex, called the
+<a name="index-null-vertex"></a>
+<a name="index-vertex_002c-null"></a>
+<em>null vertex</em>,
+which does not correspond
+to any Earley item.
+In this method description, we will write <code>null</code> for
+the null vertex.
+</li></ul>
+
+<p>There may be no Earley items in an Earley set,
+and therefore a progress report traverser may contain no report items.
+A progress report traverser with no report items is called a
+&ldquo;trivial traverser&rdquo;.
+A trivial traverser has exactly one edge: <code>(null, null)</code>.
 </p>
-<p>If no Earley set with ID
-<var>set_id</var> exists,
-<code>marpa_r_progress_report_start()</code> fails.
+<p>The edges of a non-trivial traverser are
+</p><ul>
+<li> <code>(null, ritem[0])</code>,
+</li><li> <code>(ritem[n-1], null)</code>, and
+</li><li> for every <code>0 &lt;= i &lt; v-1</code>, <code>(ritem[i-1], ritem[i])</code>.
+</li></ul>
+<p>This implies that every vertex has exactly one direct successor.
+The report items are a subgraph,
+and this graph can be seen as inducing the sequence <code>ritem[0] ... ritem[n-1]</code>.
+</p>
+<p>When a progress report traverser is active, one vertex is distinguished as the
+<a name="index-current-vertex-_0028of-a-progress-report-traverser_0029"></a>
+<a name="index-vertex_002c-current-_0028of-a-progress-report-traverser_0029"></a>
+<em>current vertex</em>,
+which we will write as <code>current</code>.
+We call the direct successor of the current vertex,
+the
+<a name="index-next-vertex-_0028of-a-progress-report-traverser_0029"></a>
+<a name="index-vertex_002c-next-_0028of-a-progress-report-traverser_0029"></a>
+<em>next vertex</em>.
+</p>
+<p>On success, does the following:
+</p><ul>
+<li> If a progress report traverser was active in this recognizer before this method call,
+it is destroyed and its memory is freed..
+</li><li> Creates a new progress report traverser from the Earley items for the
+Earley set with ID <var>set_id</var>.
+</li><li> Activates the newly created progress report traverser,
+setting the current vertex to the null vertex.
+Intuitively, in a non-trivial traverser,
+this can be thought of as positioning the
+traverser before the first report item.
+</li><li> Returns <code>n</code>, the number of report items.
+    <code>n</code> may be zero.
+</li></ul>
+
+<p>Hard fails if no Earley set with ID
+<var>set_id</var> exists.
 The error code is <code>MARPA_ERR_INVALID_LOCATION</code> if <var>set_id</var>
 is negative.
 The error code is <code>MARPA_ERR_NO_EARLEY_SET_AT_LOCATION</code>
 if <var>set_id</var> is greater than the ID of
 the latest Earley set.
 </p>
-<p>Return value: On success, the number of report items available.
-If the recognizer has not been started;
-if <var>set_id</var> does not exist;
-or on other failure, -2.
+<p><strong>Return value</strong>: On success, the number of report items,
+which will always be non-negative.
+On hard failure, -2.
 </p></dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fr_005fprogress_005freport_005ffinish"></a>Function: <em>int</em> <strong>marpa_r_progress_report_finish</strong> <em>(   Marpa_Recognizer <var>r</var> )</em></dt>
-<dd><p>Destroys the report of the progress at Earley set <var>set_id</var>
+<a name="marpa_005fr_005fprogress_005freport_005ffinish"></a><dl>
+<dt><a name="index-marpa_005fr_005fprogress_005freport_005ffinish"></a>Mutator function: <em>int</em> <strong>marpa_r_progress_report_finish</strong> <em>(   Marpa_Recognizer <var>r</var> )</em></dt>
+<dd>
+<p>On success,
+destroys the progress report traverser
 for recognizer <var>r</var>,
-freeing the memory and other resources.
-It is often not necessary to call this method.
-Any previously existing progress report
-is destroyed automatically
-whenever a new progress report is started,
-and when the recognizer is destroyed.
+freeing its memory.
+For details about the report traverser,
+see <a href="#marpa_005fr_005fprogress_005freport_005fstart">marpa_r_progress_report_start()</a>.
 </p>
-<p>Return value: -2 if no progress report has been started,
-or on other failure.
+<p>It is often not necessary to call this method.
+<code>marpa_r_progress_report_start()</code> destroys
+any previously existing progress report.
+And,
+when a recognizer is destroyed,
+its progress report is destroyed as a side effect.
+</p>
+<p>Hard fails if no progress report is active.
+</p>
+<p><strong>Return value</strong>:
 On success, a non-negative value.
+On hard failure, -2.
 </p></dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fr_005fprogress_005fitem"></a>Function: <em>Marpa_Rule_ID</em> <strong>marpa_r_progress_item</strong> <em>(   Marpa_Recognizer <var>r</var>,   int* <var>position</var>,   Marpa_Earley_Set_ID* <var>origin</var> )</em></dt>
+<a name="marpa_005fr_005fprogress_005fitem"></a><dl>
+<dt><a name="index-marpa_005fr_005fprogress_005fitem"></a>Mutator function: <em>Marpa_Rule_ID</em> <strong>marpa_r_progress_item</strong> <em>(   Marpa_Recognizer <var>r</var>,   int* <var>position</var>,   Marpa_Earley_Set_ID* <var>origin</var> )</em></dt>
 <dd><p>This method allows access to the data
-for the next item of a
+for the next progress report item of a
 progress report.
-If there are no more progress report items,
-it returns -1 as a termination indicator
-and sets the error code to <code>MARPA_ERR_PROGRESS_REPORT_EXHAUSTED</code>.
-Either the termination indicator,
-or the item count returned by
-<code>marpa_r_progress_report_start()</code>,
-can be used to determine when the last
+For details about progress reports,
+see <a href="#marpa_005fr_005fprogress_005freport_005fstart">marpa_r_progress_report_start()</a>.
+</p>
+<p>In the event of success:
+</p><ul>
+<li> Advances the current vertex to the next vertex.
+More precisely, let <code>c_before</code> be the vertex
+that was the current vertex when
+this method was called.
+The report item traverser has exactly one edge such that <code>c_before</code>
+is its first element.
+Let this edge be <code>(c_before,c_after)</code>.
+This method sets the current vertex to <code>c_after</code>.
+In this method description, we will write <code>current</code> as an alias for <code>c_after</code>.
+</li><li> <code>current</code> will be a report item vertex and therefore there will
+be an Earley item corresponding to <code>current</code>.
+</li><li> Writes the &ldquo;cooked dot position&rdquo; of the Earley item corresponding to <code>current</code>
+to the location pointed to by the <var>position</var> argument.
+</li><li> Writes the origin of the Earley item corresponding to <code>current</code>
+to the location pointed to by the <var>origin</var> argument.
+</li><li> Returns the rule ID of the Earley item corresponding to <code>current</code>.
+</li></ul>
+
+<p>The &ldquo;cooked dot position&rdquo; is
+</p><ul>
+<li> the standard 0-based start-relative
+dot position, if the dotted rule is <strong>not</strong> a completion; and
+</li><li> -1, if the dotted rule <strong>is</strong> a completion.
+This has the advantage of making it easy for the application
+to determine if the dotted rule
+is a completion.
+An application that prefers the &ldquo;raw&rdquo; 0-based start-relative dot position
+may convert
+a -1 to the rule length.
+See <a href="Rule-methods.html#marpa_005fg_005frule_005flength">marpa_g_rule_length()</a>
+</li></ul>
+
+<p>In the event of soft failure:
+</p><ul>
+<li> <code>current</code> is the null vertex.
+</li><li> Sets the error code to <code>MARPA_ERR_PROGRESS_REPORT_EXHAUSTED</code>.
+</li><li> Leaves unchanged the locations pointed to by
+the <var>position</var> and <var>origin</var> arguments.
+</li><li> Returns -1.
+</li></ul>
+
+<p>In addition to watching for soft failure,
+the application can use the item count returned by
+<code>marpa_r_progress_report_start()</code>
+to determine when the last
 item has been seen.
 </p>
-<p>On success,
-the dot position is returned in the location
-pointed to by the <var>position</var> argument,
-and the origin is returned in the location
-pointed to by the <var>origin</var> argument.
-On failure, the locations pointed to by
-the <var>position</var> and <var>origin</var>
-arguments are unchanged.
-</p>
-<p>Return value: On success, the rule ID of
-the next progress report item.
-If there are no more progress report items, -1.
+<p><strong>Return value</strong>: On success, the rule ID of
+the progress report item, which is always non-negative.
+On soft failure, -1.
 If either the <var>position</var> or the <var>origin</var>
 argument is <code>NULL</code>,
-or on other failure, -2.
+or on other hard failure, -2.
 </p></dd></dl>
 
 <hr>
 <div class="header">
 <p>
-Next: <a href="Bocage-methods.html#Bocage-methods" accesskey="n" rel="next">Bocage methods</a>, Previous: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Bocage-methods.html#Bocage-methods" accesskey="n" rel="next">Bocage methods</a>, Previous: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

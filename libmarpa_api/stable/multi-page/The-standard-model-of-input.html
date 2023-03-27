@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>The standard model of input (Libmarpa 8.6.2)</title>
+<title>The standard model of input (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="The standard model of input (Libmarpa 8.6.2)">
-<meta name="keywords" content="The standard model of input (Libmarpa 8.6.2)">
+<meta name="description" content="The standard model of input (Libmarpa 11.0.5)">
+<meta name="keywords" content="The standard model of input (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Earlemes.html#Earlemes" rel="up" title="Earlemes">
+<link href="The-basic-models-of-input.html#The-basic-models-of-input" rel="up" title="The basic models of input">
 <link href="Ambiguous-input.html#Ambiguous-input" rel="next" title="Ambiguous input">
-<link href="The-initial-earleme-settings.html#The-initial-earleme-settings" rel="prev" title="The initial earleme settings">
+<link href="The-basic-models-of-input.html#The-basic-models-of-input" rel="prev" title="The basic models of input">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,78 +73,69 @@ ul.no-bullet {list-style: none}
 <a name="The-standard-model-of-input"></a>
 <div class="header">
 <p>
-Next: <a href="Ambiguous-input.html#Ambiguous-input" accesskey="n" rel="next">Ambiguous input</a>, Previous: <a href="The-initial-earleme-settings.html#The-initial-earleme-settings" accesskey="p" rel="prev">The initial earleme settings</a>, Up: <a href="Earlemes.html#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Ambiguous-input.html#Ambiguous-input" accesskey="n" rel="next">Ambiguous input</a>, Previous: <a href="The-basic-models-of-input.html#The-basic-models-of-input" accesskey="p" rel="prev">The basic models of input</a>, Up: <a href="The-basic-models-of-input.html#The-basic-models-of-input" accesskey="u" rel="up">The basic models of input</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="The-standard-model-of-input-1"></a>
-<h4 class="subsection">4.1.5 The standard model of input</h4>
+<h4 class="subsection">7.2.1 The standard model of input</h4>
 
 <p>In the standard model of input,
-calls to <code>marpa_r_alternative()</code>
-and <code>marpa_r_earleme_complete()</code> are
-made in pairs.
-There is, first, exactly one call 
-to <code>marpa_r_alternative()</code>,
-and it is for a token with length 1.
-Following it must be a call
-to <code>marpa_r_earleme_complete()</code>.
-For an input of length <var>n</var>, there will be
-exactly <var>n</var> such paired calls.
+there is exactly one successful
+<code>marpa_r_alternative()</code> call
+immediately previous
+to every
+<code>marpa_r_earleme_complete()</code> call.
+A <code>marpa_r_alternative()</code> call is
+<a name="index-previous-_0028to-a-marpa_005fr_005fearleme_005fcomplete_0028_0029-call_0029_002c-immediately"></a>
+<a name="index-immediately-previous-_0028to-a-marpa_005fr_005fearleme_005fcomplete_0028_0029-call_0029"></a>
+<em>immediately previous</em> to a
+<code>marpa_r_earleme_complete()</code> call
+iff
+that <code>marpa_r_earleme_complete()</code> call is
+the first
+<code>marpa_r_earleme_complete()</code> call after
+the <code>marpa_r_alternative()</code> call.
 </p>
-<p>Suppose, in the standard model that,
-for a call
-to <code>marpa_r_alternative()</code>,
-the following is true:
-</p><ul>
-<li> The current earleme before the call was <var>c</var>.
-</li></ul>
-<p>Because this is the standard model,
-this means that we also know that
-</p><ul>
-<li> The latest earleme before the call was <var>c</var>.
-</li><li> The furthest earleme before the call was <var>c</var>.
-</li></ul>
-<p>In that case,
-after the call to 
+<p>Recall that, since the standard model is
+a basic model,
+the token length in every successful call to <code>marpa_r_alternative()</code>
+will be one.
+For an input of length <var>n</var>, there will be
+exactly <var>n</var> <code>marpa_r_earleme_complete()</code> calls,
+and all but the last call
+to <code>marpa_r_earleme_complete()</code>
+must be successful.
+</p>
+<p>In the standard model,
+after a successful call
+to
 <code>marpa_r_alternative()</code>,
-the following will be true:
+if <var>c</var> is the value  of the current earleme before the call,
 </p><ul>
-<li> The current earleme will still be <var>c</var>.
-</li><li> The latest earleme will still be <var>c</var>.
-</li><li> The furthest earleme will be <var>c</var>+1.
+<li> the current earleme will remain unchanged and therefore
+  will be <var>c</var>; and
+</li><li> the furthest earleme will be <var>c</var>+1.
 </li></ul>
 
-<p>Suppose, in the standard model that,
-for a call
-to <code>marpa_r_earleme_complete()</code>,
-the following is true:
+<p>In the standard model,
+a call to
+<code>marpa_r_earleme_complete()</code>
+follows a successful call of
+<code>marpa_r_alternative()</code>,
+so that the value of the furthest earleme before the call to
+<code>marpa_r_earleme_complete()</code> will be <code>c+1</code>,
+where <var>c</var> is the value of the current earleme.
+After a successful call to
+<code>marpa_r_earleme_complete()</code>,
 </p><ul>
-<li> The current earleme before the call is <var>c</var>.
-</li></ul>
-<p>Because this is the standard model,
-this means that we also know that
-</p><ul>
-<li> The latest earleme before the call was <var>c</var>.
-</li><li> The furthest earleme before the call was <var>c+1</var>.
-</li></ul>
-<p>In that case,
-after the call
-to <code>marpa_r_earleme_complete()</code>,
-the current, latest and furthest earlemes will
-be the same.
-Specifically,
-the following will be true:
-</p><ul>
-<li> The current earleme will be advanced to <var>c+1</var>.
-</li><li> The latest earleme will be advanced to <var>c+1</var>.
-</li><li> The furthest earleme will remain at <var>c+1</var>.
+<li> the current earleme will be advanced to <code>c+1</code>; and
+</li><li> the furthest earleme will be <var>c+1</var>, and therefore equal
+to the current earleme.
 </li></ul>
 
-<hr>
-<div class="header">
-<p>
-Next: <a href="Ambiguous-input.html#Ambiguous-input" accesskey="n" rel="next">Ambiguous input</a>, Previous: <a href="The-initial-earleme-settings.html#The-initial-earleme-settings" accesskey="p" rel="prev">The initial earleme settings</a>, Up: <a href="Earlemes.html#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
-</div>
+<p>Recall that, in the basic models of input,
+the latest earleme is always equal to the current earleme.
+</p>
 
 
 

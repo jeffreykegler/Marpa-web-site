@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Bocage constructor (Libmarpa 8.6.2)</title>
+<title>Bocage constructor (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Bocage constructor (Libmarpa 8.6.2)">
-<meta name="keywords" content="Bocage constructor (Libmarpa 8.6.2)">
+<meta name="description" content="Bocage constructor (Libmarpa 11.0.5)">
+<meta name="keywords" content="Bocage constructor (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Bocage-methods.html#Bocage-methods" rel="up" title="Bocage methods">
 <link href="Bocage-reference-counting.html#Bocage-reference-counting" rel="next" title="Bocage reference counting">
-<link href="Bocage-overview.html#Bocage-overview" rel="prev" title="Bocage overview">
+<link href="Bocage-data-structure.html#Bocage-data-structure" rel="prev" title="Bocage data structure">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,32 +73,38 @@ ul.no-bullet {list-style: none}
 <a name="Bocage-constructor"></a>
 <div class="header">
 <p>
-Next: <a href="Bocage-reference-counting.html#Bocage-reference-counting" accesskey="n" rel="next">Bocage reference counting</a>, Previous: <a href="Bocage-overview.html#Bocage-overview" accesskey="p" rel="prev">Bocage overview</a>, Up: <a href="Bocage-methods.html#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Bocage-reference-counting.html#Bocage-reference-counting" accesskey="n" rel="next">Bocage reference counting</a>, Previous: <a href="Bocage-data-structure.html#Bocage-data-structure" accesskey="p" rel="prev">Bocage data structure</a>, Up: <a href="Bocage-methods.html#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Creating-a-new-bocage"></a>
-<h3 class="section">14.2 Creating a new bocage</h3>
+<h3 class="section">20.3 Creating a new bocage</h3>
 
-<dl>
-<dt><a name="index-marpa_005fb_005fnew"></a>Function: <em>Marpa_Bocage</em> <strong>marpa_b_new</strong> <em>(Marpa_Recognizer <var>r</var>,     Marpa_Earley_Set_ID <var>earley_set_ID</var>)</em></dt>
+<a name="marpa_005fb_005fnew"></a><dl>
+<dt><a name="index-marpa_005fb_005fnew"></a>Constructor function: <em>Marpa_Bocage</em> <strong>marpa_b_new</strong> <em>(Marpa_Recognizer <var>r</var>,     Marpa_Earley_Set_ID <var>earley_set_ID</var>)</em></dt>
 <dd>
-<p>Creates a new bocage object, with a reference count of 1.
-The reference count of its parent recognizer object, <var>r</var>,
+<p>On success, the following is the case:
+</p><ul>
+<li> If <code>earley_set_ID</code> is non-negative,
+creates a new bocage object, whose &ldquo;end of parse Earley set&rdquo;
+is the Earley set with ID <code>earley_set_ID</code>.
+</li><li> If <code>earley_set_ID</code> is -1,
+creates a new bocage object, whose &ldquo;end of parse Earley set&rdquo;
+is the Earley set at the current earleme.
+</li><li> The new bocage object has a reference count of 1.
+</li><li> The reference count of its parent recognizer object, <var>r</var>,
 is increased by 1.
-If <var>earley_set_ID</var> is -1,
-the Earley set at the current earleme is used,
-if there is one.
-</p>
+</li></ul>
+
 <p>If <var>earley_set_ID</var> is -1
 and there is no Earley set at the current earleme;
-or if <var>earley_set_ID</var> is -1
+or if <var>earley_set_ID</var> is non-negative
 and there is no parse ending at Earley set <var>earley_set_ID</var>,
-<code>marpa_b_new()</code> fails
-and the error code is set to
-<code>MARPA_ERR_NO_PARSE</code>.
+<code>marpa_b_new()</code>
+hard fails
+with the error code <code>MARPA_ERR_NO_PARSE</code>.
 </p>
-<p>Success return value: On success, the new bocage object.
-On failure, <code>NULL</code>.
+<p><strong>Return value</strong>: On success, the new bocage object.
+On hard failure, <code>NULL</code>.
 </p></dd></dl>
 
 

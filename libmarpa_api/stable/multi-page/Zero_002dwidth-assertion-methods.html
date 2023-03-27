@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Zero-width assertion methods (Libmarpa 8.6.2)</title>
+<title>Zero-width assertion methods (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Zero-width assertion methods (Libmarpa 8.6.2)">
-<meta name="keywords" content="Zero-width assertion methods (Libmarpa 8.6.2)">
+<meta name="description" content="Zero-width assertion methods (Libmarpa 11.0.5)">
+<meta name="keywords" content="Zero-width assertion methods (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Untested-methods.html#Untested-methods" rel="up" title="Untested methods">
 <link href="Methods-for-revising-parses.html#Methods-for-revising-parses" rel="next" title="Methods for revising parses">
-<link href="Ranking-methods.html#Ranking-methods" rel="prev" title="Ranking methods">
+<link href="Untested-methods.html#Untested-methods" rel="prev" title="Untested methods">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,34 +73,34 @@ ul.no-bullet {list-style: none}
 <a name="Zero_002dwidth-assertion-methods"></a>
 <div class="header">
 <p>
-Next: <a href="Methods-for-revising-parses.html#Methods-for-revising-parses" accesskey="n" rel="next">Methods for revising parses</a>, Previous: <a href="Ranking-methods.html#Ranking-methods" accesskey="p" rel="prev">Ranking methods</a>, Up: <a href="Untested-methods.html#Untested-methods" accesskey="u" rel="up">Untested methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Methods-for-revising-parses.html#Methods-for-revising-parses" accesskey="n" rel="next">Methods for revising parses</a>, Previous: <a href="Untested-methods.html#Untested-methods" accesskey="p" rel="prev">Untested methods</a>, Up: <a href="Untested-methods.html#Untested-methods" accesskey="u" rel="up">Untested methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Zero_002dwidth-assertion-methods-1"></a>
-<h4 class="subsection">21.1.2 Zero-width assertion methods</h4>
+<h4 class="subsection">29.10.1 Zero-width assertion methods</h4>
 
-<dl>
+<a name="marpa_005fg_005fzwa_005fnew"></a><dl>
 <dt><a name="index-marpa_005fg_005fzwa_005fnew"></a>Function: <em>Marpa_Assertion_ID</em> <strong>marpa_g_zwa_new</strong> <em>(     Marpa_Grammar <var>g</var>,     int <var>default_value</var>)</em></dt>
 </dl>
 
-<dl>
+<a name="marpa_005fg_005fzwa_005fplace"></a><dl>
 <dt><a name="index-marpa_005fg_005fzwa_005fplace"></a>Function: <em>int</em> <strong>marpa_g_zwa_place</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Assertion_ID <var>zwaid</var>,     Marpa_Rule_ID <var>xrl_id</var>,     int <var>rhs_ix</var>)</em></dt>
 </dl>
 
-<dl>
+<a name="marpa_005fr_005fzwa_005fdefault"></a><dl>
 <dt><a name="index-marpa_005fr_005fzwa_005fdefault"></a>Function: <em>int</em> <strong>marpa_r_zwa_default</strong> <em>(     Marpa_Recognizer <var>r</var>,     Marpa_Assertion_ID <var>zwaid</var>)</em></dt>
 <dd>
 <p>On success, returns previous default value of the assertion.
 </p></dd></dl>
 
-<dl>
+<a name="marpa_005fr_005fzwa_005fdefault_005fset"></a><dl>
 <dt><a name="index-marpa_005fr_005fzwa_005fdefault_005fset"></a>Function: <em>int</em> <strong>marpa_r_zwa_default_set</strong> <em>(     Marpa_Recognizer <var>r</var>,     Marpa_Assertion_ID <var>zwaid</var>,     int <var>default_value</var>)</em></dt>
 <dd>
 <p>Changes default value to <var>default_value</var>.
 On success, returns previous default value of the assertion.
 </p></dd></dl>
 
-<dl>
+<a name="marpa_005fg_005fhighest_005fzwa_005fid"></a><dl>
 <dt><a name="index-marpa_005fg_005fhighest_005fzwa_005fid"></a>Function: <em>Marpa_Assertion_ID</em> <strong>marpa_g_highest_zwa_id</strong> <em>(     Marpa_Grammar <var>g</var> )</em></dt>
 </dl>
 

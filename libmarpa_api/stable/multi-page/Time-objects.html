@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Time objects (Libmarpa 8.6.2)</title>
+<title>Time objects (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Time objects (Libmarpa 8.6.2)">
-<meta name="keywords" content="Time objects (Libmarpa 8.6.2)">
+<meta name="description" content="Time objects (Libmarpa 11.0.5)">
+<meta name="keywords" content="Time objects (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Architecture.html#Architecture" rel="up" title="Architecture">
 <link href="Reference-counting.html#Reference-counting" rel="next" title="Reference counting">
@@ -72,19 +73,18 @@ ul.no-bullet {list-style: none}
 <a name="Time-objects"></a>
 <div class="header">
 <p>
-Next: <a href="Reference-counting.html#Reference-counting" accesskey="n" rel="next">Reference counting</a>, Previous: <a href="Major-objects.html#Major-objects" accesskey="p" rel="prev">Major objects</a>, Up: <a href="Architecture.html#Architecture" accesskey="u" rel="up">Architecture</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Reference-counting.html#Reference-counting" accesskey="n" rel="next">Reference counting</a>, Previous: <a href="Major-objects.html#Major-objects" accesskey="p" rel="prev">Major objects</a>, Up: <a href="Architecture.html#Architecture" accesskey="u" rel="up">Architecture</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Time-objects-1"></a>
-<h3 class="section">3.2 Time objects</h3>
+<h3 class="section">6.2 Time objects</h3>
 
 <p>All of Libmarpa&rsquo;s major classes,
 except the configuration class,
-are &ldquo;time&rdquo; classes.
+are <em>time classes</em>.
+An object in a time class is a <em>time object</em>.
 Except for objects in the grammar class,
-all time objects are created from another time
-object.
-Each time object is created from a time object
+all time objects are created from a time object
 of the class before it in the sequence.
 A recognizer cannot be created without a precomputed grammar;
 a bocage cannot be created without a recognizer;
@@ -92,8 +92,12 @@ and so on.
 </p>
 <p>When one time object is used to create a second
 time object,
-the first time object is the <em>parent object</em>
-and the second time object is the <em>child object</em>.
+the first time object is the
+<a name="index-parent-objectparent-object-_0028of-a-time-object_0029"></a>
+<em>parent object</em>
+and the second time object is the
+<a name="index-child-objectchild-object-_0028of-a-time-object_0029"></a>
+<em>child object</em>.
 For example, when a bocage is created from a
 recognizer,
 the recognizer is the parent object,
@@ -103,13 +107,50 @@ and the bocage is the child object.
 Every other time object has exactly one parent object.
 Value objects have no child objects.
 All other time objects can have any number of children,
-from zero up to a number determined by memory or
-some other machine-determined limit.
+from zero up to a maximum determined by memory availability
+or some other environment limit.
 </p>
-<p>Every time object has a <em>base grammar</em>.
+<p>An object is the
+<a name="index-ancestor-_0028object_0029"></a>
+<em>ancestor</em>
+of another object if it is the parent of
+that object,
+or if it is the parent of an ancestor of that object.
+An object is the
+<a name="index-descendant-_0028object_0029"></a>
+<em>descendant</em>
+of another object if it is the child of
+that object,
+or if it is the child of an descendant of that object.
+The following three statements are mutually exclusive:
+</p><ul>
+<li> Object <code>X</code> is of class <code>C</code>.
+</li><li> Object <code>X</code> has an ancestor of class <code>C</code>.
+</li><li> Object <code>X</code> has a descendant of class <code>C</code>.
+</li></ul>
+<p>It follows from the definitions of &ldquo;parent&rdquo; and &ldquo;ancestor&rdquo; that,
+for any time object class, an
+object can have at most one ancestor of that class.
+On the other hand, if an object has descendants in a class,
+there can be many of them.
+</p>
+<p>An object is a
+<a name="index-base-_0028object_0029"></a>
+<em>base</em>
+of another object, if it is that object,
+or if it is the ancestor of the object.
+For each time object class, an object has at most one base object.
+For example, a recognizer is its own base recognizer,
+and has exactly one base grammar.
+</p>
+<p>The
+<a name="index-base-grammarbase-grammar-_0028of-a-time-object_0029"></a>
+<em>base grammar</em>
+of a time object is of special importance.
+Every time object has a base grammar.
 A grammar object is its own base grammar.
-The base grammar of a recognizer is the grammar
-that it was created with.
+The base grammar of a recognizer is its parent grammar,
+the one that it was created with.
 The base grammar of any other time object is the base
 grammar of its parent object.
 For example,
@@ -117,7 +158,11 @@ the base grammar of a bocage is the base
 grammar of the recognizer that it was created
 with.
 </p>
-
+<hr>
+<div class="header">
+<p>
+Next: <a href="Reference-counting.html#Reference-counting" accesskey="n" rel="next">Reference counting</a>, Previous: <a href="Major-objects.html#Major-objects" accesskey="p" rel="prev">Major objects</a>, Up: <a href="Architecture.html#Architecture" accesskey="u" rel="up">Architecture</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Maintaining the stack (Libmarpa 8.6.2)</title>
+<title>Maintaining the stack (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Maintaining the stack (Libmarpa 8.6.2)">
-<meta name="keywords" content="Maintaining the stack (Libmarpa 8.6.2)">
+<meta name="description" content="Maintaining the stack (Libmarpa 11.0.5)">
+<meta name="keywords" content="Maintaining the stack (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Value-methods.html#Value-methods" rel="up" title="Value methods">
 <link href="Sizing-the-stack.html#Sizing-the-stack" rel="next" title="Sizing the stack">
@@ -72,11 +73,11 @@ ul.no-bullet {list-style: none}
 <a name="Maintaining-the-stack"></a>
 <div class="header">
 <p>
-Next: <a href="Valuator-constructor.html#Valuator-constructor" accesskey="n" rel="next">Valuator constructor</a>, Previous: <a href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation" accesskey="p" rel="prev">Advantages of step-driven valuation</a>, Up: <a href="Value-methods.html#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Valuator-constructor.html#Valuator-constructor" accesskey="n" rel="next">Valuator constructor</a>, Previous: <a href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation" accesskey="p" rel="prev">Advantages of step-driven valuation</a>, Up: <a href="Value-methods.html#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Maintaining-the-stack-1"></a>
-<h3 class="section">17.4 Maintaining the stack</h3>
+<h3 class="section">23.4 Maintaining the stack</h3>
 
 <p>This section discusses in detail the requirements
 for maintaining the stack.
@@ -90,14 +91,14 @@ For the C programmer,
 things are not quite so easy.
 </p>
 <p>In this section,
-we will assume a C90 or C99 standard-conformant
+we will assume a C89 standard-conformant
 C application.
 This assumption is convenient on two grounds.
 First, this will be the intended use
 for many readers.
-Second, standard-conformant C is
+Second, standard-conformant C89 is
 a &ldquo;worst case&rdquo;.
-Any issue faced by a programmer of another environment
+Any issue faced by a programmer in another environment
 is likely to also be one that must be solved
 by the C programmer.
 </p>
@@ -112,41 +113,14 @@ as suggested by the Libmarpa step instructions,
 may be a read.
 This possibility
 requires a special awareness from the C
-programmer,
-as discussed in
-the sections
-<a href="Sizing-the-stack.html#Sizing-the-stack">Sizing the stack</a> and
-<a href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack">Initializing locations in the stack</a>.
-</p>
-<p>In the discussions in this document,
-stack locations are non-negative integers.
-The bottom of the stack is location 0.
-In moving from the bottom of the stack to the top,
-the numbers increase.
-Stack location <var>Y</var> is said to be &ldquo;greater&rdquo; 
-than stack location <var>X</var> if stack location
-<var>Y</var> is closer to the top of stack than location <var>X</var>,
-and therefore stack locations are considered greater or
-lesser if the integers that represent them are
-greater or lesser.
-Another way to state that
-a stack location <var>Y</var> is greater (lesser)
-than stack location <var>X</var> is to say that
-a stack location <var>Y</var> is later (earlier)
-than stack location <var>X</var>.
+programmer.
+See <a href="Sizing-the-stack.html#Sizing-the-stack">Sizing the stack</a>.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="Sizing-the-stack.html#Sizing-the-stack" accesskey="1">Sizing the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack" accesskey="2">Initializing locations in the stack</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
 </table>
 
-<hr>
-<div class="header">
-<p>
-Next: <a href="Valuator-constructor.html#Valuator-constructor" accesskey="n" rel="next">Valuator constructor</a>, Previous: <a href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation" accesskey="p" rel="prev">Advantages of step-driven valuation</a>, Up: <a href="Value-methods.html#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
-</div>
 
 
 

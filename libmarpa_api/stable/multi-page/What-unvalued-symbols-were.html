@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>What unvalued symbols were (Libmarpa 8.6.2)</title>
+<title>What unvalued symbols were (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="What unvalued symbols were (Libmarpa 8.6.2)">
-<meta name="keywords" content="What unvalued symbols were (Libmarpa 8.6.2)">
+<meta name="description" content="What unvalued symbols were (Libmarpa 11.0.5)">
+<meta name="keywords" content="What unvalued symbols were (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" rel="up" title="Valued and unvalued symbols">
 <link href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols" rel="next" title="Grammar methods dealing with unvalued symbols">
@@ -72,16 +73,20 @@ ul.no-bullet {list-style: none}
 <a name="What-unvalued-symbols-were"></a>
 <div class="header">
 <p>
-Next: <a href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols" accesskey="n" rel="next">Grammar methods dealing with unvalued symbols</a>, Previous: <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" accesskey="p" rel="prev">Valued and unvalued symbols</a>, Up: <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols" accesskey="n" rel="next">Grammar methods dealing with unvalued symbols</a>, Previous: <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" accesskey="p" rel="prev">Valued and unvalued symbols</a>, Up: <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="What-unvalued-symbols-were-1"></a>
-<h4 class="subsection">22.1.1 What unvalued symbols were</h4>
+<h4 class="subsection">30.2.1 What unvalued symbols were</h4>
 
 <p>Libmarpa symbols can have values,
 which is the traditional way of doing semantics.
 Libmarpa also allows symbols to be unvalued.
-An <em>unvalued</em> symbol is one whose value
+An
+<a name="index-unvalued-symbol"></a>
+<a name="index-symbol_002c-unvalued"></a>
+<em>unvalued</em>
+symbol is one whose value
 is unpredictable from instance to instance.
 If a symbol is unvalued, we sometimes say that it
 has &ldquo;whatever&rdquo; semantics.
@@ -101,7 +106,7 @@ are unvalued.
 When rules and symbols are unvalued,
 Libmarpa optimizes their evaluation.
 </p>
-<p>It is in principle unsafe to check the value 
+<p>It is in principle unsafe to check the value
 of a symbol if it can be unvalued.
 For this reason,
 once a symbol has been treated as valued,
@@ -110,33 +115,39 @@ Similarly,
 once a symbol has been treated as unvalued,
 Libmarpa marks it as unvalued.
 Once marked, a symbol&rsquo;s valued status is
-<em>locked</em> and cannot be changed later.
+<a name="index-locked-value-status-_0028of-a-symbol_0029"></a>
+<a name="index-value-status_002c-locked-_0028of-a-symbol_0029"></a>
+<em>locked</em>
+and cannot be changed later.
 </p>
 <p>The valued status of terminals is marked the first
 time they are read.
+</p>
+<p>Unvalued symbols may be used in combination with
+another deprecated feature, LHS terminals.
+See <a href="LHS-terminals.html#LHS-terminals">LHS terminals</a>.
 The valued status of LHS symbols must be explicitly
 marked by the application when initializing the
 valuator &mdash; this is Libmarpa&rsquo;s equivalent of
 registering a callback.
 </p>
-<p>LHS terminals are disabled by default.
-If allowed, the user should be aware that the valued
-status of a LHS terminal
+<p>The valued status of a LHS terminal
 will be locked in the recognizer
 if it is used as a terminal,
 and the symbol&rsquo;s use as a rule LHS
 in the valuator must be
-consistent with the recognizer&rsquo;s marking.
+consistent with the recognizer&rsquo;s valued marking.
+LHS terminals are disabled by default.
 </p>
 <p>Marpa reports an error when a symbol&rsquo;s use
 conflicts with its locked valued status.
-Doing so usually saves the programmer
+Doing so usually saves the Libmarpa user
 some tricky debugging further down the road.
 </p>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols" accesskey="n" rel="next">Grammar methods dealing with unvalued symbols</a>, Previous: <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" accesskey="p" rel="prev">Valued and unvalued symbols</a>, Up: <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols" accesskey="n" rel="next">Grammar methods dealing with unvalued symbols</a>, Previous: <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" accesskey="p" rel="prev">Valued and unvalued symbols</a>, Up: <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

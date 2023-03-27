@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Non-default ordering (Libmarpa 8.6.2)</title>
+<title>Non-default ordering (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Non-default ordering (Libmarpa 8.6.2)">
-<meta name="keywords" content="Non-default ordering (Libmarpa 8.6.2)">
+<meta name="description" content="Non-default ordering (Libmarpa 11.0.5)">
+<meta name="keywords" content="Non-default ordering (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Ordering-methods.html#Ordering-methods" rel="up" title="Ordering methods">
 <link href="Tree-methods.html#Tree-methods" rel="next" title="Tree methods">
@@ -72,17 +73,29 @@ ul.no-bullet {list-style: none}
 <a name="Non_002ddefault-ordering"></a>
 <div class="header">
 <p>
-Previous: <a href="Order-accessor.html#Order-accessor" accesskey="p" rel="prev">Order accessor</a>, Up: <a href="Ordering-methods.html#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Previous: <a href="Order-accessor.html#Order-accessor" accesskey="p" rel="prev">Order accessor</a>, Up: <a href="Ordering-methods.html#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Non_002ddefault-ordering-1"></a>
-<h3 class="section">15.5 Non-default ordering</h3>
+<h3 class="section">21.6 Non-default ordering</h3>
 
-<dl>
-<dt><a name="index-marpa_005fo_005fhigh_005frank_005fonly_005fset"></a>Function: <em>int</em> <strong>marpa_o_high_rank_only_set</strong> <em>(     Marpa_Order <var>o</var>,     int <var>flag</var>)</em></dt>
-<dt><a name="index-marpa_005fo_005fhigh_005frank_005fonly"></a>Function: <em>int</em> <strong>marpa_o_high_rank_only</strong> <em>(     Marpa_Order <var>o</var>)</em></dt>
-<dd><p>These methods, respectively, set and query
+<a name="marpa_005fo_005fhigh_005frank_005fonly"></a><dl>
+<dt><a name="index-marpa_005fo_005fhigh_005frank_005fonly"></a>Accessor function: <em>int</em> <strong>marpa_o_high_rank_only</strong> <em>( Marpa_Order <var>o</var>)</em></dt>
+<dd>
+<p>On success, returns,
 the &ldquo;high rank only&rdquo; flag of ordering <var>o</var>.
+See <a href="#marpa_005fo_005fhigh_005frank_005fonly_005fset">marpa_o_high_rank_only_set()</a>.
+</p>
+<p><strong>Return value</strong>:
+On success, the  value of the
+&ldquo;high rank only&rdquo; flag, which is a boolean.
+On hard failure, -2.
+</p></dd></dl>
+
+<a name="marpa_005fo_005fhigh_005frank_005fonly_005fset"></a><dl>
+<dt><a name="index-marpa_005fo_005fhigh_005frank_005fonly_005fset"></a>Mutator function: <em>int</em> <strong>marpa_o_high_rank_only_set</strong> <em>(     Marpa_Order <var>o</var>,     int <var>flag</var>)</em></dt>
+<dd>
+<p>Sets the &ldquo;high rank only&rdquo; flag of ordering <var>o</var>.
 A <var>flag</var> of 1 indicates that, when ranking,
 all choices should be discarded except those of the
 highest rank.
@@ -92,28 +105,37 @@ basis of their rank.
 </p>
 <p>A value of 1 is the default.
 The value of the &ldquo;high rank only&rdquo; flag has no effect
-unless ranking has been turned on using the
-<code>marpa_o_rank()</code> method.
+until ranking is turned on using the
+<code>marpa_o_rank()</code>
+method.
 </p>
-<p>Return value:  On success, the  value of the
+<p>Hards fails if the ordering is frozen.
+</p>
+<p><strong>Return value</strong>:
+On success, a boolean which is the value of the
 &ldquo;high rank only&rdquo; flag <strong>after</strong>
 the call.
-On failure, -2.
+On hard failure, -2.
 </p></dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fo_005frank"></a>Function: <em>int</em> <strong>marpa_o_rank</strong> <em>( Marpa_Order <var>o</var> )</em></dt>
-<dd><p>By default, the ordering of parse trees is arbitrary.
-This method causes the ordering to be ranked
+<a name="marpa_005fo_005frank"></a><dl>
+<dt><a name="index-marpa_005fo_005frank"></a>Mutator function: <em>int</em> <strong>marpa_o_rank</strong> <em>( Marpa_Order <var>o</var> )</em></dt>
+<dd>
+<p>By default, the ordering of parse trees is arbitrary.
+On success, the following happens:
+</p><ul>
+<li> The ordering is ranked
 according to the ranks of symbols and rules,
 the &ldquo;null ranks high&rdquo; flags of the rules,
 and the &ldquo;high rank only&rdquo; flag of the ordering.
-Once this method returns, the ordering is frozen.
-</p>
-<p>Return value:  On success, a non-negative value.
-On failure, -2.
-</p>
-</dd></dl>
+</li><li> The ordering is <em>frozen</em>.
+See <a href="Freezing-the-ordering.html#Freezing-the-ordering">Freezing the ordering</a>.
+</li></ul>
+
+<p><strong>Return value</strong>:
+On success, a non-negative value.
+On hard failure, -2.
+</p></dd></dl>
 
 
 

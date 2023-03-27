@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Events (Libmarpa 8.6.2)</title>
+<title>Events (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Events (Libmarpa 8.6.2)">
-<meta name="keywords" content="Events (Libmarpa 8.6.2)">
+<meta name="description" content="Events (Libmarpa 11.0.5)">
+<meta name="keywords" content="Events (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
 <link href="Events-overview.html#Events-overview" rel="next" title="Events overview">
-<link href="Other-step-accessors.html#Other-step-accessors" rel="prev" title="Other step accessors">
+<link href="Step-location-accessors.html#Step-location-accessors" rel="prev" title="Step location accessors">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,18 +73,26 @@ ul.no-bullet {list-style: none}
 <a name="Events"></a>
 <div class="header">
 <p>
-Next: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="n" rel="next">Error methods macros and codes</a>, Previous: <a href="Value-methods.html#Value-methods" accesskey="p" rel="prev">Value methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" accesskey="n" rel="next">Error methods macros and codes</a>, Previous: <a href="Value-methods.html#Value-methods" accesskey="p" rel="prev">Value methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Events-2"></a>
-<h2 class="chapter">18 Events</h2>
+<a name="Events-1"></a>
+<h2 class="chapter">24 Events</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="Events-overview.html#Events-overview" accesskey="1">Events overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Event-methods.html#Event-methods" accesskey="2">Event methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Basic-event-accessors.html#Basic-event-accessors" accesskey="2">Basic event accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Event-codes.html#Event-codes" accesskey="3">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Completion-events.html#Completion-events" accesskey="3">Completion events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Symbol-nulled-events.html#Symbol-nulled-events" accesskey="4">Symbol nulled events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Prediction-events.html#Prediction-events" accesskey="5">Prediction events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Symbol-expected-events.html#Symbol-expected-events" accesskey="6">Symbol expected events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Event-codes.html#Event-codes" accesskey="7">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Return values (Libmarpa 8.6.2)</title>
+<title>Return values (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Return values (Libmarpa 8.6.2)">
-<meta name="keywords" content="Return values (Libmarpa 8.6.2)">
+<meta name="description" content="Return values (Libmarpa 11.0.5)">
+<meta name="keywords" content="Return values (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" rel="up" title="Introduction to the external interface">
-<link href="Naming-conventions.html#Naming-conventions" rel="next" title="Naming conventions">
-<link href="About-the-overviews.html#About-the-overviews" rel="prev" title="About the overviews">
+<link href="Introduction-to-the-method-descriptions.html#Introduction-to-the-method-descriptions" rel="up" title="Introduction to the method descriptions">
+<link href="How-to-read-the-method-descriptions.html#How-to-read-the-method-descriptions" rel="next" title="How to read the method descriptions">
+<link href="Naming-conventions.html#Naming-conventions" rel="prev" title="Naming conventions">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,70 +73,61 @@ ul.no-bullet {list-style: none}
 <a name="Return-values"></a>
 <div class="header">
 <p>
-Next: <a href="Naming-conventions.html#Naming-conventions" accesskey="n" rel="next">Naming conventions</a>, Previous: <a href="About-the-overviews.html#About-the-overviews" accesskey="p" rel="prev">About the overviews</a>, Up: <a href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" accesskey="u" rel="up">Introduction to the external interface</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="How-to-read-the-method-descriptions.html#How-to-read-the-method-descriptions" accesskey="n" rel="next">How to read the method descriptions</a>, Previous: <a href="Naming-conventions.html#Naming-conventions" accesskey="p" rel="prev">Naming conventions</a>, Up: <a href="Introduction-to-the-method-descriptions.html#Introduction-to-the-method-descriptions" accesskey="u" rel="up">Introduction to the method descriptions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Return-values-1"></a>
-<h3 class="section">8.2 Return values</h3>
+<h3 class="section">14.3 Return values</h3>
 
-<p>Return values are discussed method by method,
-but some general practices are worth
-mentioning.
-For methods that return an integer,
-Libmarpa usually reserves -1 for special purposes,
-such as indicating loop termination in an iterator.
-In Libmarpa, methods usually indicate failure
-by returning -2.
-Any result greater than -2 usually indicates success.
-</p>
-<p>If a method returns an pointer value,
-<code>NULL</code> usually indicates failure.
-Any other result usually indicates success.
-</p>
-<p>On failure, a Libmarpa method always sets
-the error code.
-On success, a Libmarpa method may take
-one of three actions:
+<p>Some general conventions for return values are worth
+mentioning:
 </p><ul>
-<li> Set
-an informational error code.
-</li><li> Leave
-the error code as it is.
-</li><li> Reset the error code to <code>MARPA_ERROR_NONE</code>.
+<li> For methods that return an integer,
+a return value of -1
+usually indicates soft method failure.
+</li><li> For methods that return an integer,
+a return value of -2
+usually indicates hard method failure.
+</li><li> For methods that return an integer,
+a return value greater of zero or more usually indicates method success.
+</li><li> If a method returns an pointer value,
+<code>NULL</code> usually indicates method failure.
+Any other result usually indicates method success.
 </li></ul>
 
-<p>Which of the three actions the method
-takes on success
-should be regarded as unspecified,
-unless stated in the description of the method
-in this document.
-If a method sets an informational error code on
-success, that will always be stated in
-its description, and the description will 
-specify,
-for each informational error code,
-the specific error code value,
-the circumstances under which it is set,
-and what return values will accompany it.
+<p>The words &ldquo;success&rdquo; and &ldquo;failure&rdquo; are heavily overloaded
+in these documents.
+But in contexts where our meaning is clear we will usually
+abbreviate &ldquo;method success&rdquo; and &ldquo;method failure&rdquo; to
+&ldquo;success&rdquo; and &ldquo;failure&rdquo;, respectively.
 </p>
-<p>Informational error codes are set
-because some applications may find them convenient.
-Typically, informational error codes are redundant information,
-which may be ignored.
+<p>While these general conventions are a memory aid,
+there are exceptions,
+and the programmer must look at the return value summary
+in the description of every method they use.
 </p>
-<p>A method can have many reasons for
-failing, and many of the reasons
-for failure are common to
-large number of methods.
-Full descriptions of the error codes
-that are returned by the external methods
-are given in their own section.
-See <a href="External-error-codes.html#External-error-codes">External error codes</a>.
+<p>As one example of an exception,
+for certain methods,
+a return value of -2 is ambiguous:
+-2 can be both a valid return value
+for method success, and a potential indication of hard method failure.
+An example of a method where -2 is ambiguous is
+<code>marpa_g_rule_rank_set()</code>.
+See <a href="Rank-methods.html#marpa_005fg_005frule_005frank_005fset">marpa_g_rule_rank_set</a>.
+In cases like <code>marpa_g_rule_rank_set()</code>,
+the programmer must distinguish the two return statuses
+based on the error code.
+</p>
+<p>Whenever a method departs from the general return value conventions,
+the departure will be detailed in the description of that method.
+Any departure by a method from the general return value conventions
+will always be indicated
+in the return value summary for that method.
 </p>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Naming-conventions.html#Naming-conventions" accesskey="n" rel="next">Naming conventions</a>, Previous: <a href="About-the-overviews.html#About-the-overviews" accesskey="p" rel="prev">About the overviews</a>, Up: <a href="Introduction-to-the-external-interface.html#Introduction-to-the-external-interface" accesskey="u" rel="up">Introduction to the external interface</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="How-to-read-the-method-descriptions.html#How-to-read-the-method-descriptions" accesskey="n" rel="next">How to read the method descriptions</a>, Previous: <a href="Naming-conventions.html#Naming-conventions" accesskey="p" rel="prev">Naming conventions</a>, Up: <a href="Introduction-to-the-method-descriptions.html#Introduction-to-the-method-descriptions" accesskey="u" rel="up">Introduction to the method descriptions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

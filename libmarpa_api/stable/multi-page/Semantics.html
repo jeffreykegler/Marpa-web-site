@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Semantics (Libmarpa 8.6.2)</title>
+<title>Semantics (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Semantics (Libmarpa 8.6.2)">
-<meta name="keywords" content="Semantics (Libmarpa 8.6.2)">
+<meta name="description" content="Semantics (Libmarpa 11.0.5)">
+<meta name="keywords" content="Semantics (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
 <link href="Threads.html#Threads" rel="next" title="Threads">
-<link href="Terminals.html#Terminals" rel="prev" title="Terminals">
+<link href="Exhaustion.html#Exhaustion" rel="prev" title="Exhaustion">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,11 +73,11 @@ ul.no-bullet {list-style: none}
 <a name="Semantics"></a>
 <div class="header">
 <p>
-Next: <a href="Threads.html#Threads" accesskey="n" rel="next">Threads</a>, Previous: <a href="Input.html#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Threads.html#Threads" accesskey="n" rel="next">Threads</a>, Previous: <a href="Exhaustion.html#Exhaustion" accesskey="p" rel="prev">Exhaustion</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Semantics-1"></a>
-<h2 class="chapter">5 Semantics</h2>
+<h2 class="chapter">9 Semantics</h2>
 
 <p>Libmarpa handling of semantics is unusual.
 Most semantics are left up to the application,
@@ -89,7 +90,7 @@ are called &ldquo;steps&rdquo;.
 For example, a Libmarpa step might tell the application that the value
 of a token needs to go into a certain stack position.
 Or a Libmarpa step might tell the application that a rule is to be evaluated.
-For rule evalution, Libmarpa will tell the application where the operands
+For rule evaluation, Libmarpa will tell the application where the operands
 are to be found,
 and where the result must go.
 </p>
@@ -98,8 +99,8 @@ Libmarpa&rsquo;s handling of semantics is in the reference chapters
 of this document,
 under the appropriate methods and classes.
 The most extensive discussion of the semantics
-is in the section that deals with the methods of the value time class.
-See <a href="Value-methods.html#Value-methods">Value methods</a>.
+is in the section that deals with the methods of the value time class
+(<a href="Value-methods.html#Value-methods">Value methods</a>).
 </p>
 
 

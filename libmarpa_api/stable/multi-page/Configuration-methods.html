@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Configuration methods (Libmarpa 8.6.2)</title>
+<title>Configuration methods (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Configuration methods (Libmarpa 8.6.2)">
-<meta name="keywords" content="Configuration methods (Libmarpa 8.6.2)">
+<meta name="description" content="Configuration methods (Libmarpa 11.0.5)">
+<meta name="keywords" content="Configuration methods (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
 <link href="Grammar-methods.html#Grammar-methods" rel="next" title="Grammar methods">
@@ -72,19 +73,16 @@ ul.no-bullet {list-style: none}
 <a name="Configuration-methods"></a>
 <div class="header">
 <p>
-Next: <a href="Grammar-methods.html#Grammar-methods" accesskey="n" rel="next">Grammar methods</a>, Previous: <a href="Static-methods.html#Static-methods" accesskey="p" rel="prev">Static methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Grammar-methods.html#Grammar-methods" accesskey="n" rel="next">Grammar methods</a>, Previous: <a href="Static-methods.html#Static-methods" accesskey="p" rel="prev">Static methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Configuration-methods-1"></a>
-<h2 class="chapter">10 Configuration methods</h2>
+<h2 class="chapter">16 Configuration methods</h2>
 
 <p>The configuration object is intended for future extensions.
-These may
-allow the application to override Libmarpa&rsquo;s memory allocation
-and fatal error handling without resorting to global
-variables, and therefore in a thread-safe way.
 Currently, the only function of the <code>Marpa_Config</code>
-class is to give <code>marpa_g_new()</code>
+class is to give
+<code>marpa_g_new()</code>
 a place to put its error code.
 </p>
 <p><code>Marpa_Config</code> is Libmarpa&rsquo;s only &ldquo;major&rdquo;
@@ -93,31 +91,38 @@ There is no constructor or destructor, although
 <code>Marpa_Config</code> objects <strong>do</strong> need to be initialized
 before use.
 Aside from its own accessor,
-<code>Marpa_Config</code> objects are only used by <code>marpa_g_new</code>
-and no reference to their location is not kept
+<code>Marpa_Config</code> objects are only used by
+<code>marpa_g_new()</code>
+and no reference to their location is kept
 in any of Libmarpa&rsquo;s time objects.
-The intent is to that it be convenient
-to have them in memory that might be deallocated
-soon after <code>marpa_g_new</code> returns.
+The intent is that it be convenient
+to have <code>Marpa_Config</code> objects
+in memory that might be deallocated
+soon after
+<code>marpa_g_new()</code>
+returns.
 For example, they could be put on the stack.
 </p>
-<dl>
-<dt><a name="index-marpa_005fc_005finit"></a>Function: <em>int</em> <strong>marpa_c_init</strong> <em>(   Marpa_Config* <var>config</var>)</em></dt>
+<a name="marpa_005fc_005finit"></a><dl>
+<dt><a name="index-marpa_005fc_005finit"></a>Mutator function: <em>int</em> <strong>marpa_c_init</strong> <em>(   Marpa_Config* <var>config</var>)</em></dt>
 <dd>
 <p>Initialize the <var>config</var> information to &ldquo;safe&rdquo; default
 values.
-Unspecified behavior will result
-if an initialized
+An irrecoverable error will result
+if an uninitialized
 configuration is used to create a grammar.
 </p>
-<p>Return value: A non-negative value.  Always succeeds.
-</p></dd></dl>
+<p><strong>Return value</strong>: Always succeeds.  The return value is unspecified.
+</p>
+</dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fc_005ferror"></a>Function: <em>Marpa_Error_Code</em> <strong>marpa_c_error</strong> <em>(   Marpa_Config* <var>config</var>, const char** <var>p_error_string</var> )</em></dt>
+<a name="marpa_005fc_005ferror"></a><dl>
+<dt><a name="index-marpa_005fc_005ferror"></a>Accessor function: <em>Marpa_Error_Code</em> <strong>marpa_c_error</strong> <em>(   Marpa_Config* <var>config</var>, const char** <var>p_error_string</var> )</em></dt>
 <dd>
 <p>Error codes are usually kept in the base grammar,
-which leaves <code>marpa_g_new()</code> no place to put
+which leaves
+<code>marpa_g_new()</code>
+no place to put
 its error code on failure.
 Objects of
 the <code>Marpa_Config</code> class provide such a place.
@@ -125,10 +130,13 @@ the <code>Marpa_Config</code> class provide such a place.
 the internals.
 Applications should set it to <code>NULL</code>.
 </p>
-<p>Return value:
-The error code in <var>config</var>.
-Always succeeds.
-</p></dd></dl>
+<p><strong>Return value</strong>: The error code in <var>config</var>.
+Always succeeds, so that
+<code>marpa_c_error()</code>
+never requires an error code
+for itself.
+</p>
+</dd></dl>
 
 
 

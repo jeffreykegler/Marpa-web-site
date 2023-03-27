@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Recognizer life cycle mutators (Libmarpa 8.6.2)</title>
+<title>Recognizer life cycle mutators (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Recognizer life cycle mutators (Libmarpa 8.6.2)">
-<meta name="keywords" content="Recognizer life cycle mutators (Libmarpa 8.6.2)">
+<meta name="description" content="Recognizer life cycle mutators (Libmarpa 11.0.5)">
+<meta name="keywords" content="Recognizer life cycle mutators (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Recognizer-methods.html#Recognizer-methods" rel="up" title="Recognizer methods">
 <link href="Location-accessors.html#Location-accessors" rel="next" title="Location accessors">
@@ -72,214 +73,299 @@ ul.no-bullet {list-style: none}
 <a name="Recognizer-life-cycle-mutators"></a>
 <div class="header">
 <p>
-Next: <a href="Location-accessors.html#Location-accessors" accesskey="n" rel="next">Location accessors</a>, Previous: <a href="Recognizer-reference-counting.html#Recognizer-reference-counting" accesskey="p" rel="prev">Recognizer reference counting</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Location-accessors.html#Location-accessors" accesskey="n" rel="next">Location accessors</a>, Previous: <a href="Recognizer-reference-counting.html#Recognizer-reference-counting" accesskey="p" rel="prev">Recognizer reference counting</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Life-cycle-mutators"></a>
-<h3 class="section">12.4 Life cycle mutators</h3>
+<h3 class="section">18.4 Life cycle mutators</h3>
 
-<dl>
-<dt><a name="index-marpa_005fr_005fstart_005finput"></a>Function: <em>int</em> <strong>marpa_r_start_input</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
-<dd><p>Makes <var>r</var> ready to accept input.
-The first Earley set,
-the one at earleme 0,
-will be completed during this call.
-</p>
-<p>Because the call to <code>marpa_r_start_input()</code>
-completes an Earley set,
-it may generate events.
-For details about
-the events that may be generated during
-Earley set completion,
-see the description of the
-<code>marpa_r_earleme_complete()</code> method.
-</p>
-<p>Return value:  On success, a non-negative value.
-On failure, -2.
-</p></dd></dl>
+<a name="marpa_005fr_005fstart_005finput"></a><dl>
+<dt><a name="index-marpa_005fr_005fstart_005finput"></a>Mutator function: <em>int</em> <strong>marpa_r_start_input</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
+<dd>
+<p>When successful, does the following:
+</p><ul>
+<li> Readies <var>r</var> to accept input.
+</li><li> Completes the first Earley set.
+The ID of the first Earley set is 0,
+and it is located at earleme 0.
+</li><li> Leaves the latest, current and furthest earlemes all at 0.
+</li><li> Clears any events that were in the event queue before this method was called.
+</li><li> If this method exhausts the parse, generates a <code>MARPA_EVENT_EXHAUSTED</code> event.
+    See <a href="Exhaustion.html#Exhaustion">Exhaustion</a>.
+</li><li> May generate one or more <code>MARPA_EVENT_SYMBOL_NULLED</code>,
+    <code>MARPA_EVENT_SYMBOL_PREDICTED</code>, or <code>MARPA_EVENT_SYMBOL_EXPECTED</code> events.
+    See <a href="Events.html#Events">Events</a>.
+</li></ul>
 
-<dl>
-<dt><a name="index-marpa_005fr_005falternative"></a>Function: <em>int</em> <strong>marpa_r_alternative</strong> <em>(Marpa_Recognizer <var>r</var>,     Marpa_Symbol_ID <var>token_id</var>,     int <var>value</var>,     int <var>length</var>)</em></dt>
-<dd><p>Reads a token into <var>r</var>.
-The token will start at the current earleme.
-Libmarpa allows tokens to be ambiguous, to be of
-variable length and to overlap.
-<var>token_id</var> is the symbol ID of the token,
-which must be a terminal.
-<var>length</var> is the length of the token.
+<p><strong>Return value</strong>:  On success, a non-negative value,
+whose value is otherwise unspecified.
+On hard failure, -2.
 </p>
-<p><var>value</var> is an
-integer that represents the value of the
-token.
+</dd></dl>
+
+<a name="marpa_005fr_005falternative"></a><dl>
+<dt><a name="index-marpa_005fr_005falternative"></a>Mutator function: <em>int</em> <strong>marpa_r_alternative</strong> <em>(Marpa_Recognizer <var>r</var>,     Marpa_Symbol_ID <var>token_id</var>,     int <var>value</var>,     int <var>length</var>)</em></dt>
+<dd>
+
+<p>The <var>token_id</var> argument must be the symbol ID of a terminal.
+The <var>value</var> argument is an
+integer that represents the &ldquo;value&rdquo; of the
+token, and which should not be zero.
+The <var>length</var> argument is the length of the token, which must
+be greater than zero.
+</p>
+<p>On success, does the following,
+where <code>current</code> is the value of the current earleme
+before the call and
+<code>furthest</code> is the value of the furthest earleme
+before the call:
+</p><ul>
+<li> Reads a new token into <var>r</var>.
+The symbol ID of the token will be
+<var>token_id</var>.
+The token will start at <code>current</code>
+and end at <code><var>current</var>+<var>length</var></code>.
+</li><li> Sets the value of the furthest earleme to
+<code>max(<var>current</var>+<var>length</var>,<var>furthest</var>)</code>.
+</li><li> Leaves
+the values of the latest and current earlemes unchanged.
+</li></ul>
+
+<p>After recoverable failure, the following are the case:
+</p><ul>
+<li> The tokens read into <var>r</var> are unchanged.
+Specifically, no new token has been read into <var>r</var>.
+</li><li> The values of the latest, current and furthest earlemes
+are unchanged.
+</li></ul>
+
+<p>Libmarpa allows tokens to be ambiguous.
+Two tokens are ambiguous if they end at the same earleme location.
+If two tokens are ambiguous, Libmarpa will attempt to produce all the parses
+that include either of them.
+</p>
+<p>Libmarpa allows tokens to overlap.
+Let the notation
+<var>t</var>@<var>s</var>-<var>e</var> indicate that token <var>t</var> starts
+at earleme <var>s</var> and ends at earleme <var>e</var>.
+Let <var>t1</var>@<var>s1</var>-<var>e1</var>
+and <var>t2</var>@<var>s2</var>-<var>e2</var>
+be two tokens such that <var>s1</var>&lt;=<var>s2</var>.
+We say that <var>t1</var> and <var>t2</var> overlap iff
+<var>e1</var>&gt;<var>s2</var>.
+</p>
+<p>The <var>value</var> argument
+is not used inside Libmarpa &mdash; it is simply
+stored to be returned by the valuator
+as a convenience for the application.
 In applications where the token&rsquo;s actual value is not an integer, it is
-expected that the application will use this value as
+expected that the application will use <var>value</var> as
 a &ldquo;virtual&rdquo; value,
 perhaps finding the actual value by using <var>value</var>
 to index an array.
-<var>value</var> is not used inside Libmarpa &mdash; it is simply
-stored to be returned by the valuator
-as a convenience for the application.
 Some applications may prefer to track token values on
 their own, perhaps based on
 the earleme location and <var>token_id</var>,
 instead of using Libmarpa&rsquo;s token values.
 </p>
-<p>A <var>value</var> of 0 is reserved for a now-deprecated feature.
-Do not use it.
-For more details on that feature, see the
-section <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>.
+<p>A <var>value</var> of 0 does not cause a failure,
+but it is reserved for unvalued symbols,
+a now-deprecated feature.
+See <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">Valued and unvalued symbols</a>.
 </p>
-<p>When <code>marpa_r_alternative()</code>
-is successful,
-the value of the furthest earleme is set to
-the greater of its value before the call,
-and <var>current</var>+<var>length</var>,
-where <var>current</var> is the value of the current earleme.
-The values of the current and latest earlemes
-are unchanged by
-calls to <code>marpa_r_alternative()</code>.
+<p>Hard fails irrecoverably with <code>MARPA_ERR_DUPLICATE_TOKEN</code>
+if the token added would be a duplicate.
+Two tokens are duplicates iff all of the following are true:
+</p><ul>
+<li> They would have the same start earleme.
+In other words, if <code>marpa_r_alternative()</code> attempts
+to read them while at the same current earleme.
+</li><li> They have the same <var>token_id</var>.
+</li><li> They have the same <var>length</var>.
+</li></ul>
+
+<a name="Ruby-Slippers"></a><p>If a token was not accepted
+because of its token ID,
+hard fails with the <code>MARPA_ERR_UNEXPECTED_TOKEN_ID</code>.
+This hard failure is fully recoverable
+so that, for example,
+the application may
+retry this method with different token IDs
+until it succeeds.
+These retries are efficient,
+and are quite useable as a parsing
+technique &mdash;
+so much so we have given the technique a name:
+<a name="index-Ruby-Slippers"></a>
+<em>the Ruby Slippers</em>.
+The Ruby Slippers are used in several
+applications.
 </p>
-<p>Several error codes leave the recognizer in a fully
-recoverable state, allowing the application to
-retry the <code>marpa_r_alternative()</code> method.
-Retry is efficient, and quite useable as a parsing
-technique.
-The error code
-of primary interest from this point of view
-is <code>MARPA_ERR_UNEXPECTED_TOKEN_ID</code>,
-which indicates that the token was not accepted
-because of its token ID.
-Retry after this condition is used in several
-applications,
-and is called &ldquo;the Ruby Slippers technique&rdquo;.
-</p>
-<p>The error codes
-<code>MARPA_ERR_DUPLICATE_TOKEN</code>,
-<code>MARPA_ERR_NO_TOKEN_EXPECTED_HERE</code>
-and <code>MARPA_ERR_INACCESSIBLE_TOKEN</code>
-also leave the recognizer in a fully recoverable
-state, and may also be useable for the
-Ruby Slippers or similar techniques.
-At this writing,
-the author knows of no applications which
-attempt to recover from these errors.
-</p>
-<p>Return value:  On success, <code>MARPA_ERR_NONE</code>.
-On failure, some other error code.
+<p><strong>Return value</strong>:  On success, <code>MARPA_ERR_NONE</code>.
+On hard failure, an error code other than <code>MARPA_ERR_NONE</code>.
+The hard failure for <code>MARPA_ERR_UNEXPECTED_TOKEN_ID</code>
+is fully recoverable.
 </p>
 </dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fr_005fearleme_005fcomplete"></a>Function: <em>int</em> <strong>marpa_r_earleme_complete</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
-<dd><p>This method does the final processing for the current earleme.
-It then advances the current earleme by one.
-Note that <code>marpa_r_earleme_complete()</code> may be called
-even when no tokens have been read at the current earleme &mdash;
-in the character-per-earleme input model, for example, tokens
-can span many characters and, if the input is unambiguous over that
-span, there will be no other tokens that start inside it.
-</p>
-<p>As mentioned,
-<code>marpa_r_earleme_complete()</code> always advances the current earleme,
-incrementing its value by 1.
-This means that value of the current earleme after the call
-will be one plus the value of the earleme processed by the call
-to <code>marpa_r_earleme_complete()</code>.
-If any token was accepted at the earleme being processed,
-<code>marpa_r_earleme_complete()</code> creates a new Earley set
-which will be the latest Earley set
-and, after the call, the latest
-earleme will be equal to the new current earleme.
-If no token was accepted at the
-earleme being processed,
-no Earley set is created,
-and the value of the latest earleme remains unchanged.
-The value of the furthest earleme is never changed by
-a call to <code>marpa_r_earleme_complete()</code>.
-</p>
-<p>During this method, one or more events may occur.
-On success, this function returns the number of events
-generated,
-but it is important to note that events may be
-created whether earleme completion fails or succeeds.
-When this method fails,
-the application must call <code>marpa_g_event()</code>
-if it wants to determine if any events occurred.
-Since the reason for failure to complete an earleme is often
-detailed in the events, applications that fail will often
-be at least as interested in the events as those
-that succeed.
-</p>
-<p>The <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event
-indicates that an application-settable threshold
-on the number of Earley items has been reached or exceeded.
-What this means depends on the application,
-but when the default threshold is exceeded,
-it means that it is very likely
-that the time and space resources consumed by
-the parse will prove excessive.
-</p>
-<p>A parse is &ldquo;exhausted&rdquo; when it can accept no more
-input.
-This can happen both on success and on failure.
-Note that the failure due to parse exhaustion
-only means failure
+<a name="marpa_005fr_005fearleme_005fcomplete"></a><dl>
+<dt><a name="index-marpa_005fr_005fearleme_005fcomplete"></a>Mutator function: <em>int</em> <strong>marpa_r_earleme_complete</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
+<dd>
+<p>For the purposes of this method description, we define the following:
+</p><ul>
+<li> <code>current</code> is the value of the current earleme before the call of
+<code>marpa_r_earleme_complete</code>.
+</li><li> <code>latest</code> is the value of the latest earleme before the call of
+<code>marpa_r_earleme_complete</code>.
+</li><li> An &ldquo;expected&rdquo; terminal is one expected at a current earleme,
+in the same sense that
+<code>marpa_r_terminal_is_expected()</code> determines if a terminal is &ldquo;expected&rdquo;
 at the current earleme.
-There may be successful parses
-at earlier earlemes.
+See <a href="Other-parse-status-methods.html#marpa_005fr_005fterminals_005fexpected">marpa_r_terminals_expected()</a>.
+</li><li> An &ldquo;anticipated&rdquo; terminal is one
+that was accepted by
+the <code>marpa_r_alternative()</code> to end at an earleme after the current
+earleme.
+An anticipated terminal will have length greater than one.
+&ldquo;Anticipated&rdquo; terminals only occur if the application is using
+an advanced model of input.
+See <a href="Advanced-input-models.html#Advanced-input-models">Advanced input models</a>.
+</li></ul>
+
+<p>In this method description,
+we will frequently refer to parse exhaustion.
+Parse exhaustion is discussed in detail in its own section.
+See <a href="Exhaustion.html#Exhaustion">Exhaustion</a>.
 </p>
-<p>If a parse is exhausted, but successful,
-an event with the event code
-<code>MARPA_EVENT_EXHAUSTED</code> occurs.
-Because the parse is exhausted,
-no input will be accepted at later earlemes.
-It is quite common for a parse to become exhausted
-when it succeeds.
-Many practical grammars are designed so that a
-successful parse cannot be extended.
+<p>On success, does the final processing for the current earleme, including
+the following:
+</p><ul>
+<li> Advances the current earleme,
+incrementing its value by 1.
+That is, sets the current earleme to <code>current+1</code>.
+</li><li> If any token was accepted at <code>current</code>,
+creates a new Earley set,
+which will be the latest Earley set.
+After the call, the latest
+earleme will be equal to the new current earleme,
+<code>current+1</code>.
+</li><li> If no token was accepted at <code>current</code>,
+    no Earley set is created.
+    After the call,
+    the value of the latest earleme will be unchanged &mdash;
+    that is, it will remain at <code>latest</code>.
+    Success when no tokens were accepted at <code>current</code>
+    can only occur if the application is using an advanced model of input.
+    See <a href="Advanced-input-models.html#Advanced-input-models">Advanced input models</a>.
+</li><li> The value of the furthest earleme is never changed by
+a call to
+<code>marpa_r_earleme_complete()</code>.
+</li><li> Clears the event queue of any events that
+occured before this method was called.
+</li><li> May generate one or more <code>MARPA_EVENT_SYMBOL_COMPLETED</code>,
+    <code>MARPA_EVENT_SYMBOL_NULLED</code>, <code>MARPA_EVENT_SYMBOL_PREDICTED</code>,
+    or <code>MARPA_EVENT_SYMBOL_EXPECTED</code> events.
+    See <a href="Events.html#Events">Events</a>.
+</li><li> If an application-settable threshold
+on the number of Earley items has been reached or exceeded,
+generates a <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event.
+Often, the application will want to treat this event
+as if it were a ancestry-recoverable
+failure.
+See <a href="Other-parse-status-methods.html#marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset">marpa_r_earley_item_warning_threshold_set()</a>.
+</li><li> If the parse is exhausted,
+triggers a
+<code>MARPA_EVENT_EXHAUSTED</code> event.
+Exhaustion on success only occurs if no terminals
+are expected at the current earleme after
+the call to this method
+(that is, at <code>current+1</code>)
+and no terminals are anticipated
+after <code>current+1</code>.
+</li></ul>
+
+<p>On hard failure
+with the code <code>MARPA_ERR_PARSE_EXHAUSTED</code>, does the following:
+</p><ul>
+<li> Leaves the current earleme at <code>current</code>.
+The current earleme will be the same as the furthest earleme.
+</li><li> The value of the furthest earleme is never changed by
+a call to
+<code>marpa_r_earleme_complete()</code>.
+</li><li> Leaves the value of the latest earleme at <code>latest</code>.
+No new Earley set is created.
+</li><li> Sets the parse exhausted, so that no more tokens
+will be accepted.
+</li><li> Leaves the parse in a state where no terminals
+are expected or anticipated.
+</li><li> Clears the event queue of any events that
+occured before the call to this method.
+</li><li> Triggers a
+<code>MARPA_EVENT_EXHAUSTED</code> event and no others.
+</li><li> Leaves valid any parses that were valid at
+the current or earlier earlemes.
+Processing with these can continue,
+and it for this reason that we consider
+hard failures with the code <code>MARPA_ERR_PARSE_EXHAUSTED</code>
+to be fully recoverable.
+</li></ul>
+
+<p>We note that exhaustion can occur when this method fails
+and when it succeeds.
+The distinction is that, on success, the call creates a new Earley set before
+becoming exhausted while,
+on failure, it becomes exhausted without creating a new Earley set.
 </p>
-<p>An exhausted parse may cause a failure,
-in which case
-<code>marpa_r_earleme_complete()</code> returns an
-error
-whose error code is <code>MARPA_ERR_PARSE_EXHAUSTED</code>.
-For a parse to fail at an earleme due to exhaustion,
-it must be the case that no alternatives were
-accepted at that earleme.
-In fact,
-in the standard input model,
-a failure due to parse exhaustion
-occurs if and only if
-no alternatives
-were accepted at the current earleme.
+<p>This method is commonly called at the top of a loop.
+Almost all applications will want to check the return value
+and take special action in case of a value other than zero.
+If the value is greater than zero, an event will have occurred
+and almost all applications
+should react to <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> events,
+as described above,
+and to unexpected events.
+If the value is less than zero,
+it may be due to an irrecoverable error,
+and only in very unusual circumstances will an application wish
+to ignore these.
 </p>
-<p>The circumstances under which
-failure due to parse exhaustion occurs
-are slightly more complicated
-when variable length tokens are in use.
-Informally,
-a parse will never fail due to exhaustion as long
-as it is possible that a token
-ending at some future
-earleme will continue the parse.
-More precisely,
-a call to 
-<code>marpa_r_earleme_complete()</code> fails
-due to parse exhaustion
-if and only if, first,
-no alternatives were added at the current earleme
-and, second,
-that call left the current
-earleme equal to the furthest earleme.
-</p>
-<p>Return value:  On success, the number of events generated.
-On failure, -2.
+<p>How an application reacts to exhaustion will depend on the kind of
+parsing it is doing:
+</p><ul>
+<li> Very often an application knows the length of its input in advance.
+In this case, the application will treat exhaustion before the end of input
+as a parse error.
+Depending on the application, exhaustion on success at the end of input
+might be ignored.
+</li><li> An exhaustion-loving application that does not know the length of
+its input will often want to terminate the parse in case of exhaustion on method
+success, treating exhaustion as an end-of-input indicator.
+These applications will usually want to treat exhaustion on method failure
+as a parse error.
+</li><li> Occasionally, an exhaustion-hating application may not know
+the length of its input in advance.
+Since these applications will not know from the length of the input,
+or from exhaustion, that they are at end of input,
+they will need some other way of determining this.
+One way they may do this is with a
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> event.
+Typically, these applications will treat exhaustion on method
+failure and exhaustion before the end of input
+as parse errors.
+They may wish to ignore exhaustion on method success
+at the end of input.
+</li></ul>
+<p><strong>Return value</strong>:  On success, the number of events generated.
+On hard failure, -2.
+Hard failure with the code
+<code>MARPA_ERR_PARSE_EXHAUSTED</code>
+is fully recoverable.
 </p></dd></dl>
 
 <hr>
 <div class="header">
 <p>
-Next: <a href="Location-accessors.html#Location-accessors" accesskey="n" rel="next">Location accessors</a>, Previous: <a href="Recognizer-reference-counting.html#Recognizer-reference-counting" accesskey="p" rel="prev">Recognizer reference counting</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Location-accessors.html#Location-accessors" accesskey="n" rel="next">Location accessors</a>, Previous: <a href="Recognizer-reference-counting.html#Recognizer-reference-counting" accesskey="p" rel="prev">Recognizer reference counting</a>, Up: <a href="Recognizer-methods.html#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

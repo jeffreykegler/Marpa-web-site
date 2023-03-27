@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,14 +25,15 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Grammar methods dealing with unvalued symbols (Libmarpa 8.6.2)</title>
+<title>Grammar methods dealing with unvalued symbols (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Grammar methods dealing with unvalued symbols (Libmarpa 8.6.2)">
-<meta name="keywords" content="Grammar methods dealing with unvalued symbols (Libmarpa 8.6.2)">
+<meta name="description" content="Grammar methods dealing with unvalued symbols (Libmarpa 11.0.5)">
+<meta name="keywords" content="Grammar methods dealing with unvalued symbols (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" rel="up" title="Valued and unvalued symbols">
 <link href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator" rel="next" title="Registering semantics in the valuator">
@@ -72,34 +73,35 @@ ul.no-bullet {list-style: none}
 <a name="Grammar-methods-dealing-with-unvalued-symbols"></a>
 <div class="header">
 <p>
-Next: <a href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator" accesskey="n" rel="next">Registering semantics in the valuator</a>, Previous: <a href="What-unvalued-symbols-were.html#What-unvalued-symbols-were" accesskey="p" rel="prev">What unvalued symbols were</a>, Up: <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator" accesskey="n" rel="next">Registering semantics in the valuator</a>, Previous: <a href="What-unvalued-symbols-were.html#What-unvalued-symbols-were" accesskey="p" rel="prev">What unvalued symbols were</a>, Up: <a href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Grammar-methods-dealing-with-unvalued-symbols-1"></a>
-<h4 class="subsection">22.1.2 Grammar methods dealing with unvalued symbols</h4>
+<h4 class="subsection">30.2.2 Grammar methods dealing with unvalued symbols</h4>
 
-<dl>
+<a name="marpa_005fg_005fsymbol_005fis_005fvalued_005fset"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued_005fset"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_valued_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>symbol_id</var>,     int value)</em></dt>
-<dt><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_valued</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>symbol_id</var>)</em></dt>
+<dd><a name="marpa_005fg_005fsymbol_005fis_005fvalued"></a></dd><dt><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_valued</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>symbol_id</var>)</em></dt>
 <dd>
 <p>These methods, respectively, set
 and query the &ldquo;valued status&rdquo; of a symbol.
 Once set to a value with the
-<code>marpa_g_symbol_is_valued_set()</code> method,
+<code>marpa_g_symbol_is_valued_set()</code>
+method,
 the valued status of a symbol is &ldquo;locked&rdquo; at that value.
 It cannot thereafter be changed.
-Subsequent calls to 
+Subsequent calls to
 <code>marpa_g_symbol_is_valued_set()</code>
 for the same <var>sym_id</var> will fail,
 leaving <var>sym_id</var>&rsquo;s valued status unchanged,
 unless <var>value</var> is the same as the locked-in value.
 </p>
-<p>Return value: On success, 1 if the symbol <var>symbol_id</var>
+<p><strong>Return value</strong>: On success, 1 if the symbol <var>symbol_id</var>
 is valued after the call, 0 if not.
 If the valued status is locked and <var>value</var>
 is different from the current status, -2.
 If <var>value</var> is not 0 or 1;
-or on other failure, -2.
+or on other hard failure, -2.
 </p>
 </dd></dl>
 

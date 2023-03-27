@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,17 +25,18 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Sizing the stack (Libmarpa 8.6.2)</title>
+<title>Sizing the stack (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Sizing the stack (Libmarpa 8.6.2)">
-<meta name="keywords" content="Sizing the stack (Libmarpa 8.6.2)">
+<meta name="description" content="Sizing the stack (Libmarpa 11.0.5)">
+<meta name="keywords" content="Sizing the stack (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Maintaining-the-stack.html#Maintaining-the-stack" rel="up" title="Maintaining the stack">
-<link href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack" rel="next" title="Initializing locations in the stack">
+<link href="Valuator-constructor.html#Valuator-constructor" rel="next" title="Valuator constructor">
 <link href="Maintaining-the-stack.html#Maintaining-the-stack" rel="prev" title="Maintaining the stack">
 <style type="text/css">
 <!--
@@ -72,63 +73,45 @@ ul.no-bullet {list-style: none}
 <a name="Sizing-the-stack"></a>
 <div class="header">
 <p>
-Next: <a href="Initializing-locations-in-the-stack.html#Initializing-locations-in-the-stack" accesskey="n" rel="next">Initializing locations in the stack</a>, Previous: <a href="Maintaining-the-stack.html#Maintaining-the-stack" accesskey="p" rel="prev">Maintaining the stack</a>, Up: <a href="Maintaining-the-stack.html#Maintaining-the-stack" accesskey="u" rel="up">Maintaining the stack</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Previous: <a href="Maintaining-the-stack.html#Maintaining-the-stack" accesskey="p" rel="prev">Maintaining the stack</a>, Up: <a href="Maintaining-the-stack.html#Maintaining-the-stack" accesskey="u" rel="up">Maintaining the stack</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Sizing-the-stack-1"></a>
-<h4 class="subsection">17.4.1 Sizing the stack</h4>
+<h4 class="subsection">23.4.1 Sizing the stack</h4>
 
-<p>If an implementation applies Libmarpa&rsquo;s step
+<p>In our discussion of the stack handler for the valuator,
+we will treat the stack as a 0-based array.
+If an implementation applies Libmarpa&rsquo;s step
 instructions literally, using a physical stack,
-it must make sure the stack is large enough.
-Specifically, the application must do the following
-</p>
-<ul>
-<li> Ensure location 0 exists &mdash; in other
-words that the stack is at least length 1.
-</li><li> For <code>MARPA_STEP_TOKEN</code> steps,
-ensure that location <code>marpa_v_result(v)</code>
-exists.
-</li><li> For <code>MARPA_STEP_NULLING_SYMBOL</code> steps,
-ensure that location <code>marpa_v_result(v)</code>
-exists.
-</li><li> For <code>MARPA_STEP_RULE</code> steps,
-ensure that stack locations from <code>marpa_v_arg_0(v)</code>
-to <code>marpa_v_arg_n(v)</code> exist.
+it must make sure that all locations in the stack are initialized.
+The range of locations that must be initialized is from
+stack location 0 to the &ldquo;end of stack&rdquo; location.
+The result of the parse tree is always stored in stack location 0,
+so that a stack location 0 is always needed.
+Therefore, the end of stack location is always a specified value, and greater than or equal to 0.
+The end of stack location must also be greater than or equal to
+</p><ul>
+<li> <code>marpa_v_result(v)</code> for every <code>MARPA_STEP_TOKEN</code> step,
+</li><li> <code>marpa_v_result(v)</code>
+for every <code>MARPA_STEP_NULLING_SYMBOL</code> step, and
+</li><li> <code>marpa_v_arg_n(v)</code>
+for every <code>MARPA_STEP_RULE</code> step.
 </li></ul>
 
-<p>Three aspects of these requirements deserve special mention.
-First,
-note that the requirement for a
-<code>MARPA_STEP_RULE</code> is that the application
-size the stack to include the arguments to be
-read.
-Because stack writes may be optimized away,
-an application,
-when reading,
-cannot assume
-that the stack was
-sized appropriately by a prior write.
-The first access to a new stack location may be
-a read.
+<p>In practice, an application will often extend the stack
+as it iterates through the steps,
+initializing the new stack locations as they are created.
 </p>
-<p>Second,
-note that there is no explicit requirement that
-the application size the stack to include the
-location for the result of the
-<code>MARPA_STEP_RULE</code> step.
-An application is allowed to assume that
-result will go into one of the locations
-that were read.
-</p>
-<p>Third, special note should be made of the requirement
-that location 0 exist.
-By convention, the parse result resides
-in location 0 of the stack.
-Because of potential optimizations,
-an application cannot assume that it
-will receive a Libmarpa step instruction that
-either reads from or writes to location 0.
+<p>Note that our requirement is not merely that the stack locations
+exist and be writable, but that they be initialized.
+This is necessary for C89 conformance.
+Because of write optimizations in our implementation,
+the first access to any stack location
+may be a read.
+C89 allows trap values,
+so that a read of an uninitialized location could result
+in undefined behavior.
+See <a href="Trap-representations.html#Trap-representations">Trap representations</a>.
 </p>
 
 

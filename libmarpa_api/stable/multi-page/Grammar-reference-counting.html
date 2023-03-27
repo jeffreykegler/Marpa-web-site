@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,17 +25,18 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Grammar reference counting (Libmarpa 8.6.2)</title>
+<title>Grammar reference counting (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Grammar reference counting (Libmarpa 8.6.2)">
-<meta name="keywords" content="Grammar reference counting (Libmarpa 8.6.2)">
+<meta name="description" content="Grammar reference counting (Libmarpa 11.0.5)">
+<meta name="keywords" content="Grammar reference counting (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Grammar-methods.html#Grammar-methods" rel="up" title="Grammar methods">
-<link href="Symbols.html#Symbols" rel="next" title="Symbols">
+<link href="Symbol-methods.html#Symbol-methods" rel="next" title="Symbol methods">
 <link href="Grammar-constructor.html#Grammar-constructor" rel="prev" title="Grammar constructor">
 <style type="text/css">
 <!--
@@ -72,29 +73,31 @@ ul.no-bullet {list-style: none}
 <a name="Grammar-reference-counting"></a>
 <div class="header">
 <p>
-Next: <a href="Symbols.html#Symbols" accesskey="n" rel="next">Symbols</a>, Previous: <a href="Grammar-constructor.html#Grammar-constructor" accesskey="p" rel="prev">Grammar constructor</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Symbol-methods.html#Symbol-methods" accesskey="n" rel="next">Symbol methods</a>, Previous: <a href="Grammar-constructor.html#Grammar-constructor" accesskey="p" rel="prev">Grammar constructor</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Tracking-the-reference-count-of-the-grammar"></a>
-<h3 class="section">11.3 Tracking the reference count of the grammar</h3>
+<h3 class="section">17.3 Tracking the reference count of the grammar</h3>
 <a name="index-grammar-destructor"></a>
 <a name="index-grammar-reference"></a>
 <a name="index-grammar-reference-count"></a>
 
-<dl>
-<dt><a name="index-marpa_005fg_005fref"></a>Function: <em>Marpa_Grammar</em> <strong>marpa_g_ref</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
-<dd><p>Increases the reference count by 1.
+<a name="marpa_005fg_005fref"></a><dl>
+<dt><a name="index-marpa_005fg_005fref"></a>Mutator function: <em>Marpa_Grammar</em> <strong>marpa_g_ref</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
+<dd>
+<p>Increases the reference count of <var>g</var> by 1.
 Not needed by most applications.
 </p>
-<p>Return value:
-On success, the grammar object it was called with;
-<code>NULL</code> on failure.
+<p><strong>Return value</strong>:
+On success, <var>g</var>.
+On hard failure, <code>NULL</code>.
 </p>
 </dd></dl>
 
-<dl>
-<dt><a name="index-marpa_005fg_005funref"></a>Function: <em>void</em> <strong>marpa_g_unref</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
-<dd><p>Decreases the reference count by 1,
+<a name="marpa_005fg_005funref"></a><dl>
+<dt><a name="index-marpa_005fg_005funref"></a>Destructor function: <em>void</em> <strong>marpa_g_unref</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
+<dd>
+<p>Decreases the reference count by 1,
 destroying <var>g</var> once the reference count reaches
 zero.
 </p>

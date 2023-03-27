@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (23 April 2022)
-is for Libmarpa 8.6.2.
+<!-- This manual (27 March 2023)
+is for Libmarpa 11.0.5.
 
-Copyright (C) 2018 Jeffrey Kegler.
+Copyright (C) 2023 Jeffrey Kegler.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Grammar precomputation (Libmarpa 8.6.2)</title>
+<title>Grammar precomputation (Libmarpa 11.0.5)</title>
 
-<meta name="description" content="Grammar precomputation (Libmarpa 8.6.2)">
-<meta name="keywords" content="Grammar precomputation (Libmarpa 8.6.2)">
+<meta name="description" content="Grammar precomputation (Libmarpa 11.0.5)">
+<meta name="keywords" content="Grammar precomputation (Libmarpa 11.0.5)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Grammar-methods.html#Grammar-methods" rel="up" title="Grammar methods">
 <link href="Recognizer-methods.html#Recognizer-methods" rel="next" title="Recognizer methods">
-<link href="Ranks.html#Ranks" rel="prev" title="Ranks">
+<link href="Rank-methods.html#Rank-methods" rel="prev" title="Rank methods">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,62 +73,113 @@ ul.no-bullet {list-style: none}
 <a name="Grammar-precomputation"></a>
 <div class="header">
 <p>
-Previous: <a href="Ranks.html#Ranks" accesskey="p" rel="prev">Ranks</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Previous: <a href="Rank-methods.html#Rank-methods" accesskey="p" rel="prev">Rank methods</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Precomputing-the-Grammar"></a>
-<h3 class="section">11.9 Precomputing the Grammar</h3>
+<h3 class="section">17.8 Precomputing the Grammar</h3>
 
-<dl>
-<dt><a name="index-marpa_005fg_005fprecompute"></a>Function: <em>int</em> <strong>marpa_g_precompute</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
+<a name="marpa_005fg_005fhas_005fcycle"></a><dl>
+<dt><a name="index-marpa_005fg_005fhas_005fcycle"></a>Accessor function: <em>int</em> <strong>marpa_g_has_cycle</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
 <dd>
-<a name="marpa_005fg_005fprecompute"></a><p>Precomputation is necessary for a recognizer to be generated
+<p>On success, returns a boolean which is 1 iff
+<var>g</var> has a cycle.
+Parsing with a grammar that contains a cycle is deprecated.
+See <a href="Cycles.html#Cycles">Cycles</a>.
+</p>
+<p>For diagnostic purposes,
+it is useful to determine which rules are in the cycle.
+<code>marpa_g_rule_is_loop()</code> can be used for for this purpose.
+See <a href="Rule-methods.html#marpa_005fg_005frule_005fis_005floop">marpa_g_rule_is_loop</a>.
+</p>
+<p><strong>Return value</strong>: On success, a boolean.
+On hard failure, -2.
+</p>
+</dd></dl>
+
+<a name="marpa_005fg_005fis_005fprecomputed"></a><dl>
+<dt><a name="index-marpa_005fg_005fis_005fprecomputed"></a>Accessor function: <em>int</em> <strong>marpa_g_is_precomputed</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
+<dd>
+<p><strong>Return value</strong>: On success, a boolean which is 1 iff
+grammar <var>g</var> is precomputed.
+On hard failure, -2.
+</p>
+</dd></dl>
+
+<a name="marpa_005fg_005fprecompute"></a><dl>
+<dt><a name="index-marpa_005fg_005fprecompute"></a>Mutator function: <em>int</em> <strong>marpa_g_precompute</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
+<dd>
+<p>Precomputation involves running a series of grammar checks
+and &ldquo;precomputing&rdquo; some useful information which is kept
+internally to save repeated calculations.
+After precomputation, the grammar is &ldquo;frozen&rdquo; in many respects,
+and many grammar mutators that succeed before precomputation
+will cause hard failures after precomputation.
+Precomputation is necessary for a recognizer to be generated
 from a grammar.
-On success, <code>marpa_g_precompute</code> returns a non-negative
-number to indicate that it precomputed the grammar without
-issues.
-On failure, <code>marpa_g_precompute</code> returns -2.
 </p>
-<p>Precomputation may return one or more events,
-which may be queried using the
+<p>On success,
+and on fully recoverable hard failure,
+does the following:
+</p><ul>
+<li> Precomputes the grammar <var>g</var>.
+</li><li> Clears any events that were in the event queue
+at the beginning of this method call.
+</li><li> Returns zero or more events.
+</li><li> Returns a value as described in this method&rsquo;s
+return value summary.
+</li></ul>
+
+<p>The types of event that this method may return
+are
+<code>MARPA_EVENT_LOOP_RULES</code>,
+<code>MARPA_EVENT_COUNTED_NULLABLE</code>, and
+<code>MARPA_EVENT_NULLING_TERMINAL</code>.
+All of these events occur only on failure.
+Events may be queried using the
 <code>marpa_g_event()</code> method.
-At this point events only occur when failure is reported,
-and events always report issues.
-But application writers should expect future versions
-to have events which are reported on success,
-as well as events which do not represent issues.
+See <a href="Basic-event-accessors.html#marpa_005fg_005fevent">marpa_g_event()</a>.
 </p>
-<p>A <code>MARPA_EVENT_LOOP_RULES</code> event occurs
-when there are infinite loop rules (cycles)
-in the grammar.
-The presence of one or more of these will cause failure
-to be reported,
-but will not prevent the grammar from being precomputed.
+<p>The fully recoverable hard failure is
+<code>MARPA_ERR_GRAMMAR_HAS_CYCLE</code>.
+While this method precomputes the grammar
+for fully recoverable hard failures,
+parsing with a grammar that has a cycle is deprecated.
+Applications should treat
+<code>MARPA_ERR_GRAMMAR_HAS_CYCLE</code>
+as a library-recoverable error.
+A <code>MARPA_ERR_GRAMMAR_HAS_CYCLE</code> error occurs
+iff
+at least one <code>MARPA_EVENT_LOOP_RULES</code> event occurs.
+For more details on cycles,
+see <a href="Cycles.html#Cycles">Cycles</a>.
 </p>
-<p>Each <code>MARPA_EVENT_COUNTED_NULLABLE</code> event is a symbol
-which is a nullable on the right hand side of a sequence
-rule &mdash; a &ldquo;counted&rdquo; symbol.
-The presence of one or more of these will cause failure
-to be reported,
-and will prevent the grammar from being precomputed.
-So that the programmer can fix several at once,
-these failures are delayed until events are created
-for all of the counted nullables.
+<p>The error code <code>MARPA_ERR_COUNTED_NULLABLE</code>
+is library-recoverable.
+This failure occurs when a symbol on the RHS of a sequence rule is
+nullable,
+which Libmarpa does not allow in a grammar.
+Error code <code>MARPA_ERR_COUNTED_NULLABLE</code> occurs iff
+one or more <code>MARPA_EVENT_COUNTED_NULLABLE</code> events occur.
+There is one <code>MARPA_EVENT_COUNTED_NULLABLE</code> event for every symbol
+that is a nullable on the right hand side of a sequence
+rule.
+An application may use these events to inform the user
+of the problematic symbols,
+and this detail may help the user fix the grammar.
 </p>
-<p>Each <code>MARPA_EVENT_NULLING_TERMINAL</code> event is a nulling
-symbol which is also flagged as a terminal.
-Since terminals cannot be of zero length, this is a logical
-impossibility.
-The presence of one or more of these will cause failure
-to be reported,
-and will prevent the grammar from being precomputed.
-So that the programmer can fix several at once,
-the failure is delayed until events are created
-for all of the counted nullables.
+<p>The error code <code>MARPA_ERR_NULLING_TERMINAL</code>
+occurs only if LHS terminals are enabled.
+The LHS terminals feature is deprecated.
+See <a href="LHS-terminals.html#LHS-terminals">LHS terminals</a>.
+Error code <code>MARPA_ERR_NULLING_TERMINAL</code>
+is library-recoverable.
+One or more <code>MARPA_EVENT_NULLING_TERMINAL</code> events will occur iff
+this method fails with error code <code>MARPA_ERR_NULLING_TERMINAL</code>.
+See <a href="Nulling-terminals.html#Nulling-terminals">Nulling terminals</a>.
 </p>
-<p>Precomputation involves freezing
-and then thoroughly checking the grammar.
-Among the reasons for precomputation to fail
+<p>Among the other error codes that may case this
+method to fail
 are the following:
 </p>
 <ul>
@@ -137,73 +189,27 @@ are the following:
 is not the ID of a valid symbol.
 </li><li> <code>MARPA_ERR_START_NOT_LHS</code>: The start symbol is not on the LHS of any rule.
 </li><li> <code>MARPA_ERR_UNPRODUCTIVE_START</code>: The start symbol is not productive.
-</li><li> <code>MARPA_ERR_COUNTED_NULLABLE</code>: A symbol on the RHS of a sequence rule is
-nullable.
-Libmarpa does not allow this.
-</li><li> <code>MARPA_ERR_NULLING_TERMINAL</code>: A terminal is also a nulling symbol.
-Libmarpa does not allow this.
 </li></ul>
 
 <p>More details of these can be found under the
 description of the appropriate code.
 See <a href="External-error-codes.html#External-error-codes">External error codes</a>.
 </p>
-<p><code>marpa_g_precompute()</code> is unusual in that it
-is possible to treat one of its failures as &ldquo;advisory&rdquo;,
-and to proceed with parsing.
-If 
-<code>marpa_g_precompute()</code> fails with an error code
-of <code>MARPA_ERR_GRAMMAR_HAS_CYCLE</code>,
-parsing can proceed, just as it typically would for
-success.
-The grammar will have been precomputed, as
-calling the <code>marpa_g_is_precomputed()</code> method
-will confirm.
+<p><strong>Return value</strong>: On success, a non-negative integer,
+whose value is otherwise unspecified.
+On hard failure, -2.
+For the error code <code>MARPA_ERR_GRAMMAR_HAS_CYCLE</code>,
+the hard failure is fully recoverable.
+For the error codes <code>MARPA_ERR_COUNTED_NULLABLE</code>
+and <code>MARPA_ERR_NULLING_TERMINAL</code>,
+the hard failure is library-recoverable.
 </p>
-<p>Most applications, however,
-will want to simply treat failure
-with <code>MARPA_ERR_GRAMMAR_HAS_CYCLE</code>,
-as simply another failure,
-and fix the cycles before parsing.
-Cycles make a grammar infinitely ambiguous,
-and are considered useless in current
-practice.
-Cycles make processing the grammar less
-efficient, sometimes considerably so.
-Detection of cycles is returned as failure
-because that is by far the convenient thing to do
-for the vast majority of applications.
-</p>
-<p>Return value: On success, a non-negative number.
-On failure, -2.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-marpa_005fg_005fis_005fprecomputed"></a>Function: <em>int</em> <strong>marpa_g_is_precomputed</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
-<dd><p>Return value: On success, 1
-if grammar <var>g</var> is already precomputed,
-0 otherwise.
-On failure, -2.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-marpa_005fg_005fhas_005fcycle"></a>Function: <em>int</em> <strong>marpa_g_has_cycle</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
-<dd><p>This function allows the application to determine if grammar
-<var>g</var> has a cycle.
-As mentioned, most applications will want to treat these
-as fatal errors.
-To determine which rules are in the cycle,
-<code>marpa_g_rule_is_loop()</code> can be used.
-</p>
-<p>Return value: On success, 1 if the grammar has a cycle,
-0 otherwise.
-On failure, -2.
-</p></dd></dl>
+</dd></dl>
 
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Ranks.html#Ranks" accesskey="p" rel="prev">Ranks</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Previous: <a href="Rank-methods.html#Rank-methods" accesskey="p" rel="prev">Rank methods</a>, Up: <a href="Grammar-methods.html#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

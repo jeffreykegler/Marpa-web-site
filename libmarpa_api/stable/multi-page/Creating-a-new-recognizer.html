@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Creating a new recognizer (Libmarpa 11.0.5)</title>
+<title>Creating a new recognizer (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Creating a new recognizer (Libmarpa 11.0.5)">
-<meta name="keywords" content="Creating a new recognizer (Libmarpa 11.0.5)">
+<meta name="description" content="Creating a new recognizer (Libmarpa 11.0.7)">
+<meta name="keywords" content="Creating a new recognizer (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -85,11 +85,17 @@ Next: <a href="Recognizer-reference-counting.html#Recognizer-reference-counting"
 <p>On success, creates a new recognizer and
 increments the reference count of <var>g</var>,
 the base grammar, by one.
-In the new recognizer,
+In the new recognizer, the following will be true:
 </p><ul>
-<li> the reference count will be 1;
-</li><li> the furthest earleme will be 0; and
-</li><li> the values of the latest and current earleme will be unspecified.
+<li> The reference count will be 1.
+</li><li> The furthest earleme will be 0.
+</li><li> The values of the latest and current earleme will be unspecified.
+</li><li> The declaration status of all events will be inherited from
+<var>g</var>, so that the event in the recognizer is declared iff
+the event in <var>g</var> is declared.
+</li><li> The activation status of all events will be inherited from
+<var>g</var>, so that the event in the recognizer is activated iff
+the event in <var>g</var> is activated.
 </li></ul>
 
 <p><strong>Return value</strong>:

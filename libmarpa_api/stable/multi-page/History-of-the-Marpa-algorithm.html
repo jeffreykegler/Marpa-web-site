@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>History of the Marpa algorithm (Libmarpa 11.0.5)</title>
+<title>History of the Marpa algorithm (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="History of the Marpa algorithm (Libmarpa 11.0.5)">
-<meta name="keywords" content="History of the Marpa algorithm (Libmarpa 11.0.5)">
+<meta name="description" content="History of the Marpa algorithm (Libmarpa 11.0.7)">
+<meta name="keywords" content="History of the Marpa algorithm (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -85,19 +85,19 @@ My &ldquo;timeline&rdquo; of the major events in parsing theory
 has a much broader scope,
 and also includes more detail
 about Marpa&rsquo;s development.
-See <a href="Timeline.html#Timeline">Timeline</a>.
+See <a href="Parsing-timeline.html#Parsing-timeline">Parsing timeline</a>.
 </p>
 <ul>
 <li> <strong>1970</strong>:
 Jay Earley invents the algorithm that now bears his
 name
-See <a href="Earley-1970.html#Bibliography_002dEarley_002d1970">Bibliography-Earley-1970</a>.
+See <a href="Earley-1970.html#Earley-1970">Earley 1970</a>.
 
 </li><li> <strong>1991</strong>:
 Joop Leo describes a way to modify Earley&rsquo;s algorithm so that it
 runs in O(n) time for all LR-regular
 grammars.
-See <a href="Leo-1991.html#Bibliography_002dLeo_002d1991">Bibliography-Leo-1991</a>.
+See <a href="Leo-1991.html#Leo-1991">Leo 1991</a>.
 LR-regular is a vast class of grammars, including all the
 LR(k) grammars, all grammars parseable with recursive descent,
 and regular expressions.
@@ -108,7 +108,7 @@ in practical use today, and then some.
 Aycock and Horspool describe a way to do LR(0)
 precomputation
 for Earley&rsquo;s algorithm.
-See <a href="Aycock-and-Horspool-2002.html#Bibliography_002dAycock_002dand_002dHorspool_002d2002">Bibliography-Aycock-and-Horspool-2002</a>.
+See <a href="Aycock-and-Horspool-2002.html#Aycock-and-Horspool-2002">Aycock and Horspool 2002</a>.
 Their method makes Earley&rsquo;s faster in most
 practical situations, but not all.
 In particular, right-recursion remains quadratic in
@@ -122,7 +122,7 @@ Marpa combines the Leo and Aycock-Horspool
 algorithms
 in the process making significant
 changes to both of them.
-See <a href="Kegler-2022.html#Bibliography_002dKegler_002d2022">Bibliography-Kegler-2022</a>.
+See <a href="Marpa-theory-paper.html#Marpa-theory-paper">Marpa theory paper</a>.
 The result preserves the
 best features of both
 and tackles the many remaining

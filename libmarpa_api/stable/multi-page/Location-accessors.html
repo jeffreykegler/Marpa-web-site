@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Location accessors (Libmarpa 11.0.5)</title>
+<title>Location accessors (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Location accessors (Libmarpa 11.0.5)">
-<meta name="keywords" content="Location accessors (Libmarpa 11.0.5)">
+<meta name="description" content="Location accessors (Libmarpa 11.0.7)">
+<meta name="keywords" content="Location accessors (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -188,13 +188,14 @@ and an arbitrary pointer.
 Libmarpa never examines them
 and the application is free to
 use them for its own purposes.
-In an application with a character-per-earleme input model, for example,
+In an application with a codepoint-per-earleme input model, for example,
 the integer value of the Earley set
-can used to store the codepoint of the current character.
+can used to store the current codepoint.
 In a traditional token-per-earleme input model,
 the integer and pointer values could be used to track the string value of the token &ndash;
 the pointer could point to the start of the string,
 and the integer could indicate its length.
+See <a href="The-codepoint_002dper_002dearleme-model.html#The-codepoint_002dper_002dearleme-model">The codepoint-per-earleme model</a>.
 </p>
 <p>The Earley set integer value defaults to -1,
 and the pointer value defaults to <code>NULL</code>.

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,19 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Elizabeth Scott's SPPFs (Libmarpa 11.0.5)</title>
+<title>The codepoint-per-earleme model (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Elizabeth Scott's SPPFs (Libmarpa 11.0.5)">
-<meta name="keywords" content="Elizabeth Scott's SPPFs (Libmarpa 11.0.5)">
+<meta name="description" content="The codepoint-per-earleme model (Libmarpa 11.0.7)">
+<meta name="keywords" content="The codepoint-per-earleme model (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
 <link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Technical-notes.html#Technical-notes" rel="up" title="Technical notes">
-<link href="Data-types-used-by-Libmarpa.html#Data-types-used-by-Libmarpa" rel="next" title="Data types used by Libmarpa">
-<link href="Technical-notes.html#Technical-notes" rel="prev" title="Technical notes">
+<link href="Advanced-input-models.html#Advanced-input-models" rel="up" title="Advanced input models">
+<link href="Support.html#Support" rel="next" title="Support">
+<link href="The-fully-general-input-model.html#The-fully-general-input-model" rel="prev" title="The fully general input model">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -70,22 +70,48 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Elizabeth-Scott_0027s-SPPFs"></a>
+<a name="The-codepoint_002dper_002dearleme-model"></a>
 <div class="header">
 <p>
-Next: <a href="Data-types-used-by-Libmarpa.html#Data-types-used-by-Libmarpa" accesskey="n" rel="next">Data types used by Libmarpa</a>, Previous: <a href="Technical-notes.html#Technical-notes" accesskey="p" rel="prev">Technical notes</a>, Up: <a href="Technical-notes.html#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="The-fully-general-input-model.html#The-fully-general-input-model" accesskey="p" rel="prev">The fully general input model</a>, Up: <a href="Advanced-input-models.html#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Elizabeth-Scott_0027s-SPPFs-1"></a>
-<h3 class="section">26.1 Elizabeth Scott&rsquo;s SPPFs</h3>
+<a name="The-codepoint_002dper_002dearleme-model-1"></a>
+<h3 class="section">27.3 The codepoint-per-earleme model</h3>
 
-<p>One of our most important data structures is what we call a &ldquo;bocage&rdquo;.
-Prof. Scott&rsquo;s work preceded ours,
-and her SPPF structure is our bocage in all essential respects,
-so much so that her excellent writeup serves perfectly
-as documentation for the bocage:
-Scott, Elizabeth. &ldquo;SPPF-style parsing from Earley recognisers.&rdquo; Electronic Notes in Theoretical Computer Science 203.2 (2008): 53-67,
-<a href="https://dinhe.net/~aredridel/.notmine/PDFs/Parsing/SCOTT%2C%20Elizabeth%20-%20SPPF-Style%20Parsing%20From%20Earley%20Recognizers.pdf">https://dinhe.net/~aredridel/.notmine/PDFs/Parsing/SCOTT%2C%20Elizabeth%20-%20SPPF-Style%20Parsing%20From%20Earley%20Recognizers.pdf</a>.
+<p>One variation of the fully general model is
+the
+<a name="index-one_002dcodepoint_002dper_002dearleme-input-model"></a>
+<em>one-codepoint-per-earleme input model</em>,
+usually called the
+<a name="index-codepoint_002dper_002dearleme-input-model"></a>
+<em>codepoint-per-earleme input model</em>.
+</p>
+<p>Most input models may be called
+<a name="index-token_002dper_002dearleme-input-models"></a>
+<em>token-per-earleme input models</em>.
+That is, they are models in which every token
+is exactly one earleme long.
+</p>
+<p>In the codepoint-per-earleme model, every codepoint will be treated as
+being exactly one earleme in length.
+If a token is more than one codepoint
+in length, that token will span earlemes.
+In the codepoint-per-earleme model,
+tokens may be ambiguous, and they may overlap.
+</p>
+<p>When a codepoint-per-earleme model of input is used, there may be
+many earlemes at which no tokens start. For example, in a straightforward
+codepoint-per-earleme implementation of a grammar for a language that
+allows comments, no tokens will start at any earlemes which correspond
+to character locations inside a comment.
+</p>
+<p>Codepoint-per-earleme input model have seen a lot of use,
+but mainly for experimental and toy grammars.
+Their disadvantage is efficiency &mdash; the requirement of one call
+of <code>marpa_r_alternative()</code> for each codepoint can make them
+substantially more expensive than input models which allow multiple
+codepoints per earleme.
 </p>
 
 

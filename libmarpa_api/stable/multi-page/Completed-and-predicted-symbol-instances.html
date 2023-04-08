@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Completed and predicted symbol instances (Libmarpa 11.0.7)</title>
+
+<meta name="description" content="Completed and predicted symbol instances (Libmarpa 11.0.7)">
+<meta name="keywords" content="Completed and predicted symbol instances (Libmarpa 11.0.7)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances" rel="up" title="Event coincidence of symbol instances">
+<link href="Completed-and-expected-symbol-instances.html#Completed-and-expected-symbol-instances" rel="next" title="Completed and expected symbol instances">
+<link href="Nulled-and-expected-symbol-instances.html#Nulled-and-expected-symbol-instances" rel="prev" title="Nulled and expected symbol instances">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Completed-and-predicted-symbol-instances"></a>
+<div class="header">
+<p>
+Next: <a href="Completed-and-expected-symbol-instances.html#Completed-and-expected-symbol-instances" accesskey="n" rel="next">Completed and expected symbol instances</a>, Previous: <a href="Nulled-and-expected-symbol-instances.html#Nulled-and-expected-symbol-instances" accesskey="p" rel="prev">Nulled and expected symbol instances</a>, Up: <a href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Completed-and-predicted-symbol-instances-1"></a>
+<h4 class="subsection">24.10.4 Completed and predicted symbol instances</h4>
+
+<p>A symbol instance cannot trigger both
+a <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+and a <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+event at the same location.
+Call the location, <code>j</code>.
+Coincident events with the types
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+and <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+cannot be triggered by a single symbol instance
+because the symbol instances
+for <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+and <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+cannot be zero-length;
+the symbol instance for the <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+must end at <code>j</code>; and
+the symbol instance for the <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+must start at <code>j</code>.
+That is, if the
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> symbol instance is
+<code>sym</code>@<code>c1</code>-<code>c2</code>
+and the
+<code>MARPA_EVENT_SYMBOL_PREDICTED</code> symbol instance is
+<code>sym</code>@<code>p1</code>-<code>p2</code>
+we must have all of
+</p><ul>
+<li> <code>c1&lt;c2</code>, because the length of
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> symbol instance is non-zero;
+</li><li> <code>c2=j</code>, because the
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> symbol instance must end at
+<code>j</code>; and
+</li><li> <code>j=p1</code>, because the
+<code>MARPA_EVENT_SYMBOL_PREDICTED</code> symbol instance must start at
+<code>j</code>.
+</li></ul>
+<p>so that <code>c1 &lt; p1</code> and
+the two instances
+<code>sym</code>@<code>c1</code>-<code>c2</code> and
+<code>sym</code>@<code>p1</code>-<code>p2</code>
+must be distinct.
+</p>
+
+
+
+</body>
+</html>

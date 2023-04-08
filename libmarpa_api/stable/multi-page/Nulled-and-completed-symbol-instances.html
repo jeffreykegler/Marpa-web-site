@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,19 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Wikipedia (Libmarpa 11.0.5)</title>
+<title>Nulled and completed symbol instances (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Wikipedia (Libmarpa 11.0.5)">
-<meta name="keywords" content="Wikipedia (Libmarpa 11.0.5)">
+<meta name="description" content="Nulled and completed symbol instances (Libmarpa 11.0.7)">
+<meta name="keywords" content="Nulled and completed symbol instances (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
 <link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Annotated-bibliography.html#Annotated-bibliography" rel="up" title="Annotated bibliography">
-<link href="Acknowledgements.html#Acknowledgements" rel="next" title="Acknowledgements">
-<link href="Leo-1991.html#Leo-1991" rel="prev" title="Leo 1991">
+<link href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances" rel="up" title="Event coincidence of symbol instances">
+<link href="Nulled-and-predicted-symbol-instances.html#Nulled-and-predicted-symbol-instances" rel="next" title="Nulled and predicted symbol instances">
+<link href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances" rel="prev" title="Event coincidence of symbol instances">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -70,25 +70,34 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Wikipedia"></a>
+<a name="Nulled-and-completed-symbol-instances"></a>
 <div class="header">
 <p>
-Previous: <a href="Leo-1991.html#Leo-1991" accesskey="p" rel="prev">Leo 1991</a>, Up: <a href="Annotated-bibliography.html#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Nulled-and-predicted-symbol-instances.html#Nulled-and-predicted-symbol-instances" accesskey="n" rel="next">Nulled and predicted symbol instances</a>, Previous: <a href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances" accesskey="p" rel="prev">Event coincidence of symbol instances</a>, Up: <a href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Wikipedia-1"></a>
-<h3 class="section">32.10 Wikipedia</h3>
+<a name="Nulled-and-completed-symbol-instances-1"></a>
+<h4 class="subsection">24.10.1 Nulled and completed symbol instances</h4>
 
-<p>Wikipedia&rsquo;s article on Backus-Naur form is
-<a href="http://en.wikipedia.org/wiki/Backus-Naur_form">http://en.wikipedia.org/wiki/Backus-Naur_form</a>.
-It&rsquo;s a great place to start if you don&rsquo;t know the
-basics of grammars and parsing.
-As Wikipedia points out,
-BNF might better be called Panini-Backus Form.
-The grammarian Panini
-gave a precise description of Sanskrit
-more than 23 centuries earlier in India
-using a similar notation.
+<p>A symbol instance cannot trigger both
+a <code>MARPA_EVENT_SYMBOL_NULLED</code>
+and a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+at the same location.
+This is because a symbol instance must be zero-length
+to trigger a <code>MARPA_EVENT_SYMBOL_NULLED</code> event,
+but must be of non-zero length
+to trigger a
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+event.
+That is, if the symbol instance is
+<code>sym</code>@<code>start</code>-<code>end</code>,
+a <code>MARPA_EVENT_SYMBOL_NULLED</code> event can trigger only
+if <code>start=end</code>,
+while the
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+event
+can trigger
+only if <code>start &lt; end</code>.
 </p>
 
 

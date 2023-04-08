@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Trees (Libmarpa 11.0.5)</title>
+<title>Trees (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Trees (Libmarpa 11.0.5)">
-<meta name="keywords" content="Trees (Libmarpa 11.0.5)">
+<meta name="description" content="Trees (Libmarpa 11.0.7)">
+<meta name="keywords" content="Trees (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -134,6 +134,9 @@ In the following list of definitions and assertions, let
 <a name="index-instance-_0028of-a-symbol_0029"></a>
 <em>instance</em> of the symbol with ID <code>sym</code>
 starting at <code>start</code> and ending at <code>end</code>.
+We often write this as
+<a name="index-_0040_002dnotation-for-symbol-instance"></a>
+<code>sym</code>@<code>start</code>-<code>end</code>.
 </li><li> We say that <code>nd</code> is an
 <a name="index-instance-_0028of-a-symbol_0029-1"></a>
 <em>instance</em> of the symbol with ID <code>sym</code> at location <code>end</code>.
@@ -242,6 +245,9 @@ In that case,
 we say that <code>nd</code> is an instance of
 <var>r</var> starting at <code>start</code> and ending
 at <code>end</code>.
+We often write this as
+<a name="index-_0040_002dnotation-for-rule-instance"></a>
+<code>r</code>@<code>start</code>-<code>end</code>.
 We also say that <code>nd</code> is an instance of
 <var>r</var> at <code>end</code> or, simply,
 that <code>nd</code> is an instance of <var>r</var>.
@@ -253,6 +259,9 @@ In that case,
 we say that <code>nd</code> is an instance of
 <var>r</var> starting at <code>start</code> and ending
 at <code>end</code>.
+We often write this as
+<a name="index-_0040_002dnotation-for-sequence-instance"></a>
+<code>r</code>@<code>start</code>-<code>end</code>.
 We also say that <code>nd</code> is an instance of
 <var>r</var> at <code>end</code> or, simply,
 that <code>nd</code> is an instance of <var>r</var>.
@@ -263,6 +272,9 @@ we say that <code>sym</code> is
 <a name="index-nulled-_0028of-a-symbol_0029"></a>
 <em>nulled</em> at location <code>end</code> or, simply,
 that the symbol <code>sym</code> is nulled.
+We can write this as
+<a name="index-_0040_002dnotation-for-nulled-instance"></a>
+<code>nulled</code>@<code>end</code>-<code>end</code>.
 </li></ul>
 
 <p>Let <var>nd1</var> and <var>nd2</var> be two nodes.

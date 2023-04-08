@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,19 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Kegler 2022 (Libmarpa 11.0.5)</title>
+<title>Nulled and expected symbol instances (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Kegler 2022 (Libmarpa 11.0.5)">
-<meta name="keywords" content="Kegler 2022 (Libmarpa 11.0.5)">
+<meta name="description" content="Nulled and expected symbol instances (Libmarpa 11.0.7)">
+<meta name="keywords" content="Nulled and expected symbol instances (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
 <link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Annotated-bibliography.html#Annotated-bibliography" rel="up" title="Annotated bibliography">
-<link href="Timeline.html#Timeline" rel="next" title="Timeline">
-<link href="Grune-and-Jacobs-2008.html#Grune-and-Jacobs-2008" rel="prev" title="Grune and Jacobs 2008">
+<link href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances" rel="up" title="Event coincidence of symbol instances">
+<link href="Completed-and-predicted-symbol-instances.html#Completed-and-predicted-symbol-instances" rel="next" title="Completed and predicted symbol instances">
+<link href="Nulled-and-predicted-symbol-instances.html#Nulled-and-predicted-symbol-instances" rel="prev" title="Nulled and predicted symbol instances">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -70,20 +70,35 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Kegler-2022"></a>
+<a name="Nulled-and-expected-symbol-instances"></a>
 <div class="header">
 <p>
-Next: <a href="Timeline.html#Timeline" accesskey="n" rel="next">Timeline</a>, Previous: <a href="Grune-and-Jacobs-2008.html#Grune-and-Jacobs-2008" accesskey="p" rel="prev">Grune and Jacobs 2008</a>, Up: <a href="Annotated-bibliography.html#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Completed-and-predicted-symbol-instances.html#Completed-and-predicted-symbol-instances" accesskey="n" rel="next">Completed and predicted symbol instances</a>, Previous: <a href="Nulled-and-predicted-symbol-instances.html#Nulled-and-predicted-symbol-instances" accesskey="p" rel="prev">Nulled and predicted symbol instances</a>, Up: <a href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Kegler-2022-1"></a>
-<h3 class="section">32.7 Kegler 2022</h3>
-<a name="Bibliography_002dKegler_002d2022"></a>
-<p>My writeup of the theory behind Marpa,
-with proofs of correctness and of my complexity claims,
-was first made public in 2013.
-It was updated in 2022,
-and can be found on <code>arxiv.org</code> (<a href="https://arxiv.org/abs/1910.08129">https://arxiv.org/abs/1910.08129</a>).
+<a name="Nulled-and-expected-symbol-instances-1"></a>
+<h4 class="subsection">24.10.3 Nulled and expected symbol instances</h4>
+
+<p>A symbol instance cannot trigger both
+a <code>MARPA_EVENT_SYMBOL_NULLED</code>
+and a <code>MARPA_EVENT_SYMBOL_EXPECTED</code>
+event at the same location.
+This is because a symbol instance must be zero-length
+to trigger a <code>MARPA_EVENT_SYMBOL_NULLED</code> event,
+but only terminal symbols
+will trigger a
+<code>MARPA_EVENT_SYMBOL_EXPECTED</code>
+event,
+and termnal symbols cannot be zero-length.
+That is, if the symbol instance is
+<code>sym</code>@<code>start</code>-<code>end</code>,
+a <code>MARPA_EVENT_SYMBOL_NULLED</code> event will trigger only
+if <code>start=end</code>,
+while the
+<code>MARPA_EVENT_SYMBOL_EXPECTED</code>
+event
+will trigger
+only if <code>start &lt; end</code>.
 </p>
 
 

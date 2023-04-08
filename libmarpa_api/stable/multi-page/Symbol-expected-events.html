@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Symbol expected events (Libmarpa 11.0.5)</title>
+<title>Symbol expected events (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Symbol expected events (Libmarpa 11.0.5)">
-<meta name="keywords" content="Symbol expected events (Libmarpa 11.0.5)">
+<meta name="description" content="Symbol expected events (Libmarpa 11.0.7)">
+<meta name="keywords" content="Symbol expected events (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Events.html#Events" rel="up" title="Events">
-<link href="Event-codes.html#Event-codes" rel="next" title="Event codes">
+<link href="Recognizer-per_002dsymbol-events.html#Recognizer-per_002dsymbol-events" rel="next" title="Recognizer per-symbol events">
 <link href="Prediction-events.html#Prediction-events" rel="prev" title="Prediction events">
 <style type="text/css">
 <!--
@@ -73,46 +73,56 @@ ul.no-bullet {list-style: none}
 <a name="Symbol-expected-events"></a>
 <div class="header">
 <p>
-Next: <a href="Event-codes.html#Event-codes" accesskey="n" rel="next">Event codes</a>, Previous: <a href="Prediction-events.html#Prediction-events" accesskey="p" rel="prev">Prediction events</a>, Up: <a href="Events.html#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Recognizer-per_002dsymbol-events.html#Recognizer-per_002dsymbol-events" accesskey="n" rel="next">Recognizer per-symbol events</a>, Previous: <a href="Prediction-events.html#Prediction-events" accesskey="p" rel="prev">Prediction events</a>, Up: <a href="Events.html#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Symbol-expected-events-1"></a>
-<h3 class="section">24.6 Symbol expected events</h3>
+<h3 class="section">24.7 Symbol expected events</h3>
 
+<p>This section contains methods
+for dealing with MARPA_EVENT_SYMBOL_EXPECTED
+events.
+See <a href="Event-codes.html#MARPA_005fEVENT_005fSYMBOL_005fEXPECTED">MARPA_EVENT_SYMBOL_EXPECTED</a>.
+</p>
 <a name="marpa_005fr_005fexpected_005fsymbol_005fevent_005fset"></a><dl>
 <dt><a name="index-marpa_005fr_005fexpected_005fsymbol_005fevent_005fset"></a>Mutator function: <em>int</em> <strong>marpa_r_expected_symbol_event_set</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Symbol_ID <var>symbol_id</var>,   int <var>value</var>)</em></dt>
 <dd>
-<p>Libmarpa can be set up
-to generate an
-<a name="index-expected-symbol-event"></a>
-<a name="index-event_002c-expected-symbol"></a>
-<em>expected symbol event</em>
-(<code>MARPA_EVENT_SYMBOL_EXPECTED</code>)
-when the symbol with ID <var>symbol_id</var>
-is acceptable as a terminal at the current earleme.
-Note that the symbol expected event is only generated if
-the symbol with ID <var>symbol_id</var> is acceptable as terminal.
+<p>On success, if <var>value</var> is 1, does the following:
+</p><ul>
+<li> Declares
+the symbol expected event for
+the symbol with ID <var>symbol_id</var>,
+if it is not already declared.
+</li><li> Activates the symbol expected event for
+the symbol with ID <var>symbol_id</var>.
+</li><li> Returns 1.
+</li></ul>
+
+<p>On success, if <var>value</var> is 0, does the following:
+</p><ul>
+<li> Deactivates the symbol expected event for
+the symbol with ID <var>symbol_id</var>.
+</li><li> Returns 0.
+</li></ul>
+
+<p>Expected symbol events only trigger if
+the symbol with ID <var>symbol_id</var> is expected as terminal.
+This method will succeed if
+the symbol with ID <var>symbol_id</var> is not a terminal,
+but the event subtype
+that this method declared will never trigger.
+</p>
+<p>The same symbol may be acceptable as both a
+terminal and a non-terminal if the
+deprecated LHS terminals feature is in use.
 If the symbol with ID <var>symbol_id</var> is expected
 at the current earleme
 as a non-terminal,
 but is not acceptable as a terminal,
 an expected symbol event will not be triggered
 at the current earleme.
+See <a href="LHS-terminals.html#LHS-terminals">LHS terminals</a>.
 </p>
-<p>On success, if <var>value</var> is 1,
-</p><ul>
-<li> activates the symbol expected event for
-the symbol with ID <var>symbol_id</var> in recognizer <var>r</var>; and
-</li><li> returns 1.
-</li></ul>
-
-<p>On success, if <var>value</var> is 0,
-</p><ul>
-<li> deactivates the symbol expected event for
-the symbol with ID <var>symbol_id</var> in recognizer <var>r</var>; and
-</li><li> returns 0.
-</li></ul>
-
 <p>Hard fails if <var>value</var> is not a boolean.
 Hard fails if <var>value</var> is 1,
 and <var>symbol_id</var> is the ID of a nulling symbol,
@@ -126,6 +136,11 @@ On hard failure,
 -2.
 </p></dd></dl>
 
+<hr>
+<div class="header">
+<p>
+Next: <a href="Recognizer-per_002dsymbol-events.html#Recognizer-per_002dsymbol-events" accesskey="n" rel="next">Recognizer per-symbol events</a>, Previous: <a href="Prediction-events.html#Prediction-events" accesskey="p" rel="prev">Prediction events</a>, Up: <a href="Events.html#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

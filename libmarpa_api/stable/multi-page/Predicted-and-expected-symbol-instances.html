@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -23,16 +23,21 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
-<!-- This file redirects to the location of a node or anchor -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Bibliography-Leo-1991 (Libmarpa 11.0.5)</title>
+<title>Predicted and expected symbol instances (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Bibliography-Leo-1991 (Libmarpa 11.0.5)">
-<meta name="keywords" content="Bibliography-Leo-1991 (Libmarpa 11.0.5)">
+<meta name="description" content="Predicted and expected symbol instances (Libmarpa 11.0.7)">
+<meta name="keywords" content="Predicted and expected symbol instances (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances" rel="up" title="Event coincidence of symbol instances">
+<link href="Event-coincidence-of-symbols.html#Event-coincidence-of-symbols" rel="next" title="Event coincidence of symbols">
+<link href="Completed-and-expected-symbol-instances.html#Completed-and-expected-symbol-instances" rel="prev" title="Completed and expected symbol instances">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -61,11 +66,38 @@ ul.no-bullet {list-style: none}
 -->
 </style>
 
-<meta http-equiv="Refresh" content="0; url=Leo-1991.html#Bibliography_002dLeo_002d1991">
 
 </head>
 
 <body lang="en">
+<a name="Predicted-and-expected-symbol-instances"></a>
+<div class="header">
+<p>
+Previous: <a href="Completed-and-expected-symbol-instances.html#Completed-and-expected-symbol-instances" accesskey="p" rel="prev">Completed and expected symbol instances</a>, Up: <a href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Predicted-and-expected-symbol-instances-1"></a>
+<h4 class="subsection">24.10.6 Predicted and expected symbol instances</h4>
 
-<p>The node you are looking for is at <a href="Leo-1991.html#Bibliography_002dLeo_002d1991">Bibliography-Leo-1991</a>.</p>
+<p>The one case where a single symbol instance can trigger
+events of two different types at the same parse location is
+that of the <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+and <code>MARPA_EVENT_SYMBOL_EXPECTED</code> events.
+That is,
+</p><ul>
+<li> if <code>j</code> is a parse location;
+</li><li> <code>sym</code> is the postdot symbol in an
+Earley item in the Earley set at <code>j</code>;
+</li><li> <code>sym</code> is a terminal; and
+</li><li> both event subtypes are activated,
+</li></ul>
+<p>then both a
+<code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+and a <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event
+will trigger at location <code>start</code>.
+</p>
+
+
+
 </body>
+</html>

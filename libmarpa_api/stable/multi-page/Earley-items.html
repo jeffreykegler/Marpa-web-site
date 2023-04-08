@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Earley items (Libmarpa 11.0.7)</title>
+
+<meta name="description" content="Earley items (Libmarpa 11.0.7)">
+<meta name="keywords" content="Earley items (Libmarpa 11.0.7)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Terms.html#Terms" rel="up" title="Terms">
+<link href="Application-and-diagnostic-behavior.html#Application-and-diagnostic-behavior" rel="next" title="Application and diagnostic behavior">
+<link href="Ambiguity.html#Ambiguity" rel="prev" title="Ambiguity">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Earley-items"></a>
+<div class="header">
+<p>
+Next: <a href="Application-and-diagnostic-behavior.html#Application-and-diagnostic-behavior" accesskey="n" rel="next">Application and diagnostic behavior</a>, Previous: <a href="Ambiguity.html#Ambiguity" accesskey="p" rel="prev">Ambiguity</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Earley-items-1"></a>
+<h3 class="section">5.13 Earley items</h3>
+
+<p>We assume knowledge of Earley&rsquo;s algorithm.
+This section is intended as a reminder,
+and to set out our choices for notation and
+terminology.
+</p>
+<p>A
+<a name="index-dotted-rule"></a>
+<em>dotted rule</em>
+is a duple of rule and
+position in the rule.
+The position must be an non-negative integer
+that is not greater than the length of the rule.
+For example,
+</p><div class="display">
+<pre class="display">     [ [ A ::= X Y Z ], 2 ]      (DR1)
+</pre></div>
+<p>is a dotted rule
+whose rule is
+<code>[ A ::= X Y Z ]</code> and whose position is 2.
+More often a dotted rule is written
+with the position marked in the RHS of the rule.
+Here we use &ldquo;&bull;&rdquo; as our marker, so that
+in <code>(DR1)</code> the &ldquo;&bull;&rdquo; would come after
+the 2nd symbol on the RHS,
+and <code>(DR1)</code> would be written
+</p><div class="display">
+<pre class="display">     [ A ::= X Y &bull; Z ].
+</pre></div>
+<p>Traditionally the marker is a raised dot,
+and this is where the term &ldquo;dotted rule&rdquo;
+comes from.
+The position of the dotted rule is almost always
+called the
+<a name="index-dot-position"></a>
+<em>dot position</em>.
+</p>
+<p>An
+<a name="index-Earley-item"></a>
+<em>Earley item</em>
+is a triple of dotted rule, origin
+and current parse location.<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
+The Earley item makes a statement about the progress
+of a parse.
+The
+<a name="index-origin-_0028in-an-Earley-item_0029"></a>
+<em>origin</em>
+is the parse location where recognition of the
+dotted rule begins.
+The
+<a name="index-current-location-_0028in-an-Earley-item_0029"></a>
+<em>current location</em>
+is the parse location which recognition of the dotted rule
+has reached.
+Symbols before the dot position of the dotted rule have been
+recognized,
+and symbols after the dot position of the dotted rule have yet
+to be recognized.
+</p>
+<p>For example,
+in the Earley item
+</p><div class="display">
+<pre class="display">     [ [ A ::= X Y &bull; Z ], 7, 42],
+</pre></div>
+<p>the dotted rule <code>[ A ::= X Y &bull; Z ]</code> was recognized
+as far as the dot position, starting at parse location 7
+and ending at parse location 42.
+More precisely,
+</p><ul>
+<li> the rule <code>[ A ::= X Y Z ]</code> was expected
+    beginning at parse location 7;
+</li><li> the string of symbols &ldquo;<code>X Y</code>&rdquo; has been recognized
+    starting at parse location 7,
+    which implies that the symbol <code>X</code> has been recognized
+    starting at parse location 7;
+</li><li> the string of symbols &ldquo;<code>X Y</code>&rdquo; has been recognized
+    ending at parse location 42,
+    which implies that the symbol <code>Y</code> has been recognized
+    ending at parse location 42; and
+</li><li> the symbol <code>Z</code> has yet to recognized,
+    but is expected starting at parse location 42.
+</li></ul>
+
+<p>The Earley set at location <code>j</code>
+is the set of Earley items whose current location is <code>j</code>.
+For example, the Earley item
+<code>[ [ A ::= X Y &bull; Z ], 7, 42]</code>
+is in the Earley set at location 42.
+</p>
+<p>We say that a dotted rule is
+<a name="index-completed-dotted-rule"></a>
+<em>completed</em>
+iff its dot position is after the last symbol.
+We say that an Earley item is
+<a name="index-completed-Earley-item"></a>
+<em>completed</em>
+iff its dotted rule is completed.
+For example, the Earley item
+</p><div class="display">
+<pre class="display">     [ [ A ::= X Y Z &bull; ], 7, 50],
+</pre></div>
+<p>is completed.
+A completed dotted rule is also called a
+<a name="index-completion-_0028dotted-rule_0029"></a>
+<em>completion</em>.
+Similarly, a completed Earley item is also called a
+<a name="index-completion-_0028Earley-item_0029"></a>
+<em>completion</em>.
+</p>
+<p>We say that a dotted rule is
+<a name="index-predicted-dotted-rule"></a>
+<em>predicted</em>
+iff its dot position is before the first symbol.
+We say that an Earley item is
+<a name="index-predicted-Earley-item"></a>
+<em>predicted</em>
+iff its dotted rule is predicted.
+For example, the Earley item
+</p><div class="display">
+<pre class="display">     [ [ A ::= &bull; X Y Z ], 7, 7],
+</pre></div>
+<p>is predicted.
+A predicted dotted rule is also called a
+<a name="index-prediction-_0028dotted-rule_0029"></a>
+<em>prediction</em>.
+Similarly, a predicted Earley item is also called a
+<a name="index-prediction-_0028Earley-item_0029"></a>
+<em>prediction</em>.
+</p>
+<p>The
+<a name="index-postdot-symbol-_0028of-a-dotted-rule_0029"></a>
+<em>postdot symbol</em>
+of a dotted rule is the RHS symbol after the
+dot position.
+For example, in the dotted rule,
+</p><div class="display">
+<pre class="display">     [ A ::= X Y &bull; Z ]
+</pre></div>
+<p>the postdot symbol is <code>Z</code>.
+If the dotted rule is a completion,
+its postdot symbol is not defined.
+</p>
+<p>The
+<a name="index-postdot-symbol-_0028of-an-Earley-item_0029"></a>
+<em>postdot symbol</em>
+of an Earley item
+is the postdot symbol of its dotted rule.
+The postdot symbol of an Earley item is an
+<a name="index-expected-symbol"></a>
+<em>expected symbol</em>
+at its current location.
+For example,
+the Earley item
+</p><div class="display">
+<pre class="display">     [ [ A ::= X Y &bull; Z ], 7, 42],
+</pre></div>
+<p>indicates that the symbol <code>Z</code>
+is expected at location 42.
+</p>
+<p>Let <code>sym</code> be a symbol,
+and let <code>j</code> be a parse location.
+Unless <code>sym</code> is expected at <code>j</code>,
+that is, unless <code>sym</code> is a postdot symbol of some Earley
+item in the Earley set at <code>j</code>,
+<code>sym</code> will be rejected by the
+<code>marpa_r_alternative()</code> method
+at current location <code>j</code>.
+See <a href="Recognizer-life-cycle-mutators.html#marpa_005fr_005falternative">marpa_r_alternative</a>.
+</p>
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<p>Those interested in details of notation
+    may notice that we
+    include current location in the Earley item
+    tuple, contrary to the tradition.
+    We develop our notation more formally,
+    and explain our reasons
+    for the deviation from tradition,
+    on pages 5-7 of
+    <a href="https://arxiv.org/abs/2303.04093v1">https://arxiv.org/abs/2303.04093v1</a>.
+</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Application-and-diagnostic-behavior.html#Application-and-diagnostic-behavior" accesskey="n" rel="next">Application and diagnostic behavior</a>, Previous: <a href="Ambiguity.html#Ambiguity" accesskey="p" rel="prev">Ambiguity</a>, Up: <a href="Terms.html#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

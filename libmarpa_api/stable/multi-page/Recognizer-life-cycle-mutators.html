@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Recognizer life cycle mutators (Libmarpa 11.0.5)</title>
+<title>Recognizer life cycle mutators (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Recognizer life cycle mutators (Libmarpa 11.0.5)">
-<meta name="keywords" content="Recognizer life cycle mutators (Libmarpa 11.0.5)">
+<meta name="description" content="Recognizer life cycle mutators (Libmarpa 11.0.7)">
+<meta name="keywords" content="Recognizer life cycle mutators (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -90,9 +90,9 @@ The ID of the first Earley set is 0,
 and it is located at earleme 0.
 </li><li> Leaves the latest, current and furthest earlemes all at 0.
 </li><li> Clears any events that were in the event queue before this method was called.
-</li><li> If this method exhausts the parse, generates a <code>MARPA_EVENT_EXHAUSTED</code> event.
+</li><li> If this method exhausts the parse, triggers a <code>MARPA_EVENT_EXHAUSTED</code> event.
     See <a href="Exhaustion.html#Exhaustion">Exhaustion</a>.
-</li><li> May generate one or more <code>MARPA_EVENT_SYMBOL_NULLED</code>,
+</li><li> May trigger one or more <code>MARPA_EVENT_SYMBOL_NULLED</code>,
     <code>MARPA_EVENT_SYMBOL_PREDICTED</code>, or <code>MARPA_EVENT_SYMBOL_EXPECTED</code> events.
     See <a href="Events.html#Events">Events</a>.
 </li></ul>
@@ -262,13 +262,13 @@ a call to
 <code>marpa_r_earleme_complete()</code>.
 </li><li> Clears the event queue of any events that
 occured before this method was called.
-</li><li> May generate one or more <code>MARPA_EVENT_SYMBOL_COMPLETED</code>,
+</li><li> May trigger one or more <code>MARPA_EVENT_SYMBOL_COMPLETED</code>,
     <code>MARPA_EVENT_SYMBOL_NULLED</code>, <code>MARPA_EVENT_SYMBOL_PREDICTED</code>,
     or <code>MARPA_EVENT_SYMBOL_EXPECTED</code> events.
     See <a href="Events.html#Events">Events</a>.
 </li><li> If an application-settable threshold
 on the number of Earley items has been reached or exceeded,
-generates a <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event.
+triggers a <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event.
 Often, the application will want to treat this event
 as if it were a ancestry-recoverable
 failure.
@@ -355,7 +355,8 @@ as parse errors.
 They may wish to ignore exhaustion on method success
 at the end of input.
 </li></ul>
-<p><strong>Return value</strong>:  On success, the number of events generated.
+<p><strong>Return value</strong>:  On success, the number of events
+in the event queue when the method call returns.
 On hard failure, -2.
 Hard failure with the code
 <code>MARPA_ERR_PARSE_EXHAUSTED</code>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Top (Libmarpa 11.0.5)</title>
+<title>Top (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Top (Libmarpa 11.0.5)">
-<meta name="keywords" content="Top (Libmarpa 11.0.5)">
+<meta name="description" content="Top (Libmarpa 11.0.7)">
+<meta name="keywords" content="Top (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -69,7 +69,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">Libmarpa 11.0.5</h1>
+<h1 class="settitle" align="center">Libmarpa 11.0.7</h1>
+
 
 
 
@@ -103,7 +104,8 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Traversal-1" href="Traversal.html#Traversal">5.10 Traversal</a></li>
     <li><a name="toc-Semantics-terms-1" href="Semantics-terms.html#Semantics-terms">5.11 Semantics terms</a></li>
     <li><a name="toc-Ambiguity-1" href="Ambiguity.html#Ambiguity">5.12 Ambiguity</a></li>
-    <li><a name="toc-Application-and-diagnostic-behavior-1" href="Application-and-diagnostic-behavior.html#Application-and-diagnostic-behavior">5.13 Application and diagnostic behavior</a></li>
+    <li><a name="toc-Earley-items-1" href="Earley-items.html#Earley-items">5.13 Earley items</a></li>
+    <li><a name="toc-Application-and-diagnostic-behavior-1" href="Application-and-diagnostic-behavior.html#Application-and-diagnostic-behavior">5.14 Application and diagnostic behavior</a></li>
   </ul></li>
   <li><a name="toc-Architecture-1" href="Architecture.html#Architecture">6 Architecture</a>
   <ul class="no-bullet">
@@ -228,12 +230,24 @@ ul.no-bullet {list-style: none}
   <li><a name="toc-Events-1" href="Events.html#Events">24 Events</a>
   <ul class="no-bullet">
     <li><a name="toc-Overview-5" href="Events-overview.html#Events-overview">24.1 Overview</a></li>
-    <li><a name="toc-Basic-event-accessors-1" href="Basic-event-accessors.html#Basic-event-accessors">24.2 Basic event accessors</a></li>
-    <li><a name="toc-Completion-events-1" href="Completion-events.html#Completion-events">24.3 Completion events</a></li>
-    <li><a name="toc-Symbol-nulled-events-1" href="Symbol-nulled-events.html#Symbol-nulled-events">24.4 Symbol nulled events</a></li>
-    <li><a name="toc-Prediction-events-1" href="Prediction-events.html#Prediction-events">24.5 Prediction events</a></li>
-    <li><a name="toc-Symbol-expected-events-1" href="Symbol-expected-events.html#Symbol-expected-events">24.6 Symbol expected events</a></li>
-    <li><a name="toc-Event-codes-1" href="Event-codes.html#Event-codes">24.7 Event codes</a></li>
+    <li><a name="toc-Event-codes-1" href="Event-codes.html#Event-codes">24.2 Event codes</a></li>
+    <li><a name="toc-Basic-event-accessors-1" href="Basic-event-accessors.html#Basic-event-accessors">24.3 Basic event accessors</a></li>
+    <li><a name="toc-Completion-events-1" href="Completion-events.html#Completion-events">24.4 Completion events</a></li>
+    <li><a name="toc-Symbol-nulled-events-1" href="Symbol-nulled-events.html#Symbol-nulled-events">24.5 Symbol nulled events</a></li>
+    <li><a name="toc-Prediction-events-1" href="Prediction-events.html#Prediction-events">24.6 Prediction events</a></li>
+    <li><a name="toc-Symbol-expected-events-1" href="Symbol-expected-events.html#Symbol-expected-events">24.7 Symbol expected events</a></li>
+    <li><a name="toc-Recognizer-per_002dsymbol-events-1" href="Recognizer-per_002dsymbol-events.html#Recognizer-per_002dsymbol-events">24.8 Recognizer per-symbol events</a></li>
+    <li><a name="toc-Tentative-events-1" href="Tentative-events.html#Tentative-events">24.9 Tentative events</a></li>
+    <li><a name="toc-Event-coincidence-of-symbol-instances-1" href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances">24.10 Event coincidence of symbol instances</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Nulled-and-completed-symbol-instances-1" href="Nulled-and-completed-symbol-instances.html#Nulled-and-completed-symbol-instances">24.10.1 Nulled and completed symbol instances</a></li>
+      <li><a name="toc-Nulled-and-predicted-symbol-instances-1" href="Nulled-and-predicted-symbol-instances.html#Nulled-and-predicted-symbol-instances">24.10.2 Nulled and predicted symbol instances</a></li>
+      <li><a name="toc-Nulled-and-expected-symbol-instances-1" href="Nulled-and-expected-symbol-instances.html#Nulled-and-expected-symbol-instances">24.10.3 Nulled and expected symbol instances</a></li>
+      <li><a name="toc-Completed-and-predicted-symbol-instances-1" href="Completed-and-predicted-symbol-instances.html#Completed-and-predicted-symbol-instances">24.10.4 Completed and predicted symbol instances</a></li>
+      <li><a name="toc-Completed-and-expected-symbol-instances-1" href="Completed-and-expected-symbol-instances.html#Completed-and-expected-symbol-instances">24.10.5 Completed and expected symbol instances</a></li>
+      <li><a name="toc-Predicted-and-expected-symbol-instances-1" href="Predicted-and-expected-symbol-instances.html#Predicted-and-expected-symbol-instances">24.10.6 Predicted and expected symbol instances</a></li>
+    </ul></li>
+    <li><a name="toc-Event-coincidence-of-symbols-1" href="Event-coincidence-of-symbols.html#Event-coincidence-of-symbols">24.11 Event coincidence of symbols</a></li>
   </ul></li>
   <li><a name="toc-Error-methods_002c-macros-and-codes" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">25 Error methods, macros and codes</a>
   <ul class="no-bullet">
@@ -244,17 +258,17 @@ ul.no-bullet {list-style: none}
   </ul></li>
   <li><a name="toc-Technical-notes-1" href="Technical-notes.html#Technical-notes">26 Technical notes</a>
   <ul class="no-bullet">
-    <li><a name="toc-Elizabeth-Scott_0027s-SPPFs-1" href="Elizabeth-Scott_0027s-SPPFs.html#Elizabeth-Scott_0027s-SPPFs">26.1 Elizabeth Scott&rsquo;s SPPFs</a></li>
-    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="Data-types-used-by-Libmarpa.html#Data-types-used-by-Libmarpa">26.2 Data types used by Libmarpa</a></li>
-    <li><a name="toc-Why-so-many-time-objects_003f" href="Why-so-many-time-objects.html#Why-so-many-time-objects">26.3 Why so many time objects?</a></li>
-    <li><a name="toc-Numbered-objects-2" href="Design-of-numbered-objects.html#Design-of-numbered-objects">26.4 Numbered objects</a></li>
-    <li><a name="toc-Trap-representations-1" href="Trap-representations.html#Trap-representations">26.5 Trap representations</a></li>
-    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="Out_002dof_002dmemory-handling.html#Out_002dof_002dmemory-handling">26.6 Out-of-memory handling</a></li>
+    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="Data-types-used-by-Libmarpa.html#Data-types-used-by-Libmarpa">26.1 Data types used by Libmarpa</a></li>
+    <li><a name="toc-Why-so-many-time-objects_003f" href="Why-so-many-time-objects.html#Why-so-many-time-objects">26.2 Why so many time objects?</a></li>
+    <li><a name="toc-Numbered-objects-2" href="Design-of-numbered-objects.html#Design-of-numbered-objects">26.3 Numbered objects</a></li>
+    <li><a name="toc-Trap-representations-1" href="Trap-representations.html#Trap-representations">26.4 Trap representations</a></li>
+    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="Out_002dof_002dmemory-handling.html#Out_002dof_002dmemory-handling">26.5 Out-of-memory handling</a></li>
   </ul></li>
   <li><a name="toc-Advanced-input-models-1" href="Advanced-input-models.html#Advanced-input-models">27 Advanced input models</a>
   <ul class="no-bullet">
     <li><a name="toc-The-dense-variable_002dlength-token-model-1" href="The-dense-variable_002dlength-token-model.html#The-dense-variable_002dlength-token-model">27.1 The dense variable-length token model</a></li>
     <li><a name="toc-The-fully-general-input-model-1" href="The-fully-general-input-model.html#The-fully-general-input-model">27.2 The fully general input model</a></li>
+    <li><a name="toc-The-codepoint_002dper_002dearleme-model-1" href="The-codepoint_002dper_002dearleme-model.html#The-codepoint_002dper_002dearleme-model">27.3 The codepoint-per-earleme model</a></li>
   </ul></li>
   <li><a name="toc-Support-1" href="Support.html#Support">28 Support</a></li>
   <li><a name="toc-Futures-1" href="Futures.html#Futures">29 Futures</a>
@@ -297,14 +311,18 @@ ul.no-bullet {list-style: none}
   <ul class="no-bullet">
     <li><a name="toc-Aho-and-Ullman-1972-1" href="Aho-and-Ullman-1972.html#Aho-and-Ullman-1972">32.1 Aho and Ullman 1972</a></li>
     <li><a name="toc-Aycock-and-Horspool-2002-1" href="Aycock-and-Horspool-2002.html#Aycock-and-Horspool-2002">32.2 Aycock and Horspool 2002</a></li>
-    <li><a name="toc-Dominus-2005-1" href="Dominus-2005.html#Dominus-2005">32.3 Dominus 2005</a></li>
-    <li><a name="toc-Earley-1970-1" href="Earley-1970.html#Earley-1970">32.4 Earley 1970</a></li>
-    <li><a name="toc-Grune-and-Jacobs-1990-1" href="Grune-and-Jacobs-1990.html#Grune-and-Jacobs-1990">32.5 Grune and Jacobs 1990</a></li>
-    <li><a name="toc-Grune-and-Jacobs-2008-1" href="Grune-and-Jacobs-2008.html#Grune-and-Jacobs-2008">32.6 Grune and Jacobs 2008</a></li>
-    <li><a name="toc-Kegler-2022-1" href="Kegler-2022.html#Kegler-2022">32.7 Kegler 2022</a></li>
-    <li><a name="toc-Timeline-1" href="Timeline.html#Timeline">32.8 Timeline</a></li>
-    <li><a name="toc-Leo-1991-1" href="Leo-1991.html#Leo-1991">32.9 Leo 1991</a></li>
-    <li><a name="toc-Wikipedia-1" href="Wikipedia.html#Wikipedia">32.10 Wikipedia</a></li>
+    <li><a name="toc-C89-standard" href="C89.html#C89">32.3 C89 standard</a></li>
+    <li><a name="toc-C99-standard" href="C99.html#C99">32.4 C99 standard</a></li>
+    <li><a name="toc-Dominus-2005-1" href="Dominus-2005.html#Dominus-2005">32.5 Dominus 2005</a></li>
+    <li><a name="toc-Earley-1970-1" href="Earley-1970.html#Earley-1970">32.6 Earley 1970</a></li>
+    <li><a name="toc-Grune-and-Jacobs-1990-1" href="Grune-and-Jacobs-1990.html#Grune-and-Jacobs-1990">32.7 Grune and Jacobs 1990</a></li>
+    <li><a name="toc-Grune-and-Jacobs-2008-1" href="Grune-and-Jacobs-2008.html#Grune-and-Jacobs-2008">32.8 Grune and Jacobs 2008</a></li>
+    <li><a name="toc-Marpa-theory-paper-1" href="Marpa-theory-paper.html#Marpa-theory-paper">32.9 Marpa theory paper</a></li>
+    <li><a name="toc-Kegler-2023-1" href="Kegler-2023.html#Kegler-2023">32.10 Kegler 2023</a></li>
+    <li><a name="toc-Parsing-timeline-1" href="Parsing-timeline.html#Parsing-timeline">32.11 Parsing timeline</a></li>
+    <li><a name="toc-Leo-1991-1" href="Leo-1991.html#Leo-1991">32.12 Leo 1991</a></li>
+    <li><a name="toc-Scott-2008-1" href="Scott-2008.html#Scott-2008">32.13 Scott 2008</a></li>
+    <li><a name="toc-Wikipedia-BNF-article-1" href="Wikipedia-BNF-article.html#Wikipedia-BNF-article">32.14 Wikipedia BNF article</a></li>
   </ul></li>
   <li><a name="toc-Acknowledgements-1" href="Acknowledgements.html#Acknowledgements">33 Acknowledgements</a>
   <ul class="no-bullet">
@@ -323,8 +341,8 @@ Next: <a href="License.html#License" accesskey="n" rel="next">License</a>, Previ
 <hr>
 <a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
 <h1 class="top">Libmarpa: The Marpa low-level library</h1>
-<p>This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<p>This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -455,6 +473,8 @@ Terms, definitions and notation
 <tr><td align="left" valign="top">&bull; <a href="Semantics-terms.html#Semantics-terms">Semantics terms</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Ambiguity.html#Ambiguity">Ambiguity</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Earley-items.html#Earley-items">Earley items</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Application-and-diagnostic-behavior.html#Application-and-diagnostic-behavior">Application and diagnostic behavior</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -668,6 +688,8 @@ Events
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Events-overview.html#Events-overview">Events overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Event-codes.html#Event-codes">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Basic-event-accessors.html#Basic-event-accessors">Basic event accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Completion-events.html#Completion-events">Completion events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -678,7 +700,29 @@ Events
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Symbol-expected-events.html#Symbol-expected-events">Symbol expected events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Event-codes.html#Event-codes">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Recognizer-per_002dsymbol-events.html#Recognizer-per_002dsymbol-events">Recognizer per-symbol events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tentative-events.html#Tentative-events">Tentative events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances">Event coincidence of symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Event-coincidence-of-symbols.html#Event-coincidence-of-symbols">Event coincidence of symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Event coincidence of symbol instances
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Nulled-and-completed-symbol-instances.html#Nulled-and-completed-symbol-instances">Nulled and completed symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Nulled-and-predicted-symbol-instances.html#Nulled-and-predicted-symbol-instances">Nulled and predicted symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Nulled-and-expected-symbol-instances.html#Nulled-and-expected-symbol-instances">Nulled and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Completed-and-predicted-symbol-instances.html#Completed-and-predicted-symbol-instances">Completed and predicted symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Completed-and-expected-symbol-instances.html#Completed-and-expected-symbol-instances">Completed and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Predicted-and-expected-symbol-instances.html#Predicted-and-expected-symbol-instances">Predicted and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -696,9 +740,7 @@ Error methods, macros and codes
 
 Technical notes
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Elizabeth-Scott_0027s-SPPFs.html#Elizabeth-Scott_0027s-SPPFs">Elizabeth Scott's SPPFs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Data-types-used-by-Libmarpa.html#Data-types-used-by-Libmarpa">Data types used by Libmarpa</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Data-types-used-by-Libmarpa.html#Data-types-used-by-Libmarpa">Data types used by Libmarpa</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Why-so-many-time-objects.html#Why-so-many-time-objects">Why so many time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -715,6 +757,8 @@ Advanced input models
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="The-dense-variable_002dlength-token-model.html#The-dense-variable_002dlength-token-model">The dense variable-length token model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="The-fully-general-input-model.html#The-fully-general-input-model">The fully general input model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="The-codepoint_002dper_002dearleme-model.html#The-codepoint_002dper_002dearleme-model">The codepoint-per-earleme model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -790,6 +834,10 @@ Annotated bibliography
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Aycock-and-Horspool-2002.html#Aycock-and-Horspool-2002">Aycock and Horspool 2002</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="C89.html#C89">C89</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="C99.html#C99">C99</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Dominus-2005.html#Dominus-2005">Dominus 2005</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Earley-1970.html#Earley-1970">Earley 1970</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -798,13 +846,17 @@ Annotated bibliography
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Grune-and-Jacobs-2008.html#Grune-and-Jacobs-2008">Grune and Jacobs 2008</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Kegler-2022.html#Kegler-2022">Kegler 2022</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Marpa-theory-paper.html#Marpa-theory-paper">Marpa theory paper</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Timeline.html#Timeline">Timeline</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Kegler-2023.html#Kegler-2023">Kegler 2023</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Parsing-timeline.html#Parsing-timeline">Parsing timeline</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Leo-1991.html#Leo-1991">Leo 1991</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Wikipedia.html#Wikipedia">Wikipedia</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Scott-2008.html#Scott-2008">Scott 2008</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Wikipedia-BNF-article.html#Wikipedia-BNF-article">Wikipedia BNF article</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 

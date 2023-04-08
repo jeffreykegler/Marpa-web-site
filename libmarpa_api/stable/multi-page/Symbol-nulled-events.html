@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Symbol nulled events (Libmarpa 11.0.5)</title>
+<title>Symbol nulled events (Libmarpa 11.0.7)</title>
 
-<meta name="description" content="Symbol nulled events (Libmarpa 11.0.5)">
-<meta name="keywords" content="Symbol nulled events (Libmarpa 11.0.5)">
+<meta name="description" content="Symbol nulled events (Libmarpa 11.0.7)">
+<meta name="keywords" content="Symbol nulled events (Libmarpa 11.0.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -77,24 +77,14 @@ Next: <a href="Prediction-events.html#Prediction-events" accesskey="n" rel="next
 </div>
 <hr>
 <a name="Symbol-nulled-events-1"></a>
-<h3 class="section">24.4 Symbol nulled events</h3>
+<h3 class="section">24.5 Symbol nulled events</h3>
 
-<p>Libmarpa can set up to generate
-an <code>MARPA_EVENT_SYMBOL_NULLED</code>
-event whenever a symbol is nulled.
-A symbol is said to be <strong>nulled</strong>
-when a zero length instance of that symbol
-is recognized.
+<p>This section contains methods
+for dealing with MARPA_EVENT_SYMBOL_NULLED
+events.
+See <a href="Event-codes.html#MARPA_005fEVENT_005fSYMBOL_005fNULLED">MARPA_EVENT_SYMBOL_NULLED</a>.
 </p>
-<p>For a nulled event to be generated,
-the symbol must be
-<a name="index-mark-_0028as-a-nulled-event-symbol_0029"></a>
-<em>marked</em>,
-and the event must be
-<a name="index-activate-_0028a-nulled-symbol-event_0029"></a>
-<em>activated</em>.
-</p>
-<p>To mark a symbol as a nulled event symbol
+<p>To declare a symbol as a nulled event symbol
 use the <code>marpa_g_symbol_is_nulled_event_set()</code>
 method.
 The event will be activated by default.
@@ -118,7 +108,7 @@ On success, does the following:
 activation status of a nulled event in all of its child recognizers.
 </p>
 <p>This method is seldom needed.
-When a symbol is marked as a nulled event symbol in
+When a symbol is declared as a nulled event symbol in
 the grammar,
 it is activated by default.
 See <a href="#marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset">marpa_g_symbol_is_nulled_event_set()</a>.
@@ -129,7 +119,7 @@ using the
 See <a href="#marpa_005fr_005fnulled_005fsymbol_005factivate">marpa_r_nulled_symbol_activate()</a>.
 </p>
 <p>Hard fails
-if the <var>sym_id</var> is not marked as a nulled event symbol
+if the <var>sym_id</var> is not declared as a nulled event symbol
 in the grammar,
 or if the grammar has not been precomputed.
 </p>
@@ -149,13 +139,10 @@ On success, does the following:
 </li><li> If <var>reactivate</var> is one, activates the event in the recognizer.
 </li></ul>
 
-<p>When a recognizer is created,
-the activation status of its symbol nulled event for <var>sym_id</var>
-is initialized to the activation status of the symbol nulled event
-for <var>sym_id</var> in the base grammar.
-</p>
 <p>Hard fails if
-<var>sym_id</var> was not marked for nulled events in the base grammar.
+the subtype <var>sym_id</var> of
+the <code>MARPA_EVENT_SYMBOL_NULLED</code> event
+is not declared.
 </p>
 <p><strong>Return value</strong>:
 On success, the value of <var>reactivate</var>, which is a boolean.
@@ -165,10 +152,11 @@ On hard failure, -2.
 <a name="marpa_005fg_005fsymbol_005fis_005fnulled_005fevent"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fnulled_005fevent"></a>Accessor function: <em>int</em> <strong>marpa_g_symbol_is_nulled_event</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>)</em></dt>
 <dd>
-<p>On success, returns a boolean which is 1 iff <var>sym_id</var> is marked
-as a nulled event symbol in <var>g</var>.
+<p>On success, returns a boolean which is 1 iff the subtype <var>sym_id</var>
+of the <code>MARPA_EVENT_SYMBOL_NULLED</code> event
+is declared.
 For more about nulled events,
-see <a href="#marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset">marpa_g_symbol_is_nulled_event_set()</a>.
+see <a href="#marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset">marpa_g_symbol_is_nulled_event_set</a>.
 </p>
 <p>Soft fails iff <var>sym_id</var> is well-formed (a non-negative integer), but there is no
 such symbol.
@@ -184,74 +172,30 @@ On hard failure, -2.
 <a name="marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset"></a>Mutator function: <em>int</em> <strong>marpa_g_symbol_is_nulled_event_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>,  int <var>value</var>)</em></dt>
 <dd>
-<p>Libmarpa can set up to generate
-an <code>MARPA_EVENT_SYMBOL_NULLED</code>
-event whenever the symbol is nulled.
-A symbol is said to be <strong>nulled</strong>
-when a zero length instance of that symbol
-is recognized.
-</p>
-<p>For nulled events for <var>sym_id</var> to occur, <var>sym_id</var> must be marked
-as a nulled event symbol,
-and the nulled event for <var>sym_id</var> must be activated in the recognizer.
-Event activation also occurs in the grammar,
-and the recognizer event activation status for <var>sym_id</var>
-is initialized
-from
-the grammar event activation status for <var>sym_id</var>.
-See <a href="#marpa_005fg_005fnulled_005fsymbol_005factivate">marpa_g_nulled_symbol_activate()</a>, and
-see <a href="#marpa_005fr_005fnulled_005fsymbol_005factivate">marpa_r_nulled_symbol_activate()</a>.
-</p>
 <p>On success, if <var>value</var> is 1,
 </p><ul>
-<li> marks symbol <var>sym_id</var> as a nulled event symbol,
+<li> declares symbol <var>sym_id</var> as a nulled event symbol,
 </li><li> activates the nulled event for <var>sym_id</var> in <var>g</var>, and
 </li><li> returns 1.
 </li></ul>
 
 <p>On success, if <var>value</var> is 0,
 </p><ul>
-<li> unmarks symbol <var>sym_id</var> as a nulled event symbol,
+<li> declares symbol <var>sym_id</var> as a nulled event symbol,
 </li><li> deactivates the nulled event for <var>sym_id</var> in <var>g</var>, and
 </li><li> returns 0.
 </li></ul>
 
-<p>A symbol instance can never generate both a nulled
-and a prediction event at the same location.
-Also, a symbol instance can never generate both a nulled
-and a completion event at the same location.
-(As a reminder, a symbol instance is a symbol
-starting at a specific location in the input,
-and with a specific length.)
-This is because the symbol instance for a nulled
-event must be zero length,
-and the symbol instance for prediction and completion
-events can never be zero length.
-</p>
-<p>However, prediction and nulled events for the
-same symbol can trigger at the same location.
-This is because
-the same location can be the location of a nulled instance
-of a symbol,
-and the start of an non-nulled instance of the same symbol.
-</p>
-<p>Also, completion and nulled events for the
-same symbol can trigger at the same location.
-This is because
-the same location can be the location of a nulled instance
-of a symbol,
-and the end of one or more non-nulled instances of the same symbol.
-</p>
 <p>The
 <code>marpa_g_symbol_is_nulled_event_set()</code>
 method will
-mark a symbol as a nulled event symbol,
+declare a symbol as a nulled event symbol,
 even if the symbol is non-nullable.
 This is convenient, for example,
 for automatically generated grammars.
 Applications that wish to treat
 it as a failure when
-a non-nullable symbol is marked
+a non-nullable symbol is declared
 as a nulled event symbol,
 can check for this after precomputation,
 using the

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<!-- This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Libmarpa 11.0.5</title>
+<title>Libmarpa 11.0.7</title>
 
-<meta name="description" content="Libmarpa 11.0.5">
-<meta name="keywords" content="Libmarpa 11.0.5">
+<meta name="description" content="Libmarpa 11.0.7">
+<meta name="keywords" content="Libmarpa 11.0.7">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -68,7 +68,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">Libmarpa 11.0.5</h1>
+<h1 class="settitle" align="center">Libmarpa 11.0.7</h1>
+
 
 
 
@@ -102,7 +103,8 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Traversal-1" href="#Traversal">5.10 Traversal</a></li>
     <li><a name="toc-Semantics-terms-1" href="#Semantics-terms">5.11 Semantics terms</a></li>
     <li><a name="toc-Ambiguity-1" href="#Ambiguity">5.12 Ambiguity</a></li>
-    <li><a name="toc-Application-and-diagnostic-behavior-1" href="#Application-and-diagnostic-behavior">5.13 Application and diagnostic behavior</a></li>
+    <li><a name="toc-Earley-items-1" href="#Earley-items">5.13 Earley items</a></li>
+    <li><a name="toc-Application-and-diagnostic-behavior-1" href="#Application-and-diagnostic-behavior">5.14 Application and diagnostic behavior</a></li>
   </ul></li>
   <li><a name="toc-Architecture-1" href="#Architecture">6 Architecture</a>
   <ul class="no-bullet">
@@ -227,12 +229,24 @@ ul.no-bullet {list-style: none}
   <li><a name="toc-Events-1" href="#Events">24 Events</a>
   <ul class="no-bullet">
     <li><a name="toc-Overview-5" href="#Events-overview">24.1 Overview</a></li>
-    <li><a name="toc-Basic-event-accessors-1" href="#Basic-event-accessors">24.2 Basic event accessors</a></li>
-    <li><a name="toc-Completion-events-1" href="#Completion-events">24.3 Completion events</a></li>
-    <li><a name="toc-Symbol-nulled-events-1" href="#Symbol-nulled-events">24.4 Symbol nulled events</a></li>
-    <li><a name="toc-Prediction-events-1" href="#Prediction-events">24.5 Prediction events</a></li>
-    <li><a name="toc-Symbol-expected-events-1" href="#Symbol-expected-events">24.6 Symbol expected events</a></li>
-    <li><a name="toc-Event-codes-1" href="#Event-codes">24.7 Event codes</a></li>
+    <li><a name="toc-Event-codes-1" href="#Event-codes">24.2 Event codes</a></li>
+    <li><a name="toc-Basic-event-accessors-1" href="#Basic-event-accessors">24.3 Basic event accessors</a></li>
+    <li><a name="toc-Completion-events-1" href="#Completion-events">24.4 Completion events</a></li>
+    <li><a name="toc-Symbol-nulled-events-1" href="#Symbol-nulled-events">24.5 Symbol nulled events</a></li>
+    <li><a name="toc-Prediction-events-1" href="#Prediction-events">24.6 Prediction events</a></li>
+    <li><a name="toc-Symbol-expected-events-1" href="#Symbol-expected-events">24.7 Symbol expected events</a></li>
+    <li><a name="toc-Recognizer-per_002dsymbol-events-1" href="#Recognizer-per_002dsymbol-events">24.8 Recognizer per-symbol events</a></li>
+    <li><a name="toc-Tentative-events-1" href="#Tentative-events">24.9 Tentative events</a></li>
+    <li><a name="toc-Event-coincidence-of-symbol-instances-1" href="#Event-coincidence-of-symbol-instances">24.10 Event coincidence of symbol instances</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Nulled-and-completed-symbol-instances-1" href="#Nulled-and-completed-symbol-instances">24.10.1 Nulled and completed symbol instances</a></li>
+      <li><a name="toc-Nulled-and-predicted-symbol-instances-1" href="#Nulled-and-predicted-symbol-instances">24.10.2 Nulled and predicted symbol instances</a></li>
+      <li><a name="toc-Nulled-and-expected-symbol-instances-1" href="#Nulled-and-expected-symbol-instances">24.10.3 Nulled and expected symbol instances</a></li>
+      <li><a name="toc-Completed-and-predicted-symbol-instances-1" href="#Completed-and-predicted-symbol-instances">24.10.4 Completed and predicted symbol instances</a></li>
+      <li><a name="toc-Completed-and-expected-symbol-instances-1" href="#Completed-and-expected-symbol-instances">24.10.5 Completed and expected symbol instances</a></li>
+      <li><a name="toc-Predicted-and-expected-symbol-instances-1" href="#Predicted-and-expected-symbol-instances">24.10.6 Predicted and expected symbol instances</a></li>
+    </ul></li>
+    <li><a name="toc-Event-coincidence-of-symbols-1" href="#Event-coincidence-of-symbols">24.11 Event coincidence of symbols</a></li>
   </ul></li>
   <li><a name="toc-Error-methods_002c-macros-and-codes" href="#Error-methods-macros-and-codes">25 Error methods, macros and codes</a>
   <ul class="no-bullet">
@@ -243,17 +257,17 @@ ul.no-bullet {list-style: none}
   </ul></li>
   <li><a name="toc-Technical-notes-1" href="#Technical-notes">26 Technical notes</a>
   <ul class="no-bullet">
-    <li><a name="toc-Elizabeth-Scott_0027s-SPPFs-1" href="#Elizabeth-Scott_0027s-SPPFs">26.1 Elizabeth Scott&rsquo;s SPPFs</a></li>
-    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="#Data-types-used-by-Libmarpa">26.2 Data types used by Libmarpa</a></li>
-    <li><a name="toc-Why-so-many-time-objects_003f" href="#Why-so-many-time-objects">26.3 Why so many time objects?</a></li>
-    <li><a name="toc-Numbered-objects-2" href="#Design-of-numbered-objects">26.4 Numbered objects</a></li>
-    <li><a name="toc-Trap-representations-1" href="#Trap-representations">26.5 Trap representations</a></li>
-    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="#Out_002dof_002dmemory-handling">26.6 Out-of-memory handling</a></li>
+    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="#Data-types-used-by-Libmarpa">26.1 Data types used by Libmarpa</a></li>
+    <li><a name="toc-Why-so-many-time-objects_003f" href="#Why-so-many-time-objects">26.2 Why so many time objects?</a></li>
+    <li><a name="toc-Numbered-objects-2" href="#Design-of-numbered-objects">26.3 Numbered objects</a></li>
+    <li><a name="toc-Trap-representations-1" href="#Trap-representations">26.4 Trap representations</a></li>
+    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="#Out_002dof_002dmemory-handling">26.5 Out-of-memory handling</a></li>
   </ul></li>
   <li><a name="toc-Advanced-input-models-1" href="#Advanced-input-models">27 Advanced input models</a>
   <ul class="no-bullet">
     <li><a name="toc-The-dense-variable_002dlength-token-model-1" href="#The-dense-variable_002dlength-token-model">27.1 The dense variable-length token model</a></li>
     <li><a name="toc-The-fully-general-input-model-1" href="#The-fully-general-input-model">27.2 The fully general input model</a></li>
+    <li><a name="toc-The-codepoint_002dper_002dearleme-model-1" href="#The-codepoint_002dper_002dearleme-model">27.3 The codepoint-per-earleme model</a></li>
   </ul></li>
   <li><a name="toc-Support-1" href="#Support">28 Support</a></li>
   <li><a name="toc-Futures-1" href="#Futures">29 Futures</a>
@@ -296,14 +310,18 @@ ul.no-bullet {list-style: none}
   <ul class="no-bullet">
     <li><a name="toc-Aho-and-Ullman-1972-1" href="#Aho-and-Ullman-1972">32.1 Aho and Ullman 1972</a></li>
     <li><a name="toc-Aycock-and-Horspool-2002-1" href="#Aycock-and-Horspool-2002">32.2 Aycock and Horspool 2002</a></li>
-    <li><a name="toc-Dominus-2005-1" href="#Dominus-2005">32.3 Dominus 2005</a></li>
-    <li><a name="toc-Earley-1970-1" href="#Earley-1970">32.4 Earley 1970</a></li>
-    <li><a name="toc-Grune-and-Jacobs-1990-1" href="#Grune-and-Jacobs-1990">32.5 Grune and Jacobs 1990</a></li>
-    <li><a name="toc-Grune-and-Jacobs-2008-1" href="#Grune-and-Jacobs-2008">32.6 Grune and Jacobs 2008</a></li>
-    <li><a name="toc-Kegler-2022-1" href="#Kegler-2022">32.7 Kegler 2022</a></li>
-    <li><a name="toc-Timeline-1" href="#Timeline">32.8 Timeline</a></li>
-    <li><a name="toc-Leo-1991-1" href="#Leo-1991">32.9 Leo 1991</a></li>
-    <li><a name="toc-Wikipedia-1" href="#Wikipedia">32.10 Wikipedia</a></li>
+    <li><a name="toc-C89-standard" href="#C89">32.3 C89 standard</a></li>
+    <li><a name="toc-C99-standard" href="#C99">32.4 C99 standard</a></li>
+    <li><a name="toc-Dominus-2005-1" href="#Dominus-2005">32.5 Dominus 2005</a></li>
+    <li><a name="toc-Earley-1970-1" href="#Earley-1970">32.6 Earley 1970</a></li>
+    <li><a name="toc-Grune-and-Jacobs-1990-1" href="#Grune-and-Jacobs-1990">32.7 Grune and Jacobs 1990</a></li>
+    <li><a name="toc-Grune-and-Jacobs-2008-1" href="#Grune-and-Jacobs-2008">32.8 Grune and Jacobs 2008</a></li>
+    <li><a name="toc-Marpa-theory-paper-1" href="#Marpa-theory-paper">32.9 Marpa theory paper</a></li>
+    <li><a name="toc-Kegler-2023-1" href="#Kegler-2023">32.10 Kegler 2023</a></li>
+    <li><a name="toc-Parsing-timeline-1" href="#Parsing-timeline">32.11 Parsing timeline</a></li>
+    <li><a name="toc-Leo-1991-1" href="#Leo-1991">32.12 Leo 1991</a></li>
+    <li><a name="toc-Scott-2008-1" href="#Scott-2008">32.13 Scott 2008</a></li>
+    <li><a name="toc-Wikipedia-BNF-article-1" href="#Wikipedia-BNF-article">32.14 Wikipedia BNF article</a></li>
   </ul></li>
   <li><a name="toc-Acknowledgements-1" href="#Acknowledgements">33 Acknowledgements</a>
   <ul class="no-bullet">
@@ -321,8 +339,8 @@ Next: <a href="#License" accesskey="n" rel="next">License</a>, Previous: <a href
 </div>
 <a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
 <h1 class="top">Libmarpa: The Marpa low-level library</h1>
-<p>This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<p>This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -453,6 +471,8 @@ Terms, definitions and notation
 <tr><td align="left" valign="top">&bull; <a href="#Semantics-terms">Semantics terms</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Ambiguity">Ambiguity</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Earley-items">Earley items</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Application-and-diagnostic-behavior">Application and diagnostic behavior</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -666,6 +686,8 @@ Events
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Events-overview">Events overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Event-codes">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Basic-event-accessors">Basic event accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Completion-events">Completion events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -676,7 +698,29 @@ Events
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Symbol-expected-events">Symbol expected events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Event-codes">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Recognizer-per_002dsymbol-events">Recognizer per-symbol events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tentative-events">Tentative events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Event-coincidence-of-symbol-instances">Event coincidence of symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Event-coincidence-of-symbols">Event coincidence of symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Event coincidence of symbol instances
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Nulled-and-completed-symbol-instances">Nulled and completed symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Nulled-and-predicted-symbol-instances">Nulled and predicted symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Nulled-and-expected-symbol-instances">Nulled and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Completed-and-predicted-symbol-instances">Completed and predicted symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Completed-and-expected-symbol-instances">Completed and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Predicted-and-expected-symbol-instances">Predicted and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -694,9 +738,7 @@ Error methods, macros and codes
 
 Technical notes
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Elizabeth-Scott_0027s-SPPFs">Elizabeth Scott's SPPFs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Data-types-used-by-Libmarpa">Data types used by Libmarpa</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Data-types-used-by-Libmarpa">Data types used by Libmarpa</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Why-so-many-time-objects">Why so many time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -713,6 +755,8 @@ Advanced input models
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#The-dense-variable_002dlength-token-model">The dense variable-length token model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#The-fully-general-input-model">The fully general input model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-codepoint_002dper_002dearleme-model">The codepoint-per-earleme model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -788,6 +832,10 @@ Annotated bibliography
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Aycock-and-Horspool-2002">Aycock and Horspool 2002</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#C89">C89</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#C99">C99</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Dominus-2005">Dominus 2005</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Earley-1970">Earley 1970</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -796,13 +844,17 @@ Annotated bibliography
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Grune-and-Jacobs-2008">Grune and Jacobs 2008</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Kegler-2022">Kegler 2022</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Marpa-theory-paper">Marpa theory paper</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Timeline">Timeline</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Kegler-2023">Kegler 2023</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Parsing-timeline">Parsing timeline</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Leo-1991">Leo 1991</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Wikipedia">Wikipedia</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Scott-2008">Scott 2008</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Wikipedia-BNF-article">Wikipedia BNF article</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -823,8 +875,8 @@ Next: <a href="#Updates" accesskey="n" rel="next">Updates</a>, Previous: <a href
 <a name="License-1"></a>
 <h2 class="chapter">1 License</h2>
 
-<p>This manual (27 March 2023)
-is for Libmarpa 11.0.5.
+<p>This manual (8 April 2023)
+is for Libmarpa 11.0.7.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -957,9 +1009,16 @@ Marpa is named
 after the legendary 11th century Tibetan translator,
 Marpa Lotsawa.
 In creating Marpa,
-I depended heavily on previous work by Jay Earley,
+we depended heavily on previous work by Jay Earley,
 Joop Leo,
 John Aycock and Nigel Horspool.
+</p>
+<p>Marpa parses any language whose grammar can be written in BNF. That
+includes recursive grammars, ambiguous grammars, infinitely ambiguous
+grammars and grammars with useless or empty productions. Marpa does both
+left- and right-recursion in linear time &ndash; in fact if a grammar is in
+any class currently in practical use, Marpa will parse it in linear time.
+See <a href="#Marpa-theory-paper">Marpa theory paper</a>.
 </p>
 <p>Libmarpa implements the entire Marpa algorithm.
 This library does
@@ -1038,6 +1097,8 @@ Next: <a href="#Architecture" accesskey="n" rel="next">Architecture</a>, Previou
 <tr><td align="left" valign="top">&bull; <a href="#Semantics-terms">Semantics terms</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Ambiguity">Ambiguity</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Earley-items">Earley items</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Application-and-diagnostic-behavior">Application and diagnostic behavior</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -1173,10 +1234,10 @@ this is explicitly pointed out.
 can look at
 Mark Jason Dominus&rsquo;s
 excellent chapter on parsing in the Perl context.
-See <a href="#Bibliography_002dDominus_002d2005">Bibliography-Dominus-2005</a>.
+See <a href="#Dominus-2005">Dominus 2005</a>.
 It is available on-line.
 Wikipedia is also an excellent place to start.
-See <a href="#Bibliography_002dWikipedia">Bibliography-Wikipedia</a>.
+See <a href="#Wikipedia-BNF-article">Wikipedia BNF article</a>.
 </p>
 <p>A
 <a name="index-grammar"></a>
@@ -1782,6 +1843,9 @@ In the following list of definitions and assertions, let
 <a name="index-instance-_0028of-a-symbol_0029"></a>
 <em>instance</em> of the symbol with ID <code>sym</code>
 starting at <code>start</code> and ending at <code>end</code>.
+We often write this as
+<a name="index-_0040_002dnotation-for-symbol-instance"></a>
+<code>sym</code>@<code>start</code>-<code>end</code>.
 </li><li> We say that <code>nd</code> is an
 <a name="index-instance-_0028of-a-symbol_0029-1"></a>
 <em>instance</em> of the symbol with ID <code>sym</code> at location <code>end</code>.
@@ -1890,6 +1954,9 @@ In that case,
 we say that <code>nd</code> is an instance of
 <var>r</var> starting at <code>start</code> and ending
 at <code>end</code>.
+We often write this as
+<a name="index-_0040_002dnotation-for-rule-instance"></a>
+<code>r</code>@<code>start</code>-<code>end</code>.
 We also say that <code>nd</code> is an instance of
 <var>r</var> at <code>end</code> or, simply,
 that <code>nd</code> is an instance of <var>r</var>.
@@ -1901,6 +1968,9 @@ In that case,
 we say that <code>nd</code> is an instance of
 <var>r</var> starting at <code>start</code> and ending
 at <code>end</code>.
+We often write this as
+<a name="index-_0040_002dnotation-for-sequence-instance"></a>
+<code>r</code>@<code>start</code>-<code>end</code>.
 We also say that <code>nd</code> is an instance of
 <var>r</var> at <code>end</code> or, simply,
 that <code>nd</code> is an instance of <var>r</var>.
@@ -1911,6 +1981,9 @@ we say that <code>sym</code> is
 <a name="index-nulled-_0028of-a-symbol_0029"></a>
 <em>nulled</em> at location <code>end</code> or, simply,
 that the symbol <code>sym</code> is nulled.
+We can write this as
+<a name="index-_0040_002dnotation-for-nulled-instance"></a>
+<code>nulled</code>@<code>end</code>-<code>end</code>.
 </li></ul>
 
 <p>Let <var>nd1</var> and <var>nd2</var> be two nodes.
@@ -2230,7 +2303,7 @@ and the value of the start node becomes the value of the parse run.
 <a name="Ambiguity"></a>
 <div class="header">
 <p>
-Next: <a href="#Application-and-diagnostic-behavior" accesskey="n" rel="next">Application and diagnostic behavior</a>, Previous: <a href="#Semantics-terms" accesskey="p" rel="prev">Semantics terms</a>, Up: <a href="#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Earley-items" accesskey="n" rel="next">Earley items</a>, Previous: <a href="#Semantics-terms" accesskey="p" rel="prev">Semantics terms</a>, Up: <a href="#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Ambiguity-1"></a>
 <h3 class="section">5.12 Ambiguity</h3>
@@ -2286,13 +2359,190 @@ ambiguity is removed.
 See <a href="#Nullability">Nullability</a>.
 </p>
 <hr>
+<a name="Earley-items"></a>
+<div class="header">
+<p>
+Next: <a href="#Application-and-diagnostic-behavior" accesskey="n" rel="next">Application and diagnostic behavior</a>, Previous: <a href="#Ambiguity" accesskey="p" rel="prev">Ambiguity</a>, Up: <a href="#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Earley-items-1"></a>
+<h3 class="section">5.13 Earley items</h3>
+
+<p>We assume knowledge of Earley&rsquo;s algorithm.
+This section is intended as a reminder,
+and to set out our choices for notation and
+terminology.
+</p>
+<p>A
+<a name="index-dotted-rule"></a>
+<em>dotted rule</em>
+is a duple of rule and
+position in the rule.
+The position must be an non-negative integer
+that is not greater than the length of the rule.
+For example,
+</p><div class="display">
+<pre class="display">     [ [ A ::= X Y Z ], 2 ]      (DR1)
+</pre></div>
+<p>is a dotted rule
+whose rule is
+<code>[ A ::= X Y Z ]</code> and whose position is 2.
+More often a dotted rule is written
+with the position marked in the RHS of the rule.
+Here we use &ldquo;&bull;&rdquo; as our marker, so that
+in <code>(DR1)</code> the &ldquo;&bull;&rdquo; would come after
+the 2nd symbol on the RHS,
+and <code>(DR1)</code> would be written
+</p><div class="display">
+<pre class="display">     [ A ::= X Y &bull; Z ].
+</pre></div>
+<p>Traditionally the marker is a raised dot,
+and this is where the term &ldquo;dotted rule&rdquo;
+comes from.
+The position of the dotted rule is almost always
+called the
+<a name="index-dot-position"></a>
+<em>dot position</em>.
+</p>
+<p>An
+<a name="index-Earley-item"></a>
+<em>Earley item</em>
+is a triple of dotted rule, origin
+and current parse location.<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
+The Earley item makes a statement about the progress
+of a parse.
+The
+<a name="index-origin-_0028in-an-Earley-item_0029"></a>
+<em>origin</em>
+is the parse location where recognition of the
+dotted rule begins.
+The
+<a name="index-current-location-_0028in-an-Earley-item_0029"></a>
+<em>current location</em>
+is the parse location which recognition of the dotted rule
+has reached.
+Symbols before the dot position of the dotted rule have been
+recognized,
+and symbols after the dot position of the dotted rule have yet
+to be recognized.
+</p>
+<p>For example,
+in the Earley item
+</p><div class="display">
+<pre class="display">     [ [ A ::= X Y &bull; Z ], 7, 42],
+</pre></div>
+<p>the dotted rule <code>[ A ::= X Y &bull; Z ]</code> was recognized
+as far as the dot position, starting at parse location 7
+and ending at parse location 42.
+More precisely,
+</p><ul>
+<li> the rule <code>[ A ::= X Y Z ]</code> was expected
+    beginning at parse location 7;
+</li><li> the string of symbols &ldquo;<code>X Y</code>&rdquo; has been recognized
+    starting at parse location 7,
+    which implies that the symbol <code>X</code> has been recognized
+    starting at parse location 7;
+</li><li> the string of symbols &ldquo;<code>X Y</code>&rdquo; has been recognized
+    ending at parse location 42,
+    which implies that the symbol <code>Y</code> has been recognized
+    ending at parse location 42; and
+</li><li> the symbol <code>Z</code> has yet to recognized,
+    but is expected starting at parse location 42.
+</li></ul>
+
+<p>The Earley set at location <code>j</code>
+is the set of Earley items whose current location is <code>j</code>.
+For example, the Earley item
+<code>[ [ A ::= X Y &bull; Z ], 7, 42]</code>
+is in the Earley set at location 42.
+</p>
+<p>We say that a dotted rule is
+<a name="index-completed-dotted-rule"></a>
+<em>completed</em>
+iff its dot position is after the last symbol.
+We say that an Earley item is
+<a name="index-completed-Earley-item"></a>
+<em>completed</em>
+iff its dotted rule is completed.
+For example, the Earley item
+</p><div class="display">
+<pre class="display">     [ [ A ::= X Y Z &bull; ], 7, 50],
+</pre></div>
+<p>is completed.
+A completed dotted rule is also called a
+<a name="index-completion-_0028dotted-rule_0029"></a>
+<em>completion</em>.
+Similarly, a completed Earley item is also called a
+<a name="index-completion-_0028Earley-item_0029"></a>
+<em>completion</em>.
+</p>
+<p>We say that a dotted rule is
+<a name="index-predicted-dotted-rule"></a>
+<em>predicted</em>
+iff its dot position is before the first symbol.
+We say that an Earley item is
+<a name="index-predicted-Earley-item"></a>
+<em>predicted</em>
+iff its dotted rule is predicted.
+For example, the Earley item
+</p><div class="display">
+<pre class="display">     [ [ A ::= &bull; X Y Z ], 7, 7],
+</pre></div>
+<p>is predicted.
+A predicted dotted rule is also called a
+<a name="index-prediction-_0028dotted-rule_0029"></a>
+<em>prediction</em>.
+Similarly, a predicted Earley item is also called a
+<a name="index-prediction-_0028Earley-item_0029"></a>
+<em>prediction</em>.
+</p>
+<p>The
+<a name="index-postdot-symbol-_0028of-a-dotted-rule_0029"></a>
+<em>postdot symbol</em>
+of a dotted rule is the RHS symbol after the
+dot position.
+For example, in the dotted rule,
+</p><div class="display">
+<pre class="display">     [ A ::= X Y &bull; Z ]
+</pre></div>
+<p>the postdot symbol is <code>Z</code>.
+If the dotted rule is a completion,
+its postdot symbol is not defined.
+</p>
+<p>The
+<a name="index-postdot-symbol-_0028of-an-Earley-item_0029"></a>
+<em>postdot symbol</em>
+of an Earley item
+is the postdot symbol of its dotted rule.
+The postdot symbol of an Earley item is an
+<a name="index-expected-symbol"></a>
+<em>expected symbol</em>
+at its current location.
+For example,
+the Earley item
+</p><div class="display">
+<pre class="display">     [ [ A ::= X Y &bull; Z ], 7, 42],
+</pre></div>
+<p>indicates that the symbol <code>Z</code>
+is expected at location 42.
+</p>
+<p>Let <code>sym</code> be a symbol,
+and let <code>j</code> be a parse location.
+Unless <code>sym</code> is expected at <code>j</code>,
+that is, unless <code>sym</code> is a postdot symbol of some Earley
+item in the Earley set at <code>j</code>,
+<code>sym</code> will be rejected by the
+<code>marpa_r_alternative()</code> method
+at current location <code>j</code>.
+See <a href="#marpa_005fr_005falternative">marpa_r_alternative</a>.
+</p>
+<hr>
 <a name="Application-and-diagnostic-behavior"></a>
 <div class="header">
 <p>
-Previous: <a href="#Ambiguity" accesskey="p" rel="prev">Ambiguity</a>, Up: <a href="#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#Earley-items" accesskey="p" rel="prev">Earley items</a>, Up: <a href="#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Application-and-diagnostic-behavior-1"></a>
-<h3 class="section">5.13 Application and diagnostic behavior</h3>
+<h3 class="section">5.14 Application and diagnostic behavior</h3>
 
 <p>An
 <a name="index-application-behavior"></a>
@@ -2583,7 +2833,7 @@ Numbered objects do not have lifetimes of their own.
 Every numbered object belongs to a time object,
 and is destroyed with it.
 Rules and symbols are numbered objects.
-Tokens values are another class of numbered
+Token values are another class of numbered
 objects.
 </p>
 <hr>
@@ -3090,7 +3340,7 @@ See <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete()</
 When the <code>marpa_r_start_input</code> or
 <code>marpa_r_earleme_complete()</code> methods
 exhaust the parse,
-they generate a <code>MARPA_EVENT_EXHAUSTED</code> event.
+they trigger a <code>MARPA_EVENT_EXHAUSTED</code> event.
 Applications
 can also query
 parse exhaustion status directly
@@ -3144,6 +3394,7 @@ given circumstances as described below.
 The Libmarpa methods are not reentrant.
 </p>
 <p>Libmarpa is C89-compliant.
+See <a href="#C89">C89</a>.
 It uses no global data,
 and calls only the routines
 that are defined in the C89 standard
@@ -4361,7 +4612,7 @@ are using.
 <p>If <var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>
 is an exact match with the version of Libmarpa,
 the method succeeds.
-The version of Libmarpa described in this manual is 11.0.5.
+The version of Libmarpa described in this manual is 11.0.7.
 Otherwise the return status is an irrecoverable
 hard failure.
 </p>
@@ -5683,11 +5934,17 @@ Next: <a href="#Recognizer-reference-counting" accesskey="n" rel="next">Recogniz
 <p>On success, creates a new recognizer and
 increments the reference count of <var>g</var>,
 the base grammar, by one.
-In the new recognizer,
+In the new recognizer, the following will be true:
 </p><ul>
-<li> the reference count will be 1;
-</li><li> the furthest earleme will be 0; and
-</li><li> the values of the latest and current earleme will be unspecified.
+<li> The reference count will be 1.
+</li><li> The furthest earleme will be 0.
+</li><li> The values of the latest and current earleme will be unspecified.
+</li><li> The declaration status of all events will be inherited from
+<var>g</var>, so that the event in the recognizer is declared iff
+the event in <var>g</var> is declared.
+</li><li> The activation status of all events will be inherited from
+<var>g</var>, so that the event in the recognizer is activated iff
+the event in <var>g</var> is activated.
 </li></ul>
 
 <p><strong>Return value</strong>:
@@ -5750,9 +6007,9 @@ The ID of the first Earley set is 0,
 and it is located at earleme 0.
 </li><li> Leaves the latest, current and furthest earlemes all at 0.
 </li><li> Clears any events that were in the event queue before this method was called.
-</li><li> If this method exhausts the parse, generates a <code>MARPA_EVENT_EXHAUSTED</code> event.
+</li><li> If this method exhausts the parse, triggers a <code>MARPA_EVENT_EXHAUSTED</code> event.
     See <a href="#Exhaustion">Exhaustion</a>.
-</li><li> May generate one or more <code>MARPA_EVENT_SYMBOL_NULLED</code>,
+</li><li> May trigger one or more <code>MARPA_EVENT_SYMBOL_NULLED</code>,
     <code>MARPA_EVENT_SYMBOL_PREDICTED</code>, or <code>MARPA_EVENT_SYMBOL_EXPECTED</code> events.
     See <a href="#Events">Events</a>.
 </li></ul>
@@ -5922,13 +6179,13 @@ a call to
 <code>marpa_r_earleme_complete()</code>.
 </li><li> Clears the event queue of any events that
 occured before this method was called.
-</li><li> May generate one or more <code>MARPA_EVENT_SYMBOL_COMPLETED</code>,
+</li><li> May trigger one or more <code>MARPA_EVENT_SYMBOL_COMPLETED</code>,
     <code>MARPA_EVENT_SYMBOL_NULLED</code>, <code>MARPA_EVENT_SYMBOL_PREDICTED</code>,
     or <code>MARPA_EVENT_SYMBOL_EXPECTED</code> events.
     See <a href="#Events">Events</a>.
 </li><li> If an application-settable threshold
 on the number of Earley items has been reached or exceeded,
-generates a <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event.
+triggers a <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code> event.
 Often, the application will want to treat this event
 as if it were a ancestry-recoverable
 failure.
@@ -6015,7 +6272,8 @@ as parse errors.
 They may wish to ignore exhaustion on method success
 at the end of input.
 </li></ul>
-<p><strong>Return value</strong>:  On success, the number of events generated.
+<p><strong>Return value</strong>:  On success, the number of events
+in the event queue when the method call returns.
 On hard failure, -2.
 Hard failure with the code
 <code>MARPA_ERR_PARSE_EXHAUSTED</code>
@@ -6140,13 +6398,14 @@ and an arbitrary pointer.
 Libmarpa never examines them
 and the application is free to
 use them for its own purposes.
-In an application with a character-per-earleme input model, for example,
+In an application with a codepoint-per-earleme input model, for example,
 the integer value of the Earley set
-can used to store the codepoint of the current character.
+can used to store the current codepoint.
 In a traditional token-per-earleme input model,
 the integer and pointer values could be used to track the string value of the token &ndash;
 the pointer could point to the start of the string,
 and the integer could indicate its length.
+See <a href="#The-codepoint_002dper_002dearleme-model">The codepoint-per-earleme model</a>.
 </p>
 <p>The Earley set integer value defaults to -1,
 and the pointer value defaults to <code>NULL</code>.
@@ -6543,7 +6802,7 @@ is a completion.
 An application that prefers the &ldquo;raw&rdquo; 0-based start-relative dot position
 may convert
 a -1 to the rule length.
-See <a href="#marpa_005fg_005frule_005flength">marpa_g_rule_length()</a>
+See <a href="#marpa_005fg_005frule_005flength">marpa_g_rule_length()</a>.
 </li></ul>
 
 <p>In the event of soft failure:
@@ -6629,7 +6888,7 @@ And, unlike us,
 Prof. Scott did the all-important
 work of documenting it and providing the
 appropriate mathematical apparatus.
-See <a href="#Elizabeth-Scott_0027s-SPPFs">Elizabeth Scott's SPPFs</a>.
+See <a href="#Scott-2008">Scott 2008</a>.
 </p>
 <p>The bocage contains the data for the parse trees whose root is
 an instance of the start symbol that begins at Earley set 0
@@ -7909,17 +8168,25 @@ Next: <a href="#Error-methods-macros-and-codes" accesskey="n" rel="next">Error m
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Events-overview" accesskey="1">Events overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Basic-event-accessors" accesskey="2">Basic event accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Event-codes" accesskey="2">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Completion-events" accesskey="3">Completion events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Basic-event-accessors" accesskey="3">Basic event accessors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Symbol-nulled-events" accesskey="4">Symbol nulled events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Completion-events" accesskey="4">Completion events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Prediction-events" accesskey="5">Prediction events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Symbol-nulled-events" accesskey="5">Symbol nulled events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Symbol-expected-events" accesskey="6">Symbol expected events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Prediction-events" accesskey="6">Prediction events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Event-codes" accesskey="7">Event codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Symbol-expected-events" accesskey="7">Symbol expected events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Recognizer-per_002dsymbol-events" accesskey="8">Recognizer per-symbol events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tentative-events" accesskey="9">Tentative events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Event-coincidence-of-symbol-instances">Event coincidence of symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Event-coincidence-of-symbols">Event coincidence of symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -7927,7 +8194,7 @@ Next: <a href="#Error-methods-macros-and-codes" accesskey="n" rel="next">Error m
 <a name="Events-overview"></a>
 <div class="header">
 <p>
-Next: <a href="#Basic-event-accessors" accesskey="n" rel="next">Basic event accessors</a>, Previous: <a href="#Events" accesskey="p" rel="prev">Events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Event-codes" accesskey="n" rel="next">Event codes</a>, Previous: <a href="#Events" accesskey="p" rel="prev">Events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Overview-5"></a>
 <h3 class="section">24.1 Overview</h3>
@@ -7936,18 +8203,118 @@ Next: <a href="#Basic-event-accessors" accesskey="n" rel="next">Basic event acce
 It contains descriptions of both grammar and recognizer methods.
 </p>
 <p>A method is
-<a name="index-event_002dgenerating-_0028method_0029"></a>
-<em>event-generating</em>
-iff it can add events to the event queue.
-The event-generating methods are
+<a name="index-event_002dtriggering-_0028method_0029"></a>
+<em>event-triggering</em>
+iff it can add event instances to the
+<a name="index-event-queue"></a>
+<em>event queue</em>.
+The event-triggering methods are
 <code>marpa_g_precompute()</code>,
 <code>marpa_r_earleme_complete()</code>,
 and
 <code>marpa_r_start_input()</code>.
-The event-generating methods always clear all previous events
-so that, on return from an event-generating method,
+The event-triggering methods always clear all previous events
+so that, on return from an event-triggering method,
 the only events in the event queue will be
-the events generated by that method.
+the events triggered by that method.
+</p>
+<p>Every event instance has a type, and a subtype.
+The type of an event instance is its
+<em>code</em>,
+such as <code>MARPA_EVENT_SYMBOL_COMPLETED</code>.
+Event codes are listed in a later section.
+See <a href="#Event-codes">Event codes</a>.
+Subtypes will be described shortly.
+</p>
+<p>Event types are either
+<a name="index-implicit-event-type"></a>
+<em>implicit</em>
+or
+<a name="index-explicit-event-type"></a>
+<em>explicit</em>.
+Intuitively, implicit event types are
+available to the application without any action
+by the user;
+and explicit event types are not available
+unless the user calls certains methods which are
+available for that purpose.
+</p>
+<p>Event are also either
+<a name="index-global-event"></a>
+<a name="index-event_002c-global"></a>
+<em>global</em>
+or
+<a name="index-per_002dsymbol-event"></a>
+<a name="index-event_002c-per_002dsymbol"></a>
+<em>per-symbol</em>.
+In any event-triggering method,
+at most one event instance can trigger for each subtype.
+If an event type is
+<a name="index-global-event-1"></a>
+<em>global</em>,
+it has only one subtype,
+and only one event instance of that type
+may trigger in a method call.
+If an event is
+<a name="index-per_002dsymbol-event-1"></a>
+<em>per-symbol</em>,
+it has one subtype for each symbol in grammar.
+Many instances of a per-symbol event may trigger
+in a method call,
+up to the number of symbols in the grammar.
+</p>
+<p>All global event types are implicit.
+All explicit event types are per-symbol.
+The reason for event types to be explicit
+is to avoid the overhead of unused events,
+and for per-symbol event types there might
+be many such events.
+</p>
+<p>For an event instance to trigger,
+its event subtype must first be
+<a name="index-declared-event-subtype"></a>
+<em>declared</em>.
+Subtypes of implicit events are always
+declared &mdash;
+declaring them requires no action on the part
+of the user.
+Subtypes
+of explicit event types must be declared by the user,
+using a method call provided
+for that purpose.
+Once declared, an event subtype remains declared:
+there is no way to remove or undo the declaration
+of an event subtype.
+Details of event declaration are provided,
+by event code,
+in the section on event codes.
+See <a href="#Event-codes">Event codes</a>.
+</p>
+<p>A declared event subtype can be activated.
+An event instance will not trigger,
+unless its event subtype is
+<a name="index-activated-event-subtype"></a>
+<em>activated</em>.
+Subtypes of implicit event are always
+activated &mdash;
+activating them requires no action on the part
+of the user.
+Subtypes of explicit event types must be activated by the user,
+using a method call provided
+for that purpose.
+Implicitly activated event subtypes cannot be deactivated.
+Some explicitly activated event subtypes can be
+deactivated, using a method call available for that purpose.
+Details of event activation are provided,
+by event code,
+in the section on event codes.
+See <a href="#Event-codes">Event codes</a>.
+</p>
+<p>When a recognizer is created,
+the event subtypes of a recognizer inherit their declared
+and activated status from the events of the base
+grammar.
+See <a href="#marpa_005fr_005fnew">marpa_r_new()</a>.
 </p>
 <p>A Libmarpa method or macro is
 <a name="index-event_002dsafe-_0028method_0029"></a>
@@ -7955,34 +8322,351 @@ the events generated by that method.
 iff it does not change the events queue.
 All Libmarpa accessors are event-safe.
 </p>
-<p>Regardless of the event-safety of the methods calls
-between event generation and event access,
-it is good practice to access events
-as soon as reasonable after the method that generated them.
-Note that events are kept in the base grammar,
+<p>Regardless of the event-safety of the method calls
+between event triggering and event access,
+it is good practice to access event instances
+as soon as reasonable after the method that triggered them.
+Note that the event queue is kept in the base grammar,
 so that multiple recognizers using the same base grammar
-overwrite each other&rsquo;s events.
+can overwrite each other&rsquo;s events.
 </p>
 <p>To find out how many events are in the event queue,
 use the
 <code>marpa_g_event_count()</code>
 method.
+See <a href="#marpa_005fg_005fevent_005fcount">marpa_g_event_count()</a>.
 </p>
 <p>To access specific events,
 use the
 <code>marpa_g_event()</code>
+(see <a href="#marpa_005fg_005fevent">marpa_g_event()</a>)
 and
 <code>marpa_g_event_value()</code>
+(see <a href="#marpa_005fg_005fevent_005fvalue">marpa_g_event_value()</a>)
 methods.
 </p>
+<hr>
+<a name="Event-codes"></a>
+<div class="header">
+<p>
+Next: <a href="#Basic-event-accessors" accesskey="n" rel="next">Basic event accessors</a>, Previous: <a href="#Events-overview" accesskey="p" rel="prev">Events overview</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Event-codes-1"></a>
+<h3 class="section">24.2 Event codes</h3>
+
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fNONE"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_NONE</strong></dt>
+<dd><p>This is an implicit global event.
+This event code is reserved.
+No method triggers an event with this code.
+</p>
+<p><strong>Event value</strong>: Unspecified.
+<strong>Suggested message</strong>: &quot;No event&quot;.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fCOUNTED_005fNULLABLE"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_COUNTED_NULLABLE</strong></dt>
+<dd><p>This is an implicit per-symbol event.
+This event is triggered by the
+<code>marpa_g_precompute()</code> method
+(see <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>),
+when a nullable symbol was used as either the separator
+for, or the right hand side of, a sequence.
+</p>
+<p><strong>Event value</strong>: The ID of the symbol.
+<strong>Suggested message</strong>: &quot;This symbol is a counted nullable&quot;.
+</p></dd></dl>
+
+<a name="MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD"></a><dl>
+<dt><a name="index-MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</strong></dt>
+<dd><p>This is an implicit global event.
+This event is triggered by the
+<code>marpa_r_earleme_complete()</code> method
+(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete()</a>),
+when
+an application-settable threshold
+on the number of Earley items has been reached or exceeded.
+See <a href="#marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset">marpa_r_earley_item_warning_threshold_set()</a>.
+</p>
+<p><strong>Event value</strong>: The current Earley item count.
+<strong>Suggested message</strong>: &quot;Too many Earley items&quot;.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fEXHAUSTED"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_EXHAUSTED</strong></dt>
+<dd><p>This is an implicit global event.
+This event is triggered by the
+<code>marpa_r_earleme_complete()</code>
+(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>)
+and
+<code>marpa_r_start_input()</code>
+(see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>)
+methods,
+when the parse is exhausted.
+See <a href="#Exhaustion">Exhaustion</a>.
+</p>
+<p><strong>Event value</strong>: Unspecified.
+<strong>Suggested message</strong>: &quot;Recognizer is exhausted&quot;.
+</p></dd></dl>
+
+<a name="MARPA_005fEVENT_005fLOOP_005fRULES"></a><dl>
+<dt><a name="index-MARPA_005fEVENT_005fLOOP_005fRULES"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_LOOP_RULES</strong></dt>
+<dd><p>This is an implicit global event.
+This event is triggered by the
+<code>marpa_g_precompute()</code> method,
+when one or more rules are loop rules.
+(See <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>.
+</p>
+<p>A rule is a loop rule iff it is part of a cycle.
+See <a href="#Cycles">Cycles</a>.
+Parsing with a grammar than contains a loop rule
+is deprecated.
+</p>
+<p><strong>Event value</strong>: The count of loop rules.
+<strong>Suggested message</strong>: &quot;Grammar contains a infinite loop&quot;.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-MARPA_005fEVENT_005fNULLING_005fTERMINAL"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_NULLING_TERMINAL</strong></dt>
+<dd><p>This is an implicit per-symbol event.
+This event is triggered by the
+<code>marpa_g_precompute()</code> method.
+See <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>.
+It only occurs if the LHS terminals feature is in use.
+The LHS terminals feature is deprecated.
+See <a href="#LHS-terminals">LHS terminals</a>.
+</p>
+<p><strong>Event value</strong>: The ID of the symbol.
+<strong>Suggested message</strong>: &quot;This symbol is a nulling terminal&quot;.
+</p></dd></dl>
+
+<a name="MARPA_005fEVENT_005fSYMBOL_005fCOMPLETED"></a><dl>
+<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fCOMPLETED"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_COMPLETED</strong></dt>
+<dd><p>This is an explicit per-symbol event.
+Intuitively, it triggers when a non-nulled non-terminal symbol is
+fully recognized.
+</p>
+<p>More precisely,
+when an Earley set is completed at earleme <code>j</code>,
+the MARPA_EVENT_SYMBOL_COMPLETED event instance
+for symbol <code>sym</code>
+triggers iff
+</p><ul>
+<li> the event subtype of
+MARPA_EVENT_SYMBOL_COMPLETED for <code>sym</code>
+is activated; and
+</li><li> the Earley set at earleme <code>j</code> contains
+a completed Earley item for a rule whose
+LHS is <code>sym</code>.
+</li></ul>
+<p>The MARPA_EVENT_SYMBOL_COMPLETED
+is triggered by the
+<code>marpa_r_earleme_complete()</code> method.
+See <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete()</a>.
+</p>
+<p>We recall that a symbol instance is a symbol,
+together with start and end parse locations.
+More than one symbol instance may trigger the
+same
+MARPA_EVENT_SYMBOL_COMPLETED event instance.
+For example,
+if <code>x</code>@40-42 and
+<code>x</code>@38-42 are symbol instances,
+they will trigger only one event instance &mdash;
+the MARPA_EVENT_SYMBOL_COMPLETED event instance
+at location 42 with symbol <code>x</code>.
+</p>
+<p>To declare a completed symbol event, use the
+<code>marpa_g_symbol_is_completion_event_set()</code> method.
+See <a href="#marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset">marpa_g_symbol_is_completion_event_set</a>.
+To activate or deactivate a completed symbol event,
+use the
+<code>marpa_g_completion_symbol_activate</code> method
+(see <a href="#marpa_005fg_005fcompletion_005fsymbol_005factivate">marpa_g_completion_symbol_activate</a>),
+or the
+<code>marpa_r_completion_symbol_activate</code> method
+(see <a href="#marpa_005fr_005fcompletion_005fsymbol_005factivate">marpa_r_completion_symbol_activate</a>).
+</p>
+<p><strong>Event value</strong>: The ID of the completed symbol.
+<strong>Suggested message</strong>: &quot;Completed symbol&quot;.
+</p></dd></dl>
+
+<a name="MARPA_005fEVENT_005fSYMBOL_005fEXPECTED"></a><dl>
+<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fEXPECTED"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_EXPECTED</strong></dt>
+<dd><p>This is an explicit per-symbol event.
+Intuitively, it triggers when a terminal symbol
+is expected.
+</p>
+<p>More precisely,
+when an Earley set is completed at earleme <code>j</code>,
+the MARPA_EVENT_SYMBOL_EXPECTED event instance
+for symbol <code>sym</code>
+triggers iff
+</p><ul>
+<li> the event subtype of
+MARPA_EVENT_SYMBOL_EXPECTED for <code>sym</code>
+is activated;
+</li><li> <code>sym</code> is a terminal; and
+</li><li> <code>sym</code> is the postdot symbol of an Earley item
+whose current location is <code>j</code>.
+</li></ul>
+<p>This event is triggered by the
+<code>marpa_r_earleme_complete()</code>
+(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>)
+and
+<code>marpa_r_start_input()</code>
+(see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>)
+methods.
+</p>
+<p>More than one symbol instance may trigger the same
+MARPA_EVENT_SYMBOL_EXPECTED event instance.
+For example, if
+</p><div class="display">
+<pre class="display">    <code>[ [ X ::= B &bull; x ], 0, 42 ]</code> and
+    <code>[ [ Y ::= C &bull; x ], 7, 42 ]</code>
+</pre></div>
+<p>are Earley items,
+they will trigger only one event instance &mdash;
+the MARPA_EVENT_SYMBOL_EXPECTED event instance at location 42
+with symbol <code>x</code>.
+</p>
+<p>MARPA_EVENT_SYMBOL_EXPECTED events
+only trigger if their symbol is expected as a terminal.
+Predicted symbols that are not expected as terminals
+do not trigger this event.
+</p>
+<p>To declare an expected terminal event, use the
+<code>marpa_r_expected_symbol_event_set()</code> method.
+The <code>marpa_r_expected_symbol_event_set()</code> method
+is also used to activate or deactivate an expected terminal event.
+See <a href="#marpa_005fr_005fexpected_005fsymbol_005fevent_005fset">marpa_r_expected_symbol_event_set</a>.
+</p>
+<p><strong>Event value</strong>: The ID of the expected symbol.
+<strong>Suggested message</strong>: &quot;Expecting symbol&quot;.
+</p></dd></dl>
+
+<a name="MARPA_005fEVENT_005fSYMBOL_005fNULLED"></a><dl>
+<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fNULLED"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_NULLED</strong></dt>
+<dd><p>This is an explicit per-symbol event.
+Intuitively,
+this event triggers when a nulled instance of a symbol
+is recognized.
+</p>
+<p>More precisely,
+when an Earley set is completed at earleme <code>j</code>,
+the MARPA_EVENT_SYMBOL_NULLED event instance
+for symbol <code>sym</code>
+triggers iff
+</p><ul>
+<li> the event subtype of
+MARPA_EVENT_SYMBOL_NULLED for <code>sym</code>
+is activated; and
+</li><li> <code>sym</code>@<code>j</code>-<code>j</code>
+is a symbol instance.
+</li></ul>
+<p>This event is triggered by the
+<code>marpa_r_earleme_complete()</code>
+(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>)
+and
+<code>marpa_r_start_input()</code>
+(see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>)
+methods.
+</p>
+<p>Duplicate nulled nodes may occur.
+See <a href="#Duplicate-nulled-nodes">Duplicate nulled nodes</a>.
+Even if there are duplicate nulled nodes
+for symbol <code>sym</code> at location <code>j</code>,
+only one
+MARPA_EVENT_SYMBOL_NULLED event instance for <code>sym</code>
+will be triggered at location <code>j</code>.
+</p>
+<p>To declare an nulled symbol event,
+use the recognizer&rsquo;s
+<code>marpa_g_symbol_is_nulled_event_set()</code>
+method.
+See <a href="#marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset">marpa_g_symbol_is_nulled_event_set</a>.
+To activate or deactivate a nulled symbol event,
+use the
+<code>marpa_g_nulled_symbol_activate</code> method
+(see <a href="#marpa_005fg_005fnulled_005fsymbol_005factivate">marpa_g_nulled_symbol_activate</a>),
+or the
+<code>marpa_r_nulled_symbol_activate</code> method
+(see <a href="#marpa_005fr_005fnulled_005fsymbol_005factivate">marpa_r_nulled_symbol_activate</a>).
+</p>
+<p><strong>Event value</strong>: The ID of the nulled symbol.
+<strong>Suggested message</strong>: &quot;Symbol was nulled&quot;.
+</p></dd></dl>
+
+<a name="MARPA_005fEVENT_005fSYMBOL_005fPREDICTED"></a><dl>
+<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fPREDICTED"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_PREDICTED</strong></dt>
+<dd><p>This is an explicit per-symbol event.
+Intuitively,
+this event triggers when a symbol is predicted.
+Unlike the
+<code>MARPA_EVENT_SYMBOL_EXPECTED</code> event,
+the <code>MARPA_EVENT_SYMBOL_PREDICTED</code> event
+triggers for predictions of both
+non-terminals and terminals.
+</p>
+<p>More precisely,
+when an Earley set is completed at earleme <code>j</code>,
+the MARPA_EVENT_SYMBOL_PREDICTED event instance
+for symbol <code>sym</code>
+triggers iff
+</p><ul>
+<li> the event subtype of
+MARPA_EVENT_SYMBOL_PREDICTED for <code>sym</code>
+is activated; and
+</li><li> the Earley set at earleme <code>j</code> contains an Earley item
+whose postdot symbol is <code>sym</code>.
+</li></ul>
+<p>This event is triggered by the
+<code>marpa_r_earleme_complete()</code>
+(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>)
+and
+<code>marpa_r_start_input()</code>
+(see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>)
+methods.
+</p>
+<p>In an Earley set,
+multiple Earley items may have the same
+postdot symbol,
+but they will trigger only one event instance.
+For example, if
+</p><div class="display">
+<pre class="display">    <code>[ [ X ::= B &bull; X ], 0, 42 ]</code> and
+    <code>[ [ Y ::= C &bull; X ], 7, 42 ]</code>
+</pre></div>
+<p>are Earley items,
+they will trigger only one event instance &mdash;
+the <code>MARPA_EVENT_SYMBOL_PREDICTED</code> event instance at location 42
+with symbol <code>X</code>.
+</p>
+<p>To declare a predicted symbol event,
+use the recognizer&rsquo;s
+<code>marpa_g_symbol_is_prediction_event_set()</code>
+method.
+See <a href="#marpa_005fg_005fsymbol_005fis_005fprediction_005fevent_005fset">marpa_g_symbol_is_prediction_event_set</a>.
+To activate or deactivate a predicted symbol event,
+use the
+<code>marpa_g_prediction_symbol_activate</code> method
+(see <a href="#marpa_005fg_005fprediction_005fsymbol_005factivate">marpa_g_prediction_symbol_activate</a>),
+or the
+<code>marpa_r_prediction_symbol_activate</code> method
+(see <a href="#marpa_005fr_005fprediction_005fsymbol_005factivate">marpa_r_prediction_symbol_activate</a>).
+</p>
+<p><strong>Event value</strong>: The ID of the predicted symbol.
+<strong>Suggested message</strong>: &quot;Symbol was predicted&quot;.
+</p></dd></dl>
+
 <hr>
 <a name="Basic-event-accessors"></a>
 <div class="header">
 <p>
-Next: <a href="#Completion-events" accesskey="n" rel="next">Completion events</a>, Previous: <a href="#Events-overview" accesskey="p" rel="prev">Events overview</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Completion-events" accesskey="n" rel="next">Completion events</a>, Previous: <a href="#Event-codes" accesskey="p" rel="prev">Event codes</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Basic-event-accessors-1"></a>
-<h3 class="section">24.2 Basic event accessors</h3>
+<h3 class="section">24.3 Basic event accessors</h3>
 
 <a name="marpa_005fg_005fevent"></a><dl>
 <dt><a name="index-marpa_005fg_005fevent"></a>Accessor function: <em>Marpa_Event_Type</em> <strong>marpa_g_event</strong> <em>(Marpa_Grammar <var>g</var>,     Marpa_Event* <var>event</var>, int <var>ix</var>)</em></dt>
@@ -8023,7 +8707,7 @@ On success, the number of events, which is always non-negative.
 On hard failure, -2.
 </p></dd></dl>
 
-<dl>
+<a name="marpa_005fg_005fevent_005fvalue"></a><dl>
 <dt><a name="index-marpa_005fg_005fevent_005fvalue"></a>Accessor macro: <em>int</em> <strong>marpa_g_event_value</strong> <em>(Marpa_Event* <var>event</var>)</em></dt>
 <dd><p>Returns the &ldquo;value&rdquo; of the event.
 The semantics of the value varies according to the type
@@ -8042,24 +8726,14 @@ Always succeeds.
 Next: <a href="#Symbol-nulled-events" accesskey="n" rel="next">Symbol nulled events</a>, Previous: <a href="#Basic-event-accessors" accesskey="p" rel="prev">Basic event accessors</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Completion-events-1"></a>
-<h3 class="section">24.3 Completion events</h3>
+<h3 class="section">24.4 Completion events</h3>
 
-<p>Libmarpa can be set up to generate
-a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
-whenever the symbol is completed.
-A symbol is said to be <strong>completed</strong>
-when a non-nulling rule with
-that symbol on its LHS is completed.
+<p>This section contains methods
+for dealing with MARPA_EVENT_SYMBOL_COMPLETED
+events.
+See <a href="#MARPA_005fEVENT_005fSYMBOL_005fCOMPLETED">MARPA_EVENT_SYMBOL_COMPLETED</a>.
 </p>
-<p>For a completion event to be generated,
-the symbol must be
-<a name="index-mark-_0028as-a-completion-event-symbol_0029"></a>
-<em>marked</em>,
-and the event must be
-<a name="index-activate-_0028a-completion-symbol-event_0029"></a>
-<em>activated</em>.
-</p>
-<p>To mark a symbol as a completion event symbol
+<p>To declare a symbol as a completion event symbol
 use the <code>marpa_g_symbol_is_completion_event_set()</code>
 method.
 The event will be activated by default.
@@ -8083,7 +8757,7 @@ On success, does the following:
 activation status of a completion event in all of its child recognizers.
 </p>
 <p>This method is seldom needed.
-When a symbol is marked as a completion event symbol in
+When a symbol is declared as a completion event symbol in
 the grammar,
 it is activated by default.
 See <a href="#marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset">marpa_g_symbol_is_completion_event_set()</a>.
@@ -8094,7 +8768,7 @@ using the
 See <a href="#marpa_005fr_005fcompletion_005fsymbol_005factivate">marpa_r_completion_symbol_activate()</a>.
 </p>
 <p>Hard fails
-if the <var>sym_id</var> is not marked as a completion event symbol
+if the <var>sym_id</var> is not declared as a completion event symbol
 in the grammar,
 or if the grammar has not been precomputed.
 </p>
@@ -8114,13 +8788,8 @@ On success, does the following:
 </li><li> If <var>reactivate</var> is one, activates the event in the recognizer.
 </li></ul>
 
-<p>When a recognizer is created,
-the activation status of its symbol completion event for <var>sym_id</var>
-is initialized to the activation status of the symbol completion event
-for <var>sym_id</var> in the base grammar.
-</p>
 <p>Hard fails if
-<var>sym_id</var> was not marked for completion events in the base grammar.
+<var>sym_id</var> was not declared for completion events in the base grammar.
 </p>
 <p><strong>Return value</strong>:
 On success, the value of <var>reactivate</var>, which is a boolean.
@@ -8130,7 +8799,7 @@ On hard failure, -2.
 <a name="marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent"></a>Accessor function: <em>int</em> <strong>marpa_g_symbol_is_completion_event</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>)</em></dt>
 <dd>
-<p>On success, returns a boolean which is 1 iff <var>sym_id</var> is marked
+<p>On success, returns a boolean which is 1 iff <var>sym_id</var> is declared
 as a completion event symbol in <var>g</var>.
 For more about completion events,
 see <a href="#marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset">marpa_g_symbol_is_completion_event_set()</a>.
@@ -8149,49 +8818,31 @@ On hard failure, -2.
 <a name="marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset"></a>Mutator function: <em>int</em> <strong>marpa_g_symbol_is_completion_event_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>,  int <var>value</var>)</em></dt>
 <dd>
-<p>Libmarpa can be set up to generate an
-<code>MARPA_EVENT_SYMBOL_COMPLETED</code>
-event whenever the symbol is completed.
-A symbol is said to be <strong>completed</strong>
-when a non-nulling rule with
-that symbol on its LHS is completed.
-</p>
-<p>For completion events for <var>sym_id</var> to occur, <var>sym_id</var> must be marked
-as a completion event symbol,
-and the completion event for <var>sym_id</var> must be activated in the recognizer.
-Event activation also occurs in the grammar,
-and the recognizer event activation status for <var>sym_id</var>
-is initialized
-from
-the grammar event activation status for <var>sym_id</var>.
-See <a href="#marpa_005fg_005fcompletion_005fsymbol_005factivate">marpa_g_completion_symbol_activate()</a>, and
-see <a href="#marpa_005fr_005fcompletion_005fsymbol_005factivate">marpa_r_completion_symbol_activate()</a>.
-</p>
 <p>On success, if <var>value</var> is 1,
 </p><ul>
-<li> marks symbol <var>sym_id</var> as a completion event symbol,
+<li> declares symbol <var>sym_id</var> as a completion event symbol,
 </li><li> activates the completion event for <var>sym_id</var> in <var>g</var>, and
 </li><li> returns 1.
 </li></ul>
 
 <p>On success, if <var>value</var> is 0,
 </p><ul>
-<li> unmarks symbol <var>sym_id</var> as a completion event symbol,
+<li> declares symbol <var>sym_id</var> as a completion event symbol,
 </li><li> deactivates the completion event for <var>sym_id</var> in <var>g</var>, and
 </li><li> returns 0.
 </li></ul>
 
 <p>Nulled rules and symbols will never cause completion events.
 Nullable symbols
-may be marked as completion event symbols,
+may be declared as completion event symbols,
 but this will have an effect only when the symbol
 is not nulled.
 Nulling symbols
-may be marked as completion event symbols,
-but no completion events will ever be generated
+may be declared as completion event symbols,
+but no completion events will ever be triggered
 for a nulling symbol.
 Note that this implies that no completion event will
-ever be generated at earleme 0,
+ever be triggered at earleme 0,
 the start of parsing.
 </p>
 <p>Soft fails iff <var>sym_id</var> is well-formed (a non-negative integer), but there is no
@@ -8213,24 +8864,14 @@ On hard failure, -2.
 Next: <a href="#Prediction-events" accesskey="n" rel="next">Prediction events</a>, Previous: <a href="#Completion-events" accesskey="p" rel="prev">Completion events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Symbol-nulled-events-1"></a>
-<h3 class="section">24.4 Symbol nulled events</h3>
+<h3 class="section">24.5 Symbol nulled events</h3>
 
-<p>Libmarpa can set up to generate
-an <code>MARPA_EVENT_SYMBOL_NULLED</code>
-event whenever a symbol is nulled.
-A symbol is said to be <strong>nulled</strong>
-when a zero length instance of that symbol
-is recognized.
+<p>This section contains methods
+for dealing with MARPA_EVENT_SYMBOL_NULLED
+events.
+See <a href="#MARPA_005fEVENT_005fSYMBOL_005fNULLED">MARPA_EVENT_SYMBOL_NULLED</a>.
 </p>
-<p>For a nulled event to be generated,
-the symbol must be
-<a name="index-mark-_0028as-a-nulled-event-symbol_0029"></a>
-<em>marked</em>,
-and the event must be
-<a name="index-activate-_0028a-nulled-symbol-event_0029"></a>
-<em>activated</em>.
-</p>
-<p>To mark a symbol as a nulled event symbol
+<p>To declare a symbol as a nulled event symbol
 use the <code>marpa_g_symbol_is_nulled_event_set()</code>
 method.
 The event will be activated by default.
@@ -8254,7 +8895,7 @@ On success, does the following:
 activation status of a nulled event in all of its child recognizers.
 </p>
 <p>This method is seldom needed.
-When a symbol is marked as a nulled event symbol in
+When a symbol is declared as a nulled event symbol in
 the grammar,
 it is activated by default.
 See <a href="#marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset">marpa_g_symbol_is_nulled_event_set()</a>.
@@ -8265,7 +8906,7 @@ using the
 See <a href="#marpa_005fr_005fnulled_005fsymbol_005factivate">marpa_r_nulled_symbol_activate()</a>.
 </p>
 <p>Hard fails
-if the <var>sym_id</var> is not marked as a nulled event symbol
+if the <var>sym_id</var> is not declared as a nulled event symbol
 in the grammar,
 or if the grammar has not been precomputed.
 </p>
@@ -8285,13 +8926,10 @@ On success, does the following:
 </li><li> If <var>reactivate</var> is one, activates the event in the recognizer.
 </li></ul>
 
-<p>When a recognizer is created,
-the activation status of its symbol nulled event for <var>sym_id</var>
-is initialized to the activation status of the symbol nulled event
-for <var>sym_id</var> in the base grammar.
-</p>
 <p>Hard fails if
-<var>sym_id</var> was not marked for nulled events in the base grammar.
+the subtype <var>sym_id</var> of
+the <code>MARPA_EVENT_SYMBOL_NULLED</code> event
+is not declared.
 </p>
 <p><strong>Return value</strong>:
 On success, the value of <var>reactivate</var>, which is a boolean.
@@ -8301,10 +8939,11 @@ On hard failure, -2.
 <a name="marpa_005fg_005fsymbol_005fis_005fnulled_005fevent"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fnulled_005fevent"></a>Accessor function: <em>int</em> <strong>marpa_g_symbol_is_nulled_event</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>)</em></dt>
 <dd>
-<p>On success, returns a boolean which is 1 iff <var>sym_id</var> is marked
-as a nulled event symbol in <var>g</var>.
+<p>On success, returns a boolean which is 1 iff the subtype <var>sym_id</var>
+of the <code>MARPA_EVENT_SYMBOL_NULLED</code> event
+is declared.
 For more about nulled events,
-see <a href="#marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset">marpa_g_symbol_is_nulled_event_set()</a>.
+see <a href="#marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset">marpa_g_symbol_is_nulled_event_set</a>.
 </p>
 <p>Soft fails iff <var>sym_id</var> is well-formed (a non-negative integer), but there is no
 such symbol.
@@ -8320,74 +8959,30 @@ On hard failure, -2.
 <a name="marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset"></a>Mutator function: <em>int</em> <strong>marpa_g_symbol_is_nulled_event_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>,  int <var>value</var>)</em></dt>
 <dd>
-<p>Libmarpa can set up to generate
-an <code>MARPA_EVENT_SYMBOL_NULLED</code>
-event whenever the symbol is nulled.
-A symbol is said to be <strong>nulled</strong>
-when a zero length instance of that symbol
-is recognized.
-</p>
-<p>For nulled events for <var>sym_id</var> to occur, <var>sym_id</var> must be marked
-as a nulled event symbol,
-and the nulled event for <var>sym_id</var> must be activated in the recognizer.
-Event activation also occurs in the grammar,
-and the recognizer event activation status for <var>sym_id</var>
-is initialized
-from
-the grammar event activation status for <var>sym_id</var>.
-See <a href="#marpa_005fg_005fnulled_005fsymbol_005factivate">marpa_g_nulled_symbol_activate()</a>, and
-see <a href="#marpa_005fr_005fnulled_005fsymbol_005factivate">marpa_r_nulled_symbol_activate()</a>.
-</p>
 <p>On success, if <var>value</var> is 1,
 </p><ul>
-<li> marks symbol <var>sym_id</var> as a nulled event symbol,
+<li> declares symbol <var>sym_id</var> as a nulled event symbol,
 </li><li> activates the nulled event for <var>sym_id</var> in <var>g</var>, and
 </li><li> returns 1.
 </li></ul>
 
 <p>On success, if <var>value</var> is 0,
 </p><ul>
-<li> unmarks symbol <var>sym_id</var> as a nulled event symbol,
+<li> declares symbol <var>sym_id</var> as a nulled event symbol,
 </li><li> deactivates the nulled event for <var>sym_id</var> in <var>g</var>, and
 </li><li> returns 0.
 </li></ul>
 
-<p>A symbol instance can never generate both a nulled
-and a prediction event at the same location.
-Also, a symbol instance can never generate both a nulled
-and a completion event at the same location.
-(As a reminder, a symbol instance is a symbol
-starting at a specific location in the input,
-and with a specific length.)
-This is because the symbol instance for a nulled
-event must be zero length,
-and the symbol instance for prediction and completion
-events can never be zero length.
-</p>
-<p>However, prediction and nulled events for the
-same symbol can trigger at the same location.
-This is because
-the same location can be the location of a nulled instance
-of a symbol,
-and the start of an non-nulled instance of the same symbol.
-</p>
-<p>Also, completion and nulled events for the
-same symbol can trigger at the same location.
-This is because
-the same location can be the location of a nulled instance
-of a symbol,
-and the end of one or more non-nulled instances of the same symbol.
-</p>
 <p>The
 <code>marpa_g_symbol_is_nulled_event_set()</code>
 method will
-mark a symbol as a nulled event symbol,
+declare a symbol as a nulled event symbol,
 even if the symbol is non-nullable.
 This is convenient, for example,
 for automatically generated grammars.
 Applications that wish to treat
 it as a failure when
-a non-nullable symbol is marked
+a non-nullable symbol is declared
 as a nulled event symbol,
 can check for this after precomputation,
 using the
@@ -8414,27 +9009,14 @@ On hard failure, -2.
 Next: <a href="#Symbol-expected-events" accesskey="n" rel="next">Symbol expected events</a>, Previous: <a href="#Symbol-nulled-events" accesskey="p" rel="prev">Symbol nulled events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Prediction-events-1"></a>
-<h3 class="section">24.5 Prediction events</h3>
+<h3 class="section">24.6 Prediction events</h3>
 
-<p>Libmarpa can be set up
-to generate a
-<code>MARPA_EVENT_SYMBOL_PREDICTED</code>
-event when a non-nulled symbol is predicted.
-A non-nulled symbol is said to be <strong>predicted</strong>
-when an instance of it
-is acceptable at the current
-earleme according to the grammar.
-Nulled symbols do not generate predictions.
+<p>This section contains methods
+for dealing with MARPA_EVENT_SYMBOL_PREDICTED
+events.
+See <a href="#MARPA_005fEVENT_005fSYMBOL_005fPREDICTED">MARPA_EVENT_SYMBOL_PREDICTED</a>.
 </p>
-<p>For a prediction event to be generated,
-the symbol must be
-<a name="index-mark-_0028as-a-prediction-event-symbol_0029"></a>
-<em>marked</em>,
-and the event must be
-<a name="index-activate-_0028a-prediction-symbol-event_0029"></a>
-<em>activated</em>.
-</p>
-<p>To mark a symbol as a prediction event symbol
+<p>To declare a symbol as a prediction event symbol
 use the <code>marpa_g_symbol_is_prediction_event_set()</code>
 method.
 The event will be activated by default.
@@ -8458,7 +9040,7 @@ On success, does the following:
 activation status of a prediction event in all of its child recognizers.
 </p>
 <p>This method is seldom needed.
-When a symbol is marked as a prediction event symbol in
+When a symbol is declared as a prediction event symbol in
 the grammar,
 it is activated by default.
 See <a href="#marpa_005fg_005fsymbol_005fis_005fprediction_005fevent_005fset">marpa_g_symbol_is_prediction_event_set()</a>.
@@ -8469,7 +9051,7 @@ using the
 See <a href="#marpa_005fr_005fprediction_005fsymbol_005factivate">marpa_r_prediction_symbol_activate()</a>.
 </p>
 <p>Hard fails
-if the <var>sym_id</var> is not marked as a prediction event symbol
+if the <var>sym_id</var> is not declared as a prediction event symbol
 in the grammar,
 or if the grammar has not been precomputed.
 </p>
@@ -8489,13 +9071,8 @@ On success, does the following:
 </li><li> If <var>reactivate</var> is one, activates the event in the recognizer.
 </li></ul>
 
-<p>When a recognizer is created,
-the activation status of its symbol prediction event for <var>sym_id</var>
-is initialized to the activation status of the symbol prediction event
-for <var>sym_id</var> in the base grammar.
-</p>
 <p>Hard fails if
-<var>sym_id</var> was not marked for prediction events in the base grammar.
+<var>sym_id</var> was not declared for prediction events in the base grammar.
 </p>
 <p><strong>Return value</strong>:
 On success, the value of <var>reactivate</var>, which is a boolean.
@@ -8505,10 +9082,10 @@ On hard failure, -2.
 <a name="marpa_005fg_005fsymbol_005fis_005fprediction_005fevent"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fprediction_005fevent"></a>Accessor function: <em>int</em> <strong>marpa_g_symbol_is_prediction_event</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>)</em></dt>
 <dd>
-<p>On success, returns a boolean which is 1 iff <var>sym_id</var> is marked
-as a prediction event symbol in <var>g</var>.
+<p>On success, returns a boolean which is 1 iff <var>sym_id</var> is declared
+as a prediction event symbol.
 For more about prediction events,
-see <a href="#marpa_005fg_005fsymbol_005fis_005fprediction_005fevent_005fset">marpa_g_symbol_is_prediction_event_set()</a>.
+see <a href="#marpa_005fg_005fsymbol_005fis_005fprediction_005fevent_005fset">marpa_g_symbol_is_prediction_event_set</a>.
 </p>
 <p>Soft fails iff <var>sym_id</var> is well-formed (a non-negative integer), but there is no
 such symbol.
@@ -8525,37 +9102,16 @@ On hard failure, -2.
 <a name="marpa_005fg_005fsymbol_005fis_005fprediction_005fevent_005fset"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fprediction_005fevent_005fset"></a>Mutator function: <em>int</em> <strong>marpa_g_symbol_is_prediction_event_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>sym_id</var>,  int <var>value</var>)</em></dt>
 <dd>
-<p>Libmarpa can be set up
-to generate a
-<code>MARPA_EVENT_SYMBOL_PREDICTED</code>
-event when a non-nulled symbol is predicted.
-A non-nulled symbol is said to be <strong>predicted</strong>
-when a instance of it
-is acceptable at the current
-earleme according to the grammar.
-Nulled symbols do not generate predictions.
-</p>
-<p>For prediction events for <var>sym_id</var> to occur, <var>sym_id</var> must be marked
-as a prediction event symbol,
-and the prediction event for <var>sym_id</var> must be activated in the recognizer.
-Event activation also occurs in the grammar,
-and the recognizer event activation status for <var>sym_id</var>
-is initialized
-from
-the grammar event activation status for <var>sym_id</var>.
-See <a href="#marpa_005fg_005fprediction_005fsymbol_005factivate">marpa_g_prediction_symbol_activate()</a>, and
-see <a href="#marpa_005fr_005fprediction_005fsymbol_005factivate">marpa_r_prediction_symbol_activate()</a>.
-</p>
 <p>On success, if <var>value</var> is 1,
 </p><ul>
-<li> marks symbol <var>sym_id</var> as a prediction event symbol,
+<li> declares symbol <var>sym_id</var> as a prediction event symbol,
 </li><li> activates the prediction event for <var>sym_id</var> in <var>g</var>, and
 </li><li> returns 1.
 </li></ul>
 
 <p>On success, if <var>value</var> is 0,
 </p><ul>
-<li> unmarks symbol <var>sym_id</var> as a prediction event symbol,
+<li> declares symbol <var>sym_id</var> as a prediction event symbol,
 </li><li> deactivates the prediction event for <var>sym_id</var> in <var>g</var>, and
 </li><li> returns 0.
 </li></ul>
@@ -8576,45 +9132,55 @@ On hard failure, -2.
 <a name="Symbol-expected-events"></a>
 <div class="header">
 <p>
-Next: <a href="#Event-codes" accesskey="n" rel="next">Event codes</a>, Previous: <a href="#Prediction-events" accesskey="p" rel="prev">Prediction events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Recognizer-per_002dsymbol-events" accesskey="n" rel="next">Recognizer per-symbol events</a>, Previous: <a href="#Prediction-events" accesskey="p" rel="prev">Prediction events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Symbol-expected-events-1"></a>
-<h3 class="section">24.6 Symbol expected events</h3>
+<h3 class="section">24.7 Symbol expected events</h3>
 
+<p>This section contains methods
+for dealing with MARPA_EVENT_SYMBOL_EXPECTED
+events.
+See <a href="#MARPA_005fEVENT_005fSYMBOL_005fEXPECTED">MARPA_EVENT_SYMBOL_EXPECTED</a>.
+</p>
 <a name="marpa_005fr_005fexpected_005fsymbol_005fevent_005fset"></a><dl>
 <dt><a name="index-marpa_005fr_005fexpected_005fsymbol_005fevent_005fset"></a>Mutator function: <em>int</em> <strong>marpa_r_expected_symbol_event_set</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Symbol_ID <var>symbol_id</var>,   int <var>value</var>)</em></dt>
 <dd>
-<p>Libmarpa can be set up
-to generate an
-<a name="index-expected-symbol-event"></a>
-<a name="index-event_002c-expected-symbol"></a>
-<em>expected symbol event</em>
-(<code>MARPA_EVENT_SYMBOL_EXPECTED</code>)
-when the symbol with ID <var>symbol_id</var>
-is acceptable as a terminal at the current earleme.
-Note that the symbol expected event is only generated if
-the symbol with ID <var>symbol_id</var> is acceptable as terminal.
+<p>On success, if <var>value</var> is 1, does the following:
+</p><ul>
+<li> Declares
+the symbol expected event for
+the symbol with ID <var>symbol_id</var>,
+if it is not already declared.
+</li><li> Activates the symbol expected event for
+the symbol with ID <var>symbol_id</var>.
+</li><li> Returns 1.
+</li></ul>
+
+<p>On success, if <var>value</var> is 0, does the following:
+</p><ul>
+<li> Deactivates the symbol expected event for
+the symbol with ID <var>symbol_id</var>.
+</li><li> Returns 0.
+</li></ul>
+
+<p>Expected symbol events only trigger if
+the symbol with ID <var>symbol_id</var> is expected as terminal.
+This method will succeed if
+the symbol with ID <var>symbol_id</var> is not a terminal,
+but the event subtype
+that this method declared will never trigger.
+</p>
+<p>The same symbol may be acceptable as both a
+terminal and a non-terminal if the
+deprecated LHS terminals feature is in use.
 If the symbol with ID <var>symbol_id</var> is expected
 at the current earleme
 as a non-terminal,
 but is not acceptable as a terminal,
 an expected symbol event will not be triggered
 at the current earleme.
+See <a href="#LHS-terminals">LHS terminals</a>.
 </p>
-<p>On success, if <var>value</var> is 1,
-</p><ul>
-<li> activates the symbol expected event for
-the symbol with ID <var>symbol_id</var> in recognizer <var>r</var>; and
-</li><li> returns 1.
-</li></ul>
-
-<p>On success, if <var>value</var> is 0,
-</p><ul>
-<li> deactivates the symbol expected event for
-the symbol with ID <var>symbol_id</var> in recognizer <var>r</var>; and
-</li><li> returns 0.
-</li></ul>
-
 <p>Hard fails if <var>value</var> is not a boolean.
 Hard fails if <var>value</var> is 1,
 and <var>symbol_id</var> is the ID of a nulling symbol,
@@ -8629,182 +9195,424 @@ On hard failure,
 </p></dd></dl>
 
 <hr>
-<a name="Event-codes"></a>
+<a name="Recognizer-per_002dsymbol-events"></a>
 <div class="header">
 <p>
-Previous: <a href="#Symbol-expected-events" accesskey="p" rel="prev">Symbol expected events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Tentative-events" accesskey="n" rel="next">Tentative events</a>, Previous: <a href="#Symbol-expected-events" accesskey="p" rel="prev">Symbol expected events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Event-codes-1"></a>
-<h3 class="section">24.7 Event codes</h3>
+<a name="Recognizer-per_002dsymbol-events-1"></a>
+<h3 class="section">24.8 Recognizer per-symbol events</h3>
 
-<dl>
-<dt><a name="index-MARPA_005fEVENT_005fNONE"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_NONE</strong></dt>
-<dd><p>Applications should never see this event.
-<strong>Event value</strong>: Unspecified.
-<strong>Suggested message</strong>: &quot;No event&quot;.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-MARPA_005fEVENT_005fCOUNTED_005fNULLABLE"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_COUNTED_NULLABLE</strong></dt>
-<dd><p>A nullable symbol was used as either the separator
-for, or the right hand side of, a sequence.
-This is not allowed.
-</p>
-<p>This event is generated by the
-<code>marpa_g_precompute()</code> method.
-See <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>.
-<strong>Event value</strong>: The ID of the symbol.
-<strong>Suggested message</strong>: &quot;This symbol is a counted nullable&quot;.
-</p></dd></dl>
-
-<a name="MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD"></a><dl>
-<dt><a name="index-MARPA_005fEVENT_005fEARLEY_005fITEM_005fTHRESHOLD"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</strong></dt>
-<dd><p>The <code>MARPA_EVENT_EARLEY_ITEM_THRESHOLD</code>
-event
-indicates that an application-settable threshold
-on the number of Earley items has been reached or exceeded.
-See <a href="#marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold_005fset">marpa_r_earley_item_warning_threshold_set()</a>.
-</p>
-<p>This event is generated by the
-<code>marpa_r_earleme_complete()</code> method.
-See <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete()</a>.
-<strong>Event value</strong>: The current Earley item count.
-<strong>Suggested message</strong>: &quot;Too many Earley items&quot;.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-MARPA_005fEVENT_005fEXHAUSTED"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_EXHAUSTED</strong></dt>
-<dd><p>This event occurs when the parse is exhausted.
-</p>
-<p>This event is generated by the
+<p>The
+<a name="index-events_002c-recognizer-per_002dsymbol"></a>
+<a name="index-recognizer-per_002dsymbol-events"></a>
+<em>recognizer per-symbol events</em>
+are those which
+trigger in the recognizer,
+and which are per-symbol.
+All recognizer per-symbol event instances are triggered by the
 <code>marpa_r_earleme_complete()</code>
 (see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>)
-and
+or
 <code>marpa_r_start_input()</code>
 (see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>)
 methods.
-<strong>Event value</strong>: Unspecified.
-<strong>Suggested message</strong>: &quot;Recognizer is exhausted&quot;.
-</p></dd></dl>
-
-<a name="MARPA_005fEVENT_005fLOOP_005fRULES"></a><dl>
-<dt><a name="index-MARPA_005fEVENT_005fLOOP_005fRULES"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_LOOP_RULES</strong></dt>
-<dd><p>One or more rules are loop rules &mdash; rules
-that are part of a cycle.
-Parsing with a grammar than contains a loop rule
-is deprecated.
-See <a href="#Cycles">Cycles</a>.
+Recognizer per-symbol events have one
+of the event types
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code>,
+<code>MARPA_EVENT_SYMBOL_EXPECTED</code>,
+<code>MARPA_EVENT_SYMBOL_NULLED</code>, and
+<code>MARPA_EVENT_SYMBOL_PREDICTED</code>.
 </p>
-<p>This event is generated by the
-<code>marpa_g_precompute()</code> method.
-See <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>.
-<strong>Event value</strong>: The count of loop rules.
-<strong>Suggested message</strong>: &quot;Grammar contains a infinite loop&quot;.
-</p></dd></dl>
+<hr>
+<a name="Tentative-events"></a>
+<div class="header">
+<p>
+Next: <a href="#Event-coincidence-of-symbol-instances" accesskey="n" rel="next">Event coincidence of symbol instances</a>, Previous: <a href="#Recognizer-per_002dsymbol-events" accesskey="p" rel="prev">Recognizer per-symbol events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Tentative-events-1"></a>
+<h3 class="section">24.9 Tentative events</h3>
 
-<dl>
-<dt><a name="index-MARPA_005fEVENT_005fNULLING_005fTERMINAL"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_NULLING_TERMINAL</strong></dt>
-<dd><p>The
-<code>MARPA_EVENT_NULLING_TERMINAL</code>
-event occurs only if the LHS terminals feature is in use.
-The LHS terminals feature is deprecated.
+<p>Recognizer per-symbol events are tentative.
+The symbol instance that triggers them may not actually occur
+in the parse.
+</p>
+<p>Right of the location of the event,
+Libmarpa is totally unaware of what the actual input will be
+&mdash; there is no
+&quot;lookahead&quot;.
+Therefore, if end location of the symbol instance for the event
+is after the triggering parse location,
+the symbol instance will reflect a <strong>possible</strong> input,
+usually one of many <strong>possible</strong> inputs.
+Of these possible outputs,
+only one will become the actual output,
+and that only if the parse is allowed to run that far.
+</p>
+<hr>
+<a name="Event-coincidence-of-symbol-instances"></a>
+<div class="header">
+<p>
+Next: <a href="#Event-coincidence-of-symbols" accesskey="n" rel="next">Event coincidence of symbols</a>, Previous: <a href="#Tentative-events" accesskey="p" rel="prev">Tentative events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Event-coincidence-of-symbol-instances-1"></a>
+<h3 class="section">24.10 Event coincidence of symbol instances</h3>
+
+<p>We say that two event instances &ldquo;coincide&rdquo;
+if they occur at the same parse location.
+We say the two event instances are
+<em>coincident same-symbol-instance event instances</em>
+iff both event instances trigger at the same parse location
+and both event instances are for the same symbol instance.
+Since every event triggered by a single
+symbol instance will be for the same symbol,
+coincident events triggered by a single
+symbol instance can differ only in their event type.
+This event type will always be one of the
+recognizer per-symbol events.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Nulled-and-completed-symbol-instances" accesskey="1">Nulled and completed symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Nulled-and-predicted-symbol-instances" accesskey="2">Nulled and predicted symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Nulled-and-expected-symbol-instances" accesskey="3">Nulled and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Completed-and-predicted-symbol-instances" accesskey="4">Completed and predicted symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Completed-and-expected-symbol-instances" accesskey="5">Completed and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Predicted-and-expected-symbol-instances" accesskey="6">Predicted and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Nulled-and-completed-symbol-instances"></a>
+<div class="header">
+<p>
+Next: <a href="#Nulled-and-predicted-symbol-instances" accesskey="n" rel="next">Nulled and predicted symbol instances</a>, Previous: <a href="#Event-coincidence-of-symbol-instances" accesskey="p" rel="prev">Event coincidence of symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Nulled-and-completed-symbol-instances-1"></a>
+<h4 class="subsection">24.10.1 Nulled and completed symbol instances</h4>
+
+<p>A symbol instance cannot trigger both
+a <code>MARPA_EVENT_SYMBOL_NULLED</code>
+and a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+at the same location.
+This is because a symbol instance must be zero-length
+to trigger a <code>MARPA_EVENT_SYMBOL_NULLED</code> event,
+but must be of non-zero length
+to trigger a
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+event.
+That is, if the symbol instance is
+<code>sym</code>@<code>start</code>-<code>end</code>,
+a <code>MARPA_EVENT_SYMBOL_NULLED</code> event can trigger only
+if <code>start=end</code>,
+while the
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+event
+can trigger
+only if <code>start &lt; end</code>.
+</p>
+<hr>
+<a name="Nulled-and-predicted-symbol-instances"></a>
+<div class="header">
+<p>
+Next: <a href="#Nulled-and-expected-symbol-instances" accesskey="n" rel="next">Nulled and expected symbol instances</a>, Previous: <a href="#Nulled-and-completed-symbol-instances" accesskey="p" rel="prev">Nulled and completed symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Nulled-and-predicted-symbol-instances-1"></a>
+<h4 class="subsection">24.10.2 Nulled and predicted symbol instances</h4>
+
+<p>A symbol instance cannot trigger both
+a <code>MARPA_EVENT_SYMBOL_NULLED</code>
+and a <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+event at the same location.
+This is because a symbol instance must be zero-length
+to trigger a <code>MARPA_EVENT_SYMBOL_NULLED</code> event,
+but only non-zero length symbols
+will trigger a
+<code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+event.
+That is, if the symbol instance is
+<code>sym</code>@<code>start</code>-<code>end</code>,
+a <code>MARPA_EVENT_SYMBOL_NULLED</code> event can trigger only
+if <code>start=end</code>,
+while the
+<code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+event
+can trigger
+only if <code>start &lt; end</code>.
+</p>
+<hr>
+<a name="Nulled-and-expected-symbol-instances"></a>
+<div class="header">
+<p>
+Next: <a href="#Completed-and-predicted-symbol-instances" accesskey="n" rel="next">Completed and predicted symbol instances</a>, Previous: <a href="#Nulled-and-predicted-symbol-instances" accesskey="p" rel="prev">Nulled and predicted symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Nulled-and-expected-symbol-instances-1"></a>
+<h4 class="subsection">24.10.3 Nulled and expected symbol instances</h4>
+
+<p>A symbol instance cannot trigger both
+a <code>MARPA_EVENT_SYMBOL_NULLED</code>
+and a <code>MARPA_EVENT_SYMBOL_EXPECTED</code>
+event at the same location.
+This is because a symbol instance must be zero-length
+to trigger a <code>MARPA_EVENT_SYMBOL_NULLED</code> event,
+but only terminal symbols
+will trigger a
+<code>MARPA_EVENT_SYMBOL_EXPECTED</code>
+event,
+and termnal symbols cannot be zero-length.
+That is, if the symbol instance is
+<code>sym</code>@<code>start</code>-<code>end</code>,
+a <code>MARPA_EVENT_SYMBOL_NULLED</code> event will trigger only
+if <code>start=end</code>,
+while the
+<code>MARPA_EVENT_SYMBOL_EXPECTED</code>
+event
+will trigger
+only if <code>start &lt; end</code>.
+</p>
+<hr>
+<a name="Completed-and-predicted-symbol-instances"></a>
+<div class="header">
+<p>
+Next: <a href="#Completed-and-expected-symbol-instances" accesskey="n" rel="next">Completed and expected symbol instances</a>, Previous: <a href="#Nulled-and-expected-symbol-instances" accesskey="p" rel="prev">Nulled and expected symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Completed-and-predicted-symbol-instances-1"></a>
+<h4 class="subsection">24.10.4 Completed and predicted symbol instances</h4>
+
+<p>A symbol instance cannot trigger both
+a <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+and a <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+event at the same location.
+Call the location, <code>j</code>.
+Coincident events with the types
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+and <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+cannot be triggered by a single symbol instance
+because the symbol instances
+for <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+and <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+cannot be zero-length;
+the symbol instance for the <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+must end at <code>j</code>; and
+the symbol instance for the <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+must start at <code>j</code>.
+That is, if the
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> symbol instance is
+<code>sym</code>@<code>c1</code>-<code>c2</code>
+and the
+<code>MARPA_EVENT_SYMBOL_PREDICTED</code> symbol instance is
+<code>sym</code>@<code>p1</code>-<code>p2</code>
+we must have all of
+</p><ul>
+<li> <code>c1&lt;c2</code>, because the length of
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> symbol instance is non-zero;
+</li><li> <code>c2=j</code>, because the
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> symbol instance must end at
+<code>j</code>; and
+</li><li> <code>j=p1</code>, because the
+<code>MARPA_EVENT_SYMBOL_PREDICTED</code> symbol instance must start at
+<code>j</code>.
+</li></ul>
+<p>so that <code>c1 &lt; p1</code> and
+the two instances
+<code>sym</code>@<code>c1</code>-<code>c2</code> and
+<code>sym</code>@<code>p1</code>-<code>p2</code>
+must be distinct.
+</p>
+<hr>
+<a name="Completed-and-expected-symbol-instances"></a>
+<div class="header">
+<p>
+Next: <a href="#Predicted-and-expected-symbol-instances" accesskey="n" rel="next">Predicted and expected symbol instances</a>, Previous: <a href="#Completed-and-predicted-symbol-instances" accesskey="p" rel="prev">Completed and predicted symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Completed-and-expected-symbol-instances-1"></a>
+<h4 class="subsection">24.10.5 Completed and expected symbol instances</h4>
+
+<p>A symbol instance cannot trigger both
+a <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+and a <code>MARPA_EVENT_SYMBOL_EXPECTED</code>
+event at the same location.
+The reasoning is much the same as for the
+case of <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+and <code>MARPA_EVENT_SYMBOL_PREDICTED</code> events.
+See <a href="#Completed-and-predicted-symbol-instances">Completed and predicted symbol instances</a>.
+</p>
+<p>Call the location, <code>j</code>.
+Coincident events with the types
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+and <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+cannot be triggered by a single symbol instance
+because the symbol instances
+for <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+and <code>MARPA_EVENT_SYMBOL_EXPECTED</code>
+cannot be zero-length;
+the symbol instance for the <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
+must end at <code>j</code>; and
+the symbol instance for the <code>MARPA_EVENT_SYMBOL_EXPECTED</code>
+must start at <code>j</code>.
+That is, if the
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> symbol instance is
+<code>sym</code>@<code>c1</code>-<code>c2</code>
+and the
+<code>MARPA_EVENT_SYMBOL_EXPECTED</code> symbol instance is
+<code>sym</code>@<code>e1</code>-<code>e2</code>
+we must have all of
+</p><ul>
+<li> <code>c1&lt;c2</code>, because the length of
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> symbol instance is non-zero;
+</li><li> <code>c2=j</code>, because the
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> symbol instance must end at
+<code>j</code>; and
+</li><li> <code>j=e1</code>, because the
+<code>MARPA_EVENT_SYMBOL_EXPECTED</code> symbol instance must start at
+<code>j</code>.
+</li></ul>
+<p>so that <code>c1 &lt; e1</code> and
+the two instances
+<code>sym</code>@<code>c1</code>-<code>c2</code> and
+<code>sym</code>@<code>e1</code>-<code>e2</code>
+must be distinct.
+</p>
+<hr>
+<a name="Predicted-and-expected-symbol-instances"></a>
+<div class="header">
+<p>
+Previous: <a href="#Completed-and-expected-symbol-instances" accesskey="p" rel="prev">Completed and expected symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Predicted-and-expected-symbol-instances-1"></a>
+<h4 class="subsection">24.10.6 Predicted and expected symbol instances</h4>
+
+<p>The one case where a single symbol instance can trigger
+events of two different types at the same parse location is
+that of the <code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+and <code>MARPA_EVENT_SYMBOL_EXPECTED</code> events.
+That is,
+</p><ul>
+<li> if <code>j</code> is a parse location;
+</li><li> <code>sym</code> is the postdot symbol in an
+Earley item in the Earley set at <code>j</code>;
+</li><li> <code>sym</code> is a terminal; and
+</li><li> both event subtypes are activated,
+</li></ul>
+<p>then both a
+<code>MARPA_EVENT_SYMBOL_PREDICTED</code>
+and a <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event
+will trigger at location <code>start</code>.
+</p>
+<hr>
+<a name="Event-coincidence-of-symbols"></a>
+<div class="header">
+<p>
+Previous: <a href="#Event-coincidence-of-symbol-instances" accesskey="p" rel="prev">Event coincidence of symbol instances</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Event-coincidence-of-symbols-1"></a>
+<h3 class="section">24.11 Event coincidence of symbols</h3>
+
+<p>We say the two event instances are
+<em>coincident same-symbol event instances</em>
+iff both event instances trigger at the same parse location
+and both event instances are for the same symbol.
+Above (see <a href="#Event-coincidence-of-symbol-instances">Event coincidence of symbol instances</a>)
+we looked at event instances which
+trigger at the same parse location
+and were for the same <strong>symbol instance</strong>.
+In this section we have loosened the requirement,
+so they events instances can be triggered by
+multiple symbol instances,
+as long as all the symbol instances
+share the same symbol.
+</p>
+<p>Obviously every
+coincident same-symbol event instance
+is for the same symbol,
+and therefore
+coincident same-symbol event instances
+can differ only in their event type.
+This event type will always be one of the
+recognizer per-symbol events.
+</p>
+<p>Same-symbol event instances can coincide
+</p><ul>
+<li> if one is of type <code>MARPA_EVENT_SYMBOL_PREDICTED</code> and
+the other is of type <code>MARPA_EVENT_SYMBOL_COMPLETED</code>;
+</li><li> if one of of type <code>MARPA_EVENT_SYMBOL_PREDICTED</code> and
+the other is of type <code>MARPA_EVENT_SYMBOL_NULLED</code>;
+</li><li> if one of of type <code>MARPA_EVENT_SYMBOL_COMPLETED</code> and
+the other is of type <code>MARPA_EVENT_SYMBOL_NULLED</code>.
+</li></ul>
+<p>In fact, three same-symbol event instances can
+coincide, where they are of types
+<code>MARPA_EVENT_SYMBOL_PREDICTED</code>,
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> and
+<code>MARPA_EVENT_SYMBOL_NULLED</code>.
+An example of the triggers for such a triple coincidence
+is the set of symbol instances
+<code>sym</code>@41-42,
+<code>sym</code>@42-42, and
+<code>sym</code>@42-43,
+where
+</p><ul>
+<li> <code>sym</code>@41-42 can trigger
+a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+for symbol <code>sym</code> at parse location 42;
+</li><li> <code>sym</code>@42-42 can trigger
+a <code>MARPA_EVENT_SYMBOL_NULLED</code> event
+for symbol <code>sym</code> at parse location 42;
+</li><li> <code>sym</code>@42-43 can trigger
+a <code>MARPA_EVENT_SYMBOL_PREDICTED</code> event
+for symbol <code>sym</code> at parse location 42.
+</li></ul>
+
+<p>Earlier
+(see <a href="#Predicted-and-expected-symbol-instances">Predicted and expected symbol instances</a>),
+we saw that a single symbol instance
+can trigger both
+a <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event instance and
+a <code>MARPA_EVENT_SYMBOL_PREDICTED</code> event instance
+at the same parse location.
+Obviously then, the same symbol
+can trigger
+a <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event instance and
+a <code>MARPA_EVENT_SYMBOL_PREDICTED</code> event instance
+at the same parse location.
+</p>
+<p>If the deprecated LHS terminals feature is not in use,
+a <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event instance and
+a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event instance
+cannot be same-symbol coincident.
+This is because the symbol for the
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> event instance
+must be the LHS of a rule;
+the symbol for the <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event instance
+must be a terminal;
+and terminals cannot be the LHS of a rule.
+Libmarpa has a feature that allows LHS terminals,
+but use of this is strongly discouraged.
 See <a href="#LHS-terminals">LHS terminals</a>.
 </p>
-<p>This event is generated by the
-<code>marpa_g_precompute()</code> method.
-See <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>.
-<strong>Event value</strong>: The ID of the symbol.
-<strong>Suggested message</strong>: &quot;This symbol is a nulling terminal&quot;.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fCOMPLETED"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_COMPLETED</strong></dt>
-<dd><p>The recognizer can be set to generate an event
-when a symbol is completed.
-(A symbol is &ldquo;completed&rdquo; iff any rule with that symbol
-as its LHS is completed.)
-To set a completed symbol event, use the
-<code>marpa_g_symbol_is_completion_event_set()</code> method.
-See <a href="#marpa_005fg_005fsymbol_005fis_005fcompletion_005fevent_005fset">marpa_g_symbol_is_completion_event_set()</a>
+<p>There are no circumstances under which
+a <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event instance and
+a <code>MARPA_EVENT_SYMBOL_NULLED</code> event instance
+can be same-symbol coincident.
+This is because
+the symbol for the <code>MARPA_EVENT_SYMBOL_NULLED</code> event instance
+must be nulled;
+the symbol for the <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event instance
+must be a terminal;
+and terminals can never be nulled.
+Not only can
+a <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event instance
+not coincide with a same-symbol <code>MARPA_EVENT_SYMBOL_NULLED</code> event instance,
+the two cannot occur in the same parse.
+In fact,
+a <code>MARPA_EVENT_SYMBOL_EXPECTED</code> event instance
+and a same-symbol <code>MARPA_EVENT_SYMBOL_NULLED</code> event instance
+cannot occur in any parse with the same base grammar.
 </p>
-<p>This event is generated by the
-<code>marpa_r_earleme_complete()</code> method.
-See <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete()</a>.
-<strong>Event value</strong>: The ID of the completed symbol.
-<strong>Suggested message</strong>: &quot;Completed symbol&quot;.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fEXPECTED"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_EXPECTED</strong></dt>
-<dd><p>The recognizer can be set to generate an event when a
-symbol is expected as a terminal.
-To set an expected terminal event, use the
-<code>marpa_r_expected_symbol_event_set()</code> method.
-See <a href="#marpa_005fr_005fexpected_005fsymbol_005fevent_005fset">marpa_r_expected_symbol_event_set()</a>.
-Note that this event only triggers if the symbol is
-expected as a terminal.
-Predicted symbols that are not expected as terminals
-do not trigger this event.
-</p>
-<p>This event is generated by the
-<code>marpa_r_earleme_complete()</code>
-(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>)
-and
-<code>marpa_r_start_input()</code>
-(see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>)
-methods.
-<strong>Event value</strong>: The ID of the expected symbol.
-<strong>Suggested message</strong>: &quot;Expecting symbol&quot;.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fNULLED"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_NULLED</strong></dt>
-<dd><p>The recognizer can be set to generate an event when a
-symbol is nulled &ndash; that is, recognized as a
-zero-length symbol.
-To set an nulled symbol event,
-use the recognizer&rsquo;s
-<code>marpa_g_symbol_is_nulled_event_set()</code>
-method.
-See <a href="#marpa_005fg_005fsymbol_005fis_005fnulled_005fevent_005fset">marpa_g_symbol_is_nulled_event_set()</a>.
-</p>
-<p>This event is generated by the
-<code>marpa_r_earleme_complete()</code>
-(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>)
-and
-<code>marpa_r_start_input()</code>
-(see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>)
-methods.
-<strong>Event value</strong>: The ID of the nulled symbol.
-<strong>Suggested message</strong>: &quot;Symbol was nulled&quot;.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-MARPA_005fEVENT_005fSYMBOL_005fPREDICTED"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_SYMBOL_PREDICTED</strong></dt>
-<dd><p>The recognizer can be set to generate an event when a
-symbol is predicted.
-To set an predicted symbol event,
-use the recognizer&rsquo;s
-<code>marpa_g_symbol_is_prediction_event_set()</code>
-method.
-See <a href="#marpa_005fg_005fsymbol_005fis_005fprediction_005fevent_005fset">marpa_g_symbol_is_prediction_event_set()</a>.
-Unlike the
-<code>MARPA_EVENT_SYMBOL_EXPECTED</code> event,
-the <code>MARPA_EVENT_SYMBOL_PREDICTED</code> event
-triggers for predictions of both
-non-terminals and terminals.
-</p>
-<p>This event is generated by the
-<code>marpa_r_earleme_complete()</code>
-(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>)
-and
-<code>marpa_r_start_input()</code>
-(see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>)
-methods.
-<strong>Event value</strong>: The ID of the predicted symbol.
-<strong>Suggested message</strong>: &quot;Symbol was predicted&quot;.
-</p></dd></dl>
-
 <hr>
 <a name="Error-methods-macros-and-codes"></a>
 <div class="header">
@@ -9034,8 +9842,8 @@ See <a href="#Cycles">Cycles</a>.
 
 <dl>
 <dt><a name="index-MARPA_005fERR_005fHEADERS_005fDO_005fNOT_005fMATCH"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_HEADERS_DO_NOT_MATCH</strong></dt>
-<dd><p>This is an internal error, and indicates that
-Libmarpa was wrongly built.
+<dd><p>This error indicates that
+Libmarpa was incorrectly built.
 Libmarpa was compiled with headers that do not
 match the rest of the code.
 The solution is to find a correctly built
@@ -9244,7 +10052,7 @@ but the symbol does not exist.
 <dd><p>An attempt was made to read a token using <code>marpa_r_alternative</code>,
 but no tokens were expected at this earleme location.
 This can only happen in alternative input models.
-See <a href="#marpa_005fr_005falternative">marpa_r_alternative()</a>
+See <a href="#marpa_005fr_005falternative">marpa_r_alternative()</a>.
 </p>
 <p><strong>Numeric value</strong>: 44.
 <strong>Suggested message</strong>: &quot;No token is expected at this earleme location&quot;.
@@ -9369,9 +10177,9 @@ items have been iterated through.
 <dt><a name="index-MARPA_005fERR_005fRANK_005fTOO_005fLOW"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RANK_TOO_LOW</strong></dt>
 <dd><p>A symbol or rule rank was specified that
 was less than an implementation-defined minimum.
-Implementations will always allow at least those
+Implementations will always allow
 ranks in the range between
--134,217,727 and 134,217,727.
+-500,000,000 and 500,000,000.
 <strong>Numeric value</strong>: 85.
 <strong>Suggested message</strong>: &quot;Rule or symbol rank too low&quot;.
 </p></dd></dl>
@@ -9380,19 +10188,11 @@ ranks in the range between
 <dt><a name="index-MARPA_005fERR_005fRANK_005fTOO_005fHIGH"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RANK_TOO_HIGH</strong></dt>
 <dd><p>A symbol or rule rank was specified that
 was greater than an implementation-defined maximum.
-Implementations will always allow at least those
+Implementations will always allow
 ranks in the range between
--134,217,727 and 134,217,727.
+-500,000,000 and 500,000,000.
 <strong>Numeric value</strong>: 86.
 <strong>Suggested message</strong>: &quot;Rule or symbol rank too high&quot;.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-MARPA_005fERR_005fRECCE_005fIS_005fINCONSISTENT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RECCE_IS_INCONSISTENT</strong></dt>
-<dd><p>This is an internal error.
-An application should never see it.
-<strong>Numeric value</strong>: 95.
-<strong>Suggested message</strong>: &quot;The recognizer is inconsistent&quot;.
 </p></dd></dl>
 
 <dl>
@@ -9866,6 +10666,11 @@ be kept for backward compatibility.
 <dt><a name="index-MARPA_005fERR_005fSOURCE_005fTYPE_005fIS_005fUNKNOWN"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_SOURCE_TYPE_IS_UNKNOWN</strong></dt>
 <dd><p><strong>Numeric value</strong>: 72.
 </p></dd></dl>
+<dl>
+<dt><a name="index-MARPA_005fERR_005fRECCE_005fIS_005fINCONSISTENT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERR_RECCE_IS_INCONSISTENT</strong></dt>
+<dd><p><strong>Numeric value</strong>: 95.
+<strong>Suggested message</strong>: &quot;The recognizer is inconsistent&quot;.
+</p></dd></dl>
 
 <hr>
 <a name="Technical-notes"></a>
@@ -9881,45 +10686,26 @@ not necessary for the main presentation,
 but which may be helpful or interesting.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Elizabeth-Scott_0027s-SPPFs" accesskey="1">Elizabeth Scott's SPPFs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Data-types-used-by-Libmarpa" accesskey="1">Data types used by Libmarpa</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Data-types-used-by-Libmarpa" accesskey="2">Data types used by Libmarpa</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Why-so-many-time-objects" accesskey="2">Why so many time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Why-so-many-time-objects" accesskey="3">Why so many time objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Design-of-numbered-objects" accesskey="3">Design of numbered objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Design-of-numbered-objects" accesskey="4">Design of numbered objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Trap-representations" accesskey="4">Trap representations</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Trap-representations" accesskey="5">Trap representations</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Out_002dof_002dmemory-handling" accesskey="6">Out-of-memory handling</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Out_002dof_002dmemory-handling" accesskey="5">Out-of-memory handling</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 <hr>
-<a name="Elizabeth-Scott_0027s-SPPFs"></a>
-<div class="header">
-<p>
-Next: <a href="#Data-types-used-by-Libmarpa" accesskey="n" rel="next">Data types used by Libmarpa</a>, Previous: <a href="#Technical-notes" accesskey="p" rel="prev">Technical notes</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
-</div>
-<a name="Elizabeth-Scott_0027s-SPPFs-1"></a>
-<h3 class="section">26.1 Elizabeth Scott&rsquo;s SPPFs</h3>
-
-<p>One of our most important data structures is what we call a &ldquo;bocage&rdquo;.
-Prof. Scott&rsquo;s work preceded ours,
-and her SPPF structure is our bocage in all essential respects,
-so much so that her excellent writeup serves perfectly
-as documentation for the bocage:
-Scott, Elizabeth. &ldquo;SPPF-style parsing from Earley recognisers.&rdquo; Electronic Notes in Theoretical Computer Science 203.2 (2008): 53-67,
-<a href="https://dinhe.net/~aredridel/.notmine/PDFs/Parsing/SCOTT%2C%20Elizabeth%20-%20SPPF-Style%20Parsing%20From%20Earley%20Recognizers.pdf">https://dinhe.net/~aredridel/.notmine/PDFs/Parsing/SCOTT%2C%20Elizabeth%20-%20SPPF-Style%20Parsing%20From%20Earley%20Recognizers.pdf</a>.
-</p>
-<hr>
 <a name="Data-types-used-by-Libmarpa"></a>
 <div class="header">
 <p>
-Next: <a href="#Why-so-many-time-objects" accesskey="n" rel="next">Why so many time objects</a>, Previous: <a href="#Elizabeth-Scott_0027s-SPPFs" accesskey="p" rel="prev">Elizabeth Scott's SPPFs</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Why-so-many-time-objects" accesskey="n" rel="next">Why so many time objects</a>, Previous: <a href="#Technical-notes" accesskey="p" rel="prev">Technical notes</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Data-types-used-by-Libmarpa-1"></a>
-<h3 class="section">26.2 Data types used by Libmarpa</h3>
+<h3 class="section">26.1 Data types used by Libmarpa</h3>
 
 <p>Libmarpa does not use any floating point data or strings.
 All data are either integers or pointers.
@@ -9931,7 +10717,7 @@ All data are either integers or pointers.
 Next: <a href="#Design-of-numbered-objects" accesskey="n" rel="next">Design of numbered objects</a>, Previous: <a href="#Data-types-used-by-Libmarpa" accesskey="p" rel="prev">Data types used by Libmarpa</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Why-so-many-time-objects_003f"></a>
-<h3 class="section">26.3 Why so many time objects?</h3>
+<h3 class="section">26.2 Why so many time objects?</h3>
 
 <p>Marpa is an aggressively multi-pass algorithm.
 Marpa achieves its efficiency,
@@ -9985,7 +10771,7 @@ by the tree iterator.
 Next: <a href="#Trap-representations" accesskey="n" rel="next">Trap representations</a>, Previous: <a href="#Why-so-many-time-objects" accesskey="p" rel="prev">Why so many time objects</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Numbered-objects-2"></a>
-<h3 class="section">26.4 Numbered objects</h3>
+<h3 class="section">26.3 Numbered objects</h3>
 
 <p>As the name suggests,
 the choice was made to implement
@@ -10030,7 +10816,7 @@ for the difference in speed.
 Next: <a href="#Out_002dof_002dmemory-handling" accesskey="n" rel="next">Out-of-memory handling</a>, Previous: <a href="#Design-of-numbered-objects" accesskey="p" rel="prev">Design of numbered objects</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Trap-representations-1"></a>
-<h3 class="section">26.5 Trap representations</h3>
+<h3 class="section">26.4 Trap representations</h3>
 
 <p>In order to be C89 conformant, an application
 must initialize all locations that might be read.
@@ -10046,6 +10832,7 @@ Because of this undefined behavior
 the application that allowed the read
 is non-conformant to the C89 standard.
 Trap representations are carefully defined and discussed in the C99 standard.
+See <a href="#C99">C99</a>
 </p>
 <p>In real life, trap representations can occur when floating point values are
 used: Some byte patterns that can occur in memory are not valid floating point
@@ -10074,7 +10861,7 @@ all locations on the stack must be initialized.
 Previous: <a href="#Trap-representations" accesskey="p" rel="prev">Trap representations</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Out_002dof_002dmemory-handling-1"></a>
-<h3 class="section">26.6 Out-of-memory handling</h3>
+<h3 class="section">26.5 Out-of-memory handling</h3>
 
 <p>Modern operating systems
 usually have an out-of-memory (OOM) killer as a component.
@@ -10117,6 +10904,8 @@ length to vary from the &ldquo;normal&rdquo; length of 1.
 <tr><td align="left" valign="top">&bull; <a href="#The-dense-variable_002dlength-token-model" accesskey="1">The dense variable-length token model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#The-fully-general-input-model" accesskey="2">The fully general input model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-codepoint_002dper_002dearleme-model" accesskey="3">The codepoint-per-earleme model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -10197,7 +10986,7 @@ except in the fully general model of input.
 <a name="The-fully-general-input-model"></a>
 <div class="header">
 <p>
-Previous: <a href="#The-dense-variable_002dlength-token-model" accesskey="p" rel="prev">The dense variable-length token model</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#The-codepoint_002dper_002dearleme-model" accesskey="n" rel="next">The codepoint-per-earleme model</a>, Previous: <a href="#The-dense-variable_002dlength-token-model" accesskey="p" rel="prev">The dense variable-length token model</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-fully-general-input-model-1"></a>
 <h3 class="section">27.2 The fully general input model</h3>
@@ -10315,6 +11104,49 @@ to
 </li></ul>
 
 <hr>
+<a name="The-codepoint_002dper_002dearleme-model"></a>
+<div class="header">
+<p>
+Previous: <a href="#The-fully-general-input-model" accesskey="p" rel="prev">The fully general input model</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="The-codepoint_002dper_002dearleme-model-1"></a>
+<h3 class="section">27.3 The codepoint-per-earleme model</h3>
+
+<p>One variation of the fully general model is
+the
+<a name="index-one_002dcodepoint_002dper_002dearleme-input-model"></a>
+<em>one-codepoint-per-earleme input model</em>,
+usually called the
+<a name="index-codepoint_002dper_002dearleme-input-model"></a>
+<em>codepoint-per-earleme input model</em>.
+</p>
+<p>Most input models may be called
+<a name="index-token_002dper_002dearleme-input-models"></a>
+<em>token-per-earleme input models</em>.
+That is, they are models in which every token
+is exactly one earleme long.
+</p>
+<p>In the codepoint-per-earleme model, every codepoint will be treated as
+being exactly one earleme in length.
+If a token is more than one codepoint
+in length, that token will span earlemes.
+In the codepoint-per-earleme model,
+tokens may be ambiguous, and they may overlap.
+</p>
+<p>When a codepoint-per-earleme model of input is used, there may be
+many earlemes at which no tokens start. For example, in a straightforward
+codepoint-per-earleme implementation of a grammar for a language that
+allows comments, no tokens will start at any earlemes which correspond
+to character locations inside a comment.
+</p>
+<p>Codepoint-per-earleme input model have seen a lot of use,
+but mainly for experimental and toy grammars.
+Their disadvantage is efficiency &mdash; the requirement of one call
+of <code>marpa_r_alternative()</code> for each codepoint can make them
+substantially more expensive than input models which allow multiple
+codepoints per earleme.
+</p>
+<hr>
 <a name="Support"></a>
 <div class="header">
 <p>
@@ -10412,15 +11244,13 @@ Next: <a href="#Better-defined-ambiguity-metric" accesskey="n" rel="next">Better
 <a name="Simpler-events-interface-1"></a>
 <h3 class="section">29.3 Simpler events interface</h3>
 
-<p>Some of the events interfaces are unnecessarily
-complex.
-Activation in the grammar is unnecessary,
-as is the ability to &ldquo;unmark&rdquo; an event
-for a symbol
-before precomputation.
-See <a href="#Completion-events">Completion events</a>,
-see <a href="#Symbol-nulled-events">Symbol nulled events</a>, and
-see <a href="#Prediction-events">Prediction events</a>.
+<p>The events interface is unnecessarily complex.
+A separate grammar method
+for the activation and deactivation
+of each event type is unnecessary.
+See <a href="#Completion-events">Completion events</a>.
+See <a href="#Symbol-nulled-events">Symbol nulled events</a>.
+See <a href="#Prediction-events">Prediction events</a>.
 </p>
 <hr>
 <a name="Better-defined-ambiguity-metric"></a>
@@ -11168,19 +11998,19 @@ My &ldquo;timeline&rdquo; of the major events in parsing theory
 has a much broader scope,
 and also includes more detail
 about Marpa&rsquo;s development.
-See <a href="#Timeline">Timeline</a>.
+See <a href="#Parsing-timeline">Parsing timeline</a>.
 </p>
 <ul>
 <li> <strong>1970</strong>:
 Jay Earley invents the algorithm that now bears his
 name
-See <a href="#Bibliography_002dEarley_002d1970">Bibliography-Earley-1970</a>.
+See <a href="#Earley-1970">Earley 1970</a>.
 
 </li><li> <strong>1991</strong>:
 Joop Leo describes a way to modify Earley&rsquo;s algorithm so that it
 runs in O(n) time for all LR-regular
 grammars.
-See <a href="#Bibliography_002dLeo_002d1991">Bibliography-Leo-1991</a>.
+See <a href="#Leo-1991">Leo 1991</a>.
 LR-regular is a vast class of grammars, including all the
 LR(k) grammars, all grammars parseable with recursive descent,
 and regular expressions.
@@ -11191,7 +12021,7 @@ in practical use today, and then some.
 Aycock and Horspool describe a way to do LR(0)
 precomputation
 for Earley&rsquo;s algorithm.
-See <a href="#Bibliography_002dAycock_002dand_002dHorspool_002d2002">Bibliography-Aycock-and-Horspool-2002</a>.
+See <a href="#Aycock-and-Horspool-2002">Aycock and Horspool 2002</a>.
 Their method makes Earley&rsquo;s faster in most
 practical situations, but not all.
 In particular, right-recursion remains quadratic in
@@ -11205,7 +12035,7 @@ Marpa combines the Leo and Aycock-Horspool
 algorithms
 in the process making significant
 changes to both of them.
-See <a href="#Bibliography_002dKegler_002d2022">Bibliography-Kegler-2022</a>.
+See <a href="#Marpa-theory-paper">Marpa theory paper</a>.
 The result preserves the
 best features of both
 and tackles the many remaining
@@ -11227,21 +12057,29 @@ Next: <a href="#Acknowledgements" accesskey="n" rel="next">Acknowledgements</a>,
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Aycock-and-Horspool-2002" accesskey="2">Aycock and Horspool 2002</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Dominus-2005" accesskey="3">Dominus 2005</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#C89" accesskey="3">C89</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Earley-1970" accesskey="4">Earley 1970</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#C99" accesskey="4">C99</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Grune-and-Jacobs-1990" accesskey="5">Grune and Jacobs 1990</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Dominus-2005" accesskey="5">Dominus 2005</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Grune-and-Jacobs-2008" accesskey="6">Grune and Jacobs 2008</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Earley-1970" accesskey="6">Earley 1970</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Kegler-2022" accesskey="7">Kegler 2022</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Grune-and-Jacobs-1990" accesskey="7">Grune and Jacobs 1990</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Timeline" accesskey="8">Timeline</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Grune-and-Jacobs-2008" accesskey="8">Grune and Jacobs 2008</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Leo-1991" accesskey="9">Leo 1991</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Marpa-theory-paper" accesskey="9">Marpa theory paper</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Wikipedia">Wikipedia</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Kegler-2023">Kegler 2023</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Parsing-timeline">Parsing timeline</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Leo-1991">Leo 1991</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Scott-2008">Scott 2008</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Wikipedia-BNF-article">Wikipedia BNF article</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -11253,7 +12091,7 @@ Next: <a href="#Aycock-and-Horspool-2002" accesskey="n" rel="next">Aycock and Ho
 </div>
 <a name="Aho-and-Ullman-1972-1"></a>
 <h3 class="section">32.1 Aho and Ullman 1972</h3>
-<a name="Bibliography_002dAho_002dand_002dUllman_002d1972"></a>
+
 <p><em>The Theory of Parsing, Translation and Compiling, Volume I: Parsing</em>
 by Alfred Aho and Jeffrey Ullman
 (Prentice-Hall: Englewood Cliffs, New Jersey, 1972).
@@ -11266,11 +12104,11 @@ The account of Earley&rsquo;s algorithm is on pages 320-330.
 <a name="Aycock-and-Horspool-2002"></a>
 <div class="header">
 <p>
-Next: <a href="#Dominus-2005" accesskey="n" rel="next">Dominus 2005</a>, Previous: <a href="#Aho-and-Ullman-1972" accesskey="p" rel="prev">Aho and Ullman 1972</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#C89" accesskey="n" rel="next">C89</a>, Previous: <a href="#Aho-and-Ullman-1972" accesskey="p" rel="prev">Aho and Ullman 1972</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Aycock-and-Horspool-2002-1"></a>
 <h3 class="section">32.2 Aycock and Horspool 2002</h3>
-<a name="Bibliography_002dAycock_002dand_002dHorspool_002d2002"></a>
+
 <p>Marpa is based on ideas from
 John Aycock and R.
 Nigel Horspool&rsquo;s &ldquo;Practical Earley Parsing&rdquo;, <em>The Computer Journal</em>,
@@ -11278,7 +12116,7 @@ Vol. 45, No. 6, 2002, pp. 620-630.
 The idea of doing LR(0)
 precomputation for
 Earley&rsquo;s general parsing algorithm
-(see <a href="#Bibliography_002dEarley_002d1970">Bibliography-Earley-1970</a>),
+(see <a href="#Earley-1970">Earley 1970</a>),
 and Marpa&rsquo;s approach to handling nullable symbols and rules,
 both came from this article.
 </p>
@@ -11286,21 +12124,47 @@ both came from this article.
 summarizes Earley&rsquo;s very nicely and is
 available on the web: <a href="http://www.cs.uvic.ca/~nigelh/Publications/PracticalEarleyParsing.pdf">http://www.cs.uvic.ca/~nigelh/Publications/PracticalEarleyParsing.pdf</a>.
 Unlike Earley&rsquo;s 1970 paper
-(see <a href="#Bibliography_002dEarley_002d1970">Bibliography-Earley-1970</a>),
+(see <a href="#Earley-1970">Earley 1970</a>),
 Aycock and Horspool 2002 is <strong>not</strong> easy reading.
 I have been following
 this particular topic on and off for years
 and nonetheless found this paper very heavy going.
 </p>
 <hr>
+<a name="C89"></a>
+<div class="header">
+<p>
+Next: <a href="#C99" accesskey="n" rel="next">C99</a>, Previous: <a href="#Aycock-and-Horspool-2002" accesskey="p" rel="prev">Aycock and Horspool 2002</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="C89-standard"></a>
+<h3 class="section">32.3 C89 standard</h3>
+
+<p>Libmarpa is written to conform to the C89 standard.
+This can be found online at
+<a href="https://web.archive.org/web/20200909074736/https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf">https://web.archive.org/web/20200909074736/https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf</a>.
+</p>
+<hr>
+<a name="C99"></a>
+<div class="header">
+<p>
+Next: <a href="#Dominus-2005" accesskey="n" rel="next">Dominus 2005</a>, Previous: <a href="#C89" accesskey="p" rel="prev">C89</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="C99-standard"></a>
+<h3 class="section">32.4 C99 standard</h3>
+
+<p>The C99 standard clarifies the C89 standard in many respects.
+It can be found online at
+<a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf">https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf</a>.
+</p>
+<hr>
 <a name="Dominus-2005"></a>
 <div class="header">
 <p>
-Next: <a href="#Earley-1970" accesskey="n" rel="next">Earley 1970</a>, Previous: <a href="#Aycock-and-Horspool-2002" accesskey="p" rel="prev">Aycock and Horspool 2002</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Earley-1970" accesskey="n" rel="next">Earley 1970</a>, Previous: <a href="#C99" accesskey="p" rel="prev">C99</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Dominus-2005-1"></a>
-<h3 class="section">32.3 Dominus 2005</h3>
-<a name="Bibliography_002dDominus_002d2005"></a>
+<h3 class="section">32.5 Dominus 2005</h3>
+
 <p>Although my approach to parsing is not influenced
 by Mark Jason Dominus&rsquo;s <em>Higher Order Perl</em>,
 Mark&rsquo;s treatment of parsing is an excellent introduction to parsing,
@@ -11329,8 +12193,8 @@ A PDF of the parsing chapter is at <a href="http://hop.perl.plover.com/book/pdf/
 Next: <a href="#Grune-and-Jacobs-1990" accesskey="n" rel="next">Grune and Jacobs 1990</a>, Previous: <a href="#Dominus-2005" accesskey="p" rel="prev">Dominus 2005</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Earley-1970-1"></a>
-<h3 class="section">32.4 Earley 1970</h3>
-<a name="Bibliography_002dEarley_002d1970"></a>
+<h3 class="section">32.6 Earley 1970</h3>
+
 <p>Of
 Jay Earley&rsquo;s papers on his general parsing algorithm,
 the most readily available
@@ -11352,14 +12216,14 @@ whose main problem, in its original form, was speed.
 This issue is well laid out by
 Aycock and Horspool
 in their article.
-See <a href="#Bibliography_002dAycock_002dand_002dHorspool_002d2002">Bibliography-Aycock-and-Horspool-2002</a>.
+See <a href="#Aycock-and-Horspool-2002">Aycock and Horspool 2002</a>.
 </p>
 <p>Second,
 according to Tomita there is a mistake in the parse
 tree representation.
-See page 153 of <a href="#Bibliography_002dGrune_002dand_002dJacobs_002d1990">Bibliography-Grune-and-Jacobs-1990</a>,
-page 210 of <a href="#Bibliography_002dGrune_002dand_002dJacobs_002d2008">Bibliography-Grune-and-Jacobs-2008</a>,
-and the bibliography entry for Earley 1970 in <a href="#Bibliography_002dGrune_002dand_002dJacobs_002d2008">Bibliography-Grune-and-Jacobs-2008</a>.
+See page 153 of <a href="#Grune-and-Jacobs-1990">Grune and Jacobs 1990</a>,
+page 210 of <a href="#Grune-and-Jacobs-2008">Grune and Jacobs 2008</a>,
+and the bibliography entry for Earley 1970 in <a href="#Grune-and-Jacobs-2008">Grune and Jacobs 2008</a>.
 In the printed edition of the 2008 bibliography, the entry is on page 578,
 and on the web
 (<a href="ftp://ftp.cs.vu.nl/pub/dick/PTAPG_2nd_Edition/CompleteList.pdf">ftp://ftp.cs.vu.nl/pub/dick/PTAPG_2nd_Edition/CompleteList.pdf</a>),
@@ -11375,8 +12239,8 @@ so I am taking Tomita&rsquo;s word on this one.
 Next: <a href="#Grune-and-Jacobs-2008" accesskey="n" rel="next">Grune and Jacobs 2008</a>, Previous: <a href="#Earley-1970" accesskey="p" rel="prev">Earley 1970</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Grune-and-Jacobs-1990-1"></a>
-<h3 class="section">32.5 Grune and Jacobs 1990</h3>
-<a name="Bibliography_002dGrune_002dand_002dJacobs_002d1990"></a>
+<h3 class="section">32.7 Grune and Jacobs 1990</h3>
+
 <p><em>Parsing Techniques: A Practical Guide</em>,
 by Dick Grune and
 Ceriel Jacobs,
@@ -11388,11 +12252,11 @@ This book is available on the Web: <a href="http://dickgrune.com/Books/PTAPG_1st
 <a name="Grune-and-Jacobs-2008"></a>
 <div class="header">
 <p>
-Next: <a href="#Kegler-2022" accesskey="n" rel="next">Kegler 2022</a>, Previous: <a href="#Grune-and-Jacobs-1990" accesskey="p" rel="prev">Grune and Jacobs 1990</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Marpa-theory-paper" accesskey="n" rel="next">Marpa theory paper</a>, Previous: <a href="#Grune-and-Jacobs-1990" accesskey="p" rel="prev">Grune and Jacobs 1990</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Grune-and-Jacobs-2008-1"></a>
-<h3 class="section">32.6 Grune and Jacobs 2008</h3>
-<a name="Bibliography_002dGrune_002dand_002dJacobs_002d2008"></a>
+<h3 class="section">32.8 Grune and Jacobs 2008</h3>
+
 <p><em>Parsing Techniques: A Practical Guide</em>,
 by Dick Grune and
 Ceriel Jacobs,
@@ -11403,35 +12267,53 @@ to parsing I know of.
 In theory it requires no mathematics, only a programming background,
 but even so it is moderately difficult reading.
 </p>
-<p>This is <a href="#Bibliography_002dGrune_002dand_002dJacobs_002d1990">Bibliography-Grune-and-Jacobs-1990</a>,
-updated.
+<p>This is the second edition of Grune and Jacobs&rsquo;s survey
+of parsing methods.
+See <a href="#Grune-and-Jacobs-1990">Grune and Jacobs 1990</a>.
 The bibliography for this book is available in enlarged form
 on the web: <a href="ftp://ftp.cs.vu.nl/pub/dick/PTAPG_2nd_Edition/CompleteList.pdf">ftp://ftp.cs.vu.nl/pub/dick/PTAPG_2nd_Edition/CompleteList.pdf</a>.
 </p>
 <hr>
-<a name="Kegler-2022"></a>
+<a name="Marpa-theory-paper"></a>
 <div class="header">
 <p>
-Next: <a href="#Timeline" accesskey="n" rel="next">Timeline</a>, Previous: <a href="#Grune-and-Jacobs-2008" accesskey="p" rel="prev">Grune and Jacobs 2008</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Kegler-2023" accesskey="n" rel="next">Kegler 2023</a>, Previous: <a href="#Grune-and-Jacobs-2008" accesskey="p" rel="prev">Grune and Jacobs 2008</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Kegler-2022-1"></a>
-<h3 class="section">32.7 Kegler 2022</h3>
-<a name="Bibliography_002dKegler_002d2022"></a>
+<a name="Marpa-theory-paper-1"></a>
+<h3 class="section">32.9 Marpa theory paper</h3>
+
 <p>My writeup of the theory behind Marpa,
 with proofs of correctness and of my complexity claims,
 was first made public in 2013.
-It was updated in 2022,
+It was updated in 2023,
 and can be found on <code>arxiv.org</code> (<a href="https://arxiv.org/abs/1910.08129">https://arxiv.org/abs/1910.08129</a>).
 </p>
 <hr>
-<a name="Timeline"></a>
+<a name="Kegler-2023"></a>
 <div class="header">
 <p>
-Next: <a href="#Leo-1991" accesskey="n" rel="next">Leo 1991</a>, Previous: <a href="#Kegler-2022" accesskey="p" rel="prev">Kegler 2022</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Parsing-timeline" accesskey="n" rel="next">Parsing timeline</a>, Previous: <a href="#Marpa-theory-paper" accesskey="p" rel="prev">Marpa theory paper</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Timeline-1"></a>
-<h3 class="section">32.8 Timeline</h3>
-<a name="Bibliography_002dTimeline"></a>
+<a name="Kegler-2023-1"></a>
+<h3 class="section">32.10 Kegler 2023</h3>
+
+<p>This theory-oriented paper expands on
+the Marpa theory paper (see <a href="#Marpa-theory-paper">Marpa theory paper</a>).
+It gives a detailed treatment of Marpa&rsquo;s
+use of the Aycock-Horspool algorithm,
+and Marpa&rsquo;s handling of nullables
+It was originally announced in 2023,
+and can be found on <code>arxiv.org</code> (<a href="https://arxiv.org/abs/2303.04093">https://arxiv.org/abs/2303.04093</a>).
+</p>
+<hr>
+<a name="Parsing-timeline"></a>
+<div class="header">
+<p>
+Next: <a href="#Leo-1991" accesskey="n" rel="next">Leo 1991</a>, Previous: <a href="#Kegler-2023" accesskey="p" rel="prev">Kegler 2023</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Parsing-timeline-1"></a>
+<h3 class="section">32.11 Parsing timeline</h3>
+
 <p>Far more popular than my Marpa theory paper is my
 <em>Parsing: a timeline</em>.
 This is a detailed history of parsing theory,
@@ -11442,11 +12324,11 @@ and is available online:
 <a name="Leo-1991"></a>
 <div class="header">
 <p>
-Next: <a href="#Wikipedia" accesskey="n" rel="next">Wikipedia</a>, Previous: <a href="#Timeline" accesskey="p" rel="prev">Timeline</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Scott-2008" accesskey="n" rel="next">Scott 2008</a>, Previous: <a href="#Parsing-timeline" accesskey="p" rel="prev">Parsing timeline</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Leo-1991-1"></a>
-<h3 class="section">32.9 Leo 1991</h3>
-<a name="Bibliography_002dLeo_002d1991"></a>
+<h3 class="section">32.12 Leo 1991</h3>
+
 <p>Marpa&rsquo;s handling of right-recursion uses the ideas in
 Joop M.I.M. Leo&rsquo;s
 &ldquo;A General Context-Free Parsing Algorithm Running in Linear
@@ -11458,14 +12340,33 @@ It is available online at
 <a href="http://www.sciencedirect.com/science/article/pii/030439759190180A">http://www.sciencedirect.com/science/article/pii/030439759190180A</a>,
 click the PDF icon at the top left.
 </p>
-<a name="Bibliography_002dWikipedia"></a><hr>
-<a name="Wikipedia"></a>
+<hr>
+<a name="Scott-2008"></a>
 <div class="header">
 <p>
-Previous: <a href="#Leo-1991" accesskey="p" rel="prev">Leo 1991</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Wikipedia-BNF-article" accesskey="n" rel="next">Wikipedia BNF article</a>, Previous: <a href="#Leo-1991" accesskey="p" rel="prev">Leo 1991</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Wikipedia-1"></a>
-<h3 class="section">32.10 Wikipedia</h3>
+<a name="Scott-2008-1"></a>
+<h3 class="section">32.13 Scott 2008</h3>
+
+<p>One of our most important data structures is what we call a &ldquo;bocage&rdquo;.
+Prof. Scott&rsquo;s work preceded ours,
+and her SPPF structure is our bocage in all essential respects,
+so much so that her excellent writeup serves perfectly
+as documentation for the bocage:
+Scott, Elizabeth.
+&ldquo;SPPF-style parsing from Earley recognisers.&rdquo;
+Electronic Notes in Theoretical Computer Science 203.2 (2008): 53-67,
+<a href="https://dinhe.net/~aredridel/.notmine/PDFs/Parsing/SCOTT%2C%20Elizabeth%20-%20SPPF-Style%20Parsing%20From%20Earley%20Recognizers.pdf">https://dinhe.net/~aredridel/.notmine/PDFs/Parsing/SCOTT%2C%20Elizabeth%20-%20SPPF-Style%20Parsing%20From%20Earley%20Recognizers.pdf</a>.
+</p>
+<hr>
+<a name="Wikipedia-BNF-article"></a>
+<div class="header">
+<p>
+Previous: <a href="#Scott-2008" accesskey="p" rel="prev">Scott 2008</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Wikipedia-BNF-article-1"></a>
+<h3 class="section">32.14 Wikipedia BNF article</h3>
 
 <p>Wikipedia&rsquo;s article on Backus-Naur form is
 <a href="http://en.wikipedia.org/wiki/Backus-Naur_form">http://en.wikipedia.org/wiki/Backus-Naur_form</a>.
@@ -11655,7 +12556,10 @@ this document.
 Not every use of these terms is indexed &mdash;
 only those uses that are in some way defining.
 </p>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index-of-terms_df_letter-A"><b>A</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index-of-terms_df_symbol-1"><b>@</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="#Index-of-terms_df_letter-A"><b>A</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index-of-terms_df_letter-B"><b>B</b></a>
  &nbsp; 
@@ -11699,12 +12603,16 @@ only those uses that are in some way defining.
 <table class="index-df" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index-of-terms_df_symbol-1">@</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0040_002dnotation-for-nulled-instance">@-notation for nulled instance</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0040_002dnotation-for-rule-instance">@-notation for rule instance</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0040_002dnotation-for-sequence-instance">@-notation for sequence instance</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0040_002dnotation-for-symbol-instance">@-notation for symbol instance</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-A">A</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-accessible-rule">accessible rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Useless-rules">Useless rules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-accessible-symbol">accessible symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Useless-rules">Useless rules</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-activate-_0028a-completion-symbol-event_0029">activate (a completion symbol event)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Completion-events">Completion events</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-activate-_0028a-nulled-symbol-event_0029">activate (a nulled symbol event)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Symbol-nulled-events">Symbol nulled events</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-activate-_0028a-prediction-symbol-event_0029">activate (a prediction symbol event)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Prediction-events">Prediction events</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-activated-event-subtype">activated event subtype</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-active-_0028valuator_0029">active (valuator)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Valuator-constructor">Valuator constructor</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-active-parse">active parse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-advanced-input-model">advanced input model</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Advanced-input-models">Advanced input models</a></td></tr>
@@ -11740,13 +12648,20 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-child-_0028of-a-node_0029">child (of a node)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-child-objectchild-object-_0028of-a-time-object_0029">child object (of a time object)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Time-objects">Time objects</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-children-_0028of-a-node_0029">children (of a node)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-codepoint_002dper_002dearleme-input-model">codepoint-per-earleme input model</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-codepoint_002dper_002dearleme-model">The codepoint-per-earleme model</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-completed-dotted-rule">completed dotted rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-completed-Earley-item">completed Earley item</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-completion-_0028dotted-rule_0029">completion (dotted rule)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-completion-_0028Earley-item_0029">completion (Earley item)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-context_002dfree-grammar">context-free grammar</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rules">Rules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-counted-symbol">counted symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sequence-methods">Sequence methods</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-current-location-_0028in-an-Earley-item_0029">current location (in an Earley item)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-current-vertex-_0028of-a-progress-report-traverser_0029">current vertex (of a progress report traverser)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-cycle">cycle</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Recursion-and-cycles">Recursion and cycles</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-cycle_002dfree">cycle-free</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Recursion-and-cycles">Recursion and cycles</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-declared-event-subtype">declared event subtype</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dense-variable_002dlength-input-model">dense variable-length input model</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-dense-variable_002dlength-token-model">The dense variable-length token model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-depth_002dfirst-traversal">depth-first traversal</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Traversal">Traversal</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-derivation">derivation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Derivations">Derivations</a></td></tr>
@@ -11761,6 +12676,8 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-descendant_002c-trivial">descendant, trivial</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-diagnostic-behavior">diagnostic behavior</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Application-and-diagnostic-behavior">Application and diagnostic behavior</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-directly-derives">directly derives</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Derivations">Derivations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dot-position">dot position</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dotted-rule">dotted rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-E">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-earleme">earleme</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-traditional-input-model">The traditional input model</a></td></tr>
@@ -11768,6 +12685,7 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-earleme_002c-empty">earleme, empty</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-fully-general-input-model">The fully general input model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-earleme_002c-furthest">earleme, furthest</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-furthest-earleme">The furthest earleme</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-earleme_002c-latest">earleme, latest</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-latest-earleme">The latest earleme</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Earley-item">Earley item</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Earley-item-warning-threshold">Earley item warning threshold</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-parse-status-methods">Other parse status methods</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Earley-set_002c-end-of-parse">Earley set, end of parse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bocage-data-structure">Bocage data structure</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Earley-set_002c-latest">Earley set, latest</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-latest-earleme">The latest earleme</a></td></tr>
@@ -11782,13 +12700,17 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-evaluate-_0028a-parse-run_0029">evaluate (a parse run)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Semantics-terms">Semantics terms</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-evaluate-_0028a-tree_0029">evaluate (a tree)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Semantics-terms">Semantics terms</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-evaluate-_0028an-input-string_0029">evaluate (an input string)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Semantics-terms">Semantics terms</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-event_002c-expected-symbol">event, expected symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Symbol-expected-events">Symbol expected events</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-event_002dgenerating-_0028method_0029">event-generating (method)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-event-queue">event queue</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-event_002c-global">event, global</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-event_002c-per_002dsymbol">event, per-symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-event_002dsafe-_0028method_0029">event-safe (method)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-event_002dtriggering-_0028method_0029">event-triggering (method)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-events_002c-recognizer-per_002dsymbol">events, recognizer per-symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Recognizer-per_002dsymbol-events">Recognizer per-symbol events</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exhausted-parse">exhausted parse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exhaustion_002dhating-applications">exhaustion-hating applications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exhaustion_002dloving-applications">exhaustion-loving applications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-expected-symbol-event">expected symbol event</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Symbol-expected-events">Symbol expected events</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-expected-symbol">expected symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-explicit-event-type">explicit event type</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-F">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-failure">failure</a>:</td><td>&nbsp;</td><td valign="top"><a href="#User-non_002dconformity-to-specified-behavior">User non-conformity to specified behavior</a></td></tr>
@@ -11808,6 +12730,8 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-fully-recoverable-hard-failure">fully recoverable hard failure</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fully-recoverable-hard-failure">Fully recoverable hard failure</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-G">G</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-global-event">global event</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-global-event-1">global event</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-grammar">grammar</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Parsing-theory-preliminaries">Parsing theory preliminaries</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-H">H</a></th><td></td><td></td></tr>
@@ -11822,6 +12746,7 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-ID-_0028of-an-Earley-set_0029">ID (of an Earley set)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-traditional-input-model">The traditional input model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-iff">iff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-immediately-previous-_0028to-a-marpa_005fr_005fearleme_005fcomplete_0028_0029-call_0029">immediately previous (to a <code>marpa_r_earleme_complete()</code> call)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-standard-model-of-input">The standard model of input</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-implicit-event-type">implicit event type</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-in-use-_0028LHS-terminals_0029">in use (LHS terminals)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Overview-of-LHS-terminals">Overview of LHS terminals</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-inaccessible-rule">inaccessible rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Useless-rules">Useless rules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-inaccessible-symbol">inaccessible symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Useless-rules">Useless rules</a></td></tr>
@@ -11877,9 +12802,6 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-locked-value-status-_0028of-a-symbol_0029">locked value status (of a symbol)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#What-unvalued-symbols-were">What unvalued symbols were</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-M">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-mark-_0028as-a-completion-event-symbol_0029">mark (as a completion event symbol)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Completion-events">Completion events</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-mark-_0028as-a-nulled-event-symbol_0029">mark (as a nulled event symbol)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Symbol-nulled-events">Symbol nulled events</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-mark-_0028as-a-prediction-event-symbol_0029">mark (as a prediction event symbol)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Prediction-events">Prediction events</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-matches">matches</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Derivations">Derivations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-matches-1">matches</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Derivations">Derivations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-max_0028x_002cy_0029">max(x,y)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
@@ -11914,8 +12836,10 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-nulling-symbol">nulling symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Nulling">Nulling</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-O">O</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-one_002dcodepoint_002dper_002dearleme-input-model">one-codepoint-per-earleme input model</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-codepoint_002dper_002dearleme-model">The codepoint-per-earleme model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ordering_002c-frozen">ordering, frozen</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Freezing-the-ordering">Freezing the ordering</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ordinal-_0028of-an-Earley-set_0029">ordinal (of an Earley set)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-traditional-input-model">The traditional input model</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-origin-_0028in-an-Earley-item_0029">origin (in an Earley item)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-our">our</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-P">P</a></th><td></td><td></td></tr>
@@ -11933,7 +12857,15 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-parser">parser</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Parsing-theory-preliminaries">Parsing theory preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-partially-recoverable-hard-failure">partially recoverable hard failure</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Partially-recoverable-hard-failure">Partially recoverable hard failure</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-pause-_0028a-parent-tree-iterator_0029">pause (a parent tree iterator)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Valuator-constructor">Valuator constructor</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-per_002dsymbol-event">per-symbol event</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-per_002dsymbol-event-1">per-symbol event</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-postdot-symbol-_0028of-a-dotted-rule_0029">postdot symbol (of a dotted rule)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-postdot-symbol-_0028of-an-Earley-item_0029">postdot symbol (of an Earley item)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-postorder-traversal">postorder traversal</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Traversal">Traversal</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-predicted-dotted-rule">predicted dotted rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-predicted-Earley-item">predicted Earley item</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-prediction-_0028dotted-rule_0029">prediction (dotted rule)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-prediction-_0028Earley-item_0029">prediction (Earley item)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-previous-_0028to-a-marpa_005fr_005fearleme_005fcomplete_0028_0029-call_0029_002c-immediately">previous (to a <code>marpa_r_earleme_complete()</code> call), immediately</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-standard-model-of-input">The standard model of input</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-produces">produces</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Derivations">Derivations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-productive-rule">productive rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Useless-rules">Useless rules</a></td></tr>
@@ -11948,6 +12880,7 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-reachable-rule">reachable rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Useless-rules">Useless rules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-reachable-symbol">reachable symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Useless-rules">Useless rules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-recognizer">recognizer</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Parsing-theory-preliminaries">Parsing theory preliminaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-recognizer-per_002dsymbol-events">recognizer per-symbol events</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Recognizer-per_002dsymbol-events">Recognizer per-symbol events</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-recursive">recursive</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Recursion-and-cycles">Recursion and cycles</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-report-item">report item</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-RHS">RHS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rules">Rules</a></td></tr>
@@ -12014,6 +12947,7 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-terminal-status-_0028of-a-symbol_0029">terminal status (of a symbol)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#LHS-terminal-methods">LHS terminal methods</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-token-node">token node</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-token-stream">token stream</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Parsing-theory-preliminaries">Parsing theory preliminaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-token_002dper_002dearleme-input-models">token-per-earleme input models</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-codepoint_002dper_002dearleme-model">The codepoint-per-earleme model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tokens">tokens</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Parsing-theory-preliminaries">Parsing theory preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-trap-representations">trap representations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trap-representations">Trap representations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-trap-value">trap value</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
@@ -12064,7 +12998,10 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-we">we</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index-of-terms_df_letter-A"><b>A</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index-of-terms_df_symbol-1"><b>@</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="#Index-of-terms_df_letter-A"><b>A</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index-of-terms_df_letter-B"><b>B</b></a>
  &nbsp; 
@@ -12106,6 +13043,22 @@ only those uses that are in some way defining.
  &nbsp; 
 </td></tr></table>
 
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<p>Those interested in details of notation
+    may notice that we
+    include current location in the Earley item
+    tuple, contrary to the tradition.
+    We develop our notation more formally,
+    and explain our reasons
+    for the deviation from tradition,
+    on pages 5-7 of
+    <a href="https://arxiv.org/abs/2303.04093v1">https://arxiv.org/abs/2303.04093v1</a>.
+</p>
+</div>
 <hr>
 
 

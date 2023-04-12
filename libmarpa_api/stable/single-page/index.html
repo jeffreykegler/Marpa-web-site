@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (8 April 2023)
-is for Libmarpa 11.0.7.
+<!-- This manual (12 April 2023)
+is for Libmarpa 11.0.8.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Libmarpa 11.0.7</title>
+<title>Libmarpa 11.0.8</title>
 
-<meta name="description" content="Libmarpa 11.0.7">
-<meta name="keywords" content="Libmarpa 11.0.7">
+<meta name="description" content="Libmarpa 11.0.8">
+<meta name="keywords" content="Libmarpa 11.0.8">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -68,7 +68,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">Libmarpa 11.0.7</h1>
+<h1 class="settitle" align="center">Libmarpa 11.0.8</h1>
 
 
 
@@ -130,202 +130,215 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Terminals-1" href="#Terminals">7.3 Terminals</a></li>
   </ul></li>
   <li><a name="toc-Exhaustion-1" href="#Exhaustion">8 Exhaustion</a></li>
-  <li><a name="toc-Semantics-1" href="#Semantics">9 Semantics</a></li>
-  <li><a name="toc-Threads-1" href="#Threads">10 Threads</a></li>
-  <li><a name="toc-Sequence-rules-1" href="#Sequence-rules">11 Sequence rules</a></li>
-  <li><a name="toc-Nullability-1" href="#Nullability">12 Nullability</a>
+  <li><a name="toc-End-of-parsing-1" href="#End-of-parsing">9 End of parsing</a>
   <ul class="no-bullet">
-    <li><a name="toc-Nullability-in-the-valuator" href="#Nullability-and-the-valuator">12.1 Nullability in the valuator</a></li>
-    <li><a name="toc-Assigning-semantics-to-nulled-symbols-1" href="#Assigning-semantics-to-nulled-symbols">12.2 Assigning semantics to nulled symbols</a></li>
-    <li><a name="toc-Evaluating-nulled-symbols-1" href="#Evaluating-nulled-symbols">12.3 Evaluating nulled symbols</a></li>
-    <li><a name="toc-Example-of-nulled-symbol-1" href="#Example-of-nulled-symbol">12.4 Example of nulled symbol</a></li>
-    <li><a name="toc-Duplicate-nulled-nodes-1" href="#Duplicate-nulled-nodes">12.5 Duplicate nulled nodes</a></li>
+    <li><a name="toc-Determining-EOP-from-EOI-1" href="#Determining-EOP-from-EOI">9.1 Determining EOP from EOI</a></li>
+    <li><a name="toc-Determining-EOP-from-exhaustion-1" href="#Determining-EOP-from-exhaustion">9.2 Determining EOP from exhaustion</a></li>
+    <li><a name="toc-Other-ways-of-determining-EOP-1" href="#Other-ways-of-determining-EOP">9.3 Other ways of determining EOP</a></li>
   </ul></li>
-  <li><a name="toc-Failure-1" href="#Failure">13 Failure</a>
+  <li><a name="toc-Semantics-1" href="#Semantics">10 Semantics</a></li>
+  <li><a name="toc-Threads-1" href="#Threads">11 Threads</a></li>
+  <li><a name="toc-Sequence-rules-1" href="#Sequence-rules">12 Sequence rules</a></li>
+  <li><a name="toc-Nullability-1" href="#Nullability">13 Nullability</a>
   <ul class="no-bullet">
-    <li><a name="toc-Libmarpa_0027s-approach-to-failure-1" href="#Libmarpa_0027s-approach-to-failure">13.1 Libmarpa&rsquo;s approach to failure</a></li>
-    <li><a name="toc-User-non_002dconformity-to-specified-behavior-1" href="#User-non_002dconformity-to-specified-behavior">13.2 User non-conformity to specified behavior</a></li>
-    <li><a name="toc-Classifying-failure-1" href="#Classifying-failure">13.3 Classifying failure</a></li>
-    <li><a name="toc-Memory-allocation-failure-1" href="#Memory-allocation-failure">13.4 Memory allocation failure</a></li>
-    <li><a name="toc-Undetected-failure-1" href="#Undetected-failure">13.5 Undetected failure</a></li>
-    <li><a name="toc-Irrecoverable-hard-failure-1" href="#Irrecoverable-hard-failure">13.6 Irrecoverable hard failure</a></li>
-    <li><a name="toc-Partially-recoverable-hard-failure-1" href="#Partially-recoverable-hard-failure">13.7 Partially recoverable hard failure</a></li>
-    <li><a name="toc-Library_002drecoverable-hard-failure-1" href="#Library_002drecoverable-hard-failure">13.8 Library-recoverable hard failure</a></li>
-    <li><a name="toc-Ancestry_002drecoverable-hard-failure-1" href="#Ancestry_002drecoverable-hard-failure">13.9 Ancestry-recoverable hard failure</a></li>
-    <li><a name="toc-Fully-recoverable-hard-failure-1" href="#Fully-recoverable-hard-failure">13.10 Fully recoverable hard failure</a></li>
-    <li><a name="toc-Soft-failure-1" href="#Soft-failure">13.11 Soft failure</a></li>
-    <li><a name="toc-Error-codes-1" href="#Error-codes">13.12 Error codes</a></li>
+    <li><a name="toc-Nullability-in-the-valuator-1" href="#Nullability-in-the-valuator">13.1 Nullability in the valuator</a></li>
+    <li><a name="toc-Assigning-semantics-to-nulled-symbols-1" href="#Assigning-semantics-to-nulled-symbols">13.2 Assigning semantics to nulled symbols</a></li>
+    <li><a name="toc-Evaluating-nulled-symbols-1" href="#Evaluating-nulled-symbols">13.3 Evaluating nulled symbols</a></li>
+    <li><a name="toc-Example-of-nulled-symbol-1" href="#Example-of-nulled-symbol">13.4 Example of nulled symbol</a></li>
+    <li><a name="toc-Duplicate-nulled-nodes-1" href="#Duplicate-nulled-nodes">13.5 Duplicate nulled nodes</a></li>
   </ul></li>
-  <li><a name="toc-Introduction-to-the-method-descriptions-1" href="#Introduction-to-the-method-descriptions">14 Introduction to the method descriptions</a>
+  <li><a name="toc-Failure-1" href="#Failure">14 Failure</a>
   <ul class="no-bullet">
-    <li><a name="toc-About-the-overviews-1" href="#About-the-overviews">14.1 About the overviews</a></li>
-    <li><a name="toc-Naming-conventions-1" href="#Naming-conventions">14.2 Naming conventions</a></li>
-    <li><a name="toc-Return-values-1" href="#Return-values">14.3 Return values</a></li>
-    <li><a name="toc-How-to-read-the-method-descriptions-1" href="#How-to-read-the-method-descriptions">14.4 How to read the method descriptions</a></li>
+    <li><a name="toc-Libmarpa_0027s-approach-to-failure-1" href="#Libmarpa_0027s-approach-to-failure">14.1 Libmarpa&rsquo;s approach to failure</a></li>
+    <li><a name="toc-User-non_002dconformity-to-specified-behavior-1" href="#User-non_002dconformity-to-specified-behavior">14.2 User non-conformity to specified behavior</a></li>
+    <li><a name="toc-Classifying-failure-1" href="#Classifying-failure">14.3 Classifying failure</a></li>
+    <li><a name="toc-Memory-allocation-failure-1" href="#Memory-allocation-failure">14.4 Memory allocation failure</a></li>
+    <li><a name="toc-Undetected-failure-1" href="#Undetected-failure">14.5 Undetected failure</a></li>
+    <li><a name="toc-Irrecoverable-hard-failure-1" href="#Irrecoverable-hard-failure">14.6 Irrecoverable hard failure</a></li>
+    <li><a name="toc-Partially-recoverable-hard-failure-1" href="#Partially-recoverable-hard-failure">14.7 Partially recoverable hard failure</a></li>
+    <li><a name="toc-Library_002drecoverable-hard-failure-1" href="#Library_002drecoverable-hard-failure">14.8 Library-recoverable hard failure</a></li>
+    <li><a name="toc-Ancestry_002drecoverable-hard-failure-1" href="#Ancestry_002drecoverable-hard-failure">14.9 Ancestry-recoverable hard failure</a></li>
+    <li><a name="toc-Fully-recoverable-hard-failure-1" href="#Fully-recoverable-hard-failure">14.10 Fully recoverable hard failure</a></li>
+    <li><a name="toc-Soft-failure-1" href="#Soft-failure">14.11 Soft failure</a></li>
+    <li><a name="toc-Error-codes-1" href="#Error-codes">14.12 Error codes</a></li>
   </ul></li>
-  <li><a name="toc-Static-methods-1" href="#Static-methods">15 Static methods</a></li>
-  <li><a name="toc-Configuration-methods-1" href="#Configuration-methods">16 Configuration methods</a></li>
-  <li><a name="toc-Grammar-methods-1" href="#Grammar-methods">17 Grammar methods</a>
+  <li><a name="toc-Introduction-to-the-method-descriptions-1" href="#Introduction-to-the-method-descriptions">15 Introduction to the method descriptions</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview" href="#Grammar-overview">17.1 Overview</a></li>
-    <li><a name="toc-Creating-a-new-grammar" href="#Grammar-constructor">17.2 Creating a new grammar</a></li>
-    <li><a name="toc-Tracking-the-reference-count-of-the-grammar" href="#Grammar-reference-counting">17.3 Tracking the reference count of the grammar</a></li>
-    <li><a name="toc-Symbol-methods-1" href="#Symbol-methods">17.4 Symbol methods</a></li>
-    <li><a name="toc-Rule-methods-1" href="#Rule-methods">17.5 Rule methods</a></li>
-    <li><a name="toc-Sequence-methods-1" href="#Sequence-methods">17.6 Sequence methods</a></li>
-    <li><a name="toc-Rank-methods-1" href="#Rank-methods">17.7 Rank methods</a></li>
-    <li><a name="toc-Precomputing-the-Grammar" href="#Grammar-precomputation">17.8 Precomputing the Grammar</a></li>
+    <li><a name="toc-About-the-overviews-1" href="#About-the-overviews">15.1 About the overviews</a></li>
+    <li><a name="toc-Naming-conventions-1" href="#Naming-conventions">15.2 Naming conventions</a></li>
+    <li><a name="toc-Return-values-1" href="#Return-values">15.3 Return values</a></li>
+    <li><a name="toc-How-to-read-the-method-descriptions-1" href="#How-to-read-the-method-descriptions">15.4 How to read the method descriptions</a></li>
   </ul></li>
-  <li><a name="toc-Recognizer-methods-1" href="#Recognizer-methods">18 Recognizer methods</a>
+  <li><a name="toc-Static-methods-1" href="#Static-methods">16 Static methods</a></li>
+  <li><a name="toc-Configuration-methods-1" href="#Configuration-methods">17 Configuration methods</a></li>
+  <li><a name="toc-Grammar-methods-1" href="#Grammar-methods">18 Grammar methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-Recognizer-overview-1" href="#Recognizer-overview">18.1 Recognizer overview</a></li>
-    <li><a name="toc-Creating-a-new-recognizer-1" href="#Creating-a-new-recognizer">18.2 Creating a new recognizer</a></li>
-    <li><a name="toc-Keeping-the-reference-count-of-a-recognizer" href="#Recognizer-reference-counting">18.3 Keeping the reference count of a recognizer</a></li>
-    <li><a name="toc-Life-cycle-mutators" href="#Recognizer-life-cycle-mutators">18.4 Life cycle mutators</a></li>
-    <li><a name="toc-Location-accessors-1" href="#Location-accessors">18.5 Location accessors</a></li>
-    <li><a name="toc-Other-parse-status-methods-1" href="#Other-parse-status-methods">18.6 Other parse status methods</a></li>
+    <li><a name="toc-Overview" href="#Grammar-overview">18.1 Overview</a></li>
+    <li><a name="toc-Creating-a-new-grammar" href="#Grammar-constructor">18.2 Creating a new grammar</a></li>
+    <li><a name="toc-Tracking-the-reference-count-of-the-grammar" href="#Grammar-reference-counting">18.3 Tracking the reference count of the grammar</a></li>
+    <li><a name="toc-Symbol-methods-1" href="#Symbol-methods">18.4 Symbol methods</a></li>
+    <li><a name="toc-Rule-methods-1" href="#Rule-methods">18.5 Rule methods</a></li>
+    <li><a name="toc-Sequence-methods-1" href="#Sequence-methods">18.6 Sequence methods</a></li>
+    <li><a name="toc-Rank-methods-1" href="#Rank-methods">18.7 Rank methods</a></li>
+    <li><a name="toc-Precomputing-the-Grammar" href="#Grammar-precomputation">18.8 Precomputing the Grammar</a></li>
   </ul></li>
-  <li><a name="toc-Progress-reports-1" href="#Progress-reports">19 Progress reports</a></li>
-  <li><a name="toc-Bocage-methods-1" href="#Bocage-methods">20 Bocage methods</a>
+  <li><a name="toc-Recognizer-methods-1" href="#Recognizer-methods">19 Recognizer methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview-1" href="#Bocage-overview">20.1 Overview</a></li>
-    <li><a name="toc-Bocage-data-structure-1" href="#Bocage-data-structure">20.2 Bocage data structure</a></li>
-    <li><a name="toc-Creating-a-new-bocage" href="#Bocage-constructor">20.3 Creating a new bocage</a></li>
-    <li><a name="toc-Reference-counting-2" href="#Bocage-reference-counting">20.4 Reference counting</a></li>
-    <li><a name="toc-Accessors" href="#Bocage-accessor">20.5 Accessors</a></li>
+    <li><a name="toc-Recognizer-overview-1" href="#Recognizer-overview">19.1 Recognizer overview</a></li>
+    <li><a name="toc-Creating-a-new-recognizer-1" href="#Creating-a-new-recognizer">19.2 Creating a new recognizer</a></li>
+    <li><a name="toc-Keeping-the-reference-count-of-a-recognizer" href="#Recognizer-reference-counting">19.3 Keeping the reference count of a recognizer</a></li>
+    <li><a name="toc-Life-cycle-mutators" href="#Recognizer-life-cycle-mutators">19.4 Life cycle mutators</a></li>
+    <li><a name="toc-Location-accessors-1" href="#Location-accessors">19.5 Location accessors</a></li>
+    <li><a name="toc-Other-parse-status-methods-1" href="#Other-parse-status-methods">19.6 Other parse status methods</a></li>
   </ul></li>
-  <li><a name="toc-Ordering-methods-1" href="#Ordering-methods">21 Ordering methods</a>
+  <li><a name="toc-Progress-reports-1" href="#Progress-reports">20 Progress reports</a></li>
+  <li><a name="toc-Bocage-methods-1" href="#Bocage-methods">21 Bocage methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview-2" href="#Ordering-overview">21.1 Overview</a></li>
-    <li><a name="toc-Freezing-the-ordering-1" href="#Freezing-the-ordering">21.2 Freezing the ordering</a></li>
-    <li><a name="toc-Creating-an-ordering" href="#Ordering-constructor">21.3 Creating an ordering</a></li>
-    <li><a name="toc-Reference-counting-3" href="#Ordering-reference-counting">21.4 Reference counting</a></li>
-    <li><a name="toc-Accessors-1" href="#Order-accessor">21.5 Accessors</a></li>
-    <li><a name="toc-Non_002ddefault-ordering-1" href="#Non_002ddefault-ordering">21.6 Non-default ordering</a></li>
+    <li><a name="toc-Overview-1" href="#Bocage-overview">21.1 Overview</a></li>
+    <li><a name="toc-Bocage-data-structure-1" href="#Bocage-data-structure">21.2 Bocage data structure</a></li>
+    <li><a name="toc-Creating-a-new-bocage" href="#Bocage-constructor">21.3 Creating a new bocage</a></li>
+    <li><a name="toc-Reference-counting-2" href="#Bocage-reference-counting">21.4 Reference counting</a></li>
+    <li><a name="toc-Accessors" href="#Bocage-accessor">21.5 Accessors</a></li>
   </ul></li>
-  <li><a name="toc-Tree-methods-1" href="#Tree-methods">22 Tree methods</a>
+  <li><a name="toc-Ordering-methods-1" href="#Ordering-methods">22 Ordering methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview-3" href="#Tree-overview">22.1 Overview</a></li>
-    <li><a name="toc-Creating-a-new-tree-iterator" href="#Tree-constructor">22.2 Creating a new tree iterator</a></li>
-    <li><a name="toc-Reference-counting-4" href="#Tree-reference-counting">22.3 Reference counting</a></li>
-    <li><a name="toc-Iterating-through-the-trees-1" href="#Iterating-through-the-trees">22.4 Iterating through the trees</a></li>
+    <li><a name="toc-Overview-2" href="#Ordering-overview">22.1 Overview</a></li>
+    <li><a name="toc-Freezing-the-ordering-1" href="#Freezing-the-ordering">22.2 Freezing the ordering</a></li>
+    <li><a name="toc-Creating-an-ordering" href="#Ordering-constructor">22.3 Creating an ordering</a></li>
+    <li><a name="toc-Reference-counting-3" href="#Ordering-reference-counting">22.4 Reference counting</a></li>
+    <li><a name="toc-Accessors-1" href="#Order-accessor">22.5 Accessors</a></li>
+    <li><a name="toc-Non_002ddefault-ordering-1" href="#Non_002ddefault-ordering">22.6 Non-default ordering</a></li>
   </ul></li>
-  <li><a name="toc-Value-methods-1" href="#Value-methods">23 Value methods</a>
+  <li><a name="toc-Tree-methods-1" href="#Tree-methods">23 Tree methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview-4" href="#Value-overview">23.1 Overview</a></li>
-    <li><a name="toc-How-to-use-the-valuator-1" href="#How-to-use-the-valuator">23.2 How to use the valuator</a></li>
-    <li><a name="toc-Advantages-of-step_002ddriven-valuation-1" href="#Advantages-of-step_002ddriven-valuation">23.3 Advantages of step-driven valuation</a></li>
-    <li><a name="toc-Maintaining-the-stack-1" href="#Maintaining-the-stack">23.4 Maintaining the stack</a>
+    <li><a name="toc-Overview-3" href="#Tree-overview">23.1 Overview</a></li>
+    <li><a name="toc-Creating-a-new-tree-iterator" href="#Tree-constructor">23.2 Creating a new tree iterator</a></li>
+    <li><a name="toc-Reference-counting-4" href="#Tree-reference-counting">23.3 Reference counting</a></li>
+    <li><a name="toc-Iterating-through-the-trees-1" href="#Iterating-through-the-trees">23.4 Iterating through the trees</a></li>
+  </ul></li>
+  <li><a name="toc-Value-methods-1" href="#Value-methods">24 Value methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Overview-4" href="#Value-overview">24.1 Overview</a></li>
+    <li><a name="toc-How-to-use-the-valuator-1" href="#How-to-use-the-valuator">24.2 How to use the valuator</a></li>
+    <li><a name="toc-Advantages-of-step_002ddriven-valuation-1" href="#Advantages-of-step_002ddriven-valuation">24.3 Advantages of step-driven valuation</a></li>
+    <li><a name="toc-Maintaining-the-stack-1" href="#Maintaining-the-stack">24.4 Maintaining the stack</a>
     <ul class="no-bullet">
-      <li><a name="toc-Sizing-the-stack-1" href="#Sizing-the-stack">23.4.1 Sizing the stack</a></li>
+      <li><a name="toc-Sizing-the-stack-1" href="#Sizing-the-stack">24.4.1 Sizing the stack</a></li>
     </ul></li>
-    <li><a name="toc-Creating-a-new-valuator" href="#Valuator-constructor">23.5 Creating a new valuator</a></li>
-    <li><a name="toc-Reference-counting-5" href="#Valuator-reference-counting">23.6 Reference counting</a></li>
-    <li><a name="toc-Stepping-through-the-valuator-1" href="#Stepping-through-the-valuator">23.7 Stepping through the valuator</a></li>
-    <li><a name="toc-Valuator-step-types-1" href="#Valuator-step-types">23.8 Valuator step types</a></li>
-    <li><a name="toc-Basic-step-accessors-1" href="#Basic-step-accessors">23.9 Basic step accessors</a></li>
-    <li><a name="toc-Step-location-accessors-1" href="#Step-location-accessors">23.10 Step location accessors</a></li>
+    <li><a name="toc-Creating-a-new-valuator" href="#Valuator-constructor">24.5 Creating a new valuator</a></li>
+    <li><a name="toc-Reference-counting-5" href="#Valuator-reference-counting">24.6 Reference counting</a></li>
+    <li><a name="toc-Stepping-through-the-valuator-1" href="#Stepping-through-the-valuator">24.7 Stepping through the valuator</a></li>
+    <li><a name="toc-Valuator-step-types-1" href="#Valuator-step-types">24.8 Valuator step types</a></li>
+    <li><a name="toc-Basic-step-accessors-1" href="#Basic-step-accessors">24.9 Basic step accessors</a></li>
+    <li><a name="toc-Step-location-accessors-1" href="#Step-location-accessors">24.10 Step location accessors</a></li>
   </ul></li>
-  <li><a name="toc-Events-1" href="#Events">24 Events</a>
+  <li><a name="toc-Events-1" href="#Events">25 Events</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview-5" href="#Events-overview">24.1 Overview</a></li>
-    <li><a name="toc-Event-codes-1" href="#Event-codes">24.2 Event codes</a></li>
-    <li><a name="toc-Basic-event-accessors-1" href="#Basic-event-accessors">24.3 Basic event accessors</a></li>
-    <li><a name="toc-Completion-events-1" href="#Completion-events">24.4 Completion events</a></li>
-    <li><a name="toc-Symbol-nulled-events-1" href="#Symbol-nulled-events">24.5 Symbol nulled events</a></li>
-    <li><a name="toc-Prediction-events-1" href="#Prediction-events">24.6 Prediction events</a></li>
-    <li><a name="toc-Symbol-expected-events-1" href="#Symbol-expected-events">24.7 Symbol expected events</a></li>
-    <li><a name="toc-Recognizer-per_002dsymbol-events-1" href="#Recognizer-per_002dsymbol-events">24.8 Recognizer per-symbol events</a></li>
-    <li><a name="toc-Tentative-events-1" href="#Tentative-events">24.9 Tentative events</a></li>
-    <li><a name="toc-Event-coincidence-of-symbol-instances-1" href="#Event-coincidence-of-symbol-instances">24.10 Event coincidence of symbol instances</a>
+    <li><a name="toc-Overview-5" href="#Events-overview">25.1 Overview</a></li>
+    <li><a name="toc-Event-codes-1" href="#Event-codes">25.2 Event codes</a></li>
+    <li><a name="toc-Basic-event-accessors-1" href="#Basic-event-accessors">25.3 Basic event accessors</a></li>
+    <li><a name="toc-Completion-events-1" href="#Completion-events">25.4 Completion events</a></li>
+    <li><a name="toc-Symbol-nulled-events-1" href="#Symbol-nulled-events">25.5 Symbol nulled events</a></li>
+    <li><a name="toc-Prediction-events-1" href="#Prediction-events">25.6 Prediction events</a></li>
+    <li><a name="toc-Symbol-expected-events-1" href="#Symbol-expected-events">25.7 Symbol expected events</a></li>
+    <li><a name="toc-Recognizer-per_002dsymbol-events-1" href="#Recognizer-per_002dsymbol-events">25.8 Recognizer per-symbol events</a></li>
+    <li><a name="toc-Tentative-events-1" href="#Tentative-events">25.9 Tentative events</a></li>
+    <li><a name="toc-Ambiguous-parses-and-events-1" href="#Ambiguous-parses-and-events">25.10 Ambiguous parses and events</a></li>
+    <li><a name="toc-Nulled-subtrees-and-events-1" href="#Nulled-subtrees-and-events">25.11 Nulled subtrees and events</a></li>
+    <li><a name="toc-Event-coincidence-of-symbol-instances-1" href="#Event-coincidence-of-symbol-instances">25.12 Event coincidence of symbol instances</a>
     <ul class="no-bullet">
-      <li><a name="toc-Nulled-and-completed-symbol-instances-1" href="#Nulled-and-completed-symbol-instances">24.10.1 Nulled and completed symbol instances</a></li>
-      <li><a name="toc-Nulled-and-predicted-symbol-instances-1" href="#Nulled-and-predicted-symbol-instances">24.10.2 Nulled and predicted symbol instances</a></li>
-      <li><a name="toc-Nulled-and-expected-symbol-instances-1" href="#Nulled-and-expected-symbol-instances">24.10.3 Nulled and expected symbol instances</a></li>
-      <li><a name="toc-Completed-and-predicted-symbol-instances-1" href="#Completed-and-predicted-symbol-instances">24.10.4 Completed and predicted symbol instances</a></li>
-      <li><a name="toc-Completed-and-expected-symbol-instances-1" href="#Completed-and-expected-symbol-instances">24.10.5 Completed and expected symbol instances</a></li>
-      <li><a name="toc-Predicted-and-expected-symbol-instances-1" href="#Predicted-and-expected-symbol-instances">24.10.6 Predicted and expected symbol instances</a></li>
+      <li><a name="toc-Nulled-and-completed-symbol-instances-1" href="#Nulled-and-completed-symbol-instances">25.12.1 Nulled and completed symbol instances</a></li>
+      <li><a name="toc-Nulled-and-predicted-symbol-instances-1" href="#Nulled-and-predicted-symbol-instances">25.12.2 Nulled and predicted symbol instances</a></li>
+      <li><a name="toc-Nulled-and-expected-symbol-instances-1" href="#Nulled-and-expected-symbol-instances">25.12.3 Nulled and expected symbol instances</a></li>
+      <li><a name="toc-Completed-and-predicted-symbol-instances-1" href="#Completed-and-predicted-symbol-instances">25.12.4 Completed and predicted symbol instances</a></li>
+      <li><a name="toc-Completed-and-expected-symbol-instances-1" href="#Completed-and-expected-symbol-instances">25.12.5 Completed and expected symbol instances</a></li>
+      <li><a name="toc-Predicted-and-expected-symbol-instances-1" href="#Predicted-and-expected-symbol-instances">25.12.6 Predicted and expected symbol instances</a></li>
     </ul></li>
-    <li><a name="toc-Event-coincidence-of-symbols-1" href="#Event-coincidence-of-symbols">24.11 Event coincidence of symbols</a></li>
-  </ul></li>
-  <li><a name="toc-Error-methods_002c-macros-and-codes" href="#Error-methods-macros-and-codes">25 Error methods, macros and codes</a>
-  <ul class="no-bullet">
-    <li><a name="toc-Error-methods-1" href="#Error-methods">25.1 Error methods</a></li>
-    <li><a name="toc-Error-Macros-1" href="#Error-Macros">25.2 Error Macros</a></li>
-    <li><a name="toc-External-error-codes-1" href="#External-error-codes">25.3 External error codes</a></li>
-    <li><a name="toc-Internal-error-codes-1" href="#Internal-error-codes">25.4 Internal error codes</a></li>
-  </ul></li>
-  <li><a name="toc-Technical-notes-1" href="#Technical-notes">26 Technical notes</a>
-  <ul class="no-bullet">
-    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="#Data-types-used-by-Libmarpa">26.1 Data types used by Libmarpa</a></li>
-    <li><a name="toc-Why-so-many-time-objects_003f" href="#Why-so-many-time-objects">26.2 Why so many time objects?</a></li>
-    <li><a name="toc-Numbered-objects-2" href="#Design-of-numbered-objects">26.3 Numbered objects</a></li>
-    <li><a name="toc-Trap-representations-1" href="#Trap-representations">26.4 Trap representations</a></li>
-    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="#Out_002dof_002dmemory-handling">26.5 Out-of-memory handling</a></li>
-  </ul></li>
-  <li><a name="toc-Advanced-input-models-1" href="#Advanced-input-models">27 Advanced input models</a>
-  <ul class="no-bullet">
-    <li><a name="toc-The-dense-variable_002dlength-token-model-1" href="#The-dense-variable_002dlength-token-model">27.1 The dense variable-length token model</a></li>
-    <li><a name="toc-The-fully-general-input-model-1" href="#The-fully-general-input-model">27.2 The fully general input model</a></li>
-    <li><a name="toc-The-codepoint_002dper_002dearleme-model-1" href="#The-codepoint_002dper_002dearleme-model">27.3 The codepoint-per-earleme model</a></li>
-  </ul></li>
-  <li><a name="toc-Support-1" href="#Support">28 Support</a></li>
-  <li><a name="toc-Futures-1" href="#Futures">29 Futures</a>
-  <ul class="no-bullet">
-    <li><a name="toc-Nulling-versus-nulled-1" href="#Nulling-versus-nulled">29.1 Nulling versus nulled</a></li>
-    <li><a name="toc-Document-pre_002dconditions-more-formally-1" href="#Document-pre_002dconditions-more-formally">29.2 Document pre-conditions more formally</a></li>
-    <li><a name="toc-Simpler-events-interface-1" href="#Simpler-events-interface">29.3 Simpler events interface</a></li>
-    <li><a name="toc-Better-defined-ambiguity-metric-1" href="#Better-defined-ambiguity-metric">29.4 Better defined ambiguity metric</a></li>
-    <li><a name="toc-Report-item-traverser-should-be-a-time-object-1" href="#Report-item-traverser-should-be-a-time-object">29.5 Report item traverser should be a time object</a></li>
-    <li><a name="toc-Orthogonal-treatment-of-soft-failures-1" href="#Orthogonal-treatment-of-soft-failures">29.6 Orthogonal treatment of soft failures</a></li>
-    <li><a name="toc-Orthogonal-treatment-of-exhaustion-1" href="#Orthogonal-treatment-of-exhaustion">29.7 Orthogonal treatment of exhaustion</a></li>
-    <li><a name="toc-Furthest-earleme-values-1" href="#Furthest-earleme-values">29.8 Furthest earleme values</a></li>
-    <li><a name="toc-Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029-1" href="#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029">29.9 Additional recoverable failures in marpa_r_alternative()</a></li>
-    <li><a name="toc-Untested-methods-1" href="#Untested-methods">29.10 Untested methods</a>
+    <li><a name="toc-Event-coincidence-of-symbols-1" href="#Event-coincidence-of-symbols">25.13 Event coincidence of symbols</a></li>
+    <li><a name="toc-Marker-symbols-1" href="#Marker-symbols">25.14 Marker symbols</a></li>
+    <li><a name="toc-Per_002drule-events-1" href="#Per_002drule-events">25.15 Per-rule events</a>
     <ul class="no-bullet">
-      <li><a name="toc-Zero_002dwidth-assertion-methods-1" href="#Zero_002dwidth-assertion-methods">29.10.1 Zero-width assertion methods</a></li>
-      <li><a name="toc-Methods-for-revising-parses-1" href="#Methods-for-revising-parses">29.10.2 Methods for revising parses</a></li>
+      <li><a name="toc-Workaround-with-a-dedicated-LHS-symbol-1" href="#Workaround-with-a-dedicated-LHS-symbol">25.15.1 Workaround with a dedicated LHS symbol</a></li>
     </ul></li>
   </ul></li>
-  <li><a name="toc-Deprecated-techniques-and-methods-1" href="#Deprecated-techniques-and-methods">30 Deprecated techniques and methods</a>
+  <li><a name="toc-Error-methods_002c-macros-and-codes" href="#Error-methods-macros-and-codes">26 Error methods, macros and codes</a>
   <ul class="no-bullet">
-    <li><a name="toc-LHS-terminals-1" href="#LHS-terminals">30.1 LHS terminals</a>
-    <ul class="no-bullet">
-      <li><a name="toc-Overview-of-LHS-terminals-1" href="#Overview-of-LHS-terminals">30.1.1 Overview of LHS terminals</a></li>
-      <li><a name="toc-Motivation-of-LHS-terminals-1" href="#Motivation-of-LHS-terminals">30.1.2 Motivation of LHS terminals</a></li>
-      <li><a name="toc-LHS-terminal-methods-1" href="#LHS-terminal-methods">30.1.3 LHS terminal methods</a></li>
-      <li><a name="toc-Precomputation-and-LHS-terminals-1" href="#Precomputation-and-LHS-terminals">30.1.4 Precomputation and LHS terminals</a></li>
-      <li><a name="toc-Nulling-terminals-1" href="#Nulling-terminals">30.1.5 Nulling terminals</a></li>
-    </ul></li>
-    <li><a name="toc-Valued-and-unvalued-symbols-1" href="#Valued-and-unvalued-symbols">30.2 Valued and unvalued symbols</a>
-    <ul class="no-bullet">
-      <li><a name="toc-What-unvalued-symbols-were-1" href="#What-unvalued-symbols-were">30.2.1 What unvalued symbols were</a></li>
-      <li><a name="toc-Grammar-methods-dealing-with-unvalued-symbols-1" href="#Grammar-methods-dealing-with-unvalued-symbols">30.2.2 Grammar methods dealing with unvalued symbols</a></li>
-      <li><a name="toc-Registering-semantics-in-the-valuator-1" href="#Registering-semantics-in-the-valuator">30.2.3 Registering semantics in the valuator</a></li>
-    </ul></li>
-    <li><a name="toc-Cycles-1" href="#Cycles">30.3 Cycles</a></li>
+    <li><a name="toc-Error-methods-1" href="#Error-methods">26.1 Error methods</a></li>
+    <li><a name="toc-Error-Macros-1" href="#Error-Macros">26.2 Error Macros</a></li>
+    <li><a name="toc-External-error-codes-1" href="#External-error-codes">26.3 External error codes</a></li>
+    <li><a name="toc-Internal-error-codes-1" href="#Internal-error-codes">26.4 Internal error codes</a></li>
   </ul></li>
-  <li><a name="toc-History-of-the-Marpa-algorithm-1" href="#History-of-the-Marpa-algorithm">31 History of the Marpa algorithm</a></li>
-  <li><a name="toc-Annotated-bibliography-1" href="#Annotated-bibliography">32 Annotated bibliography</a>
+  <li><a name="toc-Technical-notes-1" href="#Technical-notes">27 Technical notes</a>
   <ul class="no-bullet">
-    <li><a name="toc-Aho-and-Ullman-1972-1" href="#Aho-and-Ullman-1972">32.1 Aho and Ullman 1972</a></li>
-    <li><a name="toc-Aycock-and-Horspool-2002-1" href="#Aycock-and-Horspool-2002">32.2 Aycock and Horspool 2002</a></li>
-    <li><a name="toc-C89-standard" href="#C89">32.3 C89 standard</a></li>
-    <li><a name="toc-C99-standard" href="#C99">32.4 C99 standard</a></li>
-    <li><a name="toc-Dominus-2005-1" href="#Dominus-2005">32.5 Dominus 2005</a></li>
-    <li><a name="toc-Earley-1970-1" href="#Earley-1970">32.6 Earley 1970</a></li>
-    <li><a name="toc-Grune-and-Jacobs-1990-1" href="#Grune-and-Jacobs-1990">32.7 Grune and Jacobs 1990</a></li>
-    <li><a name="toc-Grune-and-Jacobs-2008-1" href="#Grune-and-Jacobs-2008">32.8 Grune and Jacobs 2008</a></li>
-    <li><a name="toc-Marpa-theory-paper-1" href="#Marpa-theory-paper">32.9 Marpa theory paper</a></li>
-    <li><a name="toc-Kegler-2023-1" href="#Kegler-2023">32.10 Kegler 2023</a></li>
-    <li><a name="toc-Parsing-timeline-1" href="#Parsing-timeline">32.11 Parsing timeline</a></li>
-    <li><a name="toc-Leo-1991-1" href="#Leo-1991">32.12 Leo 1991</a></li>
-    <li><a name="toc-Scott-2008-1" href="#Scott-2008">32.13 Scott 2008</a></li>
-    <li><a name="toc-Wikipedia-BNF-article-1" href="#Wikipedia-BNF-article">32.14 Wikipedia BNF article</a></li>
+    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="#Data-types-used-by-Libmarpa">27.1 Data types used by Libmarpa</a></li>
+    <li><a name="toc-Why-so-many-time-objects_003f" href="#Why-so-many-time-objects">27.2 Why so many time objects?</a></li>
+    <li><a name="toc-Numbered-objects-2" href="#Design-of-numbered-objects">27.3 Numbered objects</a></li>
+    <li><a name="toc-Trap-representations-1" href="#Trap-representations">27.4 Trap representations</a></li>
+    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="#Out_002dof_002dmemory-handling">27.5 Out-of-memory handling</a></li>
   </ul></li>
-  <li><a name="toc-Acknowledgements-1" href="#Acknowledgements">33 Acknowledgements</a>
+  <li><a name="toc-Advanced-input-models-1" href="#Advanced-input-models">28 Advanced input models</a>
   <ul class="no-bullet">
-    <li><a name="toc-An-apology-1" href="#An-apology">33.1 An apology</a></li>
+    <li><a name="toc-The-dense-variable_002dlength-token-model-1" href="#The-dense-variable_002dlength-token-model">28.1 The dense variable-length token model</a></li>
+    <li><a name="toc-The-fully-general-input-model-1" href="#The-fully-general-input-model">28.2 The fully general input model</a></li>
+    <li><a name="toc-The-codepoint_002dper_002dearleme-model-1" href="#The-codepoint_002dper_002dearleme-model">28.3 The codepoint-per-earleme model</a></li>
+  </ul></li>
+  <li><a name="toc-Support-1" href="#Support">29 Support</a></li>
+  <li><a name="toc-Futures-1" href="#Futures">30 Futures</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Nulling-versus-nulled-1" href="#Nulling-versus-nulled">30.1 Nulling versus nulled</a></li>
+    <li><a name="toc-Document-pre_002dconditions-more-formally-1" href="#Document-pre_002dconditions-more-formally">30.2 Document pre-conditions more formally</a></li>
+    <li><a name="toc-Simpler-events-interface-1" href="#Simpler-events-interface">30.3 Simpler events interface</a></li>
+    <li><a name="toc-Better-defined-ambiguity-metric-1" href="#Better-defined-ambiguity-metric">30.4 Better defined ambiguity metric</a></li>
+    <li><a name="toc-Report-item-traverser-should-be-a-time-object-1" href="#Report-item-traverser-should-be-a-time-object">30.5 Report item traverser should be a time object</a></li>
+    <li><a name="toc-Orthogonal-treatment-of-soft-failures-1" href="#Orthogonal-treatment-of-soft-failures">30.6 Orthogonal treatment of soft failures</a></li>
+    <li><a name="toc-Orthogonal-treatment-of-exhaustion-1" href="#Orthogonal-treatment-of-exhaustion">30.7 Orthogonal treatment of exhaustion</a></li>
+    <li><a name="toc-Furthest-earleme-values-1" href="#Furthest-earleme-values">30.8 Furthest earleme values</a></li>
+    <li><a name="toc-Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029-1" href="#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029">30.9 Additional recoverable failures in marpa_r_alternative()</a></li>
+    <li><a name="toc-Untested-methods-1" href="#Untested-methods">30.10 Untested methods</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Zero_002dwidth-assertion-methods-1" href="#Zero_002dwidth-assertion-methods">30.10.1 Zero-width assertion methods</a></li>
+      <li><a name="toc-Methods-for-revising-parses-1" href="#Methods-for-revising-parses">30.10.2 Methods for revising parses</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-Deprecated-techniques-and-methods-1" href="#Deprecated-techniques-and-methods">31 Deprecated techniques and methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-LHS-terminals-1" href="#LHS-terminals">31.1 LHS terminals</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Overview-of-LHS-terminals-1" href="#Overview-of-LHS-terminals">31.1.1 Overview of LHS terminals</a></li>
+      <li><a name="toc-Motivation-of-LHS-terminals-1" href="#Motivation-of-LHS-terminals">31.1.2 Motivation of LHS terminals</a></li>
+      <li><a name="toc-LHS-terminal-methods-1" href="#LHS-terminal-methods">31.1.3 LHS terminal methods</a></li>
+      <li><a name="toc-Precomputation-and-LHS-terminals-1" href="#Precomputation-and-LHS-terminals">31.1.4 Precomputation and LHS terminals</a></li>
+      <li><a name="toc-Nulling-terminals-1" href="#Nulling-terminals">31.1.5 Nulling terminals</a></li>
+    </ul></li>
+    <li><a name="toc-Valued-and-unvalued-symbols-1" href="#Valued-and-unvalued-symbols">31.2 Valued and unvalued symbols</a>
+    <ul class="no-bullet">
+      <li><a name="toc-What-unvalued-symbols-were-1" href="#What-unvalued-symbols-were">31.2.1 What unvalued symbols were</a></li>
+      <li><a name="toc-Grammar-methods-dealing-with-unvalued-symbols-1" href="#Grammar-methods-dealing-with-unvalued-symbols">31.2.2 Grammar methods dealing with unvalued symbols</a></li>
+      <li><a name="toc-Registering-semantics-in-the-valuator-1" href="#Registering-semantics-in-the-valuator">31.2.3 Registering semantics in the valuator</a></li>
+    </ul></li>
+    <li><a name="toc-Cycles-1" href="#Cycles">31.3 Cycles</a></li>
+  </ul></li>
+  <li><a name="toc-History-of-the-Marpa-algorithm-1" href="#History-of-the-Marpa-algorithm">32 History of the Marpa algorithm</a></li>
+  <li><a name="toc-Annotated-bibliography-1" href="#Annotated-bibliography">33 Annotated bibliography</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Aho-and-Ullman-1972-1" href="#Aho-and-Ullman-1972">33.1 Aho and Ullman 1972</a></li>
+    <li><a name="toc-Aycock-and-Horspool-2002-1" href="#Aycock-and-Horspool-2002">33.2 Aycock and Horspool 2002</a></li>
+    <li><a name="toc-C89-standard" href="#C89">33.3 C89 standard</a></li>
+    <li><a name="toc-C99-standard" href="#C99">33.4 C99 standard</a></li>
+    <li><a name="toc-Dominus-2005-1" href="#Dominus-2005">33.5 Dominus 2005</a></li>
+    <li><a name="toc-Earley-1970-1" href="#Earley-1970">33.6 Earley 1970</a></li>
+    <li><a name="toc-Grune-and-Jacobs-1990-1" href="#Grune-and-Jacobs-1990">33.7 Grune and Jacobs 1990</a></li>
+    <li><a name="toc-Grune-and-Jacobs-2008-1" href="#Grune-and-Jacobs-2008">33.8 Grune and Jacobs 2008</a></li>
+    <li><a name="toc-Marpa-theory-paper-1" href="#Marpa-theory-paper">33.9 Marpa theory paper</a></li>
+    <li><a name="toc-Kegler-2023-1" href="#Kegler-2023">33.10 Kegler 2023</a></li>
+    <li><a name="toc-Parsing-timeline-1" href="#Parsing-timeline">33.11 Parsing timeline</a></li>
+    <li><a name="toc-Leo-1991-1" href="#Leo-1991">33.12 Leo 1991</a></li>
+    <li><a name="toc-Scott-2008-1" href="#Scott-2008">33.13 Scott 2008</a></li>
+    <li><a name="toc-Wikipedia-BNF-article-1" href="#Wikipedia-BNF-article">33.14 Wikipedia BNF article</a></li>
+  </ul></li>
+  <li><a name="toc-Acknowledgements-1" href="#Acknowledgements">34 Acknowledgements</a>
+  <ul class="no-bullet">
+    <li><a name="toc-An-apology-1" href="#An-apology">34.1 An apology</a></li>
   </ul></li>
   <li><a name="toc-Index-of-terms-1" href="#Index-of-terms">Index of terms</a></li>
 </ul>
@@ -339,8 +352,8 @@ Next: <a href="#License" accesskey="n" rel="next">License</a>, Previous: <a href
 </div>
 <a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
 <h1 class="top">Libmarpa: The Marpa low-level library</h1>
-<p>This manual (8 April 2023)
-is for Libmarpa 11.0.7.
+<p>This manual (12 April 2023)
+is for Libmarpa 11.0.8.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -382,7 +395,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Exhaustion" accesskey="8">Exhaustion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Semantics" accesskey="9">Semantics</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#End-of-parsing" accesskey="9">End of parsing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Semantics">Semantics</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Threads">Threads</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -520,9 +535,19 @@ The basic models of input
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
+End of parsing
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Determining-EOP-from-exhaustion">Determining EOP from exhaustion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Other-ways-of-determining-EOP">Other ways of determining EOP</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Nullability
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Nullability-and-the-valuator">Nullability and the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Nullability-in-the-valuator">Nullability in the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Assigning-semantics-to-nulled-symbols">Assigning semantics to nulled symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -702,9 +727,17 @@ Events
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Tentative-events">Tentative events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ambiguous-parses-and-events">Ambiguous parses and events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Nulled-subtrees-and-events">Nulled subtrees and events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Event-coincidence-of-symbol-instances">Event coincidence of symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Event-coincidence-of-symbols">Event coincidence of symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Marker-symbols">Marker symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Per_002drule-events">Per-rule events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -721,6 +754,12 @@ Event coincidence of symbol instances
 <tr><td align="left" valign="top">&bull; <a href="#Completed-and-expected-symbol-instances">Completed and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Predicted-and-expected-symbol-instances">Predicted and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Per-rule events
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Workaround-with-a-dedicated-LHS-symbol">Workaround with a dedicated LHS symbol</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -875,8 +914,8 @@ Next: <a href="#Updates" accesskey="n" rel="next">Updates</a>, Previous: <a href
 <a name="License-1"></a>
 <h2 class="chapter">1 License</h2>
 
-<p>This manual (8 April 2023)
-is for Libmarpa 11.0.7.
+<p>This manual (12 April 2023)
+is for Libmarpa 11.0.8.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -3241,7 +3280,7 @@ parse evaluation.
 <a name="Exhaustion"></a>
 <div class="header">
 <p>
-Next: <a href="#Semantics" accesskey="n" rel="next">Semantics</a>, Previous: <a href="#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#End-of-parsing" accesskey="n" rel="next">End of parsing</a>, Previous: <a href="#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Exhaustion-1"></a>
 <h2 class="chapter">8 Exhaustion</h2>
@@ -3348,14 +3387,180 @@ with the
 <code>marpa_r_is_exhausted()</code> method.
 See <a href="#marpa_005fr_005fis_005fexhausted">marpa_r_is_exhausted()</a>.
 </p>
+<p>Parse exhaustion can be triggered on method success
+by either the <code>marpa_r_earleme_complete()</code> or
+the <code>marpa_r_start_input</code> method.
+Parse exhaustion can be triggered on method failure
+by the <code>marpa_r_earleme_complete()</code> method.
+Parse exhaustion triggered on method success is called
+<a name="index-parse-exhaustion-on-success"></a>
+<em>parse exhaustion on success</em> or
+<a name="index-exhaustion-on-success"></a>
+<em>exhaustion on success</em>.
+Parse exhaustion triggered on method failure is called
+<a name="index-parse-exhaustion-on-failure"></a>
+<em>parse exhaustion on failure</em> or
+<a name="index-exhaustion-on-failure"></a>
+<em>exhaustion on failure</em>.
+</p>
+<hr>
+<a name="End-of-parsing"></a>
+<div class="header">
+<p>
+Next: <a href="#Semantics" accesskey="n" rel="next">Semantics</a>, Previous: <a href="#Exhaustion" accesskey="p" rel="prev">Exhaustion</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="End-of-parsing-1"></a>
+<h2 class="chapter">9 End of parsing</h2>
+
+<p>Users accustomed to certain applications
+may believe that the question of when to end parsing
+is almost too trivial to ask.
+And, for many applications this is the case.
+But the general question of determining the end of parse is
+decidedly non-trivial.
+For a broad theoretical overview,
+see &quot;When are we done parsing?&quot;,
+pp. 93-94 in the 2nd edition of
+Grune and Jacobs,
+(see <a href="#Grune-and-Jacobs-2008">Grune and Jacobs 2008</a>).
+This chapter discusses determination of the
+<a name="index-end-of-parse"></a>
+<em>end of parse</em>
+<a name="index-EOP"></a>
+(<em>EOP</em>)
+from the Libmarpa point of view.
+</p>
+<p>EOP-handling and exhaustion-handling are intertwined.
+It may be useful to review the section on exhaustion at this
+point.
+See <a href="#Exhaustion">Exhaustion</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Determining-EOP-from-EOI" accesskey="1">Determining EOP from EOI</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Determining-EOP-from-exhaustion" accesskey="2">Determining EOP from exhaustion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Other-ways-of-determining-EOP" accesskey="3">Other ways of determining EOP</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Determining-EOP-from-EOI"></a>
+<div class="header">
+<p>
+Next: <a href="#Determining-EOP-from-exhaustion" accesskey="n" rel="next">Determining EOP from exhaustion</a>, Previous: <a href="#End-of-parsing" accesskey="p" rel="prev">End of parsing</a>, Up: <a href="#End-of-parsing" accesskey="u" rel="up">End of parsing</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Determining-EOP-from-EOI-1"></a>
+<h3 class="section">9.1 Determining EOP from EOI</h3>
+
+<p>In many applications the EOP is always the
+<a name="index-end-of-input"></a>
+<em>end of input</em>
+<a name="index-EOI"></a>
+(<em>EOI</em>).
+That is, parsing ends at a known parse location.
+The length of the input may be known
+because it was fixed in advance;
+there may be an
+<a name="index-end-of-file"></a>
+<em>end of file</em>
+<a name="index-EOF"></a>
+(<em>EOF</em>) indication;
+there may be an
+<a name="index-end-of-string"></a>
+<em>end of string</em>
+<a name="index-EOS"></a>
+(<em>EOS</em>) indication; or
+the application may have some other means of knowing
+that is has hit the EOI.
+</p>
+<p>If the EOI is the EOP, the following is typically the case:
+</p><ul>
+<li> The application will treat exhaustion on failure
+as a parse error.
+</li><li> The application will treat exhaustion before the EOI,
+even on success, as a parse error.
+</li></ul>
+
+<p>How parse exhaustion on success
+at the EOI is handled will
+depend on the application.
+Here are a few of the many possible ways:
+</p><ul>
+<li> Exhaustion might be ignored.
+Very often this will be what the application wants to do.
+</li><li> Exhaustion might be,
+if the application is exhaustion-loving,
+required,
+so that it is treated as an error if the parse is still active
+at the EOI.
+</li><li> An application, if it is exhaustion-hating in the extreme,
+may wish to treat exhaustion,
+even exhaustion on success at the EOI,
+as an error.
+</li></ul>
+
+<hr>
+<a name="Determining-EOP-from-exhaustion"></a>
+<div class="header">
+<p>
+Next: <a href="#Other-ways-of-determining-EOP" accesskey="n" rel="next">Other ways of determining EOP</a>, Previous: <a href="#Determining-EOP-from-EOI" accesskey="p" rel="prev">Determining EOP from EOI</a>, Up: <a href="#End-of-parsing" accesskey="u" rel="up">End of parsing</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Determining-EOP-from-exhaustion-1"></a>
+<h3 class="section">9.2 Determining EOP from exhaustion</h3>
+
+<p>An exhaustion-loving application that does not know the length of
+its input may want to terminate the parse in case of exhaustion on success,
+in effect treating exhaustion as an end-of-input indicator.
+These applications will usually want to treat exhaustion on failure
+as an error.
+</p>
+<p>An example of such an application would be the language consisting entirely
+of strings of balanced parentheses.
+HTML might also be treated as an exhaustion-loving language,
+with the parse terminating at the <code>/html</code> tag.
+</p>
+<hr>
+<a name="Other-ways-of-determining-EOP"></a>
+<div class="header">
+<p>
+Previous: <a href="#Determining-EOP-from-exhaustion" accesskey="p" rel="prev">Determining EOP from exhaustion</a>, Up: <a href="#End-of-parsing" accesskey="u" rel="up">End of parsing</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Other-ways-of-determining-EOP-1"></a>
+<h3 class="section">9.3 Other ways of determining EOP</h3>
+
+<p>Occasionally, an exhaustion-hating application may not know
+the length of its input in advance.
+Since these applications will not know from the length of the input,
+or from exhaustion, that they are at end of input,
+they will need some other way of determining this.
+One way they may do this is with a
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> event.
+</p>
+<p>An example of such an application that has seen much use is
+the <code>Marpa::R2</code> lexer.
+The <code>Marpa::R2</code> lexer looks for one of a set of &ldquo;lexemes&rdquo;,
+seeking the longest one.
+It does this by declaring
+a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+for each lexeme, and recording the most recent location
+at which one of these completion events occurs.
+The <code>Marpa::R2</code> lexer stops looking for the longest lexeme on parse exhaustion,
+and at that point treats the parse location of the most recent
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+as the EOP.
+If no <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event occurred,
+the <code>Marpa::R2</code> lexer failed to find a lexeme,
+and reports a lexing error.
+</p>
 <hr>
 <a name="Semantics"></a>
 <div class="header">
 <p>
-Next: <a href="#Threads" accesskey="n" rel="next">Threads</a>, Previous: <a href="#Exhaustion" accesskey="p" rel="prev">Exhaustion</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Threads" accesskey="n" rel="next">Threads</a>, Previous: <a href="#End-of-parsing" accesskey="p" rel="prev">End of parsing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Semantics-1"></a>
-<h2 class="chapter">9 Semantics</h2>
+<h2 class="chapter">10 Semantics</h2>
 
 <p>Libmarpa handling of semantics is unusual.
 Most semantics are left up to the application,
@@ -3387,7 +3592,7 @@ is in the section that deals with the methods of the value time class
 Next: <a href="#Sequence-rules" accesskey="n" rel="next">Sequence rules</a>, Previous: <a href="#Semantics" accesskey="p" rel="prev">Semantics</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Threads-1"></a>
-<h2 class="chapter">10 Threads</h2>
+<h2 class="chapter">11 Threads</h2>
 
 <p>Libmarpa is thread-safe,
 given circumstances as described below.
@@ -3436,7 +3641,7 @@ time objects.
 Next: <a href="#Nullability" accesskey="n" rel="next">Nullability</a>, Previous: <a href="#Threads" accesskey="p" rel="prev">Threads</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Sequence-rules-1"></a>
-<h2 class="chapter">11 Sequence rules</h2>
+<h2 class="chapter">12 Sequence rules</h2>
 
 <p>Traditionally, grammars only allow BNF rules.
 Libmarpa allows sequence rules, which express sequences
@@ -3522,7 +3727,7 @@ They can do this by creating two sequence rules with distinct LHS&rsquo;s:
 Next: <a href="#Failure" accesskey="n" rel="next">Failure</a>, Previous: <a href="#Sequence-rules" accesskey="p" rel="prev">Sequence rules</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Nullability-1"></a>
-<h2 class="chapter">12 Nullability</h2>
+<h2 class="chapter">13 Nullability</h2>
 
 <p>In Libmarpa,
 there is no direct way to mark a symbol nullable or nulling.
@@ -3544,7 +3749,7 @@ If every rule with <var>x</var> on the LHS is nulling,
 but nulling as well.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Nullability-and-the-valuator" accesskey="1">Nullability and the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Nullability-in-the-valuator" accesskey="1">Nullability in the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Assigning-semantics-to-nulled-symbols" accesskey="2">Assigning semantics to nulled symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -3557,13 +3762,13 @@ but nulling as well.
 </table>
 
 <hr>
-<a name="Nullability-and-the-valuator"></a>
+<a name="Nullability-in-the-valuator"></a>
 <div class="header">
 <p>
 Next: <a href="#Assigning-semantics-to-nulled-symbols" accesskey="n" rel="next">Assigning semantics to nulled symbols</a>, Previous: <a href="#Nullability" accesskey="p" rel="prev">Nullability</a>, Up: <a href="#Nullability" accesskey="u" rel="up">Nullability</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Nullability-in-the-valuator"></a>
-<h3 class="section">12.1 Nullability in the valuator</h3>
+<a name="Nullability-in-the-valuator-1"></a>
+<h3 class="section">13.1 Nullability in the valuator</h3>
 
 <p>In the valuator,
 every nulling tree is pruned back to its
@@ -3590,10 +3795,10 @@ See <a href="#Evaluating-nulled-symbols">Evaluating nulled symbols</a>.
 <a name="Assigning-semantics-to-nulled-symbols"></a>
 <div class="header">
 <p>
-Next: <a href="#Evaluating-nulled-symbols" accesskey="n" rel="next">Evaluating nulled symbols</a>, Previous: <a href="#Nullability-and-the-valuator" accesskey="p" rel="prev">Nullability and the valuator</a>, Up: <a href="#Nullability" accesskey="u" rel="up">Nullability</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Evaluating-nulled-symbols" accesskey="n" rel="next">Evaluating nulled symbols</a>, Previous: <a href="#Nullability-in-the-valuator" accesskey="p" rel="prev">Nullability in the valuator</a>, Up: <a href="#Nullability" accesskey="u" rel="up">Nullability</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Assigning-semantics-to-nulled-symbols-1"></a>
-<h3 class="section">12.2 Assigning semantics to nulled symbols</h3>
+<h3 class="section">13.2 Assigning semantics to nulled symbols</h3>
 
 <p>Libmarpa leaves the semantics to an upper layer,
 so that we usually treat
@@ -3639,7 +3844,7 @@ assigns the semantics of that empty rule to <var>x</var>.
 Next: <a href="#Example-of-nulled-symbol" accesskey="n" rel="next">Example of nulled symbol</a>, Previous: <a href="#Assigning-semantics-to-nulled-symbols" accesskey="p" rel="prev">Assigning semantics to nulled symbols</a>, Up: <a href="#Nullability" accesskey="u" rel="up">Nullability</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Evaluating-nulled-symbols-1"></a>
-<h3 class="section">12.3 Evaluating nulled symbols</h3>
+<h3 class="section">13.3 Evaluating nulled symbols</h3>
 
 <p>In theory, the semantics of nulled symbols,
 like any semantics,
@@ -3679,7 +3884,7 @@ a function or a closure.
 Next: <a href="#Duplicate-nulled-nodes" accesskey="n" rel="next">Duplicate nulled nodes</a>, Previous: <a href="#Evaluating-nulled-symbols" accesskey="p" rel="prev">Evaluating nulled symbols</a>, Up: <a href="#Nullability" accesskey="u" rel="up">Nullability</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Example-of-nulled-symbol-1"></a>
-<h3 class="section">12.4 Example of nulled symbol</h3>
+<h3 class="section">13.4 Example of nulled symbol</h3>
 
 <p>As already stated,
 Marpa prunes every null subtree back to its topmost
@@ -3743,7 +3948,7 @@ All the other nulled nodes were discarded.
 Previous: <a href="#Example-of-nulled-symbol" accesskey="p" rel="prev">Example of nulled symbol</a>, Up: <a href="#Nullability" accesskey="u" rel="up">Nullability</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Duplicate-nulled-nodes-1"></a>
-<h3 class="section">12.5 Duplicate nulled nodes</h3>
+<h3 class="section">13.5 Duplicate nulled nodes</h3>
 
 <p>A non-nulled node can never appear twice in the same tree.
 But duplicate nulled nodes in the same tree are quite possible.
@@ -3777,7 +3982,7 @@ would consume a considerable amount of space.
 Next: <a href="#Introduction-to-the-method-descriptions" accesskey="n" rel="next">Introduction to the method descriptions</a>, Previous: <a href="#Nullability" accesskey="p" rel="prev">Nullability</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Failure-1"></a>
-<h2 class="chapter">13 Failure</h2>
+<h2 class="chapter">14 Failure</h2>
 
 <p>As a reminder,
 no language in this chapter
@@ -3821,7 +4026,7 @@ See <a href="#License">License</a>.
 Next: <a href="#User-non_002dconformity-to-specified-behavior" accesskey="n" rel="next">User non-conformity to specified behavior</a>, Previous: <a href="#Failure" accesskey="p" rel="prev">Failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Libmarpa_0027s-approach-to-failure-1"></a>
-<h3 class="section">13.1 Libmarpa&rsquo;s approach to failure</h3>
+<h3 class="section">14.1 Libmarpa&rsquo;s approach to failure</h3>
 
 <p>Libmarpa is a C language library,
 and inherits the traditional C language approach to
@@ -3871,7 +4076,7 @@ largely on the application programmer.
 Next: <a href="#Classifying-failure" accesskey="n" rel="next">Classifying failure</a>, Previous: <a href="#Libmarpa_0027s-approach-to-failure" accesskey="p" rel="prev">Libmarpa's approach to failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="User-non_002dconformity-to-specified-behavior-1"></a>
-<h3 class="section">13.2 User non-conformity to specified behavior</h3>
+<h3 class="section">14.2 User non-conformity to specified behavior</h3>
 
 <p>This document specifies many behaviors
 for Libmarpa application programs to follow,
@@ -3930,7 +4135,7 @@ and that it recovered from all the recoverable failures that were detected.
 Next: <a href="#Memory-allocation-failure" accesskey="n" rel="next">Memory allocation failure</a>, Previous: <a href="#User-non_002dconformity-to-specified-behavior" accesskey="p" rel="prev">User non-conformity to specified behavior</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Classifying-failure-1"></a>
-<h3 class="section">13.3 Classifying failure</h3>
+<h3 class="section">14.3 Classifying failure</h3>
 
 <p>A Libmarpa application programming failure,
 unless stated otherwise,
@@ -3980,7 +4185,7 @@ In order of severity, these are
 Next: <a href="#Undetected-failure" accesskey="n" rel="next">Undetected failure</a>, Previous: <a href="#Classifying-failure" accesskey="p" rel="prev">Classifying failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Memory-allocation-failure-1"></a>
-<h3 class="section">13.4 Memory allocation failure</h3>
+<h3 class="section">14.4 Memory allocation failure</h3>
 
 <p>Failure to allocate memory is the most irrecoverable of irrecoverable
 errors.
@@ -4016,7 +4221,7 @@ is neither a hard or a soft failure.
 Next: <a href="#Irrecoverable-hard-failure" accesskey="n" rel="next">Irrecoverable hard failure</a>, Previous: <a href="#Memory-allocation-failure" accesskey="p" rel="prev">Memory allocation failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Undetected-failure-1"></a>
-<h3 class="section">13.5 Undetected failure</h3>
+<h3 class="section">14.5 Undetected failure</h3>
 
 <p>An
 <a name="index-undetected-failure"></a>
@@ -4056,7 +4261,7 @@ is neither a hard or a soft failure.
 Next: <a href="#Partially-recoverable-hard-failure" accesskey="n" rel="next">Partially recoverable hard failure</a>, Previous: <a href="#Undetected-failure" accesskey="p" rel="prev">Undetected failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Irrecoverable-hard-failure-1"></a>
-<h3 class="section">13.6 Irrecoverable hard failure</h3>
+<h3 class="section">14.6 Irrecoverable hard failure</h3>
 
 <p>An
 <a name="index-irrecoverable-hard-failure"></a>
@@ -4087,7 +4292,7 @@ and setting the error code as specified for hard failure.
 Next: <a href="#Library_002drecoverable-hard-failure" accesskey="n" rel="next">Library-recoverable hard failure</a>, Previous: <a href="#Irrecoverable-hard-failure" accesskey="p" rel="prev">Irrecoverable hard failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Partially-recoverable-hard-failure-1"></a>
-<h3 class="section">13.7 Partially recoverable hard failure</h3>
+<h3 class="section">14.7 Partially recoverable hard failure</h3>
 
 <p>A
 <a name="index-partially-recoverable-hard-failure"></a>
@@ -4118,7 +4323,7 @@ see <a href="#Library_002drecoverable-hard-failure">Library-recoverable hard fai
 Next: <a href="#Ancestry_002drecoverable-hard-failure" accesskey="n" rel="next">Ancestry-recoverable hard failure</a>, Previous: <a href="#Partially-recoverable-hard-failure" accesskey="p" rel="prev">Partially recoverable hard failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Library_002drecoverable-hard-failure-1"></a>
-<h3 class="section">13.8 Library-recoverable hard failure</h3>
+<h3 class="section">14.8 Library-recoverable hard failure</h3>
 
 <p>A
 <a name="index-library_002drecoverable-hard-failure"></a>
@@ -4176,7 +4381,7 @@ See <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>.
 Next: <a href="#Fully-recoverable-hard-failure" accesskey="n" rel="next">Fully recoverable hard failure</a>, Previous: <a href="#Library_002drecoverable-hard-failure" accesskey="p" rel="prev">Library-recoverable hard failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Ancestry_002drecoverable-hard-failure-1"></a>
-<h3 class="section">13.9 Ancestry-recoverable hard failure</h3>
+<h3 class="section">14.9 Ancestry-recoverable hard failure</h3>
 
 <p>An
 <a name="index-ancestry_002drecoverable-hard-failure"></a>
@@ -4238,7 +4443,7 @@ library-recoverable failure.
 Next: <a href="#Soft-failure" accesskey="n" rel="next">Soft failure</a>, Previous: <a href="#Ancestry_002drecoverable-hard-failure" accesskey="p" rel="prev">Ancestry-recoverable hard failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Fully-recoverable-hard-failure-1"></a>
-<h3 class="section">13.10 Fully recoverable hard failure</h3>
+<h3 class="section">14.10 Fully recoverable hard failure</h3>
 
 <p>A
 <a name="index-fully-recoverable-hard-failure"></a>
@@ -4269,7 +4474,7 @@ fully and efficiently,
 Next: <a href="#Error-codes" accesskey="n" rel="next">Error codes</a>, Previous: <a href="#Fully-recoverable-hard-failure" accesskey="p" rel="prev">Fully recoverable hard failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Soft-failure-1"></a>
-<h3 class="section">13.11 Soft failure</h3>
+<h3 class="section">14.11 Soft failure</h3>
 
 <p>A
 <a name="index-soft-failure-1"></a>
@@ -4309,7 +4514,7 @@ except on that basis.
 Previous: <a href="#Soft-failure" accesskey="p" rel="prev">Soft failure</a>, Up: <a href="#Failure" accesskey="u" rel="up">Failure</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Error-codes-1"></a>
-<h3 class="section">13.12 Error codes</h3>
+<h3 class="section">14.12 Error codes</h3>
 
 <p>As stated, every hard failure has an associated error code.
 Full descriptions of the error codes
@@ -4347,7 +4552,7 @@ are still subject to the general irrecoverability.
 Next: <a href="#Static-methods" accesskey="n" rel="next">Static methods</a>, Previous: <a href="#Failure" accesskey="p" rel="prev">Failure</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Introduction-to-the-method-descriptions-1"></a>
-<h2 class="chapter">14 Introduction to the method descriptions</h2>
+<h2 class="chapter">15 Introduction to the method descriptions</h2>
 
 <p>The following chapters describe Libmarpa&rsquo;s methods
 in detail.
@@ -4370,7 +4575,7 @@ in detail.
 Next: <a href="#Naming-conventions" accesskey="n" rel="next">Naming conventions</a>, Previous: <a href="#Introduction-to-the-method-descriptions" accesskey="p" rel="prev">Introduction to the method descriptions</a>, Up: <a href="#Introduction-to-the-method-descriptions" accesskey="u" rel="up">Introduction to the method descriptions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="About-the-overviews-1"></a>
-<h3 class="section">14.1 About the overviews</h3>
+<h3 class="section">15.1 About the overviews</h3>
 
 <p>The method descriptions are grouped into chapters and sections.
 Each such group of methods descriptions begins, optionally, with an overview.
@@ -4402,7 +4607,7 @@ all small but non-trivial.
 Next: <a href="#Return-values" accesskey="n" rel="next">Return values</a>, Previous: <a href="#About-the-overviews" accesskey="p" rel="prev">About the overviews</a>, Up: <a href="#Introduction-to-the-method-descriptions" accesskey="u" rel="up">Introduction to the method descriptions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Naming-conventions-1"></a>
-<h3 class="section">14.2 Naming conventions</h3>
+<h3 class="section">15.2 Naming conventions</h3>
 
 <p>Methods in Libmarpa follow a strict naming convention.
 All methods have a name beginning with
@@ -4447,7 +4652,7 @@ of one of these two prefixes.
 Next: <a href="#How-to-read-the-method-descriptions" accesskey="n" rel="next">How to read the method descriptions</a>, Previous: <a href="#Naming-conventions" accesskey="p" rel="prev">Naming conventions</a>, Up: <a href="#Introduction-to-the-method-descriptions" accesskey="u" rel="up">Introduction to the method descriptions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Return-values-1"></a>
-<h3 class="section">14.3 Return values</h3>
+<h3 class="section">15.3 Return values</h3>
 
 <p>Some general conventions for return values are worth
 mentioning:
@@ -4501,7 +4706,7 @@ in the return value summary for that method.
 Previous: <a href="#Return-values" accesskey="p" rel="prev">Return values</a>, Up: <a href="#Introduction-to-the-method-descriptions" accesskey="u" rel="up">Introduction to the method descriptions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="How-to-read-the-method-descriptions-1"></a>
-<h3 class="section">14.4 How to read the method descriptions</h3>
+<h3 class="section">15.4 How to read the method descriptions</h3>
 
 <p>The method descriptions are written on the assumption
 that the reader has the following in mind while reading them:
@@ -4594,7 +4799,7 @@ and application behaviors otherwise.
 Next: <a href="#Configuration-methods" accesskey="n" rel="next">Configuration methods</a>, Previous: <a href="#Introduction-to-the-method-descriptions" accesskey="p" rel="prev">Introduction to the method descriptions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Static-methods-1"></a>
-<h2 class="chapter">15 Static methods</h2>
+<h2 class="chapter">16 Static methods</h2>
 
 <a name="marpa_005fcheck_005fversion"></a><dl>
 <dt><a name="index-marpa_005fcheck_005fversion"></a>Accessor function: <em>Marpa_Error_Code</em> <strong>marpa_check_version</strong> <em>(     int <var>required_major</var>,     int <var>required_minor</var>,     int <var>required_micro</var>     )</em></dt>
@@ -4612,7 +4817,7 @@ are using.
 <p>If <var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>
 is an exact match with the version of Libmarpa,
 the method succeeds.
-The version of Libmarpa described in this manual is 11.0.7.
+The version of Libmarpa described in this manual is 11.0.8.
 Otherwise the return status is an irrecoverable
 hard failure.
 </p>
@@ -4640,7 +4845,7 @@ The return value is unspecified.
 Next: <a href="#Grammar-methods" accesskey="n" rel="next">Grammar methods</a>, Previous: <a href="#Static-methods" accesskey="p" rel="prev">Static methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Configuration-methods-1"></a>
-<h2 class="chapter">16 Configuration methods</h2>
+<h2 class="chapter">17 Configuration methods</h2>
 
 <p>The configuration object is intended for future extensions.
 Currently, the only function of the <code>Marpa_Config</code>
@@ -4708,7 +4913,7 @@ for itself.
 Next: <a href="#Recognizer-methods" accesskey="n" rel="next">Recognizer methods</a>, Previous: <a href="#Configuration-methods" accesskey="p" rel="prev">Configuration methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Grammar-methods-1"></a>
-<h2 class="chapter">17 Grammar methods</h2>
+<h2 class="chapter">18 Grammar methods</h2>
 <a name="index-grammars"></a>
 
 <table class="menu" border="0" cellspacing="0">
@@ -4737,7 +4942,7 @@ Next: <a href="#Recognizer-methods" accesskey="n" rel="next">Recognizer methods<
 Next: <a href="#Grammar-constructor" accesskey="n" rel="next">Grammar constructor</a>, Previous: <a href="#Grammar-methods" accesskey="p" rel="prev">Grammar methods</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Overview"></a>
-<h3 class="section">17.1 Overview</h3>
+<h3 class="section">18.1 Overview</h3>
 
 <p>An archetypal application has a grammar.
 To create a grammar, use the
@@ -4782,7 +4987,7 @@ method.
 Next: <a href="#Grammar-reference-counting" accesskey="n" rel="next">Grammar reference counting</a>, Previous: <a href="#Grammar-overview" accesskey="p" rel="prev">Grammar overview</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Creating-a-new-grammar"></a>
-<h3 class="section">17.2 Creating a new grammar</h3>
+<h3 class="section">18.2 Creating a new grammar</h3>
 <a name="index-grammar-constructor"></a>
 
 <a name="marpa_005fg_005fnew"></a><dl>
@@ -4847,7 +5052,7 @@ On failure, -2.
 Next: <a href="#Symbol-methods" accesskey="n" rel="next">Symbol methods</a>, Previous: <a href="#Grammar-constructor" accesskey="p" rel="prev">Grammar constructor</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Tracking-the-reference-count-of-the-grammar"></a>
-<h3 class="section">17.3 Tracking the reference count of the grammar</h3>
+<h3 class="section">18.3 Tracking the reference count of the grammar</h3>
 <a name="index-grammar-destructor"></a>
 <a name="index-grammar-reference"></a>
 <a name="index-grammar-reference-count"></a>
@@ -4880,7 +5085,7 @@ zero.
 Next: <a href="#Rule-methods" accesskey="n" rel="next">Rule methods</a>, Previous: <a href="#Grammar-reference-counting" accesskey="p" rel="prev">Grammar reference counting</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Symbol-methods-1"></a>
-<h3 class="section">17.4 Symbol methods</h3>
+<h3 class="section">18.4 Symbol methods</h3>
 
 <a name="marpa_005fg_005fstart_005fsymbol"></a><dl>
 <dt><a name="index-marpa_005fg_005fstart_005fsymbol"></a>Accessor function: <em>Marpa_Symbol_ID</em> <strong>marpa_g_start_symbol</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
@@ -5046,7 +5251,7 @@ On hard failure, -2.
 Next: <a href="#Sequence-methods" accesskey="n" rel="next">Sequence methods</a>, Previous: <a href="#Symbol-methods" accesskey="p" rel="prev">Symbol methods</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Rule-methods-1"></a>
-<h3 class="section">17.5 Rule methods</h3>
+<h3 class="section">18.5 Rule methods</h3>
 
 <a name="marpa_005fg_005fhighest_005frule_005fid"></a><dl>
 <dt><a name="index-marpa_005fg_005fhighest_005frule_005fid"></a>Accessor function: <em>int</em> <strong>marpa_g_highest_rule_id</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
@@ -5300,7 +5505,7 @@ On hard failure, -2.
 Next: <a href="#Rank-methods" accesskey="n" rel="next">Rank methods</a>, Previous: <a href="#Rule-methods" accesskey="p" rel="prev">Rule methods</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Sequence-methods-1"></a>
-<h3 class="section">17.6 Sequence methods</h3>
+<h3 class="section">18.6 Sequence methods</h3>
 
 <a name="marpa_005fg_005frule_005fis_005fproper_005fseparation"></a><dl>
 <dt><a name="index-marpa_005fg_005frule_005fis_005fproper_005fseparation"></a>Accessor function: <em>int</em> <strong>marpa_g_rule_is_proper_separation</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Rule_ID <var>rule_id</var>)</em></dt>
@@ -5498,7 +5703,7 @@ On hard failure, -2.
 Next: <a href="#Grammar-precomputation" accesskey="n" rel="next">Grammar precomputation</a>, Previous: <a href="#Sequence-methods" accesskey="p" rel="prev">Sequence methods</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Rank-methods-1"></a>
-<h3 class="section">17.7 Rank methods</h3>
+<h3 class="section">18.7 Rank methods</h3>
 
 <a name="marpa_005fg_005fdefault_005frank"></a><dl>
 <dt><a name="index-marpa_005fg_005fdefault_005frank"></a>Accessor function: <em>Marpa_Rank</em> <strong>marpa_g_default_rank</strong> <em>(     Marpa_Grammar <var>g</var>)</em></dt>
@@ -5730,7 +5935,7 @@ On hard failure, returns -2.
 Previous: <a href="#Rank-methods" accesskey="p" rel="prev">Rank methods</a>, Up: <a href="#Grammar-methods" accesskey="u" rel="up">Grammar methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Precomputing-the-Grammar"></a>
-<h3 class="section">17.8 Precomputing the Grammar</h3>
+<h3 class="section">18.8 Precomputing the Grammar</h3>
 
 <a name="marpa_005fg_005fhas_005fcycle"></a><dl>
 <dt><a name="index-marpa_005fg_005fhas_005fcycle"></a>Accessor function: <em>int</em> <strong>marpa_g_has_cycle</strong> <em>(Marpa_Grammar <var>g</var>)</em></dt>
@@ -5866,7 +6071,7 @@ the hard failure is library-recoverable.
 Next: <a href="#Progress-reports" accesskey="n" rel="next">Progress reports</a>, Previous: <a href="#Grammar-methods" accesskey="p" rel="prev">Grammar methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Recognizer-methods-1"></a>
-<h2 class="chapter">18 Recognizer methods</h2>
+<h2 class="chapter">19 Recognizer methods</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Recognizer-overview" accesskey="1">Recognizer overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -5890,7 +6095,7 @@ Next: <a href="#Progress-reports" accesskey="n" rel="next">Progress reports</a>,
 Next: <a href="#Creating-a-new-recognizer" accesskey="n" rel="next">Creating a new recognizer</a>, Previous: <a href="#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Recognizer-overview-1"></a>
-<h3 class="section">18.1 Recognizer overview</h3>
+<h3 class="section">19.1 Recognizer overview</h3>
 
 <p>An archetypal application uses a recognizer to read input.
 To create a recognizer, use the
@@ -5926,7 +6131,7 @@ call.
 Next: <a href="#Recognizer-reference-counting" accesskey="n" rel="next">Recognizer reference counting</a>, Previous: <a href="#Recognizer-overview" accesskey="p" rel="prev">Recognizer overview</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Creating-a-new-recognizer-1"></a>
-<h3 class="section">18.2 Creating a new recognizer</h3>
+<h3 class="section">19.2 Creating a new recognizer</h3>
 
 <a name="marpa_005fr_005fnew"></a><dl>
 <dt><a name="index-marpa_005fr_005fnew"></a>Constructor function: <em>Marpa_Recognizer</em> <strong>marpa_r_new</strong> <em>( Marpa_Grammar <var>g</var> )</em></dt>
@@ -5959,7 +6164,7 @@ If <var>g</var> is not precomputed, or on other hard failure, <code>NULL</code>.
 Next: <a href="#Recognizer-life-cycle-mutators" accesskey="n" rel="next">Recognizer life cycle mutators</a>, Previous: <a href="#Creating-a-new-recognizer" accesskey="p" rel="prev">Creating a new recognizer</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Keeping-the-reference-count-of-a-recognizer"></a>
-<h3 class="section">18.3 Keeping the reference count of a recognizer</h3>
+<h3 class="section">19.3 Keeping the reference count of a recognizer</h3>
 
 <a name="marpa_005fr_005fref"></a><dl>
 <dt><a name="index-marpa_005fr_005fref"></a>Mutator function: <em>Marpa_Recognizer</em> <strong>marpa_r_ref</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
@@ -5994,7 +6199,7 @@ to zero, the base grammar is also destroyed.
 Next: <a href="#Location-accessors" accesskey="n" rel="next">Location accessors</a>, Previous: <a href="#Recognizer-reference-counting" accesskey="p" rel="prev">Recognizer reference counting</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Life-cycle-mutators"></a>
-<h3 class="section">18.4 Life cycle mutators</h3>
+<h3 class="section">19.4 Life cycle mutators</h3>
 
 <a name="marpa_005fr_005fstart_005finput"></a><dl>
 <dt><a name="index-marpa_005fr_005fstart_005finput"></a>Mutator function: <em>int</em> <strong>marpa_r_start_input</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
@@ -6247,31 +6452,14 @@ and only in very unusual circumstances will an application wish
 to ignore these.
 </p>
 <p>How an application reacts to exhaustion will depend on the kind of
-parsing it is doing:
-</p><ul>
-<li> Very often an application knows the length of its input in advance.
-In this case, the application will treat exhaustion before the end of input
-as a parse error.
-Depending on the application, exhaustion on success at the end of input
-might be ignored.
-</li><li> An exhaustion-loving application that does not know the length of
-its input will often want to terminate the parse in case of exhaustion on method
-success, treating exhaustion as an end-of-input indicator.
-These applications will usually want to treat exhaustion on method failure
-as a parse error.
-</li><li> Occasionally, an exhaustion-hating application may not know
-the length of its input in advance.
-Since these applications will not know from the length of the input,
-or from exhaustion, that they are at end of input,
-they will need some other way of determining this.
-One way they may do this is with a
-<code>MARPA_EVENT_SYMBOL_COMPLETED</code> event.
-Typically, these applications will treat exhaustion on method
-failure and exhaustion before the end of input
-as parse errors.
-They may wish to ignore exhaustion on method success
-at the end of input.
-</li></ul>
+parsing it is doing.
+See <a href="#Exhaustion">Exhaustion</a>.
+</p>
+<p>It is often up to
+the logic immediately around this method
+to detect end of parsing.
+See <a href="#End-of-parsing">End of parsing</a>.
+</p>
 <p><strong>Return value</strong>:  On success, the number of events
 in the event queue when the method call returns.
 On hard failure, -2.
@@ -6287,7 +6475,7 @@ is fully recoverable.
 Next: <a href="#Other-parse-status-methods" accesskey="n" rel="next">Other parse status methods</a>, Previous: <a href="#Recognizer-life-cycle-mutators" accesskey="p" rel="prev">Recognizer life cycle mutators</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Location-accessors-1"></a>
-<h3 class="section">18.5 Location accessors</h3>
+<h3 class="section">19.5 Location accessors</h3>
 
 <a name="marpa_005fr_005fcurrent_005fearleme"></a><dl>
 <dt><a name="index-marpa_005fr_005fcurrent_005fearleme"></a>Accessor function: <em><code>Marpa_Earleme</code></em> <strong>marpa_r_current_earleme</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
@@ -6486,7 +6674,7 @@ On hard failure, returns -2.
 Previous: <a href="#Location-accessors" accesskey="p" rel="prev">Location accessors</a>, Up: <a href="#Recognizer-methods" accesskey="u" rel="up">Recognizer methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Other-parse-status-methods-1"></a>
-<h3 class="section">18.6 Other parse status methods</h3>
+<h3 class="section">19.6 Other parse status methods</h3>
 
 <a name="marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold"></a><dl>
 <dt><a name="index-marpa_005fr_005fearley_005fitem_005fwarning_005fthreshold"></a>Accessor function: <em>int</em> <strong>marpa_r_earley_item_warning_threshold</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
@@ -6603,7 +6791,7 @@ On hard failure, -2.
 Next: <a href="#Bocage-methods" accesskey="n" rel="next">Bocage methods</a>, Previous: <a href="#Recognizer-methods" accesskey="p" rel="prev">Recognizer methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Progress-reports-1"></a>
-<h2 class="chapter">19 Progress reports</h2>
+<h2 class="chapter">20 Progress reports</h2>
 
 <p>It is an important property of the Marpa algorithm that the
 Earley sets are added one at a time,
@@ -6835,7 +7023,7 @@ or on other hard failure, -2.
 Next: <a href="#Ordering-methods" accesskey="n" rel="next">Ordering methods</a>, Previous: <a href="#Progress-reports" accesskey="p" rel="prev">Progress reports</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Bocage-methods-1"></a>
-<h2 class="chapter">20 Bocage methods</h2>
+<h2 class="chapter">21 Bocage methods</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Bocage-overview" accesskey="1">Bocage overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -6857,7 +7045,7 @@ Next: <a href="#Ordering-methods" accesskey="n" rel="next">Ordering methods</a>,
 Next: <a href="#Bocage-data-structure" accesskey="n" rel="next">Bocage data structure</a>, Previous: <a href="#Bocage-methods" accesskey="p" rel="prev">Bocage methods</a>, Up: <a href="#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Overview-1"></a>
-<h3 class="section">20.1 Overview</h3>
+<h3 class="section">21.1 Overview</h3>
 
 <p>To create a bocage, use the
 <code>marpa_b_new()</code>
@@ -6875,7 +7063,7 @@ method.
 Next: <a href="#Bocage-constructor" accesskey="n" rel="next">Bocage constructor</a>, Previous: <a href="#Bocage-overview" accesskey="p" rel="prev">Bocage overview</a>, Up: <a href="#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Bocage-data-structure-1"></a>
-<h3 class="section">20.2 Bocage data structure</h3>
+<h3 class="section">21.2 Bocage data structure</h3>
 
 <p>A bocage is a data structure containing the parses
 found by processing the input according to the grammar.
@@ -6912,7 +7100,7 @@ See <a href="#marpa_005fb_005fnew">marpa_b_new()</a>.
 Next: <a href="#Bocage-reference-counting" accesskey="n" rel="next">Bocage reference counting</a>, Previous: <a href="#Bocage-data-structure" accesskey="p" rel="prev">Bocage data structure</a>, Up: <a href="#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Creating-a-new-bocage"></a>
-<h3 class="section">20.3 Creating a new bocage</h3>
+<h3 class="section">21.3 Creating a new bocage</h3>
 
 <a name="marpa_005fb_005fnew"></a><dl>
 <dt><a name="index-marpa_005fb_005fnew"></a>Constructor function: <em>Marpa_Bocage</em> <strong>marpa_b_new</strong> <em>(Marpa_Recognizer <var>r</var>,     Marpa_Earley_Set_ID <var>earley_set_ID</var>)</em></dt>
@@ -6949,7 +7137,7 @@ On hard failure, <code>NULL</code>.
 Next: <a href="#Bocage-accessor" accesskey="n" rel="next">Bocage accessor</a>, Previous: <a href="#Bocage-constructor" accesskey="p" rel="prev">Bocage constructor</a>, Up: <a href="#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Reference-counting-2"></a>
-<h3 class="section">20.4 Reference counting</h3>
+<h3 class="section">21.4 Reference counting</h3>
 <a name="marpa_005fb_005fref"></a><dl>
 <dt><a name="index-marpa_005fb_005fref"></a>Mutator function: <em>Marpa_Bocage</em> <strong>marpa_b_ref</strong> <em>(Marpa_Bocage <var>b</var>)</em></dt>
 <dd>
@@ -6978,7 +7166,7 @@ of its parent recognizer is decreased by 1.
 Previous: <a href="#Bocage-reference-counting" accesskey="p" rel="prev">Bocage reference counting</a>, Up: <a href="#Bocage-methods" accesskey="u" rel="up">Bocage methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Accessors"></a>
-<h3 class="section">20.5 Accessors</h3>
+<h3 class="section">21.5 Accessors</h3>
 <a name="marpa_005fb_005fambiguity_005fmetric"></a><dl>
 <dt><a name="index-marpa_005fb_005fambiguity_005fmetric"></a>Accessor function: <em>int</em> <strong>marpa_b_ambiguity_metric</strong> <em>(Marpa_Bocage <var>b</var>)</em></dt>
 <dd><p>On success, returns an ambiguity metric.
@@ -7011,7 +7199,7 @@ On hard failure, -2.
 Next: <a href="#Tree-methods" accesskey="n" rel="next">Tree methods</a>, Previous: <a href="#Bocage-methods" accesskey="p" rel="prev">Bocage methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Ordering-methods-1"></a>
-<h2 class="chapter">21 Ordering methods</h2>
+<h2 class="chapter">22 Ordering methods</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Ordering-overview" accesskey="1">Ordering overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -7035,7 +7223,7 @@ Next: <a href="#Tree-methods" accesskey="n" rel="next">Tree methods</a>, Previou
 Next: <a href="#Freezing-the-ordering" accesskey="n" rel="next">Freezing the ordering</a>, Previous: <a href="#Ordering-methods" accesskey="p" rel="prev">Ordering methods</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Overview-2"></a>
-<h3 class="section">21.1 Overview</h3>
+<h3 class="section">22.1 Overview</h3>
 
 <p>Before iterating through the parse trees in the bocage,
 the parse trees must be ordered.
@@ -7055,7 +7243,7 @@ method.
 Next: <a href="#Ordering-constructor" accesskey="n" rel="next">Ordering constructor</a>, Previous: <a href="#Ordering-overview" accesskey="p" rel="prev">Ordering overview</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Freezing-the-ordering-1"></a>
-<h3 class="section">21.2 Freezing the ordering</h3>
+<h3 class="section">22.2 Freezing the ordering</h3>
 
 <p>An ordering is
 <a name="index-frozen-ordering"></a>
@@ -7084,7 +7272,7 @@ There is no way to &ldquo;unfreeze&rdquo; an ordering.
 Next: <a href="#Ordering-reference-counting" accesskey="n" rel="next">Ordering reference counting</a>, Previous: <a href="#Freezing-the-ordering" accesskey="p" rel="prev">Freezing the ordering</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Creating-an-ordering"></a>
-<h3 class="section">21.3 Creating an ordering</h3>
+<h3 class="section">22.3 Creating an ordering</h3>
 
 <a name="marpa_005fo_005fnew"></a><dl>
 <dt><a name="index-marpa_005fo_005fnew"></a>Constructor function: <em>Marpa_Order</em> <strong>marpa_o_new</strong> <em>( Marpa_Bocage <var>b</var>)</em></dt>
@@ -7106,7 +7294,7 @@ On hard failure, <code>NULL</code>.
 Next: <a href="#Order-accessor" accesskey="n" rel="next">Order accessor</a>, Previous: <a href="#Ordering-constructor" accesskey="p" rel="prev">Ordering constructor</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Reference-counting-3"></a>
-<h3 class="section">21.4 Reference counting</h3>
+<h3 class="section">22.4 Reference counting</h3>
 
 <a name="marpa_005fo_005fref"></a><dl>
 <dt><a name="index-marpa_005fo_005fref"></a>Mutator function: <em>Marpa_Order</em> <strong>marpa_o_ref</strong> <em>( Marpa_Order <var>o</var>)</em></dt>
@@ -7135,7 +7323,7 @@ zero.
 Next: <a href="#Non_002ddefault-ordering" accesskey="n" rel="next">Non-default ordering</a>, Previous: <a href="#Ordering-reference-counting" accesskey="p" rel="prev">Ordering reference counting</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Accessors-1"></a>
-<h3 class="section">21.5 Accessors</h3>
+<h3 class="section">22.5 Accessors</h3>
 <a name="marpa_005fo_005fambiguity_005fmetric"></a><dl>
 <dt><a name="index-marpa_005fo_005fambiguity_005fmetric"></a>Accessor function: <em>int</em> <strong>marpa_o_ambiguity_metric</strong> <em>(Marpa_Order <var>o</var>)</em></dt>
 <dd>
@@ -7191,7 +7379,7 @@ On hard failure, -2.
 Previous: <a href="#Order-accessor" accesskey="p" rel="prev">Order accessor</a>, Up: <a href="#Ordering-methods" accesskey="u" rel="up">Ordering methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Non_002ddefault-ordering-1"></a>
-<h3 class="section">21.6 Non-default ordering</h3>
+<h3 class="section">22.6 Non-default ordering</h3>
 
 <a name="marpa_005fo_005fhigh_005frank_005fonly"></a><dl>
 <dt><a name="index-marpa_005fo_005fhigh_005frank_005fonly"></a>Accessor function: <em>int</em> <strong>marpa_o_high_rank_only</strong> <em>( Marpa_Order <var>o</var>)</em></dt>
@@ -7258,7 +7446,7 @@ On hard failure, -2.
 Next: <a href="#Value-methods" accesskey="n" rel="next">Value methods</a>, Previous: <a href="#Ordering-methods" accesskey="p" rel="prev">Ordering methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Tree-methods-1"></a>
-<h2 class="chapter">22 Tree methods</h2>
+<h2 class="chapter">23 Tree methods</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Tree-overview" accesskey="1">Tree overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -7278,7 +7466,7 @@ Next: <a href="#Value-methods" accesskey="n" rel="next">Value methods</a>, Previ
 Next: <a href="#Tree-constructor" accesskey="n" rel="next">Tree constructor</a>, Previous: <a href="#Tree-methods" accesskey="p" rel="prev">Tree methods</a>, Up: <a href="#Tree-methods" accesskey="u" rel="up">Tree methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Overview-3"></a>
-<h3 class="section">22.1 Overview</h3>
+<h3 class="section">23.1 Overview</h3>
 
 <p>Once the bocage has an ordering, the parses trees can be iterated.
 Marpa&rsquo;s
@@ -7320,7 +7508,7 @@ to position it to the next parse tree.
 Next: <a href="#Tree-reference-counting" accesskey="n" rel="next">Tree reference counting</a>, Previous: <a href="#Tree-overview" accesskey="p" rel="prev">Tree overview</a>, Up: <a href="#Tree-methods" accesskey="u" rel="up">Tree methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Creating-a-new-tree-iterator"></a>
-<h3 class="section">22.2 Creating a new tree iterator</h3>
+<h3 class="section">23.2 Creating a new tree iterator</h3>
 
 <a name="marpa_005ft_005fnew"></a><dl>
 <dt><a name="index-marpa_005ft_005fnew"></a>Constructor function: <em>Marpa_Tree</em> <strong>marpa_t_new</strong> <em>(Marpa_Order <var>o</var>)</em></dt>
@@ -7344,7 +7532,7 @@ On hard failure, <code>NULL</code>.
 Next: <a href="#Iterating-through-the-trees" accesskey="n" rel="next">Iterating through the trees</a>, Previous: <a href="#Tree-constructor" accesskey="p" rel="prev">Tree constructor</a>, Up: <a href="#Tree-methods" accesskey="u" rel="up">Tree methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Reference-counting-4"></a>
-<h3 class="section">22.3 Reference counting</h3>
+<h3 class="section">23.3 Reference counting</h3>
 
 <a name="marpa_005ft_005fref"></a><dl>
 <dt><a name="index-marpa_005ft_005fref"></a>Mutator function: <em>Marpa_Tree</em> <strong>marpa_t_ref</strong> <em>(Marpa_Tree <var>t</var>)</em></dt>
@@ -7371,7 +7559,7 @@ zero.
 Previous: <a href="#Tree-reference-counting" accesskey="p" rel="prev">Tree reference counting</a>, Up: <a href="#Tree-methods" accesskey="u" rel="up">Tree methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Iterating-through-the-trees-1"></a>
-<h3 class="section">22.4 Iterating through the trees</h3>
+<h3 class="section">23.4 Iterating through the trees</h3>
 
 <a name="marpa_005ft_005fnext"></a><dl>
 <dt><a name="index-marpa_005ft_005fnext"></a>Mutator function: <em>int</em> <strong>marpa_t_next</strong> <em>( Marpa_Tree <var>t</var>)</em></dt>
@@ -7430,7 +7618,7 @@ Always succeeds.
 Next: <a href="#Events" accesskey="n" rel="next">Events</a>, Previous: <a href="#Tree-methods" accesskey="p" rel="prev">Tree methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Value-methods-1"></a>
-<h2 class="chapter">23 Value methods</h2>
+<h2 class="chapter">24 Value methods</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Value-overview" accesskey="1">Value overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -7462,7 +7650,7 @@ Next: <a href="#Events" accesskey="n" rel="next">Events</a>, Previous: <a href="
 Next: <a href="#How-to-use-the-valuator" accesskey="n" rel="next">How to use the valuator</a>, Previous: <a href="#Value-methods" accesskey="p" rel="prev">Value methods</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Overview-4"></a>
-<h3 class="section">23.1 Overview</h3>
+<h3 class="section">24.1 Overview</h3>
 
 <p>The archetypal application needs
 a value object (or
@@ -7504,7 +7692,7 @@ method.
 Next: <a href="#Advantages-of-step_002ddriven-valuation" accesskey="n" rel="next">Advantages of step-driven valuation</a>, Previous: <a href="#Value-overview" accesskey="p" rel="prev">Value overview</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="How-to-use-the-valuator-1"></a>
-<h3 class="section">23.2 How to use the valuator</h3>
+<h3 class="section">24.2 How to use the valuator</h3>
 <p>Libmarpa&rsquo;s valuator provides the application with
 &ldquo;steps&rdquo;, which are
 instructions for stack manipulation.
@@ -7558,7 +7746,7 @@ capable of being any of these things and more.
 Next: <a href="#Maintaining-the-stack" accesskey="n" rel="next">Maintaining the stack</a>, Previous: <a href="#How-to-use-the-valuator" accesskey="p" rel="prev">How to use the valuator</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Advantages-of-step_002ddriven-valuation-1"></a>
-<h3 class="section">23.3 Advantages of step-driven valuation</h3>
+<h3 class="section">24.3 Advantages of step-driven valuation</h3>
 
 <p>Step-driven valuation
 hides Libmarpa&rsquo;s grammar rewrites from the application,
@@ -7639,7 +7827,7 @@ one that <strong>does</strong> know about semantics.
 Next: <a href="#Valuator-constructor" accesskey="n" rel="next">Valuator constructor</a>, Previous: <a href="#Advantages-of-step_002ddriven-valuation" accesskey="p" rel="prev">Advantages of step-driven valuation</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Maintaining-the-stack-1"></a>
-<h3 class="section">23.4 Maintaining the stack</h3>
+<h3 class="section">24.4 Maintaining the stack</h3>
 
 <p>This section discusses in detail the requirements
 for maintaining the stack.
@@ -7690,7 +7878,7 @@ See <a href="#Sizing-the-stack">Sizing the stack</a>.
 Previous: <a href="#Maintaining-the-stack" accesskey="p" rel="prev">Maintaining the stack</a>, Up: <a href="#Maintaining-the-stack" accesskey="u" rel="up">Maintaining the stack</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Sizing-the-stack-1"></a>
-<h4 class="subsection">23.4.1 Sizing the stack</h4>
+<h4 class="subsection">24.4.1 Sizing the stack</h4>
 
 <p>In our discussion of the stack handler for the valuator,
 we will treat the stack as a 0-based array.
@@ -7733,7 +7921,7 @@ See <a href="#Trap-representations">Trap representations</a>.
 Next: <a href="#Valuator-reference-counting" accesskey="n" rel="next">Valuator reference counting</a>, Previous: <a href="#Maintaining-the-stack" accesskey="p" rel="prev">Maintaining the stack</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Creating-a-new-valuator"></a>
-<h3 class="section">23.5 Creating a new valuator</h3>
+<h3 class="section">24.5 Creating a new valuator</h3>
 
 <a name="marpa_005fv_005fnew"></a><dl>
 <dt><a name="index-marpa_005fv_005fnew"></a>Constructor function: <em>Marpa_Value</em> <strong>marpa_v_new</strong> <em>(  Marpa_Tree <var>t</var> )</em></dt>
@@ -7774,7 +7962,7 @@ On hard failure, <code>NULL</code>.
 Next: <a href="#Stepping-through-the-valuator" accesskey="n" rel="next">Stepping through the valuator</a>, Previous: <a href="#Valuator-constructor" accesskey="p" rel="prev">Valuator constructor</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Reference-counting-5"></a>
-<h3 class="section">23.6 Reference counting</h3>
+<h3 class="section">24.6 Reference counting</h3>
 
 <a name="marpa_005fv_005fref"></a><dl>
 <dt><a name="index-marpa_005fv_005fref"></a>Mutator function: <em>Marpa_Value</em> <strong>marpa_v_ref</strong> <em>(Marpa_Value <var>v</var>)</em></dt>
@@ -7801,7 +7989,7 @@ zero.
 Next: <a href="#Valuator-step-types" accesskey="n" rel="next">Valuator step types</a>, Previous: <a href="#Valuator-reference-counting" accesskey="p" rel="prev">Valuator reference counting</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Stepping-through-the-valuator-1"></a>
-<h3 class="section">23.7 Stepping through the valuator</h3>
+<h3 class="section">24.7 Stepping through the valuator</h3>
 
 <a name="marpa_005fv_005fstep"></a><dl>
 <dt><a name="index-marpa_005fv_005fstep"></a>Mutator function: <em>Marpa_Step_Type</em> <strong>marpa_v_step</strong> <em>( Marpa_Value <var>v</var>)</em></dt>
@@ -7853,7 +8041,7 @@ On hard failure, -2.
 Next: <a href="#Basic-step-accessors" accesskey="n" rel="next">Basic step accessors</a>, Previous: <a href="#Stepping-through-the-valuator" accesskey="p" rel="prev">Stepping through the valuator</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Valuator-step-types-1"></a>
-<h3 class="section">23.8 Valuator step types</h3>
+<h3 class="section">24.8 Valuator step types</h3>
 
 <dl>
 <dt><a name="index-MARPA_005fSTEP_005fRULE"></a>Accessor macro: <em>Marpa_Step_Type</em> <strong>MARPA_STEP_RULE</strong></dt>
@@ -7966,7 +8154,7 @@ yet to go through any steps.
 Next: <a href="#Step-location-accessors" accesskey="n" rel="next">Step location accessors</a>, Previous: <a href="#Valuator-step-types" accesskey="p" rel="prev">Valuator step types</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Basic-step-accessors-1"></a>
-<h3 class="section">23.9 Basic step accessors</h3>
+<h3 class="section">24.9 Basic step accessors</h3>
 
 <p>This section describes the
 accessors that are basic to stack manipulation.
@@ -8067,7 +8255,7 @@ Always succeeds.
 Previous: <a href="#Basic-step-accessors" accesskey="p" rel="prev">Basic step accessors</a>, Up: <a href="#Value-methods" accesskey="u" rel="up">Value methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Step-location-accessors-1"></a>
-<h3 class="section">23.10 Step location accessors</h3>
+<h3 class="section">24.10 Step location accessors</h3>
 
 <p>This section describes step accessors that are not basic to stack manipulation.
 They provide Earley set location information about the parse tree.
@@ -8163,7 +8351,7 @@ cannot be used to uniquely identify a parse node.
 Next: <a href="#Error-methods-macros-and-codes" accesskey="n" rel="next">Error methods macros and codes</a>, Previous: <a href="#Value-methods" accesskey="p" rel="prev">Value methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Events-1"></a>
-<h2 class="chapter">24 Events</h2>
+<h2 class="chapter">25 Events</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Events-overview" accesskey="1">Events overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -8184,9 +8372,17 @@ Next: <a href="#Error-methods-macros-and-codes" accesskey="n" rel="next">Error m
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Tentative-events" accesskey="9">Tentative events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Ambiguous-parses-and-events">Ambiguous parses and events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Nulled-subtrees-and-events">Nulled subtrees and events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Event-coincidence-of-symbol-instances">Event coincidence of symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Event-coincidence-of-symbols">Event coincidence of symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Marker-symbols">Marker symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Per_002drule-events">Per-rule events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8197,7 +8393,7 @@ Next: <a href="#Error-methods-macros-and-codes" accesskey="n" rel="next">Error m
 Next: <a href="#Event-codes" accesskey="n" rel="next">Event codes</a>, Previous: <a href="#Events" accesskey="p" rel="prev">Events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Overview-5"></a>
-<h3 class="section">24.1 Overview</h3>
+<h3 class="section">25.1 Overview</h3>
 
 <p>This chapter discusses Libmarpa&rsquo;s events.
 It contains descriptions of both grammar and recognizer methods.
@@ -8352,7 +8548,7 @@ methods.
 Next: <a href="#Basic-event-accessors" accesskey="n" rel="next">Basic event accessors</a>, Previous: <a href="#Events-overview" accesskey="p" rel="prev">Events overview</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Event-codes-1"></a>
-<h3 class="section">24.2 Event codes</h3>
+<h3 class="section">25.2 Event codes</h3>
 
 <dl>
 <dt><a name="index-MARPA_005fEVENT_005fNONE"></a>Accessor macro: <em>int</em> <strong>MARPA_EVENT_NONE</strong></dt>
@@ -8666,7 +8862,7 @@ or the
 Next: <a href="#Completion-events" accesskey="n" rel="next">Completion events</a>, Previous: <a href="#Event-codes" accesskey="p" rel="prev">Event codes</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Basic-event-accessors-1"></a>
-<h3 class="section">24.3 Basic event accessors</h3>
+<h3 class="section">25.3 Basic event accessors</h3>
 
 <a name="marpa_005fg_005fevent"></a><dl>
 <dt><a name="index-marpa_005fg_005fevent"></a>Accessor function: <em>Marpa_Event_Type</em> <strong>marpa_g_event</strong> <em>(Marpa_Grammar <var>g</var>,     Marpa_Event* <var>event</var>, int <var>ix</var>)</em></dt>
@@ -8726,7 +8922,7 @@ Always succeeds.
 Next: <a href="#Symbol-nulled-events" accesskey="n" rel="next">Symbol nulled events</a>, Previous: <a href="#Basic-event-accessors" accesskey="p" rel="prev">Basic event accessors</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Completion-events-1"></a>
-<h3 class="section">24.4 Completion events</h3>
+<h3 class="section">25.4 Completion events</h3>
 
 <p>This section contains methods
 for dealing with MARPA_EVENT_SYMBOL_COMPLETED
@@ -8864,7 +9060,7 @@ On hard failure, -2.
 Next: <a href="#Prediction-events" accesskey="n" rel="next">Prediction events</a>, Previous: <a href="#Completion-events" accesskey="p" rel="prev">Completion events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Symbol-nulled-events-1"></a>
-<h3 class="section">24.5 Symbol nulled events</h3>
+<h3 class="section">25.5 Symbol nulled events</h3>
 
 <p>This section contains methods
 for dealing with MARPA_EVENT_SYMBOL_NULLED
@@ -9009,7 +9205,7 @@ On hard failure, -2.
 Next: <a href="#Symbol-expected-events" accesskey="n" rel="next">Symbol expected events</a>, Previous: <a href="#Symbol-nulled-events" accesskey="p" rel="prev">Symbol nulled events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Prediction-events-1"></a>
-<h3 class="section">24.6 Prediction events</h3>
+<h3 class="section">25.6 Prediction events</h3>
 
 <p>This section contains methods
 for dealing with MARPA_EVENT_SYMBOL_PREDICTED
@@ -9135,7 +9331,7 @@ On hard failure, -2.
 Next: <a href="#Recognizer-per_002dsymbol-events" accesskey="n" rel="next">Recognizer per-symbol events</a>, Previous: <a href="#Prediction-events" accesskey="p" rel="prev">Prediction events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Symbol-expected-events-1"></a>
-<h3 class="section">24.7 Symbol expected events</h3>
+<h3 class="section">25.7 Symbol expected events</h3>
 
 <p>This section contains methods
 for dealing with MARPA_EVENT_SYMBOL_EXPECTED
@@ -9201,7 +9397,7 @@ On hard failure,
 Next: <a href="#Tentative-events" accesskey="n" rel="next">Tentative events</a>, Previous: <a href="#Symbol-expected-events" accesskey="p" rel="prev">Symbol expected events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Recognizer-per_002dsymbol-events-1"></a>
-<h3 class="section">24.8 Recognizer per-symbol events</h3>
+<h3 class="section">25.8 Recognizer per-symbol events</h3>
 
 <p>The
 <a name="index-events_002c-recognizer-per_002dsymbol"></a>
@@ -9228,10 +9424,10 @@ of the event types
 <a name="Tentative-events"></a>
 <div class="header">
 <p>
-Next: <a href="#Event-coincidence-of-symbol-instances" accesskey="n" rel="next">Event coincidence of symbol instances</a>, Previous: <a href="#Recognizer-per_002dsymbol-events" accesskey="p" rel="prev">Recognizer per-symbol events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Ambiguous-parses-and-events" accesskey="n" rel="next">Ambiguous parses and events</a>, Previous: <a href="#Recognizer-per_002dsymbol-events" accesskey="p" rel="prev">Recognizer per-symbol events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Tentative-events-1"></a>
-<h3 class="section">24.9 Tentative events</h3>
+<h3 class="section">25.9 Tentative events</h3>
 
 <p>Recognizer per-symbol events are tentative.
 The symbol instance that triggers them may not actually occur
@@ -9250,13 +9446,64 @@ only one will become the actual output,
 and that only if the parse is allowed to run that far.
 </p>
 <hr>
+<a name="Ambiguous-parses-and-events"></a>
+<div class="header">
+<p>
+Next: <a href="#Nulled-subtrees-and-events" accesskey="n" rel="next">Nulled subtrees and events</a>, Previous: <a href="#Tentative-events" accesskey="p" rel="prev">Tentative events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Ambiguous-parses-and-events-1"></a>
+<h3 class="section">25.10 Ambiguous parses and events</h3>
+
+<p>In an ambiguous parse,
+tentative events
+(see <a href="#Tentative-events">Tentative events</a>)
+trigger for all of the parse trees.
+User thinking in terms of only one of the parse trees,
+perhaps because they are unaware of the
+ambiguity, will sometimes find this unexpected.
+</p>
+<hr>
+<a name="Nulled-subtrees-and-events"></a>
+<div class="header">
+<p>
+Next: <a href="#Event-coincidence-of-symbol-instances" accesskey="n" rel="next">Event coincidence of symbol instances</a>, Previous: <a href="#Ambiguous-parses-and-events" accesskey="p" rel="prev">Ambiguous parses and events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Nulled-subtrees-and-events-1"></a>
+<h3 class="section">25.11 Nulled subtrees and events</h3>
+
+<p>As mentioned above
+(see <a href="#Nullability-in-the-valuator">Nullability in the valuator</a>),
+nulled subforests are,
+for evaluation purposes,
+pruned back to their topmost symbol.
+This is <strong>not</strong> the case for events.
+Events for every nulled symbol in the subforest
+will trigger,
+even if these symbols are pruned in the evaluation phase.
+More precisely,
+if
+</p><ul>
+<li> <code>X</code>@<code>j</code>-<code>j</code> is a nulled symbol instance,
+</li><li> <code>X</code>@<code>j</code>-<code>j</code> derives
+<code>Y</code>@<code>j</code>-<code>j</code>
+(in which case <code>Y</code>@<code>j</code>-<code>j</code>
+must also be a nulled symbol instance), and
+</li><li> the event
+<code>MARPA_EVENT_SYMBOL_NULLED</code> for symbol <code>Y</code>
+is activated,
+</li></ul>
+<p>then
+a <code>MARPA_EVENT_SYMBOL_NULLED</code> for symbol <code>Y</code>
+will trigger at parse location <code>j</code>.
+</p>
+<hr>
 <a name="Event-coincidence-of-symbol-instances"></a>
 <div class="header">
 <p>
-Next: <a href="#Event-coincidence-of-symbols" accesskey="n" rel="next">Event coincidence of symbols</a>, Previous: <a href="#Tentative-events" accesskey="p" rel="prev">Tentative events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Event-coincidence-of-symbols" accesskey="n" rel="next">Event coincidence of symbols</a>, Previous: <a href="#Nulled-subtrees-and-events" accesskey="p" rel="prev">Nulled subtrees and events</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Event-coincidence-of-symbol-instances-1"></a>
-<h3 class="section">24.10 Event coincidence of symbol instances</h3>
+<h3 class="section">25.12 Event coincidence of symbol instances</h3>
 
 <p>We say that two event instances &ldquo;coincide&rdquo;
 if they occur at the same parse location.
@@ -9293,7 +9540,7 @@ recognizer per-symbol events.
 Next: <a href="#Nulled-and-predicted-symbol-instances" accesskey="n" rel="next">Nulled and predicted symbol instances</a>, Previous: <a href="#Event-coincidence-of-symbol-instances" accesskey="p" rel="prev">Event coincidence of symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Nulled-and-completed-symbol-instances-1"></a>
-<h4 class="subsection">24.10.1 Nulled and completed symbol instances</h4>
+<h4 class="subsection">25.12.1 Nulled and completed symbol instances</h4>
 
 <p>A symbol instance cannot trigger both
 a <code>MARPA_EVENT_SYMBOL_NULLED</code>
@@ -9322,7 +9569,7 @@ only if <code>start &lt; end</code>.
 Next: <a href="#Nulled-and-expected-symbol-instances" accesskey="n" rel="next">Nulled and expected symbol instances</a>, Previous: <a href="#Nulled-and-completed-symbol-instances" accesskey="p" rel="prev">Nulled and completed symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Nulled-and-predicted-symbol-instances-1"></a>
-<h4 class="subsection">24.10.2 Nulled and predicted symbol instances</h4>
+<h4 class="subsection">25.12.2 Nulled and predicted symbol instances</h4>
 
 <p>A symbol instance cannot trigger both
 a <code>MARPA_EVENT_SYMBOL_NULLED</code>
@@ -9351,7 +9598,7 @@ only if <code>start &lt; end</code>.
 Next: <a href="#Completed-and-predicted-symbol-instances" accesskey="n" rel="next">Completed and predicted symbol instances</a>, Previous: <a href="#Nulled-and-predicted-symbol-instances" accesskey="p" rel="prev">Nulled and predicted symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Nulled-and-expected-symbol-instances-1"></a>
-<h4 class="subsection">24.10.3 Nulled and expected symbol instances</h4>
+<h4 class="subsection">25.12.3 Nulled and expected symbol instances</h4>
 
 <p>A symbol instance cannot trigger both
 a <code>MARPA_EVENT_SYMBOL_NULLED</code>
@@ -9381,7 +9628,7 @@ only if <code>start &lt; end</code>.
 Next: <a href="#Completed-and-expected-symbol-instances" accesskey="n" rel="next">Completed and expected symbol instances</a>, Previous: <a href="#Nulled-and-expected-symbol-instances" accesskey="p" rel="prev">Nulled and expected symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Completed-and-predicted-symbol-instances-1"></a>
-<h4 class="subsection">24.10.4 Completed and predicted symbol instances</h4>
+<h4 class="subsection">25.12.4 Completed and predicted symbol instances</h4>
 
 <p>A symbol instance cannot trigger both
 a <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
@@ -9430,7 +9677,7 @@ must be distinct.
 Next: <a href="#Predicted-and-expected-symbol-instances" accesskey="n" rel="next">Predicted and expected symbol instances</a>, Previous: <a href="#Completed-and-predicted-symbol-instances" accesskey="p" rel="prev">Completed and predicted symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Completed-and-expected-symbol-instances-1"></a>
-<h4 class="subsection">24.10.5 Completed and expected symbol instances</h4>
+<h4 class="subsection">25.12.5 Completed and expected symbol instances</h4>
 
 <p>A symbol instance cannot trigger both
 a <code>MARPA_EVENT_SYMBOL_COMPLETED</code>
@@ -9484,7 +9731,7 @@ must be distinct.
 Previous: <a href="#Completed-and-expected-symbol-instances" accesskey="p" rel="prev">Completed and expected symbol instances</a>, Up: <a href="#Event-coincidence-of-symbol-instances" accesskey="u" rel="up">Event coincidence of symbol instances</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Predicted-and-expected-symbol-instances-1"></a>
-<h4 class="subsection">24.10.6 Predicted and expected symbol instances</h4>
+<h4 class="subsection">25.12.6 Predicted and expected symbol instances</h4>
 
 <p>The one case where a single symbol instance can trigger
 events of two different types at the same parse location is
@@ -9507,10 +9754,10 @@ will trigger at location <code>start</code>.
 <a name="Event-coincidence-of-symbols"></a>
 <div class="header">
 <p>
-Previous: <a href="#Event-coincidence-of-symbol-instances" accesskey="p" rel="prev">Event coincidence of symbol instances</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Marker-symbols" accesskey="n" rel="next">Marker symbols</a>, Previous: <a href="#Event-coincidence-of-symbol-instances" accesskey="p" rel="prev">Event coincidence of symbol instances</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Event-coincidence-of-symbols-1"></a>
-<h3 class="section">24.11 Event coincidence of symbols</h3>
+<h3 class="section">25.13 Event coincidence of symbols</h3>
 
 <p>We say the two event instances are
 <em>coincident same-symbol event instances</em>
@@ -9614,13 +9861,190 @@ and a same-symbol <code>MARPA_EVENT_SYMBOL_NULLED</code> event instance
 cannot occur in any parse with the same base grammar.
 </p>
 <hr>
+<a name="Marker-symbols"></a>
+<div class="header">
+<p>
+Next: <a href="#Per_002drule-events" accesskey="n" rel="next">Per-rule events</a>, Previous: <a href="#Event-coincidence-of-symbols" accesskey="p" rel="prev">Event coincidence of symbols</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Marker-symbols-1"></a>
+<h3 class="section">25.14 Marker symbols</h3>
+
+<p>A marker symbol is a nulling symbol introduced for
+the purpose of &ldquo;marking&rdquo; a position in a rule.
+If a <code>MARPA_EVENT_SYMBOL_NULLED</code> event is
+activated for the marker symbol,
+an event instance will be triggered whenever that
+position in the rule is reached.
+</p>
+<p>For example, consider the rule
+<a name="Rule-R1"></a></p><div class="display">
+<pre class="display">     [ A ::= Y Z ].                  (R1)
+</pre></div>
+<p>If we replace <code>(R1)</code> with the following
+rules
+</p><div class="display">
+<pre class="display">     [ Mk0 ::= ]
+     [ Mk1 ::= ]
+     [ Mk2 ::= ]
+     [ A ::= Mk0 Y Mk1 Z Mk2 ].      (R2)
+</pre></div>
+<p>and activate
+<code>MARPA_EVENT_SYMBOL_NULLED</code> events
+for the marker symbols
+(<code>Mk1</code>, <code>Mk2</code>, and <code>Mk3</code>),
+then a <code>MARPA_EVENT_SYMBOL_NULLED</code> event instance
+</p><ul>
+<li> for <code>Mk0</code> will trigger at every location where <code>(R2)</code> is predicted;
+</li><li> for <code>Mk1</code> will trigger at every location where the symbol <code>Y</code>
+in rule <code>(R2)</code> has been recognized,
+and the symbol <code>Z</code> is predicted;
+</li><li> for <code>Mk2</code> will trigger at every location where <code>(R2)</code>
+has been fully recognized, so that the entire RHS,
+including both symbols <code>Y</code> and <code>Z</code>, has been recognized.
+</li></ul>
+<p>We can note that use of the marker <code>Mk0</code>
+can be replaced by
+declaring  <code>MARPA_EVENT_SYMBOL_PREDICTED</code> event
+for symbol <code>A</code>.
+Similarly,
+use of the marker <code>Mk2</code>
+can be replaced by
+declaring  <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+for symbol <code>A</code>.
+We discuss this more below.
+See <a href="#Per_002drule-events">Per-rule events</a>.
+</p>
+<hr>
+<a name="Per_002drule-events"></a>
+<div class="header">
+<p>
+Previous: <a href="#Marker-symbols" accesskey="p" rel="prev">Marker symbols</a>, Up: <a href="#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Per_002drule-events-1"></a>
+<h3 class="section">25.15 Per-rule events</h3>
+
+<p>The event types are either global or per-symbol &mdash;
+there are no per-rule events.
+Nonetheless, the user can get the equivalent of per-rule
+events in two ways,
+both discussed previously
+(see <a href="#Marker-symbols">Marker symbols</a>).
+The competely general way is to use marker symbols.
+</p>
+<p>The other way is to
+declare <code>MARPA_EVENT_SYMBOL_PREDICTED</code> and
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> events
+for the LHS of the rule.
+This has two limitations:
+First, it can only trigger events before the first RHS
+symbol of the rule,
+or after the rule&rsquo;s last RHS symbol.
+Second,
+the <code>MARPA_EVENT_SYMBOL_PREDICTED</code> and
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> events
+will trigger events for all rules with the same
+LHS, which may not be what is wanted.
+</p>
+<a name="lim2Ex"></a><p>We illustrate the second limitation with an example,
+which we will call <code>lim2Ex</code>.
+In <code>lim2Ex</code>, we have the following:
+</p><ul>
+<li> The grammar includes these two rules:
+<div class="display">
+<pre class="display">     [ A ::= W X ]              (R3)
+     [ A ::= Y Z ]              (R4)
+</pre></div>
+</li><li> A <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+is activated for symbol <code>A</code>.
+</li></ul>
+
+<p>Suppose we want an event to
+trigger at, and only at, the place when rule <code>(R3)</code>
+is fully recognized.
+In <code>lim2Ex</code>,
+the <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+for symbol <code>A</code>
+triggers at the end of both rules <code>(R3)</code>
+and <code>(R4)</code>.
+The triggering at the end of rule <code>(R4)</code>
+is problematic.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Workaround-with-a-dedicated-LHS-symbol" accesskey="1">Workaround with a dedicated LHS symbol</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Workaround-with-a-dedicated-LHS-symbol"></a>
+<div class="header">
+<p>
+Previous: <a href="#Per_002drule-events" accesskey="p" rel="prev">Per-rule events</a>, Up: <a href="#Per_002drule-events" accesskey="u" rel="up">Per-rule events</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Workaround-with-a-dedicated-LHS-symbol-1"></a>
+<h4 class="subsection">25.15.1 Workaround with a dedicated LHS symbol</h4>
+
+<p>Most users will fix the second limitation
+(see <a href="#lim2Ex">lim2Ex</a>)
+by falling back
+on marker symbols.
+For those users who for some reason prefer to avoid this,
+in this section we present
+a workaround that is based on introducing a new symbol,
+one dedicated to acting as the LHS of <code>(R3)</code>
+of <code>lim2Ex</code>.
+</p>
+<p>We show the fix as another example,
+one which we will call
+<code>fixEx</code>.
+<code>fixEx</code> is identical to
+<code>lim2Ex</code> with
+the following exceptions:
+</p><ul>
+<li> Rule <code>(R3)</code>
+in <code>lim2Ex</code> is replaced with the following rules:
+<div class="display">
+<pre class="display">     [ A1 ::= W X ]             (R3a)
+     [ A ::= A1 ]               (R3b)
+</pre></div>
+<p>In these two rules,
+rule <code>(R3a)</code> is the replacement rule
+for rule <code>(R3)</code> in <code>lim2Ex</code>,
+and <code>A1</code> is the new LHS symbol,
+which is dedicated to serving as the LHS
+of rule <code>(R3a)</code>.
+</p></li><li> A <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+is activated for symbol <code>A1</code>,
+instead of for symbol <code>A</code>.
+</li><li> Rule <code>(R3a)</code>
+has the same semantics
+as rule <code>(R3)</code> in <code>lim2Ex</code>,
+the rule that it replaced.
+</li><li> Rule <code>(R3b)</code> has pass-through semantics.
+</li><li> The application code must be changed to look for
+a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+for symbol <code>A1</code>,
+instead of symbol <code>A</code>.
+</li></ul>
+<p><code>fixEx</code> will accept the same language
+as <code>lim2Ex</code>,
+with the same semantics as <code>lim2Ex</code>.
+A <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+will trigger at the end of <code>(R3a)</code>,
+this time for symbol <code>A1</code>,
+but at exactly the same parse location as it did
+for symbol <code>A</code> in <code>lim2Ex</code>.
+And a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+will no longer trigger at the end of <code>(R4)</code>,
+which is the fix we were looking for.
+</p>
+<hr>
 <a name="Error-methods-macros-and-codes"></a>
 <div class="header">
 <p>
 Next: <a href="#Technical-notes" accesskey="n" rel="next">Technical notes</a>, Previous: <a href="#Events" accesskey="p" rel="prev">Events</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Error-methods_002c-macros-and-codes"></a>
-<h2 class="chapter">25 Error methods, macros and codes</h2>
+<h2 class="chapter">26 Error methods, macros and codes</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Error-methods" accesskey="1">Error methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -9640,7 +10064,7 @@ Next: <a href="#Technical-notes" accesskey="n" rel="next">Technical notes</a>, P
 Next: <a href="#Error-Macros" accesskey="n" rel="next">Error Macros</a>, Previous: <a href="#Error-methods-macros-and-codes" accesskey="p" rel="prev">Error methods macros and codes</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Error-methods-1"></a>
-<h3 class="section">25.1 Error methods</h3>
+<h3 class="section">26.1 Error methods</h3>
 
 <a name="marpa_005fg_005ferror"></a><dl>
 <dt><a name="index-marpa_005fg_005ferror"></a>Accessor function: <em>Marpa_Error_Code</em> <strong>marpa_g_error</strong> <em>(     Marpa_Grammar <var>g</var>,     const char** <var>p_error_string</var>)</em></dt>
@@ -9674,7 +10098,7 @@ Always succeeds.
 Next: <a href="#External-error-codes" accesskey="n" rel="next">External error codes</a>, Previous: <a href="#Error-methods" accesskey="p" rel="prev">Error methods</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Error-Macros-1"></a>
-<h3 class="section">25.2 Error Macros</h3>
+<h3 class="section">26.2 Error Macros</h3>
 
 <dl>
 <dt><a name="index-MARPA_005fERRCODE_005fCOUNT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERRCODE_COUNT</strong></dt>
@@ -9691,7 +10115,7 @@ strictly less than <code>MARPA_ERRCODE_COUNT</code>.
 Next: <a href="#Internal-error-codes" accesskey="n" rel="next">Internal error codes</a>, Previous: <a href="#Error-Macros" accesskey="p" rel="prev">Error Macros</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="External-error-codes-1"></a>
-<h3 class="section">25.3 External error codes</h3>
+<h3 class="section">26.3 External error codes</h3>
 
 <p>This section lists the external error codes.
 These are the only error codes that users
@@ -10483,7 +10907,7 @@ for an unused symbol.
 Previous: <a href="#External-error-codes" accesskey="p" rel="prev">External error codes</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Internal-error-codes-1"></a>
-<h3 class="section">25.4 Internal error codes</h3>
+<h3 class="section">26.4 Internal error codes</h3>
 
 <p>An internal error code may be one of two things:
 First,
@@ -10679,7 +11103,7 @@ be kept for backward compatibility.
 Next: <a href="#Advanced-input-models" accesskey="n" rel="next">Advanced input models</a>, Previous: <a href="#Error-methods-macros-and-codes" accesskey="p" rel="prev">Error methods macros and codes</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Technical-notes-1"></a>
-<h2 class="chapter">26 Technical notes</h2>
+<h2 class="chapter">27 Technical notes</h2>
 
 <p>This section contains technical notes that are
 not necessary for the main presentation,
@@ -10705,7 +11129,7 @@ but which may be helpful or interesting.
 Next: <a href="#Why-so-many-time-objects" accesskey="n" rel="next">Why so many time objects</a>, Previous: <a href="#Technical-notes" accesskey="p" rel="prev">Technical notes</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Data-types-used-by-Libmarpa-1"></a>
-<h3 class="section">26.1 Data types used by Libmarpa</h3>
+<h3 class="section">27.1 Data types used by Libmarpa</h3>
 
 <p>Libmarpa does not use any floating point data or strings.
 All data are either integers or pointers.
@@ -10717,7 +11141,7 @@ All data are either integers or pointers.
 Next: <a href="#Design-of-numbered-objects" accesskey="n" rel="next">Design of numbered objects</a>, Previous: <a href="#Data-types-used-by-Libmarpa" accesskey="p" rel="prev">Data types used by Libmarpa</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Why-so-many-time-objects_003f"></a>
-<h3 class="section">26.2 Why so many time objects?</h3>
+<h3 class="section">27.2 Why so many time objects?</h3>
 
 <p>Marpa is an aggressively multi-pass algorithm.
 Marpa achieves its efficiency,
@@ -10771,7 +11195,7 @@ by the tree iterator.
 Next: <a href="#Trap-representations" accesskey="n" rel="next">Trap representations</a>, Previous: <a href="#Why-so-many-time-objects" accesskey="p" rel="prev">Why so many time objects</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Numbered-objects-2"></a>
-<h3 class="section">26.3 Numbered objects</h3>
+<h3 class="section">27.3 Numbered objects</h3>
 
 <p>As the name suggests,
 the choice was made to implement
@@ -10816,7 +11240,7 @@ for the difference in speed.
 Next: <a href="#Out_002dof_002dmemory-handling" accesskey="n" rel="next">Out-of-memory handling</a>, Previous: <a href="#Design-of-numbered-objects" accesskey="p" rel="prev">Design of numbered objects</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Trap-representations-1"></a>
-<h3 class="section">26.4 Trap representations</h3>
+<h3 class="section">27.4 Trap representations</h3>
 
 <p>In order to be C89 conformant, an application
 must initialize all locations that might be read.
@@ -10861,7 +11285,7 @@ all locations on the stack must be initialized.
 Previous: <a href="#Trap-representations" accesskey="p" rel="prev">Trap representations</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Out_002dof_002dmemory-handling-1"></a>
-<h3 class="section">26.5 Out-of-memory handling</h3>
+<h3 class="section">27.5 Out-of-memory handling</h3>
 
 <p>Modern operating systems
 usually have an out-of-memory (OOM) killer as a component.
@@ -10878,7 +11302,7 @@ See &ldquo;When malloc() Never Returns NULL &mdash; Reliability as an Illusion&r
 Next: <a href="#Support" accesskey="n" rel="next">Support</a>, Previous: <a href="#Technical-notes" accesskey="p" rel="prev">Technical notes</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Advanced-input-models-1"></a>
-<h2 class="chapter">27 Advanced input models</h2>
+<h2 class="chapter">28 Advanced input models</h2>
 
 <p>In an earlier chapter, we introduced Libmarpa&rsquo;s concept of input,
 and described its basic input models.
@@ -10916,7 +11340,7 @@ length to vary from the &ldquo;normal&rdquo; length of 1.
 Next: <a href="#The-fully-general-input-model" accesskey="n" rel="next">The fully general input model</a>, Previous: <a href="#Advanced-input-models" accesskey="p" rel="prev">Advanced input models</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-dense-variable_002dlength-token-model-1"></a>
-<h3 class="section">27.1 The dense variable-length token model</h3>
+<h3 class="section">28.1 The dense variable-length token model</h3>
 
 <p>In the
 <a name="index-dense-variable_002dlength-input-model"></a>
@@ -10989,7 +11413,7 @@ except in the fully general model of input.
 Next: <a href="#The-codepoint_002dper_002dearleme-model" accesskey="n" rel="next">The codepoint-per-earleme model</a>, Previous: <a href="#The-dense-variable_002dlength-token-model" accesskey="p" rel="prev">The dense variable-length token model</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-fully-general-input-model-1"></a>
-<h3 class="section">27.2 The fully general input model</h3>
+<h3 class="section">28.2 The fully general input model</h3>
 
 <p>In the
 <a name="index-sparse-variable_002dlength-input-model"></a>
@@ -11110,7 +11534,7 @@ to
 Previous: <a href="#The-fully-general-input-model" accesskey="p" rel="prev">The fully general input model</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-codepoint_002dper_002dearleme-model-1"></a>
-<h3 class="section">27.3 The codepoint-per-earleme model</h3>
+<h3 class="section">28.3 The codepoint-per-earleme model</h3>
 
 <p>One variation of the fully general model is
 the
@@ -11153,7 +11577,7 @@ codepoints per earleme.
 Next: <a href="#Futures" accesskey="n" rel="next">Futures</a>, Previous: <a href="#Advanced-input-models" accesskey="p" rel="prev">Advanced input models</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Support-1"></a>
-<h2 class="chapter">28 Support</h2>
+<h2 class="chapter">29 Support</h2>
 
 <p>The &ldquo;updates&rdquo;
 (<a href="https://github.com/jeffreykegler/libmarpa/blob/updated/UPDATES.md">https://github.com/jeffreykegler/libmarpa/blob/updated/UPDATES.md</a>)
@@ -11167,7 +11591,7 @@ bugs, getting answers to questions, and other support.
 Next: <a href="#Deprecated-techniques-and-methods" accesskey="n" rel="next">Deprecated techniques and methods</a>, Previous: <a href="#Support" accesskey="p" rel="prev">Support</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Futures-1"></a>
-<h2 class="chapter">29 Futures</h2>
+<h2 class="chapter">30 Futures</h2>
 
 <p>This chapter is not about the current interface.
 Instead, it discusses
@@ -11205,7 +11629,7 @@ to the external interface in the future.
 Next: <a href="#Document-pre_002dconditions-more-formally" accesskey="n" rel="next">Document pre-conditions more formally</a>, Previous: <a href="#Futures" accesskey="p" rel="prev">Futures</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Nulling-versus-nulled-1"></a>
-<h3 class="section">29.1 Nulling versus nulled</h3>
+<h3 class="section">30.1 Nulling versus nulled</h3>
 
 <p>Currently we call a zero-length instance (aka tree node)
 either a nulling instance or a nulled instance.
@@ -11225,7 +11649,7 @@ is embedded in a lot of code and documents.
 Next: <a href="#Simpler-events-interface" accesskey="n" rel="next">Simpler events interface</a>, Previous: <a href="#Nulling-versus-nulled" accesskey="p" rel="prev">Nulling versus nulled</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Document-pre_002dconditions-more-formally-1"></a>
-<h3 class="section">29.2 Document pre-conditions more formally</h3>
+<h3 class="section">30.2 Document pre-conditions more formally</h3>
 
 <p>A more formal approach to documenting preconditions of
 the methods is possible,
@@ -11242,7 +11666,7 @@ for one approach.
 Next: <a href="#Better-defined-ambiguity-metric" accesskey="n" rel="next">Better defined ambiguity metric</a>, Previous: <a href="#Document-pre_002dconditions-more-formally" accesskey="p" rel="prev">Document pre-conditions more formally</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Simpler-events-interface-1"></a>
-<h3 class="section">29.3 Simpler events interface</h3>
+<h3 class="section">30.3 Simpler events interface</h3>
 
 <p>The events interface is unnecessarily complex.
 A separate grammar method
@@ -11259,7 +11683,7 @@ See <a href="#Prediction-events">Prediction events</a>.
 Next: <a href="#Report-item-traverser-should-be-a-time-object" accesskey="n" rel="next">Report item traverser should be a time object</a>, Previous: <a href="#Simpler-events-interface" accesskey="p" rel="prev">Simpler events interface</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Better-defined-ambiguity-metric-1"></a>
-<h3 class="section">29.4 Better defined ambiguity metric</h3>
+<h3 class="section">30.4 Better defined ambiguity metric</h3>
 
 <p>With experience, we are now in a position to define an
 ambiguity metric that can be cheaply calculated,
@@ -11273,7 +11697,7 @@ Preliminary notes are in the CWeb code.
 Next: <a href="#Orthogonal-treatment-of-soft-failures" accesskey="n" rel="next">Orthogonal treatment of soft failures</a>, Previous: <a href="#Better-defined-ambiguity-metric" accesskey="p" rel="prev">Better defined ambiguity metric</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Report-item-traverser-should-be-a-time-object-1"></a>
-<h3 class="section">29.5 Report item traverser should be a time object</h3>
+<h3 class="section">30.5 Report item traverser should be a time object</h3>
 
 <p>Right now, a report item traverser is a kind of &ldquo;subobject&rdquo;
 of a recognizer.
@@ -11289,7 +11713,7 @@ allowing more aggressive use of this facility.
 Next: <a href="#Orthogonal-treatment-of-exhaustion" accesskey="n" rel="next">Orthogonal treatment of exhaustion</a>, Previous: <a href="#Report-item-traverser-should-be-a-time-object" accesskey="p" rel="prev">Report item traverser should be a time object</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Orthogonal-treatment-of-soft-failures-1"></a>
-<h3 class="section">29.6 Orthogonal treatment of soft failures</h3>
+<h3 class="section">30.6 Orthogonal treatment of soft failures</h3>
 
 <p>The treatment of soft failure evolved along with this interface,
 leaving traces of that evolution in the interface.
@@ -11310,7 +11734,7 @@ These non-orthogonalities should be fixed someday.
 Next: <a href="#Furthest-earleme-values" accesskey="n" rel="next">Furthest earleme values</a>, Previous: <a href="#Orthogonal-treatment-of-soft-failures" accesskey="p" rel="prev">Orthogonal treatment of soft failures</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Orthogonal-treatment-of-exhaustion-1"></a>
-<h3 class="section">29.7 Orthogonal treatment of exhaustion</h3>
+<h3 class="section">30.7 Orthogonal treatment of exhaustion</h3>
 
 <p>The treatment of parse exhaustion is very awkward.
 <code>marpa_r_start_input()</code> returns success on exhaustion,
@@ -11332,7 +11756,7 @@ as a soft failure.
 Next: <a href="#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029" accesskey="n" rel="next">Additional recoverable failures in marpa_r_alternative()</a>, Previous: <a href="#Orthogonal-treatment-of-exhaustion" accesskey="p" rel="prev">Orthogonal treatment of exhaustion</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Furthest-earleme-values-1"></a>
-<h3 class="section">29.8 Furthest earleme values</h3>
+<h3 class="section">30.8 Furthest earleme values</h3>
 
 <p><code>marpa_r_furthest_earleme</code> returns
 <code>unsigned int</code>, which is non-orthogonal with
@@ -11369,7 +11793,7 @@ and the non-orthogonalities should be eliminated.
 Next: <a href="#Untested-methods" accesskey="n" rel="next">Untested methods</a>, Previous: <a href="#Furthest-earleme-values" accesskey="p" rel="prev">Furthest earleme values</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029-1"></a>
-<h3 class="section">29.9 Additional recoverable failures in marpa_r_alternative()</h3>
+<h3 class="section">30.9 Additional recoverable failures in marpa_r_alternative()</h3>
 
 <p>Among the hard failures that
 marpa_r_alternative() returns
@@ -11398,7 +11822,7 @@ to use them in this way.
 Previous: <a href="#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029" accesskey="p" rel="prev">Additional recoverable failures in marpa_r_alternative()</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Untested-methods-1"></a>
-<h3 class="section">29.10 Untested methods</h3>
+<h3 class="section">30.10 Untested methods</h3>
 
 <p>The methods of this section are not in the external interface,
 because they have not been adequately tested.
@@ -11420,7 +11844,7 @@ as unsupported.
 Next: <a href="#Methods-for-revising-parses" accesskey="n" rel="next">Methods for revising parses</a>, Previous: <a href="#Untested-methods" accesskey="p" rel="prev">Untested methods</a>, Up: <a href="#Untested-methods" accesskey="u" rel="up">Untested methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Zero_002dwidth-assertion-methods-1"></a>
-<h4 class="subsection">29.10.1 Zero-width assertion methods</h4>
+<h4 class="subsection">30.10.1 Zero-width assertion methods</h4>
 
 <a name="marpa_005fg_005fzwa_005fnew"></a><dl>
 <dt><a name="index-marpa_005fg_005fzwa_005fnew"></a>Function: <em>Marpa_Assertion_ID</em> <strong>marpa_g_zwa_new</strong> <em>(     Marpa_Grammar <var>g</var>,     int <var>default_value</var>)</em></dt>
@@ -11454,7 +11878,7 @@ On success, returns previous default value of the assertion.
 Previous: <a href="#Zero_002dwidth-assertion-methods" accesskey="p" rel="prev">Zero-width assertion methods</a>, Up: <a href="#Untested-methods" accesskey="u" rel="up">Untested methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Methods-for-revising-parses-1"></a>
-<h4 class="subsection">29.10.2 Methods for revising parses</h4>
+<h4 class="subsection">30.10.2 Methods for revising parses</h4>
 
 <a name="marpa_005fr_005fclean"></a><dl>
 <dt><a name="index-marpa_005fr_005fclean"></a>Function: <em>Marpa_Earleme</em> <strong>marpa_r_clean</strong> <em>(     Marpa_Recognizer <var>r</var>)</em></dt>
@@ -11473,7 +11897,7 @@ This method is untested and its fate is uncertain.
 Next: <a href="#History-of-the-Marpa-algorithm" accesskey="n" rel="next">History of the Marpa algorithm</a>, Previous: <a href="#Futures" accesskey="p" rel="prev">Futures</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Deprecated-techniques-and-methods-1"></a>
-<h2 class="chapter">30 Deprecated techniques and methods</h2>
+<h2 class="chapter">31 Deprecated techniques and methods</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#LHS-terminals" accesskey="1">LHS terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -11491,7 +11915,7 @@ Next: <a href="#History-of-the-Marpa-algorithm" accesskey="n" rel="next">History
 Next: <a href="#Valued-and-unvalued-symbols" accesskey="n" rel="next">Valued and unvalued symbols</a>, Previous: <a href="#Deprecated-techniques-and-methods" accesskey="p" rel="prev">Deprecated techniques and methods</a>, Up: <a href="#Deprecated-techniques-and-methods" accesskey="u" rel="up">Deprecated techniques and methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="LHS-terminals-1"></a>
-<h3 class="section">30.1 LHS terminals</h3>
+<h3 class="section">31.1 LHS terminals</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Overview-of-LHS-terminals" accesskey="1">Overview of LHS terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -11513,7 +11937,7 @@ Next: <a href="#Valued-and-unvalued-symbols" accesskey="n" rel="next">Valued and
 Next: <a href="#Motivation-of-LHS-terminals" accesskey="n" rel="next">Motivation of LHS terminals</a>, Previous: <a href="#LHS-terminals" accesskey="p" rel="prev">LHS terminals</a>, Up: <a href="#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Overview-of-LHS-terminals-1"></a>
-<h4 class="subsection">30.1.1 Overview of LHS terminals</h4>
+<h4 class="subsection">31.1.1 Overview of LHS terminals</h4>
 
 <p>The user creates LHS terminals with the
 <code>marpa_g_symbol_is_terminal_set()</code>
@@ -11535,7 +11959,7 @@ base grammar.
 Next: <a href="#LHS-terminal-methods" accesskey="n" rel="next">LHS terminal methods</a>, Previous: <a href="#Overview-of-LHS-terminals" accesskey="p" rel="prev">Overview of LHS terminals</a>, Up: <a href="#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Motivation-of-LHS-terminals-1"></a>
-<h4 class="subsection">30.1.2 Motivation of LHS terminals</h4>
+<h4 class="subsection">31.1.2 Motivation of LHS terminals</h4>
 
 <p>Recall that a terminal symbol is a symbol that
 may appear in the input.
@@ -11588,7 +12012,7 @@ into the code and complicate the API documentation.
 Next: <a href="#Precomputation-and-LHS-terminals" accesskey="n" rel="next">Precomputation and LHS terminals</a>, Previous: <a href="#Motivation-of-LHS-terminals" accesskey="p" rel="prev">Motivation of LHS terminals</a>, Up: <a href="#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="LHS-terminal-methods-1"></a>
-<h4 class="subsection">30.1.3 LHS terminal methods</h4>
+<h4 class="subsection">31.1.3 LHS terminal methods</h4>
 
 <p>The
 <a name="index-terminal-status-_0028of-a-symbol_0029"></a>
@@ -11643,7 +12067,7 @@ On hard failure, -2.
 Next: <a href="#Nulling-terminals" accesskey="n" rel="next">Nulling terminals</a>, Previous: <a href="#LHS-terminal-methods" accesskey="p" rel="prev">LHS terminal methods</a>, Up: <a href="#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Precomputation-and-LHS-terminals-1"></a>
-<h4 class="subsection">30.1.4 Precomputation and LHS terminals</h4>
+<h4 class="subsection">31.1.4 Precomputation and LHS terminals</h4>
 
 <p>On success,
 <code>marpa_g_precompute()</code>
@@ -11687,7 +12111,7 @@ See <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>.
 Previous: <a href="#Precomputation-and-LHS-terminals" accesskey="p" rel="prev">Precomputation and LHS terminals</a>, Up: <a href="#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Nulling-terminals-1"></a>
-<h4 class="subsection">30.1.5 Nulling terminals</h4>
+<h4 class="subsection">31.1.5 Nulling terminals</h4>
 
 <p>When LHS terminals are not in use, nulling terminals
 cannot occur,
@@ -11730,7 +12154,7 @@ with error code <code>MARPA_ERR_NULLING_TERMINAL</code>.
 Next: <a href="#Cycles" accesskey="n" rel="next">Cycles</a>, Previous: <a href="#LHS-terminals" accesskey="p" rel="prev">LHS terminals</a>, Up: <a href="#Deprecated-techniques-and-methods" accesskey="u" rel="up">Deprecated techniques and methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Valued-and-unvalued-symbols-1"></a>
-<h3 class="section">30.2 Valued and unvalued symbols</h3>
+<h3 class="section">31.2 Valued and unvalued symbols</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#What-unvalued-symbols-were" accesskey="1">What unvalued symbols were</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -11748,7 +12172,7 @@ Next: <a href="#Cycles" accesskey="n" rel="next">Cycles</a>, Previous: <a href="
 Next: <a href="#Grammar-methods-dealing-with-unvalued-symbols" accesskey="n" rel="next">Grammar methods dealing with unvalued symbols</a>, Previous: <a href="#Valued-and-unvalued-symbols" accesskey="p" rel="prev">Valued and unvalued symbols</a>, Up: <a href="#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="What-unvalued-symbols-were-1"></a>
-<h4 class="subsection">30.2.1 What unvalued symbols were</h4>
+<h4 class="subsection">31.2.1 What unvalued symbols were</h4>
 
 <p>Libmarpa symbols can have values,
 which is the traditional way of doing semantics.
@@ -11822,7 +12246,7 @@ some tricky debugging further down the road.
 Next: <a href="#Registering-semantics-in-the-valuator" accesskey="n" rel="next">Registering semantics in the valuator</a>, Previous: <a href="#What-unvalued-symbols-were" accesskey="p" rel="prev">What unvalued symbols were</a>, Up: <a href="#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Grammar-methods-dealing-with-unvalued-symbols-1"></a>
-<h4 class="subsection">30.2.2 Grammar methods dealing with unvalued symbols</h4>
+<h4 class="subsection">31.2.2 Grammar methods dealing with unvalued symbols</h4>
 
 <a name="marpa_005fg_005fsymbol_005fis_005fvalued_005fset"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued_005fset"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_valued_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>symbol_id</var>,     int value)</em></dt>
@@ -11857,7 +12281,7 @@ or on other hard failure, -2.
 Previous: <a href="#Grammar-methods-dealing-with-unvalued-symbols" accesskey="p" rel="prev">Grammar methods dealing with unvalued symbols</a>, Up: <a href="#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Registering-semantics-in-the-valuator-1"></a>
-<h4 class="subsection">30.2.3 Registering semantics in the valuator</h4>
+<h4 class="subsection">31.2.3 Registering semantics in the valuator</h4>
 
 <p>By default, Libmarpa&rsquo;s valuator objects
 assume that
@@ -11956,7 +12380,7 @@ value, which will never be
 Previous: <a href="#Valued-and-unvalued-symbols" accesskey="p" rel="prev">Valued and unvalued symbols</a>, Up: <a href="#Deprecated-techniques-and-methods" accesskey="u" rel="up">Deprecated techniques and methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Cycles-1"></a>
-<h3 class="section">30.3 Cycles</h3>
+<h3 class="section">31.3 Cycles</h3>
 
 <p>A cycle is a case in a grammar where a string
 non-trvially derives itself.
@@ -11990,7 +12414,7 @@ in <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>;
 Next: <a href="#Annotated-bibliography" accesskey="n" rel="next">Annotated bibliography</a>, Previous: <a href="#Deprecated-techniques-and-methods" accesskey="p" rel="prev">Deprecated techniques and methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="History-of-the-Marpa-algorithm-1"></a>
-<h2 class="chapter">31 History of the Marpa algorithm</h2>
+<h2 class="chapter">32 History of the Marpa algorithm</h2>
 
 <p>This chapter is a quick summary of the most important
 events in Marpa&rsquo;s development.
@@ -12050,7 +12474,7 @@ implementation issues.
 Next: <a href="#Acknowledgements" accesskey="n" rel="next">Acknowledgements</a>, Previous: <a href="#History-of-the-Marpa-algorithm" accesskey="p" rel="prev">History of the Marpa algorithm</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Annotated-bibliography-1"></a>
-<h2 class="chapter">32 Annotated bibliography</h2>
+<h2 class="chapter">33 Annotated bibliography</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Aho-and-Ullman-1972" accesskey="1">Aho and Ullman 1972</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -12090,7 +12514,7 @@ Next: <a href="#Acknowledgements" accesskey="n" rel="next">Acknowledgements</a>,
 Next: <a href="#Aycock-and-Horspool-2002" accesskey="n" rel="next">Aycock and Horspool 2002</a>, Previous: <a href="#Annotated-bibliography" accesskey="p" rel="prev">Annotated bibliography</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Aho-and-Ullman-1972-1"></a>
-<h3 class="section">32.1 Aho and Ullman 1972</h3>
+<h3 class="section">33.1 Aho and Ullman 1972</h3>
 
 <p><em>The Theory of Parsing, Translation and Compiling, Volume I: Parsing</em>
 by Alfred Aho and Jeffrey Ullman
@@ -12107,7 +12531,7 @@ The account of Earley&rsquo;s algorithm is on pages 320-330.
 Next: <a href="#C89" accesskey="n" rel="next">C89</a>, Previous: <a href="#Aho-and-Ullman-1972" accesskey="p" rel="prev">Aho and Ullman 1972</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Aycock-and-Horspool-2002-1"></a>
-<h3 class="section">32.2 Aycock and Horspool 2002</h3>
+<h3 class="section">33.2 Aycock and Horspool 2002</h3>
 
 <p>Marpa is based on ideas from
 John Aycock and R.
@@ -12137,7 +12561,7 @@ and nonetheless found this paper very heavy going.
 Next: <a href="#C99" accesskey="n" rel="next">C99</a>, Previous: <a href="#Aycock-and-Horspool-2002" accesskey="p" rel="prev">Aycock and Horspool 2002</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="C89-standard"></a>
-<h3 class="section">32.3 C89 standard</h3>
+<h3 class="section">33.3 C89 standard</h3>
 
 <p>Libmarpa is written to conform to the C89 standard.
 This can be found online at
@@ -12150,7 +12574,7 @@ This can be found online at
 Next: <a href="#Dominus-2005" accesskey="n" rel="next">Dominus 2005</a>, Previous: <a href="#C89" accesskey="p" rel="prev">C89</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="C99-standard"></a>
-<h3 class="section">32.4 C99 standard</h3>
+<h3 class="section">33.4 C99 standard</h3>
 
 <p>The C99 standard clarifies the C89 standard in many respects.
 It can be found online at
@@ -12163,7 +12587,7 @@ It can be found online at
 Next: <a href="#Earley-1970" accesskey="n" rel="next">Earley 1970</a>, Previous: <a href="#C99" accesskey="p" rel="prev">C99</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Dominus-2005-1"></a>
-<h3 class="section">32.5 Dominus 2005</h3>
+<h3 class="section">33.5 Dominus 2005</h3>
 
 <p>Although my approach to parsing is not influenced
 by Mark Jason Dominus&rsquo;s <em>Higher Order Perl</em>,
@@ -12193,7 +12617,7 @@ A PDF of the parsing chapter is at <a href="http://hop.perl.plover.com/book/pdf/
 Next: <a href="#Grune-and-Jacobs-1990" accesskey="n" rel="next">Grune and Jacobs 1990</a>, Previous: <a href="#Dominus-2005" accesskey="p" rel="prev">Dominus 2005</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Earley-1970-1"></a>
-<h3 class="section">32.6 Earley 1970</h3>
+<h3 class="section">33.6 Earley 1970</h3>
 
 <p>Of
 Jay Earley&rsquo;s papers on his general parsing algorithm,
@@ -12239,7 +12663,7 @@ so I am taking Tomita&rsquo;s word on this one.
 Next: <a href="#Grune-and-Jacobs-2008" accesskey="n" rel="next">Grune and Jacobs 2008</a>, Previous: <a href="#Earley-1970" accesskey="p" rel="prev">Earley 1970</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Grune-and-Jacobs-1990-1"></a>
-<h3 class="section">32.7 Grune and Jacobs 1990</h3>
+<h3 class="section">33.7 Grune and Jacobs 1990</h3>
 
 <p><em>Parsing Techniques: A Practical Guide</em>,
 by Dick Grune and
@@ -12255,7 +12679,7 @@ This book is available on the Web: <a href="http://dickgrune.com/Books/PTAPG_1st
 Next: <a href="#Marpa-theory-paper" accesskey="n" rel="next">Marpa theory paper</a>, Previous: <a href="#Grune-and-Jacobs-1990" accesskey="p" rel="prev">Grune and Jacobs 1990</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Grune-and-Jacobs-2008-1"></a>
-<h3 class="section">32.8 Grune and Jacobs 2008</h3>
+<h3 class="section">33.8 Grune and Jacobs 2008</h3>
 
 <p><em>Parsing Techniques: A Practical Guide</em>,
 by Dick Grune and
@@ -12280,7 +12704,7 @@ on the web: <a href="ftp://ftp.cs.vu.nl/pub/dick/PTAPG_2nd_Edition/CompleteList.
 Next: <a href="#Kegler-2023" accesskey="n" rel="next">Kegler 2023</a>, Previous: <a href="#Grune-and-Jacobs-2008" accesskey="p" rel="prev">Grune and Jacobs 2008</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Marpa-theory-paper-1"></a>
-<h3 class="section">32.9 Marpa theory paper</h3>
+<h3 class="section">33.9 Marpa theory paper</h3>
 
 <p>My writeup of the theory behind Marpa,
 with proofs of correctness and of my complexity claims,
@@ -12295,7 +12719,7 @@ and can be found on <code>arxiv.org</code> (<a href="https://arxiv.org/abs/1910.
 Next: <a href="#Parsing-timeline" accesskey="n" rel="next">Parsing timeline</a>, Previous: <a href="#Marpa-theory-paper" accesskey="p" rel="prev">Marpa theory paper</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Kegler-2023-1"></a>
-<h3 class="section">32.10 Kegler 2023</h3>
+<h3 class="section">33.10 Kegler 2023</h3>
 
 <p>This theory-oriented paper expands on
 the Marpa theory paper (see <a href="#Marpa-theory-paper">Marpa theory paper</a>).
@@ -12312,7 +12736,7 @@ and can be found on <code>arxiv.org</code> (<a href="https://arxiv.org/abs/2303.
 Next: <a href="#Leo-1991" accesskey="n" rel="next">Leo 1991</a>, Previous: <a href="#Kegler-2023" accesskey="p" rel="prev">Kegler 2023</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Parsing-timeline-1"></a>
-<h3 class="section">32.11 Parsing timeline</h3>
+<h3 class="section">33.11 Parsing timeline</h3>
 
 <p>Far more popular than my Marpa theory paper is my
 <em>Parsing: a timeline</em>.
@@ -12327,7 +12751,7 @@ and is available online:
 Next: <a href="#Scott-2008" accesskey="n" rel="next">Scott 2008</a>, Previous: <a href="#Parsing-timeline" accesskey="p" rel="prev">Parsing timeline</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Leo-1991-1"></a>
-<h3 class="section">32.12 Leo 1991</h3>
+<h3 class="section">33.12 Leo 1991</h3>
 
 <p>Marpa&rsquo;s handling of right-recursion uses the ideas in
 Joop M.I.M. Leo&rsquo;s
@@ -12347,7 +12771,7 @@ click the PDF icon at the top left.
 Next: <a href="#Wikipedia-BNF-article" accesskey="n" rel="next">Wikipedia BNF article</a>, Previous: <a href="#Leo-1991" accesskey="p" rel="prev">Leo 1991</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Scott-2008-1"></a>
-<h3 class="section">32.13 Scott 2008</h3>
+<h3 class="section">33.13 Scott 2008</h3>
 
 <p>One of our most important data structures is what we call a &ldquo;bocage&rdquo;.
 Prof. Scott&rsquo;s work preceded ours,
@@ -12366,7 +12790,7 @@ Electronic Notes in Theoretical Computer Science 203.2 (2008): 53-67,
 Previous: <a href="#Scott-2008" accesskey="p" rel="prev">Scott 2008</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Wikipedia-BNF-article-1"></a>
-<h3 class="section">32.14 Wikipedia BNF article</h3>
+<h3 class="section">33.14 Wikipedia BNF article</h3>
 
 <p>Wikipedia&rsquo;s article on Backus-Naur form is
 <a href="http://en.wikipedia.org/wiki/Backus-Naur_form">http://en.wikipedia.org/wiki/Backus-Naur_form</a>.
@@ -12386,7 +12810,7 @@ using a similar notation.
 Next: <a href="#Index-of-terms" accesskey="n" rel="next">Index of terms</a>, Previous: <a href="#Annotated-bibliography" accesskey="p" rel="prev">Annotated bibliography</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Acknowledgements-1"></a>
-<h2 class="chapter">33 Acknowledgements</h2>
+<h2 class="chapter">34 Acknowledgements</h2>
 
 <blockquote>
 <p>Beggar that I am, I am even poor in thanks; but I thank you;
@@ -12498,7 +12922,7 @@ those who participated.
 Previous: <a href="#Acknowledgements" accesskey="p" rel="prev">Acknowledgements</a>, Up: <a href="#Acknowledgements" accesskey="u" rel="up">Acknowledgements</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="An-apology-1"></a>
-<h3 class="section">33.1 An apology</h3>
+<h3 class="section">34.1 An apology</h3>
 
 <p>We feared that these acknowledgements would
 become an exhibition of our negligence and ingratitude,
@@ -12694,9 +13118,17 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-empty-rule-1">empty rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rules">Rules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-empty-sentence">empty sentence</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Nulling">Nulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-empty-string">empty string</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Nulling">Nulling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-end-of-file">end of file</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-end-of-input">end of input</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-end-of-parse">end of parse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#End-of-parsing">End of parsing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-End-of-parse-Earley-set">End of parse Earley set</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bocage-data-structure">Bocage data structure</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-end-of-string">end of string</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-environment-limit">environment limit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-environment_002c-application">environment, application</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-EOF">EOF</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-EOI">EOI</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-EOP">EOP</a>:</td><td>&nbsp;</td><td valign="top"><a href="#End-of-parsing">End of parsing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-EOS">EOS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-evaluate-_0028a-parse-run_0029">evaluate (a parse run)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Semantics-terms">Semantics terms</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-evaluate-_0028a-tree_0029">evaluate (a tree)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Semantics-terms">Semantics terms</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-evaluate-_0028an-input-string_0029">evaluate (an input string)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Semantics-terms">Semantics terms</a></td></tr>
@@ -12707,6 +13139,8 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-event_002dtriggering-_0028method_0029">event-triggering (method)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-events_002c-recognizer-per_002dsymbol">events, recognizer per-symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Recognizer-per_002dsymbol-events">Recognizer per-symbol events</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exhausted-parse">exhausted parse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-exhaustion-on-failure">exhaustion on failure</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-exhaustion-on-success">exhaustion on success</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exhaustion_002dhating-applications">exhaustion-hating applications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exhaustion_002dloving-applications">exhaustion-loving applications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-expected-symbol">expected symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
@@ -12849,6 +13283,8 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-parse-_0028aka-parse-run_0029">parse (aka parse run)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-parse-_0028aka-parse-tree_0029">parse (aka parse tree)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-parse-_0028forest_0029">parse (forest)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-parse-exhaustion-on-failure">parse exhaustion on failure</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-parse-exhaustion-on-success">parse exhaustion on success</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exhaustion">Exhaustion</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-parse-forest">parse forest</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-parse-tree">parse tree</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Tree-overview">Tree overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-parse-tree-iterator">parse tree iterator</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Tree-overview">Tree overview</a></td></tr>

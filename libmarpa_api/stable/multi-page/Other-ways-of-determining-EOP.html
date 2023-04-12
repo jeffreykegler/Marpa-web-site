@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (12 April 2023)
+is for Libmarpa 11.0.8.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Other ways of determining EOP (Libmarpa 11.0.8)</title>
+
+<meta name="description" content="Other ways of determining EOP (Libmarpa 11.0.8)">
+<meta name="keywords" content="Other ways of determining EOP (Libmarpa 11.0.8)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="End-of-parsing.html#End-of-parsing" rel="up" title="End of parsing">
+<link href="Semantics.html#Semantics" rel="next" title="Semantics">
+<link href="Determining-EOP-from-exhaustion.html#Determining-EOP-from-exhaustion" rel="prev" title="Determining EOP from exhaustion">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Other-ways-of-determining-EOP"></a>
+<div class="header">
+<p>
+Previous: <a href="Determining-EOP-from-exhaustion.html#Determining-EOP-from-exhaustion" accesskey="p" rel="prev">Determining EOP from exhaustion</a>, Up: <a href="End-of-parsing.html#End-of-parsing" accesskey="u" rel="up">End of parsing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Other-ways-of-determining-EOP-1"></a>
+<h3 class="section">9.3 Other ways of determining EOP</h3>
+
+<p>Occasionally, an exhaustion-hating application may not know
+the length of its input in advance.
+Since these applications will not know from the length of the input,
+or from exhaustion, that they are at end of input,
+they will need some other way of determining this.
+One way they may do this is with a
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> event.
+</p>
+<p>An example of such an application that has seen much use is
+the <code>Marpa::R2</code> lexer.
+The <code>Marpa::R2</code> lexer looks for one of a set of &ldquo;lexemes&rdquo;,
+seeking the longest one.
+It does this by declaring
+a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+for each lexeme, and recording the most recent location
+at which one of these completion events occurs.
+The <code>Marpa::R2</code> lexer stops looking for the longest lexeme on parse exhaustion,
+and at that point treats the parse location of the most recent
+<code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+as the EOP.
+If no <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event occurred,
+the <code>Marpa::R2</code> lexer failed to find a lexeme,
+and reports a lexing error.
+</p>
+
+
+
+</body>
+</html>

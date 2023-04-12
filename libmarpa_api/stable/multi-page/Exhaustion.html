@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (8 April 2023)
-is for Libmarpa 11.0.7.
+<!-- This manual (12 April 2023)
+is for Libmarpa 11.0.8.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Exhaustion (Libmarpa 11.0.7)</title>
+<title>Exhaustion (Libmarpa 11.0.8)</title>
 
-<meta name="description" content="Exhaustion (Libmarpa 11.0.7)">
-<meta name="keywords" content="Exhaustion (Libmarpa 11.0.7)">
+<meta name="description" content="Exhaustion (Libmarpa 11.0.8)">
+<meta name="keywords" content="Exhaustion (Libmarpa 11.0.8)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
-<link href="Semantics.html#Semantics" rel="next" title="Semantics">
+<link href="End-of-parsing.html#End-of-parsing" rel="next" title="End of parsing">
 <link href="Terminals.html#Terminals" rel="prev" title="Terminals">
 <style type="text/css">
 <!--
@@ -73,7 +73,7 @@ ul.no-bullet {list-style: none}
 <a name="Exhaustion"></a>
 <div class="header">
 <p>
-Next: <a href="Semantics.html#Semantics" accesskey="n" rel="next">Semantics</a>, Previous: <a href="Input.html#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="End-of-parsing.html#End-of-parsing" accesskey="n" rel="next">End of parsing</a>, Previous: <a href="Input.html#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Exhaustion-1"></a>
@@ -181,10 +181,26 @@ with the
 <code>marpa_r_is_exhausted()</code> method.
 See <a href="Other-parse-status-methods.html#marpa_005fr_005fis_005fexhausted">marpa_r_is_exhausted()</a>.
 </p>
+<p>Parse exhaustion can be triggered on method success
+by either the <code>marpa_r_earleme_complete()</code> or
+the <code>marpa_r_start_input</code> method.
+Parse exhaustion can be triggered on method failure
+by the <code>marpa_r_earleme_complete()</code> method.
+Parse exhaustion triggered on method success is called
+<a name="index-parse-exhaustion-on-success"></a>
+<em>parse exhaustion on success</em> or
+<a name="index-exhaustion-on-success"></a>
+<em>exhaustion on success</em>.
+Parse exhaustion triggered on method failure is called
+<a name="index-parse-exhaustion-on-failure"></a>
+<em>parse exhaustion on failure</em> or
+<a name="index-exhaustion-on-failure"></a>
+<em>exhaustion on failure</em>.
+</p>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Semantics.html#Semantics" accesskey="n" rel="next">Semantics</a>, Previous: <a href="Input.html#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="End-of-parsing.html#End-of-parsing" accesskey="n" rel="next">End of parsing</a>, Previous: <a href="Input.html#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

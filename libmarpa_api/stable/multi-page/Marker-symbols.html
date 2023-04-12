@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (12 April 2023)
+is for Libmarpa 11.0.8.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Marker symbols (Libmarpa 11.0.8)</title>
+
+<meta name="description" content="Marker symbols (Libmarpa 11.0.8)">
+<meta name="keywords" content="Marker symbols (Libmarpa 11.0.8)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Events.html#Events" rel="up" title="Events">
+<link href="Per_002drule-events.html#Per_002drule-events" rel="next" title="Per-rule events">
+<link href="Event-coincidence-of-symbols.html#Event-coincidence-of-symbols" rel="prev" title="Event coincidence of symbols">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Marker-symbols"></a>
+<div class="header">
+<p>
+Next: <a href="Per_002drule-events.html#Per_002drule-events" accesskey="n" rel="next">Per-rule events</a>, Previous: <a href="Event-coincidence-of-symbols.html#Event-coincidence-of-symbols" accesskey="p" rel="prev">Event coincidence of symbols</a>, Up: <a href="Events.html#Events" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Marker-symbols-1"></a>
+<h3 class="section">25.14 Marker symbols</h3>
+
+<p>A marker symbol is a nulling symbol introduced for
+the purpose of &ldquo;marking&rdquo; a position in a rule.
+If a <code>MARPA_EVENT_SYMBOL_NULLED</code> event is
+activated for the marker symbol,
+an event instance will be triggered whenever that
+position in the rule is reached.
+</p>
+<p>For example, consider the rule
+<a name="Rule-R1"></a></p><div class="display">
+<pre class="display">     [ A ::= Y Z ].                  (R1)
+</pre></div>
+<p>If we replace <code>(R1)</code> with the following
+rules
+</p><div class="display">
+<pre class="display">     [ Mk0 ::= ]
+     [ Mk1 ::= ]
+     [ Mk2 ::= ]
+     [ A ::= Mk0 Y Mk1 Z Mk2 ].      (R2)
+</pre></div>
+<p>and activate
+<code>MARPA_EVENT_SYMBOL_NULLED</code> events
+for the marker symbols
+(<code>Mk1</code>, <code>Mk2</code>, and <code>Mk3</code>),
+then a <code>MARPA_EVENT_SYMBOL_NULLED</code> event instance
+</p><ul>
+<li> for <code>Mk0</code> will trigger at every location where <code>(R2)</code> is predicted;
+</li><li> for <code>Mk1</code> will trigger at every location where the symbol <code>Y</code>
+in rule <code>(R2)</code> has been recognized,
+and the symbol <code>Z</code> is predicted;
+</li><li> for <code>Mk2</code> will trigger at every location where <code>(R2)</code>
+has been fully recognized, so that the entire RHS,
+including both symbols <code>Y</code> and <code>Z</code>, has been recognized.
+</li></ul>
+<p>We can note that use of the marker <code>Mk0</code>
+can be replaced by
+declaring  <code>MARPA_EVENT_SYMBOL_PREDICTED</code> event
+for symbol <code>A</code>.
+Similarly,
+use of the marker <code>Mk2</code>
+can be replaced by
+declaring  <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+for symbol <code>A</code>.
+We discuss this more below.
+See <a href="Per_002drule-events.html#Per_002drule-events">Per-rule events</a>.
+</p>
+
+
+
+</body>
+</html>

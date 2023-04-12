@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (8 April 2023)
-is for Libmarpa 11.0.7.
+<!-- This manual (12 April 2023)
+is for Libmarpa 11.0.8.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Top (Libmarpa 11.0.7)</title>
+<title>Top (Libmarpa 11.0.8)</title>
 
-<meta name="description" content="Top (Libmarpa 11.0.7)">
-<meta name="keywords" content="Top (Libmarpa 11.0.7)">
+<meta name="description" content="Top (Libmarpa 11.0.8)">
+<meta name="keywords" content="Top (Libmarpa 11.0.8)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -69,7 +69,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">Libmarpa 11.0.7</h1>
+<h1 class="settitle" align="center">Libmarpa 11.0.8</h1>
 
 
 
@@ -131,202 +131,215 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Terminals-1" href="Terminals.html#Terminals">7.3 Terminals</a></li>
   </ul></li>
   <li><a name="toc-Exhaustion-1" href="Exhaustion.html#Exhaustion">8 Exhaustion</a></li>
-  <li><a name="toc-Semantics-1" href="Semantics.html#Semantics">9 Semantics</a></li>
-  <li><a name="toc-Threads-1" href="Threads.html#Threads">10 Threads</a></li>
-  <li><a name="toc-Sequence-rules-1" href="Sequence-rules.html#Sequence-rules">11 Sequence rules</a></li>
-  <li><a name="toc-Nullability-1" href="Nullability.html#Nullability">12 Nullability</a>
+  <li><a name="toc-End-of-parsing-1" href="End-of-parsing.html#End-of-parsing">9 End of parsing</a>
   <ul class="no-bullet">
-    <li><a name="toc-Nullability-in-the-valuator" href="Nullability-and-the-valuator.html#Nullability-and-the-valuator">12.1 Nullability in the valuator</a></li>
-    <li><a name="toc-Assigning-semantics-to-nulled-symbols-1" href="Assigning-semantics-to-nulled-symbols.html#Assigning-semantics-to-nulled-symbols">12.2 Assigning semantics to nulled symbols</a></li>
-    <li><a name="toc-Evaluating-nulled-symbols-1" href="Evaluating-nulled-symbols.html#Evaluating-nulled-symbols">12.3 Evaluating nulled symbols</a></li>
-    <li><a name="toc-Example-of-nulled-symbol-1" href="Example-of-nulled-symbol.html#Example-of-nulled-symbol">12.4 Example of nulled symbol</a></li>
-    <li><a name="toc-Duplicate-nulled-nodes-1" href="Duplicate-nulled-nodes.html#Duplicate-nulled-nodes">12.5 Duplicate nulled nodes</a></li>
+    <li><a name="toc-Determining-EOP-from-EOI-1" href="Determining-EOP-from-EOI.html#Determining-EOP-from-EOI">9.1 Determining EOP from EOI</a></li>
+    <li><a name="toc-Determining-EOP-from-exhaustion-1" href="Determining-EOP-from-exhaustion.html#Determining-EOP-from-exhaustion">9.2 Determining EOP from exhaustion</a></li>
+    <li><a name="toc-Other-ways-of-determining-EOP-1" href="Other-ways-of-determining-EOP.html#Other-ways-of-determining-EOP">9.3 Other ways of determining EOP</a></li>
   </ul></li>
-  <li><a name="toc-Failure-1" href="Failure.html#Failure">13 Failure</a>
+  <li><a name="toc-Semantics-1" href="Semantics.html#Semantics">10 Semantics</a></li>
+  <li><a name="toc-Threads-1" href="Threads.html#Threads">11 Threads</a></li>
+  <li><a name="toc-Sequence-rules-1" href="Sequence-rules.html#Sequence-rules">12 Sequence rules</a></li>
+  <li><a name="toc-Nullability-1" href="Nullability.html#Nullability">13 Nullability</a>
   <ul class="no-bullet">
-    <li><a name="toc-Libmarpa_0027s-approach-to-failure-1" href="Libmarpa_0027s-approach-to-failure.html#Libmarpa_0027s-approach-to-failure">13.1 Libmarpa&rsquo;s approach to failure</a></li>
-    <li><a name="toc-User-non_002dconformity-to-specified-behavior-1" href="User-non_002dconformity-to-specified-behavior.html#User-non_002dconformity-to-specified-behavior">13.2 User non-conformity to specified behavior</a></li>
-    <li><a name="toc-Classifying-failure-1" href="Classifying-failure.html#Classifying-failure">13.3 Classifying failure</a></li>
-    <li><a name="toc-Memory-allocation-failure-1" href="Memory-allocation-failure.html#Memory-allocation-failure">13.4 Memory allocation failure</a></li>
-    <li><a name="toc-Undetected-failure-1" href="Undetected-failure.html#Undetected-failure">13.5 Undetected failure</a></li>
-    <li><a name="toc-Irrecoverable-hard-failure-1" href="Irrecoverable-hard-failure.html#Irrecoverable-hard-failure">13.6 Irrecoverable hard failure</a></li>
-    <li><a name="toc-Partially-recoverable-hard-failure-1" href="Partially-recoverable-hard-failure.html#Partially-recoverable-hard-failure">13.7 Partially recoverable hard failure</a></li>
-    <li><a name="toc-Library_002drecoverable-hard-failure-1" href="Library_002drecoverable-hard-failure.html#Library_002drecoverable-hard-failure">13.8 Library-recoverable hard failure</a></li>
-    <li><a name="toc-Ancestry_002drecoverable-hard-failure-1" href="Ancestry_002drecoverable-hard-failure.html#Ancestry_002drecoverable-hard-failure">13.9 Ancestry-recoverable hard failure</a></li>
-    <li><a name="toc-Fully-recoverable-hard-failure-1" href="Fully-recoverable-hard-failure.html#Fully-recoverable-hard-failure">13.10 Fully recoverable hard failure</a></li>
-    <li><a name="toc-Soft-failure-1" href="Soft-failure.html#Soft-failure">13.11 Soft failure</a></li>
-    <li><a name="toc-Error-codes-1" href="Error-codes.html#Error-codes">13.12 Error codes</a></li>
+    <li><a name="toc-Nullability-in-the-valuator-1" href="Nullability-in-the-valuator.html#Nullability-in-the-valuator">13.1 Nullability in the valuator</a></li>
+    <li><a name="toc-Assigning-semantics-to-nulled-symbols-1" href="Assigning-semantics-to-nulled-symbols.html#Assigning-semantics-to-nulled-symbols">13.2 Assigning semantics to nulled symbols</a></li>
+    <li><a name="toc-Evaluating-nulled-symbols-1" href="Evaluating-nulled-symbols.html#Evaluating-nulled-symbols">13.3 Evaluating nulled symbols</a></li>
+    <li><a name="toc-Example-of-nulled-symbol-1" href="Example-of-nulled-symbol.html#Example-of-nulled-symbol">13.4 Example of nulled symbol</a></li>
+    <li><a name="toc-Duplicate-nulled-nodes-1" href="Duplicate-nulled-nodes.html#Duplicate-nulled-nodes">13.5 Duplicate nulled nodes</a></li>
   </ul></li>
-  <li><a name="toc-Introduction-to-the-method-descriptions-1" href="Introduction-to-the-method-descriptions.html#Introduction-to-the-method-descriptions">14 Introduction to the method descriptions</a>
+  <li><a name="toc-Failure-1" href="Failure.html#Failure">14 Failure</a>
   <ul class="no-bullet">
-    <li><a name="toc-About-the-overviews-1" href="About-the-overviews.html#About-the-overviews">14.1 About the overviews</a></li>
-    <li><a name="toc-Naming-conventions-1" href="Naming-conventions.html#Naming-conventions">14.2 Naming conventions</a></li>
-    <li><a name="toc-Return-values-1" href="Return-values.html#Return-values">14.3 Return values</a></li>
-    <li><a name="toc-How-to-read-the-method-descriptions-1" href="How-to-read-the-method-descriptions.html#How-to-read-the-method-descriptions">14.4 How to read the method descriptions</a></li>
+    <li><a name="toc-Libmarpa_0027s-approach-to-failure-1" href="Libmarpa_0027s-approach-to-failure.html#Libmarpa_0027s-approach-to-failure">14.1 Libmarpa&rsquo;s approach to failure</a></li>
+    <li><a name="toc-User-non_002dconformity-to-specified-behavior-1" href="User-non_002dconformity-to-specified-behavior.html#User-non_002dconformity-to-specified-behavior">14.2 User non-conformity to specified behavior</a></li>
+    <li><a name="toc-Classifying-failure-1" href="Classifying-failure.html#Classifying-failure">14.3 Classifying failure</a></li>
+    <li><a name="toc-Memory-allocation-failure-1" href="Memory-allocation-failure.html#Memory-allocation-failure">14.4 Memory allocation failure</a></li>
+    <li><a name="toc-Undetected-failure-1" href="Undetected-failure.html#Undetected-failure">14.5 Undetected failure</a></li>
+    <li><a name="toc-Irrecoverable-hard-failure-1" href="Irrecoverable-hard-failure.html#Irrecoverable-hard-failure">14.6 Irrecoverable hard failure</a></li>
+    <li><a name="toc-Partially-recoverable-hard-failure-1" href="Partially-recoverable-hard-failure.html#Partially-recoverable-hard-failure">14.7 Partially recoverable hard failure</a></li>
+    <li><a name="toc-Library_002drecoverable-hard-failure-1" href="Library_002drecoverable-hard-failure.html#Library_002drecoverable-hard-failure">14.8 Library-recoverable hard failure</a></li>
+    <li><a name="toc-Ancestry_002drecoverable-hard-failure-1" href="Ancestry_002drecoverable-hard-failure.html#Ancestry_002drecoverable-hard-failure">14.9 Ancestry-recoverable hard failure</a></li>
+    <li><a name="toc-Fully-recoverable-hard-failure-1" href="Fully-recoverable-hard-failure.html#Fully-recoverable-hard-failure">14.10 Fully recoverable hard failure</a></li>
+    <li><a name="toc-Soft-failure-1" href="Soft-failure.html#Soft-failure">14.11 Soft failure</a></li>
+    <li><a name="toc-Error-codes-1" href="Error-codes.html#Error-codes">14.12 Error codes</a></li>
   </ul></li>
-  <li><a name="toc-Static-methods-1" href="Static-methods.html#Static-methods">15 Static methods</a></li>
-  <li><a name="toc-Configuration-methods-1" href="Configuration-methods.html#Configuration-methods">16 Configuration methods</a></li>
-  <li><a name="toc-Grammar-methods-1" href="Grammar-methods.html#Grammar-methods">17 Grammar methods</a>
+  <li><a name="toc-Introduction-to-the-method-descriptions-1" href="Introduction-to-the-method-descriptions.html#Introduction-to-the-method-descriptions">15 Introduction to the method descriptions</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview" href="Grammar-overview.html#Grammar-overview">17.1 Overview</a></li>
-    <li><a name="toc-Creating-a-new-grammar" href="Grammar-constructor.html#Grammar-constructor">17.2 Creating a new grammar</a></li>
-    <li><a name="toc-Tracking-the-reference-count-of-the-grammar" href="Grammar-reference-counting.html#Grammar-reference-counting">17.3 Tracking the reference count of the grammar</a></li>
-    <li><a name="toc-Symbol-methods-1" href="Symbol-methods.html#Symbol-methods">17.4 Symbol methods</a></li>
-    <li><a name="toc-Rule-methods-1" href="Rule-methods.html#Rule-methods">17.5 Rule methods</a></li>
-    <li><a name="toc-Sequence-methods-1" href="Sequence-methods.html#Sequence-methods">17.6 Sequence methods</a></li>
-    <li><a name="toc-Rank-methods-1" href="Rank-methods.html#Rank-methods">17.7 Rank methods</a></li>
-    <li><a name="toc-Precomputing-the-Grammar" href="Grammar-precomputation.html#Grammar-precomputation">17.8 Precomputing the Grammar</a></li>
+    <li><a name="toc-About-the-overviews-1" href="About-the-overviews.html#About-the-overviews">15.1 About the overviews</a></li>
+    <li><a name="toc-Naming-conventions-1" href="Naming-conventions.html#Naming-conventions">15.2 Naming conventions</a></li>
+    <li><a name="toc-Return-values-1" href="Return-values.html#Return-values">15.3 Return values</a></li>
+    <li><a name="toc-How-to-read-the-method-descriptions-1" href="How-to-read-the-method-descriptions.html#How-to-read-the-method-descriptions">15.4 How to read the method descriptions</a></li>
   </ul></li>
-  <li><a name="toc-Recognizer-methods-1" href="Recognizer-methods.html#Recognizer-methods">18 Recognizer methods</a>
+  <li><a name="toc-Static-methods-1" href="Static-methods.html#Static-methods">16 Static methods</a></li>
+  <li><a name="toc-Configuration-methods-1" href="Configuration-methods.html#Configuration-methods">17 Configuration methods</a></li>
+  <li><a name="toc-Grammar-methods-1" href="Grammar-methods.html#Grammar-methods">18 Grammar methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-Recognizer-overview-1" href="Recognizer-overview.html#Recognizer-overview">18.1 Recognizer overview</a></li>
-    <li><a name="toc-Creating-a-new-recognizer-1" href="Creating-a-new-recognizer.html#Creating-a-new-recognizer">18.2 Creating a new recognizer</a></li>
-    <li><a name="toc-Keeping-the-reference-count-of-a-recognizer" href="Recognizer-reference-counting.html#Recognizer-reference-counting">18.3 Keeping the reference count of a recognizer</a></li>
-    <li><a name="toc-Life-cycle-mutators" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">18.4 Life cycle mutators</a></li>
-    <li><a name="toc-Location-accessors-1" href="Location-accessors.html#Location-accessors">18.5 Location accessors</a></li>
-    <li><a name="toc-Other-parse-status-methods-1" href="Other-parse-status-methods.html#Other-parse-status-methods">18.6 Other parse status methods</a></li>
+    <li><a name="toc-Overview" href="Grammar-overview.html#Grammar-overview">18.1 Overview</a></li>
+    <li><a name="toc-Creating-a-new-grammar" href="Grammar-constructor.html#Grammar-constructor">18.2 Creating a new grammar</a></li>
+    <li><a name="toc-Tracking-the-reference-count-of-the-grammar" href="Grammar-reference-counting.html#Grammar-reference-counting">18.3 Tracking the reference count of the grammar</a></li>
+    <li><a name="toc-Symbol-methods-1" href="Symbol-methods.html#Symbol-methods">18.4 Symbol methods</a></li>
+    <li><a name="toc-Rule-methods-1" href="Rule-methods.html#Rule-methods">18.5 Rule methods</a></li>
+    <li><a name="toc-Sequence-methods-1" href="Sequence-methods.html#Sequence-methods">18.6 Sequence methods</a></li>
+    <li><a name="toc-Rank-methods-1" href="Rank-methods.html#Rank-methods">18.7 Rank methods</a></li>
+    <li><a name="toc-Precomputing-the-Grammar" href="Grammar-precomputation.html#Grammar-precomputation">18.8 Precomputing the Grammar</a></li>
   </ul></li>
-  <li><a name="toc-Progress-reports-1" href="Progress-reports.html#Progress-reports">19 Progress reports</a></li>
-  <li><a name="toc-Bocage-methods-1" href="Bocage-methods.html#Bocage-methods">20 Bocage methods</a>
+  <li><a name="toc-Recognizer-methods-1" href="Recognizer-methods.html#Recognizer-methods">19 Recognizer methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview-1" href="Bocage-overview.html#Bocage-overview">20.1 Overview</a></li>
-    <li><a name="toc-Bocage-data-structure-1" href="Bocage-data-structure.html#Bocage-data-structure">20.2 Bocage data structure</a></li>
-    <li><a name="toc-Creating-a-new-bocage" href="Bocage-constructor.html#Bocage-constructor">20.3 Creating a new bocage</a></li>
-    <li><a name="toc-Reference-counting-2" href="Bocage-reference-counting.html#Bocage-reference-counting">20.4 Reference counting</a></li>
-    <li><a name="toc-Accessors" href="Bocage-accessor.html#Bocage-accessor">20.5 Accessors</a></li>
+    <li><a name="toc-Recognizer-overview-1" href="Recognizer-overview.html#Recognizer-overview">19.1 Recognizer overview</a></li>
+    <li><a name="toc-Creating-a-new-recognizer-1" href="Creating-a-new-recognizer.html#Creating-a-new-recognizer">19.2 Creating a new recognizer</a></li>
+    <li><a name="toc-Keeping-the-reference-count-of-a-recognizer" href="Recognizer-reference-counting.html#Recognizer-reference-counting">19.3 Keeping the reference count of a recognizer</a></li>
+    <li><a name="toc-Life-cycle-mutators" href="Recognizer-life-cycle-mutators.html#Recognizer-life-cycle-mutators">19.4 Life cycle mutators</a></li>
+    <li><a name="toc-Location-accessors-1" href="Location-accessors.html#Location-accessors">19.5 Location accessors</a></li>
+    <li><a name="toc-Other-parse-status-methods-1" href="Other-parse-status-methods.html#Other-parse-status-methods">19.6 Other parse status methods</a></li>
   </ul></li>
-  <li><a name="toc-Ordering-methods-1" href="Ordering-methods.html#Ordering-methods">21 Ordering methods</a>
+  <li><a name="toc-Progress-reports-1" href="Progress-reports.html#Progress-reports">20 Progress reports</a></li>
+  <li><a name="toc-Bocage-methods-1" href="Bocage-methods.html#Bocage-methods">21 Bocage methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview-2" href="Ordering-overview.html#Ordering-overview">21.1 Overview</a></li>
-    <li><a name="toc-Freezing-the-ordering-1" href="Freezing-the-ordering.html#Freezing-the-ordering">21.2 Freezing the ordering</a></li>
-    <li><a name="toc-Creating-an-ordering" href="Ordering-constructor.html#Ordering-constructor">21.3 Creating an ordering</a></li>
-    <li><a name="toc-Reference-counting-3" href="Ordering-reference-counting.html#Ordering-reference-counting">21.4 Reference counting</a></li>
-    <li><a name="toc-Accessors-1" href="Order-accessor.html#Order-accessor">21.5 Accessors</a></li>
-    <li><a name="toc-Non_002ddefault-ordering-1" href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">21.6 Non-default ordering</a></li>
+    <li><a name="toc-Overview-1" href="Bocage-overview.html#Bocage-overview">21.1 Overview</a></li>
+    <li><a name="toc-Bocage-data-structure-1" href="Bocage-data-structure.html#Bocage-data-structure">21.2 Bocage data structure</a></li>
+    <li><a name="toc-Creating-a-new-bocage" href="Bocage-constructor.html#Bocage-constructor">21.3 Creating a new bocage</a></li>
+    <li><a name="toc-Reference-counting-2" href="Bocage-reference-counting.html#Bocage-reference-counting">21.4 Reference counting</a></li>
+    <li><a name="toc-Accessors" href="Bocage-accessor.html#Bocage-accessor">21.5 Accessors</a></li>
   </ul></li>
-  <li><a name="toc-Tree-methods-1" href="Tree-methods.html#Tree-methods">22 Tree methods</a>
+  <li><a name="toc-Ordering-methods-1" href="Ordering-methods.html#Ordering-methods">22 Ordering methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview-3" href="Tree-overview.html#Tree-overview">22.1 Overview</a></li>
-    <li><a name="toc-Creating-a-new-tree-iterator" href="Tree-constructor.html#Tree-constructor">22.2 Creating a new tree iterator</a></li>
-    <li><a name="toc-Reference-counting-4" href="Tree-reference-counting.html#Tree-reference-counting">22.3 Reference counting</a></li>
-    <li><a name="toc-Iterating-through-the-trees-1" href="Iterating-through-the-trees.html#Iterating-through-the-trees">22.4 Iterating through the trees</a></li>
+    <li><a name="toc-Overview-2" href="Ordering-overview.html#Ordering-overview">22.1 Overview</a></li>
+    <li><a name="toc-Freezing-the-ordering-1" href="Freezing-the-ordering.html#Freezing-the-ordering">22.2 Freezing the ordering</a></li>
+    <li><a name="toc-Creating-an-ordering" href="Ordering-constructor.html#Ordering-constructor">22.3 Creating an ordering</a></li>
+    <li><a name="toc-Reference-counting-3" href="Ordering-reference-counting.html#Ordering-reference-counting">22.4 Reference counting</a></li>
+    <li><a name="toc-Accessors-1" href="Order-accessor.html#Order-accessor">22.5 Accessors</a></li>
+    <li><a name="toc-Non_002ddefault-ordering-1" href="Non_002ddefault-ordering.html#Non_002ddefault-ordering">22.6 Non-default ordering</a></li>
   </ul></li>
-  <li><a name="toc-Value-methods-1" href="Value-methods.html#Value-methods">23 Value methods</a>
+  <li><a name="toc-Tree-methods-1" href="Tree-methods.html#Tree-methods">23 Tree methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview-4" href="Value-overview.html#Value-overview">23.1 Overview</a></li>
-    <li><a name="toc-How-to-use-the-valuator-1" href="How-to-use-the-valuator.html#How-to-use-the-valuator">23.2 How to use the valuator</a></li>
-    <li><a name="toc-Advantages-of-step_002ddriven-valuation-1" href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation">23.3 Advantages of step-driven valuation</a></li>
-    <li><a name="toc-Maintaining-the-stack-1" href="Maintaining-the-stack.html#Maintaining-the-stack">23.4 Maintaining the stack</a>
+    <li><a name="toc-Overview-3" href="Tree-overview.html#Tree-overview">23.1 Overview</a></li>
+    <li><a name="toc-Creating-a-new-tree-iterator" href="Tree-constructor.html#Tree-constructor">23.2 Creating a new tree iterator</a></li>
+    <li><a name="toc-Reference-counting-4" href="Tree-reference-counting.html#Tree-reference-counting">23.3 Reference counting</a></li>
+    <li><a name="toc-Iterating-through-the-trees-1" href="Iterating-through-the-trees.html#Iterating-through-the-trees">23.4 Iterating through the trees</a></li>
+  </ul></li>
+  <li><a name="toc-Value-methods-1" href="Value-methods.html#Value-methods">24 Value methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Overview-4" href="Value-overview.html#Value-overview">24.1 Overview</a></li>
+    <li><a name="toc-How-to-use-the-valuator-1" href="How-to-use-the-valuator.html#How-to-use-the-valuator">24.2 How to use the valuator</a></li>
+    <li><a name="toc-Advantages-of-step_002ddriven-valuation-1" href="Advantages-of-step_002ddriven-valuation.html#Advantages-of-step_002ddriven-valuation">24.3 Advantages of step-driven valuation</a></li>
+    <li><a name="toc-Maintaining-the-stack-1" href="Maintaining-the-stack.html#Maintaining-the-stack">24.4 Maintaining the stack</a>
     <ul class="no-bullet">
-      <li><a name="toc-Sizing-the-stack-1" href="Sizing-the-stack.html#Sizing-the-stack">23.4.1 Sizing the stack</a></li>
+      <li><a name="toc-Sizing-the-stack-1" href="Sizing-the-stack.html#Sizing-the-stack">24.4.1 Sizing the stack</a></li>
     </ul></li>
-    <li><a name="toc-Creating-a-new-valuator" href="Valuator-constructor.html#Valuator-constructor">23.5 Creating a new valuator</a></li>
-    <li><a name="toc-Reference-counting-5" href="Valuator-reference-counting.html#Valuator-reference-counting">23.6 Reference counting</a></li>
-    <li><a name="toc-Stepping-through-the-valuator-1" href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">23.7 Stepping through the valuator</a></li>
-    <li><a name="toc-Valuator-step-types-1" href="Valuator-step-types.html#Valuator-step-types">23.8 Valuator step types</a></li>
-    <li><a name="toc-Basic-step-accessors-1" href="Basic-step-accessors.html#Basic-step-accessors">23.9 Basic step accessors</a></li>
-    <li><a name="toc-Step-location-accessors-1" href="Step-location-accessors.html#Step-location-accessors">23.10 Step location accessors</a></li>
+    <li><a name="toc-Creating-a-new-valuator" href="Valuator-constructor.html#Valuator-constructor">24.5 Creating a new valuator</a></li>
+    <li><a name="toc-Reference-counting-5" href="Valuator-reference-counting.html#Valuator-reference-counting">24.6 Reference counting</a></li>
+    <li><a name="toc-Stepping-through-the-valuator-1" href="Stepping-through-the-valuator.html#Stepping-through-the-valuator">24.7 Stepping through the valuator</a></li>
+    <li><a name="toc-Valuator-step-types-1" href="Valuator-step-types.html#Valuator-step-types">24.8 Valuator step types</a></li>
+    <li><a name="toc-Basic-step-accessors-1" href="Basic-step-accessors.html#Basic-step-accessors">24.9 Basic step accessors</a></li>
+    <li><a name="toc-Step-location-accessors-1" href="Step-location-accessors.html#Step-location-accessors">24.10 Step location accessors</a></li>
   </ul></li>
-  <li><a name="toc-Events-1" href="Events.html#Events">24 Events</a>
+  <li><a name="toc-Events-1" href="Events.html#Events">25 Events</a>
   <ul class="no-bullet">
-    <li><a name="toc-Overview-5" href="Events-overview.html#Events-overview">24.1 Overview</a></li>
-    <li><a name="toc-Event-codes-1" href="Event-codes.html#Event-codes">24.2 Event codes</a></li>
-    <li><a name="toc-Basic-event-accessors-1" href="Basic-event-accessors.html#Basic-event-accessors">24.3 Basic event accessors</a></li>
-    <li><a name="toc-Completion-events-1" href="Completion-events.html#Completion-events">24.4 Completion events</a></li>
-    <li><a name="toc-Symbol-nulled-events-1" href="Symbol-nulled-events.html#Symbol-nulled-events">24.5 Symbol nulled events</a></li>
-    <li><a name="toc-Prediction-events-1" href="Prediction-events.html#Prediction-events">24.6 Prediction events</a></li>
-    <li><a name="toc-Symbol-expected-events-1" href="Symbol-expected-events.html#Symbol-expected-events">24.7 Symbol expected events</a></li>
-    <li><a name="toc-Recognizer-per_002dsymbol-events-1" href="Recognizer-per_002dsymbol-events.html#Recognizer-per_002dsymbol-events">24.8 Recognizer per-symbol events</a></li>
-    <li><a name="toc-Tentative-events-1" href="Tentative-events.html#Tentative-events">24.9 Tentative events</a></li>
-    <li><a name="toc-Event-coincidence-of-symbol-instances-1" href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances">24.10 Event coincidence of symbol instances</a>
+    <li><a name="toc-Overview-5" href="Events-overview.html#Events-overview">25.1 Overview</a></li>
+    <li><a name="toc-Event-codes-1" href="Event-codes.html#Event-codes">25.2 Event codes</a></li>
+    <li><a name="toc-Basic-event-accessors-1" href="Basic-event-accessors.html#Basic-event-accessors">25.3 Basic event accessors</a></li>
+    <li><a name="toc-Completion-events-1" href="Completion-events.html#Completion-events">25.4 Completion events</a></li>
+    <li><a name="toc-Symbol-nulled-events-1" href="Symbol-nulled-events.html#Symbol-nulled-events">25.5 Symbol nulled events</a></li>
+    <li><a name="toc-Prediction-events-1" href="Prediction-events.html#Prediction-events">25.6 Prediction events</a></li>
+    <li><a name="toc-Symbol-expected-events-1" href="Symbol-expected-events.html#Symbol-expected-events">25.7 Symbol expected events</a></li>
+    <li><a name="toc-Recognizer-per_002dsymbol-events-1" href="Recognizer-per_002dsymbol-events.html#Recognizer-per_002dsymbol-events">25.8 Recognizer per-symbol events</a></li>
+    <li><a name="toc-Tentative-events-1" href="Tentative-events.html#Tentative-events">25.9 Tentative events</a></li>
+    <li><a name="toc-Ambiguous-parses-and-events-1" href="Ambiguous-parses-and-events.html#Ambiguous-parses-and-events">25.10 Ambiguous parses and events</a></li>
+    <li><a name="toc-Nulled-subtrees-and-events-1" href="Nulled-subtrees-and-events.html#Nulled-subtrees-and-events">25.11 Nulled subtrees and events</a></li>
+    <li><a name="toc-Event-coincidence-of-symbol-instances-1" href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances">25.12 Event coincidence of symbol instances</a>
     <ul class="no-bullet">
-      <li><a name="toc-Nulled-and-completed-symbol-instances-1" href="Nulled-and-completed-symbol-instances.html#Nulled-and-completed-symbol-instances">24.10.1 Nulled and completed symbol instances</a></li>
-      <li><a name="toc-Nulled-and-predicted-symbol-instances-1" href="Nulled-and-predicted-symbol-instances.html#Nulled-and-predicted-symbol-instances">24.10.2 Nulled and predicted symbol instances</a></li>
-      <li><a name="toc-Nulled-and-expected-symbol-instances-1" href="Nulled-and-expected-symbol-instances.html#Nulled-and-expected-symbol-instances">24.10.3 Nulled and expected symbol instances</a></li>
-      <li><a name="toc-Completed-and-predicted-symbol-instances-1" href="Completed-and-predicted-symbol-instances.html#Completed-and-predicted-symbol-instances">24.10.4 Completed and predicted symbol instances</a></li>
-      <li><a name="toc-Completed-and-expected-symbol-instances-1" href="Completed-and-expected-symbol-instances.html#Completed-and-expected-symbol-instances">24.10.5 Completed and expected symbol instances</a></li>
-      <li><a name="toc-Predicted-and-expected-symbol-instances-1" href="Predicted-and-expected-symbol-instances.html#Predicted-and-expected-symbol-instances">24.10.6 Predicted and expected symbol instances</a></li>
+      <li><a name="toc-Nulled-and-completed-symbol-instances-1" href="Nulled-and-completed-symbol-instances.html#Nulled-and-completed-symbol-instances">25.12.1 Nulled and completed symbol instances</a></li>
+      <li><a name="toc-Nulled-and-predicted-symbol-instances-1" href="Nulled-and-predicted-symbol-instances.html#Nulled-and-predicted-symbol-instances">25.12.2 Nulled and predicted symbol instances</a></li>
+      <li><a name="toc-Nulled-and-expected-symbol-instances-1" href="Nulled-and-expected-symbol-instances.html#Nulled-and-expected-symbol-instances">25.12.3 Nulled and expected symbol instances</a></li>
+      <li><a name="toc-Completed-and-predicted-symbol-instances-1" href="Completed-and-predicted-symbol-instances.html#Completed-and-predicted-symbol-instances">25.12.4 Completed and predicted symbol instances</a></li>
+      <li><a name="toc-Completed-and-expected-symbol-instances-1" href="Completed-and-expected-symbol-instances.html#Completed-and-expected-symbol-instances">25.12.5 Completed and expected symbol instances</a></li>
+      <li><a name="toc-Predicted-and-expected-symbol-instances-1" href="Predicted-and-expected-symbol-instances.html#Predicted-and-expected-symbol-instances">25.12.6 Predicted and expected symbol instances</a></li>
     </ul></li>
-    <li><a name="toc-Event-coincidence-of-symbols-1" href="Event-coincidence-of-symbols.html#Event-coincidence-of-symbols">24.11 Event coincidence of symbols</a></li>
-  </ul></li>
-  <li><a name="toc-Error-methods_002c-macros-and-codes" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">25 Error methods, macros and codes</a>
-  <ul class="no-bullet">
-    <li><a name="toc-Error-methods-1" href="Error-methods.html#Error-methods">25.1 Error methods</a></li>
-    <li><a name="toc-Error-Macros-1" href="Error-Macros.html#Error-Macros">25.2 Error Macros</a></li>
-    <li><a name="toc-External-error-codes-1" href="External-error-codes.html#External-error-codes">25.3 External error codes</a></li>
-    <li><a name="toc-Internal-error-codes-1" href="Internal-error-codes.html#Internal-error-codes">25.4 Internal error codes</a></li>
-  </ul></li>
-  <li><a name="toc-Technical-notes-1" href="Technical-notes.html#Technical-notes">26 Technical notes</a>
-  <ul class="no-bullet">
-    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="Data-types-used-by-Libmarpa.html#Data-types-used-by-Libmarpa">26.1 Data types used by Libmarpa</a></li>
-    <li><a name="toc-Why-so-many-time-objects_003f" href="Why-so-many-time-objects.html#Why-so-many-time-objects">26.2 Why so many time objects?</a></li>
-    <li><a name="toc-Numbered-objects-2" href="Design-of-numbered-objects.html#Design-of-numbered-objects">26.3 Numbered objects</a></li>
-    <li><a name="toc-Trap-representations-1" href="Trap-representations.html#Trap-representations">26.4 Trap representations</a></li>
-    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="Out_002dof_002dmemory-handling.html#Out_002dof_002dmemory-handling">26.5 Out-of-memory handling</a></li>
-  </ul></li>
-  <li><a name="toc-Advanced-input-models-1" href="Advanced-input-models.html#Advanced-input-models">27 Advanced input models</a>
-  <ul class="no-bullet">
-    <li><a name="toc-The-dense-variable_002dlength-token-model-1" href="The-dense-variable_002dlength-token-model.html#The-dense-variable_002dlength-token-model">27.1 The dense variable-length token model</a></li>
-    <li><a name="toc-The-fully-general-input-model-1" href="The-fully-general-input-model.html#The-fully-general-input-model">27.2 The fully general input model</a></li>
-    <li><a name="toc-The-codepoint_002dper_002dearleme-model-1" href="The-codepoint_002dper_002dearleme-model.html#The-codepoint_002dper_002dearleme-model">27.3 The codepoint-per-earleme model</a></li>
-  </ul></li>
-  <li><a name="toc-Support-1" href="Support.html#Support">28 Support</a></li>
-  <li><a name="toc-Futures-1" href="Futures.html#Futures">29 Futures</a>
-  <ul class="no-bullet">
-    <li><a name="toc-Nulling-versus-nulled-1" href="Nulling-versus-nulled.html#Nulling-versus-nulled">29.1 Nulling versus nulled</a></li>
-    <li><a name="toc-Document-pre_002dconditions-more-formally-1" href="Document-pre_002dconditions-more-formally.html#Document-pre_002dconditions-more-formally">29.2 Document pre-conditions more formally</a></li>
-    <li><a name="toc-Simpler-events-interface-1" href="Simpler-events-interface.html#Simpler-events-interface">29.3 Simpler events interface</a></li>
-    <li><a name="toc-Better-defined-ambiguity-metric-1" href="Better-defined-ambiguity-metric.html#Better-defined-ambiguity-metric">29.4 Better defined ambiguity metric</a></li>
-    <li><a name="toc-Report-item-traverser-should-be-a-time-object-1" href="Report-item-traverser-should-be-a-time-object.html#Report-item-traverser-should-be-a-time-object">29.5 Report item traverser should be a time object</a></li>
-    <li><a name="toc-Orthogonal-treatment-of-soft-failures-1" href="Orthogonal-treatment-of-soft-failures.html#Orthogonal-treatment-of-soft-failures">29.6 Orthogonal treatment of soft failures</a></li>
-    <li><a name="toc-Orthogonal-treatment-of-exhaustion-1" href="Orthogonal-treatment-of-exhaustion.html#Orthogonal-treatment-of-exhaustion">29.7 Orthogonal treatment of exhaustion</a></li>
-    <li><a name="toc-Furthest-earleme-values-1" href="Furthest-earleme-values.html#Furthest-earleme-values">29.8 Furthest earleme values</a></li>
-    <li><a name="toc-Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029-1" href="Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029.html#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029">29.9 Additional recoverable failures in marpa_r_alternative()</a></li>
-    <li><a name="toc-Untested-methods-1" href="Untested-methods.html#Untested-methods">29.10 Untested methods</a>
+    <li><a name="toc-Event-coincidence-of-symbols-1" href="Event-coincidence-of-symbols.html#Event-coincidence-of-symbols">25.13 Event coincidence of symbols</a></li>
+    <li><a name="toc-Marker-symbols-1" href="Marker-symbols.html#Marker-symbols">25.14 Marker symbols</a></li>
+    <li><a name="toc-Per_002drule-events-1" href="Per_002drule-events.html#Per_002drule-events">25.15 Per-rule events</a>
     <ul class="no-bullet">
-      <li><a name="toc-Zero_002dwidth-assertion-methods-1" href="Zero_002dwidth-assertion-methods.html#Zero_002dwidth-assertion-methods">29.10.1 Zero-width assertion methods</a></li>
-      <li><a name="toc-Methods-for-revising-parses-1" href="Methods-for-revising-parses.html#Methods-for-revising-parses">29.10.2 Methods for revising parses</a></li>
+      <li><a name="toc-Workaround-with-a-dedicated-LHS-symbol-1" href="Workaround-with-a-dedicated-LHS-symbol.html#Workaround-with-a-dedicated-LHS-symbol">25.15.1 Workaround with a dedicated LHS symbol</a></li>
     </ul></li>
   </ul></li>
-  <li><a name="toc-Deprecated-techniques-and-methods-1" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">30 Deprecated techniques and methods</a>
+  <li><a name="toc-Error-methods_002c-macros-and-codes" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">26 Error methods, macros and codes</a>
   <ul class="no-bullet">
-    <li><a name="toc-LHS-terminals-1" href="LHS-terminals.html#LHS-terminals">30.1 LHS terminals</a>
-    <ul class="no-bullet">
-      <li><a name="toc-Overview-of-LHS-terminals-1" href="Overview-of-LHS-terminals.html#Overview-of-LHS-terminals">30.1.1 Overview of LHS terminals</a></li>
-      <li><a name="toc-Motivation-of-LHS-terminals-1" href="Motivation-of-LHS-terminals.html#Motivation-of-LHS-terminals">30.1.2 Motivation of LHS terminals</a></li>
-      <li><a name="toc-LHS-terminal-methods-1" href="LHS-terminal-methods.html#LHS-terminal-methods">30.1.3 LHS terminal methods</a></li>
-      <li><a name="toc-Precomputation-and-LHS-terminals-1" href="Precomputation-and-LHS-terminals.html#Precomputation-and-LHS-terminals">30.1.4 Precomputation and LHS terminals</a></li>
-      <li><a name="toc-Nulling-terminals-1" href="Nulling-terminals.html#Nulling-terminals">30.1.5 Nulling terminals</a></li>
-    </ul></li>
-    <li><a name="toc-Valued-and-unvalued-symbols-1" href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">30.2 Valued and unvalued symbols</a>
-    <ul class="no-bullet">
-      <li><a name="toc-What-unvalued-symbols-were-1" href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">30.2.1 What unvalued symbols were</a></li>
-      <li><a name="toc-Grammar-methods-dealing-with-unvalued-symbols-1" href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">30.2.2 Grammar methods dealing with unvalued symbols</a></li>
-      <li><a name="toc-Registering-semantics-in-the-valuator-1" href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">30.2.3 Registering semantics in the valuator</a></li>
-    </ul></li>
-    <li><a name="toc-Cycles-1" href="Cycles.html#Cycles">30.3 Cycles</a></li>
+    <li><a name="toc-Error-methods-1" href="Error-methods.html#Error-methods">26.1 Error methods</a></li>
+    <li><a name="toc-Error-Macros-1" href="Error-Macros.html#Error-Macros">26.2 Error Macros</a></li>
+    <li><a name="toc-External-error-codes-1" href="External-error-codes.html#External-error-codes">26.3 External error codes</a></li>
+    <li><a name="toc-Internal-error-codes-1" href="Internal-error-codes.html#Internal-error-codes">26.4 Internal error codes</a></li>
   </ul></li>
-  <li><a name="toc-History-of-the-Marpa-algorithm-1" href="History-of-the-Marpa-algorithm.html#History-of-the-Marpa-algorithm">31 History of the Marpa algorithm</a></li>
-  <li><a name="toc-Annotated-bibliography-1" href="Annotated-bibliography.html#Annotated-bibliography">32 Annotated bibliography</a>
+  <li><a name="toc-Technical-notes-1" href="Technical-notes.html#Technical-notes">27 Technical notes</a>
   <ul class="no-bullet">
-    <li><a name="toc-Aho-and-Ullman-1972-1" href="Aho-and-Ullman-1972.html#Aho-and-Ullman-1972">32.1 Aho and Ullman 1972</a></li>
-    <li><a name="toc-Aycock-and-Horspool-2002-1" href="Aycock-and-Horspool-2002.html#Aycock-and-Horspool-2002">32.2 Aycock and Horspool 2002</a></li>
-    <li><a name="toc-C89-standard" href="C89.html#C89">32.3 C89 standard</a></li>
-    <li><a name="toc-C99-standard" href="C99.html#C99">32.4 C99 standard</a></li>
-    <li><a name="toc-Dominus-2005-1" href="Dominus-2005.html#Dominus-2005">32.5 Dominus 2005</a></li>
-    <li><a name="toc-Earley-1970-1" href="Earley-1970.html#Earley-1970">32.6 Earley 1970</a></li>
-    <li><a name="toc-Grune-and-Jacobs-1990-1" href="Grune-and-Jacobs-1990.html#Grune-and-Jacobs-1990">32.7 Grune and Jacobs 1990</a></li>
-    <li><a name="toc-Grune-and-Jacobs-2008-1" href="Grune-and-Jacobs-2008.html#Grune-and-Jacobs-2008">32.8 Grune and Jacobs 2008</a></li>
-    <li><a name="toc-Marpa-theory-paper-1" href="Marpa-theory-paper.html#Marpa-theory-paper">32.9 Marpa theory paper</a></li>
-    <li><a name="toc-Kegler-2023-1" href="Kegler-2023.html#Kegler-2023">32.10 Kegler 2023</a></li>
-    <li><a name="toc-Parsing-timeline-1" href="Parsing-timeline.html#Parsing-timeline">32.11 Parsing timeline</a></li>
-    <li><a name="toc-Leo-1991-1" href="Leo-1991.html#Leo-1991">32.12 Leo 1991</a></li>
-    <li><a name="toc-Scott-2008-1" href="Scott-2008.html#Scott-2008">32.13 Scott 2008</a></li>
-    <li><a name="toc-Wikipedia-BNF-article-1" href="Wikipedia-BNF-article.html#Wikipedia-BNF-article">32.14 Wikipedia BNF article</a></li>
+    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="Data-types-used-by-Libmarpa.html#Data-types-used-by-Libmarpa">27.1 Data types used by Libmarpa</a></li>
+    <li><a name="toc-Why-so-many-time-objects_003f" href="Why-so-many-time-objects.html#Why-so-many-time-objects">27.2 Why so many time objects?</a></li>
+    <li><a name="toc-Numbered-objects-2" href="Design-of-numbered-objects.html#Design-of-numbered-objects">27.3 Numbered objects</a></li>
+    <li><a name="toc-Trap-representations-1" href="Trap-representations.html#Trap-representations">27.4 Trap representations</a></li>
+    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="Out_002dof_002dmemory-handling.html#Out_002dof_002dmemory-handling">27.5 Out-of-memory handling</a></li>
   </ul></li>
-  <li><a name="toc-Acknowledgements-1" href="Acknowledgements.html#Acknowledgements">33 Acknowledgements</a>
+  <li><a name="toc-Advanced-input-models-1" href="Advanced-input-models.html#Advanced-input-models">28 Advanced input models</a>
   <ul class="no-bullet">
-    <li><a name="toc-An-apology-1" href="An-apology.html#An-apology">33.1 An apology</a></li>
+    <li><a name="toc-The-dense-variable_002dlength-token-model-1" href="The-dense-variable_002dlength-token-model.html#The-dense-variable_002dlength-token-model">28.1 The dense variable-length token model</a></li>
+    <li><a name="toc-The-fully-general-input-model-1" href="The-fully-general-input-model.html#The-fully-general-input-model">28.2 The fully general input model</a></li>
+    <li><a name="toc-The-codepoint_002dper_002dearleme-model-1" href="The-codepoint_002dper_002dearleme-model.html#The-codepoint_002dper_002dearleme-model">28.3 The codepoint-per-earleme model</a></li>
+  </ul></li>
+  <li><a name="toc-Support-1" href="Support.html#Support">29 Support</a></li>
+  <li><a name="toc-Futures-1" href="Futures.html#Futures">30 Futures</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Nulling-versus-nulled-1" href="Nulling-versus-nulled.html#Nulling-versus-nulled">30.1 Nulling versus nulled</a></li>
+    <li><a name="toc-Document-pre_002dconditions-more-formally-1" href="Document-pre_002dconditions-more-formally.html#Document-pre_002dconditions-more-formally">30.2 Document pre-conditions more formally</a></li>
+    <li><a name="toc-Simpler-events-interface-1" href="Simpler-events-interface.html#Simpler-events-interface">30.3 Simpler events interface</a></li>
+    <li><a name="toc-Better-defined-ambiguity-metric-1" href="Better-defined-ambiguity-metric.html#Better-defined-ambiguity-metric">30.4 Better defined ambiguity metric</a></li>
+    <li><a name="toc-Report-item-traverser-should-be-a-time-object-1" href="Report-item-traverser-should-be-a-time-object.html#Report-item-traverser-should-be-a-time-object">30.5 Report item traverser should be a time object</a></li>
+    <li><a name="toc-Orthogonal-treatment-of-soft-failures-1" href="Orthogonal-treatment-of-soft-failures.html#Orthogonal-treatment-of-soft-failures">30.6 Orthogonal treatment of soft failures</a></li>
+    <li><a name="toc-Orthogonal-treatment-of-exhaustion-1" href="Orthogonal-treatment-of-exhaustion.html#Orthogonal-treatment-of-exhaustion">30.7 Orthogonal treatment of exhaustion</a></li>
+    <li><a name="toc-Furthest-earleme-values-1" href="Furthest-earleme-values.html#Furthest-earleme-values">30.8 Furthest earleme values</a></li>
+    <li><a name="toc-Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029-1" href="Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029.html#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029">30.9 Additional recoverable failures in marpa_r_alternative()</a></li>
+    <li><a name="toc-Untested-methods-1" href="Untested-methods.html#Untested-methods">30.10 Untested methods</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Zero_002dwidth-assertion-methods-1" href="Zero_002dwidth-assertion-methods.html#Zero_002dwidth-assertion-methods">30.10.1 Zero-width assertion methods</a></li>
+      <li><a name="toc-Methods-for-revising-parses-1" href="Methods-for-revising-parses.html#Methods-for-revising-parses">30.10.2 Methods for revising parses</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-Deprecated-techniques-and-methods-1" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">31 Deprecated techniques and methods</a>
+  <ul class="no-bullet">
+    <li><a name="toc-LHS-terminals-1" href="LHS-terminals.html#LHS-terminals">31.1 LHS terminals</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Overview-of-LHS-terminals-1" href="Overview-of-LHS-terminals.html#Overview-of-LHS-terminals">31.1.1 Overview of LHS terminals</a></li>
+      <li><a name="toc-Motivation-of-LHS-terminals-1" href="Motivation-of-LHS-terminals.html#Motivation-of-LHS-terminals">31.1.2 Motivation of LHS terminals</a></li>
+      <li><a name="toc-LHS-terminal-methods-1" href="LHS-terminal-methods.html#LHS-terminal-methods">31.1.3 LHS terminal methods</a></li>
+      <li><a name="toc-Precomputation-and-LHS-terminals-1" href="Precomputation-and-LHS-terminals.html#Precomputation-and-LHS-terminals">31.1.4 Precomputation and LHS terminals</a></li>
+      <li><a name="toc-Nulling-terminals-1" href="Nulling-terminals.html#Nulling-terminals">31.1.5 Nulling terminals</a></li>
+    </ul></li>
+    <li><a name="toc-Valued-and-unvalued-symbols-1" href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">31.2 Valued and unvalued symbols</a>
+    <ul class="no-bullet">
+      <li><a name="toc-What-unvalued-symbols-were-1" href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">31.2.1 What unvalued symbols were</a></li>
+      <li><a name="toc-Grammar-methods-dealing-with-unvalued-symbols-1" href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">31.2.2 Grammar methods dealing with unvalued symbols</a></li>
+      <li><a name="toc-Registering-semantics-in-the-valuator-1" href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">31.2.3 Registering semantics in the valuator</a></li>
+    </ul></li>
+    <li><a name="toc-Cycles-1" href="Cycles.html#Cycles">31.3 Cycles</a></li>
+  </ul></li>
+  <li><a name="toc-History-of-the-Marpa-algorithm-1" href="History-of-the-Marpa-algorithm.html#History-of-the-Marpa-algorithm">32 History of the Marpa algorithm</a></li>
+  <li><a name="toc-Annotated-bibliography-1" href="Annotated-bibliography.html#Annotated-bibliography">33 Annotated bibliography</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Aho-and-Ullman-1972-1" href="Aho-and-Ullman-1972.html#Aho-and-Ullman-1972">33.1 Aho and Ullman 1972</a></li>
+    <li><a name="toc-Aycock-and-Horspool-2002-1" href="Aycock-and-Horspool-2002.html#Aycock-and-Horspool-2002">33.2 Aycock and Horspool 2002</a></li>
+    <li><a name="toc-C89-standard" href="C89.html#C89">33.3 C89 standard</a></li>
+    <li><a name="toc-C99-standard" href="C99.html#C99">33.4 C99 standard</a></li>
+    <li><a name="toc-Dominus-2005-1" href="Dominus-2005.html#Dominus-2005">33.5 Dominus 2005</a></li>
+    <li><a name="toc-Earley-1970-1" href="Earley-1970.html#Earley-1970">33.6 Earley 1970</a></li>
+    <li><a name="toc-Grune-and-Jacobs-1990-1" href="Grune-and-Jacobs-1990.html#Grune-and-Jacobs-1990">33.7 Grune and Jacobs 1990</a></li>
+    <li><a name="toc-Grune-and-Jacobs-2008-1" href="Grune-and-Jacobs-2008.html#Grune-and-Jacobs-2008">33.8 Grune and Jacobs 2008</a></li>
+    <li><a name="toc-Marpa-theory-paper-1" href="Marpa-theory-paper.html#Marpa-theory-paper">33.9 Marpa theory paper</a></li>
+    <li><a name="toc-Kegler-2023-1" href="Kegler-2023.html#Kegler-2023">33.10 Kegler 2023</a></li>
+    <li><a name="toc-Parsing-timeline-1" href="Parsing-timeline.html#Parsing-timeline">33.11 Parsing timeline</a></li>
+    <li><a name="toc-Leo-1991-1" href="Leo-1991.html#Leo-1991">33.12 Leo 1991</a></li>
+    <li><a name="toc-Scott-2008-1" href="Scott-2008.html#Scott-2008">33.13 Scott 2008</a></li>
+    <li><a name="toc-Wikipedia-BNF-article-1" href="Wikipedia-BNF-article.html#Wikipedia-BNF-article">33.14 Wikipedia BNF article</a></li>
+  </ul></li>
+  <li><a name="toc-Acknowledgements-1" href="Acknowledgements.html#Acknowledgements">34 Acknowledgements</a>
+  <ul class="no-bullet">
+    <li><a name="toc-An-apology-1" href="An-apology.html#An-apology">34.1 An apology</a></li>
   </ul></li>
   <li><a name="toc-Index-of-terms-1" href="Index-of-terms.html#Index-of-terms">Index of terms</a></li>
 </ul>
@@ -341,8 +354,8 @@ Next: <a href="License.html#License" accesskey="n" rel="next">License</a>, Previ
 <hr>
 <a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
 <h1 class="top">Libmarpa: The Marpa low-level library</h1>
-<p>This manual (8 April 2023)
-is for Libmarpa 11.0.7.
+<p>This manual (12 April 2023)
+is for Libmarpa 11.0.8.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -384,7 +397,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Exhaustion.html#Exhaustion" accesskey="8">Exhaustion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Semantics.html#Semantics" accesskey="9">Semantics</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="End-of-parsing.html#End-of-parsing" accesskey="9">End of parsing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Semantics.html#Semantics">Semantics</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Threads.html#Threads">Threads</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -522,9 +537,19 @@ The basic models of input
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
+End of parsing
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Determining-EOP-from-EOI.html#Determining-EOP-from-EOI">Determining EOP from EOI</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Determining-EOP-from-exhaustion.html#Determining-EOP-from-exhaustion">Determining EOP from exhaustion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Other-ways-of-determining-EOP.html#Other-ways-of-determining-EOP">Other ways of determining EOP</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Nullability
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Nullability-and-the-valuator.html#Nullability-and-the-valuator">Nullability and the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Nullability-in-the-valuator.html#Nullability-in-the-valuator">Nullability in the valuator</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Assigning-semantics-to-nulled-symbols.html#Assigning-semantics-to-nulled-symbols">Assigning semantics to nulled symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -704,9 +729,17 @@ Events
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Tentative-events.html#Tentative-events">Tentative events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Ambiguous-parses-and-events.html#Ambiguous-parses-and-events">Ambiguous parses and events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Nulled-subtrees-and-events.html#Nulled-subtrees-and-events">Nulled subtrees and events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Event-coincidence-of-symbol-instances.html#Event-coincidence-of-symbol-instances">Event coincidence of symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Event-coincidence-of-symbols.html#Event-coincidence-of-symbols">Event coincidence of symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Marker-symbols.html#Marker-symbols">Marker symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Per_002drule-events.html#Per_002drule-events">Per-rule events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -723,6 +756,12 @@ Event coincidence of symbol instances
 <tr><td align="left" valign="top">&bull; <a href="Completed-and-expected-symbol-instances.html#Completed-and-expected-symbol-instances">Completed and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Predicted-and-expected-symbol-instances.html#Predicted-and-expected-symbol-instances">Predicted and expected symbol instances</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+Per-rule events
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Workaround-with-a-dedicated-LHS-symbol.html#Workaround-with-a-dedicated-LHS-symbol">Workaround with a dedicated LHS symbol</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (12 April 2023)
+is for Libmarpa 11.0.8.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Workaround with a dedicated LHS symbol (Libmarpa 11.0.8)</title>
+
+<meta name="description" content="Workaround with a dedicated LHS symbol (Libmarpa 11.0.8)">
+<meta name="keywords" content="Workaround with a dedicated LHS symbol (Libmarpa 11.0.8)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Per_002drule-events.html#Per_002drule-events" rel="up" title="Per-rule events">
+<link href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" rel="next" title="Error methods macros and codes">
+<link href="Per_002drule-events.html#Per_002drule-events" rel="prev" title="Per-rule events">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Workaround-with-a-dedicated-LHS-symbol"></a>
+<div class="header">
+<p>
+Previous: <a href="Per_002drule-events.html#Per_002drule-events" accesskey="p" rel="prev">Per-rule events</a>, Up: <a href="Per_002drule-events.html#Per_002drule-events" accesskey="u" rel="up">Per-rule events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Workaround-with-a-dedicated-LHS-symbol-1"></a>
+<h4 class="subsection">25.15.1 Workaround with a dedicated LHS symbol</h4>
+
+<p>Most users will fix the second limitation
+(see <a href="Per_002drule-events.html#lim2Ex">lim2Ex</a>)
+by falling back
+on marker symbols.
+For those users who for some reason prefer to avoid this,
+in this section we present
+a workaround that is based on introducing a new symbol,
+one dedicated to acting as the LHS of <code>(R3)</code>
+of <code>lim2Ex</code>.
+</p>
+<p>We show the fix as another example,
+one which we will call
+<code>fixEx</code>.
+<code>fixEx</code> is identical to
+<code>lim2Ex</code> with
+the following exceptions:
+</p><ul>
+<li> Rule <code>(R3)</code>
+in <code>lim2Ex</code> is replaced with the following rules:
+<div class="display">
+<pre class="display">     [ A1 ::= W X ]             (R3a)
+     [ A ::= A1 ]               (R3b)
+</pre></div>
+<p>In these two rules,
+rule <code>(R3a)</code> is the replacement rule
+for rule <code>(R3)</code> in <code>lim2Ex</code>,
+and <code>A1</code> is the new LHS symbol,
+which is dedicated to serving as the LHS
+of rule <code>(R3a)</code>.
+</p></li><li> A <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+is activated for symbol <code>A1</code>,
+instead of for symbol <code>A</code>.
+</li><li> Rule <code>(R3a)</code>
+has the same semantics
+as rule <code>(R3)</code> in <code>lim2Ex</code>,
+the rule that it replaced.
+</li><li> Rule <code>(R3b)</code> has pass-through semantics.
+</li><li> The application code must be changed to look for
+a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+for symbol <code>A1</code>,
+instead of symbol <code>A</code>.
+</li></ul>
+<p><code>fixEx</code> will accept the same language
+as <code>lim2Ex</code>,
+with the same semantics as <code>lim2Ex</code>.
+A <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+will trigger at the end of <code>(R3a)</code>,
+this time for symbol <code>A1</code>,
+but at exactly the same parse location as it did
+for symbol <code>A</code> in <code>lim2Ex</code>.
+And a <code>MARPA_EVENT_SYMBOL_COMPLETED</code> event
+will no longer trigger at the end of <code>(R4)</code>,
+which is the fix we were looking for.
+</p>
+
+
+
+</body>
+</html>

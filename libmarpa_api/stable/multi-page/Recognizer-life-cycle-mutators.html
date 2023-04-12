@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (8 April 2023)
-is for Libmarpa 11.0.7.
+<!-- This manual (12 April 2023)
+is for Libmarpa 11.0.8.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Recognizer life cycle mutators (Libmarpa 11.0.7)</title>
+<title>Recognizer life cycle mutators (Libmarpa 11.0.8)</title>
 
-<meta name="description" content="Recognizer life cycle mutators (Libmarpa 11.0.7)">
-<meta name="keywords" content="Recognizer life cycle mutators (Libmarpa 11.0.7)">
+<meta name="description" content="Recognizer life cycle mutators (Libmarpa 11.0.8)">
+<meta name="keywords" content="Recognizer life cycle mutators (Libmarpa 11.0.8)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -77,7 +77,7 @@ Next: <a href="Location-accessors.html#Location-accessors" accesskey="n" rel="ne
 </div>
 <hr>
 <a name="Life-cycle-mutators"></a>
-<h3 class="section">18.4 Life cycle mutators</h3>
+<h3 class="section">19.4 Life cycle mutators</h3>
 
 <a name="marpa_005fr_005fstart_005finput"></a><dl>
 <dt><a name="index-marpa_005fr_005fstart_005finput"></a>Mutator function: <em>int</em> <strong>marpa_r_start_input</strong> <em>(Marpa_Recognizer <var>r</var>)</em></dt>
@@ -330,31 +330,14 @@ and only in very unusual circumstances will an application wish
 to ignore these.
 </p>
 <p>How an application reacts to exhaustion will depend on the kind of
-parsing it is doing:
-</p><ul>
-<li> Very often an application knows the length of its input in advance.
-In this case, the application will treat exhaustion before the end of input
-as a parse error.
-Depending on the application, exhaustion on success at the end of input
-might be ignored.
-</li><li> An exhaustion-loving application that does not know the length of
-its input will often want to terminate the parse in case of exhaustion on method
-success, treating exhaustion as an end-of-input indicator.
-These applications will usually want to treat exhaustion on method failure
-as a parse error.
-</li><li> Occasionally, an exhaustion-hating application may not know
-the length of its input in advance.
-Since these applications will not know from the length of the input,
-or from exhaustion, that they are at end of input,
-they will need some other way of determining this.
-One way they may do this is with a
-<code>MARPA_EVENT_SYMBOL_COMPLETED</code> event.
-Typically, these applications will treat exhaustion on method
-failure and exhaustion before the end of input
-as parse errors.
-They may wish to ignore exhaustion on method success
-at the end of input.
-</li></ul>
+parsing it is doing.
+See <a href="Exhaustion.html#Exhaustion">Exhaustion</a>.
+</p>
+<p>It is often up to
+the logic immediately around this method
+to detect end of parsing.
+See <a href="End-of-parsing.html#End-of-parsing">End of parsing</a>.
+</p>
 <p><strong>Return value</strong>:  On success, the number of events
 in the event queue when the method call returns.
 On hard failure, -2.

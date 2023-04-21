@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (21 April 2023)
+is for Libmarpa 11.0.9.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Earlemes and Earley set IDs (Libmarpa 11.0.9)</title>
+
+<meta name="description" content="Earlemes and Earley set IDs (Libmarpa 11.0.9)">
+<meta name="keywords" content="Earlemes and Earley set IDs (Libmarpa 11.0.9)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Parse-location.html#Parse-location" rel="up" title="Parse location">
+<link href="The-latest-Earley-set.html#The-latest-Earley-set" rel="next" title="The latest Earley set">
+<link href="The-traditional-input-model.html#The-traditional-input-model" rel="prev" title="The traditional input model">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Earlemes-and-Earley-set-IDs"></a>
+<div class="header">
+<p>
+Next: <a href="The-latest-Earley-set.html#The-latest-Earley-set" accesskey="n" rel="next">The latest Earley set</a>, Previous: <a href="The-traditional-input-model.html#The-traditional-input-model" accesskey="p" rel="prev">The traditional input model</a>, Up: <a href="Parse-location.html#Parse-location" accesskey="u" rel="up">Parse location</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Earlemes-and-Earley-set-IDs-1"></a>
+<h4 class="subsection">7.1.2 Earlemes and Earley set IDs</h4>
+
+<p>Libmarpa&rsquo;s idea of parse location,
+is the
+<a name="index-earleme"></a>
+<em>earleme</em>,
+but Libmarpa also tracks Earley sets by
+ordinal number.
+In Libmarpa&rsquo;s basic input models,
+the earleme of an Earley set
+is always equal to
+the ordinal of the Earley set,
+so the distinction between Earley set ordinal
+and earleme is pedantic.
+But Libmarpa&rsquo;s advanced input models allow
+sparse input and,
+when sparse input is in use,
+an Earley set&rsquo;s ordinal and its
+earleme may differ.
+See <a href="The-fully-general-input-model.html#The-fully-general-input-model">The fully general input model</a>.
+</p>
+<p>The earlemes are
+assigned consecutive non-negative integers, starting at 0.
+The highest valued earleme is called the
+furthest earleme.
+See <a href="The-furthest-earleme.html#The-furthest-earleme">The furthest earleme</a>.
+The other important earleme values are
+the latest earleme (see <a href="The-latest-earleme.html#The-latest-earleme">The latest earleme</a>)
+and
+the current earleme (see <a href="The-current-earleme.html#The-current-earleme">The current earleme</a>).
+Latest, current and furthest earleme,
+when they have specified values,
+obey a lexical order in this sense:
+The latest earleme is always at or before the current earleme,
+and the current earleme is always at or before the furthest earleme.
+</p>
+<p>The Earley set ordinal
+is also known as the
+<a name="index-ID-_0028of-an-Earley-set_0029"></a>
+<em>ID of the Earley set</em>, or
+<a name="index-Earley-set-ID"></a>
+<em>Earley set ID</em>.
+Earley set IDs are
+consecutive non-negative integers, starting at 0.
+The highest valued Earley set ID is that of the
+latest Earley set.
+See <a href="The-latest-Earley-set.html#The-latest-Earley-set">The latest Earley set</a>
+</p>
+
+
+
+</body>
+</html>

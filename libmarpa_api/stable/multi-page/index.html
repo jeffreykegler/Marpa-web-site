@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (12 April 2023)
-is for Libmarpa 11.0.8.
+<!-- This manual (21 April 2023)
+is for Libmarpa 11.0.9.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Top (Libmarpa 11.0.8)</title>
+<title>Top (Libmarpa 11.0.9)</title>
 
-<meta name="description" content="Top (Libmarpa 11.0.8)">
-<meta name="keywords" content="Top (Libmarpa 11.0.8)">
+<meta name="description" content="Top (Libmarpa 11.0.9)">
+<meta name="keywords" content="Top (Libmarpa 11.0.9)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -69,7 +69,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">Libmarpa 11.0.8</h1>
+<h1 class="settitle" align="center">Libmarpa 11.0.9</h1>
 
 
 
@@ -116,12 +116,14 @@ ul.no-bullet {list-style: none}
   </ul></li>
   <li><a name="toc-Input-1" href="Input.html#Input">7 Input</a>
   <ul class="no-bullet">
-    <li><a name="toc-Earlemes-1" href="Earlemes.html#Earlemes">7.1 Earlemes</a>
+    <li><a name="toc-Parse-location-1" href="Parse-location.html#Parse-location">7.1 Parse location</a>
     <ul class="no-bullet">
       <li><a name="toc-The-traditional-input-model-1" href="The-traditional-input-model.html#The-traditional-input-model">7.1.1 The traditional input model</a></li>
-      <li><a name="toc-The-latest-earleme-1" href="The-latest-earleme.html#The-latest-earleme">7.1.2 The latest earleme</a></li>
-      <li><a name="toc-The-current-earleme-1" href="The-current-earleme.html#The-current-earleme">7.1.3 The current earleme</a></li>
-      <li><a name="toc-The-furthest-earleme-1" href="The-furthest-earleme.html#The-furthest-earleme">7.1.4 The furthest earleme</a></li>
+      <li><a name="toc-Earlemes-and-Earley-set-IDs-1" href="Earlemes-and-Earley-set-IDs.html#Earlemes-and-Earley-set-IDs">7.1.2 Earlemes and Earley set IDs</a></li>
+      <li><a name="toc-The-latest-Earley-set-1" href="The-latest-Earley-set.html#The-latest-Earley-set">7.1.3 The latest Earley set</a></li>
+      <li><a name="toc-The-latest-earleme-1" href="The-latest-earleme.html#The-latest-earleme">7.1.4 The latest earleme</a></li>
+      <li><a name="toc-The-current-earleme-1" href="The-current-earleme.html#The-current-earleme">7.1.5 The current earleme</a></li>
+      <li><a name="toc-The-furthest-earleme-1" href="The-furthest-earleme.html#The-furthest-earleme">7.1.6 The furthest earleme</a></li>
     </ul></li>
     <li><a name="toc-The-basic-models-of-input-1" href="The-basic-models-of-input.html#The-basic-models-of-input">7.2 The basic models of input</a>
     <ul class="no-bullet">
@@ -131,7 +133,7 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Terminals-1" href="Terminals.html#Terminals">7.3 Terminals</a></li>
   </ul></li>
   <li><a name="toc-Exhaustion-1" href="Exhaustion.html#Exhaustion">8 Exhaustion</a></li>
-  <li><a name="toc-End-of-parsing-1" href="End-of-parsing.html#End-of-parsing">9 End of parsing</a>
+  <li><a name="toc-End-of-parse-1" href="End-of-parse.html#End-of-parse">9 End of parse</a>
   <ul class="no-bullet">
     <li><a name="toc-Determining-EOP-from-EOI-1" href="Determining-EOP-from-EOI.html#Determining-EOP-from-EOI">9.1 Determining EOP from EOI</a></li>
     <li><a name="toc-Determining-EOP-from-exhaustion-1" href="Determining-EOP-from-exhaustion.html#Determining-EOP-from-exhaustion">9.2 Determining EOP from exhaustion</a></li>
@@ -262,84 +264,92 @@ ul.no-bullet {list-style: none}
       <li><a name="toc-Workaround-with-a-dedicated-LHS-symbol-1" href="Workaround-with-a-dedicated-LHS-symbol.html#Workaround-with-a-dedicated-LHS-symbol">25.15.1 Workaround with a dedicated LHS symbol</a></li>
     </ul></li>
   </ul></li>
-  <li><a name="toc-Error-methods_002c-macros-and-codes" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">26 Error methods, macros and codes</a>
+  <li><a name="toc-Tracing-and-diagnosing-parses-1" href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses">26 Tracing and diagnosing parses</a>
   <ul class="no-bullet">
-    <li><a name="toc-Error-methods-1" href="Error-methods.html#Error-methods">26.1 Error methods</a></li>
-    <li><a name="toc-Error-Macros-1" href="Error-Macros.html#Error-Macros">26.2 Error Macros</a></li>
-    <li><a name="toc-External-error-codes-1" href="External-error-codes.html#External-error-codes">26.3 External error codes</a></li>
-    <li><a name="toc-Internal-error-codes-1" href="Internal-error-codes.html#Internal-error-codes">26.4 Internal error codes</a></li>
+    <li><a name="toc-Listing-symbols-1" href="Listing-symbols.html#Listing-symbols">26.1 Listing symbols</a></li>
+    <li><a name="toc-Listing-rules-1" href="Listing-rules.html#Listing-rules">26.2 Listing rules</a></li>
+    <li><a name="toc-Listing-Earley-sets-1" href="Listing-Earley-sets.html#Listing-Earley-sets">26.3 Listing Earley sets</a></li>
+    <li><a name="toc-Tracing-tokens-1" href="Tracing-tokens.html#Tracing-tokens">26.4 Tracing tokens</a></li>
   </ul></li>
-  <li><a name="toc-Technical-notes-1" href="Technical-notes.html#Technical-notes">27 Technical notes</a>
+  <li><a name="toc-Error-methods_002c-macros-and-codes" href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">27 Error methods, macros and codes</a>
   <ul class="no-bullet">
-    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="Data-types-used-by-Libmarpa.html#Data-types-used-by-Libmarpa">27.1 Data types used by Libmarpa</a></li>
-    <li><a name="toc-Why-so-many-time-objects_003f" href="Why-so-many-time-objects.html#Why-so-many-time-objects">27.2 Why so many time objects?</a></li>
-    <li><a name="toc-Numbered-objects-2" href="Design-of-numbered-objects.html#Design-of-numbered-objects">27.3 Numbered objects</a></li>
-    <li><a name="toc-Trap-representations-1" href="Trap-representations.html#Trap-representations">27.4 Trap representations</a></li>
-    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="Out_002dof_002dmemory-handling.html#Out_002dof_002dmemory-handling">27.5 Out-of-memory handling</a></li>
+    <li><a name="toc-Error-methods-1" href="Error-methods.html#Error-methods">27.1 Error methods</a></li>
+    <li><a name="toc-Error-Macros-1" href="Error-Macros.html#Error-Macros">27.2 Error Macros</a></li>
+    <li><a name="toc-External-error-codes-1" href="External-error-codes.html#External-error-codes">27.3 External error codes</a></li>
+    <li><a name="toc-Internal-error-codes-1" href="Internal-error-codes.html#Internal-error-codes">27.4 Internal error codes</a></li>
   </ul></li>
-  <li><a name="toc-Advanced-input-models-1" href="Advanced-input-models.html#Advanced-input-models">28 Advanced input models</a>
+  <li><a name="toc-Technical-notes-1" href="Technical-notes.html#Technical-notes">28 Technical notes</a>
   <ul class="no-bullet">
-    <li><a name="toc-The-dense-variable_002dlength-token-model-1" href="The-dense-variable_002dlength-token-model.html#The-dense-variable_002dlength-token-model">28.1 The dense variable-length token model</a></li>
-    <li><a name="toc-The-fully-general-input-model-1" href="The-fully-general-input-model.html#The-fully-general-input-model">28.2 The fully general input model</a></li>
-    <li><a name="toc-The-codepoint_002dper_002dearleme-model-1" href="The-codepoint_002dper_002dearleme-model.html#The-codepoint_002dper_002dearleme-model">28.3 The codepoint-per-earleme model</a></li>
+    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="Data-types-used-by-Libmarpa.html#Data-types-used-by-Libmarpa">28.1 Data types used by Libmarpa</a></li>
+    <li><a name="toc-Why-so-many-time-objects_003f" href="Why-so-many-time-objects.html#Why-so-many-time-objects">28.2 Why so many time objects?</a></li>
+    <li><a name="toc-Numbered-objects-2" href="Design-of-numbered-objects.html#Design-of-numbered-objects">28.3 Numbered objects</a></li>
+    <li><a name="toc-Trap-representations-1" href="Trap-representations.html#Trap-representations">28.4 Trap representations</a></li>
+    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="Out_002dof_002dmemory-handling.html#Out_002dof_002dmemory-handling">28.5 Out-of-memory handling</a></li>
   </ul></li>
-  <li><a name="toc-Support-1" href="Support.html#Support">29 Support</a></li>
-  <li><a name="toc-Futures-1" href="Futures.html#Futures">30 Futures</a>
+  <li><a name="toc-Advanced-input-models-1" href="Advanced-input-models.html#Advanced-input-models">29 Advanced input models</a>
   <ul class="no-bullet">
-    <li><a name="toc-Nulling-versus-nulled-1" href="Nulling-versus-nulled.html#Nulling-versus-nulled">30.1 Nulling versus nulled</a></li>
-    <li><a name="toc-Document-pre_002dconditions-more-formally-1" href="Document-pre_002dconditions-more-formally.html#Document-pre_002dconditions-more-formally">30.2 Document pre-conditions more formally</a></li>
-    <li><a name="toc-Simpler-events-interface-1" href="Simpler-events-interface.html#Simpler-events-interface">30.3 Simpler events interface</a></li>
-    <li><a name="toc-Better-defined-ambiguity-metric-1" href="Better-defined-ambiguity-metric.html#Better-defined-ambiguity-metric">30.4 Better defined ambiguity metric</a></li>
-    <li><a name="toc-Report-item-traverser-should-be-a-time-object-1" href="Report-item-traverser-should-be-a-time-object.html#Report-item-traverser-should-be-a-time-object">30.5 Report item traverser should be a time object</a></li>
-    <li><a name="toc-Orthogonal-treatment-of-soft-failures-1" href="Orthogonal-treatment-of-soft-failures.html#Orthogonal-treatment-of-soft-failures">30.6 Orthogonal treatment of soft failures</a></li>
-    <li><a name="toc-Orthogonal-treatment-of-exhaustion-1" href="Orthogonal-treatment-of-exhaustion.html#Orthogonal-treatment-of-exhaustion">30.7 Orthogonal treatment of exhaustion</a></li>
-    <li><a name="toc-Furthest-earleme-values-1" href="Furthest-earleme-values.html#Furthest-earleme-values">30.8 Furthest earleme values</a></li>
-    <li><a name="toc-Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029-1" href="Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029.html#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029">30.9 Additional recoverable failures in marpa_r_alternative()</a></li>
-    <li><a name="toc-Untested-methods-1" href="Untested-methods.html#Untested-methods">30.10 Untested methods</a>
+    <li><a name="toc-The-dense-variable_002dlength-token-model-1" href="The-dense-variable_002dlength-token-model.html#The-dense-variable_002dlength-token-model">29.1 The dense variable-length token model</a></li>
+    <li><a name="toc-The-fully-general-input-model-1" href="The-fully-general-input-model.html#The-fully-general-input-model">29.2 The fully general input model</a></li>
+    <li><a name="toc-The-codepoint_002dper_002dearleme-model-1" href="The-codepoint_002dper_002dearleme-model.html#The-codepoint_002dper_002dearleme-model">29.3 The codepoint-per-earleme model</a></li>
+    <li><a name="toc-Converting-earleme-to-Earley-set-ID-1" href="Converting-earleme-to-Earley-set-ID.html#Converting-earleme-to-Earley-set-ID">29.4 Converting earleme to Earley set ID</a></li>
+  </ul></li>
+  <li><a name="toc-Support-1" href="Support.html#Support">30 Support</a></li>
+  <li><a name="toc-Futures-1" href="Futures.html#Futures">31 Futures</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Nulling-versus-nulled-1" href="Nulling-versus-nulled.html#Nulling-versus-nulled">31.1 Nulling versus nulled</a></li>
+    <li><a name="toc-Document-pre_002dconditions-more-formally-1" href="Document-pre_002dconditions-more-formally.html#Document-pre_002dconditions-more-formally">31.2 Document pre-conditions more formally</a></li>
+    <li><a name="toc-Simpler-events-interface-1" href="Simpler-events-interface.html#Simpler-events-interface">31.3 Simpler events interface</a></li>
+    <li><a name="toc-Better-defined-ambiguity-metric-1" href="Better-defined-ambiguity-metric.html#Better-defined-ambiguity-metric">31.4 Better defined ambiguity metric</a></li>
+    <li><a name="toc-Report-item-traverser-should-be-a-time-object-1" href="Report-item-traverser-should-be-a-time-object.html#Report-item-traverser-should-be-a-time-object">31.5 Report item traverser should be a time object</a></li>
+    <li><a name="toc-Orthogonal-treatment-of-soft-failures-1" href="Orthogonal-treatment-of-soft-failures.html#Orthogonal-treatment-of-soft-failures">31.6 Orthogonal treatment of soft failures</a></li>
+    <li><a name="toc-Orthogonal-treatment-of-exhaustion-1" href="Orthogonal-treatment-of-exhaustion.html#Orthogonal-treatment-of-exhaustion">31.7 Orthogonal treatment of exhaustion</a></li>
+    <li><a name="toc-Furthest-earleme-values-1" href="Furthest-earleme-values.html#Furthest-earleme-values">31.8 Furthest earleme values</a></li>
+    <li><a name="toc-Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029-1" href="Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029.html#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029">31.9 Additional recoverable failures in marpa_r_alternative()</a></li>
+    <li><a name="toc-Untested-methods-1" href="Untested-methods.html#Untested-methods">31.10 Untested methods</a>
     <ul class="no-bullet">
-      <li><a name="toc-Zero_002dwidth-assertion-methods-1" href="Zero_002dwidth-assertion-methods.html#Zero_002dwidth-assertion-methods">30.10.1 Zero-width assertion methods</a></li>
-      <li><a name="toc-Methods-for-revising-parses-1" href="Methods-for-revising-parses.html#Methods-for-revising-parses">30.10.2 Methods for revising parses</a></li>
+      <li><a name="toc-Zero_002dwidth-assertion-methods-1" href="Zero_002dwidth-assertion-methods.html#Zero_002dwidth-assertion-methods">31.10.1 Zero-width assertion methods</a></li>
+      <li><a name="toc-Methods-for-revising-parses-1" href="Methods-for-revising-parses.html#Methods-for-revising-parses">31.10.2 Methods for revising parses</a></li>
     </ul></li>
   </ul></li>
-  <li><a name="toc-Deprecated-techniques-and-methods-1" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">31 Deprecated techniques and methods</a>
+  <li><a name="toc-Deprecated-techniques-and-methods-1" href="Deprecated-techniques-and-methods.html#Deprecated-techniques-and-methods">32 Deprecated techniques and methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-LHS-terminals-1" href="LHS-terminals.html#LHS-terminals">31.1 LHS terminals</a>
+    <li><a name="toc-LHS-terminals-1" href="LHS-terminals.html#LHS-terminals">32.1 LHS terminals</a>
     <ul class="no-bullet">
-      <li><a name="toc-Overview-of-LHS-terminals-1" href="Overview-of-LHS-terminals.html#Overview-of-LHS-terminals">31.1.1 Overview of LHS terminals</a></li>
-      <li><a name="toc-Motivation-of-LHS-terminals-1" href="Motivation-of-LHS-terminals.html#Motivation-of-LHS-terminals">31.1.2 Motivation of LHS terminals</a></li>
-      <li><a name="toc-LHS-terminal-methods-1" href="LHS-terminal-methods.html#LHS-terminal-methods">31.1.3 LHS terminal methods</a></li>
-      <li><a name="toc-Precomputation-and-LHS-terminals-1" href="Precomputation-and-LHS-terminals.html#Precomputation-and-LHS-terminals">31.1.4 Precomputation and LHS terminals</a></li>
-      <li><a name="toc-Nulling-terminals-1" href="Nulling-terminals.html#Nulling-terminals">31.1.5 Nulling terminals</a></li>
+      <li><a name="toc-Overview-of-LHS-terminals-1" href="Overview-of-LHS-terminals.html#Overview-of-LHS-terminals">32.1.1 Overview of LHS terminals</a></li>
+      <li><a name="toc-Motivation-of-LHS-terminals-1" href="Motivation-of-LHS-terminals.html#Motivation-of-LHS-terminals">32.1.2 Motivation of LHS terminals</a></li>
+      <li><a name="toc-LHS-terminal-methods-1" href="LHS-terminal-methods.html#LHS-terminal-methods">32.1.3 LHS terminal methods</a></li>
+      <li><a name="toc-Precomputation-and-LHS-terminals-1" href="Precomputation-and-LHS-terminals.html#Precomputation-and-LHS-terminals">32.1.4 Precomputation and LHS terminals</a></li>
+      <li><a name="toc-Nulling-terminals-1" href="Nulling-terminals.html#Nulling-terminals">32.1.5 Nulling terminals</a></li>
     </ul></li>
-    <li><a name="toc-Valued-and-unvalued-symbols-1" href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">31.2 Valued and unvalued symbols</a>
+    <li><a name="toc-Valued-and-unvalued-symbols-1" href="Valued-and-unvalued-symbols.html#Valued-and-unvalued-symbols">32.2 Valued and unvalued symbols</a>
     <ul class="no-bullet">
-      <li><a name="toc-What-unvalued-symbols-were-1" href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">31.2.1 What unvalued symbols were</a></li>
-      <li><a name="toc-Grammar-methods-dealing-with-unvalued-symbols-1" href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">31.2.2 Grammar methods dealing with unvalued symbols</a></li>
-      <li><a name="toc-Registering-semantics-in-the-valuator-1" href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">31.2.3 Registering semantics in the valuator</a></li>
+      <li><a name="toc-What-unvalued-symbols-were-1" href="What-unvalued-symbols-were.html#What-unvalued-symbols-were">32.2.1 What unvalued symbols were</a></li>
+      <li><a name="toc-Grammar-methods-dealing-with-unvalued-symbols-1" href="Grammar-methods-dealing-with-unvalued-symbols.html#Grammar-methods-dealing-with-unvalued-symbols">32.2.2 Grammar methods dealing with unvalued symbols</a></li>
+      <li><a name="toc-Registering-semantics-in-the-valuator-1" href="Registering-semantics-in-the-valuator.html#Registering-semantics-in-the-valuator">32.2.3 Registering semantics in the valuator</a></li>
     </ul></li>
-    <li><a name="toc-Cycles-1" href="Cycles.html#Cycles">31.3 Cycles</a></li>
+    <li><a name="toc-Cycles-1" href="Cycles.html#Cycles">32.3 Cycles</a></li>
   </ul></li>
-  <li><a name="toc-History-of-the-Marpa-algorithm-1" href="History-of-the-Marpa-algorithm.html#History-of-the-Marpa-algorithm">32 History of the Marpa algorithm</a></li>
-  <li><a name="toc-Annotated-bibliography-1" href="Annotated-bibliography.html#Annotated-bibliography">33 Annotated bibliography</a>
+  <li><a name="toc-History-of-the-Marpa-algorithm-1" href="History-of-the-Marpa-algorithm.html#History-of-the-Marpa-algorithm">33 History of the Marpa algorithm</a></li>
+  <li><a name="toc-Annotated-bibliography-1" href="Annotated-bibliography.html#Annotated-bibliography">34 Annotated bibliography</a>
   <ul class="no-bullet">
-    <li><a name="toc-Aho-and-Ullman-1972-1" href="Aho-and-Ullman-1972.html#Aho-and-Ullman-1972">33.1 Aho and Ullman 1972</a></li>
-    <li><a name="toc-Aycock-and-Horspool-2002-1" href="Aycock-and-Horspool-2002.html#Aycock-and-Horspool-2002">33.2 Aycock and Horspool 2002</a></li>
-    <li><a name="toc-C89-standard" href="C89.html#C89">33.3 C89 standard</a></li>
-    <li><a name="toc-C99-standard" href="C99.html#C99">33.4 C99 standard</a></li>
-    <li><a name="toc-Dominus-2005-1" href="Dominus-2005.html#Dominus-2005">33.5 Dominus 2005</a></li>
-    <li><a name="toc-Earley-1970-1" href="Earley-1970.html#Earley-1970">33.6 Earley 1970</a></li>
-    <li><a name="toc-Grune-and-Jacobs-1990-1" href="Grune-and-Jacobs-1990.html#Grune-and-Jacobs-1990">33.7 Grune and Jacobs 1990</a></li>
-    <li><a name="toc-Grune-and-Jacobs-2008-1" href="Grune-and-Jacobs-2008.html#Grune-and-Jacobs-2008">33.8 Grune and Jacobs 2008</a></li>
-    <li><a name="toc-Marpa-theory-paper-1" href="Marpa-theory-paper.html#Marpa-theory-paper">33.9 Marpa theory paper</a></li>
-    <li><a name="toc-Kegler-2023-1" href="Kegler-2023.html#Kegler-2023">33.10 Kegler 2023</a></li>
-    <li><a name="toc-Parsing-timeline-1" href="Parsing-timeline.html#Parsing-timeline">33.11 Parsing timeline</a></li>
-    <li><a name="toc-Leo-1991-1" href="Leo-1991.html#Leo-1991">33.12 Leo 1991</a></li>
-    <li><a name="toc-Scott-2008-1" href="Scott-2008.html#Scott-2008">33.13 Scott 2008</a></li>
-    <li><a name="toc-Wikipedia-BNF-article-1" href="Wikipedia-BNF-article.html#Wikipedia-BNF-article">33.14 Wikipedia BNF article</a></li>
+    <li><a name="toc-Aho-and-Ullman-1972-1" href="Aho-and-Ullman-1972.html#Aho-and-Ullman-1972">34.1 Aho and Ullman 1972</a></li>
+    <li><a name="toc-Aycock-and-Horspool-2002-1" href="Aycock-and-Horspool-2002.html#Aycock-and-Horspool-2002">34.2 Aycock and Horspool 2002</a></li>
+    <li><a name="toc-C89-standard" href="C89.html#C89">34.3 C89 standard</a></li>
+    <li><a name="toc-C99-standard" href="C99.html#C99">34.4 C99 standard</a></li>
+    <li><a name="toc-Dominus-2005-1" href="Dominus-2005.html#Dominus-2005">34.5 Dominus 2005</a></li>
+    <li><a name="toc-Earley-1970-1" href="Earley-1970.html#Earley-1970">34.6 Earley 1970</a></li>
+    <li><a name="toc-Grune-and-Jacobs-1990-1" href="Grune-and-Jacobs-1990.html#Grune-and-Jacobs-1990">34.7 Grune and Jacobs 1990</a></li>
+    <li><a name="toc-Grune-and-Jacobs-2008-1" href="Grune-and-Jacobs-2008.html#Grune-and-Jacobs-2008">34.8 Grune and Jacobs 2008</a></li>
+    <li><a name="toc-Marpa-theory-paper-1" href="Marpa-theory-paper.html#Marpa-theory-paper">34.9 Marpa theory paper</a></li>
+    <li><a name="toc-Kegler-2023-1" href="Kegler-2023.html#Kegler-2023">34.10 Kegler 2023</a></li>
+    <li><a name="toc-Parsing-timeline-1" href="Parsing-timeline.html#Parsing-timeline">34.11 Parsing timeline</a></li>
+    <li><a name="toc-Leo-1991-1" href="Leo-1991.html#Leo-1991">34.12 Leo 1991</a></li>
+    <li><a name="toc-Scott-2008-1" href="Scott-2008.html#Scott-2008">34.13 Scott 2008</a></li>
+    <li><a name="toc-Wikipedia-BNF-article-1" href="Wikipedia-BNF-article.html#Wikipedia-BNF-article">34.14 Wikipedia BNF article</a></li>
   </ul></li>
-  <li><a name="toc-Acknowledgements-1" href="Acknowledgements.html#Acknowledgements">34 Acknowledgements</a>
+  <li><a name="toc-Acknowledgements-1" href="Acknowledgements.html#Acknowledgements">35 Acknowledgements</a>
   <ul class="no-bullet">
-    <li><a name="toc-An-apology-1" href="An-apology.html#An-apology">34.1 An apology</a></li>
+    <li><a name="toc-An-apology-1" href="An-apology.html#An-apology">35.1 An apology</a></li>
   </ul></li>
   <li><a name="toc-Index-of-terms-1" href="Index-of-terms.html#Index-of-terms">Index of terms</a></li>
 </ul>
@@ -354,8 +364,8 @@ Next: <a href="License.html#License" accesskey="n" rel="next">License</a>, Previ
 <hr>
 <a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
 <h1 class="top">Libmarpa: The Marpa low-level library</h1>
-<p>This manual (12 April 2023)
-is for Libmarpa 11.0.8.
+<p>This manual (21 April 2023)
+is for Libmarpa 11.0.9.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -397,7 +407,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Exhaustion.html#Exhaustion" accesskey="8">Exhaustion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="End-of-parsing.html#End-of-parsing" accesskey="9">End of parsing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="End-of-parse.html#End-of-parse" accesskey="9">End of parse</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Semantics.html#Semantics">Semantics</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -430,6 +440,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 <tr><td align="left" valign="top">&bull; <a href="Value-methods.html#Value-methods">Value methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Events.html#Events">Events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses">Tracing and diagnosing parses</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes">Error methods macros and codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -509,7 +521,7 @@ Architecture
 
 Input
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Earlemes.html#Earlemes">Earlemes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Parse-location.html#Parse-location">Parse location</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="The-basic-models-of-input.html#The-basic-models-of-input">The basic models of input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -517,9 +529,13 @@ Input
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
-Earlemes
+Parse location
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="The-traditional-input-model.html#The-traditional-input-model">The traditional input model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Earlemes-and-Earley-set-IDs.html#Earlemes-and-Earley-set-IDs">Earlemes and Earley set IDs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="The-latest-Earley-set.html#The-latest-Earley-set">The latest Earley set</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="The-latest-earleme.html#The-latest-earleme">The latest earleme</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -537,7 +553,7 @@ The basic models of input
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
-End of parsing
+End of parse
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Determining-EOP-from-EOI.html#Determining-EOP-from-EOI">Determining EOP from EOI</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -765,6 +781,18 @@ Per-rule events
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
+Tracing and diagnosing parses
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Listing-symbols.html#Listing-symbols">Listing symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Listing-rules.html#Listing-rules">Listing rules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Listing-Earley-sets.html#Listing-Earley-sets">Listing Earley sets</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tracing-tokens.html#Tracing-tokens">Tracing tokens</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Error methods, macros and codes
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Error-methods.html#Error-methods">Error methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -798,6 +826,8 @@ Advanced input models
 <tr><td align="left" valign="top">&bull; <a href="The-fully-general-input-model.html#The-fully-general-input-model">The fully general input model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="The-codepoint_002dper_002dearleme-model.html#The-codepoint_002dper_002dearleme-model">The codepoint-per-earleme model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Converting-earleme-to-Earley-set-ID.html#Converting-earleme-to-Earley-set-ID">Converting earleme to Earley set ID</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (12 April 2023)
-is for Libmarpa 11.0.8.
+<!-- This manual (21 April 2023)
+is for Libmarpa 11.0.9.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Bocage data structure (Libmarpa 11.0.8)</title>
+<title>Bocage data structure (Libmarpa 11.0.9)</title>
 
-<meta name="description" content="Bocage data structure (Libmarpa 11.0.8)">
-<meta name="keywords" content="Bocage data structure (Libmarpa 11.0.8)">
+<meta name="description" content="Bocage data structure (Libmarpa 11.0.9)">
+<meta name="keywords" content="Bocage data structure (Libmarpa 11.0.9)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -91,21 +91,6 @@ Prof. Scott did the all-important
 work of documenting it and providing the
 appropriate mathematical apparatus.
 See <a href="Scott-2008.html#Scott-2008">Scott 2008</a>.
-</p>
-<p>The bocage contains the data for the parse trees whose root is
-an instance of the start symbol that begins at Earley set 0
-and ends at the
-<a name="index-End-of-parse-Earley-set"></a>
-<a name="index-Earley-set_002c-end-of-parse"></a>
-<em>end of parse Earley set</em>.
-Applications usually use the Earley set at the current earleme
-as the
-&ldquo;end of parse Earley set&rdquo;,
-so that the bocage is for parses of the entire input.
-But some applications may be interested in parsing prefixes of
-the input, and these applications can choose other
-end of parse Earley sets in their constructor.
-See <a href="Bocage-constructor.html#marpa_005fb_005fnew">marpa_b_new()</a>.
 </p>
 
 

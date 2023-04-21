@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (12 April 2023)
-is for Libmarpa 11.0.8.
+<!-- This manual (21 April 2023)
+is for Libmarpa 11.0.9.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,17 +25,17 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>The furthest earleme (Libmarpa 11.0.8)</title>
+<title>The furthest earleme (Libmarpa 11.0.9)</title>
 
-<meta name="description" content="The furthest earleme (Libmarpa 11.0.8)">
-<meta name="keywords" content="The furthest earleme (Libmarpa 11.0.8)">
+<meta name="description" content="The furthest earleme (Libmarpa 11.0.9)">
+<meta name="keywords" content="The furthest earleme (Libmarpa 11.0.9)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
 <link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Earlemes.html#Earlemes" rel="up" title="Earlemes">
+<link href="Parse-location.html#Parse-location" rel="up" title="Parse location">
 <link href="The-basic-models-of-input.html#The-basic-models-of-input" rel="next" title="The basic models of input">
 <link href="The-current-earleme.html#The-current-earleme" rel="prev" title="The current earleme">
 <style type="text/css">
@@ -73,11 +73,11 @@ ul.no-bullet {list-style: none}
 <a name="The-furthest-earleme"></a>
 <div class="header">
 <p>
-Previous: <a href="The-current-earleme.html#The-current-earleme" accesskey="p" rel="prev">The current earleme</a>, Up: <a href="Earlemes.html#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="The-current-earleme.html#The-current-earleme" accesskey="p" rel="prev">The current earleme</a>, Up: <a href="Parse-location.html#Parse-location" accesskey="u" rel="up">Parse location</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="The-furthest-earleme-1"></a>
-<h4 class="subsection">7.1.4 The furthest earleme</h4>
+<h4 class="subsection">7.1.6 The furthest earleme</h4>
 
 <p>Loosely speaking,
 the
@@ -101,11 +101,15 @@ a call to
 <code>marpa_r_alternative()</code>,
 the furthest earleme after the call
 is <code>max(old_f, current+length)</code>.
-The <code>marpa_r_new()</code> and
-<code>marpa_r_alternative()</code> methods
-are only ones that change the furthest earleme.
-See <a href="Creating-a-new-recognizer.html#marpa_005fr_005fnew">marpa_r_new()</a>, and
-<a href="Recognizer-life-cycle-mutators.html#marpa_005fr_005falternative">marpa_r_alternative()</a>.
+</p>
+<p>The furthest earleme is set implicitly by
+the <code>marpa_r_new()</code> (see <a href="Creating-a-new-recognizer.html#marpa_005fr_005fnew">marpa_r_new</a>) and
+the <code>marpa_r_alternative()</code> (see <a href="Recognizer-life-cycle-mutators.html#marpa_005fr_005falternative">marpa_r_alternative</a>)
+methods.
+Applications can access the value of the furthest earleme
+via the
+<code>marpa_r_furthest_earleme()</code> method
+(see <a href="Location-accessors.html#marpa_005fr_005ffurthest_005fearleme">marpa_r_furthest_earleme</a>).
 </p>
 <p>In the basic input models,
 where every token has length 1,

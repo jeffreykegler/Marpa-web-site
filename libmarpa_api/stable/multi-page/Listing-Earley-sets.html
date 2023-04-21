@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (21 April 2023)
+is for Libmarpa 11.0.9.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Listing Earley sets (Libmarpa 11.0.9)</title>
+
+<meta name="description" content="Listing Earley sets (Libmarpa 11.0.9)">
+<meta name="keywords" content="Listing Earley sets (Libmarpa 11.0.9)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses" rel="up" title="Tracing and diagnosing parses">
+<link href="Tracing-tokens.html#Tracing-tokens" rel="next" title="Tracing tokens">
+<link href="Listing-rules.html#Listing-rules" rel="prev" title="Listing rules">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Listing-Earley-sets"></a>
+<div class="header">
+<p>
+Next: <a href="Tracing-tokens.html#Tracing-tokens" accesskey="n" rel="next">Tracing tokens</a>, Previous: <a href="Listing-rules.html#Listing-rules" accesskey="p" rel="prev">Listing rules</a>, Up: <a href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Listing-Earley-sets-1"></a>
+<h3 class="section">26.3 Listing Earley sets</h3>
+
+<p>The parse diagnostics should include a facility for displaying
+Earley sets by Earley set location.
+For each Earley item at a location,
+the facility should display
+</p><ul>
+<li> the rule;
+</li><li> the rule&rsquo;s dot position;
+</li><li> the origin of the Earley item.
+</li></ul>
+<p>The &ldquo;progress reports&rdquo; methods of Libmarpa
+are available for this purpose.
+See <a href="Progress-reports.html#Progress-reports">Progress reports</a>.
+</p>
+<p>It is up to the application how to display rule and
+dot position, but the most helpful way is usually to display
+the LHS and RHS,
+with a bullet or dot at the appropriate position in the RHS.
+This is what is done when showing dotted rules in this document,
+as for example in
+</p><div class="display">
+<pre class="display">    [ Y ::= C &bull; X ].
+</pre></div>
+
+<p>The current location of each Earley item may be displayed with the Earley item but,
+since it is shared by the entire set of Earley items,
+it can also be put in a header, or left implicit.
+</p>
+<p>We recall (see <a href="Earlemes-and-Earley-set-IDs.html#Earlemes-and-Earley-set-IDs">Earlemes and Earley set IDs</a>) that
+the Earley IDs range from 0 to <code>latest</code>, inclusive,
+where <code>latest</code> is the latest Earley set.
+See <a href="The-latest-Earley-set.html#The-latest-Earley-set">The latest Earley set</a>].
+</p>
+<p>The obvious way to display the Earley items is one at a time.
+We call this the &ldquo;raw&rdquo; method of displaying an Earley set.
+But we can also try to compact this listing by grouping together
+Earley items that share a dotted rule
+(and which therefore differ only in their origins).
+We call this the &ldquo;compact&rdquo; method of displaying an Earley set.
+<code>Marpa::R2</code> uses the compact method.
+</p>
+<p>To use the compact method,
+we must be able to show an arbitrarily large number of origins compactly.
+The following is an example line from
+<code>Marpa::R2</code>&rsquo;s progress reports:
+</p><div class="display">
+<pre class="display">    F11 x12 @0...38-41 L1c1-L2c40 &lt;plain assignment&gt; -&gt; &rsquo;x&rsquo; &rsquo;=&rsquo; expression &bull;
+</pre></div>
+<p>In this example line, the following are true:
+</p><ul>
+<li> The &ldquo;F11&rdquo; indicates
+indicates that the display line is for rule 11,
+which is a completion.
+The &ldquo;F&rdquo; indicates that the dot is in the &ldquo;final&rdquo; position.
+</li><li> &ldquo;x12&rdquo;
+indicates that the example line
+represents 12 distinct Earley items.
+</li><li> &ldquo;@0...38-41&rdquo;
+states that the Earley items represented
+have origins ranging from 0 to 38,
+and that the current location for
+the Earley items represented
+in the example line is 41.
+</li><li> &ldquo;L1c1-L2c40&rdquo; describes the line and column locations in the input &mdash;
+the Earley items represented in
+the example line
+run from line 1, column 1 to line 2, column 40.
+Line and column tracking is implemented at the <code>Marpa::R2</code> level.
+</li><li> &ldquo;&lt;plain assignment&gt; -&gt; &rsquo;x&rsquo; &rsquo;=&rsquo; expression &bull;&rdquo;
+indicates the dotted rule.
+</li></ul>
+<p>For more details on <code>Marpa::R2</code>&rsquo;s implementation of progress
+reports, see
+<a href="https://metacpan.org/dist/Marpa-R2/view/pod/Progress.pod">https://metacpan.org/dist/Marpa-R2/view/pod/Progress.pod</a>.
+</p>
+<p>The disadvantage of the compact representation of Earley sets
+is that it is more complicated to read.
+The disadvantage of the raw representation is that,
+for ambiguous grammars, the number of Earley items can
+be very large,
+and therefore the listing of the Earley set
+can be unmanageably long.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Tracing-tokens.html#Tracing-tokens" accesskey="n" rel="next">Tracing tokens</a>, Previous: <a href="Listing-rules.html#Listing-rules" accesskey="p" rel="prev">Listing rules</a>, Up: <a href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (21 April 2023)
+is for Libmarpa 11.0.9.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Listing rules (Libmarpa 11.0.9)</title>
+
+<meta name="description" content="Listing rules (Libmarpa 11.0.9)">
+<meta name="keywords" content="Listing rules (Libmarpa 11.0.9)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses" rel="up" title="Tracing and diagnosing parses">
+<link href="Listing-Earley-sets.html#Listing-Earley-sets" rel="next" title="Listing Earley sets">
+<link href="Listing-symbols.html#Listing-symbols" rel="prev" title="Listing symbols">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Listing-rules"></a>
+<div class="header">
+<p>
+Next: <a href="Listing-Earley-sets.html#Listing-Earley-sets" accesskey="n" rel="next">Listing Earley sets</a>, Previous: <a href="Listing-symbols.html#Listing-symbols" accesskey="p" rel="prev">Listing symbols</a>, Up: <a href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Listing-rules-1"></a>
+<h3 class="section">26.2 Listing rules</h3>
+
+<p>The parse diagnostics should include a facility for displaying
+the rules in a grammar.
+The rules will have IDs from 0 to the highest rule ID,
+which can be found using the
+<code>marpa_g_highest_rule_id()</code> method
+(see <a href="Rule-methods.html#marpa_005fg_005fhighest_005frule_005fid">marpa_g_highest_rule_id</a>).
+</p>
+<p>It is up to the application whether to have names for rules.
+In some grammar generators,
+the LHS of a rule serves as its name,
+but does not produce unique names for each rule in Libmarpa,
+since many rules may have the same LHS.
+Currently the most used upper layer for Libmarpa,
+<code>Marpa::R2</code>, does not have rule names.
+An application that does want to name its rules must
+decide on a rule naming convention.
+</p>
+<p>At the highest verbosity level,
+the rule listing facility should display
+</p><ul>
+<li> the rule ID;
+</li><li> the LHS of the rule
+(see <a href="Rule-methods.html#marpa_005fg_005frule_005flhs">marpa_g_rule_lhs</a>);
+</li><li> the RHS of the rule, that is,
+each RHS symbol
+(see <a href="Rule-methods.html#marpa_005fg_005frule_005frhs">marpa_g_rule_rhs</a>)
+for the length of the rule
+(see <a href="Rule-methods.html#marpa_005fg_005frule_005flength">marpa_g_rule_length</a>);
+</li><li> whether the rule is accessible
+(see <a href="Rule-methods.html#marpa_005fg_005frule_005fis_005faccessible">marpa_g_rule_is_accessible</a>);
+</li><li> whether the rule is nullable
+(see <a href="Rule-methods.html#marpa_005fg_005frule_005fis_005fnullable">marpa_g_rule_is_nullable</a>);
+</li><li> whether the rule is nulling
+(see <a href="Rule-methods.html#marpa_005fg_005frule_005fis_005fnulling">marpa_g_rule_is_nulling</a>);
+</li><li> whether the rule is productive
+(see <a href="Rule-methods.html#marpa_005fg_005frule_005fis_005fproductive">marpa_g_rule_is_productive</a>);
+</li><li> the rank of the rule
+(see <a href="Rank-methods.html#marpa_005fg_005frule_005frank">marpa_g_rule_rank</a>);
+</li><li> whether the rule is a sequence rule
+(see <a href="Sequence-methods.html#marpa_005fg_005fsequence_005fmin">marpa_g_sequence_min</a>);
+</li><li> if the rule is a sequence rule,
+the minimum count of the sequence
+(see <a href="Sequence-methods.html#marpa_005fg_005fsequence_005fmin">marpa_g_sequence_min</a>); and
+</li><li> if the rule is a sequence rule,
+the sequence separator, if any,
+(see <a href="Sequence-methods.html#marpa_005fg_005fsequence_005fseparator">marpa_g_sequence_separator</a>)
+</li><li> if the rule is a sequence rule,
+whether the rule uses proper separation,
+(see <a href="Sequence-methods.html#marpa_005fg_005frule_005fis_005fproper_005fseparation">marpa_g_rule_is_proper_separation</a>);
+</li></ul>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Listing-Earley-sets.html#Listing-Earley-sets" accesskey="n" rel="next">Listing Earley sets</a>, Previous: <a href="Listing-symbols.html#Listing-symbols" accesskey="p" rel="prev">Listing symbols</a>, Up: <a href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

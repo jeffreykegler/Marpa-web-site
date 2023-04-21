@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (12 April 2023)
-is for Libmarpa 11.0.8.
+<!-- This manual (21 April 2023)
+is for Libmarpa 11.0.9.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Bocage constructor (Libmarpa 11.0.8)</title>
+<title>Bocage constructor (Libmarpa 11.0.9)</title>
 
-<meta name="description" content="Bocage constructor (Libmarpa 11.0.8)">
-<meta name="keywords" content="Bocage constructor (Libmarpa 11.0.8)">
+<meta name="description" content="Bocage constructor (Libmarpa 11.0.9)">
+<meta name="keywords" content="Bocage constructor (Libmarpa 11.0.9)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -85,16 +85,21 @@ Next: <a href="Bocage-reference-counting.html#Bocage-reference-counting" accessk
 <p>On success, the following is the case:
 </p><ul>
 <li> If <code>earley_set_ID</code> is non-negative,
-creates a new bocage object, whose &ldquo;end of parse Earley set&rdquo;
+creates a new bocage object, whose EOP
 is the Earley set with ID <code>earley_set_ID</code>.
 </li><li> If <code>earley_set_ID</code> is -1,
-creates a new bocage object, whose &ldquo;end of parse Earley set&rdquo;
+creates a new bocage object, whose EOP
 is the Earley set at the current earleme.
 </li><li> The new bocage object has a reference count of 1.
 </li><li> The reference count of its parent recognizer object, <var>r</var>,
 is increased by 1.
 </li></ul>
 
+<p>The application will usually want EOP to be the Earley set
+at the current earleme,
+but there are exceptions.
+See <a href="End-of-parse.html#End-of-parse">End of parse</a>.
+</p>
 <p>If <var>earley_set_ID</var> is -1
 and there is no Earley set at the current earleme;
 or if <var>earley_set_ID</var> is non-negative

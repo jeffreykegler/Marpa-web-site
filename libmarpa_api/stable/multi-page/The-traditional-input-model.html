@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (12 April 2023)
-is for Libmarpa 11.0.8.
+<!-- This manual (21 April 2023)
+is for Libmarpa 11.0.9.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,19 +25,19 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>The traditional input model (Libmarpa 11.0.8)</title>
+<title>The traditional input model (Libmarpa 11.0.9)</title>
 
-<meta name="description" content="The traditional input model (Libmarpa 11.0.8)">
-<meta name="keywords" content="The traditional input model (Libmarpa 11.0.8)">
+<meta name="description" content="The traditional input model (Libmarpa 11.0.9)">
+<meta name="keywords" content="The traditional input model (Libmarpa 11.0.9)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
 <link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Earlemes.html#Earlemes" rel="up" title="Earlemes">
-<link href="The-latest-earleme.html#The-latest-earleme" rel="next" title="The latest earleme">
-<link href="Earlemes.html#Earlemes" rel="prev" title="Earlemes">
+<link href="Parse-location.html#Parse-location" rel="up" title="Parse location">
+<link href="Earlemes-and-Earley-set-IDs.html#Earlemes-and-Earley-set-IDs" rel="next" title="Earlemes and Earley set IDs">
+<link href="Parse-location.html#Parse-location" rel="prev" title="Parse location">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -73,7 +73,7 @@ ul.no-bullet {list-style: none}
 <a name="The-traditional-input-model"></a>
 <div class="header">
 <p>
-Next: <a href="The-latest-earleme.html#The-latest-earleme" accesskey="n" rel="next">The latest earleme</a>, Previous: <a href="Earlemes.html#Earlemes" accesskey="p" rel="prev">Earlemes</a>, Up: <a href="Earlemes.html#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Earlemes-and-Earley-set-IDs.html#Earlemes-and-Earley-set-IDs" accesskey="n" rel="next">Earlemes and Earley set IDs</a>, Previous: <a href="Parse-location.html#Parse-location" accesskey="p" rel="prev">Parse location</a>, Up: <a href="Parse-location.html#Parse-location" accesskey="u" rel="up">Parse location</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="The-traditional-input-model-1"></a>
@@ -92,31 +92,6 @@ do not fit this traditional input model &mdash;
 natural language processing requires ambiguous tokens,
 for example.
 Libmarpa allows a wide variety of alternative input models.
-</p>
-<p>In Libmarpa a location is called a
-<a name="index-earleme"></a>
-<em>earleme</em>.
-The number of an Earley set is the
-<a name="index-ID-_0028of-an-Earley-set_0029"></a>
-<em>ID of the Earley set</em>,
-or its
-<a name="index-ordinal-_0028of-an-Earley-set_0029"></a>
-<em>ordinal</em>.
-In the traditional model, the ordinal of an Earley set and
-its earleme are always exactly the same, but in Libmarpa&rsquo;s
-advanced input models
-the ordinal of an Earley set can be different from
-its location (earleme).
-</p>
-<p>The important earleme values are
-the latest earleme.
-the current earleme, and
-the furthest earleme.
-Latest, current and furthest earleme,
-when they have specified values,
-obey a lexical order in this sense:
-The latest earleme is always at or before the current earleme,
-and the current earleme is always at or before the furthest earleme.
 </p>
 
 

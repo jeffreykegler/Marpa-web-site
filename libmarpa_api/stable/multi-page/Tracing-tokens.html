@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (21 April 2023)
+is for Libmarpa 11.0.9.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Tracing tokens (Libmarpa 11.0.9)</title>
+
+<meta name="description" content="Tracing tokens (Libmarpa 11.0.9)">
+<meta name="keywords" content="Tracing tokens (Libmarpa 11.0.9)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses" rel="up" title="Tracing and diagnosing parses">
+<link href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" rel="next" title="Error methods macros and codes">
+<link href="Listing-Earley-sets.html#Listing-Earley-sets" rel="prev" title="Listing Earley sets">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Tracing-tokens"></a>
+<div class="header">
+<p>
+Previous: <a href="Listing-Earley-sets.html#Listing-Earley-sets" accesskey="p" rel="prev">Listing Earley sets</a>, Up: <a href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Tracing-tokens-1"></a>
+<h3 class="section">26.4 Tracing tokens</h3>
+
+<p>The parse diagnostics should include a facility for
+displaying the token processing.
+At the default verbosity level,
+the facility should describe the token
+passed to the
+<code>marpa_r_alternative</code>
+(see <a href="Recognizer-life-cycle-mutators.html#marpa_005fr_005falternative">marpa_r_alternative</a>)
+method call,
+and specify the outcome of
+the <code>marpa_r_alternative</code>
+method call as
+&ldquo;accepted&rdquo;, &ldquo;rejected&rdquo; or &ldquo;uncorrectable&rdquo;,
+where
+</p><ul>
+<li> &ldquo;accepted&rdquo; means
+that the <code>marpa_r_alternative()</code> call succeeded;
+</li><li> &ldquo;rejected&rdquo; means
+that the <code>marpa_r_alternative()</code> call failed,
+but the failure is fully recoverable; and
+</li><li> &ldquo;uncorrectable&rdquo; means
+that the <code>marpa_r_alternative()</code> call failed,
+but the failure is not fully recoverable.
+</li></ul>
+<p>The token tracing facility&rsquo;s reporting of rejected token
+can vary by application.
+For some applications, token rejection will not be
+allowed, so that distinguishing between rejected
+and uncorrectable tokens is pointless and unnecessary.
+For other applications, such as those that use
+the Ruby Slippers technique (see <a href="Recognizer-life-cycle-mutators.html#Ruby-Slippers">Ruby Slippers</a>),
+token rejection will be
+a common occurrence in normal processing.
+</p>
+<p>At some verbosity level above the default,
+after every
+<code>marpa_r_earleme_complete()</code> method call
+(see <a href="Recognizer-life-cycle-mutators.html#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>)
+the token tracing facility should list all the
+expected tokens.
+The <code>marpa_r_terminals_expected()</code>
+(see <a href="Other-parse-status-methods.html#marpa_005fr_005fterminals_005fexpected">marpa_r_terminals_expected</a>) method call
+is available for this purpose.
+</p>
+
+
+
+</body>
+</html>

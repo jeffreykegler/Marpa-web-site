@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (12 April 2023)
-is for Libmarpa 11.0.8.
+<!-- This manual (21 April 2023)
+is for Libmarpa 11.0.9.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Libmarpa 11.0.8</title>
+<title>Libmarpa 11.0.9</title>
 
-<meta name="description" content="Libmarpa 11.0.8">
-<meta name="keywords" content="Libmarpa 11.0.8">
+<meta name="description" content="Libmarpa 11.0.9">
+<meta name="keywords" content="Libmarpa 11.0.9">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -68,7 +68,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">Libmarpa 11.0.8</h1>
+<h1 class="settitle" align="center">Libmarpa 11.0.9</h1>
 
 
 
@@ -115,12 +115,14 @@ ul.no-bullet {list-style: none}
   </ul></li>
   <li><a name="toc-Input-1" href="#Input">7 Input</a>
   <ul class="no-bullet">
-    <li><a name="toc-Earlemes-1" href="#Earlemes">7.1 Earlemes</a>
+    <li><a name="toc-Parse-location-1" href="#Parse-location">7.1 Parse location</a>
     <ul class="no-bullet">
       <li><a name="toc-The-traditional-input-model-1" href="#The-traditional-input-model">7.1.1 The traditional input model</a></li>
-      <li><a name="toc-The-latest-earleme-1" href="#The-latest-earleme">7.1.2 The latest earleme</a></li>
-      <li><a name="toc-The-current-earleme-1" href="#The-current-earleme">7.1.3 The current earleme</a></li>
-      <li><a name="toc-The-furthest-earleme-1" href="#The-furthest-earleme">7.1.4 The furthest earleme</a></li>
+      <li><a name="toc-Earlemes-and-Earley-set-IDs-1" href="#Earlemes-and-Earley-set-IDs">7.1.2 Earlemes and Earley set IDs</a></li>
+      <li><a name="toc-The-latest-Earley-set-1" href="#The-latest-Earley-set">7.1.3 The latest Earley set</a></li>
+      <li><a name="toc-The-latest-earleme-1" href="#The-latest-earleme">7.1.4 The latest earleme</a></li>
+      <li><a name="toc-The-current-earleme-1" href="#The-current-earleme">7.1.5 The current earleme</a></li>
+      <li><a name="toc-The-furthest-earleme-1" href="#The-furthest-earleme">7.1.6 The furthest earleme</a></li>
     </ul></li>
     <li><a name="toc-The-basic-models-of-input-1" href="#The-basic-models-of-input">7.2 The basic models of input</a>
     <ul class="no-bullet">
@@ -130,7 +132,7 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Terminals-1" href="#Terminals">7.3 Terminals</a></li>
   </ul></li>
   <li><a name="toc-Exhaustion-1" href="#Exhaustion">8 Exhaustion</a></li>
-  <li><a name="toc-End-of-parsing-1" href="#End-of-parsing">9 End of parsing</a>
+  <li><a name="toc-End-of-parse-1" href="#End-of-parse">9 End of parse</a>
   <ul class="no-bullet">
     <li><a name="toc-Determining-EOP-from-EOI-1" href="#Determining-EOP-from-EOI">9.1 Determining EOP from EOI</a></li>
     <li><a name="toc-Determining-EOP-from-exhaustion-1" href="#Determining-EOP-from-exhaustion">9.2 Determining EOP from exhaustion</a></li>
@@ -261,84 +263,92 @@ ul.no-bullet {list-style: none}
       <li><a name="toc-Workaround-with-a-dedicated-LHS-symbol-1" href="#Workaround-with-a-dedicated-LHS-symbol">25.15.1 Workaround with a dedicated LHS symbol</a></li>
     </ul></li>
   </ul></li>
-  <li><a name="toc-Error-methods_002c-macros-and-codes" href="#Error-methods-macros-and-codes">26 Error methods, macros and codes</a>
+  <li><a name="toc-Tracing-and-diagnosing-parses-1" href="#Tracing-and-diagnosing-parses">26 Tracing and diagnosing parses</a>
   <ul class="no-bullet">
-    <li><a name="toc-Error-methods-1" href="#Error-methods">26.1 Error methods</a></li>
-    <li><a name="toc-Error-Macros-1" href="#Error-Macros">26.2 Error Macros</a></li>
-    <li><a name="toc-External-error-codes-1" href="#External-error-codes">26.3 External error codes</a></li>
-    <li><a name="toc-Internal-error-codes-1" href="#Internal-error-codes">26.4 Internal error codes</a></li>
+    <li><a name="toc-Listing-symbols-1" href="#Listing-symbols">26.1 Listing symbols</a></li>
+    <li><a name="toc-Listing-rules-1" href="#Listing-rules">26.2 Listing rules</a></li>
+    <li><a name="toc-Listing-Earley-sets-1" href="#Listing-Earley-sets">26.3 Listing Earley sets</a></li>
+    <li><a name="toc-Tracing-tokens-1" href="#Tracing-tokens">26.4 Tracing tokens</a></li>
   </ul></li>
-  <li><a name="toc-Technical-notes-1" href="#Technical-notes">27 Technical notes</a>
+  <li><a name="toc-Error-methods_002c-macros-and-codes" href="#Error-methods-macros-and-codes">27 Error methods, macros and codes</a>
   <ul class="no-bullet">
-    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="#Data-types-used-by-Libmarpa">27.1 Data types used by Libmarpa</a></li>
-    <li><a name="toc-Why-so-many-time-objects_003f" href="#Why-so-many-time-objects">27.2 Why so many time objects?</a></li>
-    <li><a name="toc-Numbered-objects-2" href="#Design-of-numbered-objects">27.3 Numbered objects</a></li>
-    <li><a name="toc-Trap-representations-1" href="#Trap-representations">27.4 Trap representations</a></li>
-    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="#Out_002dof_002dmemory-handling">27.5 Out-of-memory handling</a></li>
+    <li><a name="toc-Error-methods-1" href="#Error-methods">27.1 Error methods</a></li>
+    <li><a name="toc-Error-Macros-1" href="#Error-Macros">27.2 Error Macros</a></li>
+    <li><a name="toc-External-error-codes-1" href="#External-error-codes">27.3 External error codes</a></li>
+    <li><a name="toc-Internal-error-codes-1" href="#Internal-error-codes">27.4 Internal error codes</a></li>
   </ul></li>
-  <li><a name="toc-Advanced-input-models-1" href="#Advanced-input-models">28 Advanced input models</a>
+  <li><a name="toc-Technical-notes-1" href="#Technical-notes">28 Technical notes</a>
   <ul class="no-bullet">
-    <li><a name="toc-The-dense-variable_002dlength-token-model-1" href="#The-dense-variable_002dlength-token-model">28.1 The dense variable-length token model</a></li>
-    <li><a name="toc-The-fully-general-input-model-1" href="#The-fully-general-input-model">28.2 The fully general input model</a></li>
-    <li><a name="toc-The-codepoint_002dper_002dearleme-model-1" href="#The-codepoint_002dper_002dearleme-model">28.3 The codepoint-per-earleme model</a></li>
+    <li><a name="toc-Data-types-used-by-Libmarpa-1" href="#Data-types-used-by-Libmarpa">28.1 Data types used by Libmarpa</a></li>
+    <li><a name="toc-Why-so-many-time-objects_003f" href="#Why-so-many-time-objects">28.2 Why so many time objects?</a></li>
+    <li><a name="toc-Numbered-objects-2" href="#Design-of-numbered-objects">28.3 Numbered objects</a></li>
+    <li><a name="toc-Trap-representations-1" href="#Trap-representations">28.4 Trap representations</a></li>
+    <li><a name="toc-Out_002dof_002dmemory-handling-1" href="#Out_002dof_002dmemory-handling">28.5 Out-of-memory handling</a></li>
   </ul></li>
-  <li><a name="toc-Support-1" href="#Support">29 Support</a></li>
-  <li><a name="toc-Futures-1" href="#Futures">30 Futures</a>
+  <li><a name="toc-Advanced-input-models-1" href="#Advanced-input-models">29 Advanced input models</a>
   <ul class="no-bullet">
-    <li><a name="toc-Nulling-versus-nulled-1" href="#Nulling-versus-nulled">30.1 Nulling versus nulled</a></li>
-    <li><a name="toc-Document-pre_002dconditions-more-formally-1" href="#Document-pre_002dconditions-more-formally">30.2 Document pre-conditions more formally</a></li>
-    <li><a name="toc-Simpler-events-interface-1" href="#Simpler-events-interface">30.3 Simpler events interface</a></li>
-    <li><a name="toc-Better-defined-ambiguity-metric-1" href="#Better-defined-ambiguity-metric">30.4 Better defined ambiguity metric</a></li>
-    <li><a name="toc-Report-item-traverser-should-be-a-time-object-1" href="#Report-item-traverser-should-be-a-time-object">30.5 Report item traverser should be a time object</a></li>
-    <li><a name="toc-Orthogonal-treatment-of-soft-failures-1" href="#Orthogonal-treatment-of-soft-failures">30.6 Orthogonal treatment of soft failures</a></li>
-    <li><a name="toc-Orthogonal-treatment-of-exhaustion-1" href="#Orthogonal-treatment-of-exhaustion">30.7 Orthogonal treatment of exhaustion</a></li>
-    <li><a name="toc-Furthest-earleme-values-1" href="#Furthest-earleme-values">30.8 Furthest earleme values</a></li>
-    <li><a name="toc-Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029-1" href="#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029">30.9 Additional recoverable failures in marpa_r_alternative()</a></li>
-    <li><a name="toc-Untested-methods-1" href="#Untested-methods">30.10 Untested methods</a>
+    <li><a name="toc-The-dense-variable_002dlength-token-model-1" href="#The-dense-variable_002dlength-token-model">29.1 The dense variable-length token model</a></li>
+    <li><a name="toc-The-fully-general-input-model-1" href="#The-fully-general-input-model">29.2 The fully general input model</a></li>
+    <li><a name="toc-The-codepoint_002dper_002dearleme-model-1" href="#The-codepoint_002dper_002dearleme-model">29.3 The codepoint-per-earleme model</a></li>
+    <li><a name="toc-Converting-earleme-to-Earley-set-ID-1" href="#Converting-earleme-to-Earley-set-ID">29.4 Converting earleme to Earley set ID</a></li>
+  </ul></li>
+  <li><a name="toc-Support-1" href="#Support">30 Support</a></li>
+  <li><a name="toc-Futures-1" href="#Futures">31 Futures</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Nulling-versus-nulled-1" href="#Nulling-versus-nulled">31.1 Nulling versus nulled</a></li>
+    <li><a name="toc-Document-pre_002dconditions-more-formally-1" href="#Document-pre_002dconditions-more-formally">31.2 Document pre-conditions more formally</a></li>
+    <li><a name="toc-Simpler-events-interface-1" href="#Simpler-events-interface">31.3 Simpler events interface</a></li>
+    <li><a name="toc-Better-defined-ambiguity-metric-1" href="#Better-defined-ambiguity-metric">31.4 Better defined ambiguity metric</a></li>
+    <li><a name="toc-Report-item-traverser-should-be-a-time-object-1" href="#Report-item-traverser-should-be-a-time-object">31.5 Report item traverser should be a time object</a></li>
+    <li><a name="toc-Orthogonal-treatment-of-soft-failures-1" href="#Orthogonal-treatment-of-soft-failures">31.6 Orthogonal treatment of soft failures</a></li>
+    <li><a name="toc-Orthogonal-treatment-of-exhaustion-1" href="#Orthogonal-treatment-of-exhaustion">31.7 Orthogonal treatment of exhaustion</a></li>
+    <li><a name="toc-Furthest-earleme-values-1" href="#Furthest-earleme-values">31.8 Furthest earleme values</a></li>
+    <li><a name="toc-Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029-1" href="#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029">31.9 Additional recoverable failures in marpa_r_alternative()</a></li>
+    <li><a name="toc-Untested-methods-1" href="#Untested-methods">31.10 Untested methods</a>
     <ul class="no-bullet">
-      <li><a name="toc-Zero_002dwidth-assertion-methods-1" href="#Zero_002dwidth-assertion-methods">30.10.1 Zero-width assertion methods</a></li>
-      <li><a name="toc-Methods-for-revising-parses-1" href="#Methods-for-revising-parses">30.10.2 Methods for revising parses</a></li>
+      <li><a name="toc-Zero_002dwidth-assertion-methods-1" href="#Zero_002dwidth-assertion-methods">31.10.1 Zero-width assertion methods</a></li>
+      <li><a name="toc-Methods-for-revising-parses-1" href="#Methods-for-revising-parses">31.10.2 Methods for revising parses</a></li>
     </ul></li>
   </ul></li>
-  <li><a name="toc-Deprecated-techniques-and-methods-1" href="#Deprecated-techniques-and-methods">31 Deprecated techniques and methods</a>
+  <li><a name="toc-Deprecated-techniques-and-methods-1" href="#Deprecated-techniques-and-methods">32 Deprecated techniques and methods</a>
   <ul class="no-bullet">
-    <li><a name="toc-LHS-terminals-1" href="#LHS-terminals">31.1 LHS terminals</a>
+    <li><a name="toc-LHS-terminals-1" href="#LHS-terminals">32.1 LHS terminals</a>
     <ul class="no-bullet">
-      <li><a name="toc-Overview-of-LHS-terminals-1" href="#Overview-of-LHS-terminals">31.1.1 Overview of LHS terminals</a></li>
-      <li><a name="toc-Motivation-of-LHS-terminals-1" href="#Motivation-of-LHS-terminals">31.1.2 Motivation of LHS terminals</a></li>
-      <li><a name="toc-LHS-terminal-methods-1" href="#LHS-terminal-methods">31.1.3 LHS terminal methods</a></li>
-      <li><a name="toc-Precomputation-and-LHS-terminals-1" href="#Precomputation-and-LHS-terminals">31.1.4 Precomputation and LHS terminals</a></li>
-      <li><a name="toc-Nulling-terminals-1" href="#Nulling-terminals">31.1.5 Nulling terminals</a></li>
+      <li><a name="toc-Overview-of-LHS-terminals-1" href="#Overview-of-LHS-terminals">32.1.1 Overview of LHS terminals</a></li>
+      <li><a name="toc-Motivation-of-LHS-terminals-1" href="#Motivation-of-LHS-terminals">32.1.2 Motivation of LHS terminals</a></li>
+      <li><a name="toc-LHS-terminal-methods-1" href="#LHS-terminal-methods">32.1.3 LHS terminal methods</a></li>
+      <li><a name="toc-Precomputation-and-LHS-terminals-1" href="#Precomputation-and-LHS-terminals">32.1.4 Precomputation and LHS terminals</a></li>
+      <li><a name="toc-Nulling-terminals-1" href="#Nulling-terminals">32.1.5 Nulling terminals</a></li>
     </ul></li>
-    <li><a name="toc-Valued-and-unvalued-symbols-1" href="#Valued-and-unvalued-symbols">31.2 Valued and unvalued symbols</a>
+    <li><a name="toc-Valued-and-unvalued-symbols-1" href="#Valued-and-unvalued-symbols">32.2 Valued and unvalued symbols</a>
     <ul class="no-bullet">
-      <li><a name="toc-What-unvalued-symbols-were-1" href="#What-unvalued-symbols-were">31.2.1 What unvalued symbols were</a></li>
-      <li><a name="toc-Grammar-methods-dealing-with-unvalued-symbols-1" href="#Grammar-methods-dealing-with-unvalued-symbols">31.2.2 Grammar methods dealing with unvalued symbols</a></li>
-      <li><a name="toc-Registering-semantics-in-the-valuator-1" href="#Registering-semantics-in-the-valuator">31.2.3 Registering semantics in the valuator</a></li>
+      <li><a name="toc-What-unvalued-symbols-were-1" href="#What-unvalued-symbols-were">32.2.1 What unvalued symbols were</a></li>
+      <li><a name="toc-Grammar-methods-dealing-with-unvalued-symbols-1" href="#Grammar-methods-dealing-with-unvalued-symbols">32.2.2 Grammar methods dealing with unvalued symbols</a></li>
+      <li><a name="toc-Registering-semantics-in-the-valuator-1" href="#Registering-semantics-in-the-valuator">32.2.3 Registering semantics in the valuator</a></li>
     </ul></li>
-    <li><a name="toc-Cycles-1" href="#Cycles">31.3 Cycles</a></li>
+    <li><a name="toc-Cycles-1" href="#Cycles">32.3 Cycles</a></li>
   </ul></li>
-  <li><a name="toc-History-of-the-Marpa-algorithm-1" href="#History-of-the-Marpa-algorithm">32 History of the Marpa algorithm</a></li>
-  <li><a name="toc-Annotated-bibliography-1" href="#Annotated-bibliography">33 Annotated bibliography</a>
+  <li><a name="toc-History-of-the-Marpa-algorithm-1" href="#History-of-the-Marpa-algorithm">33 History of the Marpa algorithm</a></li>
+  <li><a name="toc-Annotated-bibliography-1" href="#Annotated-bibliography">34 Annotated bibliography</a>
   <ul class="no-bullet">
-    <li><a name="toc-Aho-and-Ullman-1972-1" href="#Aho-and-Ullman-1972">33.1 Aho and Ullman 1972</a></li>
-    <li><a name="toc-Aycock-and-Horspool-2002-1" href="#Aycock-and-Horspool-2002">33.2 Aycock and Horspool 2002</a></li>
-    <li><a name="toc-C89-standard" href="#C89">33.3 C89 standard</a></li>
-    <li><a name="toc-C99-standard" href="#C99">33.4 C99 standard</a></li>
-    <li><a name="toc-Dominus-2005-1" href="#Dominus-2005">33.5 Dominus 2005</a></li>
-    <li><a name="toc-Earley-1970-1" href="#Earley-1970">33.6 Earley 1970</a></li>
-    <li><a name="toc-Grune-and-Jacobs-1990-1" href="#Grune-and-Jacobs-1990">33.7 Grune and Jacobs 1990</a></li>
-    <li><a name="toc-Grune-and-Jacobs-2008-1" href="#Grune-and-Jacobs-2008">33.8 Grune and Jacobs 2008</a></li>
-    <li><a name="toc-Marpa-theory-paper-1" href="#Marpa-theory-paper">33.9 Marpa theory paper</a></li>
-    <li><a name="toc-Kegler-2023-1" href="#Kegler-2023">33.10 Kegler 2023</a></li>
-    <li><a name="toc-Parsing-timeline-1" href="#Parsing-timeline">33.11 Parsing timeline</a></li>
-    <li><a name="toc-Leo-1991-1" href="#Leo-1991">33.12 Leo 1991</a></li>
-    <li><a name="toc-Scott-2008-1" href="#Scott-2008">33.13 Scott 2008</a></li>
-    <li><a name="toc-Wikipedia-BNF-article-1" href="#Wikipedia-BNF-article">33.14 Wikipedia BNF article</a></li>
+    <li><a name="toc-Aho-and-Ullman-1972-1" href="#Aho-and-Ullman-1972">34.1 Aho and Ullman 1972</a></li>
+    <li><a name="toc-Aycock-and-Horspool-2002-1" href="#Aycock-and-Horspool-2002">34.2 Aycock and Horspool 2002</a></li>
+    <li><a name="toc-C89-standard" href="#C89">34.3 C89 standard</a></li>
+    <li><a name="toc-C99-standard" href="#C99">34.4 C99 standard</a></li>
+    <li><a name="toc-Dominus-2005-1" href="#Dominus-2005">34.5 Dominus 2005</a></li>
+    <li><a name="toc-Earley-1970-1" href="#Earley-1970">34.6 Earley 1970</a></li>
+    <li><a name="toc-Grune-and-Jacobs-1990-1" href="#Grune-and-Jacobs-1990">34.7 Grune and Jacobs 1990</a></li>
+    <li><a name="toc-Grune-and-Jacobs-2008-1" href="#Grune-and-Jacobs-2008">34.8 Grune and Jacobs 2008</a></li>
+    <li><a name="toc-Marpa-theory-paper-1" href="#Marpa-theory-paper">34.9 Marpa theory paper</a></li>
+    <li><a name="toc-Kegler-2023-1" href="#Kegler-2023">34.10 Kegler 2023</a></li>
+    <li><a name="toc-Parsing-timeline-1" href="#Parsing-timeline">34.11 Parsing timeline</a></li>
+    <li><a name="toc-Leo-1991-1" href="#Leo-1991">34.12 Leo 1991</a></li>
+    <li><a name="toc-Scott-2008-1" href="#Scott-2008">34.13 Scott 2008</a></li>
+    <li><a name="toc-Wikipedia-BNF-article-1" href="#Wikipedia-BNF-article">34.14 Wikipedia BNF article</a></li>
   </ul></li>
-  <li><a name="toc-Acknowledgements-1" href="#Acknowledgements">34 Acknowledgements</a>
+  <li><a name="toc-Acknowledgements-1" href="#Acknowledgements">35 Acknowledgements</a>
   <ul class="no-bullet">
-    <li><a name="toc-An-apology-1" href="#An-apology">34.1 An apology</a></li>
+    <li><a name="toc-An-apology-1" href="#An-apology">35.1 An apology</a></li>
   </ul></li>
   <li><a name="toc-Index-of-terms-1" href="#Index-of-terms">Index of terms</a></li>
 </ul>
@@ -352,8 +362,8 @@ Next: <a href="#License" accesskey="n" rel="next">License</a>, Previous: <a href
 </div>
 <a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
 <h1 class="top">Libmarpa: The Marpa low-level library</h1>
-<p>This manual (12 April 2023)
-is for Libmarpa 11.0.8.
+<p>This manual (21 April 2023)
+is for Libmarpa 11.0.9.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -395,7 +405,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Exhaustion" accesskey="8">Exhaustion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#End-of-parsing" accesskey="9">End of parsing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#End-of-parse" accesskey="9">End of parse</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Semantics">Semantics</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -428,6 +438,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 <tr><td align="left" valign="top">&bull; <a href="#Value-methods">Value methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Events">Events</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tracing-and-diagnosing-parses">Tracing and diagnosing parses</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Error-methods-macros-and-codes">Error methods macros and codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -507,7 +519,7 @@ Architecture
 
 Input
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Earlemes">Earlemes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Parse-location">Parse location</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#The-basic-models-of-input">The basic models of input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -515,9 +527,13 @@ Input
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
-Earlemes
+Parse location
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#The-traditional-input-model">The traditional input model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Earlemes-and-Earley-set-IDs">Earlemes and Earley set IDs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-latest-Earley-set">The latest Earley set</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#The-latest-earleme">The latest earleme</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -535,7 +551,7 @@ The basic models of input
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
-End of parsing
+End of parse
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -763,6 +779,18 @@ Per-rule events
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
+Tracing and diagnosing parses
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Listing-symbols">Listing symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Listing-rules">Listing rules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Listing-Earley-sets">Listing Earley sets</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tracing-tokens">Tracing tokens</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Error methods, macros and codes
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Error-methods">Error methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -796,6 +824,8 @@ Advanced input models
 <tr><td align="left" valign="top">&bull; <a href="#The-fully-general-input-model">The fully general input model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#The-codepoint_002dper_002dearleme-model">The codepoint-per-earleme model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Converting-earleme-to-Earley-set-ID">Converting earleme to Earley set ID</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -914,8 +944,8 @@ Next: <a href="#Updates" accesskey="n" rel="next">Updates</a>, Previous: <a href
 <a name="License-1"></a>
 <h2 class="chapter">1 License</h2>
 
-<p>This manual (12 April 2023)
-is for Libmarpa 11.0.8.
+<p>This manual (21 April 2023)
+is for Libmarpa 11.0.9.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -2885,7 +2915,7 @@ Next: <a href="#Exhaustion" accesskey="n" rel="next">Exhaustion</a>, Previous: <
 <h2 class="chapter">7 Input</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Earlemes" accesskey="1">Earlemes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Parse-location" accesskey="1">Parse location</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#The-basic-models-of-input" accesskey="2">The basic models of input</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -2894,22 +2924,26 @@ Next: <a href="#Exhaustion" accesskey="n" rel="next">Exhaustion</a>, Previous: <
 </table>
 
 <hr>
-<a name="Earlemes"></a>
+<a name="Parse-location"></a>
 <div class="header">
 <p>
 Next: <a href="#The-basic-models-of-input" accesskey="n" rel="next">The basic models of input</a>, Previous: <a href="#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="#Input" accesskey="u" rel="up">Input</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Earlemes-1"></a>
-<h3 class="section">7.1 Earlemes</h3>
+<a name="Parse-location-1"></a>
+<h3 class="section">7.1 Parse location</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#The-traditional-input-model" accesskey="1">The traditional input model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#The-latest-earleme" accesskey="2">The latest earleme</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Earlemes-and-Earley-set-IDs" accesskey="2">Earlemes and Earley set IDs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#The-current-earleme" accesskey="3">The current earleme</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#The-latest-Earley-set" accesskey="3">The latest Earley set</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#The-furthest-earleme" accesskey="4">The furthest earleme</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#The-latest-earleme" accesskey="4">The latest earleme</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-current-earleme" accesskey="5">The current earleme</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-furthest-earleme" accesskey="6">The furthest earleme</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -2917,7 +2951,7 @@ Next: <a href="#The-basic-models-of-input" accesskey="n" rel="next">The basic mo
 <a name="The-traditional-input-model"></a>
 <div class="header">
 <p>
-Next: <a href="#The-latest-earleme" accesskey="n" rel="next">The latest earleme</a>, Previous: <a href="#Earlemes" accesskey="p" rel="prev">Earlemes</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Earlemes-and-Earley-set-IDs" accesskey="n" rel="next">Earlemes and Earley set IDs</a>, Previous: <a href="#Parse-location" accesskey="p" rel="prev">Parse location</a>, Up: <a href="#Parse-location" accesskey="u" rel="up">Parse location</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-traditional-input-model-1"></a>
 <h4 class="subsection">7.1.1 The traditional input model</h4>
@@ -2936,48 +2970,99 @@ natural language processing requires ambiguous tokens,
 for example.
 Libmarpa allows a wide variety of alternative input models.
 </p>
-<p>In Libmarpa a location is called a
+<hr>
+<a name="Earlemes-and-Earley-set-IDs"></a>
+<div class="header">
+<p>
+Next: <a href="#The-latest-Earley-set" accesskey="n" rel="next">The latest Earley set</a>, Previous: <a href="#The-traditional-input-model" accesskey="p" rel="prev">The traditional input model</a>, Up: <a href="#Parse-location" accesskey="u" rel="up">Parse location</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Earlemes-and-Earley-set-IDs-1"></a>
+<h4 class="subsection">7.1.2 Earlemes and Earley set IDs</h4>
+
+<p>Libmarpa&rsquo;s idea of parse location,
+is the
 <a name="index-earleme"></a>
-<em>earleme</em>.
-The number of an Earley set is the
-<a name="index-ID-_0028of-an-Earley-set_0029"></a>
-<em>ID of the Earley set</em>,
-or its
-<a name="index-ordinal-_0028of-an-Earley-set_0029"></a>
-<em>ordinal</em>.
-In the traditional model, the ordinal of an Earley set and
-its earleme are always exactly the same, but in Libmarpa&rsquo;s
-advanced input models
-the ordinal of an Earley set can be different from
-its location (earleme).
+<em>earleme</em>,
+but Libmarpa also tracks Earley sets by
+ordinal number.
+In Libmarpa&rsquo;s basic input models,
+the earleme of an Earley set
+is always equal to
+the ordinal of the Earley set,
+so the distinction between Earley set ordinal
+and earleme is pedantic.
+But Libmarpa&rsquo;s advanced input models allow
+sparse input and,
+when sparse input is in use,
+an Earley set&rsquo;s ordinal and its
+earleme may differ.
+See <a href="#The-fully-general-input-model">The fully general input model</a>.
 </p>
-<p>The important earleme values are
-the latest earleme.
-the current earleme, and
-the furthest earleme.
+<p>The earlemes are
+assigned consecutive non-negative integers, starting at 0.
+The highest valued earleme is called the
+furthest earleme.
+See <a href="#The-furthest-earleme">The furthest earleme</a>.
+The other important earleme values are
+the latest earleme (see <a href="#The-latest-earleme">The latest earleme</a>)
+and
+the current earleme (see <a href="#The-current-earleme">The current earleme</a>).
 Latest, current and furthest earleme,
 when they have specified values,
 obey a lexical order in this sense:
 The latest earleme is always at or before the current earleme,
 and the current earleme is always at or before the furthest earleme.
 </p>
+<p>The Earley set ordinal
+is also known as the
+<a name="index-ID-_0028of-an-Earley-set_0029"></a>
+<em>ID of the Earley set</em>, or
+<a name="index-Earley-set-ID"></a>
+<em>Earley set ID</em>.
+Earley set IDs are
+consecutive non-negative integers, starting at 0.
+The highest valued Earley set ID is that of the
+latest Earley set.
+See <a href="#The-latest-Earley-set">The latest Earley set</a>
+</p>
+<hr>
+<a name="The-latest-Earley-set"></a>
+<div class="header">
+<p>
+Next: <a href="#The-latest-earleme" accesskey="n" rel="next">The latest earleme</a>, Previous: <a href="#Earlemes-and-Earley-set-IDs" accesskey="p" rel="prev">Earlemes and Earley set IDs</a>, Up: <a href="#Parse-location" accesskey="u" rel="up">Parse location</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="The-latest-Earley-set-1"></a>
+<h4 class="subsection">7.1.3 The latest Earley set</h4>
+
+<p>The
+<a name="index-Earley-set_002c-latest"></a>
+<a name="index-latest-Earley-set"></a>
+<em>latest Earley set</em>
+is the Earley set completed most recently.
+This is initially the Earley set at location 0.
+The latest Earley set is always the Earley set with the highest ID,
+and the Earley set with the highest earleme location.
+</p>
+<p>The latest Earley set is set implicitly
+by the <code>marpa_start_input()</code>
+(see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>) and
+<code>marpa_r_earleme_complete()</code>
+(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>) methods.
+Applications can access its value via
+the
+<code>marpa_r_latest_earley_set()</code> method.
+See <a href="#marpa_005fr_005flatest_005fearley_005fset">marpa_r_latest_earley_set</a>.
+</p>
 <hr>
 <a name="The-latest-earleme"></a>
 <div class="header">
 <p>
-Next: <a href="#The-current-earleme" accesskey="n" rel="next">The current earleme</a>, Previous: <a href="#The-traditional-input-model" accesskey="p" rel="prev">The traditional input model</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#The-current-earleme" accesskey="n" rel="next">The current earleme</a>, Previous: <a href="#The-latest-Earley-set" accesskey="p" rel="prev">The latest Earley set</a>, Up: <a href="#Parse-location" accesskey="u" rel="up">Parse location</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-latest-earleme-1"></a>
-<h4 class="subsection">7.1.2 The latest earleme</h4>
+<h4 class="subsection">7.1.4 The latest earleme</h4>
 
 <p>The
-<a name="index-Earley-set_002c-latest"></a>
-<em>latest Earley set</em>
-is the Earley set completed most recently.
-This is initially the Earley set at location 0.
-The latest Earley set is always the Earley set with the highest ordinal,
-and the Earley set with the highest earleme location.
-The
 <a name="index-earleme_002c-latest"></a>
 <em>latest earleme</em> is the earleme of the latest Earley set.
 If there is an Earley set at the current earleme,
@@ -2986,27 +3071,36 @@ is equal to the current earleme.
 There is never an Earley set after the current earleme,
 and therefore the latest Earley set is never after the
 current earleme.
-The <code>marpa_r_start input()</code> and
-<code>marpa_r_earleme_complete()</code> methods
-are only ones that change the latest earleme.
-See <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input()</a>, and
-<a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete()</a>.
 </p>
 <p>The latest earleme is different from the current earleme if and only if
 there is no Earley set at the current earleme.
-A different end of parsing can be specified,
+A different end of parse can be specified,
 but by default, parsing is of the input
 in the range
 from earleme 0 to the latest earleme.
+See <a href="#End-of-parse">End of parse</a>.
+</p>
+<p>The latest earleme is set implicitly
+by the <code>marpa_start_input()</code>
+(see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>) and
+<code>marpa_r_earleme_complete()</code>
+(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>) methods.
+Applications can access the value of the latest earleme
+by first calling the
+<code>marpa_r_latest_earley_set()</code> method
+(see <a href="#marpa_005fr_005flatest_005fearley_005fset">marpa_r_latest_earley_set</a>),
+then converting its return value with the
+<code>marpa_r_earleme()</code> method
+(see <a href="#marpa_005fr_005fearleme">marpa_r_earleme</a> method).
 </p>
 <hr>
 <a name="The-current-earleme"></a>
 <div class="header">
 <p>
-Next: <a href="#The-furthest-earleme" accesskey="n" rel="next">The furthest earleme</a>, Previous: <a href="#The-latest-earleme" accesskey="p" rel="prev">The latest earleme</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#The-furthest-earleme" accesskey="n" rel="next">The furthest earleme</a>, Previous: <a href="#The-latest-earleme" accesskey="p" rel="prev">The latest earleme</a>, Up: <a href="#Parse-location" accesskey="u" rel="up">Parse location</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-current-earleme-1"></a>
-<h4 class="subsection">7.1.3 The current earleme</h4>
+<h4 class="subsection">7.1.5 The current earleme</h4>
 
 <p>The
 <a name="index-earleme_002c-current"></a>
@@ -3021,20 +3115,25 @@ and every call to
 <code>marpa_r_earleme_complete()</code>
 advances the
 current earleme by 1.
-The <code>marpa_r_start input()</code> and
-<code>marpa_r_earleme_complete()</code> methods
-are only ones that change the current earleme.
-See <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input()</a>, and
-<a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete()</a>.
+</p>
+<p>The current earleme is set implicitly
+by the <code>marpa_start_input()</code>
+(see <a href="#marpa_005fr_005fstart_005finput">marpa_r_start_input</a>) and
+<code>marpa_r_earleme_complete()</code>
+(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>) methods.
+Applications can access the value of the current earleme
+via the
+<code>marpa_r_current_earleme()</code> method
+(see <a href="#marpa_005fr_005fcurrent_005fearleme">marpa_r_current_earleme</a>).
 </p>
 <hr>
 <a name="The-furthest-earleme"></a>
 <div class="header">
 <p>
-Previous: <a href="#The-current-earleme" accesskey="p" rel="prev">The current earleme</a>, Up: <a href="#Earlemes" accesskey="u" rel="up">Earlemes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#The-current-earleme" accesskey="p" rel="prev">The current earleme</a>, Up: <a href="#Parse-location" accesskey="u" rel="up">Parse location</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-furthest-earleme-1"></a>
-<h4 class="subsection">7.1.4 The furthest earleme</h4>
+<h4 class="subsection">7.1.6 The furthest earleme</h4>
 
 <p>Loosely speaking,
 the
@@ -3058,11 +3157,15 @@ a call to
 <code>marpa_r_alternative()</code>,
 the furthest earleme after the call
 is <code>max(old_f, current+length)</code>.
-The <code>marpa_r_new()</code> and
-<code>marpa_r_alternative()</code> methods
-are only ones that change the furthest earleme.
-See <a href="#marpa_005fr_005fnew">marpa_r_new()</a>, and
-<a href="#marpa_005fr_005falternative">marpa_r_alternative()</a>.
+</p>
+<p>The furthest earleme is set implicitly by
+the <code>marpa_r_new()</code> (see <a href="#marpa_005fr_005fnew">marpa_r_new</a>) and
+the <code>marpa_r_alternative()</code> (see <a href="#marpa_005fr_005falternative">marpa_r_alternative</a>)
+methods.
+Applications can access the value of the furthest earleme
+via the
+<code>marpa_r_furthest_earleme()</code> method
+(see <a href="#marpa_005fr_005ffurthest_005fearleme">marpa_r_furthest_earleme</a>).
 </p>
 <p>In the basic input models,
 where every token has length 1,
@@ -3089,7 +3192,7 @@ until the current earleme is equal to the furthest earleme.
 <a name="The-basic-models-of-input"></a>
 <div class="header">
 <p>
-Next: <a href="#Terminals" accesskey="n" rel="next">Terminals</a>, Previous: <a href="#Earlemes" accesskey="p" rel="prev">Earlemes</a>, Up: <a href="#Input" accesskey="u" rel="up">Input</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Terminals" accesskey="n" rel="next">Terminals</a>, Previous: <a href="#Parse-location" accesskey="p" rel="prev">Parse location</a>, Up: <a href="#Input" accesskey="u" rel="up">Input</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-basic-models-of-input-1"></a>
 <h3 class="section">7.2 The basic models of input</h3>
@@ -3280,7 +3383,7 @@ parse evaluation.
 <a name="Exhaustion"></a>
 <div class="header">
 <p>
-Next: <a href="#End-of-parsing" accesskey="n" rel="next">End of parsing</a>, Previous: <a href="#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#End-of-parse" accesskey="n" rel="next">End of parse</a>, Previous: <a href="#Input" accesskey="p" rel="prev">Input</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Exhaustion-1"></a>
 <h2 class="chapter">8 Exhaustion</h2>
@@ -3404,13 +3507,13 @@ Parse exhaustion triggered on method failure is called
 <em>exhaustion on failure</em>.
 </p>
 <hr>
-<a name="End-of-parsing"></a>
+<a name="End-of-parse"></a>
 <div class="header">
 <p>
 Next: <a href="#Semantics" accesskey="n" rel="next">Semantics</a>, Previous: <a href="#Exhaustion" accesskey="p" rel="prev">Exhaustion</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="End-of-parsing-1"></a>
-<h2 class="chapter">9 End of parsing</h2>
+<a name="End-of-parse-1"></a>
+<h2 class="chapter">9 End of parse</h2>
 
 <p>Users accustomed to certain applications
 may believe that the question of when to end parsing
@@ -3448,7 +3551,7 @@ See <a href="#Exhaustion">Exhaustion</a>.
 <a name="Determining-EOP-from-EOI"></a>
 <div class="header">
 <p>
-Next: <a href="#Determining-EOP-from-exhaustion" accesskey="n" rel="next">Determining EOP from exhaustion</a>, Previous: <a href="#End-of-parsing" accesskey="p" rel="prev">End of parsing</a>, Up: <a href="#End-of-parsing" accesskey="u" rel="up">End of parsing</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Determining-EOP-from-exhaustion" accesskey="n" rel="next">Determining EOP from exhaustion</a>, Previous: <a href="#End-of-parse" accesskey="p" rel="prev">End of parse</a>, Up: <a href="#End-of-parse" accesskey="u" rel="up">End of parse</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Determining-EOP-from-EOI-1"></a>
 <h3 class="section">9.1 Determining EOP from EOI</h3>
@@ -3504,7 +3607,7 @@ as an error.
 <a name="Determining-EOP-from-exhaustion"></a>
 <div class="header">
 <p>
-Next: <a href="#Other-ways-of-determining-EOP" accesskey="n" rel="next">Other ways of determining EOP</a>, Previous: <a href="#Determining-EOP-from-EOI" accesskey="p" rel="prev">Determining EOP from EOI</a>, Up: <a href="#End-of-parsing" accesskey="u" rel="up">End of parsing</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Other-ways-of-determining-EOP" accesskey="n" rel="next">Other ways of determining EOP</a>, Previous: <a href="#Determining-EOP-from-EOI" accesskey="p" rel="prev">Determining EOP from EOI</a>, Up: <a href="#End-of-parse" accesskey="u" rel="up">End of parse</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Determining-EOP-from-exhaustion-1"></a>
 <h3 class="section">9.2 Determining EOP from exhaustion</h3>
@@ -3524,7 +3627,7 @@ with the parse terminating at the <code>/html</code> tag.
 <a name="Other-ways-of-determining-EOP"></a>
 <div class="header">
 <p>
-Previous: <a href="#Determining-EOP-from-exhaustion" accesskey="p" rel="prev">Determining EOP from exhaustion</a>, Up: <a href="#End-of-parsing" accesskey="u" rel="up">End of parsing</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#Determining-EOP-from-exhaustion" accesskey="p" rel="prev">Determining EOP from exhaustion</a>, Up: <a href="#End-of-parse" accesskey="u" rel="up">End of parse</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Other-ways-of-determining-EOP-1"></a>
 <h3 class="section">9.3 Other ways of determining EOP</h3>
@@ -3557,7 +3660,7 @@ and reports a lexing error.
 <a name="Semantics"></a>
 <div class="header">
 <p>
-Next: <a href="#Threads" accesskey="n" rel="next">Threads</a>, Previous: <a href="#End-of-parsing" accesskey="p" rel="prev">End of parsing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Threads" accesskey="n" rel="next">Threads</a>, Previous: <a href="#End-of-parse" accesskey="p" rel="prev">End of parse</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Semantics-1"></a>
 <h2 class="chapter">10 Semantics</h2>
@@ -4817,7 +4920,7 @@ are using.
 <p>If <var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>
 is an exact match with the version of Libmarpa,
 the method succeeds.
-The version of Libmarpa described in this manual is 11.0.8.
+The version of Libmarpa described in this manual is 11.0.9.
 Otherwise the return status is an irrecoverable
 hard failure.
 </p>
@@ -6457,8 +6560,8 @@ See <a href="#Exhaustion">Exhaustion</a>.
 </p>
 <p>It is often up to
 the logic immediately around this method
-to detect end of parsing.
-See <a href="#End-of-parsing">End of parsing</a>.
+to detect EOP.
+See <a href="#End-of-parse">End of parse</a>.
 </p>
 <p><strong>Return value</strong>:  On success, the number of events
 in the event queue when the method call returns.
@@ -6509,23 +6612,11 @@ of the latest Earley set,
 the error code of the hard failure is
 <code>MARPA_ERR_NO_EARLEY_SET_AT_LOCATION</code>.
 </p>
-<p>At this writing, there is no method for
+<p>Techniques for performing
 the inverse operation (conversion of an earleme to an Earley set
-ID).
-One consideration in writing
-such a method is that not all earlemes correspond to Earley sets.
-Applications that want to map earlemes
-to Earley sets will have no trouble if they
-are using the standard input model &mdash;
-the Earley set
-ID is always exactly equal to the earleme in that model.
-For other applications
-that want an earleme-to-ID mapping,
-the most general method is create an ID-to-earleme
-array using the
-<code>marpa_r_earleme()</code>
-method
-and invert it.
+ID)
+are described in the section on advanced input models.
+See <a href="#Converting-earleme-to-Earley-set-ID">Converting earleme to Earley set ID</a>.
 </p>
 <p><strong>Return value</strong>:
 On success, the earleme corresponding to Earley
@@ -7078,21 +7169,6 @@ work of documenting it and providing the
 appropriate mathematical apparatus.
 See <a href="#Scott-2008">Scott 2008</a>.
 </p>
-<p>The bocage contains the data for the parse trees whose root is
-an instance of the start symbol that begins at Earley set 0
-and ends at the
-<a name="index-End-of-parse-Earley-set"></a>
-<a name="index-Earley-set_002c-end-of-parse"></a>
-<em>end of parse Earley set</em>.
-Applications usually use the Earley set at the current earleme
-as the
-&ldquo;end of parse Earley set&rdquo;,
-so that the bocage is for parses of the entire input.
-But some applications may be interested in parsing prefixes of
-the input, and these applications can choose other
-end of parse Earley sets in their constructor.
-See <a href="#marpa_005fb_005fnew">marpa_b_new()</a>.
-</p>
 <hr>
 <a name="Bocage-constructor"></a>
 <div class="header">
@@ -7108,16 +7184,21 @@ Next: <a href="#Bocage-reference-counting" accesskey="n" rel="next">Bocage refer
 <p>On success, the following is the case:
 </p><ul>
 <li> If <code>earley_set_ID</code> is non-negative,
-creates a new bocage object, whose &ldquo;end of parse Earley set&rdquo;
+creates a new bocage object, whose EOP
 is the Earley set with ID <code>earley_set_ID</code>.
 </li><li> If <code>earley_set_ID</code> is -1,
-creates a new bocage object, whose &ldquo;end of parse Earley set&rdquo;
+creates a new bocage object, whose EOP
 is the Earley set at the current earleme.
 </li><li> The new bocage object has a reference count of 1.
 </li><li> The reference count of its parent recognizer object, <var>r</var>,
 is increased by 1.
 </li></ul>
 
+<p>The application will usually want EOP to be the Earley set
+at the current earleme,
+but there are exceptions.
+See <a href="#End-of-parse">End of parse</a>.
+</p>
 <p>If <var>earley_set_ID</var> is -1
 and there is no Earley set at the current earleme;
 or if <var>earley_set_ID</var> is non-negative
@@ -8348,7 +8429,7 @@ cannot be used to uniquely identify a parse node.
 <a name="Events"></a>
 <div class="header">
 <p>
-Next: <a href="#Error-methods-macros-and-codes" accesskey="n" rel="next">Error methods macros and codes</a>, Previous: <a href="#Value-methods" accesskey="p" rel="prev">Value methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Tracing-and-diagnosing-parses" accesskey="n" rel="next">Tracing and diagnosing parses</a>, Previous: <a href="#Value-methods" accesskey="p" rel="prev">Value methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Events-1"></a>
 <h2 class="chapter">25 Events</h2>
@@ -10038,13 +10119,313 @@ will no longer trigger at the end of <code>(R4)</code>,
 which is the fix we were looking for.
 </p>
 <hr>
+<a name="Tracing-and-diagnosing-parses"></a>
+<div class="header">
+<p>
+Next: <a href="#Error-methods-macros-and-codes" accesskey="n" rel="next">Error methods macros and codes</a>, Previous: <a href="#Events" accesskey="p" rel="prev">Events</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Tracing-and-diagnosing-parses-1"></a>
+<h2 class="chapter">26 Tracing and diagnosing parses</h2>
+
+<p>Libmarpa is very low-level,
+and does not use strings to identify its objects.
+Libmarpa is expected
+to come with a upper level which uses strings
+to name and/or identify the objects used in parsing,
+in the process deciding
+issues like naming conventions, ASCII-7 versus UTF-8, etc.
+Based on those decisions,
+the upper layer is expected to offer facilities
+for tracking and displaying symbol names,
+displaying rules,
+tracking and displaying tokens,
+and displaying progress items.
+</p>
+<p>It is possible to trace and diagnose parses without
+an upper layer &ndash; a few programs in Libmarpa&rsquo;s test suite
+do this.
+Instead of using symbol names and expanding rules
+into their LHS and RHS,
+the user can keep track of symbol IDs and rule IDs.
+But most people who have tried this would agree
+that this is something that the user should go to great pains to
+avoid.
+</p>
+<p>As a rule,
+every application of Libmarpa should have an upper layer
+with diagnostics.
+If a pre-existing diagnostics layer is not used,
+it should be one of the first things written &mdash;
+it is very likely to be one of the first things needed.
+</p>
+<p>The rest of this chapter describes facilities that should be
+offered in the layer handling grammar diagnostics.
+Applications may want to allow these facilities at various
+levels of verbosity.
+Implementation suggestions are made,
+focusing on what information
+the facilities should display at the highest verbosity level.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Listing-symbols" accesskey="1">Listing symbols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Listing-rules" accesskey="2">Listing rules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Listing-Earley-sets" accesskey="3">Listing Earley sets</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tracing-tokens" accesskey="4">Tracing tokens</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Listing-symbols"></a>
+<div class="header">
+<p>
+Next: <a href="#Listing-rules" accesskey="n" rel="next">Listing rules</a>, Previous: <a href="#Tracing-and-diagnosing-parses" accesskey="p" rel="prev">Tracing and diagnosing parses</a>, Up: <a href="#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Listing-symbols-1"></a>
+<h3 class="section">26.1 Listing symbols</h3>
+
+<p>The parse diagnostics should include a facility for naming symbols,
+iand one for listing the symbols in a grammar, with their names.
+The symbols will have IDs from 0 to the highest symbol ID,
+which can be found using the
+<code>marpa_g_highest_symbol_id()</code> method
+(see <a href="#marpa_005fg_005fhighest_005fsymbol_005fid">marpa_g_highest_symbol_id</a>).
+At the highest verbosity level,
+in addition to the symbol name,
+the symbol listing facility should display
+</p><ul>
+<li> the symbol ID;
+</li><li> whether the symbol is accessible
+(see <a href="#marpa_005fg_005fsymbol_005fis_005faccessible">marpa_g_symbol_is_accessible</a>);
+</li><li> whether the symbol is nullable
+(see <a href="#marpa_005fg_005fsymbol_005fis_005fnullable">marpa_g_symbol_is_nullable</a>);
+</li><li> whether the symbol is nulling
+(see <a href="#marpa_005fg_005fsymbol_005fis_005fnulling">marpa_g_symbol_is_nulling</a>);
+</li><li> whether the symbol is productive
+(see <a href="#marpa_005fg_005fsymbol_005fis_005fproductive">marpa_g_symbol_is_productive</a>);
+</li><li> whether the symbol is the start symbol
+(see <a href="#marpa_005fg_005fsymbol_005fis_005fstart">marpa_g_symbol_is_start</a>);
+</li><li> whether the symbol is a terminal
+(see <a href="#marpa_005fg_005fsymbol_005fis_005fterminal">marpa_g_symbol_is_terminal</a>);
+</li><li> whether the symbol is a counted symbol
+(see <a href="#marpa_005fg_005fsymbol_005fis_005fcounted">marpa_g_symbol_is_counted</a>); and
+</li><li> the rank of the symbol
+(see <a href="#marpa_005fg_005fsymbol_005frank">marpa_g_symbol_rank</a>).
+</li></ul>
+
+<hr>
+<a name="Listing-rules"></a>
+<div class="header">
+<p>
+Next: <a href="#Listing-Earley-sets" accesskey="n" rel="next">Listing Earley sets</a>, Previous: <a href="#Listing-symbols" accesskey="p" rel="prev">Listing symbols</a>, Up: <a href="#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Listing-rules-1"></a>
+<h3 class="section">26.2 Listing rules</h3>
+
+<p>The parse diagnostics should include a facility for displaying
+the rules in a grammar.
+The rules will have IDs from 0 to the highest rule ID,
+which can be found using the
+<code>marpa_g_highest_rule_id()</code> method
+(see <a href="#marpa_005fg_005fhighest_005frule_005fid">marpa_g_highest_rule_id</a>).
+</p>
+<p>It is up to the application whether to have names for rules.
+In some grammar generators,
+the LHS of a rule serves as its name,
+but does not produce unique names for each rule in Libmarpa,
+since many rules may have the same LHS.
+Currently the most used upper layer for Libmarpa,
+<code>Marpa::R2</code>, does not have rule names.
+An application that does want to name its rules must
+decide on a rule naming convention.
+</p>
+<p>At the highest verbosity level,
+the rule listing facility should display
+</p><ul>
+<li> the rule ID;
+</li><li> the LHS of the rule
+(see <a href="#marpa_005fg_005frule_005flhs">marpa_g_rule_lhs</a>);
+</li><li> the RHS of the rule, that is,
+each RHS symbol
+(see <a href="#marpa_005fg_005frule_005frhs">marpa_g_rule_rhs</a>)
+for the length of the rule
+(see <a href="#marpa_005fg_005frule_005flength">marpa_g_rule_length</a>);
+</li><li> whether the rule is accessible
+(see <a href="#marpa_005fg_005frule_005fis_005faccessible">marpa_g_rule_is_accessible</a>);
+</li><li> whether the rule is nullable
+(see <a href="#marpa_005fg_005frule_005fis_005fnullable">marpa_g_rule_is_nullable</a>);
+</li><li> whether the rule is nulling
+(see <a href="#marpa_005fg_005frule_005fis_005fnulling">marpa_g_rule_is_nulling</a>);
+</li><li> whether the rule is productive
+(see <a href="#marpa_005fg_005frule_005fis_005fproductive">marpa_g_rule_is_productive</a>);
+</li><li> the rank of the rule
+(see <a href="#marpa_005fg_005frule_005frank">marpa_g_rule_rank</a>);
+</li><li> whether the rule is a sequence rule
+(see <a href="#marpa_005fg_005fsequence_005fmin">marpa_g_sequence_min</a>);
+</li><li> if the rule is a sequence rule,
+the minimum count of the sequence
+(see <a href="#marpa_005fg_005fsequence_005fmin">marpa_g_sequence_min</a>); and
+</li><li> if the rule is a sequence rule,
+the sequence separator, if any,
+(see <a href="#marpa_005fg_005fsequence_005fseparator">marpa_g_sequence_separator</a>)
+</li><li> if the rule is a sequence rule,
+whether the rule uses proper separation,
+(see <a href="#marpa_005fg_005frule_005fis_005fproper_005fseparation">marpa_g_rule_is_proper_separation</a>);
+</li></ul>
+
+<hr>
+<a name="Listing-Earley-sets"></a>
+<div class="header">
+<p>
+Next: <a href="#Tracing-tokens" accesskey="n" rel="next">Tracing tokens</a>, Previous: <a href="#Listing-rules" accesskey="p" rel="prev">Listing rules</a>, Up: <a href="#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Listing-Earley-sets-1"></a>
+<h3 class="section">26.3 Listing Earley sets</h3>
+
+<p>The parse diagnostics should include a facility for displaying
+Earley sets by Earley set location.
+For each Earley item at a location,
+the facility should display
+</p><ul>
+<li> the rule;
+</li><li> the rule&rsquo;s dot position;
+</li><li> the origin of the Earley item.
+</li></ul>
+<p>The &ldquo;progress reports&rdquo; methods of Libmarpa
+are available for this purpose.
+See <a href="#Progress-reports">Progress reports</a>.
+</p>
+<p>It is up to the application how to display rule and
+dot position, but the most helpful way is usually to display
+the LHS and RHS,
+with a bullet or dot at the appropriate position in the RHS.
+This is what is done when showing dotted rules in this document,
+as for example in
+</p><div class="display">
+<pre class="display">    [ Y ::= C &bull; X ].
+</pre></div>
+
+<p>The current location of each Earley item may be displayed with the Earley item but,
+since it is shared by the entire set of Earley items,
+it can also be put in a header, or left implicit.
+</p>
+<p>We recall (see <a href="#Earlemes-and-Earley-set-IDs">Earlemes and Earley set IDs</a>) that
+the Earley IDs range from 0 to <code>latest</code>, inclusive,
+where <code>latest</code> is the latest Earley set.
+See <a href="#The-latest-Earley-set">The latest Earley set</a>].
+</p>
+<p>The obvious way to display the Earley items is one at a time.
+We call this the &ldquo;raw&rdquo; method of displaying an Earley set.
+But we can also try to compact this listing by grouping together
+Earley items that share a dotted rule
+(and which therefore differ only in their origins).
+We call this the &ldquo;compact&rdquo; method of displaying an Earley set.
+<code>Marpa::R2</code> uses the compact method.
+</p>
+<p>To use the compact method,
+we must be able to show an arbitrarily large number of origins compactly.
+The following is an example line from
+<code>Marpa::R2</code>&rsquo;s progress reports:
+</p><div class="display">
+<pre class="display">    F11 x12 @0...38-41 L1c1-L2c40 &lt;plain assignment&gt; -&gt; &rsquo;x&rsquo; &rsquo;=&rsquo; expression &bull;
+</pre></div>
+<p>In this example line, the following are true:
+</p><ul>
+<li> The &ldquo;F11&rdquo; indicates
+indicates that the display line is for rule 11,
+which is a completion.
+The &ldquo;F&rdquo; indicates that the dot is in the &ldquo;final&rdquo; position.
+</li><li> &ldquo;x12&rdquo;
+indicates that the example line
+represents 12 distinct Earley items.
+</li><li> &ldquo;@0...38-41&rdquo;
+states that the Earley items represented
+have origins ranging from 0 to 38,
+and that the current location for
+the Earley items represented
+in the example line is 41.
+</li><li> &ldquo;L1c1-L2c40&rdquo; describes the line and column locations in the input &mdash;
+the Earley items represented in
+the example line
+run from line 1, column 1 to line 2, column 40.
+Line and column tracking is implemented at the <code>Marpa::R2</code> level.
+</li><li> &ldquo;&lt;plain assignment&gt; -&gt; &rsquo;x&rsquo; &rsquo;=&rsquo; expression &bull;&rdquo;
+indicates the dotted rule.
+</li></ul>
+<p>For more details on <code>Marpa::R2</code>&rsquo;s implementation of progress
+reports, see
+<a href="https://metacpan.org/dist/Marpa-R2/view/pod/Progress.pod">https://metacpan.org/dist/Marpa-R2/view/pod/Progress.pod</a>.
+</p>
+<p>The disadvantage of the compact representation of Earley sets
+is that it is more complicated to read.
+The disadvantage of the raw representation is that,
+for ambiguous grammars, the number of Earley items can
+be very large,
+and therefore the listing of the Earley set
+can be unmanageably long.
+</p>
+<hr>
+<a name="Tracing-tokens"></a>
+<div class="header">
+<p>
+Previous: <a href="#Listing-Earley-sets" accesskey="p" rel="prev">Listing Earley sets</a>, Up: <a href="#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Tracing-tokens-1"></a>
+<h3 class="section">26.4 Tracing tokens</h3>
+
+<p>The parse diagnostics should include a facility for
+displaying the token processing.
+At the default verbosity level,
+the facility should describe the token
+passed to the
+<code>marpa_r_alternative</code>
+(see <a href="#marpa_005fr_005falternative">marpa_r_alternative</a>)
+method call,
+and specify the outcome of
+the <code>marpa_r_alternative</code>
+method call as
+&ldquo;accepted&rdquo;, &ldquo;rejected&rdquo; or &ldquo;uncorrectable&rdquo;,
+where
+</p><ul>
+<li> &ldquo;accepted&rdquo; means
+that the <code>marpa_r_alternative()</code> call succeeded;
+</li><li> &ldquo;rejected&rdquo; means
+that the <code>marpa_r_alternative()</code> call failed,
+but the failure is fully recoverable; and
+</li><li> &ldquo;uncorrectable&rdquo; means
+that the <code>marpa_r_alternative()</code> call failed,
+but the failure is not fully recoverable.
+</li></ul>
+<p>The token tracing facility&rsquo;s reporting of rejected token
+can vary by application.
+For some applications, token rejection will not be
+allowed, so that distinguishing between rejected
+and uncorrectable tokens is pointless and unnecessary.
+For other applications, such as those that use
+the Ruby Slippers technique (see <a href="#Ruby-Slippers">Ruby Slippers</a>),
+token rejection will be
+a common occurrence in normal processing.
+</p>
+<p>At some verbosity level above the default,
+after every
+<code>marpa_r_earleme_complete()</code> method call
+(see <a href="#marpa_005fr_005fearleme_005fcomplete">marpa_r_earleme_complete</a>)
+the token tracing facility should list all the
+expected tokens.
+The <code>marpa_r_terminals_expected()</code>
+(see <a href="#marpa_005fr_005fterminals_005fexpected">marpa_r_terminals_expected</a>) method call
+is available for this purpose.
+</p>
+<hr>
 <a name="Error-methods-macros-and-codes"></a>
 <div class="header">
 <p>
-Next: <a href="#Technical-notes" accesskey="n" rel="next">Technical notes</a>, Previous: <a href="#Events" accesskey="p" rel="prev">Events</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Technical-notes" accesskey="n" rel="next">Technical notes</a>, Previous: <a href="#Tracing-and-diagnosing-parses" accesskey="p" rel="prev">Tracing and diagnosing parses</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Error-methods_002c-macros-and-codes"></a>
-<h2 class="chapter">26 Error methods, macros and codes</h2>
+<h2 class="chapter">27 Error methods, macros and codes</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Error-methods" accesskey="1">Error methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -10064,7 +10445,7 @@ Next: <a href="#Technical-notes" accesskey="n" rel="next">Technical notes</a>, P
 Next: <a href="#Error-Macros" accesskey="n" rel="next">Error Macros</a>, Previous: <a href="#Error-methods-macros-and-codes" accesskey="p" rel="prev">Error methods macros and codes</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Error-methods-1"></a>
-<h3 class="section">26.1 Error methods</h3>
+<h3 class="section">27.1 Error methods</h3>
 
 <a name="marpa_005fg_005ferror"></a><dl>
 <dt><a name="index-marpa_005fg_005ferror"></a>Accessor function: <em>Marpa_Error_Code</em> <strong>marpa_g_error</strong> <em>(     Marpa_Grammar <var>g</var>,     const char** <var>p_error_string</var>)</em></dt>
@@ -10098,7 +10479,7 @@ Always succeeds.
 Next: <a href="#External-error-codes" accesskey="n" rel="next">External error codes</a>, Previous: <a href="#Error-methods" accesskey="p" rel="prev">Error methods</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Error-Macros-1"></a>
-<h3 class="section">26.2 Error Macros</h3>
+<h3 class="section">27.2 Error Macros</h3>
 
 <dl>
 <dt><a name="index-MARPA_005fERRCODE_005fCOUNT"></a>Accessor macro: <em>int</em> <strong>MARPA_ERRCODE_COUNT</strong></dt>
@@ -10115,7 +10496,7 @@ strictly less than <code>MARPA_ERRCODE_COUNT</code>.
 Next: <a href="#Internal-error-codes" accesskey="n" rel="next">Internal error codes</a>, Previous: <a href="#Error-Macros" accesskey="p" rel="prev">Error Macros</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="External-error-codes-1"></a>
-<h3 class="section">26.3 External error codes</h3>
+<h3 class="section">27.3 External error codes</h3>
 
 <p>This section lists the external error codes.
 These are the only error codes that users
@@ -10907,7 +11288,7 @@ for an unused symbol.
 Previous: <a href="#External-error-codes" accesskey="p" rel="prev">External error codes</a>, Up: <a href="#Error-methods-macros-and-codes" accesskey="u" rel="up">Error methods macros and codes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Internal-error-codes-1"></a>
-<h3 class="section">26.4 Internal error codes</h3>
+<h3 class="section">27.4 Internal error codes</h3>
 
 <p>An internal error code may be one of two things:
 First,
@@ -11103,7 +11484,7 @@ be kept for backward compatibility.
 Next: <a href="#Advanced-input-models" accesskey="n" rel="next">Advanced input models</a>, Previous: <a href="#Error-methods-macros-and-codes" accesskey="p" rel="prev">Error methods macros and codes</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Technical-notes-1"></a>
-<h2 class="chapter">27 Technical notes</h2>
+<h2 class="chapter">28 Technical notes</h2>
 
 <p>This section contains technical notes that are
 not necessary for the main presentation,
@@ -11129,7 +11510,7 @@ but which may be helpful or interesting.
 Next: <a href="#Why-so-many-time-objects" accesskey="n" rel="next">Why so many time objects</a>, Previous: <a href="#Technical-notes" accesskey="p" rel="prev">Technical notes</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Data-types-used-by-Libmarpa-1"></a>
-<h3 class="section">27.1 Data types used by Libmarpa</h3>
+<h3 class="section">28.1 Data types used by Libmarpa</h3>
 
 <p>Libmarpa does not use any floating point data or strings.
 All data are either integers or pointers.
@@ -11141,7 +11522,7 @@ All data are either integers or pointers.
 Next: <a href="#Design-of-numbered-objects" accesskey="n" rel="next">Design of numbered objects</a>, Previous: <a href="#Data-types-used-by-Libmarpa" accesskey="p" rel="prev">Data types used by Libmarpa</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Why-so-many-time-objects_003f"></a>
-<h3 class="section">27.2 Why so many time objects?</h3>
+<h3 class="section">28.2 Why so many time objects?</h3>
 
 <p>Marpa is an aggressively multi-pass algorithm.
 Marpa achieves its efficiency,
@@ -11195,7 +11576,7 @@ by the tree iterator.
 Next: <a href="#Trap-representations" accesskey="n" rel="next">Trap representations</a>, Previous: <a href="#Why-so-many-time-objects" accesskey="p" rel="prev">Why so many time objects</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Numbered-objects-2"></a>
-<h3 class="section">27.3 Numbered objects</h3>
+<h3 class="section">28.3 Numbered objects</h3>
 
 <p>As the name suggests,
 the choice was made to implement
@@ -11240,7 +11621,7 @@ for the difference in speed.
 Next: <a href="#Out_002dof_002dmemory-handling" accesskey="n" rel="next">Out-of-memory handling</a>, Previous: <a href="#Design-of-numbered-objects" accesskey="p" rel="prev">Design of numbered objects</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Trap-representations-1"></a>
-<h3 class="section">27.4 Trap representations</h3>
+<h3 class="section">28.4 Trap representations</h3>
 
 <p>In order to be C89 conformant, an application
 must initialize all locations that might be read.
@@ -11285,7 +11666,7 @@ all locations on the stack must be initialized.
 Previous: <a href="#Trap-representations" accesskey="p" rel="prev">Trap representations</a>, Up: <a href="#Technical-notes" accesskey="u" rel="up">Technical notes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Out_002dof_002dmemory-handling-1"></a>
-<h3 class="section">27.5 Out-of-memory handling</h3>
+<h3 class="section">28.5 Out-of-memory handling</h3>
 
 <p>Modern operating systems
 usually have an out-of-memory (OOM) killer as a component.
@@ -11302,7 +11683,7 @@ See &ldquo;When malloc() Never Returns NULL &mdash; Reliability as an Illusion&r
 Next: <a href="#Support" accesskey="n" rel="next">Support</a>, Previous: <a href="#Technical-notes" accesskey="p" rel="prev">Technical notes</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Advanced-input-models-1"></a>
-<h2 class="chapter">28 Advanced input models</h2>
+<h2 class="chapter">29 Advanced input models</h2>
 
 <p>In an earlier chapter, we introduced Libmarpa&rsquo;s concept of input,
 and described its basic input models.
@@ -11331,6 +11712,8 @@ length to vary from the &ldquo;normal&rdquo; length of 1.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#The-codepoint_002dper_002dearleme-model" accesskey="3">The codepoint-per-earleme model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Converting-earleme-to-Earley-set-ID" accesskey="4">Converting earleme to Earley set ID</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 </table>
 
 <hr>
@@ -11340,7 +11723,7 @@ length to vary from the &ldquo;normal&rdquo; length of 1.
 Next: <a href="#The-fully-general-input-model" accesskey="n" rel="next">The fully general input model</a>, Previous: <a href="#Advanced-input-models" accesskey="p" rel="prev">Advanced input models</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-dense-variable_002dlength-token-model-1"></a>
-<h3 class="section">28.1 The dense variable-length token model</h3>
+<h3 class="section">29.1 The dense variable-length token model</h3>
 
 <p>In the
 <a name="index-dense-variable_002dlength-input-model"></a>
@@ -11413,7 +11796,7 @@ except in the fully general model of input.
 Next: <a href="#The-codepoint_002dper_002dearleme-model" accesskey="n" rel="next">The codepoint-per-earleme model</a>, Previous: <a href="#The-dense-variable_002dlength-token-model" accesskey="p" rel="prev">The dense variable-length token model</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-fully-general-input-model-1"></a>
-<h3 class="section">28.2 The fully general input model</h3>
+<h3 class="section">29.2 The fully general input model</h3>
 
 <p>In the
 <a name="index-sparse-variable_002dlength-input-model"></a>
@@ -11531,10 +11914,10 @@ to
 <a name="The-codepoint_002dper_002dearleme-model"></a>
 <div class="header">
 <p>
-Previous: <a href="#The-fully-general-input-model" accesskey="p" rel="prev">The fully general input model</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Converting-earleme-to-Earley-set-ID" accesskey="n" rel="next">Converting earleme to Earley set ID</a>, Previous: <a href="#The-fully-general-input-model" accesskey="p" rel="prev">The fully general input model</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-codepoint_002dper_002dearleme-model-1"></a>
-<h3 class="section">28.3 The codepoint-per-earleme model</h3>
+<h3 class="section">29.3 The codepoint-per-earleme model</h3>
 
 <p>One variation of the fully general model is
 the
@@ -11571,13 +11954,82 @@ substantially more expensive than input models which allow multiple
 codepoints per earleme.
 </p>
 <hr>
+<a name="Converting-earleme-to-Earley-set-ID"></a>
+<div class="header">
+<p>
+Previous: <a href="#The-codepoint_002dper_002dearleme-model" accesskey="p" rel="prev">The codepoint-per-earleme model</a>, Up: <a href="#Advanced-input-models" accesskey="u" rel="up">Advanced input models</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Converting-earleme-to-Earley-set-ID-1"></a>
+<h3 class="section">29.4 Converting earleme to Earley set ID</h3>
+
+<p>In the dense input models,
+the earleme of every Earley set is equal
+to the ID of that Earley set.
+But, because of the sparse input models,
+this is not true in the general case.
+</p>
+<p>For other applications
+that want an earleme-to-ID mapping,
+the most general method for converting earlemes to Earley set IDs
+is to create a ID-to-earleme
+array using the
+<code>marpa_r_earleme()</code> method
+(see <a href="#marpa_005fr_005fearleme">marpa_r_earleme</a>),
+and invert it.
+The resulting earleme-to-ID array will be sparse.
+More precisely, where the function <code>earleme</code> maps IDs
+to earlemes,
+the value at index <code>ix</code> of the array should
+be
+</p><ul>
+<li> <code>id</code>, if <code>earleme(id) = ix</code> for some <code>id</code>; and
+</li><li> undefined, otherwise.
+</li></ul>
+
+<p>The Libmarpa interface does not provide a method
+for earleme-to-ID conversion.
+The input model is not known at the Libmarpa level,
+so that an earleme-to-ID method would have to be
+fully general.
+A fully general earleme-to-ID method would be costly,
+an cost which usually would be unnecessary.
+For these reasons,
+it&rsquo;s up to the application to create its own
+earleme-to-conversion method,
+if one is needed.
+</p>
+<p>Here are the alternatives:
+</p><ul>
+<li> Usually an
+earleme-to-ID conversion method is not needed.
+</li><li> If
+an earleme-to-ID conversion method is needed,
+and the sparse input model is not in use,
+the Earley set ID and the earleme are always
+equal, and the
+earleme-to-ID conversion is trivial.
+</li><li> If an earleme-to-ID conversion method is needed,
+and a sparse input model is in use,
+the application may be able to implement
+an efficient earleme-to-ID conversion targeted
+at that specific input model.
+</li><li> If an earleme-to-ID conversion method is needed,
+a sparse input model is in use,
+and no efficient earleme-to-ID conversion targeted
+at that specific input model seems to be available,
+the general
+earleme-to-ID conversion technique
+described just above must be used.
+</li></ul>
+
+<hr>
 <a name="Support"></a>
 <div class="header">
 <p>
 Next: <a href="#Futures" accesskey="n" rel="next">Futures</a>, Previous: <a href="#Advanced-input-models" accesskey="p" rel="prev">Advanced input models</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Support-1"></a>
-<h2 class="chapter">29 Support</h2>
+<h2 class="chapter">30 Support</h2>
 
 <p>The &ldquo;updates&rdquo;
 (<a href="https://github.com/jeffreykegler/libmarpa/blob/updated/UPDATES.md">https://github.com/jeffreykegler/libmarpa/blob/updated/UPDATES.md</a>)
@@ -11591,7 +12043,7 @@ bugs, getting answers to questions, and other support.
 Next: <a href="#Deprecated-techniques-and-methods" accesskey="n" rel="next">Deprecated techniques and methods</a>, Previous: <a href="#Support" accesskey="p" rel="prev">Support</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Futures-1"></a>
-<h2 class="chapter">30 Futures</h2>
+<h2 class="chapter">31 Futures</h2>
 
 <p>This chapter is not about the current interface.
 Instead, it discusses
@@ -11629,7 +12081,7 @@ to the external interface in the future.
 Next: <a href="#Document-pre_002dconditions-more-formally" accesskey="n" rel="next">Document pre-conditions more formally</a>, Previous: <a href="#Futures" accesskey="p" rel="prev">Futures</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Nulling-versus-nulled-1"></a>
-<h3 class="section">30.1 Nulling versus nulled</h3>
+<h3 class="section">31.1 Nulling versus nulled</h3>
 
 <p>Currently we call a zero-length instance (aka tree node)
 either a nulling instance or a nulled instance.
@@ -11649,7 +12101,7 @@ is embedded in a lot of code and documents.
 Next: <a href="#Simpler-events-interface" accesskey="n" rel="next">Simpler events interface</a>, Previous: <a href="#Nulling-versus-nulled" accesskey="p" rel="prev">Nulling versus nulled</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Document-pre_002dconditions-more-formally-1"></a>
-<h3 class="section">30.2 Document pre-conditions more formally</h3>
+<h3 class="section">31.2 Document pre-conditions more formally</h3>
 
 <p>A more formal approach to documenting preconditions of
 the methods is possible,
@@ -11666,7 +12118,7 @@ for one approach.
 Next: <a href="#Better-defined-ambiguity-metric" accesskey="n" rel="next">Better defined ambiguity metric</a>, Previous: <a href="#Document-pre_002dconditions-more-formally" accesskey="p" rel="prev">Document pre-conditions more formally</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Simpler-events-interface-1"></a>
-<h3 class="section">30.3 Simpler events interface</h3>
+<h3 class="section">31.3 Simpler events interface</h3>
 
 <p>The events interface is unnecessarily complex.
 A separate grammar method
@@ -11683,7 +12135,7 @@ See <a href="#Prediction-events">Prediction events</a>.
 Next: <a href="#Report-item-traverser-should-be-a-time-object" accesskey="n" rel="next">Report item traverser should be a time object</a>, Previous: <a href="#Simpler-events-interface" accesskey="p" rel="prev">Simpler events interface</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Better-defined-ambiguity-metric-1"></a>
-<h3 class="section">30.4 Better defined ambiguity metric</h3>
+<h3 class="section">31.4 Better defined ambiguity metric</h3>
 
 <p>With experience, we are now in a position to define an
 ambiguity metric that can be cheaply calculated,
@@ -11697,7 +12149,7 @@ Preliminary notes are in the CWeb code.
 Next: <a href="#Orthogonal-treatment-of-soft-failures" accesskey="n" rel="next">Orthogonal treatment of soft failures</a>, Previous: <a href="#Better-defined-ambiguity-metric" accesskey="p" rel="prev">Better defined ambiguity metric</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Report-item-traverser-should-be-a-time-object-1"></a>
-<h3 class="section">30.5 Report item traverser should be a time object</h3>
+<h3 class="section">31.5 Report item traverser should be a time object</h3>
 
 <p>Right now, a report item traverser is a kind of &ldquo;subobject&rdquo;
 of a recognizer.
@@ -11713,7 +12165,7 @@ allowing more aggressive use of this facility.
 Next: <a href="#Orthogonal-treatment-of-exhaustion" accesskey="n" rel="next">Orthogonal treatment of exhaustion</a>, Previous: <a href="#Report-item-traverser-should-be-a-time-object" accesskey="p" rel="prev">Report item traverser should be a time object</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Orthogonal-treatment-of-soft-failures-1"></a>
-<h3 class="section">30.6 Orthogonal treatment of soft failures</h3>
+<h3 class="section">31.6 Orthogonal treatment of soft failures</h3>
 
 <p>The treatment of soft failure evolved along with this interface,
 leaving traces of that evolution in the interface.
@@ -11734,7 +12186,7 @@ These non-orthogonalities should be fixed someday.
 Next: <a href="#Furthest-earleme-values" accesskey="n" rel="next">Furthest earleme values</a>, Previous: <a href="#Orthogonal-treatment-of-soft-failures" accesskey="p" rel="prev">Orthogonal treatment of soft failures</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Orthogonal-treatment-of-exhaustion-1"></a>
-<h3 class="section">30.7 Orthogonal treatment of exhaustion</h3>
+<h3 class="section">31.7 Orthogonal treatment of exhaustion</h3>
 
 <p>The treatment of parse exhaustion is very awkward.
 <code>marpa_r_start_input()</code> returns success on exhaustion,
@@ -11756,7 +12208,7 @@ as a soft failure.
 Next: <a href="#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029" accesskey="n" rel="next">Additional recoverable failures in marpa_r_alternative()</a>, Previous: <a href="#Orthogonal-treatment-of-exhaustion" accesskey="p" rel="prev">Orthogonal treatment of exhaustion</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Furthest-earleme-values-1"></a>
-<h3 class="section">30.8 Furthest earleme values</h3>
+<h3 class="section">31.8 Furthest earleme values</h3>
 
 <p><code>marpa_r_furthest_earleme</code> returns
 <code>unsigned int</code>, which is non-orthogonal with
@@ -11793,7 +12245,7 @@ and the non-orthogonalities should be eliminated.
 Next: <a href="#Untested-methods" accesskey="n" rel="next">Untested methods</a>, Previous: <a href="#Furthest-earleme-values" accesskey="p" rel="prev">Furthest earleme values</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029-1"></a>
-<h3 class="section">30.9 Additional recoverable failures in marpa_r_alternative()</h3>
+<h3 class="section">31.9 Additional recoverable failures in marpa_r_alternative()</h3>
 
 <p>Among the hard failures that
 marpa_r_alternative() returns
@@ -11822,7 +12274,7 @@ to use them in this way.
 Previous: <a href="#Additional-recoverable-failures-in-marpa_005fr_005falternative_0028_0029" accesskey="p" rel="prev">Additional recoverable failures in marpa_r_alternative()</a>, Up: <a href="#Futures" accesskey="u" rel="up">Futures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Untested-methods-1"></a>
-<h3 class="section">30.10 Untested methods</h3>
+<h3 class="section">31.10 Untested methods</h3>
 
 <p>The methods of this section are not in the external interface,
 because they have not been adequately tested.
@@ -11844,7 +12296,7 @@ as unsupported.
 Next: <a href="#Methods-for-revising-parses" accesskey="n" rel="next">Methods for revising parses</a>, Previous: <a href="#Untested-methods" accesskey="p" rel="prev">Untested methods</a>, Up: <a href="#Untested-methods" accesskey="u" rel="up">Untested methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Zero_002dwidth-assertion-methods-1"></a>
-<h4 class="subsection">30.10.1 Zero-width assertion methods</h4>
+<h4 class="subsection">31.10.1 Zero-width assertion methods</h4>
 
 <a name="marpa_005fg_005fzwa_005fnew"></a><dl>
 <dt><a name="index-marpa_005fg_005fzwa_005fnew"></a>Function: <em>Marpa_Assertion_ID</em> <strong>marpa_g_zwa_new</strong> <em>(     Marpa_Grammar <var>g</var>,     int <var>default_value</var>)</em></dt>
@@ -11878,7 +12330,7 @@ On success, returns previous default value of the assertion.
 Previous: <a href="#Zero_002dwidth-assertion-methods" accesskey="p" rel="prev">Zero-width assertion methods</a>, Up: <a href="#Untested-methods" accesskey="u" rel="up">Untested methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Methods-for-revising-parses-1"></a>
-<h4 class="subsection">30.10.2 Methods for revising parses</h4>
+<h4 class="subsection">31.10.2 Methods for revising parses</h4>
 
 <a name="marpa_005fr_005fclean"></a><dl>
 <dt><a name="index-marpa_005fr_005fclean"></a>Function: <em>Marpa_Earleme</em> <strong>marpa_r_clean</strong> <em>(     Marpa_Recognizer <var>r</var>)</em></dt>
@@ -11897,7 +12349,7 @@ This method is untested and its fate is uncertain.
 Next: <a href="#History-of-the-Marpa-algorithm" accesskey="n" rel="next">History of the Marpa algorithm</a>, Previous: <a href="#Futures" accesskey="p" rel="prev">Futures</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Deprecated-techniques-and-methods-1"></a>
-<h2 class="chapter">31 Deprecated techniques and methods</h2>
+<h2 class="chapter">32 Deprecated techniques and methods</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#LHS-terminals" accesskey="1">LHS terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -11915,7 +12367,7 @@ Next: <a href="#History-of-the-Marpa-algorithm" accesskey="n" rel="next">History
 Next: <a href="#Valued-and-unvalued-symbols" accesskey="n" rel="next">Valued and unvalued symbols</a>, Previous: <a href="#Deprecated-techniques-and-methods" accesskey="p" rel="prev">Deprecated techniques and methods</a>, Up: <a href="#Deprecated-techniques-and-methods" accesskey="u" rel="up">Deprecated techniques and methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="LHS-terminals-1"></a>
-<h3 class="section">31.1 LHS terminals</h3>
+<h3 class="section">32.1 LHS terminals</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Overview-of-LHS-terminals" accesskey="1">Overview of LHS terminals</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -11937,7 +12389,7 @@ Next: <a href="#Valued-and-unvalued-symbols" accesskey="n" rel="next">Valued and
 Next: <a href="#Motivation-of-LHS-terminals" accesskey="n" rel="next">Motivation of LHS terminals</a>, Previous: <a href="#LHS-terminals" accesskey="p" rel="prev">LHS terminals</a>, Up: <a href="#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Overview-of-LHS-terminals-1"></a>
-<h4 class="subsection">31.1.1 Overview of LHS terminals</h4>
+<h4 class="subsection">32.1.1 Overview of LHS terminals</h4>
 
 <p>The user creates LHS terminals with the
 <code>marpa_g_symbol_is_terminal_set()</code>
@@ -11959,7 +12411,7 @@ base grammar.
 Next: <a href="#LHS-terminal-methods" accesskey="n" rel="next">LHS terminal methods</a>, Previous: <a href="#Overview-of-LHS-terminals" accesskey="p" rel="prev">Overview of LHS terminals</a>, Up: <a href="#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Motivation-of-LHS-terminals-1"></a>
-<h4 class="subsection">31.1.2 Motivation of LHS terminals</h4>
+<h4 class="subsection">32.1.2 Motivation of LHS terminals</h4>
 
 <p>Recall that a terminal symbol is a symbol that
 may appear in the input.
@@ -12012,7 +12464,7 @@ into the code and complicate the API documentation.
 Next: <a href="#Precomputation-and-LHS-terminals" accesskey="n" rel="next">Precomputation and LHS terminals</a>, Previous: <a href="#Motivation-of-LHS-terminals" accesskey="p" rel="prev">Motivation of LHS terminals</a>, Up: <a href="#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="LHS-terminal-methods-1"></a>
-<h4 class="subsection">31.1.3 LHS terminal methods</h4>
+<h4 class="subsection">32.1.3 LHS terminal methods</h4>
 
 <p>The
 <a name="index-terminal-status-_0028of-a-symbol_0029"></a>
@@ -12067,7 +12519,7 @@ On hard failure, -2.
 Next: <a href="#Nulling-terminals" accesskey="n" rel="next">Nulling terminals</a>, Previous: <a href="#LHS-terminal-methods" accesskey="p" rel="prev">LHS terminal methods</a>, Up: <a href="#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Precomputation-and-LHS-terminals-1"></a>
-<h4 class="subsection">31.1.4 Precomputation and LHS terminals</h4>
+<h4 class="subsection">32.1.4 Precomputation and LHS terminals</h4>
 
 <p>On success,
 <code>marpa_g_precompute()</code>
@@ -12111,7 +12563,7 @@ See <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>.
 Previous: <a href="#Precomputation-and-LHS-terminals" accesskey="p" rel="prev">Precomputation and LHS terminals</a>, Up: <a href="#LHS-terminals" accesskey="u" rel="up">LHS terminals</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Nulling-terminals-1"></a>
-<h4 class="subsection">31.1.5 Nulling terminals</h4>
+<h4 class="subsection">32.1.5 Nulling terminals</h4>
 
 <p>When LHS terminals are not in use, nulling terminals
 cannot occur,
@@ -12154,7 +12606,7 @@ with error code <code>MARPA_ERR_NULLING_TERMINAL</code>.
 Next: <a href="#Cycles" accesskey="n" rel="next">Cycles</a>, Previous: <a href="#LHS-terminals" accesskey="p" rel="prev">LHS terminals</a>, Up: <a href="#Deprecated-techniques-and-methods" accesskey="u" rel="up">Deprecated techniques and methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Valued-and-unvalued-symbols-1"></a>
-<h3 class="section">31.2 Valued and unvalued symbols</h3>
+<h3 class="section">32.2 Valued and unvalued symbols</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#What-unvalued-symbols-were" accesskey="1">What unvalued symbols were</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -12172,7 +12624,7 @@ Next: <a href="#Cycles" accesskey="n" rel="next">Cycles</a>, Previous: <a href="
 Next: <a href="#Grammar-methods-dealing-with-unvalued-symbols" accesskey="n" rel="next">Grammar methods dealing with unvalued symbols</a>, Previous: <a href="#Valued-and-unvalued-symbols" accesskey="p" rel="prev">Valued and unvalued symbols</a>, Up: <a href="#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="What-unvalued-symbols-were-1"></a>
-<h4 class="subsection">31.2.1 What unvalued symbols were</h4>
+<h4 class="subsection">32.2.1 What unvalued symbols were</h4>
 
 <p>Libmarpa symbols can have values,
 which is the traditional way of doing semantics.
@@ -12246,7 +12698,7 @@ some tricky debugging further down the road.
 Next: <a href="#Registering-semantics-in-the-valuator" accesskey="n" rel="next">Registering semantics in the valuator</a>, Previous: <a href="#What-unvalued-symbols-were" accesskey="p" rel="prev">What unvalued symbols were</a>, Up: <a href="#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Grammar-methods-dealing-with-unvalued-symbols-1"></a>
-<h4 class="subsection">31.2.2 Grammar methods dealing with unvalued symbols</h4>
+<h4 class="subsection">32.2.2 Grammar methods dealing with unvalued symbols</h4>
 
 <a name="marpa_005fg_005fsymbol_005fis_005fvalued_005fset"></a><dl>
 <dt><a name="index-marpa_005fg_005fsymbol_005fis_005fvalued_005fset"></a>Function: <em>int</em> <strong>marpa_g_symbol_is_valued_set</strong> <em>(     Marpa_Grammar <var>g</var>,     Marpa_Symbol_ID <var>symbol_id</var>,     int value)</em></dt>
@@ -12281,7 +12733,7 @@ or on other hard failure, -2.
 Previous: <a href="#Grammar-methods-dealing-with-unvalued-symbols" accesskey="p" rel="prev">Grammar methods dealing with unvalued symbols</a>, Up: <a href="#Valued-and-unvalued-symbols" accesskey="u" rel="up">Valued and unvalued symbols</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Registering-semantics-in-the-valuator-1"></a>
-<h4 class="subsection">31.2.3 Registering semantics in the valuator</h4>
+<h4 class="subsection">32.2.3 Registering semantics in the valuator</h4>
 
 <p>By default, Libmarpa&rsquo;s valuator objects
 assume that
@@ -12380,7 +12832,7 @@ value, which will never be
 Previous: <a href="#Valued-and-unvalued-symbols" accesskey="p" rel="prev">Valued and unvalued symbols</a>, Up: <a href="#Deprecated-techniques-and-methods" accesskey="u" rel="up">Deprecated techniques and methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Cycles-1"></a>
-<h3 class="section">31.3 Cycles</h3>
+<h3 class="section">32.3 Cycles</h3>
 
 <p>A cycle is a case in a grammar where a string
 non-trvially derives itself.
@@ -12414,7 +12866,7 @@ in <a href="#marpa_005fg_005fprecompute">marpa_g_precompute()</a>;
 Next: <a href="#Annotated-bibliography" accesskey="n" rel="next">Annotated bibliography</a>, Previous: <a href="#Deprecated-techniques-and-methods" accesskey="p" rel="prev">Deprecated techniques and methods</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="History-of-the-Marpa-algorithm-1"></a>
-<h2 class="chapter">32 History of the Marpa algorithm</h2>
+<h2 class="chapter">33 History of the Marpa algorithm</h2>
 
 <p>This chapter is a quick summary of the most important
 events in Marpa&rsquo;s development.
@@ -12474,7 +12926,7 @@ implementation issues.
 Next: <a href="#Acknowledgements" accesskey="n" rel="next">Acknowledgements</a>, Previous: <a href="#History-of-the-Marpa-algorithm" accesskey="p" rel="prev">History of the Marpa algorithm</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Annotated-bibliography-1"></a>
-<h2 class="chapter">33 Annotated bibliography</h2>
+<h2 class="chapter">34 Annotated bibliography</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Aho-and-Ullman-1972" accesskey="1">Aho and Ullman 1972</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -12514,7 +12966,7 @@ Next: <a href="#Acknowledgements" accesskey="n" rel="next">Acknowledgements</a>,
 Next: <a href="#Aycock-and-Horspool-2002" accesskey="n" rel="next">Aycock and Horspool 2002</a>, Previous: <a href="#Annotated-bibliography" accesskey="p" rel="prev">Annotated bibliography</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Aho-and-Ullman-1972-1"></a>
-<h3 class="section">33.1 Aho and Ullman 1972</h3>
+<h3 class="section">34.1 Aho and Ullman 1972</h3>
 
 <p><em>The Theory of Parsing, Translation and Compiling, Volume I: Parsing</em>
 by Alfred Aho and Jeffrey Ullman
@@ -12531,7 +12983,7 @@ The account of Earley&rsquo;s algorithm is on pages 320-330.
 Next: <a href="#C89" accesskey="n" rel="next">C89</a>, Previous: <a href="#Aho-and-Ullman-1972" accesskey="p" rel="prev">Aho and Ullman 1972</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Aycock-and-Horspool-2002-1"></a>
-<h3 class="section">33.2 Aycock and Horspool 2002</h3>
+<h3 class="section">34.2 Aycock and Horspool 2002</h3>
 
 <p>Marpa is based on ideas from
 John Aycock and R.
@@ -12561,7 +13013,7 @@ and nonetheless found this paper very heavy going.
 Next: <a href="#C99" accesskey="n" rel="next">C99</a>, Previous: <a href="#Aycock-and-Horspool-2002" accesskey="p" rel="prev">Aycock and Horspool 2002</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="C89-standard"></a>
-<h3 class="section">33.3 C89 standard</h3>
+<h3 class="section">34.3 C89 standard</h3>
 
 <p>Libmarpa is written to conform to the C89 standard.
 This can be found online at
@@ -12574,7 +13026,7 @@ This can be found online at
 Next: <a href="#Dominus-2005" accesskey="n" rel="next">Dominus 2005</a>, Previous: <a href="#C89" accesskey="p" rel="prev">C89</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="C99-standard"></a>
-<h3 class="section">33.4 C99 standard</h3>
+<h3 class="section">34.4 C99 standard</h3>
 
 <p>The C99 standard clarifies the C89 standard in many respects.
 It can be found online at
@@ -12587,7 +13039,7 @@ It can be found online at
 Next: <a href="#Earley-1970" accesskey="n" rel="next">Earley 1970</a>, Previous: <a href="#C99" accesskey="p" rel="prev">C99</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Dominus-2005-1"></a>
-<h3 class="section">33.5 Dominus 2005</h3>
+<h3 class="section">34.5 Dominus 2005</h3>
 
 <p>Although my approach to parsing is not influenced
 by Mark Jason Dominus&rsquo;s <em>Higher Order Perl</em>,
@@ -12617,7 +13069,7 @@ A PDF of the parsing chapter is at <a href="http://hop.perl.plover.com/book/pdf/
 Next: <a href="#Grune-and-Jacobs-1990" accesskey="n" rel="next">Grune and Jacobs 1990</a>, Previous: <a href="#Dominus-2005" accesskey="p" rel="prev">Dominus 2005</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Earley-1970-1"></a>
-<h3 class="section">33.6 Earley 1970</h3>
+<h3 class="section">34.6 Earley 1970</h3>
 
 <p>Of
 Jay Earley&rsquo;s papers on his general parsing algorithm,
@@ -12663,7 +13115,7 @@ so I am taking Tomita&rsquo;s word on this one.
 Next: <a href="#Grune-and-Jacobs-2008" accesskey="n" rel="next">Grune and Jacobs 2008</a>, Previous: <a href="#Earley-1970" accesskey="p" rel="prev">Earley 1970</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Grune-and-Jacobs-1990-1"></a>
-<h3 class="section">33.7 Grune and Jacobs 1990</h3>
+<h3 class="section">34.7 Grune and Jacobs 1990</h3>
 
 <p><em>Parsing Techniques: A Practical Guide</em>,
 by Dick Grune and
@@ -12679,7 +13131,7 @@ This book is available on the Web: <a href="http://dickgrune.com/Books/PTAPG_1st
 Next: <a href="#Marpa-theory-paper" accesskey="n" rel="next">Marpa theory paper</a>, Previous: <a href="#Grune-and-Jacobs-1990" accesskey="p" rel="prev">Grune and Jacobs 1990</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Grune-and-Jacobs-2008-1"></a>
-<h3 class="section">33.8 Grune and Jacobs 2008</h3>
+<h3 class="section">34.8 Grune and Jacobs 2008</h3>
 
 <p><em>Parsing Techniques: A Practical Guide</em>,
 by Dick Grune and
@@ -12704,7 +13156,7 @@ on the web: <a href="ftp://ftp.cs.vu.nl/pub/dick/PTAPG_2nd_Edition/CompleteList.
 Next: <a href="#Kegler-2023" accesskey="n" rel="next">Kegler 2023</a>, Previous: <a href="#Grune-and-Jacobs-2008" accesskey="p" rel="prev">Grune and Jacobs 2008</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Marpa-theory-paper-1"></a>
-<h3 class="section">33.9 Marpa theory paper</h3>
+<h3 class="section">34.9 Marpa theory paper</h3>
 
 <p>My writeup of the theory behind Marpa,
 with proofs of correctness and of my complexity claims,
@@ -12719,7 +13171,7 @@ and can be found on <code>arxiv.org</code> (<a href="https://arxiv.org/abs/1910.
 Next: <a href="#Parsing-timeline" accesskey="n" rel="next">Parsing timeline</a>, Previous: <a href="#Marpa-theory-paper" accesskey="p" rel="prev">Marpa theory paper</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Kegler-2023-1"></a>
-<h3 class="section">33.10 Kegler 2023</h3>
+<h3 class="section">34.10 Kegler 2023</h3>
 
 <p>This theory-oriented paper expands on
 the Marpa theory paper (see <a href="#Marpa-theory-paper">Marpa theory paper</a>).
@@ -12736,7 +13188,7 @@ and can be found on <code>arxiv.org</code> (<a href="https://arxiv.org/abs/2303.
 Next: <a href="#Leo-1991" accesskey="n" rel="next">Leo 1991</a>, Previous: <a href="#Kegler-2023" accesskey="p" rel="prev">Kegler 2023</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Parsing-timeline-1"></a>
-<h3 class="section">33.11 Parsing timeline</h3>
+<h3 class="section">34.11 Parsing timeline</h3>
 
 <p>Far more popular than my Marpa theory paper is my
 <em>Parsing: a timeline</em>.
@@ -12751,7 +13203,7 @@ and is available online:
 Next: <a href="#Scott-2008" accesskey="n" rel="next">Scott 2008</a>, Previous: <a href="#Parsing-timeline" accesskey="p" rel="prev">Parsing timeline</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Leo-1991-1"></a>
-<h3 class="section">33.12 Leo 1991</h3>
+<h3 class="section">34.12 Leo 1991</h3>
 
 <p>Marpa&rsquo;s handling of right-recursion uses the ideas in
 Joop M.I.M. Leo&rsquo;s
@@ -12771,7 +13223,7 @@ click the PDF icon at the top left.
 Next: <a href="#Wikipedia-BNF-article" accesskey="n" rel="next">Wikipedia BNF article</a>, Previous: <a href="#Leo-1991" accesskey="p" rel="prev">Leo 1991</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Scott-2008-1"></a>
-<h3 class="section">33.13 Scott 2008</h3>
+<h3 class="section">34.13 Scott 2008</h3>
 
 <p>One of our most important data structures is what we call a &ldquo;bocage&rdquo;.
 Prof. Scott&rsquo;s work preceded ours,
@@ -12790,7 +13242,7 @@ Electronic Notes in Theoretical Computer Science 203.2 (2008): 53-67,
 Previous: <a href="#Scott-2008" accesskey="p" rel="prev">Scott 2008</a>, Up: <a href="#Annotated-bibliography" accesskey="u" rel="up">Annotated bibliography</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Wikipedia-BNF-article-1"></a>
-<h3 class="section">33.14 Wikipedia BNF article</h3>
+<h3 class="section">34.14 Wikipedia BNF article</h3>
 
 <p>Wikipedia&rsquo;s article on Backus-Naur form is
 <a href="http://en.wikipedia.org/wiki/Backus-Naur_form">http://en.wikipedia.org/wiki/Backus-Naur_form</a>.
@@ -12810,7 +13262,7 @@ using a similar notation.
 Next: <a href="#Index-of-terms" accesskey="n" rel="next">Index of terms</a>, Previous: <a href="#Annotated-bibliography" accesskey="p" rel="prev">Annotated bibliography</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Acknowledgements-1"></a>
-<h2 class="chapter">34 Acknowledgements</h2>
+<h2 class="chapter">35 Acknowledgements</h2>
 
 <blockquote>
 <p>Beggar that I am, I am even poor in thanks; but I thank you;
@@ -12922,7 +13374,7 @@ those who participated.
 Previous: <a href="#Acknowledgements" accesskey="p" rel="prev">Acknowledgements</a>, Up: <a href="#Acknowledgements" accesskey="u" rel="up">Acknowledgements</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="An-apology-1"></a>
-<h3 class="section">34.1 An apology</h3>
+<h3 class="section">35.1 An apology</h3>
 
 <p>We feared that these acknowledgements would
 become an exhibition of our negligence and ingratitude,
@@ -13104,15 +13556,15 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-dotted-rule">dotted rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-E">E</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-earleme">earleme</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-traditional-input-model">The traditional input model</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-earleme">earleme</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earlemes-and-Earley-set-IDs">Earlemes and Earley set IDs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-earleme_002c-current">earleme, current</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-current-earleme">The current earleme</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-earleme_002c-empty">earleme, empty</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-fully-general-input-model">The fully general input model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-earleme_002c-furthest">earleme, furthest</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-furthest-earleme">The furthest earleme</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-earleme_002c-latest">earleme, latest</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-latest-earleme">The latest earleme</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Earley-item">Earley item</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Earley-item-warning-threshold">Earley item warning threshold</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-parse-status-methods">Other parse status methods</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Earley-set_002c-end-of-parse">Earley set, end of parse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bocage-data-structure">Bocage data structure</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Earley-set_002c-latest">Earley set, latest</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-latest-earleme">The latest earleme</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Earley-set-ID">Earley set ID</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earlemes-and-Earley-set-IDs">Earlemes and Earley set IDs</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Earley-set_002c-latest">Earley set, latest</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-latest-Earley-set">The latest Earley set</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-empty-earleme">empty earleme</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-fully-general-input-model">The fully general input model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-empty-rule">empty rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rules">Rules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-empty-rule-1">empty rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rules">Rules</a></td></tr>
@@ -13120,14 +13572,13 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-empty-string">empty string</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Nulling">Nulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-end-of-file">end of file</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-end-of-input">end of input</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-end-of-parse">end of parse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#End-of-parsing">End of parsing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-End-of-parse-Earley-set">End of parse Earley set</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bocage-data-structure">Bocage data structure</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-end-of-parse">end of parse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#End-of-parse">End of parse</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-end-of-string">end of string</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-environment-limit">environment limit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-environment_002c-application">environment, application</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-EOF">EOF</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-EOI">EOI</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-EOP">EOP</a>:</td><td>&nbsp;</td><td valign="top"><a href="#End-of-parsing">End of parsing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-EOP">EOP</a>:</td><td>&nbsp;</td><td valign="top"><a href="#End-of-parse">End of parse</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-EOS">EOS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-evaluate-_0028a-parse-run_0029">evaluate (a parse run)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Semantics-terms">Semantics terms</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-evaluate-_0028a-tree_0029">evaluate (a tree)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Semantics-terms">Semantics terms</a></td></tr>
@@ -13177,7 +13628,7 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-hard-failure_002c-partially-recoverable">hard failure, partially recoverable</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Partially-recoverable-hard-failure">Partially recoverable hard failure</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-I">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-ID-_0028of-an-Earley-set_0029">ID (of an Earley set)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-traditional-input-model">The traditional input model</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ID-_0028of-an-Earley-set_0029">ID (of an Earley set)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earlemes-and-Earley-set-IDs">Earlemes and Earley set IDs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-iff">iff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-immediately-previous-_0028to-a-marpa_005fr_005fearleme_005fcomplete_0028_0029-call_0029">immediately previous (to a <code>marpa_r_earleme_complete()</code> call)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-standard-model-of-input">The standard model of input</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-implicit-event-type">implicit event type</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Events-overview">Events overview</a></td></tr>
@@ -13209,6 +13660,7 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-labeled-ordered-tree-node">labeled ordered tree node</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-language">language</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Parsing-theory-preliminaries">Parsing theory preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-language-1">language</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Derivations">Derivations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-latest-Earley-set">latest Earley set</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-latest-Earley-set">The latest Earley set</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-leaf-_0028node_0029">leaf (node)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-leaf-node">leaf node</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-left-hand-side">left hand side</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rules">Rules</a></td></tr>
@@ -13272,7 +13724,6 @@ only those uses that are in some way defining.
 <tr><th><a name="Index-of-terms_df_letter-O">O</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-one_002dcodepoint_002dper_002dearleme-input-model">one-codepoint-per-earleme input model</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-codepoint_002dper_002dearleme-model">The codepoint-per-earleme model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ordering_002c-frozen">ordering, frozen</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Freezing-the-ordering">Freezing the ordering</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-ordinal-_0028of-an-Earley-set_0029">ordinal (of an Earley set)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-traditional-input-model">The traditional input model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-origin-_0028in-an-Earley-item_0029">origin (in an Earley item)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-our">our</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>

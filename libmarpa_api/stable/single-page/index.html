@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual (21 April 2023)
-is for Libmarpa 11.0.9.
+<!-- This manual (30 April 2023)
+is for Libmarpa 11.0.10.
 
 Copyright (C) 2023 Jeffrey Kegler.
 
@@ -25,10 +25,10 @@ OTHER DEALINGS IN THE SOFTWARE. -->
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Libmarpa 11.0.9</title>
+<title>Libmarpa 11.0.10</title>
 
-<meta name="description" content="Libmarpa 11.0.9">
-<meta name="keywords" content="Libmarpa 11.0.9">
+<meta name="description" content="Libmarpa 11.0.10">
+<meta name="keywords" content="Libmarpa 11.0.10">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -68,7 +68,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">Libmarpa 11.0.9</h1>
+<h1 class="settitle" align="center">Libmarpa 11.0.10</h1>
 
 
 
@@ -193,7 +193,11 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Location-accessors-1" href="#Location-accessors">19.5 Location accessors</a></li>
     <li><a name="toc-Other-parse-status-methods-1" href="#Other-parse-status-methods">19.6 Other parse status methods</a></li>
   </ul></li>
-  <li><a name="toc-Progress-reports-1" href="#Progress-reports">20 Progress reports</a></li>
+  <li><a name="toc-Progress-reports-1" href="#Progress-reports">20 Progress reports</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Progress-report-traverser-1" href="#Progress-report-traverser">20.1 Progress report traverser</a></li>
+    <li><a name="toc-Progress-report-methods-1" href="#Progress-report-methods">20.2 Progress report methods</a></li>
+  </ul></li>
   <li><a name="toc-Bocage-methods-1" href="#Bocage-methods">21 Bocage methods</a>
   <ul class="no-bullet">
     <li><a name="toc-Overview-1" href="#Bocage-overview">21.1 Overview</a></li>
@@ -269,6 +273,7 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Listing-rules-1" href="#Listing-rules">26.2 Listing rules</a></li>
     <li><a name="toc-Listing-Earley-sets-1" href="#Listing-Earley-sets">26.3 Listing Earley sets</a></li>
     <li><a name="toc-Tracing-tokens-1" href="#Tracing-tokens">26.4 Tracing tokens</a></li>
+    <li><a name="toc-Parse-diagnosis-checklist-1" href="#Parse-diagnosis-checklist">26.5 Parse diagnosis checklist</a></li>
   </ul></li>
   <li><a name="toc-Error-methods_002c-macros-and-codes" href="#Error-methods-macros-and-codes">27 Error methods, macros and codes</a>
   <ul class="no-bullet">
@@ -362,8 +367,8 @@ Next: <a href="#License" accesskey="n" rel="next">License</a>, Previous: <a href
 </div>
 <a name="Libmarpa_003a-The-Marpa-low_002dlevel-library"></a>
 <h1 class="top">Libmarpa: The Marpa low-level library</h1>
-<p>This manual (21 April 2023)
-is for Libmarpa 11.0.9.
+<p>This manual (30 April 2023)
+is for Libmarpa 11.0.10.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -651,6 +656,14 @@ Recognizer methods
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
+Progress reports
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Progress-report-traverser">Progress report traverser</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Progress-report-methods">Progress report methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 Bocage methods
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Bocage-overview">Bocage overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -788,6 +801,8 @@ Tracing and diagnosing parses
 <tr><td align="left" valign="top">&bull; <a href="#Listing-Earley-sets">Listing Earley sets</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Tracing-tokens">Tracing tokens</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Parse-diagnosis-checklist">Parse diagnosis checklist</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -944,8 +959,8 @@ Next: <a href="#Updates" accesskey="n" rel="next">Updates</a>, Previous: <a href
 <a name="License-1"></a>
 <h2 class="chapter">1 License</h2>
 
-<p>This manual (21 April 2023)
-is for Libmarpa 11.0.9.
+<p>This manual (30 April 2023)
+is for Libmarpa 11.0.10.
 </p>
 <p>Copyright &copy; 2023 Jeffrey Kegler.
 </p>
@@ -4920,7 +4935,7 @@ are using.
 <p>If <var>required_major</var>.<var>required_minor</var>.<var>required_micro</var>
 is an exact match with the version of Libmarpa,
 the method succeeds.
-The version of Libmarpa described in this manual is 11.0.9.
+The version of Libmarpa described in this manual is 11.0.10.
 Otherwise the return status is an irrecoverable
 hard failure.
 </p>
@@ -6884,13 +6899,7 @@ Next: <a href="#Bocage-methods" accesskey="n" rel="next">Bocage methods</a>, Pre
 <a name="Progress-reports-1"></a>
 <h2 class="chapter">20 Progress reports</h2>
 
-<p>It is an important property of the Marpa algorithm that the
-Earley sets are added one at a time,
-so that
-before we have started the construction of the Earley set at <code>n+1</code>,
-we know the full state of the parse at and before
-location <code>n</code>.
-Libmarpa&rsquo;s progress reports allow access to the Earley items
+<p>Libmarpa&rsquo;s progress reports allow access to the Earley items
 in an Earley set.
 </p>
 <p>To start a progress report,
@@ -6905,14 +6914,72 @@ use the
 <code>marpa_r_progress_item()</code>
 method.
 </p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Progress-report-traverser" accesskey="1">Progress report traverser</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Progress-report-methods" accesskey="2">Progress report methods</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Progress-report-traverser"></a>
+<div class="header">
+<p>
+Next: <a href="#Progress-report-methods" accesskey="n" rel="next">Progress report methods</a>, Previous: <a href="#Progress-reports" accesskey="p" rel="prev">Progress reports</a>, Up: <a href="#Progress-reports" accesskey="u" rel="up">Progress reports</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Progress-report-traverser-1"></a>
+<h3 class="section">20.1 Progress report traverser</h3>
+
+<p>A progress report traverser is
+</p><ul>
+<li> a linked list of the Earley items in a Earley set, in which
+</li><li> one node is distinguished as the
+<a name="index-current-node-_0028of-a-progress-report-traverser_0029"></a>
+<a name="index-node_002c-current-_0028of-a-progress-report-traverser_0029"></a>
+<em>current node</em> of the traverser.
+</li></ul>
+
+<p>The linked list has two sentinel nodes,
+one at the start of the linked list,
+and one at the end of the linked list.
+The two sentinel nodes do not
+correspond to Earley items
+so that, where <code>n</code>
+is the size of the Earley set,
+the linked list of its traverser contains <code>n+2</code> nodes.
+</p>
+<p>The sentinel node at the start of the linked list
+is called the
+<a name="index-start-sentinel-node"></a>
+<a name="index-start-sentinel"></a>
+<em>start sentinel node</em> or
+<em>start sentinel</em>.
+In a traverser for a non-empty Earley set,
+the start sentinel comes before the first Earley item.
+The sentinel node at the end of the linked list
+is called the
+<a name="index-end-sentinel-node"></a>
+<a name="index-end-sentinel"></a>
+<em>end sentinel node</em> or
+<em>end sentinel</em>.
+In a traverser for a non-empty Earley set,
+the end sentinel comes after the last Earley item.
+</p>
+<hr>
+<a name="Progress-report-methods"></a>
+<div class="header">
+<p>
+Previous: <a href="#Progress-report-traverser" accesskey="p" rel="prev">Progress report traverser</a>, Up: <a href="#Progress-reports" accesskey="u" rel="up">Progress reports</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Progress-report-methods-1"></a>
+<h3 class="section">20.2 Progress report methods</h3>
+
 <a name="marpa_005fr_005fprogress_005freport_005freset"></a><dl>
 <dt><a name="index-marpa_005fr_005fprogress_005freport_005freset"></a>Mutator function: <em>int</em> <strong>marpa_r_progress_report_reset</strong> <em>(   Marpa_Recognizer <var>r</var>)</em></dt>
 <dd>
-<p>On success, sets the current vertex of the report traverser
-to the null vertex.
-For more about the report traverser,
-including details about the current and null vertices,
-see <a href="#marpa_005fr_005fprogress_005freport_005fstart">marpa_r_progress_report_start()</a>.
+<p>On success, sets the current node of the report traverser
+to the start sentinel.
+See <a href="#Progress-report-traverser">Progress report traverser</a>.
 </p>
 <p>This method is not usually needed.
 Its effect is to leave the traverser in the same state as it is
@@ -6933,75 +7000,20 @@ On failure, -2.
 <p>Creates a progress report traverser
 in recognizer <var>r</var>
 for the Earley set with ID <var>set_id</var>.
-A
-<a name="index-progress-report-traverser"></a>
-<a name="index-traverser_002c-progress-report"></a>
-<em>progress report traverser</em>
-is a non-empty directed cycle graph whose vertices consist
-of the following:
-</p><ul>
-<li> For every Earley item,
-exactly one vertex that corresponds to
-that Earley item.
-This vertex is called the
-<a name="index-progress-report-item"></a>
-<em>progress report item</em>
-or, when the meaning is clear, the
-<a name="index-report-item"></a>
-<em>report item</em>.
-In this method description,
-we will say that the number of report items is <code>n</code>,
-and we will write <code>ritem[i]</code>
-for the <code>i</code>&rsquo;th report item.
-</li><li> A special vertex, called the
-<a name="index-null-vertex"></a>
-<a name="index-vertex_002c-null"></a>
-<em>null vertex</em>,
-which does not correspond
-to any Earley item.
-In this method description, we will write <code>null</code> for
-the null vertex.
-</li></ul>
-
-<p>There may be no Earley items in an Earley set,
-and therefore a progress report traverser may contain no report items.
-A progress report traverser with no report items is called a
-&ldquo;trivial traverser&rdquo;.
-A trivial traverser has exactly one edge: <code>(null, null)</code>.
-</p>
-<p>The edges of a non-trivial traverser are
-</p><ul>
-<li> <code>(null, ritem[0])</code>,
-</li><li> <code>(ritem[n-1], null)</code>, and
-</li><li> for every <code>0 &lt;= i &lt; v-1</code>, <code>(ritem[i-1], ritem[i])</code>.
-</li></ul>
-<p>This implies that every vertex has exactly one direct successor.
-The report items are a subgraph,
-and this graph can be seen as inducing the sequence <code>ritem[0] ... ritem[n-1]</code>.
-</p>
-<p>When a progress report traverser is active, one vertex is distinguished as the
-<a name="index-current-vertex-_0028of-a-progress-report-traverser_0029"></a>
-<a name="index-vertex_002c-current-_0028of-a-progress-report-traverser_0029"></a>
-<em>current vertex</em>,
-which we will write as <code>current</code>.
-We call the direct successor of the current vertex,
-the
-<a name="index-next-vertex-_0028of-a-progress-report-traverser_0029"></a>
-<a name="index-vertex_002c-next-_0028of-a-progress-report-traverser_0029"></a>
-<em>next vertex</em>.
 </p>
 <p>On success, does the following:
 </p><ul>
-<li> If a progress report traverser was active in this recognizer before this method call,
-it is destroyed and its memory is freed..
+<li> If a progress report traverser was active in recognizer <var>r</var>
+before this method call,
+destroys it and frees its memory.
 </li><li> Creates a new progress report traverser from the Earley items for the
 Earley set with ID <var>set_id</var>.
-</li><li> Activates the newly created progress report traverser,
-setting the current vertex to the null vertex.
-Intuitively, in a non-trivial traverser,
+</li><li> Sets the current node of the traverser
+to the start sentinel.
+Intuitively, for a non-empty Earley set,
 this can be thought of as positioning the
-traverser before the first report item.
-</li><li> Returns <code>n</code>, the number of report items.
+traverser before the first Earley item.
+</li><li> Returns <code>n</code>, the number of Earley items.
     <code>n</code> may be zero.
 </li></ul>
 
@@ -7013,7 +7025,7 @@ The error code is <code>MARPA_ERR_NO_EARLEY_SET_AT_LOCATION</code>
 if <var>set_id</var> is greater than the ID of
 the latest Earley set.
 </p>
-<p><strong>Return value</strong>: On success, the number of report items,
+<p><strong>Return value</strong>: On success, the number of Earley items,
 which will always be non-negative.
 On hard failure, -2.
 </p></dd></dl>
@@ -7047,27 +7059,27 @@ On hard failure, -2.
 <dd><p>This method allows access to the data
 for the next progress report item of a
 progress report.
-For details about progress reports,
-see <a href="#marpa_005fr_005fprogress_005freport_005fstart">marpa_r_progress_report_start()</a>.
+See <a href="#Progress-report-traverser">Progress report traverser</a>.
+</p>
+<p>Let <code>oldCurrent</code> be the current node of
+the progress report traverser in <var>r</var>
+when this method was called.
+Let <code>oldNext</code> be the next link
+of <code>oldCurrent</code>.
+If <code>oldCurrent</code> is the end sentinel,
+<code>oldNext</code> is not defined,
+and this method soft fails.
 </p>
 <p>In the event of success:
 </p><ul>
-<li> Advances the current vertex to the next vertex.
-More precisely, let <code>c_before</code> be the vertex
-that was the current vertex when
-this method was called.
-The report item traverser has exactly one edge such that <code>c_before</code>
-is its first element.
-Let this edge be <code>(c_before,c_after)</code>.
-This method sets the current vertex to <code>c_after</code>.
-In this method description, we will write <code>current</code> as an alias for <code>c_after</code>.
-</li><li> <code>current</code> will be a report item vertex and therefore there will
-be an Earley item corresponding to <code>current</code>.
-</li><li> Writes the &ldquo;cooked dot position&rdquo; of the Earley item corresponding to <code>current</code>
+<li> Sets the current node of the traverser to <code>oldNext</code>.
+We will call this new value of the current node,
+<code>newCurrent</code>.
+</li><li> Writes the &ldquo;cooked dot position&rdquo; of the Earley item corresponding to <code>newCurrent</code>
 to the location pointed to by the <var>position</var> argument.
-</li><li> Writes the origin of the Earley item corresponding to <code>current</code>
+</li><li> Writes the origin of the Earley item corresponding to <code>newCurrent</code>
 to the location pointed to by the <var>origin</var> argument.
-</li><li> Returns the rule ID of the Earley item corresponding to <code>current</code>.
+</li><li> Returns the rule ID of the Earley item corresponding to <code>newCurrent</code>.
 </li></ul>
 
 <p>The &ldquo;cooked dot position&rdquo; is
@@ -7086,7 +7098,7 @@ See <a href="#marpa_005fg_005frule_005flength">marpa_g_rule_length()</a>.
 
 <p>In the event of soft failure:
 </p><ul>
-<li> <code>current</code> is the null vertex.
+<li> Sets the current node to the end sentinel.
 </li><li> Sets the error code to <code>MARPA_ERR_PROGRESS_REPORT_EXHAUSTED</code>.
 </li><li> Leaves unchanged the locations pointed to by
 the <var>position</var> and <var>origin</var> arguments.
@@ -10175,6 +10187,8 @@ the facilities should display at the highest verbosity level.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Tracing-tokens" accesskey="4">Tracing tokens</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Parse-diagnosis-checklist" accesskey="5">Parse diagnosis checklist</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 </table>
 
 <hr>
@@ -10370,7 +10384,7 @@ can be unmanageably long.
 <a name="Tracing-tokens"></a>
 <div class="header">
 <p>
-Previous: <a href="#Listing-Earley-sets" accesskey="p" rel="prev">Listing Earley sets</a>, Up: <a href="#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Parse-diagnosis-checklist" accesskey="n" rel="next">Parse diagnosis checklist</a>, Previous: <a href="#Listing-Earley-sets" accesskey="p" rel="prev">Listing Earley sets</a>, Up: <a href="#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Tracing-tokens-1"></a>
 <h3 class="section">26.4 Tracing tokens</h3>
@@ -10398,7 +10412,7 @@ but the failure is fully recoverable; and
 that the <code>marpa_r_alternative()</code> call failed,
 but the failure is not fully recoverable.
 </li></ul>
-<p>The token tracing facility&rsquo;s reporting of rejected token
+<p>The token tracing facility&rsquo;s reporting of rejected tokens
 can vary by application.
 For some applications, token rejection will not be
 allowed, so that distinguishing between rejected
@@ -10418,6 +10432,52 @@ The <code>marpa_r_terminals_expected()</code>
 (see <a href="#marpa_005fr_005fterminals_005fexpected">marpa_r_terminals_expected</a>) method call
 is available for this purpose.
 </p>
+<hr>
+<a name="Parse-diagnosis-checklist"></a>
+<div class="header">
+<p>
+Previous: <a href="#Tracing-tokens" accesskey="p" rel="prev">Tracing tokens</a>, Up: <a href="#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Parse-diagnosis-checklist-1"></a>
+<h3 class="section">26.5 Parse diagnosis checklist</h3>
+
+<p>A checklist for diagnosing parse problems will depend,
+clearly,
+on the facilities offered by the diagnostics layer
+in the application.
+What follows is a &ldquo;bare bones&rdquo; checklist,
+based on the diagnostic facilities recommended
+in this chapter.
+</p>
+<ul>
+<li> Check the location of the failure, and any error message.
+This is an obvious step and, if you are reading this checklist,
+you most likely have already taken it.
+</li><li> Use the token tracing facility.
+Even if the problem is not directly with the tokens,
+the token trace is a good way to see how far the parse
+got, and what it was doing.
+If you are lucky, looking at it may make it apparent
+where the problem is.
+</li><li> List the rules and the symbols.
+Perhaps you&rsquo;ll see an issue.
+In any case, you will need these listings for the next
+step on this checklist.
+</li><li> List the latest Earley set.
+Form a theory of what <strong>should</strong> be happening
+in the parse
+and check it against what the listing
+of the latest Earley
+shows you <strong>is actually</strong> happening.
+</li><li> If the fix is still not apparent,
+list earlier Earley sets,
+until you see the fix,
+or you reach the first one with an error.
+Figure out a way to change the grammar
+to fix the first erroneous Earley set,
+then work forward.
+</li></ul>
+
 <hr>
 <a name="Error-methods-macros-and-codes"></a>
 <div class="header">
@@ -13532,7 +13592,7 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-context_002dfree-grammar">context-free grammar</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rules">Rules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-counted-symbol">counted symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sequence-methods">Sequence methods</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-current-location-_0028in-an-Earley-item_0029">current location (in an Earley item)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Earley-items">Earley items</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-current-vertex-_0028of-a-progress-report-traverser_0029">current vertex (of a progress report traverser)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-current-node-_0028of-a-progress-report-traverser_0029">current node (of a progress report traverser)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-report-traverser">Progress report traverser</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-cycle">cycle</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Recursion-and-cycles">Recursion and cycles</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-cycle_002dfree">cycle-free</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Recursion-and-cycles">Recursion and cycles</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -13574,6 +13634,8 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-end-of-input">end of input</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-end-of-parse">end of parse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#End-of-parse">End of parse</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-end-of-string">end of string</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-end-sentinel">end sentinel</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-report-traverser">Progress report traverser</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-end-sentinel-node">end sentinel node</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-report-traverser">Progress report traverser</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-environment-limit">environment limit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-environment_002c-application">environment, application</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-EOF">EOF</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Determining-EOP-from-EOI">Determining EOP from EOI</a></td></tr>
@@ -13697,9 +13759,9 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-models-of-input_002c-basic">models of input, basic</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-basic-models-of-input">The basic models of input</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-N">N</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-next-vertex-_0028of-a-progress-report-traverser_0029">next vertex (of a progress report traverser)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-node-_0028of-a-tree_0029">node (of a tree)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-node-length">node length</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-node_002c-current-_0028of-a-progress-report-traverser_0029">node, current (of a progress report traverser)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-report-traverser">Progress report traverser</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-node_002c-labeled-ordered-tree">node, labeled ordered tree</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-node_002c-root">node, root</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-node_002c-start">node, start</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
@@ -13711,7 +13773,6 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-non_002dtrivial">non-trivial</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Derivations">Derivations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-null-derivation">null derivation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Nulling">Nulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-null-parse">null parse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Nulling">Nulling</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-null-vertex">null vertex</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-nullable-rule">nullable rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Nulling">Nulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-nullable-symbol">nullable symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Nulling">Nulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-nulled-_0028of-a-symbol_0029">nulled (of a symbol)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
@@ -13757,8 +13818,6 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-produces">produces</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Derivations">Derivations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-productive-rule">productive rule</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Useless-rules">Useless rules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-productive-symbol">productive symbol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Useless-rules">Useless rules</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-progress-report-item">progress report item</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-progress-report-traverser">progress report traverser</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-proper-ancestor">proper ancestor</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-proper-descendant">proper descendant</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -13769,7 +13828,6 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-recognizer">recognizer</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Parsing-theory-preliminaries">Parsing theory preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-recognizer-per_002dsymbol-events">recognizer per-symbol events</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Recognizer-per_002dsymbol-events">Recognizer per-symbol events</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-recursive">recursive</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Recursion-and-cycles">Recursion and cycles</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-report-item">report item</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-RHS">RHS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rules">Rules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-RHS-_0028of-a-rule-node_0029">RHS (of a rule node)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-right-hand-side">right hand side</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rules">Rules</a></td></tr>
@@ -13805,6 +13863,8 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-soft-failure-1">soft failure</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Soft-failure">Soft failure</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sparse-variable_002dlength-input-model">sparse variable-length input model</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-fully-general-input-model">The fully general input model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-start-node">start node</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-start-sentinel">start sentinel</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-report-traverser">Progress report traverser</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-start-sentinel-node">start sentinel node</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-report-traverser">Progress report traverser</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-step">step</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Derivations">Derivations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-step-_0028of-a-valuator_0029">step (of a valuator)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Stepping-through-the-valuator">Stepping through the valuator</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-step-type">step type</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Stepping-through-the-valuator">Stepping through the valuator</a></td></tr>
@@ -13839,7 +13899,6 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-trap-representations">trap representations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trap-representations">Trap representations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-trap-value">trap value</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-traverse">traverse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Traversal">Traversal</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-traverser_002c-progress-report">traverser, progress report</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tree">tree</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tree-1">tree</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Tree-overview">Tree overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tree-node">tree node</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Trees">Trees</a></td></tr>
@@ -13877,9 +13936,6 @@ only those uses that are in some way defining.
 <tr><td></td><td valign="top"><a href="#index-variable_002dlength-input-model_002c-dense">variable-length input model, dense</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-dense-variable_002dlength-token-model">The dense variable-length token model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-variable_002dlength-input-model_002c-sparse">variable-length input model, sparse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-fully-general-input-model">The fully general input model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-variable_002dlength-token-input-model">variable-length token input model</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Advanced-input-models">Advanced input models</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-vertex_002c-current-_0028of-a-progress-report-traverser_0029">vertex, current (of a progress report traverser)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-vertex_002c-next-_0028of-a-progress-report-traverser_0029">vertex, next (of a progress report traverser)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-vertex_002c-null">vertex, null</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Progress-reports">Progress reports</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index-of-terms_df_letter-W">W</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-we">we</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Miscellaneous-definitions">Miscellaneous definitions</a></td></tr>

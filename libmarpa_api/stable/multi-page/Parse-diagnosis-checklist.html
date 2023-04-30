@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (30 April 2023)
+is for Libmarpa 11.0.10.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Parse diagnosis checklist (Libmarpa 11.0.10)</title>
+
+<meta name="description" content="Parse diagnosis checklist (Libmarpa 11.0.10)">
+<meta name="keywords" content="Parse diagnosis checklist (Libmarpa 11.0.10)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses" rel="up" title="Tracing and diagnosing parses">
+<link href="Error-methods-macros-and-codes.html#Error-methods-macros-and-codes" rel="next" title="Error methods macros and codes">
+<link href="Tracing-tokens.html#Tracing-tokens" rel="prev" title="Tracing tokens">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Parse-diagnosis-checklist"></a>
+<div class="header">
+<p>
+Previous: <a href="Tracing-tokens.html#Tracing-tokens" accesskey="p" rel="prev">Tracing tokens</a>, Up: <a href="Tracing-and-diagnosing-parses.html#Tracing-and-diagnosing-parses" accesskey="u" rel="up">Tracing and diagnosing parses</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Parse-diagnosis-checklist-1"></a>
+<h3 class="section">26.5 Parse diagnosis checklist</h3>
+
+<p>A checklist for diagnosing parse problems will depend,
+clearly,
+on the facilities offered by the diagnostics layer
+in the application.
+What follows is a &ldquo;bare bones&rdquo; checklist,
+based on the diagnostic facilities recommended
+in this chapter.
+</p>
+<ul>
+<li> Check the location of the failure, and any error message.
+This is an obvious step and, if you are reading this checklist,
+you most likely have already taken it.
+</li><li> Use the token tracing facility.
+Even if the problem is not directly with the tokens,
+the token trace is a good way to see how far the parse
+got, and what it was doing.
+If you are lucky, looking at it may make it apparent
+where the problem is.
+</li><li> List the rules and the symbols.
+Perhaps you&rsquo;ll see an issue.
+In any case, you will need these listings for the next
+step on this checklist.
+</li><li> List the latest Earley set.
+Form a theory of what <strong>should</strong> be happening
+in the parse
+and check it against what the listing
+of the latest Earley
+shows you <strong>is actually</strong> happening.
+</li><li> If the fix is still not apparent,
+list earlier Earley sets,
+until you see the fix,
+or you reach the first one with an error.
+Figure out a way to change the grammar
+to fix the first erroneous Earley set,
+then work forward.
+</li></ul>
+
+
+
+
+</body>
+</html>

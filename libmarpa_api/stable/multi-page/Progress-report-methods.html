@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual (30 April 2023)
+is for Libmarpa 11.0.10.
+
+Copyright (C) 2023 Jeffrey Kegler.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Progress report methods (Libmarpa 11.0.10)</title>
+
+<meta name="description" content="Progress report methods (Libmarpa 11.0.10)">
+<meta name="keywords" content="Progress report methods (Libmarpa 11.0.10)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index-of-terms.html#Index-of-terms" rel="index" title="Index of terms">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Progress-reports.html#Progress-reports" rel="up" title="Progress reports">
+<link href="Bocage-methods.html#Bocage-methods" rel="next" title="Bocage methods">
+<link href="Progress-report-traverser.html#Progress-report-traverser" rel="prev" title="Progress report traverser">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Progress-report-methods"></a>
+<div class="header">
+<p>
+Previous: <a href="Progress-report-traverser.html#Progress-report-traverser" accesskey="p" rel="prev">Progress report traverser</a>, Up: <a href="Progress-reports.html#Progress-reports" accesskey="u" rel="up">Progress reports</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Progress-report-methods-1"></a>
+<h3 class="section">20.2 Progress report methods</h3>
+
+<a name="marpa_005fr_005fprogress_005freport_005freset"></a><dl>
+<dt><a name="index-marpa_005fr_005fprogress_005freport_005freset"></a>Mutator function: <em>int</em> <strong>marpa_r_progress_report_reset</strong> <em>(   Marpa_Recognizer <var>r</var>)</em></dt>
+<dd>
+<p>On success, sets the current node of the report traverser
+to the start sentinel.
+See <a href="Progress-report-traverser.html#Progress-report-traverser">Progress report traverser</a>.
+</p>
+<p>This method is not usually needed.
+Its effect is to leave the traverser in the same state as it is
+immediately after the
+<code>marpa_r_progress_report_start()</code> method.
+Loosely speaking, it allows the traversal to &ldquo;start over&rdquo;.
+</p>
+<p>Hard fails if the recognizer is not started,
+or if no progress report traverser is active.
+</p>
+<p><strong>Return value</strong>: On success, a non-negative value.
+On failure, -2.
+</p></dd></dl>
+
+<a name="marpa_005fr_005fprogress_005freport_005fstart"></a><dl>
+<dt><a name="index-marpa_005fr_005fprogress_005freport_005fstart"></a>Mutator function: <em>int</em> <strong>marpa_r_progress_report_start</strong> <em>(   Marpa_Recognizer <var>r</var>,   Marpa_Earley_Set_ID <var>set_id</var>)</em></dt>
+<dd>
+<p>Creates a progress report traverser
+in recognizer <var>r</var>
+for the Earley set with ID <var>set_id</var>.
+</p>
+<p>On success, does the following:
+</p><ul>
+<li> If a progress report traverser was active in recognizer <var>r</var>
+before this method call,
+destroys it and frees its memory.
+</li><li> Creates a new progress report traverser from the Earley items for the
+Earley set with ID <var>set_id</var>.
+</li><li> Sets the current node of the traverser
+to the start sentinel.
+Intuitively, for a non-empty Earley set,
+this can be thought of as positioning the
+traverser before the first Earley item.
+</li><li> Returns <code>n</code>, the number of Earley items.
+    <code>n</code> may be zero.
+</li></ul>
+
+<p>Hard fails if no Earley set with ID
+<var>set_id</var> exists.
+The error code is <code>MARPA_ERR_INVALID_LOCATION</code> if <var>set_id</var>
+is negative.
+The error code is <code>MARPA_ERR_NO_EARLEY_SET_AT_LOCATION</code>
+if <var>set_id</var> is greater than the ID of
+the latest Earley set.
+</p>
+<p><strong>Return value</strong>: On success, the number of Earley items,
+which will always be non-negative.
+On hard failure, -2.
+</p></dd></dl>
+
+<a name="marpa_005fr_005fprogress_005freport_005ffinish"></a><dl>
+<dt><a name="index-marpa_005fr_005fprogress_005freport_005ffinish"></a>Mutator function: <em>int</em> <strong>marpa_r_progress_report_finish</strong> <em>(   Marpa_Recognizer <var>r</var> )</em></dt>
+<dd>
+<p>On success,
+destroys the progress report traverser
+for recognizer <var>r</var>,
+freeing its memory.
+For details about the report traverser,
+see <a href="#marpa_005fr_005fprogress_005freport_005fstart">marpa_r_progress_report_start()</a>.
+</p>
+<p>It is often not necessary to call this method.
+<code>marpa_r_progress_report_start()</code> destroys
+any previously existing progress report.
+And,
+when a recognizer is destroyed,
+its progress report is destroyed as a side effect.
+</p>
+<p>Hard fails if no progress report is active.
+</p>
+<p><strong>Return value</strong>:
+On success, a non-negative value.
+On hard failure, -2.
+</p></dd></dl>
+
+<a name="marpa_005fr_005fprogress_005fitem"></a><dl>
+<dt><a name="index-marpa_005fr_005fprogress_005fitem"></a>Mutator function: <em>Marpa_Rule_ID</em> <strong>marpa_r_progress_item</strong> <em>(   Marpa_Recognizer <var>r</var>,   int* <var>position</var>,   Marpa_Earley_Set_ID* <var>origin</var> )</em></dt>
+<dd><p>This method allows access to the data
+for the next progress report item of a
+progress report.
+See <a href="Progress-report-traverser.html#Progress-report-traverser">Progress report traverser</a>.
+</p>
+<p>Let <code>oldCurrent</code> be the current node of
+the progress report traverser in <var>r</var>
+when this method was called.
+Let <code>oldNext</code> be the next link
+of <code>oldCurrent</code>.
+If <code>oldCurrent</code> is the end sentinel,
+<code>oldNext</code> is not defined,
+and this method soft fails.
+</p>
+<p>In the event of success:
+</p><ul>
+<li> Sets the current node of the traverser to <code>oldNext</code>.
+We will call this new value of the current node,
+<code>newCurrent</code>.
+</li><li> Writes the &ldquo;cooked dot position&rdquo; of the Earley item corresponding to <code>newCurrent</code>
+to the location pointed to by the <var>position</var> argument.
+</li><li> Writes the origin of the Earley item corresponding to <code>newCurrent</code>
+to the location pointed to by the <var>origin</var> argument.
+</li><li> Returns the rule ID of the Earley item corresponding to <code>newCurrent</code>.
+</li></ul>
+
+<p>The &ldquo;cooked dot position&rdquo; is
+</p><ul>
+<li> the standard 0-based start-relative
+dot position, if the dotted rule is <strong>not</strong> a completion; and
+</li><li> -1, if the dotted rule <strong>is</strong> a completion.
+This has the advantage of making it easy for the application
+to determine if the dotted rule
+is a completion.
+An application that prefers the &ldquo;raw&rdquo; 0-based start-relative dot position
+may convert
+a -1 to the rule length.
+See <a href="Rule-methods.html#marpa_005fg_005frule_005flength">marpa_g_rule_length()</a>.
+</li></ul>
+
+<p>In the event of soft failure:
+</p><ul>
+<li> Sets the current node to the end sentinel.
+</li><li> Sets the error code to <code>MARPA_ERR_PROGRESS_REPORT_EXHAUSTED</code>.
+</li><li> Leaves unchanged the locations pointed to by
+the <var>position</var> and <var>origin</var> arguments.
+</li><li> Returns -1.
+</li></ul>
+
+<p>In addition to watching for soft failure,
+the application can use the item count returned by
+<code>marpa_r_progress_report_start()</code>
+to determine when the last
+item has been seen.
+</p>
+<p><strong>Return value</strong>: On success, the rule ID of
+the progress report item, which is always non-negative.
+On soft failure, -1.
+If either the <var>position</var> or the <var>origin</var>
+argument is <code>NULL</code>,
+or on other hard failure, -2.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Progress-report-traverser.html#Progress-report-traverser" accesskey="p" rel="prev">Progress report traverser</a>, Up: <a href="Progress-reports.html#Progress-reports" accesskey="u" rel="up">Progress reports</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index-of-terms.html#Index-of-terms" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
